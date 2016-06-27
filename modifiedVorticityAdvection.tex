@@ -1,0 +1,314 @@
+We will here derive the advection of the modified vorticity
+%
+\begin{align}
+    \frac{1}{\om_{ci}}
+    \div\L(\ve{u}_E\cdot\grad\L[n\frac{\grad_\perp \phi}{B}\R]\R)
+    \label{vortD:modVortAdv}
+\end{align}
+%
+in cylindrical coordinates.
+
+The first thing we notice is that equation (\ref{vortD:modVortAdv}) can only have
+perpendicular components. As it is shown in equation (\ref{poi:def})
+%
+\begin{align*}
+    \ve{u}_E\cdot\nabla
+    = \frac{1}{JB}
+      (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta).
+\end{align*}
+%
+When this term is acting on $\grad_\perp \phi$, no $\ve{e}_z$ or $\ve{e}^z$
+terms will be created as seen from appendix \ref{app:cylSummary}. The same
+holds when one takes the divergence of the resulting quantity. Thus
+%
+\begin{align*}
+    \frac{1}{\om_{ci}}
+    \div\L(\ve{u}_E\cdot\grad\L[n\frac{\grad_\perp \phi}{B}\R]\R)
+    =&
+    \frac{1}{\om_{ci}}
+    \grad_\perp\cdot
+    \L(\frac{1}{JB}\L\{\phi, n\frac{\grad_\perp \phi}{B}\R\}\R)
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}\cdot\grad_\perp\frac{1}{JB}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{JB}\grad_\perp\cdot\L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}
+    \numberthis
+    \label{vortD:firstDeriv}
+\end{align*}
+%
+Expansion of the first term of equation (\ref{vortD:firstDeriv}) gives
+%
+\begin{align*}
+    \frac{1}{\om_{ci}}
+    \L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}\cdot\grad_\perp\frac{1}{JB}
+    =&
+    \frac{1}{\om_{ci}}
+    \L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}\cdot
+    \L(\ve{e}^\rho\partial_\rho + \ve{e}^\theta\partial_\theta\R)
+    \frac{1}{B\rho}
+    \note{Constant $B$}
+    \\
+    %
+    =&
+    -
+    \frac{1}{\om_{ci}}
+    \L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}\cdot
+    \ve{e}^\rho \frac{1}{B\rho^2}
+    \numberthis
+    \label{vortD:firstTerm}
+\end{align*}
+%
+When calculating the second term of equation (\ref{vortD:firstDeriv}), we will
+use that for a general scalar field $c$ and a general vector $\ve{d}$, we have
+that
+%
+\begin{align*}
+    \grad_\perp\cdot\L\{c, \ve{d}\R\}
+    =&
+    \grad_\perp\cdot
+    \L(
+        \partial_\theta c \partial_\rho \ve{d}
+      - \partial_\rho c   \partial_\theta \ve{d}
+    \R)
+    \\
+    %
+    =&
+       \quad \L(\partial_\theta c\R) \grad_\perp \cdot \partial_\rho \ve{d}
+      +  \grad_\perp\L(\partial_\theta c\R) \cdot \partial_\rho \ve{d}
+      \\&
+      -\L(
+         \L[\partial_\rho c\R] \grad_\perp \cdot\partial_\theta \ve{d}
+       + \grad_\perp \L[\partial_\rho c\R] \cdot \partial_\theta \ve{d}
+      \R)
+    \note{
+        $\ve{e}^i\partial_jf
+         =
+           \partial_j\L(\ve{e}^i\partial_i f\R)
+         - \partial_i f\partial_j\ve{e}^i
+         $
+         }
+    \\
+    %
+    =&
+       \quad \L(\partial_\theta c\R) \partial_\rho\L( \grad_\perp \cdot \ve{d}\R)
+           - \L(\partial_\theta c\R) \partial_i \ve{d} \cdot\partial_\rho \ve{e}^i
+      \\&
+      +  \L(\partial_\theta \grad_\perp c\R) \cdot \partial_\rho \ve{d}
+      - \L(\partial_i c\partial_\theta\ve{e}^i\R) \cdot \partial_\rho \ve{d}
+      \\&
+      -\L(
+         \quad \L[\partial_\rho c\R] \partial_\theta\L[\grad_\perp \cdot \ve{d}\R]
+             - \L[\partial_\rho c\R] \partial_i \ve{d} \cdot\partial_\theta \ve{e}^i
+      \R.\\&\L.
+     \quad\; + \L[\partial_\rho \grad_\perp c\R] \cdot \partial_\theta \ve{d}
+            - \L[\partial_i c\partial_\rho\ve{e}^i\R] \cdot \partial_\theta \ve{d}
+      \R)
+    \\
+    %
+    =&
+      \{c, \grad_\perp\cdot \ve{d}\} + \{\grad_\perp c; \ve{d}\}
+      \\&
+    - \L(\partial_\theta c\R) \partial_i \ve{d} \cdot\partial_\rho \ve{e}^i
+    - \L(\partial_i c\partial_\theta\ve{e}^i\R) \cdot \partial_\rho \ve{d}
+    + \L(\partial_\rho c\R) \partial_i \ve{d} \cdot\partial_\theta \ve{e}^i
+    + \L(\partial_i c\partial_\rho\ve{e}^i\R) \cdot \partial_\theta \ve{d}
+    \note{$;$ denotes the dot-product}
+    \\
+    %
+    =&
+      \{c, \grad_\perp\cdot \ve{d}\} + \{\grad_\perp c; \ve{d}\}
+     + \mathcal{G}
+\end{align*}
+%
+where $\mathcal{G}$ is the correction coming from the geometry. We have
+%
+\begin{align*}
+    \mathcal{G}
+    =&
+    - \L(\partial_\theta c\R) \partial_i \ve{d}\cdot \partial_\rho \ve{e}^i
+    \\&
+    - \L(\partial_i c\partial_\theta\ve{e}^i\R) \cdot \partial_\rho \ve{d}
+    \\&
+    + \L(\partial_\rho c\R) \partial_i \ve{d} \cdot\partial_\theta \ve{e}^i
+    \\&
+    + \L(\partial_i c\partial_\rho\ve{e}^i\R) \cdot \partial_\theta \ve{d}
+    \\
+    %
+    =&
+    - \L(\partial_\theta c\R) \partial_\rho \ve{d} \cdot\partial_\rho \ve{e}^\rho
+    - \L(\partial_\theta c\R) \partial_\theta \ve{d} \cdot\partial_\rho \ve{e}^\theta
+    \\&
+    - \L(\partial_\rho c\partial_\theta\ve{e}^\rho\R) \cdot \partial_\rho \ve{d}
+    - \L(\partial_\theta c\partial_\theta\ve{e}^\theta\R) \cdot \partial_\rho \ve{d}
+    \\&
+    + \L(\partial_\rho c\R) \partial_\rho \ve{d} \cdot\partial_\theta \ve{e}^\rho
+    + \L(\partial_\rho c\R) \partial_\theta \ve{d} \cdot\partial_\theta \ve{e}^\theta
+    \\&
+    + \L(\partial_\rho c\partial_\rho\ve{e}^\rho\R) \cdot \partial_\theta \ve{d}
+    + \L(\partial_\theta c\partial_\rho\ve{e}^\theta\R) \cdot \partial_\theta \ve{d}
+    \\
+    %
+    =&
+    - 0
+    - \L(\partial_\theta c\R) \partial_\theta \ve{d} \cdot\L(-\frac{1}{\rho}\ve{e}^\theta\R)
+    \\&
+    - \rho\ve{e}^\theta\L(\partial_\rho c\R) \cdot \partial_\rho \ve{d}
+    - \L(-\frac{1}{\rho}\ve{e}^\rho\R)\L(\partial_\theta c\R) \cdot \partial_\rho \ve{d}
+    \\&
+    + \L(\partial_\rho c\R) \partial_\rho \ve{d} \cdot\L(\rho \ve{e}^\theta\R)
+    + \L(\partial_\rho c\R) \partial_\theta \ve{d} \cdot\L(-\frac{1}{\rho}\ve{e}^\rho\R)
+    \\&
+    + 0
+    + \L(-\frac{1}{\rho}\ve{e}^\theta\R)\L(\partial_\theta c\R) \cdot \partial_\theta \ve{d}
+    \\
+    %
+    =&
+     \frac{1}{\rho}\ve{e}^\theta \cdot \L(\partial_\theta c\R) \partial_\theta \ve{d}
+    -\frac{1}{\rho}\ve{e}^\theta \cdot \L(\partial_\theta c\R) \partial_\theta \ve{d}
+    \\&
+    - \rho \ve{e}^\theta \cdot \L(\partial_\rho c\R) \partial_\rho \ve{d}
+    + \rho \ve{e}^\theta \cdot \L(\partial_\rho c\R) \partial_\rho \ve{d}
+    \\&
+    - \frac{1}{\rho}\ve{e}^\rho \cdot \L(\partial_\rho   c\R)\partial_\theta \ve{d}
+    + \frac{1}{\rho}\ve{e}^\rho \cdot \L(\partial_\theta c\R)\partial_\rho   \ve{d}
+    \\
+    %
+    =&
+    \frac{1}{\rho}\ve{e}^\rho \cdot \L\{c, \ve{d}\R\}
+\end{align*}
+%
+thus, expansion of the second term in equation (\ref{vortD:firstDeriv}) gives
+%
+\begin{align*}
+    \frac{1}{\om_{ci}}
+    \frac{1}{JB}\grad_\perp\cdot\L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}
+    &=
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\L(
+       \L\{\phi, \grad_\perp\cdot n\frac{\grad_\perp \phi}{B} \R\}
+       + \L\{\grad_\perp \phi; n\frac{\grad_\perp \phi}{B} \R\}
+     + \frac{1}{\rho}\ve{e}^\rho \cdot \L\{\phi, n\frac{\grad_\perp \phi}{B}\R\}
+    \R)
+    \\
+    &=
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}
+    \L\{\grad_\perp \phi; n\frac{\grad_\perp \phi}{B}\R\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho^2}
+    \ve{e}^\rho \cdot \L\{\phi, n\frac{\grad_\perp \phi}{B}\R\}
+    \numberthis
+    \label{vortD:secondTerm}
+\end{align*}
+%
+Combining equation (\ref{vortD:firstTerm}) and equation (\ref{vortD:secondTerm}), we get that
+%
+\begin{align*}
+    \frac{1}{\om_{ci}}
+    \div\L(\ve{u}_E\cdot\grad\L[n\frac{\grad_\perp \phi}{B} \phi\R]\R)
+    =&
+    -
+    \frac{1}{\om_{ci}}
+    \L\{\phi, n\frac{\grad_\perp \phi}{B} \phi\R\}\cdot \ve{e}^\rho \frac{1}{B\rho^2}
+    \\ &
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\L\{\grad_\perp \phi; n\frac{\grad_\perp \phi}{B}\R\}
+    \\ &
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho^2}\ve{e}^\rho \cdot \L\{\phi, n\frac{\grad_\perp \phi}{B} \R\}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\L\{\grad_\perp \phi; n\frac{\grad_\perp \phi}{B} \phi\R\}
+    \note{Product rule}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    n\frac{1}{B\rho}\L\{\grad_\perp \phi; \frac{\grad_\perp \phi}{B}\R\}
+    \note{$\L\{a,\frac{a}{B}\R\}=\frac{1}{B}\L\{a,a\R\}=0$}
+    \\ &
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}
+    \frac{\grad_\perp \phi}{B}
+    \cdot\L\{\grad_\perp \phi, n\R\}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}
+    \frac{\grad_\perp \phi}{B}
+    \cdot\L\{\grad_\perp \phi, n\R\}
+    \note{$\partial_i (ff) = 2f\partial f$}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{2B^2\rho}\{(\grad_\perp \phi)^2, n\}
+    \note{Constant $B$}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{2\rho}\L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
+    \\
+    %
+    =&
+    \frac{1}{\om_{ci}}
+    \frac{1}{B\rho}\{\phi, \Om^D\}
+    +
+    \frac{1}{\om_{ci}}
+    \frac{1}{2\rho}\{\ve{u}_E^2, n\}
+\end{align*}
+%
+% Checking that the dimensions are OK
+% First term
+% ----------
+% 1/om_ci = T
+% 1/rho = L^-1
+% partial_rho phi/B = LT^-1
+% vortD = T^-1L^-3
+% Product:
+% TL^-1LT^-1T^-1L^-3 = T^-1L^-3
+%
+% Second term
+% ----------
+% 1/om_ci = T
+% 1/rho = L^-1
+% partial_rho = L^-1
+% ue^2 = L^2T^-2
+% n = L^-3
+% Product:
+% TL^-1L^-1L^2T^-2L^-3 = T^-1L^-3
+%
+% This fits with 1/om_ci partial_t vortD

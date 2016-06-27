@@ -620,59 +620,59 @@ $ - \frac{1}{\om_{ci}} \div
 %
 term arises from the ion continuity equation.
 
-Next, it turns out that
+Next, we see from appendix \ref{app:vortDAdv} that
 %
 \begin{align*}
- \frac{1}{\om_{ci}} \div
-    \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
+ \frac{1}{\om_{ci}}
+  \div
+  \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
+  =&
+  \frac{1}{\om_{ci}}
+  \frac{1}{B\rho}\{\phi, \Om^D\}
+  +
+  \frac{1}{\om_{ci}}
+  \frac{1}{2\rho}\{\ve{u}_E^2, n\}
 \end{align*}
 %
-can be rewritten to
-%
-% \begin{align*}
-%  \frac{1}{\om_{ci}} \div
-%     \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
-%     lalala
-%     \{\phi, \vort^D\}
-%     +
-%     \{\ve{u}_E \cdot \ve{u}_E, n\}
-% \end{align*}
-% F = qE
-% F = ma = MLS^-2
-% q = C
-% => E = F/q = MLS^-2C^-1
-% => phi = -div E = MS^-2C^-1
-%
-% u_E = - grad_perp phi x b /B = LS^-1
-% => grad_perp phi /B = LS^-1
-%
-% om_ci = m/qB
-% om_ci = T^-1
-% n = L^-3
-% div = L^-1
-% partial_theta = 1
-%
-% FIXME
-FIXME: Elaborate
-The first term arises as $\div \ve{u}_E=0$ when the magnetic field is constant.
-is expected.
-A proof for this in normalized cylinder coordinates can be found in appendix
-% FIXME
-FIXME: Add appendix
-.
 A similar expression is expected to be found for other geometries as well, at
 least as long as the $B$ field is constant. When this is not the case, terms
-arising from fluttering is expected.
-% FIXME
-(FIXME add citation)
-
+arising from $\grad \frac{1}{B}$ are expected.
 
 
 \subsection{The complete vorticity equation}
+%
+The evolution of the modified vorticity can now be written as
+%
+\begin{align*}
+  %
+  \frac{1}{\om_{ci}}
+  \partial_t \Om^D
+  =&
+  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+  -
+ \frac{1}{\om_{ci}\rho}
+ \L(
+  \frac{1}{B}\{\phi, \Om^D\}
+  +
+  \frac{1}{2}\{\ve{u}_E^2, n\}
+ \R)
+  -
+ \frac{1}{\om_{ci}} \partial_\|\div
+ \L( u_{i,\|}\frac{\grad_\perp \phi}{B}n \R)
+ \\
+ &
+ %
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+\end{align*}
 
 
 \section{Normalization}
 \label{sec:norm}
+% FIXME:
+FIXME: YOU ARE HERE: UPDATE THE VORTD
 We will now normalize using the ``standard'' gyro-Bohm normalization%
 %
 \footnote{Also known as: Bohm normalization}%

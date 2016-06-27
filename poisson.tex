@@ -147,8 +147,26 @@ In a cylindrical geometry, all the off diagonal elements are zero, so
     = \frac{1}{g_{22}} \L( g_{22}\{\phi, \cdot\}_{3,1} \R)
     = \{\phi, \cdot\}_{3,1}
     = \partial_3\phi\partial_1 - \partial_1\phi\partial_3
-    = \partial_z\phi\partial_\rho - \partial_\rho\phi\partial_z
+    = \partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta
+    \label{poi:defClebsh}
+\end{align}
+%
+We note that equation (\ref{poi:defClebsh}) is only valid for a Clebsch system. If
+the $B$-field is constant (as in our case), we are no longer in a Clebsch
+system. However, the metric of the two systems coincide, and the derivation
+could have been performed by removing the dependency of $B$ by multiplying the
+result with $B'$, which is equal to the Clebsch system $B$-field, but without
+any units.  Thus, for a constant $B$-field the $\ve{E}\times\ve{B}$ advection
+can be written
+%
+\begin{align}
+    B'\ve{u}_E\cdot\nabla
+    = \frac{\sqrt{g_{\theta\theta}}}{J g_{\theta\theta}}
+    (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)
+    = \frac{1}{JB}
+    (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)
     \label{poi:def}
 \end{align}
 %
-This operator can be discretized using the Arakawa bracket operator.
+where $B$ is the constant magnetic field.  This operator can be discretized
+using the Arakawa bracket operator.
