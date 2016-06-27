@@ -1,0 +1,154 @@
+We will here derive the bracket operators used for perpendicular advection.
+Under electrostatic conditions, we have that $\ve{u}_E =
+-\frac{\nabla\phi\times\ve{b}}{B}$, which is similar to
+$\ve{u}=\ve{k}\times\nabla\psi$ found in incompressible fluid flow
+%
+\begin{align*}
+    \ve{u}_E =& -\frac{\nabla\phi\times\ve{b}}{B}\\
+         %
+         =&-\frac{\nabla\phi\times\ve{e}_2}{
+               \sqrt{g_{22}}J^{-1}\sqrt{g_{22}}}\\
+             %
+         =&-\frac{J}{g_{22}}\nabla\phi\times\ve{e}_2\\
+         %
+         =&\frac{J}{g_{22}}\ve{e}_2\times\nabla\phi\\
+         %
+         =&\frac{J}{g_{22}}\ve{e}_2\times
+           \L(\ve{e}^1\partial_1 + \ve{e}^3\partial_3\R)\phi\\
+         %
+         =&\frac{J}{g_{22}}
+           \L(g_{21}\ve{e}^1 + g_{22}\ve{e}^2 + g_{23}\ve{e}^3\R)
+           \times
+           \L(\ve{e}^1\partial_1 +
+              \ve{e}^2\partial_2 +
+                  \ve{e}^3\partial_3\R)\phi\\
+             %
+         =&\frac{J}{g_{22}}
+           \L(
+             g_{21}\ve{e}^1\times\ve{e}^1\partial_1
+           + g_{22}\ve{e}^2\times\ve{e}^1\partial_1
+           + g_{23}\ve{e}^3\times\ve{e}^1\partial_1
+           \R.
+           \\
+           &\quad\;
+           + g_{21}\ve{e}^1\times\ve{e}^2\partial_2
+           + g_{22}\ve{e}^2\times\ve{e}^2\partial_2
+           + g_{23}\ve{e}^3\times\ve{e}^2\partial_2
+           \\
+           &\quad\;
+           \L.
+           + g_{21}\ve{e}^1\times\ve{e}^3\partial_3
+           + g_{22}\ve{e}^2\times\ve{e}^3\partial_3
+           + g_{23}\ve{e}^3\times\ve{e}^3\partial_3
+           \R)
+           \phi\\
+         %
+         =&\frac{J}{g_{22}}
+           \L(
+           - g_{22}\ve{e}^2\times\ve{e}^1\partial_1
+           + g_{23}\ve{e}^3\times\ve{e}^1\partial_1
+           \R.
+           \\
+           &\quad
+           + g_{21}\ve{e}^1\times\ve{e}^2\partial_2
+           - g_{23}\ve{e}^3\times\ve{e}^2\partial_2
+           \\
+           &\quad
+           \L.
+           - g_{21}\ve{e}^1\times\ve{e}^3\partial_3
+           + g_{22}\ve{e}^2\times\ve{e}^3\partial_3
+           \R)
+           \phi\\
+         %
+         =&\frac{1}{g_{22}}
+           \L(
+           - g_{22}\ve{e}_3\partial_1
+           + g_{23}\ve{e}_2\partial_1
+           + g_{21}\ve{e}_3\partial_2
+           - g_{23}\ve{e}_1\partial_2
+           - g_{21}\ve{e}_2\partial_3
+           + g_{22}\ve{e}_1\partial_3
+           \R)
+           \phi
+\end{align*}
+%
+The electrostatic $E\times B$ advection operator thus becomes
+%
+\begin{align*}
+    \ve{u}_E\cdot\nabla
+    =& -\frac{\nabla\phi\times\ve{b}}{B}\cdot\nabla\\
+    %
+    %
+    =&\frac{1}{g_{22}}
+           \L(
+           - g_{22}\ve{e}_3\partial_1
+           + g_{23}\ve{e}_2\partial_1
+           + g_{21}\ve{e}_3\partial_2
+           - g_{23}\ve{e}_1\partial_2
+           - g_{21}\ve{e}_2\partial_3
+           + g_{22}\ve{e}_1\partial_3
+           \R)
+           \phi
+       \cdot\L(\ve{e}^1\partial_1 + \ve{e}^2\partial_2 + \ve{e}^3\partial_3\R)\\
+    %
+    %
+    =& \frac{1}{g_{22}}
+           \L(
+           - g_{22}\partial_1\phi\partial_3
+           + g_{23}\partial_1\phi\partial_2
+           + g_{21}\partial_2\phi\partial_3
+           - g_{23}\partial_2\phi\partial_1
+           - g_{21}\partial_3\phi\partial_2
+           + g_{22}\partial_3\phi\partial_1
+           \R)\\
+    %
+    %
+    =& \frac{1}{g_{22}}
+           \L(
+             \L[
+               g_{22}\partial_3\phi
+             - g_{23}\partial_2\phi
+             \R]\partial_1
+           +
+             \L[
+               g_{23}\partial_1\phi
+             - g_{21}\partial_3\phi
+             \R]\partial_2
+           +
+             \L[
+               g_{21}\partial_2\phi
+             - g_{22}\partial_1\phi
+             \R]\partial_3
+           \R)\\
+    %
+    %
+    =& \frac{1}{g_{22}}
+               \L(
+                 g_{21}\{\phi, \cdot\}_{2,3}
+                 +
+                 g_{22}\{\phi, \cdot\}_{3,1}
+                 +
+                 g_{23}\{\phi, \cdot\}_{1,2}
+               \R)
+\end{align*}
+%
+Where we have used the definition of the Poisson bracket
+%
+\begin{align*}
+    \{a, b\}_{i,j} =
+      \L(\partial_i a\R) \partial_j b
+    - \L(\partial_j a\R) \partial_i b
+\end{align*}
+%
+In a cylindrical geometry, all the off diagonal elements are zero, so
+%
+\begin{align}
+    \ve{u}_E\cdot\nabla
+    = \frac{1}{g_{22}} \L( g_{22}\{\phi, \cdot\}_{3,1} \R)
+    = \{\phi, \cdot\}_{3,1}
+    = \partial_3\phi\partial_1 - \partial_1\phi\partial_3
+    = \partial_z\phi\partial_\rho - \partial_\rho\phi\partial_z
+    \label{poi:def}
+\end{align}
+%
+This operator can be discretized using the Arakawa bracket operator.

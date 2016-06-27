@@ -1,0 +1,717 @@
+The coordinates in a cylindrical geometry are written\\
+%
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+    x=&\rho \cos\theta\\
+    y=&\rho \sin\theta\\
+    z=& z
+\end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+    \rho=& \sqrt{x^2+y^2}\\
+    \theta=&\atan\L(\frac{y}{x}\R)\\
+    z=& z
+\end{align*}
+\end{minipage}
+
+
+\section{In Clebsch formalism}
+%
+The cylindrical coordinates can be expressed in Clebsch formalism introduced in
+appendix \ref{app:cylcoord} if we let
+%
+\begin{align*}
+    1 &\to \rho\\
+    2 &\to z\\
+    3 &\to \theta
+\end{align*}
+%
+
+\subsubsection{In BOUT++}
+%
+As a final note BOUT++ uses the indices $\{x,y,z\}$ rather than $\{1,2,3\}$. Be
+aware that this can be a source of confusion as $y$ maps to $z$ as shown below
+%
+\begin{center}
+    \begin{tabular}{ccccc}
+        Generic &     & BOUT++ indices &     & Cylindrical coordinates\\
+        $1$     &$\to$& $x$            &$\to$& $\rho$                 \\
+        $2$     &$\to$& $y$            &$\to$& $z$                    \\
+        $3$     &$\to$& $z$            &$\to$& $\theta$
+    \end{tabular}
+\end{center}
+%
+
+
+\section{The metrics}
+\label{sec:metr}
+%
+We have that
+%
+\begin{align*}
+    &\ve{e}_i = \partial_i&
+    &\ve{e}^i = \d u_i&
+\end{align*}
+%
+where $u_i$ is the set of the coordinate curves
+
+To coordinate transform a covariant basis vector, we can consider an arbitrary
+line $f$ passing through the point under consideration written in the new set
+of coordinates. We then use the chain rule to determine how the basis vector is
+written in the new set of coordinates. We have
+%
+\begin{align*}
+    \parti{f(\rho, \theta, z)}{x_i}
+    =
+    \parti{f}{\rho} \parti{\rho}{x_i}
+    + \parti{f}{\theta} \parti{\theta}{x_i}
+    + \parti{f}{z} \parti{z}{x_i}
+\end{align*}
+%
+as the line $f$ is arbitrary, we have
+%
+\begin{align*}
+    \ve{e}_i
+    =
+    \parti{}{x_i}
+    =
+    %
+    \parti{\rho}{x_i} \parti{}{\rho}
+    + \parti{\theta}{x_i} \parti{}{\theta}
+    + \parti{z}{x_i} \parti{}{z}
+    %
+    =
+    %
+    \parti{\rho}{x_i} \ve{e}_{\rho}
+    + \parti{\theta}{x_i} \ve{e}_{\theta}
+    + \parti{z}{x_i} \ve{e}_{z}
+    %
+\end{align*}
+%
+where in our case $x_i \in \{x,y,z\}$.
+
+To coordinate transform a contravariant basis vector, we can apply the chain
+rule directly to determine how the basis vector is written in the new set of
+coordinates. We have
+%
+\begin{align*}
+    \ve{e}^i
+    =
+    \d u^i(x,y,z)
+    =
+    %
+    \parti{u_i}{x}\d x
+    + \parti{u_i}{y}\d y
+    + \parti{u_i}{z}\d z
+    %
+    =
+    %
+    \parti{u_i}{x}\ve{e}^x
+    + \parti{u_i}{y}\ve{e}^y
+    + \parti{u_i}{z}\ve{e}^z
+    %
+\end{align*}
+%
+At this point we note that there are no difference between co and contravariant
+basis vectors in a Cartesian coordinate system.
+
+In the following, we are going to make use of the following relations
+\\
+%
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+    \partial_x \rho
+    =&
+    \partial_x \sqrt{x^2+y^2}
+    =
+    \frac{x}{\rho}
+    =
+    \cos\theta\\
+    %
+    \partial_y \rho
+    =&
+    \partial_y \sqrt{x^2+y^2}
+    =
+    \frac{y}{\rho}
+    =
+    \sin\theta
+    \\
+    %
+    \partial_z \rho
+    =&
+    \partial_z \sqrt{x^2+y^2}
+    =
+    0
+    \\
+    %
+    %
+    \partial_x \theta
+    =&
+    \partial_x \atan\L(\frac{y}{x}\R)
+    =
+    -\frac{y}{\rho^2}
+    =
+    -\frac{1}{\rho}\sin\theta
+    \\
+    %
+    \partial_y \theta
+    =&
+    \partial_y \atan\L(\frac{y}{x}\R)
+    =
+    \frac{x}{\rho^2}
+    =
+    \frac{1}{\rho}\cos\theta
+    \\
+    %
+    \partial_z \theta
+    =&
+    \partial_z \atan\L(\frac{y}{x}\R)
+    =
+    0
+    \\
+\end{align*}
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+    \partial_\rho x
+    =&
+    \partial_\rho \rho\cos\theta
+    =
+    \cos\theta\\
+    %
+    \partial_\rho y
+    =&
+    \partial_\rho \rho\sin\theta
+    =
+    \sin\theta
+    \\
+    %
+    \partial_\rho z
+    =&
+    0
+    \\
+    %
+    %
+    \partial_\theta x
+    =&
+    \partial_\theta \rho\cos\theta
+    =
+    -\rho\sin\theta
+    \\
+    %
+    \partial_\theta y
+    =&
+    \partial_\theta \rho\sin\theta
+    =
+    \rho\cos\theta
+    \\
+    %
+    \partial_\theta z
+    =&
+    0
+\end{align*}
+\end{minipage}\\
+%
+This means that a basis vector written in a Cartesian basis can be written
+with a covariant basis vector using cylindrical coordinates as
+%
+\begin{align*}
+    \ve{e}_x
+    &=
+    \parti{\rho}{x} \ve{e}_{\rho}
+    + \parti{\theta}{x} \ve{e}_{\theta}
+    + \parti{z}{x} \ve{e}_{z}
+    %
+    =
+    \cos\theta \ve{e}_\rho
+    - \frac{1}{\rho} \sin\theta \ve{e}_\theta
+    \\
+%
+%
+    \ve{e}_y
+    &=
+    \parti{\rho}{y} \ve{e}_{\rho}
+    + \parti{\theta}{y} \ve{e}_{\theta}
+    + \parti{z}{y} \ve{e}_{z}
+    %
+    =
+    \sin\theta \ve{e}_\rho
+    + \frac{1}{\rho} \cos\theta \ve{e}_\theta
+    \\
+%
+%
+    \ve{e}_z
+    &=
+    \parti{\rho}{z} \ve{e}_{\rho}
+    + \parti{\theta}{z} \ve{e}_{\theta}
+    + \parti{z}{z} \ve{e}_{z}
+    %
+    =
+    \ve{e}_z
+\end{align*}
+%
+For the back transformation we have
+%
+\begin{align*}
+    \ve{e}_\rho
+    &=
+    \parti{x}{\rho} \ve{e}_{x}
+    + \parti{y}{\rho} \ve{e}_{y}
+    + \parti{z}{\rho} \ve{e}_{z}
+    %
+    =
+    \cos\theta \ve{e}_x
+    + \sin\theta \ve{e}_y
+    \\
+%
+%
+    \ve{e}_\theta
+    &=
+    \parti{x}{\theta} \ve{e}_{x}
+    + \parti{y}{\theta} \ve{e}_{y}
+    + \parti{z}{\theta} \ve{e}_{z}
+    %
+    =
+    -\rho\sin\theta \ve{e}_x
+    + \rho\cos\theta \ve{e}_y
+    \\
+%
+%
+    \ve{e}_z
+    &=
+    \parti{x}{z} \ve{e}_{x}
+    + \parti{y}{z} \ve{e}_{y}
+    + \parti{z}{z} \ve{e}_{z}
+    %
+    =
+    \ve{e}_z
+\end{align*}
+%
+Further, a basis vector written in a Cartesian basis can be written
+with a contravariant basis vector using cylindrical coordinates as
+%
+\begin{align*}
+    \ve{e}^\rho
+    &=
+    \parti{\rho}{x} \ve{e}^{x}
+    + \parti{\rho}{y} \ve{e}^{y}
+    + \parti{\rho}{z} \ve{e}^{z}
+    %
+    =
+    \cos\theta \ve{e}^x
+    + \sin\theta \ve{e}^y
+    \\
+%
+%
+    \ve{e}^\theta
+    &=
+    \parti{\theta}{x} \ve{e}^{x}
+    + \parti{\theta}{y} \ve{e}^{y}
+    + \parti{\theta}{z} \ve{e}^{z}
+    %
+    =
+    -\frac{1}{\rho}\sin\theta \ve{e}^x
+    + \frac{1}{\rho} \cos\theta \ve{e}^y
+    \\
+%
+%
+    \ve{e}^z
+    &=
+    \parti{z}{x} \ve{e}^{x}
+    + \parti{z}{y} \ve{e}^{y}
+    + \parti{z}{z} \ve{e}^{z}
+    %
+    =
+    \ve{e}^z
+\end{align*}
+%
+The covariant metric tensor $g^{ij}=\ve{e}^i\cdot\ve{e}^j$ and the
+contravariant metric tensor $g_{ij}=\ve{e}_i\cdot\ve{e}_j$ can now be
+computed. For the contravariant components, we get
+%
+\begin{align*}
+    g^{\rho\rho}
+    =&
+    \L(
+      \cos\theta\ve{e}^x
+      + \sin\theta\ve{e}^y
+    \R)
+    \cdot
+    \L(
+      \cos\theta\ve{e}^x
+      + \sin\theta\ve{e}^y
+    \R)
+    =
+      \cos^2\theta
+      + \sin^2\theta
+    =
+    1
+    \\
+    %
+    g^{\rho\theta}
+    =&
+    g^{\theta\rho}
+    =
+    \L(
+      \cos\theta\ve{e}^x
+      + \sin\theta\ve{e}^y
+    \R)
+    \cdot
+    \L(
+      -\frac{1}{\rho}\cos\theta\ve{e}^x
+      + \frac{1}{\rho}\sin\theta\ve{e}^y
+    \R)
+    =
+      -\frac{1}{\rho}\cos\theta\sin\theta
+      + \frac{1}{\rho}\sin\theta\cos\theta
+    =
+    0
+    \\
+    %
+    g^{\rho z}
+    =&
+    g^{z \rho}
+    =
+    \L(
+      \cos\theta\ve{e}^x
+      + \sin\theta\ve{e}^y
+    \R) \cdot \ve{e}^z = 0
+    \\
+    %
+    %
+    %
+    g^{\theta\theta}
+    =&
+    \L(
+      -\frac{1}{\rho}\cos\theta\ve{e}^x
+      + \frac{1}{\rho}\sin\theta\ve{e}^y
+    \R)
+    \cdot
+    \L(
+      -\frac{1}{\rho}\cos\theta\ve{e}^x
+      + \frac{1}{\rho}\sin\theta\ve{e}^y
+    \R)
+    =
+      \frac{1}{\rho^2}\cos^2\theta
+      + \frac{1}{\rho^2}\sin^2\theta
+    =
+    \frac{1}{\rho^2}
+    \\
+    %
+    g^{z\theta}
+    =&
+    g^{\theta z}
+    =
+    \L(
+      -\frac{1}{\rho}\cos\theta\ve{e}^x
+      + \frac{1}{\rho}\sin\theta\ve{e}^y
+    \R) \cdot \ve{e}^z = 0
+    \\
+    %
+    %
+    %
+    g^{z z}
+    =&
+    \ve{e}^z \cdot \ve{e}^z =1
+\end{align*}
+%
+And for the covariant components, we get
+%
+\begin{align*}
+    g_{\rho\rho}
+    =&
+    \L(
+      \cos\theta\ve{e}_x
+      + \sin\theta\ve{e}_y
+    \R)
+    \cdot
+    \L(
+      \cos\theta\ve{e}_x
+      + \sin\theta\ve{e}_y
+    \R)
+    =
+      \cos^2\theta
+      + \sin^2\theta
+    =
+    1
+    \\
+    %
+    g_{\rho\theta}
+    =&
+    g_{\theta\rho}
+    =
+    \L(
+      \cos\theta\ve{e}_x
+      + \sin\theta\ve{e}_y
+    \R)
+    \cdot
+    \L(
+      -\rho\sin\theta\ve{e}_x
+      + \rho\cos\theta\ve{e}_y
+    \R)
+    =
+      -\rho\cos\theta\sin\theta
+      + \rho\sin\theta\cos\theta
+    =
+    0
+    \\
+    %
+    g_{\rho z}
+    =&
+    g_{z \rho}
+    =
+    \L(
+      \cos\theta\ve{e}_x
+      + \sin\theta\ve{e}_y
+    \R) \cdot \ve{e}_z = 0
+    \\
+    %
+    %
+    %
+    g_{\theta\theta}
+    =&
+    \L(
+      -\rho\sin\theta\ve{e}_x
+      + \rho\cos\theta\ve{e}_y
+    \R)
+    \cdot
+    \L(
+      -\rho\sin\theta\ve{e}_x
+      + \rho\cos\theta\ve{e}_y
+    \R)
+    =
+      \rho^2\cos^2\theta
+      + \rho^2\sin^2\theta
+    =
+    \rho^2
+    \\
+    %
+    g_{z\theta}
+    =&
+    g_{\theta z}
+    =
+    \L( -\rho\sin\theta\ve{e}_x
+      + \rho\cos\theta\ve{e}_y \R) \cdot \ve{e}_z
+    =
+    0
+    \\
+    %
+    g_{z z} =&
+    \ve{e}_z \cdot \ve{e}_z =1
+\end{align*}
+%
+The Jacobian
+%
+\begin{align*}
+    J=\sqrt{\det(g_{ij})}=\rho
+\end{align*}
+%
+Using this metric, we get that
+%
+\begin{align*}
+    &B = \frac{1}{\rho}&
+    & \ve{b}= \ve{e}_z
+\end{align*}
+%
+Finally, we calculate the derivatives of the contravariant basis vectors.
+From what is calculated above, we see that $\partial_z e^i=0$ and $\partial_i
+e^z=0$. The other basis vectors gives
+%
+\begin{align*}
+    \partial_\rho \ve{e}^\theta
+    &=&
+    \partial_\rho
+    \L( - \frac{1}{\rho} \sin\theta \ve{e}^x
+        + \frac{1}{\rho} \cos\theta \ve{e}^y \R)
+    =
+        \frac{\sin\theta}{\rho^2} \ve{e}^x
+        - \frac{\cos\theta}{\rho^2} \ve{e}^y
+    =
+    - \frac{1}{\rho}
+    \L( - \frac{1}{\rho} \sin\theta \ve{e}^x
+        + \frac{1}{\rho} \cos\theta \ve{e}^y \R)
+    &=&
+    - \frac{1}{\rho} \ve{e}^\theta
+    \\
+    %
+    \partial_\rho \ve{e}^\rho
+    &=&
+    \partial_\rho
+    \L( \cos\theta \ve{e}^x
+        + \sin\theta \ve{e}^y \R)
+    &=&
+    0
+    \\
+    %
+    \partial_\theta \ve{e}^\theta
+    &=&
+    \partial_\theta
+    \L( - \frac{1}{\rho} \sin\theta \ve{e}^x
+        + \frac{1}{\rho} \cos\theta \ve{e}^y \R)
+    =
+    \L( - \frac{1}{\rho} \cos\theta \ve{e}^x
+        - \frac{1}{\rho} \sin\theta \ve{e}^y \R)
+    =
+    - \frac{1}{\rho}
+    \L( \cos\theta \ve{e}^x
+        + \sin\theta \ve{e}^y \R)
+    &=&
+    - \frac{1}{\rho}
+    \ve{e}^\rho
+    \\
+    %
+    \partial_\theta \ve{e}^\rho
+    &=&
+    \partial_\theta
+    \L( \cos\theta \ve{e}^x
+        + \sin\theta \ve{e}^y \R)
+    =
+        - \sin\theta \ve{e}^x
+        + \cos\theta \ve{e}^y
+    =
+    \rho
+    \L( - \frac{1}{\rho} \sin\theta \ve{e}^x
+        + \frac{1}{\rho} \cos\theta \ve{e}^y \R)
+    &=&
+    \rho
+    \ve{e}^\theta
+\end{align*}
+%
+
+\section{Summary}
+%
+Basis vector transformations\\
+%
+\begin{minipage}{0.3\textwidth}
+\begin{align*}
+    \ve{e}_x
+    &=
+    \cos\theta \ve{e}_\rho
+    - \frac{1}{\rho} \sin\theta \ve{e}_\theta
+    \\
+%
+%
+    \ve{e}_y
+    &=
+    \sin\theta \ve{e}_\rho
+    + \frac{1}{\rho} \cos\theta \ve{e}_\theta
+    \\
+%
+%
+    \ve{e}_z &= \ve{e}_z
+\end{align*}
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}{0.3\textwidth}
+    \begin{align*}
+        \ve{e}_\rho
+        &=
+        \cos\theta \ve{e}_x
+        + \sin\theta \ve{e}_y
+        \\
+    %
+    %
+        \ve{e}_\theta
+        &=
+        -\rho\sin\theta \ve{e}_x
+        + \rho\cos\theta \ve{e}_y
+        \\
+    %
+    %
+        \ve{e}_z &= \ve{e}_z
+    \end{align*}
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}{0.3\textwidth}
+    \begin{align*}
+        \ve{e}^\rho
+        &=
+        \cos\theta \ve{e}^x
+        + \sin\theta \ve{e}^y
+        \\
+    %
+    %
+        \ve{e}^\theta
+        &=
+        -\frac{1}{\rho}\sin\theta \ve{e}^x
+        + \frac{1}{\rho} \cos\theta \ve{e}^y
+        \\
+    %
+    %
+        \ve{e}^z &= \ve{e}^z
+    \end{align*}
+\end{minipage}
+\\
+%
+Metric tensors
+%
+\begin{align*}
+    &
+    g^{\rho\theta} = g^{\theta\rho}
+    = g^{\rho z} = g^{z \rho}
+    = g^{z\theta} = g^{\theta z}
+    = 0
+    &
+    &
+    g_{\rho\theta} = g_{\theta\rho}
+    = g_{\rho z} = g_{z \rho}
+    = g_{z\theta} = g_{\theta z}
+    = 0
+    &
+    \\
+    &
+    g^{\rho\rho} = g^{z z} = 1
+    &
+    &
+    g_{\rho\rho} = g_{z z} = 1
+    &
+    \\
+    %
+    &
+    g^{\theta\theta} = \frac{1}{\rho^2}
+    &
+    &
+    g_{\theta\theta} = \rho^2
+    &
+\end{align*}
+%
+The Jacobian
+%
+\begin{align*}
+    J=\rho
+\end{align*}
+%
+The magnetic filed
+%
+\begin{align*}
+    &B = \frac{1}{\rho}&
+    & \ve{b}= \ve{e}_z
+\end{align*}
+%
+The derivatives of the contravariant basis vectors.
+\begin{align*}
+    \partial_\rho \ve{e}^\rho =&
+    \partial_\rho \ve{e}^z =
+    \partial_\theta \ve{e}^z =
+    \partial_z \ve{e}^\rho =
+    \partial_z \ve{e}^\theta =
+    \partial_z \ve{e}^z = 0
+    \\
+    %
+    \partial_\rho \ve{e}^\theta =& - \frac{1}{\rho} \ve{e}^\theta
+    \\
+    %
+    \partial_\theta \ve{e}^\theta =& - \frac{1}{\rho} \ve{e}^\rho
+    \\
+    %
+    \partial_\theta \ve{e}^\rho =& \rho \ve{e}^\theta
+\end{align*}

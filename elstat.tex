@@ -1,0 +1,153 @@
+\begin{align*}
+    n_\a m_\a \d_{t,\a} \ve{u}_{\a}
+    =&
+    - \div \te{\pi}_\a
+    - \grad p_\a
+    + q_\a n_\a\L(\ve{E}  + \ve{u_\a}\times\ve{B}\R)
+    \nonumber
+    \\
+    &
+    + \ve{R}_{\b\to\a}
+    + \ve{R}_{n\to\a}
+    - S_{\a,n}m_\a\ve{u}_\a
+\end{align*}
+%
+Rearranging equation (\ref{fluideq:mom}), and multiplying it with
+$\frac{q_\a}{m_\a}$ yields
+%
+\begin{align*}
+    q_{\a} \partial_t (n_{\a} \ve{u}_{\a})
+    =&
+    - q_{\a} \ve{u}_{\a} \partial_t n_{\a}
+    - \frac{q_\a}{m_\a}\ve{u}_{\a}\cdot\nabla\ve{u}_{\a}
+    - \frac{q_\a}{m_\a}\div \te{\pi}_{\a}
+    - \frac{q_\a}{m_\a}\grad p_{\a}
+    + \frac{q_\a^2}{m_\a} n_\a\L(\ve{E}  + \ve{u_\a}\times\ve{B}\R)
+    \\ &
+    + \frac{q_\a}{m_\a}\ve{R}_{\b\to \a}
+    + \frac{q_\a}{m_\a}\ve{R}_{n\to \a}
+    - q_\a S_{\a,n}\ve{u}_{\a}
+\end{align*}
+%
+Adding the equation for electrons and ions using quasi-neutrality yields
+%
+\begin{align*}
+    \partial_t \ve{J}
+    =&
+     \frac{\ve{J}}{n} \partial_t n
+     \\&
+    + \frac{e}{m_e}\ve{u}_{e}\cdot\nabla\ve{u}_{e}
+    - \frac{e}{m_i}\ve{u}_{i}\cdot\nabla\ve{u}_{i}
+     \\&
+    + \frac{e}{m_e}\div \te{\pi}_{e}
+    - \frac{e}{m_i}\div \te{\pi}_{i}
+     \\&
+    + \frac{e}{m_e}\grad p_{e}
+    - \frac{e}{m_i}\grad p_{i}
+     \\&
+     + \frac{e^2}{m_e} n\L(-\grad{\phi}-\partial_t \ve{A}+ \ve{u_e}\times\ve{B}\R)
+     + \frac{e^2}{m_i} n\L(-\grad{\phi}-\partial_t \ve{A}+ \ve{u_i}\times\ve{B}\R)
+    \\ &
+    - \frac{e}{m_e}\ve{R}_{i\to e}
+    + \frac{e}{m_i}\ve{R}_{e\to i}
+     \\&
+    - \frac{e}{m_e}\ve{R}_{n\to e}
+    + \frac{e}{m_i}\ve{R}_{n\to i}
+     \\&
+     + S \frac{\ve{J}}{n}
+     \numberthis
+     \label{eq:current_eq}
+\end{align*}
+%
+where $\curl\ve{A}=\ve{B}$. We then have that
+%
+\begin{align*}
+    \curl\curl\ve{A}=&\curl\ve{B}
+    \note{Low frequency}
+    \\
+    \grad^2\ve{A} - \grad(\div \ve{A})=&\mu_0\ve{J}
+    \note{Coloumb gauge}
+    % NOTE: See Griffiths
+    \\
+    \frac{\grad^2\ve{A}}{\mu_0}=&\ve{J}
+    \\
+    \ve{J} =& \frac{\div(\grad_\perp\ve{A}+\grad_\|\ve{A})}{\mu_0}
+    \note{Assume $k_\perp \ll k_\|$}
+    \\
+    \ve{J} \simeq& \frac{\grad^2_\perp\ve{A}}{\mu_0}
+\end{align*}
+%
+Thus the LHS can be written
+%
+\begin{align*}
+    \partial_t \ve{J} \simeq \partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}
+\end{align*}
+%
+We can now use order of magnitude arguments to compare the size of the terms
+$\partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}$ and $\frac{e^2}{m_e}\partial_t
+\ve{A}$. If the latter is larger than the former, it will mean that the time
+change of the magnetic field $\ve{B}$ will be a major contributor to the time
+change of the current $\ve{J}$, and electromagnetic effects be important%
+%
+\footnote{
+    If the $\partial_t \ve{J}$ term was dominating (preferably by orders of
+    magnitude), then there would be terms (or sum of terms) in equation (\ref{eq:current_eq})
+    which would be dominating the electromagnetic terms.
+    Conversely, if the electromagnetic term was dominating, then the
+    electromagnetic term would be dominating the sum of the other terms (not
+    necessarily larger than each individual term, as terms may approximately
+    cancel).
+}.%
+%
+That is if
+%
+\begin{align*}
+    \partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}
+    < &
+    \frac{ne^2}{m_e}\partial_t \ve{A}
+    \\
+    \rightarrow &
+    \\
+    \frac{1}{\omega_{ci}} \frac{k_\perp^2\ve{A}}{\mu_0}
+    < &
+    \frac{ne^2}{m_e}\frac{1}{\omega_{ci}} \ve{A}
+    \\
+    \frac{k_\perp^2}{\mu_0}
+    < &
+    \frac{ne^2}{m_e}
+    \\
+    k_\perp^2
+    < &
+    \frac{\mu_0ne^2}{m_e}
+    \\
+    k_\perp^2
+    < &
+    \frac{2m_i}{2m_i}\frac{B^2}{T_e}\frac{T_e}{B^2}\frac{\mu_0ne^2}{m_e}
+    \\
+    k_\perp^2
+    < &
+    \frac{m_i}{2m_e}\frac{e^2B^2}{m_iT_e}\frac{2\mu_0nT_e}{B^2}
+    \\
+    k_\perp^2
+    < &
+    \frac{m_i}{2m_e}\frac{1}{\rho_s^2}\b
+\end{align*}
+%
+where the plasma beta ($\b$) is the kinetic pressure over the magnetic
+pressure. As
+$ k_\perp^2\rho_s^2$ is typically in the order of unity for drift wave
+turbulence, we find that electromagnetic effects becomes important whenever
+%
+\begin{align*}
+    1
+    < &
+    \frac{m_i}{2m_e}\b
+    \\
+    \frac{2m_e}{m_i}
+    < &
+    \b
+\end{align*}
+%
+We observe that we get the identical condition if we choose to compare with
+$\frac{\ve{J}}{n}\partial_t n$ instead.
+%FIXME; Consider to compare with other terms as well
