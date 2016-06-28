@@ -1,13 +1,10 @@
 \section{The set of equations}
-% FIXME:
-FIXME: Arakawa brackets multiplied with 1/J
-
+% FIXME: Update artificial visc (remove non-used) and add hyper perp
 By using what we found in section \ref{sec:ExBadv} and \ref{sec:art_visc}, the
 full set of equations reads
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
-    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
-    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \Om^D =& \div\L(n\grad_\perp\phi\R)
  \numberthis
  \label{eq:cyto_vortD}
  \\
@@ -23,7 +20,7 @@ full set of equations reads
 %
 \partial_t \ln(n)
 =&
- -\L\{\phi,\ln(n)\R\}
+-\frac{1}{J}\L\{\phi,\ln(n)\R\}
  +\frac{0.51\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
@@ -48,7 +45,7 @@ full set of equations reads
 %
 \partial_t u_{e,\|}
  =&
- -\L\{\phi,u_{e,\|}\R\}
+ -\frac{1}{J}\L\{\phi,u_{e,\|}\R\}
  - u_{e,\|} \partial_\| u_{e,\|}
  + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
   \\
@@ -70,7 +67,7 @@ full set of equations reads
 %
 \partial_t u_{i,\|}
  =&
- -\L\{\phi,u_{i,\|}\R\}
+ -\frac{1}{J}\L\{\phi,u_{i,\|}\R\}
  - u_{i,\|} \partial_\| u_{i,\|}
  - \partial_\|\phi
   \\
@@ -92,17 +89,20 @@ full set of equations reads
 %
   \partial_t \Om^D
   =&
-  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
+  - \nu_{in} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
   \\
   %
   &
-  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
-  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+  -\frac{1}{\rho}
+  \L(
+      \frac{1}{B}\{\phi, \Om^D\}
+    + \frac{1}{2}\{\ve{u}_E^2, n\}
+ \R)
+ -\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
  \\
  &
  %
- + n \partial_\| \L( u_{i,\|} - u_{e,\|} \R)
- + (u_{i,\|} - u_{e,\|})\partial_\| n
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
   \\
   %
   &

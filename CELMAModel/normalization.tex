@@ -17,20 +17,24 @@ Thus, we can normalize this with $c_s$. In other words we use the normalization
 $\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} = \frac{\frac{\grad_\perp \phi}{B}}{c_s}$,
 which gives $\frac{\grad_\perp \phi}{B} = \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}c_s$.
 Hence, we can also use
-$
+%
+\begin{align*}
  \wt{\Om} = \wt{\grad}\cdot\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
  = \rho_s\div\frac{\frac{\grad_\perp \phi}{B}}{c_s}
 = \rho_s\frac{\Om}{c_s}
- = \frac{\Om}{\om_{ci}}
-$
-, and similarly if we normalize $\wt{n} = \frac{n}{n_0}$, we get
-$
+ = \frac{\Om}{\om_{ci}},
+\end{align*}
+%
+and similarly if we normalize $\wt{n} = \frac{n}{n_0}$, we get
+%
+\begin{align*}
 \wt{\Om}^D = \wt{\grad}\cdot\L(\wt{n}\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}\R)
 = \rho_s\div\L(\frac{\frac{n}{n_0}\frac{\grad_\perp \phi}{B}}{c_s}\R)
 = \rho_sn_0\frac{\Om^D}{c_s}
-= n_0\frac{\Om^D}{\om_{ci}}
-$
-. This yields
+= n_0\frac{\Om^D}{\om_{ci}}.
+\end{align*}
+%
+This yields
 \\
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &\wt{\ve{x}}   =  \frac{\ve{x}}{\rho_s}&
@@ -404,13 +408,9 @@ Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
   \\
   %
   &
-  -
- \frac{1}{\om_{ci}\rho}
- \L(
-  \frac{1}{B}\{\phi, \Om^D\}
-  +
-  \frac{1}{2}\{\ve{u}_E^2, n\}
- \R)
+  - \frac{1}{\om_{ci}\rho} \L(
+ \frac{1}{B}\{\phi, \Om^D\}
+ + \frac{1}{2}\{\ve{u}_E^2, n\} \R)
   -
  \frac{1}{\om_{ci}} \partial_\|\div
  \L( u_{i,\|}\frac{\grad_\perp \phi}{B}n \R)
@@ -429,12 +429,12 @@ Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
   \\
   %
   &
- - \frac{1}{\om_{ci}}
-    \frac{c_sn_0c_s}{\rho_s\rho_s}
-  \div
- \L(
- \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
- \R)
+  - \frac{1}{\om_{ci}} \frac{1}{\rho\rho_s} \L(
+  \frac{ec_s\rho_s}{T_{e,0}}\frac{1}{B}\frac{T_{e,0}}{e}\frac{1}{\rho_s}n_0\om_{ci}\{\phi, \Om^D\}
+ + c_s^2\frac{1}{\rho_s}n_0\frac{1}{2}\{\ve{u}_E^2, n\} \R)
+  \\
+  %
+  &
  - \frac{1}{\om_{ci}}
     \frac{c_sn_0c_s}{\rho_s\rho_s}
 \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
@@ -455,11 +455,35 @@ Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
   \\
   %
   &
+  - \frac{1}{\om_{ci}} \frac{1}{\rho\rho_s} \L(
+   c_s\om_{ci}n_0\frac{1}{B}\om_{ci}\{\phi, \Om^D\}
+ + c_s\om_{ci}n_0\frac{1}{2}\{\ve{u}_E^2, n\} \R)
+  \\
+  %
+  &
  - \frac{1}{\om_{ci}} \om_{ci}n_0\om_{ci}
-  \div
- \L(
- \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
- \R)
+\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + n_0\om_{ci} \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \\
+ %
+ %
+ \om_{ci}n_0
+  \partial_t \Om^D
+  =&
+  - \nu_{in} \L(\om_{ci}n_0n\Om
+  + \om_{ci}n_0\frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
+  \\
+  %
+  &
+  - \frac{1}{\om_{ci}} \om_{ci}n_0\om_{ci} \frac{1}{\rho} \L(
+   \frac{1}{B}\{\phi, \Om^D\}
+ + \frac{1}{2}\{\ve{u}_E^2, n\} \R)
+  \\
+  %
+  &
  - \frac{1}{\om_{ci}} \om_{ci}n_0\om_{ci}
 \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
  \\
@@ -475,9 +499,10 @@ Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
   \\
   %
   &
-  -\div
- \L(
- \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
+  -\frac{1}{\rho}
+  \L(
+      \frac{1}{B}\{\phi, \Om^D\}
+    + \frac{1}{2}\{\ve{u}_E^2, n\}
  \R)
  -\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
  \\
@@ -485,21 +510,6 @@ Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
  %
  + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
  \\
- %
- %
-  \partial_t \Om^D
-  =&
-  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
-  \\
-  %
-  &
-  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
-  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
- \\
- &
- %
- + n \partial_\| \L( u_{i,\|} - u_{e,\|} \R)
- + (u_{i,\|} - u_{e,\|})\partial_\| n
  \numberthis
  \label{eq:normalized_non_boussinesq}
 \end{align*}
