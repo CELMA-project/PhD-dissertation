@@ -1,0 +1,436 @@
+%
+Assume no artificial dissipation
+\begin{align*}
+\Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
+\\
+%
+%
+%
+\Om =& \frac{\grad_\perp^2\phi }{B}
+\\
+%
+%
+%
+\partial_t \ln(n)
+=&
+ -\frac{1}{J}\L\{\phi,\ln(n)\R\}
+ +\frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   + \L[\grad_\perp \ln(n)\R]^2
+\R)
+  %
+- \partial_\|u_{e,\|}
+- u_{e,\|} \partial_\| \ln(n)
+ + \frac{S_n}{n}
+\\
+%
+%
+%
+\partial_t u_{e,\|}
+ =&
+ -\frac{1}{J}\L\{\phi,u_{e,\|}\R\}
+ - u_{e,\|} \partial_\| u_{e,\|}
+ + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+  %
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+\\
+%
+%
+%
+\partial_t u_{i,\|}
+ =&
+ -\frac{1}{J}\L\{\phi,u_{i,\|}\R\}
+ - u_{i,\|} \partial_\| u_{i,\|}
+ - \partial_\|\phi
+  %
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \nu_{in} u_{i,\|}
+ - \frac{u_{i,\|}S_{n}}{n}
+\\
+%
+%
+%
+  \partial_t \Om^D
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
+  %
+  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
+  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ %
+ + \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
+\end{align*}
+Assume no source and no neutrals
+\begin{align*}
+\Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
+\\
+%
+%
+%
+\partial_t \ln(n)
+=&
+ -\frac{1}{J}\L\{\phi,\ln(n)\R\}
+ +\frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   + \L[\grad_\perp \ln(n)\R]^2
+\R)
+  %
+- \partial_\|u_{e,\|}
+- u_{e,\|} \partial_\| \ln(n)
+\\
+%
+%
+%
+\partial_t u_{e,\|}
+ =&
+ -\frac{1}{J}\L\{\phi,u_{e,\|}\R\}
+ - u_{e,\|} \partial_\| u_{e,\|}
+ + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+  %
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+\\
+%
+%
+%
+\partial_t u_{i,\|}
+ =&
+ -\frac{1}{J}\L\{\phi,u_{i,\|}\R\}
+ - u_{i,\|} \partial_\| u_{i,\|}
+ - \partial_\|\phi
+  %
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+\\
+%
+%
+%
+  \partial_t \Om^D
+  =&
+  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
+  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ %
+ + \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
+\end{align*}
+% First split
+\subsection{Small perturbations}
+We will now check for small perturbations.
+Genrally we have
+\begin{align*}
+    -\frac{1}{J}\L\{a,b\R\}
+ =&
+ -\frac{1}{J}\L\{a_0+a_1,b_0+b_1\R\}
+\\
+ =&
+ -\frac{1}{J} \L( \partial_\theta \L[ a_0 + a_1 \R]
+                  \partial_\rho   \L[ b_0 + b_1 \R]
+                - \partial_\rho   \L[ a_0 + a_1 \R]
+                  \partial_\theta \L[ b_0 +b_1 \R]
+                \R)
+\\
+ =&
+ -\frac{1}{J} \L(
+   \partial_\theta a_0 \partial_\rho b_0
+ + \partial_\theta a_0 \partial_\rho b_1
+ + \partial_\theta a_1 \partial_\rho b_0
+ + \partial_\theta a_1 \partial_\rho b_1
+ \R.
+ \\&
+ \L.
+ - \partial_\rho a_0 \partial_\theta b_0
+ - \partial_\rho a_0 \partial_\theta b_1
+ - \partial_\rho a_1 \partial_\theta b_0
+ - \partial_\rho a_1 \partial_\theta b_1
+                \R)
+\\
+ =&
+ -\frac{1}{J} \L(
+   \L\{a_0,b_0\R\}
+ + \L\{a_1,b_0\R\}
+ + \L\{a_0,b_1\R\}
+ + \L\{a_1,b_1\R\}
+                \R)
+\end{align*}
+Note that
+\begin{align*}
+    \frac{1}{f}\partial_x^2 f
+    &=
+    \partial_x\L(\frac{1}{f}\partial_x f\R)
+    - \L(\partial_x\frac{1}{f}\R)\L(\partial_x f\R)
+    \\
+    \note{Chain rule}
+    &=
+    \partial_x\L(\frac{1}{f}\partial_x f\R)
+    - \L(-\frac{1}{f^2}\partial_x f\R)\L(\partial_x f\R)
+    \\
+    &=
+    \partial_x\L(\partial_x \ln(f)\R)
+    + \L(\partial_x \ln[f]\R)\L(\partial_x \ln[f]\R)
+    \\
+    &=
+    \partial_x^2 \ln(f)
+    + \L(\partial_x \ln[f]\R)^2
+\end{align*}
+Which for the density gives
+\begin{align*}
+ \frac{1}{n}\partial_t n
+ =&
+ -\frac{1}{J}\frac{1}{n}\L\{\phi,n\R\}
+ +\frac{0.51\nu_{ei}}{\mu} \frac{1}{n}\grad_\perp^2 n
+  %
+- \partial_\|u_{e,\|}
+- \frac{1}{n}u_{e,\|} \partial_\| n
+\\
+%
+ \partial_t n
+ =&
+ -\frac{1}{J}\L\{\phi,n\R\}
+ +\frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 n
+  %
+-  \partial_\| \L(u_{e,\|}n\R)
+\end{align*}
+which gives (adding perturbation on equilibrium)
+\begin{align*}
+ \partial_t \L( n_0+n_1 \R)
+ =&
+ -\frac{1}{J}\L\{\phi_0 + \phi_1,n_0+n_1\R\}
+ +\frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 \L( n_0+n_1 \R)
+  %
+-  \partial_\| \L( \L[ u_{e,\|,0} +u_{e,\|,1} \R]
+\L[ n_0+ n_1 \R]
+\R)
+\\
+\partial_t n_1
+ =&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,n_0\R\}
+ + \L\{\phi_1,n_0\R\}
+ + \L\{\phi_0,n_1\R\}
+ + \L\{\phi_1,n_1\R\}
+ \R)
+ \\&
+ +\frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 \L( n_0+n_1 \R)
+  %
+-  \partial_\| \L(
+ u_{e,\|,0} n_0+u_{e,\|,0} n_1  + u_{e,\|,1} n_0+ u_{e,\|,1}n_1
+\R)
+\\
+\simeq&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,n_0\R\}
+ + \L\{\phi_1,n_0\R\}
+ + \L\{\phi_0,n_1\R\}
+ \R)
+ \\&
+ +\frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 \L( n_0+n_1 \R)
+  %
+-  \partial_\| \L(
+u_{e,\|,0} n_0+u_{e,\|,0} n_1  + u_{e,\|,1} n_0
+\R)
+\end{align*}
+% \L(\R)
+Electron parallel momentum
+\begin{align*}
+\partial_t
+\L( u_{e,\|,0} + u_{e,\|,1} \R)
+ =&
+ -\frac{1}{J}\L\{ \phi_0 + \phi_1 , u_{e,\|,0} + u_{e,\|,1} \R\}
+ -
+\L( u_{e,\|,0} + u_{e,\|,1} \R)
+ \partial_\|
+\L( u_{e,\|,0} + u_{e,\|,1} \R)
+\\&
++ \mu \partial_\| \L( \phi_0 + \phi_1 \R)
+-
+T_e \mu \frac{1}{ n_0 + n_1 }\partial_\| \L( n_0 + n_1 \R)
+  %
+ - 0.51 \nu_{ei} \L(
+ u_{e,\|,0} + u_{e,\|,1}
+ -
+ u_{i,\|,0} - u_{i,\|,1}
+ \R)
+ \\
+ %
+ %
+ \partial_t u_{e,\|,1}
+ =&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,u_{e,\|,0}\R\}
+ + \L\{\phi_1,u_{e,\|,0}\R\}
+ + \L\{\phi_0,u_{e,\|,1}\R\}
+ + \L\{\phi_1,u_{e,\|,1}\R\}
+ \R)
+\\&
+ - u_{e,\|,0} \partial_\| u_{e,\|,0}
+ - u_{e,\|,1} \partial_\| u_{e,\|,0}
+ - u_{e,\|,0} \partial_\| u_{e,\|,1}
+ - u_{e,\|,1} \partial_\| u_{e,\|,1}
+\\&
++ \mu \partial_\| \L( \phi_0 + \phi_1 \R)
+-
+T_e \mu \frac{1}{ n_0 + n_1 }\partial_\| \L( n_0 + n_1 \R)
+  %
+ - 0.51 \nu_{ei} \L(
+ u_{e,\|,0} + u_{e,\|,1}
+ -
+ u_{i,\|,0} - u_{i,\|,1}
+ \R)
+ \\
+ %
+ %
+ \simeq&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,u_{e,\|,0}\R\}
+ + \L\{\phi_1,u_{e,\|,0}\R\}
+ + \L\{\phi_0,u_{e,\|,1}\R\}
+ \R)
+\\&
+ - u_{e,\|,0} \partial_\| u_{e,\|,0}
+ - u_{e,\|,1} \partial_\| u_{e,\|,0}
+ - u_{e,\|,0} \partial_\| u_{e,\|,1}
+\\&
++ \mu \partial_\| \L( \phi_0 + \phi_1 \R)
+-
+T_e \mu \frac{1}{ n_0 + n_1 }\partial_\| \L( n_0 + n_1 \R)
+  %
+ - 0.51 \nu_{ei} \L(
+ u_{e,\|,0} + u_{e,\|,1}
+ -
+ u_{i,\|,0} - u_{i,\|,1}
+ \R)
+\end{align*}
+Ion parallel momentum
+\begin{align*}
+\partial_t \L( u_{i,\|,0}+ u_{i,\|,1} \R)
+ =&
+ -\frac{1}{J}\L\{ \phi_0 + \phi_1 , u_{i,\|,0}+ u_{i,\|,1} \R\}
+ -
+\L( u_{i,\|,0}+ u_{i,\|,1} \R)
+ \partial_\|
+ \L( u_{i,\|,0}+ u_{i,\|,1} \R)
+ \\&
+- \partial_\|\L(\phi_0 + \phi_1\R)
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(
+ u_{i,\|,0}+ u_{i,\|,1}
+ - u_{e,\|,0}- u_{e,\|,1}
+ \R)
+ \\
+ %
+ %
+ \partial_t u_{i,\|,1}
+ =&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,u_{i,\|,0}\R\}
+ + \L\{\phi_1,u_{i,\|,0}\R\}
+ + \L\{\phi_0,u_{i,\|,1}\R\}
+ + \L\{\phi_1,u_{i,\|,1}\R\}
+ \R)
+\\&
+ - u_{i,\|,0} \partial_\| u_{i,\|,0}
+ - u_{i,\|,1} \partial_\| u_{i,\|,0}
+ - u_{i,\|,0} \partial_\| u_{i,\|,1}
+ - u_{i,\|,1} \partial_\| u_{i,\|,1}
+ \\&
+- \partial_\|\L(\phi_0 + \phi_1\R)
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(
+ u_{i,\|,0}+ u_{i,\|,1}
+ - u_{e,\|,0}- u_{e,\|,1}
+ \R)
+ \\
+ %
+ %
+ \simeq&
+ -\frac{1}{J}\L(
+   \L\{\phi_0,u_{i,\|,0}\R\}
+ + \L\{\phi_1,u_{i,\|,0}\R\}
+ + \L\{\phi_0,u_{i,\|,1}\R\}
+ \R)
+\\&
+ - u_{i,\|,0} \partial_\| u_{i,\|,0}
+ - u_{i,\|,1} \partial_\| u_{i,\|,0}
+ - u_{i,\|,0} \partial_\| u_{i,\|,1}
+ \\&
+- \partial_\|\L(\phi_0 + \phi_1\R)
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(
+ u_{i,\|,0}+ u_{i,\|,1}
+ - u_{e,\|,0}- u_{e,\|,1}
+ \R)
+\end{align*}
+Modified vorticity
+\begin{align*}
+\Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
+\end{align*}
+We will use that
+\begin{align*}
+    \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
+    =&
+    \div \L( \L\{\phi, \frac{\grad_\perp \phi}{B}n \R\} \R)
+    \\
+    =&
+    \div \L( \L\{\phi_0 + \phi_1, \frac{\grad_\perp \L(\phi_0 + \phi_1\R)}{B}\L[n_0 + n_1\R] \R\} \R)
+    \\
+    \simeq&
+    \div  \L\{\phi_0, \frac{\grad_\perp \phi_0}{B}n_0 \R\}
+    \\ &
+    + \div  \L\{\phi_1, \frac{\grad_\perp \phi_0}{B}n_0 \R\}
+    \\&
+    + \div  \L\{\phi_0, \frac{\grad_\perp \phi_1}{B}n_0 \R\}
+    \\&
+    + \div  \L\{\phi_0, \frac{\grad_\perp \phi_0}{B}n_1 \R\}
+    \\
+    \defined& V
+\end{align*}
+and that
+\begin{align*}
+    \partial_\|\div \L(
+  \L[ u_{i,\|,0} + u_{i,\|,1} \R]
+  \L[ n_0 + n_1 \R]
+  \frac{\grad_\perp
+  \L[ \phi_0 + \phi_1 \R]
+  }{B}\R)
+  \simeq&
+    \partial_\|\div \L( u_{i,\|,0} n_0 \frac{\grad_\perp \phi_0 }{B}\R)
+    \\&
+    + \partial_\|\div \L( u_{i,\|,1} n_0 \frac{\grad_\perp \phi_0 }{B}\R)
+    \\&
+    + \partial_\|\div \L( u_{i,\|,0} n_1 \frac{\grad_\perp \phi_0 }{B}\R)
+    \\&
+    + \partial_\|\div \L( u_{i,\|,0} n_0 \frac{\grad_\perp \phi_1 }{B}\R)
+    \\
+    \defined& W
+\end{align*}
+In time
+\begin{align*}
+  \partial_t \Om^D
+  \simeq&
+  - V
+  - W
+ %
+ + \partial_\| \L(n_0\L[ u_{i,\|,1} - u_{e,\|,1} \R]+n_1\L[ u_{i,\|,0} - u_{e,\|,0} \R]\R)
+\end{align*}
+%
+Saying that we are in an equilbrium doesn't remove the small perturbations. Do
+not think it makes too much sense either
+%
+Linearization
+\begin{align*}
+    \Om^D =& \div\L([n_0+n_1]\frac{\grad_\perp[\phi_0+\phi_1]}{B}\R)\\
+    \simeq&
+    \div\L(n_0\frac{\grad_\perp\phi_1}{B}\R)
+    + \div\L(n_1\frac{\grad_\perp\phi_0}{B}\R)
+\end{align*}
+In the simplest case, this becomes the Boussinesq approximation (no variations
+in $\phi_0$)
+\begin{align*}
+    \Om^D
+    \simeq&
+    n_0\frac{\grad_\perp^2\phi_1}{B}
+\end{align*}
+Using a plane wave perturbation
+
+\section{A note about gradients in the background}
+Normally we have $f=f_0+f_1=f_0+A_{f_1}\exp(i[\ve{k}\cdot\ve{x}-\om t])$. Note
+that if $f_0$ varies along one direction, then
+$f=f_0+A_{f_1}\exp(i[\ve{k}\cdot\ve{x}-\om t])$ follows this variation, as long
+as $A_{f_1}$ is a constant
