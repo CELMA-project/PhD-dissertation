@@ -1,5 +1,3 @@
-% FIXME: NOT CALLED FLUTTERING
-% FIXME: RELATIVE ERROR RATHER THAN ABSOULTE ERROR IN MES
 We will now use the above derived equation in a homogeneous magnetic field,
 assuming cold ions and constant electron temperature in a cylindrical geometry.
 The resulting model will from here be referred to as the CELMA model, standing
@@ -466,6 +464,50 @@ This means that the polarization contribution from equation
  \div\L( \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|} \R)
 \end{align*}
 
+\subsubsection{With the Boussinesq approximation}
+If we use the Boussinesq approximation from section \ref{sec:boussinesq}, we
+can in the current magnetic field configuration rewrite equation
+(\ref{eq:boussinesq_vort}) as
+%
+\begin{align*}
+    &- \frac{n_0}{\om_{ci}}
+    \L( \div\L[ \d_t \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div\L[ \L(\partial_t
+     + \ve{u}_E\cdot\grad\R) \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div \partial_t\L( \frac{\grad_\perp \phi}{B} \R)
+     + \div \L(\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R)
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \note{Assume interchangibility of spatial and temporal derivatives}
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + u_{i,\|}\partial_\|\Om
+     + \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+     \R)
+\end{align*}
+
 \subsection{The source contribution}
 Further on, the contribution from the source can be rewritten.  Under the
 assumption of cold ions ($T_i = 0$), we can simplify the source term in
@@ -508,7 +550,7 @@ Next, the RHS of equation (\ref{eq:full_vort_eq}) reads
 \end{align*}
 %
 
-\subsection{Collecting terms}
+\subsection{The complete vorticity equation}
 %
 From the calculations above, equation (\ref{eq:full_vort_eq}) can be rewritten
 to
@@ -569,9 +611,6 @@ arising from the time derivative of $n_i$ in the polarization term of the
 current conservation equation, cancels with the same term with opposite sign
 arising from the source term of the current conservation equation.
 
-
-\subsection{Vector advective terms}
-%
 We can simplify equation (\ref{eq:non_norm_vort_1}) even further by first
 observing that
 %
@@ -620,55 +659,52 @@ $ - \frac{1}{\om_{ci}} \div
 %
 term arises from the ion continuity equation.
 
-Next, it turns out that
+
+\subsubsection{With the Boussinesq approximation}
+%
+% FIXME:
+% - Write that the divergence of the source term with grad_perp phi does not cancel
+% - Write a sentence or 2 about the time derivative of n disappears
+From section \ref{sec:boussinesq}, we have that
 %
 \begin{align*}
- \frac{1}{\om_{ci}} \div
-    \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
+    \div\L(\frac{n}{\om_{ci}}\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
+    \simeq&
+    \frac{n_0}{\om_{ci}}\div\L(\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
 \end{align*}
 %
-can be rewritten to
+Using this in equation (\ref{eq:non_norm_vort_2}) gives
 %
-% \begin{align*}
-%  \frac{1}{\om_{ci}} \div
-%     \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
-%     lalala
-%     \{\phi, \vort^D\}
-%     +
-%     \{\ve{u}_E \cdot \ve{u}_E, n\}
-% \end{align*}
-% F = qE
-% F = ma = MLS^-2
-% q = C
-% => E = F/q = MLS^-2C^-1
-% => phi = -div E = MS^-2C^-1
+% FIXME:
+%       Boussinesq on
+%       ? Ok to use boussinesq only one place
+%       ? Parallel current terms
+%       ? Pedersen current
+%       ? If take Boussinesq there, why keep it on the other terms
+\begin{align*}
+  %
+  \frac{n_0}{\om_{ci}}
+  \partial_t \Om
+  =&
+  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+  - \frac{n_0}{\om_{ci}}
+    \L(
+    \div\L[ \ve{u}_E\cdot\nabla \L(\frac{\grad_\perp \phi}{B} \R) \R]
+    + \div\L[u_{i,\|}\partial_\|\L(\frac{\grad_\perp \phi}{B}\R)\R]
+    \R)
+ \\
+ &
+ %
+- \frac{1}{\om_{ci}}
+    \div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \numberthis
+ \label{eq:boussinesq_non_norm}
+\end{align*}
 %
-% u_E = - grad_perp phi x b /B = LS^-1
-% => grad_perp phi /B = LS^-1
-%
-% om_ci = m/qB
-% om_ci = T^-1
-% n = L^-3
-% div = L^-1
-% partial_theta = 1
-%
-% FIXME
-FIXME: Elaborate
-The first term arises as $\div \ve{u}_E=0$ when the magnetic field is constant.
-is expected.
-A proof for this in normalized cylinder coordinates can be found in appendix
-% FIXME
-FIXME: Add appendix
-.
-A similar expression is expected to be found for other geometries as well, at
-least as long as the $B$ field is constant. When this is not the case, terms
-arising from fluttering is expected.
-% FIXME
-(FIXME add citation)
-
-
-
-\subsection{The complete vorticity equation}
 
 
 \section{Normalization}
@@ -1204,23 +1240,65 @@ leads to a potential build-up on the material surface which affects the plasma
 upstream.
 
 Unfortunately the fluid description of the plasma breaks down at the sheath as
-mentioned in \cite{Loizu2012a}. Hence, a proper description in this area can
+mentioned in \cite{Loizu2012a}. Hence a proper description in this area can
 only be accounted for with kinetic codes, solving for example the Fokker-Planck
 equation. In other words, the fluid models are only valid up until the sheath
 entrance. One should notice though that in reality it is hard, and maybe even
-impossible to tell where the bulk plasma end, and where does the sheath start.
+impossible to tell where does the bulk plasma end, and where does the sheath
+start.
 
 %
 \subsection{Boundary conditions at SE}
 % NOTE: Consider to add calculation of sheath velocities
 Following the calculations of Choudora and Bohm (see for example
 \cite{Stangeby2000book}), it is common practice to define the sheath entrance
-to be the place where ion velocity reaches the ion sound speed (that is where
-$u_{i,\|}=c_s$), and we will adopt this practice in this thesis. Considering a
-quiescent plasma, one can calculate the equilibrium profiles which the plasma
-obtains in contact with materials, and use this to set the boundaries for
-$u_{i, \|}$ and $u_{e, \|}$ at the sheath entrance (SE). One should note
-though, that even these boundary conditions are valid only in steady state.
+to be the place where ion velocity reaches the ion sound speed, and we will use
+this practice in this thesis. Considering a quiescent plasma, one can calculate
+the equilibrium profiles which the plasma obtains in contact with materials,
+and use this to set the boundaries for $u_{i, \|}$ and $u_{e, \|}$ at the
+sheath entrance (SE).
+
+\subsubsection{Density BC at SE}
+%
+% NOTE: Tried
+%   1. From steady state electron continuity
+%      This means that n cannot change at the boundary
+%   2. Neumann = 0
+%      Could be that this it has a gradient
+%      Problem that neumann both at SE and non-SE site
+% NOTE: Idea
+%   1. Could try robin BC at non-SE site
+%
+% FIXME: Find out what this should be
+%
+FIXME
+No good physical argument yet. ATM implemented as neumann zero.
+
+
+\subsubsection{Electron velocity at SE}
+%
+For the electron velocity, we have from steady state calculations of the sheath
+that
+%
+\begin{align*}
+    u_{e,\|} \bigg|_{L_z} = c_s \exp\L(\Lambda - \frac{e[\phi_0 + \phi]}{T_e}\R)
+\end{align*}
+%
+where $\phi_0$ is an arbitrary potential%
+%
+\footnote{Due to the inversion algorithm $\phi_0$ has been set to $\Lambda$ for
+    better numerical stability}%
+%
+we have defined $\phi_{\text{sheath entrance}} = 0$, and
+$\Lambda=\ln\L(\sqrt{\frac{\mu}{2\pi}}\R)$
+%
+Normalization gives
+%
+\begin{align*}
+    u_{e,\|} \bigg|_{L_z} = \exp\L(\Lambda - \phi\R)
+\end{align*}
+%
+
 
 \subsubsection{Ion velocity at SE}
 For the ion velocity, we have from steady state calculations defined the sheath
@@ -1236,129 +1314,6 @@ Normalization gives
     u_{i,\|} \bigg|_{L_z} = 1
 \end{align*}
 %
-
-\subsubsection{Electron velocity at SE}
-%
-Further, the steady state gives the following condition on the parallel
-electron velocity
-%
-\begin{align*}
-    u_{e,\|} \bigg|_{L_z} = c_s \exp\L(\Lambda - \frac{e[\phi_0 + \phi]}{T_e}\R),
-\end{align*}
-%
-where $\phi_0$ is an arbitrary potential%
-%
-\footnote{Due to the inversion algorithm $\phi_0$ has been set to $\Lambda$ for
-    better numerical stability}%
-%
-we have defined $\phi_{\text{sheath entrance}} = 0$, and
-$\Lambda=\ln\L(\sqrt{\frac{\mu}{2\pi}}\R)$. Normalization gives
-%
-\begin{align*}
-    u_{e,\|} \bigg|_{L_z} = \exp\L(\Lambda - \phi\R)
-\end{align*}
-%
-
-
-\subsubsection{Density BC at SE}
-%
-% NOTE: Tried
-%   1. From steady state electron continuity
-%      This means that n cannot change at the boundary
-%   2. Neumann = 0
-%      Could be that this it has a gradient
-%      Problem that neumann both at SE and non-SE site
-% NOTE: Idea
-%   1. Could try robin BC at non-SE site
-%
-% FIXME: Find out what this should be
-%
-Although the "standard" calcuation for the sheath gives us conditions for
-setting the velocities in steady state, non such conditions exists for the
-density. Instead, one would have to rely on other arguments. In
-\cite{Loizu2012a}, Loizu et al. presents a boundary condition for the density
-in a field line geometry, where the field lines are allowed to be tilted with
-respect to the end-plate. For a field line geometry where the field lines are
-perpendicular to the end-plate (which is the case in this thesis), the boundary
-condition reduces to
-%
-\begin{align*}
-    \L. \partial_\| n \R|_{L_z}&= -\L.\frac{n}{c_s}\partial_\| u_{i.\|}\R|_{L_z}\\
-    \note{$\L. u_{i.\|}\R|_{L_z} = c_s$}
-    \L.u_{i.\|} \partial_\| n \R|_{L_z}&= -\L.n \partial_\| u_{i.\|}\R|_{L_z}\\
-    \L.u_{i.\|} \partial_\| n \R|_{L_z}+\L.n \partial_\| u_{i.\|}\R|_{L_z}&= 0\\
-    \L.\partial_\|\L(u_{i.\|}  n \R)\R|_{L_z}&= 0\\
-    \L.\ve{b}\cdot\grad\L(u_{i.\|}  n \R)\R|_{L_z}&= 0
-    \note{$\partial_i \ve{b} = 0$}
-    \\
-    \L.\div\L(\ve{b}u_{i,\|}  n \R)\R|_{L_z}&= 0\\
-    \L.\div\L(\ve{u}_{i,\|}  n \R)\R|_{L_z}&= 0\\
-    \L.\L(\grad_\perp + \grad_\|\R)\cdot\L(\ve{u}_{i,\|} n \R)\R|_{L_z}&= 0\\
-    \L.\grad_\|\cdot\L(\ve{u}_{i,\|} n \R)\R|_{L_z}&= 0
-    \note{$\grad_\| \cdot \ve{u}_{i,\perp} = 0$}
-    \\
-    \L.\div_\|\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0
-    \note{Continuity equation}
-    \\
-    \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0\\
-    \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}
-    \numberthis
-    \label{eq:nBC}
-\end{align*}
-%
-In other words, it says that the only change in the density at the SE can come
-from perpendicular outflux. Another way to look at it is to consider
-%
-\begin{align*}
-    \L.\L[\inde{\partial_\|\L(u_{i.\|}  n \R)}{z}\R]\R|_{L_z}&= 0\\
-    \L.u_{i.\|}  n \R|_{L_z}&= C
-\end{align*}
-%
-which means that the flux through the SE is constant in time, which may be a
-too big constraint on the system.
-
-One alternative is to set
-%
-\begin{align*}
-    \L. \partial_\| n \R|_{L_z} &= 0
-\end{align*}
-%
-If we follow the derivation of equation \ref{eq:nBC} and use the ion continuity
-equation, this can be written as
-%
-\begin{align*}
-    \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}
-    -\L.n \partial_\| u_{i.\|}\R|_{L_z}
-    &= 0\\
-    \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}-
-    \L.n \partial_\| u_{i.\|}\R|_{L_z}
-\end{align*}
-%
-which means that the flux through the SE is no longer fixed. One should note
-that if one has a Neumann condition in both ends of the machine, the PDE is
-formally ill-posed, and the solutions found are unique only up to some
-constant. When numerically solving the system the solution found will be
-specified by the initial condition. Although it is important to be aware of, it
-is not believed to change the physical behavior of the system as the dynamics
-are driven by its source and its sinks.
-
-A third approach, which does not have the same problem, is to let the density
-be completely free at the sheath enterance and instead fix the value and the
-gradient at the stagnation point (where the velocities are $0$) using a Cauchy
-boundary condition (not to be confused with a Robin or "mixed" boundary
-condition). This kind of boundary condition specifies the parallel dynamics
-fully. The derivatives of $n$ at the last physical point before the SE can then
-be calculated numerically by either a one-sided stencil, or to exrapolate the
-solution to a ghost point and use this is a \emph{artificial boundary
-condition} \cite{Leveque2007book}.
-
-A final possibility is to let the derived equation for the evolution of the
-density be valid at the boundary.
-
-In the scope of this thesis the differences between $\L. \partial_\| n \R|_{L_z} = 0$
-and the Cauchy BC has been investigated.
-
-% FIXME: Add reference to where stuff is compared
 
 \subsubsection{Potential BC at SE}
 %
@@ -1926,6 +1881,15 @@ that
     \Om =& \frac{\Om^D}{n} -
     \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
 \end{align*}
+%
+If we are using the
+Boussinesq approximation we instead need to solve
+%
+\begin{align*}
+    \Om = \frac{\grad_\perp^2\phi}{B}
+\end{align*}
+%
+for $\phi$.
 
 
 \subsection{Artificial viscosity}\label{sec:art_visc}
@@ -2110,4 +2074,39 @@ full set of equations reads
   + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
  \numberthis
  \label{eq:cyto_vortD_evolution}
+\end{empheq}
+%
+If we instead use the Boussinesq approximation, equation (\ref{eq:cyto_vort})
+and (\ref{eq:cyto_vortD_evolution}) will be replaced by
+%
+\begin{empheq}[box={\tcbhighmath}]{align*}
+    \frac{\grad_\perp^2 \phi}{B} =& \Om
+    \numberthis
+    \label{eq:cyto_phi_boussinesq}
+    \\
+%
+%
+%
+  \partial_t \Om
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad n
+ \\
+ &
+ %
+  - \div\L(\ve{u}_E\cdot \nabla \frac{\grad_\perp \phi}{B} \R)
+  - u_{i,\|}\partial_\|\Om
+  - \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+ \\
+ &
+ %
+ - S_n \Om - \grad S_n \cdot \frac{ \grad_\perp \phi }{B}
+ + n \partial_\| \L(u_{i,\|} - u_{e,\|}\R)
+ + \L(u_{i,\|} - u_{e,\|}\R) \partial_\| n
+  \\
+  %
+  &
+  + D_{\Om, \|, \text{art}}    \partial_{\|}^2 \Om
+  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om
+  \numberthis
+  \label{eq:cyto_vort_boussinesq}
 \end{empheq}
