@@ -1,4 +1,3 @@
-% FIXME: NOT CALLED FLUTTERING
 % FIXME: RELATIVE ERROR RATHER THAN ABSOULTE ERROR IN MES
 We will now use the above derived equation in a homogeneous magnetic field,
 assuming cold ions and constant electron temperature in a cylindrical geometry.
@@ -671,8 +670,6 @@ The evolution of the modified vorticity can now be written as
 
 \section{Normalization}
 \label{sec:norm}
-% FIXME:
-FIXME: YOU ARE HERE: UPDATE THE VORTD
 We will now normalize using the ``standard'' gyro-Bohm normalization%
 %
 \footnote{Also known as: Bohm normalization}%
@@ -1065,8 +1062,8 @@ Further, normalization of equation (\ref{eq:non_norm_i_mom}) gives
  - \frac{u_{i,\|}S_{n}}{n}
 \end{align*}
 %
-\subsection{Normalization of \texorpdfstring{$\Omega^D$ and $\Omega$}{the
-        vorticity}}
+\subsection{Normalization of \texorpdfstring{$\Omega^D$}{the
+            modified vorticity}}
 Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
 %
 \begin{align*}
@@ -1159,38 +1156,6 @@ and
 \begin{align*}
     \om_{ci}n_0\Om^D &= \frac{n_0 c_s}{\rho_s}\div\L(n\frac{\grad_\perp\phi}{B}\R)\\
     \Om^D &= \div\L(n\frac{\grad_\perp\phi}{B}\R)
-\end{align*}
-%
-If we instead use the Boussinesq approximation (equation
-(\ref{eq:boussinesq_non_norm})), equation (\ref{eq:normalized_non_boussinesq})
-would take the form
-%
-\begin{align*}
-  %
-  \partial_t \Om
-  =&
-  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
-  \\
-  %
-  &
-  - \div\L(\ve{u}_E\cdot \nabla \frac{\grad_\perp \phi}{B} \R)
-  - u_{i,\|}\partial_\|\Om
-  - \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
- \\
- &
- %
- - \div\L(S_n \frac{ \grad_\perp \phi }{B}\R)
- + n \partial_\| \L(u_{i,\|} - u_{e,\|}]\R)
- + \L(u_{i,\|} - u_{e,\|}]\R) \partial_\| n
-  \numberthis
-  \label{eq:normalized_boussinesq}
-\end{align*}
-%
-and
-%
-\begin{align*}
-    \om_{ci}\Om &= \frac{ c_s}{\rho_s}\div\L(\frac{\grad_\perp\phi}{B}\R)\\
-    \Om &= \div\L(\frac{\grad_\perp\phi}{B}\R)
 \end{align*}
 %
 
