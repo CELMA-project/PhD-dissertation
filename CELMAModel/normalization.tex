@@ -1,0 +1,513 @@
+\section{Normalization}
+\label{sec:norm}
+We will now normalize using the ``standard'' gyro-Bohm normalization%
+%
+\footnote{Also known as: Bohm normalization}%
+%
+
+By looking at the Lorentz force, one can observe that $\|\ve{B}\|$ must have the
+same dimension as $\frac{\|\ve{E}\|}{\|\ve{u}\|}$ which in the electrostatic
+approximation can be written as $\frac{\|\grad \phi\|}{\|\ve{u}\|}$.
+If we use the normalizations $\wt{\phi} = \frac{\phi e}{T_{e,0}}$ and
+$\wt{\grad} = \frac{\grad}{\rho_s}$, we see that we
+can use the normalization $\wt{B}=\frac{B}{\frac{T_{e,0}}{e \rho_s c_s}}$.
+
+In addition we notice that $\frac{\grad_\perp \phi}{B}$ has the units of velocity.
+Thus, we can normalize this with $c_s$. In other words we use the normalization
+$\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} = \frac{\frac{\grad_\perp \phi}{B}}{c_s}$,
+which gives $\frac{\grad_\perp \phi}{B} = \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}c_s$.
+Hence, we can also use
+$
+ \wt{\Om} = \wt{\grad}\cdot\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+ = \rho_s\div\frac{\frac{\grad_\perp \phi}{B}}{c_s}
+= \rho_s\frac{\Om}{c_s}
+ = \frac{\Om}{\om_{ci}}
+$
+, and similarly if we normalize $\wt{n} = \frac{n}{n_0}$, we get
+$
+\wt{\Om}^D = \wt{\grad}\cdot\L(\wt{n}\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}\R)
+= \rho_s\div\L(\frac{\frac{n}{n_0}\frac{\grad_\perp \phi}{B}}{c_s}\R)
+= \rho_sn_0\frac{\Om^D}{c_s}
+= n_0\frac{\Om^D}{\om_{ci}}
+$
+. This yields
+\\
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &\wt{\ve{x}}   =  \frac{\ve{x}}{\rho_s}&
+    &\wt{t}        =  t\om_{ci}&
+    &\wt{\ve{u}}   =  \frac{\ve{u}}{c_s}&
+    &\wt{\phi}     =  \frac{e\phi}{T_{e,0}}&
+    &\wt{\Om}      =  \frac{\Om}{\om_{ci}}&
+    &\wt{\Om}^D    =  \frac{\Om^D}{n_0\om_{ci}}&
+    \\
+    &\wt{n}        =  \frac{n}{n_{0}}&
+    &\wt{T_e}      =  \frac{T_e}{T_{e,0}}&
+    &\wt{B}        =  \frac{B e \rho_s c_s}{T_{e,0}}&
+    &\wt{\nu}_{x}  =  \frac{\nu_{x}}{\om_{ci}}&
+    &\wt{S}        =  \frac{S}{n_0\om_{ci}}&
+    &\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+    = \frac{\grad_\perp \phi}{Bc_s}
+\end{empheq}
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &\ve{x}       = \wt{\ve{x}}\rho_s&
+    &    t        = \frac{\wt{t}}\om_{ci}&
+    &\ve{u}       = \wt{\ve{u}}c_s&
+    &    \phi     = \wt{\phi}\frac{T_{e,0}}{e}&
+    &    \Om      = \wt{\Om}\om_{ci}&
+    &    \Om^D    = \wt{\Om}^D\om_{ci}n_0&
+    \\
+    &    n        = \wt{n}n_{0}&
+    &    B        = \wt{B}\frac{T_{e,0}}{ec_s\rho_s}&
+    &    T_e      = \wt{T_e}T_{e,0}&
+    &    \nu_{x}  = \wt{\nu}_{x}\om_{ci}&
+    &    S        = \wt{S}n_0\om_{ci}&
+    & \frac{\grad_\perp \phi}{B}
+    = c_s\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+\end{empheq}
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &\nabla       = \frac{1}{\rho_s} \wt{\nabla}&
+    &\partial_t   = \om_{ci}\wt{\partial}_t&
+    &\d_{t,\a}    = \wt{\partial_t}\om_{ci} +
+    \frac{c_s (\ve{u}_\a)\cdot \wt{\grad}}{\rho_s}
+    = \om_{ci}\wt{\d}_{t,\a}&
+\end{empheq}
+%
+
+\noindent
+where $\rho_s = \frac{c_s}{\om_{ci}}$ .
+
+We will now normalize the equations derived above, and we will from here on
+drop the tilde to simplify the writing.
+
+\subsection{Normalization of \texorpdfstring{$n$}{the density}}
+By normalizing equation (\ref{eq:non_norm_dens}) , we get
+%
+\begin{align*}
+ n_{0} \om_{ci}
+ \d_t n
+ &=
+ \frac{\rho_s^2\om_{ci}n_0}{\rho_s^2}
+ \frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 n
+ - \frac{n_{0} c_s}{\rho_s}
+ \partial_\|\L(n u_{e,\|}\R)
+ + n_0 \om_{ci}
+ S_n
+ \\
+%
+%
+ n_{0} \om_{ci}
+ \d_t n
+ &=
+ \om_{ci}n_0 \frac{0.51\nu_{ei}}{\mu}
+   \grad_\perp^2 n
+ - n_{0} \om_{ci}
+ \partial_\|\L(n u_{e,\|}\R)
+ + n_0 \om_{ci}
+ S_n
+ \\
+%
+%
+ \d_t n
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+   \grad_\perp^2 n
+   - \partial_\|\L(n u_{e,\|}\R)
+ + S_n
+\end{align*}
+%
+we will divide through by $1/n$ to ensure the non-negativity of the density when
+solving the equations numerically. This gives
+%
+\begin{align*}
+    \d_t \ln(n)
+ &=
+ \frac{0.51\nu_{ei}}{\mu} \frac{1}{n} \grad_\perp^2 n
+ - \frac{1}{n} \partial_\|\L(n u_{e,\|}\R)
+ + \frac{S_n}{n}
+ \\
+%
+%
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+ \L(
+  \div \L[\frac{1}{n}\grad_\perp n\R]
+   - \grad\frac{1}{n} \cdot \grad_\perp n
+\R)
+ - \partial_\| u_{e,\|}
+ - u_{e,\|} \frac{1}{n} \partial_\| n
+ + \frac{S_n}{n}
+ \\
+%
+%
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   - \frac{n}{n} \grad\frac{1}{n} \cdot \grad_\perp n
+\R)
+ - \partial_\| u_{e,\|}
+ - u_{e,\|} \partial_\| \ln(n)
+ + \frac{S_n}{n}
+ \\
+%
+%
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   - \grad\ln(n^{-1}) \cdot \grad_\perp \ln(n)
+\R)
+ - \partial_\| u_{e,\|}
+ - u_{e,\|} \partial_\| \ln(n)
+ + \frac{S_n}{n}
+ \\
+%
+%
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   + \grad\ln(n) \cdot \grad_\perp \ln(n)
+ \R)
+ - \partial_\| u_{e,\|}
+ - u_{e,\|} \partial_\| \ln(n)
+ +
+ \frac{S_n}{n}
+\end{align*}
+%
+We now have that
+%
+\begin{align*}
+    \grad_\perp f \cdot \grad g
+    =& \grad_\perp f \cdot \L(\grad_\perp + \grad_\| \R)g
+    \\
+    =& \grad_\perp f \cdot \grad_\perp g + \grad_\perp f \cdot \grad_\| g
+    \\
+    \note{$\ve{b}\perp\ve{e}^\rho$ and $\ve{b}\perp\ve{e}^\theta$ in
+        cylindrical coordinate system}
+    =& \grad_\perp f \cdot \grad_\perp g
+    + \grad_\perp f \cdot \L(\ve{b}\ve{b}\cdot\R)\grad g
+    \\
+    =& \grad_\perp f \cdot \grad_\perp g
+    + \L(\ve{b}\cdot\grad_\perp f \R)\L(\ve{b}\cdot\grad g\R)
+    \\
+    =& \grad_\perp f \cdot \grad_\perp g
+    \numberthis
+    \label{eq:gradperpGradperp}
+\end{align*}
+%
+This yields
+%
+\begin{align*}
+    \d_t \ln(n)
+ &=
+ \frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   + \grad_\perp\ln(n) \cdot \grad_\perp \ln(n)
+ \R)
+ - \partial_\| u_{e,\|}
+ - u_{e,\|} \partial_\| \ln(n)
+ +
+ \frac{S_n}{n}
+ \numberthis
+ \label{eq:norm_ln_n}
+\end{align*}
+
+\subsection{Normalization of \texorpdfstring{$u_{e,\|}$
+    }{parallel electron momentum}}
+%
+Normalization of equation (\ref{eq:non_norm_e_mom}) yields
+%
+\begin{align*}
+ \om_{ci} c_s
+ \d_t u_{e,\|}
+ =&
+ - \frac{c_s^2}{\rho_s}
+  u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \frac{T_{e,0}n_0}{n_0\rho_s m_e}
+ \frac{T_e}{n} \partial_\| n
+ + \frac{e}{m_e}
+ \frac{T_{e,0}}{e\rho_s} \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - \frac{c_s n_0 \om_{ci}}{n_0}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \frac{m_i}{m_i} \frac{T_{e,0}}{\rho_s m_e}
+ \frac{T_e}{n} \partial_\| n
+ + \frac{m_i}{m_i} \frac{1}{m_e} \frac{T_{e,0}}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \mu \frac{c_s^2}{\rho_s}
+ \frac{T_e}{n} \partial_\| n
+ + \mu \frac{c_s^2}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \om_{ci} c_s
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \mu \om_{ci} c_s
+ \frac{T_e}{n} \partial_\| n
+ + \mu \om_{ci} c_s
+ \partial_\|\phi
+ \\
+ -&
+ \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ \d_t u_{e,\|}
+ =&
+ - u_{e,\|} \partial_\| u_{e,\|}
+ - \mu T_e \partial_\| \ln(n)
+ + \mu \partial_\|\phi
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+ \note{$T_e$ is here the normalization constant}
+ \\
+%
+%
+ \d_t u_{e,\|}
+ =&
+ - u_{e,\|} \partial_\| u_{e,\|}
+ + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+\end{align*}
+%
+\subsection{Normalization of \texorpdfstring{$u_{i,\|}$}{parallel ion momentum}}
+Further, normalization of equation (\ref{eq:non_norm_i_mom}) gives
+%
+\begin{align*}
+ \om_{ci} c_s
+ \d_t u_{i,\|}
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \frac{e}{m_i} \frac{T_{e,0}}{e\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - \frac{c_s n_0 \om_{ci}}{n_0}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \frac{c_s^2}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - c_s \om_{ci}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \omega_{ci} c_s
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \omega_{ci} c_s
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - c_s \om_{ci}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ \d_t u_{i,\|}
+ =&
+ - u_{i,\|} \partial_\| u_{i,\|}
+ - \partial_\|\phi
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \nu_{in} u_{i,\|}
+ - \frac{u_{i,\|}S_{n}}{n}
+\end{align*}
+%
+\subsection{Normalization of \texorpdfstring{$\Omega^D$}{the
+            modified vorticity}}
+Finally, normalization of equation (\ref{eq:non_norm_vort_2}) yields
+%
+\begin{align*}
+  \frac{1}{\om_{ci}}
+  \partial_t \Om^D
+  =&
+  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+  -
+ \frac{1}{\om_{ci}\rho}
+ \L(
+  \frac{1}{B}\{\phi, \Om^D\}
+  +
+  \frac{1}{2}\{\ve{u}_E^2, n\}
+ \R)
+  -
+ \frac{1}{\om_{ci}} \partial_\|\div
+ \L( u_{i,\|}\frac{\grad_\perp \phi}{B}n \R)
+ \\
+ &
+ %
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+\end{align*}
+\begin{align*}
+  %
+  \frac{\om_{ci}\om_{ci}n_0}{\om_{ci}}
+  \partial_t \Om^D
+  =&
+  - \frac{\nu_{in}\om_{ci}}{\om_{ci}} \L(\om_{ci}n_0n\Om
+  + \frac{c_sn_0}{\rho_s}\frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+ - \frac{1}{\om_{ci}}
+    \frac{c_sn_0c_s}{\rho_s\rho_s}
+  \div
+ \L(
+ \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
+ \R)
+ - \frac{1}{\om_{ci}}
+    \frac{c_sn_0c_s}{\rho_s\rho_s}
+\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + \frac{n_0c_s}{\rho_s}
+ \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \note{\ref{eq:gradperpGradperp}}
+ \\
+ %
+ %
+ \om_{ci}n_0
+  \partial_t \Om^D
+  =&
+  - \nu_{in} \L(\om_{ci}n_0n\Om
+  + \om_{ci}n_0\frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
+  \\
+  %
+  &
+ - \frac{1}{\om_{ci}} \om_{ci}n_0\om_{ci}
+  \div
+ \L(
+ \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
+ \R)
+ - \frac{1}{\om_{ci}} \om_{ci}n_0\om_{ci}
+\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + n_0\om_{ci} \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \\
+ %
+ %
+  \partial_t \Om^D
+  =&
+  - \nu_{in} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
+  \\
+  %
+  &
+  -\div
+ \L(
+ \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]
+ \R)
+ -\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \\
+ %
+ %
+  \partial_t \Om^D
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
+  \\
+  %
+  &
+  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
+  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + n \partial_\| \L( u_{i,\|} - u_{e,\|} \R)
+ + (u_{i,\|} - u_{e,\|})\partial_\| n
+ \numberthis
+ \label{eq:normalized_non_boussinesq}
+\end{align*}
+%
+and
+%
+\begin{align*}
+    \om_{ci}n_0\Om^D &= \frac{n_0 c_s}{\rho_s}\div\L(n\frac{\grad_\perp\phi}{B}\R)\\
+    \Om^D &= \div\L(n\frac{\grad_\perp\phi}{B}\R)
+\end{align*}
+%

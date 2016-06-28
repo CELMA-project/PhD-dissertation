@@ -1,0 +1,113 @@
+\section{The set of equations}
+% FIXME:
+FIXME: Arakawa brackets multiplied with 1/J
+
+By using what we found in section \ref{sec:ExBadv} and \ref{sec:art_visc}, the
+full set of equations reads
+%
+\begin{empheq}[box={\tcbhighmath}]{align*}
+    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+ \numberthis
+ \label{eq:cyto_vortD}
+ \\
+%
+%
+%
+\Om =& \frac{\grad_\perp^2\phi }{B}
+ \numberthis
+ \label{eq:cyto_vort}
+ \\
+%
+%
+%
+\partial_t \ln(n)
+=&
+ -\L\{\phi,\ln(n)\R\}
+ +\frac{0.51\nu_{ei}}{\mu}
+ \L(
+   \grad_\perp^2 \ln(n)
+   + \L[\grad_\perp \ln(n)\R]^2
+\R)
+  \\
+  %
+  &
+- \partial_\|u_{e,\|}
+- u_{e,\|} \partial_\| \ln(n)
+ + \frac{S_n}{n}
+  \\
+  %
+  &
+ + D_{\ln(n), \|, \text{art}} \partial_{\|}^2  \ln(n)
+ + D_{\ln(n), \perp, \text{art}} \grad_\perp^2 \ln(n)
+ \numberthis
+ \label{eq:cyto_dens}
+ \\
+%
+%
+%
+\partial_t u_{e,\|}
+ =&
+ -\L\{\phi,u_{e,\|}\R\}
+ - u_{e,\|} \partial_\| u_{e,\|}
+ + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+  \\
+  %
+  &
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+  \\
+  %
+  &
+ + \frac{D_{u_{e,\|}, \|, \text{art}   }}{n}  \partial_{\|}^2  u_{e,\|}
+ + \frac{D_{u_{e,\|}, \perp, \text{art}}}{n} \grad_\perp^2 u_{e,\|}
+ \numberthis
+ \label{eq:cyto_e_mom}
+ \\
+%
+%
+%
+\partial_t u_{i,\|}
+ =&
+ -\L\{\phi,u_{i,\|}\R\}
+ - u_{i,\|} \partial_\| u_{i,\|}
+ - \partial_\|\phi
+  \\
+  %
+  &
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \nu_{in} u_{i,\|}
+ - \frac{u_{i,\|}S_{n}}{n}
+  \\
+  %
+  &
+ +\frac{ D_{u_{i,\|}, \|, \text{art}   }}{n} \partial_{\|}^2  u_{i,\|}
+ +\frac{ D_{u_{i,\|}, \perp, \text{art}}}{n} \grad_\perp^2 u_{i,\|}
+ \numberthis
+ \label{eq:cyto_i_mom}
+ \\
+%
+%
+%
+  \partial_t \Om^D
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n
+  \\
+  %
+  &
+  - \div \L( \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R] \R)
+  - \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+ \\
+ &
+ %
+ + n \partial_\| \L( u_{i,\|} - u_{e,\|} \R)
+ + (u_{i,\|} - u_{e,\|})\partial_\| n
+  \\
+  %
+  &
+  + D_{\Om^D, \|, \text{art}}    \partial_{\|}^2 \Om^D
+  + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
+ \numberthis
+ \label{eq:cyto_vortD_evolution}
+\end{empheq}
