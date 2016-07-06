@@ -153,6 +153,21 @@ breakable,
 title={\refstepcounter{exa}example~\theexa: {#2}},#1}
 %http://tex.stackexchange.com/questions/123338/sample-example-of-box-in-latex
 
+\tcbset{
+myalgorithm/.style={
+  enhanced,
+  colback=yellow!10!white,
+  colframe=red!50!black,
+  fonttitle=\scshape,
+  titlerule=0pt,
+  title style={fill=yellow!10!white},
+  coltitle=red!50!black,
+  drop shadow,
+  highlight math style={reset,colback=LightBlue!50!white,colframe=Navy}
+  }
+}
+\newtcolorbox{algorithm}{myalgorithm, breakable}
+%http://tex.stackexchange.com/questions/123338/sample-example-of-box-in-latex
 
 % Define a greenbox
 \newtcolorbox{greenbox}[2][]{enhanced, attach boxed title to top
