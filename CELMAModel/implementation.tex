@@ -8,11 +8,8 @@ code
 We observe the dependency of $\phi$ in equation (\ref{eq:cyto_dens}) -
 (\ref{eq:cyto_vortD_evolution}), but that $\phi$ is not described by a
 initial boundary value problem equation. Instead, we must find alternative ways
-of extracting $\phi$. We will in the following discuss three ways of doing so.
-Two of the methods discussed finds $\phi$ by inversion of the non-linear
-boundary value problem $\Om^D = \div\L(n\grad_\perp\phi\R)$ for $\phi$ for
-every time step, and one finds $\phi$ by imposing a constraint on the system of
-equations.
+of extracting $\phi$. We will in the following discuss two ways of doing so.
+
 
 \subsubsection{As a matrix inversion problem}
 %
@@ -136,11 +133,89 @@ This would give
 which is symmetric. Although difficult, one can show that the non-linear
 elliptic equation in its symmetric form can be singular positive definite and
 thus be solved using the conjugate gradient method.
+% FIXME: Add reference
 
 \subsubsection{The Naulin solver}
 %
+The potential can also be found in an iterative way. The method first used by
+Naulin in \cite{Naulin2008} will be presented here, and will be refered to as
+the Naulin solver.
+
+The method can be used as long as
+%
+\begin{enumerate}[noitemsep,nolistsep]
+    \item $\div\L(\frac{\grad_\perp\phi}{B}\R) = \frac{\grad_\perp^2\phi}{B}$
+    \item $\grad f \cdot \grad_\perp g = \grad_\perp f \cdot \grad_\perp g$
+\end{enumerate}
+%
+Point 1. is satisfied in our system as $B$ is constant, and because derivatives
+of the perpendicular basis vectors does not yield parallel components in our
+system. Point 2. is satisfied as the dot product of the perpendicular basis
+vectors and the parallel basis vector is zero. We then get that
+%
+\begin{align*}
+    \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)\\
+    %
+    =& n\div\L(\frac{\grad_\perp\phi}{B}\R) +
+    \frac{\grad_\perp\phi}{B}\cdot\grad n
+    \\
+    %
+    =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \frac{\Om^D}{n} =& \Om +
+    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \Om =& \frac{\Om^D}{n} -
+    \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi}{B}
+\end{align*}
+%
+Using square bracket superscript as iteration number, the algorithm can be
+stated in the following way:
+%
+\begin{algorithm}
+\begin{enumerate}[noitemsep,nolistsep]
+    \item Calculate
+        $ \Om^{[i]} = \frac{\Om^D}{n} -
+        \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi^{[i]}}{B}
+        $
+    \item Invert $\grad_\perp^2 \frac{\phi^{[i+1]}}{B} = \Om^{[i]}$ by the method
+        described in \ref{app:lapInv}.
+    \item Calculate
+        $E_{\text{abs}, L_\infty} = \max \L|\phi^{[i]} - \phi^{[i+1]}\R|$
+        and
+        $E_{\text{rel}, L_\infty} = \max \L|\frac{\phi^{[i]} - \phi^{[i+1]}}{\phi^{[i]}}\R|$
+    \item Check whether $E_{\text{abs}, L_\infty} > \text{Tolerance}_\text{abs}$
+    \begin{itemize}[noitemsep,nolistsep]
+        \item If yes: Check $E_{\text{abs}, L_\infty} > \text{Tolerance}_\text{rel}$
+            \begin{itemize}[noitemsep,nolistsep]
+                \item If yes: Assign $\phi^{[i+1]} \to \phi^{[i]}$, increase the
+                    iteration number, throw an error if the iteration number is
+                    above a predefined max iteration number, if not repeat from
+                    step 1.
+                \item Else, if no: Stop. Function returns
+            \end{itemize}
+        \item Else, if no: Stop. Function returns
+    \end{itemize}
+\end{enumerate}
+\end{algorithm}
+%
 
 
+
+%FIXME: MAKE APPENDIX
+FIXME: MAKE APPENDIX
+\subsubsection{LAPLACE INVERSION}
 
 
 
@@ -159,8 +234,83 @@ The only place one needs to take care about this is when using the Poisson
 brackets to calculate the $\ve{E}\times \ve{B}$ advection, which will be
 discussed in the next section.
 
-\subsection{\texorpdfstring{$\ve{E}\times \ve{B}$}{ExB} advection}
+
+\subsection{Advective terms}
 \label{sec:ExBadv}
+As already noted in section \ref{sec:vecAdvTerm}, we can write
+$\ve{E}\times\ve{B}$-advective terms as Poisson brackets. The proof is found in
+appendix \ref{app:poisson}. The benefits of writing terms on Poisson brackets
+are presented in Arakawa's paper from 1966 \cite{Arakwa1966}. In short, the
+paper shows that a na\"ive finite difference discretization of the Poisson
+bracket does not conserve energy and enstrophy, and gives an alternative
+way of discretize in orthogonal curvilinear coordinates in order to keep these
+quantities conserved. If the energy and enstrophy is not conserved, fake
+generation of these quantities occur, which eventually will lead to a blow up
+of the simulation (in a way described by Phillips in \cite{Phillips1959}).
+
+It is also possible to discretize the term $\{\ve{u}_E^2, n\}$
+using Arakawa's method. We observe that in cylindrical coordinates, we have
+%
+\begin{align*}
+    \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
+    \note{Constant $B$}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        \cdot
+        \L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        , n\R\}
+    \note{Orthogonality}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{g^{\rho\rho}\L(\partial_{\rho} \phi\R)^2+
+        g^{\theta\theta}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
+\end{align*}
+%
+Here, we must take care when we treat the ghost points. No ghost points is
+needed in the $\theta$ direction, as this direction is periodic. Thus, for
+$\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$
+derivatives at the ghost points in $\rho$.
+
+For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost
+points as the derivative is not calculated there. For the inner ghost point,
+the same procedure as used in
+% FIXME: Add section
+FIXME: Add section
+can be used. For the outer ghost point, we use a fourth order Newton polynomial
+of the four previous points in the $\rho$ direction, evaluated in the ghost
+point. If we say that $f=\partial_{\rho} \phi$, this extrapolation reads
+%
+\begin{align*}
+    f_{0} = 4f_{-1} - 6f_{-2} + 4f_{-3} - f_{-4}
+\end{align*}
+%
+where $f_{0}$ is the value of $f$ at the position of the ghost point and
+$f_{-i}$ is the value of $f$ in a position $-i\Delta \rho$ away from the ghost
+point (where $\Delta \rho$ is the grid spacing in $\rho$).
+
+This way of discretizing is second order accurate, as indicated in appendix
+%FIXME: Add to appendix MES
+FIXME: Add to appendix MES
+YOU ARE HERE
+
+
+
+
+
+
+
+
+
+
 % FIXME:
 FIXME: See Derivation of pure solenoid field in the coordinates manual: We are
 interested in the pure solenoidal field. What about the strength of the field
@@ -537,36 +687,6 @@ Needless to say, if we need the ghost point of a composite field, let's $e\cdot
 g$, in order to calculate $\partial_i^{\text{FD}} \L(e\cdot g\R)$, we can
 simply multiply the two ghost points together in order to find the composite
 ghost point, that is $\L(e \cdot g\R)_\text{GP} = e_\text{GP}\cdot g_\text{GP}$.
-
-
-\subsection{Finding the potential}
-The observant reader may have noticed that we do not evolve the potential $\phi$
-in time, and thus need another way of knowing $\phi$ at each time step. As we
-know that
-%
-\begin{align*}
-    \Om^D = \div\L(n\frac{\grad_\perp\phi}{B}\R)
-    = n\div\L(\frac{\grad_\perp\phi}{B}\R) +
-    \frac{\grad_\perp\phi}{B}\cdot\grad n
-    = n\frac{\grad_\perp^2\phi}{B} +
-    \grad n\cdot\frac{\grad_\perp\phi}{B}
-    = n\frac{\grad_\perp^2\phi}{B} +
-    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-\end{align*}
-%
-the current time step $\Om^D$ can be solved to find $\phi$. From that we find
-that
-%
-\begin{align*}
-    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
-    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-    \\
-    \frac{\Om^D}{n} =& \Om +
-    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-    \\
-    \Om =& \frac{\Om^D}{n} -
-    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-\end{align*}
 
 
 \subsection{Artificial viscosity}\label{sec:art_visc}
