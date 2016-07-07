@@ -1,0 +1,196 @@
+Instead of evolving the parallel ion momentum, we choose to evolve the parallel
+ion density momentum. Starting from equation \ref{eq:material_dot_bb}, we have
+that
+%
+\begin{align*}
+  m_\a n_\a\d_{t,\a} \ve{u}_{\a,\|}
+ =&
+ - \grad_\| p_\a
+ +  n_\a\ve{E_\|}
+ - \L(\div\te{\pi}_\a\R)_\|
+ + \ve{R}_{\beta \to \a,\|}
+ + \ve{R}_{n \to \a,\|}
+ - S_{\a,n}\ve{u}_{\a,\|}
+ \\
+ %
+ m_\a \L(\d_{t,\a}\L[ n_\a \ve{u}_{\a,\|}\R] - \ve{u}_{\a,\|}\d_{t,\a} n_\a  \R)
+ =&
+ - \grad_\| p_\a
+ +  n_\a\ve{E_\|}
+ - \L(\div\te{\pi}_\a\R)_\|
+ + \ve{R}_{\beta \to \a,\|}
+ + \ve{R}_{n \to \a,\|}
+ - S_{\a,n}\ve{u}_{\a,\|}
+ \\
+ %
+ m_\a \d_{t,\a}\L( n_\a \ve{u}_{\a,\|}\R)
+ =&
+   \ve{u}_{\a,\|}\d_{t,\a} n_\a
+ - \grad_\| p_\a
+ +  n_\a\ve{E_\|}
+ - \L(\div\te{\pi}_\a\R)_\|
+   \\&
+ + \ve{R}_{\beta \to \a,\|}
+ + \ve{R}_{n \to \a,\|}
+ - S_{\a,n}\ve{u}_{\a,\|}
+ \note{Quasi-neutrality and equation (\ref{eq:non_norm_dens})}
+ \\
+ %
+ m_\a \d_{t,\a}\L( n \ve{u}_{\a,\|}\R)
+ =&
+   \ve{u}_{\a,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \div\L[n \ve{u}_{e,\|} \R] + S_n
+   \R)
+   \\&
+ - \grad_\| p_\a
+ +  n_\a\ve{E_\|}
+ - \L(\div\te{\pi}_\a\R)_\|
+    \note{$S_{\a,n}=S_n$}
+   \\&
+ + \ve{R}_{\beta \to \a,\|}
+ + \ve{R}_{n \to \a,\|}
+ - S_{\a,n}\ve{u}_{\a,\|}
+    \note{Assume $\L(\div\te{\pi}_\a\R)_\|\simeq0$}
+ \\
+ %
+ m_\a \d_{t,\a}\L( n \ve{u}_{\a,\|}\R)
+ =&
+   \ve{u}_{\a,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \div\L[n \ve{u}_{e,\|} \R]
+   \R)
+   \\&
+ - \grad_\| p_\a
+ +  n_\a\ve{E_\|}
+ + \ve{R}_{\beta \to \a,\|}
+ + \ve{R}_{n \to \a,\|}
+ \\
+ %
+ m_\a \partial_t\L( n \ve{b}u_{\a,\|}\R)
+ =&
+ -\ve{b}u_{\a,\|}\cdot\grad\L( n \ve{b}u_{\a,\|}\R)
+ + \ve{b}u_{\a,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \div\L[n \ve{b}u_{e,\|} \R]
+   \R)
+   \\&
+   - \ve{b}\partial_\| p_\a
+ +  n_\a\ve{b}E_\|
+ + \ve{b}R_{\beta \to \a,\|}
+ + \ve{b}R_{n \to \a,\|}
+ \note{$\partial_i \ve{b} \simeq 0$}
+ \\
+ %
+ m_\a \partial_t\L( n u_{\a,\|}\R)
+ =&
+ -u_{\a,\|}\partial_\|\L( n u_{\a,\|}\R)
+ + u_{\a,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \partial_\|\L[n u_{e,\|} \R]
+   \R)
+   \\&
+   - \partial_\| p_\a
+ +  n_\a E_\|
+ + R_{\beta \to \a,\|}
+ + R_{n \to \a,\|}
+ \numberthis
+  \label{eq:nonElstat}
+    \note{Electrostatic}
+ \\
+ %
+ m_\a \partial_t\L( n u_{\a,\|}\R)
+ =&
+ -u_{\a,\|}\partial_\|\L( n u_{\a,\|}\R)
+ + u_{\a,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \partial_\|\L[n u_{e,\|} \R]
+   \R)
+   \\&
+   - \partial_\| p_\a
+ -  n_\a\partial_\|\phi
+ + R_{\beta \to \a,\|}
+ + R_{n \to \a,\|}
+ \numberthis
+ \label{eq:momDens}
+\end{align*}
+%
+% FIXME: Have E here, and not grad phi?
+% FIXME: Change all div b = 0 to div b simeq 0
+This means that the momentum density for ions reads
+%
+\begin{align*}
+ m_i \partial_t\L( n u_{i,\|}\R)
+ =&
+ - u_{i,\|}\partial_\|\L( n u_{i,\|}\R)
+ + u_{i,\|}\L(
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   - \partial_\|\L[n u_{e,\|} \R]
+   \R)
+   \\&
+   - \partial_\| p_i
+ -  n\partial_\|\phi
+ + R_{e \to i,\|}
+ + R_{n \to i,\|}
+ \note{Momentum conservation}
+ \\
+ %
+ =&
+ - u_{i,\|}\partial_\|\L( n u_{i,\|}\R)
+ - u_{i,\|}\partial_\|\L(n u_{e,\|} \R)
+ + u_{i,\|}
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \\&
+   - \partial_\| p_i
+ -  n\partial_\|\phi
+ - R_{i \to e,\|}
+ + R_{n \to i,\|}
+ \note{Assume $T_i = 0$}
+ \\
+ %
+ =&
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+u_{e,\|}\R]\R)
+ + u_{i,\|}
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \\&
+ -  n\partial_\|\phi
+ + 0.51m_en \nu_{ei}\L(u_{e,\|}-u_{i,\|}\R)
+ - m_in \nu_{in}u_{i,\|}
+ \note{$\ve{J} = en(\ve{u}_i-\ve{u}_e)$}
+ \\
+ %
+ =&
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+u_{e,\|}\R]\R)
+ + u_{i,\|}
+   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \\&
+ -  n\partial_\|\phi
+ - 0.51m_e \nu_{ei}\frac{J_\|}{e}
+ - m_in \nu_{in}u_{i,\|}
+ \\
+ %
+ =&
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+u_{e,\|}\R]\R)
+ + 0.51\nu_{ei}\L(\rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ -  \frac{m_e}{e}J_\|\R)
+   \\&
+ -  n\partial_\|\phi
+ - m_in \nu_{in}u_{i,\|}
+\end{align*}
+%
+Instead of evolving the parallel electron momentum, we choose to evolve the parallel
+current.
+%
+YOU ARE HERE, DIVIDE BY mi AND MAKE CURRENT
+%
+\begin{align*}
+ m_i \partial_t\L( n u_{i,\|}\R)
+ =&
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+u_{e,\|}\R]\R)
+ + 0.51\nu_{ei}\L(\rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ -  \frac{m_e}{e}J_\|\R)
+   \\&
+ -  n\partial_\|\phi
+ - m_in \nu_{in}u_{i,\|}
+\end{align*}
+%
