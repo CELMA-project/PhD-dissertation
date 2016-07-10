@@ -410,17 +410,19 @@ our system.
 We have that
 %
 \begin{align*}
-    \ve{E}
+    E_\| = \ve{b}\cdot\ve{E}
+    = -\ve{b}\cdot\grad\phi-\ve{b}\cdot\partial_t\ve{A}
+    = -\partial_\|\phi-\partial_t A_\|
 \end{align*}
 %
-YOU ARE HERE: INCLUD ELMAG EFFECTS
+From equation (\ref{eq:coloumbGauge}) we have that
 %
 \begin{align*}
     \ve{b}\cdot\ve{J} \simeq& \ve{b}\cdot\frac{\grad^2_\perp\ve{A}}{\mu_0}
     \note{$\partial_i \ve{b} \simeq 0$}
     \\
     %
-    j_\| \simeq& \cdot\frac{\grad^2_\perp A_\|}{\mu_0}
+    j_\| \simeq& \frac{\grad^2_\perp A_\|}{\mu_0}
 \end{align*}
 %
 % FIXME: Normalize
@@ -519,6 +521,83 @@ Normalization of parallel current equation
    + \mu T_e \partial_\| n_e
    + \mu n E_\|
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \numberthis
+ \label{eq:curNorm}
 \end{align*}
 %
-% FIXME: partial_t A must have the same dimensions as grad_phi
+Normalization of Amp{\`e}re's law, using
+$\ve{A}=\ve{\tilde{A}}\frac{T_e}{ec_s}$
+%
+\begin{align*}
+   en_0c_s j_\|
+   =&\frac{1}{\mu_0}\frac{1}{\rho_s^2} \frac{T_e}{ec_s} \grad^2_\perp A_\|\\
+   =&\frac{1}{\mu_0}\frac{\om_{ci}^2}{c_s^2} \frac{T_e}{ec_s} \grad^2_\perp A_\|\\
+    j_\|
+   =&\frac{1}{\mu_0}\frac{\om_{ci}^2}{c_s^4} \frac{T_e}{e^2n_0} \grad^2_\perp A_\|\\
+   =&\frac{1}{\mu_0}
+     \frac{e^2B^2}{m_i^2}
+      \frac{m_i^2}{T_e^2}
+      \frac{T_e}{e^2n_0}
+      \grad^2_\perp A_\|\\
+   =& \frac{B^2}{\mu_0}
+      \frac{1}{T_e}
+      \frac{1}{n_0}
+      \grad^2_\perp A_\|\\
+   =&\frac{2}{2}
+     \frac{B^2}{\mu_0T_en_0}
+      \grad^2_\perp A_\|\\
+   =&\frac{1}{2}
+     \b
+      \grad^2_\perp A_\|\\
+\end{align*}
+%
+This equation can now be inverted in order to obtain $A_\|$. In other words,
+equation (\ref{eq:curNorm}) can be rewritten to
+%
+\begin{align*}
+ \partial_t j_\|
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu T_e \partial_\| n_e
+   + \mu n \L(-\partial_\|\phi-\partial_tA_\|\R)
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+\end{align*}
+%
+YOU ARE HERE: IT IS NOW EVIDENT WHY SIMCAT CHOOSES TO EVOLVE DIFFERENCE IN
+VELOCITY RATHER THAN CURRENT, AS TIME DERIVATIVE OF A PARALLEL CAN BE INSERTED
+IN THE TIME DERIVATE
+%
+In current form
+%
+\begin{empheq}[box={\tcbhighmath}]{align*}
+ \partial_t j_\|
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu T_e \partial_\| n_e
+   - \mu n \partial_\|\phi
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \numberthis
+ \label{setofeq:parCurrent}
+ \\
+ %
+ %
+  \partial_t\L( n u_{i,\|}\R)
+ =&
+ - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+   \\&
+ + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ - T_e \partial_\| n_e
+ - n \nu_{i n}u_{i,\|}
+ \numberthis
+ \label{setofeq:parMom}
+\end{empheq}
+%
