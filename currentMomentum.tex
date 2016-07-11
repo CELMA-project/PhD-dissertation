@@ -27,7 +27,7 @@ that
  =&
    m_\a \ve{u}_{\a,\|}\d_{t,\a} n_\a
  - \grad_\| p_\a
- +  n_\a\ve{E_\|}
+ +  n_\a q_\a\ve{E_\|}
  - \L(\div\te{\pi}_\a\R)_\|
    \\&
  + \ve{R}_{\beta \to \a,\|}
@@ -83,7 +83,7 @@ that
  \note{$\partial_i \ve{b} \simeq 0$}
  \\
  %
- m_\a \partial_t\L( n u_{\a,\|}\R)
+ m_\a \partial_t\L( nu_{\a,\|}\R)
  =&
  -\frac{m_\a}{JB}\L\{\phi, n u_{\a,\|}\R\}
  -m_\a u_{\a,\|}\partial_\|\L( n u_{\a,\|}\R)
@@ -99,7 +99,6 @@ that
  + R_{n \to \a,\|}
  \\
  %
- m_\a \partial_t\L( n u_{\a,\|}\R)
  =&
  -\frac{m_\a}{JB}\L\{\phi, n u_{\a,\|}\R\}
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
@@ -117,7 +116,6 @@ that
  \note{$\ve{J} = en(\ve{u}_i-\ve{u}_e)$}
  \\
  %
- m_\a \partial_t\L( n u_{\a,\|}\R)
  =&
  -\frac{m_\a}{JB}\L\{\phi, n u_{\a,\|}\R\}
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
@@ -133,7 +131,6 @@ that
  - m_\a n \nu_{\a n}u_{\a,\|}
  \\
  %
- m_\a \partial_t\L( n u_{\a,\|}\R)
  =&
  -\frac{m_\a}{JB}\L\{\phi, n u_{\a,\|}\R\}
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
@@ -266,7 +263,7 @@ We can obtain the total momentum density of the plasma by adding equation
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - \frac{1}{m_i}T_e \partial_\| n_e
+ - \frac{1}{m_i}T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
 \end{align*}
 %
@@ -397,7 +394,7 @@ This yields
    \\&
  - 0.51 \nu_{ei}j_\|
    \\&
-   +\frac{e}{m_e} T_e \partial_\| n_e
+   +\frac{e}{m_e} T_e \partial_\| n
    + \frac{e^2}{m_e}n E_\|
  + en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
 \end{align*}
@@ -425,8 +422,6 @@ From equation (\ref{eq:coloumbGauge}) we have that
     j_\| \simeq& \frac{\grad^2_\perp A_\|}{\mu_0}
 \end{align*}
 %
-% FIXME: Normalize
-%
 Normalization of parallel momentum density
 %
 \begin{align*}
@@ -436,7 +431,7 @@ Normalization of parallel momentum density
  - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0T_e \partial_\| n_e
+ - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
  \\
  %
@@ -445,7 +440,7 @@ Normalization of parallel momentum density
  - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - c_s^2\frac{1}{\rho_s}n_0T_e \partial_\| n_e
+ - c_s^2\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
  \\
  %
@@ -454,7 +449,7 @@ Normalization of parallel momentum density
  - \om_{ci}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - c_s\om_{ci}n_0T_e \partial_\| n_e
+ - c_s\om_{ci}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
  \\
  %
@@ -464,10 +459,11 @@ Normalization of parallel momentum density
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - T_e \partial_\| n_e
+ - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
 \end{align*}
 %
+We notice how the ion mass in the electron pressure got normalized away.
 Normalization of parallel current equation
 %
 \begin{align*}
@@ -480,7 +476,7 @@ Normalization of parallel current equation
    \\&
  - 0.51\om_{ci}en_0c_s \nu_{ei}j_\|
    \\&
-   + \frac{m_i}{m_i}\frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0 T_e \partial_\| n_e
+   + \frac{m_i}{m_i}\frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0 T_e \partial_\| n
    + \frac{m_i}{m_i}n_0\frac{1}{\rho_s}\frac{T_{e,0}}{e}\frac{e^2}{m_e}n E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \\
@@ -493,7 +489,7 @@ Normalization of parallel current equation
    \\&
  - 0.51\om_{ci}en_0c_s \nu_{ei}j_\|
    \\&
-   + \frac{m_i}{m_e}e\frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0 T_e \partial_\| n_e
+   + \frac{m_i}{m_e}e\frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0 T_e \partial_\| n
    + \frac{m_i}{m_e}n_0\frac{1}{\rho_s}e\frac{T_{e,0}}{m_i}n E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \\
@@ -506,7 +502,7 @@ Normalization of parallel current equation
    \\&
  - 0.51\frac{c_s}{\rho_s}en_0c_s \nu_{ei}j_\|
    \\&
-   + \mu e\frac{c_s^2}{\rho_s}n_0 T_e \partial_\| n_e
+   + \mu e\frac{c_s^2}{\rho_s}n_0 T_e \partial_\| n
    + \mu n_0\frac{c_s^2}{\rho_s}en E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \\
@@ -518,7 +514,7 @@ Normalization of parallel current equation
  + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
  - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n_e
+   + \mu T_e \partial_\| n
    + \mu n E_\|
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \numberthis
@@ -562,7 +558,7 @@ equation (\ref{eq:curNorm}) can be rewritten to
  + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
  - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n_e
+   + \mu T_e \partial_\| n
    + \mu n \L(-\partial_\|\phi-\partial_tA_\|\R)
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
 \end{align*}
@@ -581,7 +577,7 @@ In current form
  + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
  - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n_e
+   + \mu T_e \partial_\| n
    - \mu n \partial_\|\phi
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \numberthis
@@ -595,7 +591,7 @@ In current form
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
  + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - T_e \partial_\| n_e
+ - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
  \numberthis
  \label{setofeq:parMom}
