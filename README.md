@@ -2,5 +2,5 @@
 Developement branch of Loieten's thesis.
 Moved from https://svn.fysik.dtu.dk/mmag/LaTex/set_of_equations/ revision 121.
 
-Branch: `master`
-Purpose: Closest to submitted thesis
+Branch: `apar`
+Purpose: Add A_|| into the equations

@@ -464,7 +464,9 @@ Normalization of parallel momentum density
 \end{align*}
 %
 We notice how the ion mass in the electron pressure got normalized away.
-Normalization of parallel current equation
+Normalization of parallel current equation, using
+$\ve{E}=\frac{\wt{E}T_e}{e\rho_s}$
+% FIXME: Above
 %
 \begin{align*}
  \om_{ci}en_0c_s\partial_t j_\|
@@ -542,9 +544,8 @@ $\ve{A}=\ve{\tilde{A}}\frac{T_e}{ec_s}$
    =&\frac{2}{2}
      \frac{B^2}{\mu_0T_en_0}
       \grad^2_\perp A_\|\\
-   =&\frac{1}{2}
-     \b
-      \grad^2_\perp A_\|\\
+   =&\frac{2}{\b}
+      \grad^2_\perp A_\|
 \end{align*}
 %
 This equation can now be inverted in order to obtain $A_\|$. In other words,
@@ -561,6 +562,61 @@ equation (\ref{eq:curNorm}) can be rewritten to
    + \mu T_e \partial_\| n
    + \mu n \L(-\partial_\|\phi-\partial_tA_\|\R)
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \\
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu T_e \partial_\| n
+   - \mu n \partial_\|\phi - \partial_t \mu \L( n A_\| \R) + \mu A_\| \partial_t n
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \\
+ \partial_t \L(j_\|+ \mu n A_\| \R)
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu T_e \partial_\| n
+   - \mu n \partial_\|\phi + \mu A_\| n \partial_t \ln(n)
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \\
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu \L(T_e \frac{n}{n}\partial_\| n
+   - n \partial_\|\phi + A_\| n \partial_t \ln[n] \R)
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ \note{$T_e$ constant}
+ \\
+ \partial_t j^M_\|
+=&
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu n \L(\partial_\|\L[ T_e\ln(n) - \phi\R]
+   + A_\| \partial_t \ln[n] \R)
+   + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+\end{align*}
+%
+where $j^M_\| = j_\|+ \mu n A_\|$.
+%
+FIXME:
+For numerical purposes, in order for $A_\|$ not to be much bigger than the rest
+of the quantities, we renormalize $A_{\|, \text{old}} = \frac{1}{2}\b A_{\|, \text{new}}$.
+Dropping the $_{\text{new}}$ subscript yields
+%
+\begin{align*}
+    j_\| =& \grad^2_\perp A_\|\\
+    j^M_\| =& j_\|+ \frac{1}{2}\b\mu n A_\|
 \end{align*}
 %
 YOU ARE HERE: IT IS NOW EVIDENT WHY SIMCAT CHOOSES TO EVOLVE DIFFERENCE IN
@@ -570,16 +626,19 @@ IN THE TIME DERIVATE
 In current form
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
- \partial_t j_\|
+    j_\| =& \grad^2_\perp A_\|
+    \\
+ \partial_t j^M_\|
 =&
  - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
  -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
  - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n
-   - \mu n \partial_\|\phi
- + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   + \mu n \L(\partial_\|\L[ T_e\ln(n) - \phi\R]
+   + \frac{1}{2}\b A_\| \partial_t \ln[n] \R)
+   \\&
+   + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
  \numberthis
  \label{setofeq:parCurrent}
  \\
