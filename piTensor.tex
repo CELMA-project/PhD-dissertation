@@ -1,0 +1,326 @@
+We have that in a cartesian coordinate system
+CITE HELANDER AND SIGMAR
+%
+\begin{align*}
+    W^{ij}_{\a} \defined \partial_j u^{i}_{\a}
+                     + \partial_i u^{j}_{\a}
+                     - \frac{2}{3} \delta_i^j \div \ve{u}_{\a}
+\end{align*}
+%
+Using that to first order, only the $\ve{E}\times\ve{B}$ drift advects
+particles perpendiculary, we have that
+$\ve{u}_{\a} \simeq \ve{u}_{E} + \ve{u}_{\a, \|}$.
+%
+We will then have that
+%
+\begin{align*}
+    \div \ve{u}_{\a}
+    &\simeq \div \ve{u}_{E} + \div \ve{u}_{\a, \|}
+    \note{Eq. \ref{eq:curv_op} when $\ve{B}=$ constant}
+    \\
+    &= 0 + \div \ve{u}_{\a, \|}
+\end{align*}
+%
+In Clebsch coordinates, we have that $\ve{u}_{E}$ is given by equation
+\ref{app:ExB}, which means that in cylindrical coordinates, we will have
+CHECK HANDEDNESS!!!
+%
+\begin{align*}
+    \ve{u}_E
+    =&\frac{1}{JB}
+           \L(
+           - g_{zz}\ve{e}_y \partial_x
+           + g_{zz}\ve{e}_x  \partial_y
+           \R)
+           \phi
+   =\frac{1}{B}
+           \L(
+           - \ve{e}_y \partial_x
+           + \ve{e}_x  \partial_y
+           \R)
+           \phi
+    \\
+    %
+    u_{E}^{x} =& \frac{1}{B} \partial_y \phi
+    \qquad
+    u_{E}^{y} = -\frac{1}{B} \partial_x \phi
+    \qquad
+    u_{E}^{z} = 0
+\end{align*}
+%
+and
+%
+\begin{align*}
+    u_{\a, \|}^{x} = 0 \qquad
+    u_{\a, \|}^{y} = 0 \qquad
+    u_{\a, \|}^{z} = u_{\a, \|}^{z}
+\end{align*}
+%
+This means that
+%
+\begin{align*}
+W^{xx} + W^{yy}
+=&
+\partial_x u^{x}_{\a}
++ \partial_x u^{x}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
++ \partial_y u^{y}_{\a}
++ \partial_y u^{y}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
+\\
+%
+=&
+2\partial_x u^{x}_{\a}
++ 2\partial_y u^{y}_{\a}
+- \frac{4}{3} \div \ve{u}_{\a}
+\\
+%
+=&
+2\L(\partial_x u^{x}_{\a}
+    + \partial_y u^{y}_{\a}
+    - \frac{2}{3} \L[\partial_x u^{x}_{\a}
+          +\partial_y u^{y}_{\a}
+          +\partial_z u^{z}_{\a}
+                      \R]
+\R)
+\\
+%
+=&
+\frac{2}{3}\L(\partial_x u^{x}_{\a}
+          + \partial_y u^{y}_{\a}
+          - 2\partial_z u^{z}_{\a}
+\R)
+\\
+%
+=&
+\frac{2}{3B}
+\L(\partial_x \partial_y \phi
+- \partial_y \partial_x \phi
+\R)
+-
+\frac{4}{3}
+ \partial_z u^{z}_{\a,\|}
+\\
+%
+=&
+-
+\frac{4}{3}
+\partial_z u^{z}_{\a,\|}
+\\
+%
+%
+%
+W^{xx} - W^{yy}
+=&
+\partial_x u^{x}_{\a}
++ \partial_x u^{x}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
+- \partial_y u^{y}_{\a}
+- \partial_y u^{y}_{\a}
++ \frac{2}{3} \div \ve{u}_{\a}
+\\
+%
+=&
+2\partial_x u^{x}_{\a} -2 \partial_y u^{y}_{\a}
+\\
+%
+=&
+2\L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+%
+\\
+=&
+\frac{2}{B}
+\L(\partial_x \partial_y \phi + \partial_y \partial_x \phi \R)
+%
+\\
+=&
+\frac{4}{B} \partial_x \partial_y \phi
+\\
+%
+%
+%
+%
+W^{zz}
+=&
+\partial_z u^{z}_{\a} + \partial_z u^{z}_{\a} - \frac{2}{3} \div \ve{u}_{\a}
+\\
+%
+=&
+2\partial_z u^{z}_{\a} - \frac{2}{3}
+    \L(\partial_x u^{x}_{\a}
+       +\partial_y u^{y}_{\a}
+       +\partial_z u^{z}_{\a}
+    \R)
+\\
+%
+=&
+\frac{4}{3} \partial_z u^{z}_{\a} - \frac{2}{3}
+    \L(\partial_x u^{x}_{\a}
+       +\partial_y u^{y}_{\a}
+    \R)
+\\
+%
+=&
+\frac{2}{3}
+2 \partial_z u^{z}_{\a,\|} -
+    \frac{1}{B}
+    \L(\partial_x \partial_y \phi
+       - \partial_y \partial_x \phi
+    \R)
+\\
+%
+=& \frac{4}{3} \partial_z u^{z}_{\a,\|}
+\\
+%
+%
+%
+%
+W^{xy}
+=&
+\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}
+\\
+%
+=&
+\frac{1}{B}\L( - \partial_x^2 \phi + \partial_y^2 \phi \R)
+\\
+%
+%
+%
+%
+W^{xz}
+=&
+\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}
+%
+\\
+=&
+\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi
+\\
+%
+%
+%
+%
+W^{yz}
+=&
+\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}
+%
+\\
+=&
+\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi
+\end{align*}
+%
+WAIT WAIT WAIT: WHAT ABOUT CALCULATING IN CARTESIAN SYSTEM, THEN CONVERT THE
+TENSOR TO CYLINDRICAL
+
+YES: CHECK EXAMPLE 4 IN DIFF GEOM NOTE
+%
+Although no difference between co and contravariant in Cartesian, we here write
+components contravariant. Calculate the tensor in Cartesian coordinates, then
+transform it to cylindrical coordinates
+%
+\begin{align*}
+    \pi^{xx}_{\a}
+    %
+    =& -\frac{\eta_{0,\a}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{1,\a}}{2}\L(W^{xx} - W^{yy}\R)
+       -\eta_3 W^{xy}
+    \\
+    %
+    =&  \frac{2\eta_{0,\a}}{3}\partial_z u^{z}_{\a,\|}
+       -\frac{2\eta_{1,\a}}{B}\partial_x \partial_y \phi
+       -\frac{ \eta_{3,\a}}{B}\L(-\partial_x^2 \phi
+       + \partial_y^2 \phi \R)
+    \\
+    %
+    %
+    %
+\pi^{yy}_{\a}
+    =& -\frac{\eta_{0,\a}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{1,\a}}{2}\L(W^{yy} - W^{xx}\R)
+       +\eta_{3,\a}W^{xy}
+    \\
+    %
+    =&  \frac{2\eta_{0,\a}}{3}\partial_z u^{z}_{\a,\|}
+       +\frac{2\eta_{1,\a}}{B}\partial_x \partial_y \phi
+       +\frac{ \eta_{3,\a}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
+    \\
+    %
+    %
+    %
+\pi^{zz}_{\a}
+    =& -\eta_{0,\a}W^{zz}
+    \\
+    %
+    =& - \frac{4\eta_{0,\a}}{3} \partial_z u^{z}_{\a,\|}
+    \\
+    %
+    %
+    %
+\pi^{xy}_{\a} =& \pi^{yx}_{\a}
+    = -\eta_{1,\a}W^{xy} -\frac{\eta_{3,\a}}{2} \L(W^{xx}-W^{yy}\R)
+    \\
+    %
+    =& -\frac{\eta_{1,\a}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
+    -\frac{2\eta_{3,\a}}{B}\partial_x \partial_y \phi
+    \\
+    %
+    %
+    %
+\pi^{xz}_{\a} =& \pi^{zx}_{\a}
+    = -\eta_{2,\a}W_{xz} - \eta_{4,\a}W_{yz}
+    \\
+    %
+    =& -\eta_{2,\a}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
+        - \eta_{4,\a}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
+    \\
+    %
+    %
+    %
+\pi^{yz}_{\a} =& \pi^{zy}_{\a}
+    = -\eta_{2,\a}W_{yz} + \eta_{4,\a}W_{xz}
+    \\
+    %
+    =& -\eta_{2,\a}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
+    + \eta_{4,\a}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
+\end{align*}
+%
+We have that
+%
+\begin{align*}
+    &\eta_{0,i}=0.96n_iT_i\nu_{ei} &
+    &\eta_{1,i}=\frac{3n_iT_i}{10\Om_{ci}^2 \sqrt{2}\nu_{ii}} &
+    &\eta_{2,i}=\frac{12n_iT_i}{10\Om_{ci}^2\sqrt{2}\nu_{ii}} &
+    &\eta_{3,i}=\frac{n_iT_i}{2\Om_{ci}} &
+    &\eta_{4,i}=\frac{n_iT_i}{\Om_{ci}} &
+    \\
+    &\eta_{0,e}=0.73n_eT_e\nu_{ei} &
+    &\eta_{1,e}=0.51\frac{n_eT_e}{\Om_{ce}^2\nu_{ei}} &
+    &\eta_{2,e}=2.04\frac{n_eT_e}{\Om_{ce}^2\nu_{ei}} &
+    &\eta_{3,e}=\frac{n_eT_e}{2\Om_{ce}} &
+    &\eta_{4,e}=\frac{n_eT_e}{\Om_{ce}} &
+\end{align*}
+Q: How to transform the partial derivatives?
+A: See diff geom note (use chain rule)
+
+Q: How to transform the components?
+A:
+
+
+WAIT WAIT WAIT: CALCULATE EVERYTHING IN CARTESIAN
+TRANSFORM ONLY DIVERGENCE OF PI TENSOR
+%NO PROBLEM WITH COMPONENTS as u^x, AS f(x)=f(x(x'))
+
+After calculated the pi tensor in cartesian: Components needs to be
+recalculated
+Q: How to transform the partial derivatives?
+A: See diff geom note (use chain rule)
+
+Q: How to transform the components?
+A:
+
+
+WAIT WAIT WAIT: CALCULATE EVERYTHING IN CARTESIAN
+TRANSFORM ONLY DIVERGENCE OF PI TENSOR
+%NO PROBLEM WITH COMPONENTS as u^x, AS f(x)=f(x(x'))
+
+After calculated the pi tensor in cartesian: Components needs to be
+recalculated
