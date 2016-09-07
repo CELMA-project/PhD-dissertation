@@ -58,6 +58,503 @@ and
 %
 This means that
 %
+% NOTE: These calculations has been double checked, and found to be OK
+\begin{align*}
+W^{xx} + W^{yy}
+=&
+\partial_x u^{x}_{\a}
++ \partial_x u^{x}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
++ \partial_y u^{y}_{\a}
++ \partial_y u^{y}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
+\\
+=&
+2\partial_x u^{x}_{\a}
++ 2\partial_y u^{y}_{\a}
+- \frac{4}{3} \div \ve{u}_{\a}
+\\
+=&
+2\L(\partial_x u^{x}_{\a}
+    + \partial_y u^{y}_{\a}
+    - \frac{2}{3} \L[\partial_x u^{x}_{\a}
+          +\partial_y u^{y}_{\a}
+          +\partial_z u^{z}_{\a}
+                      \R] \R)
+\\
+=&
+\frac{2}{3}\L(\partial_x u^{x}_{\a}
+          + \partial_y u^{y}_{\a}
+          - 2\partial_z u^{z}_{\a} \R)
+\\
+%
+%
+%
+W^{xx} - W^{yy}
+=&
+\partial_x u^{x}_{\a}
++ \partial_x u^{x}_{\a}
+- \frac{2}{3} \div \ve{u}_{\a}
+- \partial_y u^{y}_{\a}
+- \partial_y u^{y}_{\a}
++ \frac{2}{3} \div \ve{u}_{\a}
+\\
+=&
+2\partial_x u^{x}_{\a} -2 \partial_y u^{y}_{\a}
+\\
+=&
+2\L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+\\
+%
+%
+%
+W^{zz}
+=&
+\partial_z u^{z}_{\a} + \partial_z u^{z}_{\a} - \frac{2}{3} \div \ve{u}_{\a}
+\\
+%
+=&
+2\partial_z u^{z}_{\a} - \frac{2}{3}
+    \L(\partial_x u^{x}_{\a}
+       +\partial_y u^{y}_{\a}
+       +\partial_z u^{z}_{\a}
+    \R)
+\\
+%
+=&
+\frac{4}{3} \partial_z u^{z}_{\a} - \frac{2}{3}
+    \L(\partial_x u^{x}_{\a}
+       +\partial_y u^{y}_{\a}
+    \R)
+\\
+%
+%
+%
+%
+W^{xy}
+=&
+\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}
+\\
+%
+%
+%
+%
+W^{xz}
+=&
+\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}
+\\
+%
+%
+%
+W^{yz}
+=&
+\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}
+%
+\end{align*}
+%
+Now: Take div of pi tensor
+%
+% NOTE: Checked that agrees with Helander
+% NOTE: Cheked that inserted correct
+\begin{align*}
+    \pi^{xx}_{\a}
+    =& -\frac{\eta_{\a,0}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{\a,1}}{2}\L(W^{xx} - W^{yy}\R)
+       -\eta_3 W^{xy}
+    \\
+    =& -\frac{\eta_{\a,0}}{2}
+            \frac{2}{3}\L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+       -\frac{\eta_{\a,1}}{2}
+            2\L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+            -\eta_{\a,3}
+       \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)
+     \\
+    =& -\frac{\eta_{\a,0}}{3}
+                       \L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+       -      \eta_{\a,1}
+             \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+             -\eta_{\a,3}
+       \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)
+    \\
+    %
+    %
+    %
+\pi^{yy}_{\a}
+    =& -\frac{\eta_{\a,0}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{\a,1}}{2}\L(W^{yy} - W^{xx}\R)
+       +\eta_{\a,3}W^{xy}
+    \\
+    =& -\frac{\eta_{\a,0}}{2}
+    \frac{2}{3}\L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+              + \frac{ \eta_{\a,1}}{2}
+       2 \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+     +\eta_{\a,3}
+     \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)
+    \\
+    =& -\frac{\eta_{\a,0}}{3}
+                       \L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+       +      \eta_{\a,1}
+             \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+       +\eta_{\a,3}
+       \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)
+    \\
+    %
+    %
+    %
+\pi^{zz}_{\a}
+    =& -\eta_{\a,0}W^{zz}
+    \\
+    =& -\eta_{\a,0}
+        \L(
+        \frac{4}{3} \partial_z u^{z}_{\a} - \frac{2}{3}
+        \L[\partial_x u^{x}_{\a}
+           +\partial_y u^{y}_{\a}
+        \R]
+        \R)
+    \\
+    =& -\frac{2\eta_{\a,0}}{3}
+        \L(
+        2\partial_z u^{z}_{\a} -
+        \L[\partial_x u^{x}_{\a}
+           +\partial_y u^{y}_{\a}
+        \R]
+        \R)
+    \\
+    %
+    %
+    %
+\pi^{xy}_{\a} = \pi^{yx}_{\a}
+=& -\eta_{\a,1} W^{xy}
+    +\frac{\eta_{\a,3}}{2} \L(W^{xx}-W^{yy}\R)
+    \\
+    =& -\eta_{\a,1}
+    \L(\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}\R)
+    +\frac{\eta_{\a,3}}{2}
+    2\L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+    \\
+    =& -\eta_{\a,1}
+    \L(\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}\R)
+    +      \eta_{\a,3}
+     \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+    \\
+    %
+    %
+    %
+    %
+    \pi^{xz}_{\a} = \pi^{zx}_{\a}
+=& -\eta_{\a,2}W^{xz} - \eta_{\a,4}W^{yz}
+    \\
+    =& -\eta_{\a,2}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)
+    - \eta_{\a,4}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)
+    \\
+    %
+    %
+    %
+    \pi^{yz}_{\a} = \pi^{zy}_{\a}
+    =& -\eta_{\a,2}W^{yz} + \eta_{\a,4}W^{xz}
+    \\
+    =& -\eta_{\a,2}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)
+    + \eta_{\a,4}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)
+\end{align*}
+%
+Divergence of tensor
+%
+% Checked: Checked, and this agrees
+\begin{align*}
+    \div\te{\pi}_\a
+    =&
+    \ve{e}^i\cdot\partial_i \pi^{jk}_\a\ve{e}_j\ve{e}_k
+    \note{Cartesian system}
+    \\
+    %
+    =&
+    \ve{e}^i\cdot\ve{e}_j\ve{e}_k\partial_i \pi^{jk}_\a
+    \\
+    %
+    =&
+    \ve{e}_k\partial_i \pi^{ik}_\a
+    \\
+    %
+    =&
+    \quad
+    \ve{e}_x
+    \L(
+      \partial_x \pi^{xx}_\a
+    + \partial_y \pi^{yx}_\a
+    + \partial_z \pi^{zx}_\a
+    \R)
+    \\&+
+    \ve{e}_y
+    \L(
+      \partial_x \pi^{xy}_\a
+    + \partial_y \pi^{yy}_\a
+    + \partial_z \pi^{zy}_\a
+    \R)
+    \\&+
+    \ve{e}_z
+    \L(
+      \partial_x \pi^{xz}_\a
+    + \partial_y \pi^{yz}_\a
+    + \partial_z \pi^{zz}_\a
+    \R)
+    \\
+    %
+    %
+    %
+    =&
+    \quad
+    \ve{e}_x
+    \L(
+      \partial_x
+      \L[ -\frac{\eta_{\a,0}}{3}
+                       \L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+       -      \eta_{\a,1}
+             \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+       -\eta_3
+       \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)\R]
+       \R.\\
+       &\L.\qquad
+       + \partial_y
+    \L[ -\eta_{\a,1}
+    \L(\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}\R)
+    +      \eta_{\a,3}
+     \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)\R]
+       \R.\\
+       &\L.\qquad
+    + \partial_z
+    \L[ -\eta_{\a,2}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)
+    - \eta_{\a,4}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_y
+    \L(
+      \partial_x
+      \L[ -\eta_{\a,1}
+    \L(\partial_x u^{y}_{\a} + \partial_y u^{x}_{\a}\R)
+    +      \eta_{\a,3}
+     \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)\R]
+       \R.\\
+       &\L.\qquad
+    + \partial_y
+    \L[ -\frac{\eta_{\a,0}}{3}
+                       \L(\partial_x u^{x}_{\a}
+              + \partial_y u^{y}_{\a}
+              - 2\partial_z u^{z}_{\a} \R)
+       +      \eta_{\a,1}
+             \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
+       +\eta_{\a,3}
+       \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)\R]
+       \R.\\
+       &\L.\qquad
+    + \partial_z
+    \L[ -\eta_{\a,2}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)
+    + \eta_{\a,4}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_z
+    \L(
+      \partial_x
+      \L[ -\eta_{\a,2}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)
+    - \eta_{\a,4}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)\R]
+       \R.\\
+       &\L.\qquad
+    + \partial_y
+    \L[ -\eta_{\a,2}
+    \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)
+    + \eta_{\a,4}
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)\R]
+       \R.\\
+       &\L.\qquad
+    + \partial_z
+    \L[ -\frac{2\eta_{\a,0}}{3}
+        \L(
+        2 \partial_z u^{z}_{\a} -
+        \L[\partial_x u^{x}_{\a}
+           +\partial_y u^{y}_{\a}
+        \R]
+        \R)\R]
+    \R)
+\end{align*}
+%
+As with collisionality, we assume that the viscosities are constants
+%
+\begin{align*}
+    \div\te{\pi}_\a
+    \simeq&
+    \quad
+    \ve{e}_x
+    \L(
+       -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_x^2 u^{x}_{\a}
+              + \partial_x\partial_y u^{y}_{\a}
+              - 2\partial_x\partial_z u^{z}_{\a} \R]
+       -      \eta_{\a,1}
+             \L[\partial_x^2 u^{x}_{\a} - \partial_x\partial_y u^{y}_{\a} \R]
+       -\eta_3
+       \L[ \partial_x^2 u^{y}_{\a} + \partial_x\partial_y u^{x}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,1}
+    \L[\partial_y\partial_x u^{y}_{\a} + \partial_y^2 u^{x}_{\a}\R]
+    +      \eta_{\a,3}
+     \L[\partial_y\partial_x u^{x}_{\a} - \partial_y^2 u^{y}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,2}
+    \L[\partial_z\partial_x u^{z}_{\a} + \partial_z^2 u^{x}_{\a}\R]
+    - \eta_{\a,4}
+    \L[\partial_z\partial_y u^{z}_{\a} + \partial_z^2 u^{y}_{\a}\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_y
+    \L(
+      -\eta_{\a,1}
+    \L[\partial_x^2 u^{y}_{\a} + \partial_x\partial_y u^{x}_{\a}\R]
+    +      \eta_{\a,3}
+     \L[\partial_x^2 u^{x}_{\a} - \partial_x\partial_y u^{y}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+     -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_y\partial_x u^{x}_{\a}
+              + \partial_y^2 u^{y}_{\a}
+              - 2\partial_y\partial_z u^{z}_{\a} \R]
+       +      \eta_{\a,1}
+             \L[\partial_y\partial_x u^{x}_{\a} - \partial_y^2 u^{y}_{\a} \R]
+       +\eta_{\a,3}
+       \L[ \partial_y\partial_x u^{y}_{\a} + \partial_y^2 u^{x}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,2}
+    \L[\partial_z\partial_y u^{z}_{\a} + \partial_z^2 u^{y}_{\a}\R]
+    + \eta_{\a,4}
+    \L[\partial_z\partial_x u^{z}_{\a} + \partial_z^2 u^{x}_{\a}\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_z
+    \L(
+       -\eta_{\a,2}
+    \L[\partial_x^2 u^{z}_{\a} + \partial_x\partial_z u^{x}_{\a}\R]
+    - \eta_{\a,4}
+    \L[\partial_x\partial_y u^{z}_{\a} + \partial_x\partial_z u^{y}_{\a}\R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,2}
+    \L[\partial_y^2 u^{z}_{\a} + \partial_y\partial_z u^{y}_{\a}\R]
+    + \eta_{\a,4}
+    \L[\partial_y\partial_x u^{z}_{\a} + \partial_y\partial_z u^{x}_{\a}\R]
+       \R.\\
+       &\L.\qquad
+       -\frac{2\eta_{\a,0}}{3}
+        \L[
+        2\partial_z^2 u^{z}_{\a} -
+        \L(\partial_z\partial_x u^{x}_{\a}
+           +\partial_z\partial_y u^{y}_{\a}
+        \R)
+        \R]
+    \R)
+    \\
+    %
+    %
+    %
+    %
+    %
+    =&
+    \quad
+    \ve{e}_x
+    \L(
+       -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_x^2 u^{x}_{\a}
+              + \partial_x\partial_y u^{y}_{\a}
+              - 2\partial_x\partial_z u^{z}_{\a} \R]
+       -      \eta_{\a,1}
+             \L[\L(\partial_x^2 + \partial_y^2\R) u^{x}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+    -      \eta_{\a,3}
+     \L[\L(\partial_x^2+\partial_y^2 \R) u^{y}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,2}
+    \L[\partial_z\partial_x u^{z}_{\a} + \partial_z^2 u^{x}_{\a}\R]
+    - \eta_{\a,4}
+    \L[\partial_z\partial_y u^{z}_{\a} + \partial_z^2 u^{y}_{\a}\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_y
+    \L(
+     -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_y\partial_x u^{x}_{\a}
+              + \partial_y^2 u^{y}_{\a}
+              - 2\partial_y\partial_z u^{z}_{\a} \R]
+       -      \eta_{\a,1}
+        \L[\L(\partial_x^2 + \partial_y^2\R) u^{y}_{\a} \R]
+       \R.\\
+       &\L.\qquad
+        + \eta_{\a,3}
+     \L[\L(\partial_x^2 + \partial_y^2 \R)u^{x}_{\a}\R]
+       \R.\\
+       &\L.\qquad
+     -\eta_{\a,2}
+    \L[\partial_z\partial_y u^{z}_{\a} + \partial_z^2 u^{y}_{\a}\R]
+    + \eta_{\a,4}
+    \L[\partial_z\partial_x u^{z}_{\a} + \partial_z^2 u^{x}_{\a}\R]
+    \R)
+    %
+    \\&+
+    \ve{e}_z
+    \L(
+    -\frac{2\eta_{\a,0}}{3}
+        \L[
+        2\partial_z^2 u^{z}_{\a} -
+        \L(\partial_z\partial_x u^{x}_{\a}
+           +\partial_z\partial_y u^{y}_{\a}
+        \R)
+        \R]
+       \R.\\
+       &\L.\qquad
+       -\eta_{\a,2}
+    \L[\L(\partial_x^2  + \partial_y^2\R) u^{z}_{\a}
+     + \partial_x\partial_z u^{x}_{\a}  + \partial_y\partial_z u^{y}_{\a}\R]
+       \R.\\
+       &\L.\qquad
+    + \eta_{\a,4}
+    \L[\partial_y\partial_z u^{x}_{\a}- \partial_x\partial_z u^{y}_{\a}\R]
+    \R)
+\end{align*}
+%
+WHEN INSERT ExB, LOOKS LIKE STUFF DISAPPEARS :D
+
+
+
+
+
+
+OLD
 \begin{align*}
 W^{xx} + W^{yy}
 =&
@@ -220,67 +717,67 @@ transform it to cylindrical coordinates
 \begin{align*}
     \pi^{xx}_{\a}
     %
-    =& -\frac{\eta_{0,\a}}{2}\L(W^{xx} + W^{yy}\R)
-       -\frac{\eta_{1,\a}}{2}\L(W^{xx} - W^{yy}\R)
+    =& -\frac{\eta_{\a,0}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{\a,1}}{2}\L(W^{xx} - W^{yy}\R)
        -\eta_3 W^{xy}
     \\
     %
-    =&  \frac{2\eta_{0,\a}}{3}\partial_z u^{z}_{\a,\|}
-       -\frac{2\eta_{1,\a}}{B}\partial_x \partial_y \phi
-       -\frac{ \eta_{3,\a}}{B}\L(-\partial_x^2 \phi
+    =&  \frac{2\eta_{\a,0}}{3}\partial_z u^{z}_{\a,\|}
+       -\frac{2\eta_{\a,1}}{B}\partial_x \partial_y \phi
+       -\frac{ \eta_{\a,3}}{B}\L(-\partial_x^2 \phi
        + \partial_y^2 \phi \R)
     \\
     %
     %
     %
 \pi^{yy}_{\a}
-    =& -\frac{\eta_{0,\a}}{2}\L(W^{xx} + W^{yy}\R)
-       -\frac{\eta_{1,\a}}{2}\L(W^{yy} - W^{xx}\R)
-       +\eta_{3,\a}W^{xy}
+    =& -\frac{\eta_{\a,0}}{2}\L(W^{xx} + W^{yy}\R)
+       -\frac{\eta_{\a,1}}{2}\L(W^{yy} - W^{xx}\R)
+       +\eta_{\a,3}W^{xy}
     \\
     %
-    =&  \frac{2\eta_{0,\a}}{3}\partial_z u^{z}_{\a,\|}
-       +\frac{2\eta_{1,\a}}{B}\partial_x \partial_y \phi
-       +\frac{ \eta_{3,\a}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
+    =&  \frac{2\eta_{\a,0}}{3}\partial_z u^{z}_{\a,\|}
+       +\frac{2\eta_{\a,1}}{B}\partial_x \partial_y \phi
+       +\frac{ \eta_{\a,3}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
     \\
     %
     %
     %
 \pi^{zz}_{\a}
-    =& -\eta_{0,\a}W^{zz}
+    =& -\eta_{\a,0}W^{zz}
     \\
     %
-    =& - \frac{4\eta_{0,\a}}{3} \partial_z u^{z}_{\a,\|}
-    \\
-    %
-    %
-    %
-\pi^{xy}_{\a} =& \pi^{yx}_{\a}
-    = -\eta_{1,\a}W^{xy} -\frac{\eta_{3,\a}}{2} \L(W^{xx}-W^{yy}\R)
-    \\
-    %
-    =& -\frac{\eta_{1,\a}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
-    -\frac{2\eta_{3,\a}}{B}\partial_x \partial_y \phi
+    =& - \frac{4\eta_{\a,0}}{3} \partial_z u^{z}_{\a,\|}
     \\
     %
     %
     %
-\pi^{xz}_{\a} =& \pi^{zx}_{\a}
-    = -\eta_{2,\a}W_{xz} - \eta_{4,\a}W_{yz}
+    \pi^{xy}_{\a} = \pi^{yx}_{\a}
+    &= -\eta_{\a,1}W^{xy} -\frac{\eta_{\a,3}}{2} \L(W^{xx}-W^{yy}\R)
     \\
     %
-    =& -\eta_{2,\a}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
-        - \eta_{4,\a}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
+    =& -\frac{\eta_{\a,1}}{B}\L(-\partial_x^2 \phi + \partial_y^2 \phi \R)
+    -\frac{2\eta_{\a,3}}{B}\partial_x \partial_y \phi
     \\
     %
     %
     %
-\pi^{yz}_{\a} =& \pi^{zy}_{\a}
-    = -\eta_{2,\a}W_{yz} + \eta_{4,\a}W_{xz}
+    \pi^{xz}_{\a} = \pi^{zx}_{\a}
+    =& -\eta_{\a,2}W^{xz} - \eta_{\a,4}W^{yz}
     \\
     %
-    =& -\eta_{2,\a}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
-    + \eta_{4,\a}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
+    =& -\eta_{\a,2}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
+        - \eta_{\a,4}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
+    \\
+    %
+    %
+    %
+    \pi^{yz}_{\a} = \pi^{zy}_{\a}
+=& -\eta_{\a,2}W^{yz} + \eta_{\a,4}W^{xz}
+    \\
+    %
+    =& -\eta_{\a,2}\L(\partial_y u^{z}_{\a,\|} - \frac{1}{B} \partial_z \partial_x \phi\R)
+    + \eta_{\a,4}\L(\partial_x u^{z}_{\a, \|} + \frac{1}{B}\partial_z \partial_y \phi\R)
 \end{align*}
 %
 We have that
