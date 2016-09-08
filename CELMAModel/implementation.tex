@@ -9,7 +9,8 @@ We observe the dependency of $\phi$ in equation (\ref{eq:cyto_dens}) -
 (\ref{eq:cyto_vortD_evolution}), but that $\phi$ is not described by a
 initial boundary value problem equation. Instead, we must find alternative ways
 of extracting $\phi$. We will in the following discuss two ways of doing so.
-
+% TODO: Delete me if not in thesis
+%       extra/constraint can be inserted here
 
 \subsubsection{As a matrix inversion problem}
 %
@@ -134,37 +135,6 @@ which is symmetric. Although difficult, one can show that the non-linear
 elliptic equation in its symmetric form can be singular positive definite and
 thus be solved using the conjugate gradient method.
 % FIXME: Add reference
-
-\subsection{As a constraint}
-%
-\begin{align*}
-    \begin{bmatrix}
-                                        & & 0  \\
-        (\mathbb{I} - \gamma\mathbb{J}) & & 0  \\
-                                        & & 0  \\
-                                        & & 0  \\
-        0                               & -1 & \grad_\perp^2 & \\
-    \end{bmatrix}
-    \cdot
-    \begin{bmatrix}
-        \ve{\ln(n)}^{n+1}  \\
-        \ve{u_{e,\|}}^{n+1}\\
-        \ve{u_{i,\|}}^{n+1}\\
-        \ve{\Om}^{n+1}     \\
-        \ve{\phi}^{n+1}    \\
-    \end{bmatrix}
-    =&
-    \begin{bmatrix}
-        \ve{\ln(n)}^{n}  \\
-        \ve{u_{e,\|}}^{n}\\
-        \ve{u_{i,\|}}^{n}\\
-        \ve{\Om}^{n}     \\
-        \ve{0}           \\
-    \end{bmatrix}
-\end{align*}
-%
-YOU ARE HERE:
-NOTE: CURRENTLY LOOKS IMPOSSIBLE AS EVOLVING VORTD RATHER THAN VORT
 
 \subsubsection{The Naulin solver}
 %
