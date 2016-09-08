@@ -49,7 +49,11 @@
 \input{slowlyVaryingBField}
 
 \chapter{The CELMA model}
-\input{CELMAModel}
+\input{CELMAModel/CELMAModel}
+\input{CELMAModel/normalization}
+\input{CELMAModel/boundaries}
+\input{CELMAModel/implementation}
+\input{CELMAModel/setOfEquations}
 
 %\chapter{Numerical solution of the equations}
 %\input{solvingNumerically}
@@ -63,6 +67,14 @@
 \chapter{The electrostatic approximation}
 \label{app:elstat}
 \input{elstat}
+
+\chapter{Parallel current and momentum density}
+\label{app:currentMomentum}
+\input{currentMomentum}
+
+\chapter{The viscosity tensor}
+\label{app:piTensor}
+\input{piTensor}
 
 \chapter{Clebsch coordinate system}
 \label{app:Clebsch}
@@ -80,13 +92,17 @@
 \label{app:vortDAdv}
 \input{modifiedVorticityAdvection}
 
+These chapter are work in progress, not meant for thesis
+\chapter{Constraint}
+\input{extra/constraint}
+
 \chapter{Linearization of variables}
 \label{app:linearized}
-\input{linearized}
+\input{extra/linearized}
 
 \chapter{Waves}
 \label{app:waves}
-\input{waves}
+\input{extra/waves}
 
 \markboth{Bibliography}{}
 \bibliographystyle{bib/prsty}
