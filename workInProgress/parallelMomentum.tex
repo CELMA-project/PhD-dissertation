@@ -1,0 +1,367 @@
+\section{Electron parallel momentum}
+The parallel momentum equation for the electrons, under the assumption that $T_e=$
+constant, can be written
+%
+\begin{align*}
+ n_em_e\d_{t,e} \ve{u}_{e,\|}
+ =&
+ - \grad_\| \L(T_e n_e\R)
+ - q_en_e \nabla_\|\phi
+ - \L(\div\te{\pi}_e\R)_\|
+ \\
+ &
+ + \ve{R}_{i\to e, \|}
+ + \ve{R}_{n\to e, \|}
+ - m_e\ve{u}_{e,\|}S_{n,e}
+ \note{$n_i \simeq n_e$\\
+     Assume $\L(\div\te{\pi}_e\R)_\|\simeq0$}
+ \\
+%
+%
+ n m_e\d_{t,e} \ve{u}_{e,\|}
+ =&
+ - T_e \grad_\| n
+ + en \nabla_\|\phi
+ \\
+ &
+ - 0.51 m_e n \nu_{ei}
+ \L(
+    \ve{u}_{e,\|}
+    -
+    \ve{u}_{i,\|}
+ \R)
+ - m_e n \nu_{en} \ve{u}_{e,\|}
+ - m_e\ve{u}_{e,\|}S_{n,e}
+ \\
+%
+%
+n m_e\d_{t} \ve{u}_{e,\|}
+ =&
+ - n m_e \ve{u}_{e,\|} \cdot \nabla \ve{u}_{e,\|}
+ - T_e \grad_\| n
+ + en \nabla_\|\phi
+ \\
+ &
+ - 0.51 m_e n \nu_{ei}
+ \L(
+    \ve{u}_{e,\|}
+    -
+    \ve{u}_{i,\|}
+ \R)
+ - m_e n \nu_{en}
+    \ve{u}_{e,\|}
+ - m_e\ve{u}_{e,\|}S_{n,e}
+ \\
+%
+%
+n m_e\d_{t} \L( \ve{b}u_{e,\|} \R)
+ =&
+ - n m_e u_{e,\|} \ve{b} \cdot \nabla \L(\ve{b}u_{e,\|}\R)
+ - T_e \ve{b}\partial_\| n
+ + en  \ve{b}\partial_\|\phi
+ \\
+ &
+ - 0.51 m_e n \nu_{ei}
+ \L(
+    \ve{b}u_{e,\|}
+    -
+    \ve{b}u_{i,\|}
+ \R)
+ - m_e n \nu_{en}
+    \ve{b}u_{e,\|}
+ - m_e\ve{b}u_{e,\|}S_{n,e}
+  \note{$\partial_t \ve{b} = \partial_i \ve{b} =0$}
+ \\
+%
+%
+\ve{b}n m_e\d_{t}  u_{e,\|}
+ =&
+ - \ve{b} n m_e u_{e,\|} \partial_\| u_{e,\|}
+ - \ve{b}T_e \partial_\| n
+ + \ve{b}en  \partial_\|\phi
+ \\
+ &
+ - 0.51\ve{b} m_e n \nu_{ei}
+ \L(
+    u_{e,\|}
+    -
+    u_{i,\|}
+ \R)
+ - \ve{b}m_e n \nu_{en} u_{e,\|}
+ - \ve{b}m_eu_{e,\|}S_{n,e}
+ \\
+%
+%
+n m_e\d_{t}  u_{e,\|}
+ =&
+ - n m_e u_{e,\|} \partial_\| u_{e,\|}
+ - T_e \partial_\| n
+ + en  \partial_\|\phi
+ \\
+ &
+ - 0.51 m_e n \nu_{ei}
+ \L(
+    u_{e,\|}
+    -
+    u_{i,\|}
+ \R)
+ - m_e n \nu_{en} u_{e,\|}
+ - m_eu_{e,\|}S_{n,e}
+  \numberthis
+  \label{eq:non_norm_e_mom}
+\end{align*}
+%
+
+\section{Ion parallel momentum}
+For the ions, using that $T_i = 0$, we have
+%
+\begin{align*}
+ n_im_i\d_{t,i} \ve{u}_{i,\|}
+ =&
+ - \grad_\| \L(T_i n_i\R)
+ - q_in_i\nabla_\|\phi
+ - \L(\div\te{\pi}_i\R)_\|
+ \note{Momentum conservation\\
+       $n_e \simeq n_i$\\
+       $T_i = 0$}
+ \\
+ &
+ + \ve{R}_{e\to i,\|}
+ + \ve{R}_{n\to i,\|}
+ - m_i \ve{u}_{i,\|}S_{n,i}
+ \\
+%
+%
+nm_i\d_{t} \ve{u}_{i,\|}
+ =&
+ - nm_i \ve{u}_{i,\|} \cdot \grad \ve{u}_{i,\|}
+ - nm_i\d_{t,i} \ve{u}_{i,\|}
+ - en\nabla_\|\phi
+ - \L(\div\te{\pi}_i\R)_\|
+ \\
+ &
+ - \ve{R}_{i\to e,\|}
+ + \ve{R}_{n\to i,\|}
+ - m_i \ve{u}_{i,\|}S_{n,i}
+ \note{Assume $\L(\div\te{\pi}_i\R)_\|\simeq0$}
+ \\
+%
+%
+nm_i\d_{t} \L(\ve{b}u_{i,\|}\R)
+ =&
+ - nm_i u_{i,\|} \ve{b}\cdot \grad\L( \ve{b}u_{i,\|}\R)
+ - en\ve{b}\partial_\|\phi
+ \\
+ &
+ + 0.51m_en \nu_{ei}\L(\ve{b}u_{e,\|}-\ve{b}u_{i,\|}\R)
+ - m_in \nu_{in}\ve{b}u_{i,\|}
+ - m_i \ve{b}u_{i,\|}S_{n,i}
+  \note{$\partial_t \ve{b} = \partial_i \ve{b} =0$}
+ \\
+%
+%
+\ve{b}nm_i\d_{t} u_{i,\|}
+ =&
+ - \ve{b}nm_i u_{i,\|} \partial_\| u_{i,\|}
+ - \ve{b}en\partial_\|\phi
+ \\
+ &
+ + 0.51 \ve{b} m_en \nu_{ei}\L(u_{e,\|}-u_{i,\|}\R)
+ - \ve{b}m_in \nu_{in}u_{i,\|}
+ - \ve{b}m_i u_{i,\|}S_{n,i}
+ \\
+%
+%
+nm_i\d_{t} u_{i,\|}
+ =&
+ - nm_i u_{i,\|} \partial_\| u_{i,\|}
+ - en\partial_\|\phi
+ \\
+ &
+ + 0.51 m_en \nu_{ei}\L(u_{e,\|}-u_{i,\|}\R)
+ - m_in \nu_{in}u_{i,\|}
+ - m_i u_{i,\|}S_{n,i}
+  \numberthis
+  \label{eq:non_norm_i_mom}
+\end{align*}
+%
+
+\subsection{Normalization}
+\subsection{Normalization of \texorpdfstring{$u_{e,\|}$
+    }{parallel electron momentum}}
+%
+Normalization of equation (\ref{eq:non_norm_e_mom}) yields
+%
+\begin{align*}
+ \om_{ci} c_s
+ \d_t u_{e,\|}
+ =&
+ - \frac{c_s^2}{\rho_s}
+  u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \frac{T_{e,0}n_0}{n_0\rho_s m_e}
+ \frac{T_e}{n} \partial_\| n
+ + \frac{e}{m_e}
+ \frac{T_{e,0}}{e\rho_s} \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - \frac{c_s n_0 \om_{ci}}{n_0}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \frac{m_i}{m_i} \frac{T_{e,0}}{\rho_s m_e}
+ \frac{T_e}{n} \partial_\| n
+ + \frac{m_i}{m_i} \frac{1}{m_e} \frac{T_{e,0}}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \mu \frac{c_s^2}{\rho_s}
+ \frac{T_e}{n} \partial_\| n
+ + \mu \frac{c_s^2}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \om_{ci} c_s
+ u_{e,\|} \partial_\| u_{e,\|}
+ \\
+ &
+ - \mu \om_{ci} c_s
+ \frac{T_e}{n} \partial_\| n
+ + \mu \om_{ci} c_s
+ \partial_\|\phi
+ \\
+ -&
+ \om_{ci} c_s
+ 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \om_{ci} c_s
+ \nu_{en} u_{e,\|}
+ - c_s \om_{ci}
+ \frac{u_{e,\|}S_{n}}{n}
+ \\
+%
+%
+ \d_t u_{e,\|}
+ =&
+ - u_{e,\|} \partial_\| u_{e,\|}
+ - \mu T_e \partial_\| \ln(n)
+ + \mu \partial_\|\phi
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+ \note{$T_e$ is here the normalization constant}
+ \\
+%
+%
+ \d_t u_{e,\|}
+ =&
+ - u_{e,\|} \partial_\| u_{e,\|}
+ + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+ - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
+ - \nu_{en} u_{e,\|}
+ - \frac{u_{e,\|}S_{n}}{n}
+\end{align*}
+%
+\subsection{Normalization of \texorpdfstring{$u_{i,\|}$}{parallel ion momentum}}
+Further, normalization of equation (\ref{eq:non_norm_i_mom}) gives
+%
+\begin{align*}
+ \om_{ci} c_s
+ \d_t u_{i,\|}
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \frac{e}{m_i} \frac{T_{e,0}}{e\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - \frac{c_s n_0 \om_{ci}}{n_0}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \frac{c_s^2}{\rho_s}
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \frac{c_s^2}{\rho_s}
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - c_s \om_{ci}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ =&
+ - \omega_{ci} c_s
+ u_{i,\|} \partial_\| u_{i,\|}
+ \\
+ &
+ - \omega_{ci} c_s
+ \partial_\|\phi
+ \\
+ &
+ - \omega_{ci} c_s
+ \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \om_{ci} c_s
+ \nu_{in} u_{i,\|}
+ - c_s \om_{ci}
+ \frac{u_{i,\|}S_{n}}{n}
+ \\
+%
+%
+ \d_t u_{i,\|}
+ =&
+ - u_{i,\|} \partial_\| u_{i,\|}
+ - \partial_\|\phi
+ - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
+ - \nu_{in} u_{i,\|}
+ - \frac{u_{i,\|}S_{n}}{n}
+\end{align*}
+%
