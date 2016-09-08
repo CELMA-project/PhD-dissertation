@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper,oneside,openright]{report} % twosided
-\usepackage{general}
+\usepackage{../../../../LaTeX/general}
 
 \title{\vspace{-8ex}Derivation of the CELMA equations\vspace{-1ex}}
 \author{Michael L{\o}iten}
@@ -37,7 +37,7 @@
 
 \begin{document}
 \maketitle
-
+%
 \chapter{The kinetic equation}
 \input{kinetic}
 %
@@ -55,9 +55,9 @@
 \input{CELMAModel/implementation}
 \input{CELMAModel/setOfEquations}
 
-%\chapter{Numerical solution of the equations}
-%\input{solvingNumerically}
-%
+\chapter{Numerical solution of the equations}
+\input{solvingNumerically}
+
 \chapter{Verification of the numerics}
 \label{app:verification}
 \input{verification}
