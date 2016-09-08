@@ -547,7 +547,90 @@ As with collisionality, we assume that the viscosities are constants
     \R)
 \end{align*}
 %
-WHEN INSERT ExB, LOOKS LIKE STUFF DISAPPEARS :D
+From the plots, we see that
+$\eta_{\a,0} \gg \eta_{\a,j} \quad j \in \{1,2,3,4\}$. This means that
+%
+\begin{align*}
+    \div\te{\pi}_\a
+    \simeq&
+    \quad
+    \ve{e}_x
+    \L(
+       -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_x^2 u^{x}_{\a}
+              + \partial_x\partial_y u^{y}_{\a}
+              - 2\partial_x\partial_z u^{z}_{\a} \R]
+    \R)
+    %
+    \\&+
+    \ve{e}_y
+    \L(
+     -\frac{\eta_{\a,0}}{3}
+                       \L[\partial_y\partial_x u^{x}_{\a}
+              + \partial_y^2 u^{y}_{\a}
+              - 2\partial_y\partial_z u^{z}_{\a} \R]
+    \R)
+    %
+    \\&+
+    \ve{e}_z
+    \L(
+    -\frac{2\eta_{\a,0}}{3}
+        \L[
+        2\partial_z^2 u^{z}_{\a} -
+        \L(\partial_z\partial_x u^{x}_{\a}
+           +\partial_z\partial_y u^{y}_{\a}
+        \R)
+        \R]
+    \R)
+\end{align*}
+%
+Assuming e cross b is the only
+%
+\begin{align*}
+    \div\te{\pi}_\a
+    \simeq&
+    \quad
+    \ve{e}_x
+    \L(
+       -\frac{\eta_{\a,0}}{3}
+                       \L[\frac{1}{B} \partial_x^2 \partial_y \phi
+              - \frac{1}{B} \partial_x^2\partial_y \phi
+              - 2\partial_x\partial_z u^{z}_{\a} \R]
+    \R)
+    %
+    \\&+
+    \ve{e}_y
+    \L(
+     -\frac{\eta_{\a,0}}{3}
+                       \L[\frac{1}{B} \partial_y^2\partial_x \phi
+              - \frac{1}{B} \partial_y^2 \partial_x \phi
+              - 2\partial_y\partial_z u^{z}_{\a} \R]
+    \R)
+    %
+    \\&+
+    \ve{e}_z
+    \L(
+    -\frac{2\eta_{\a,0}}{3}
+        \L[
+        2\partial_z^2 u^{z}_{\a} -
+        \frac{1}{B} \L(\partial_z\partial_x \partial_y \phi
+           -\partial_z\partial_y \partial_x \phi
+        \R)
+        \R]
+    \R)
+    \\
+    %
+    %
+    =&
+    \quad
+    \ve{e}_x \frac{2\eta_{\a,0}}{3} \partial_x\partial_z u^{z}_{\a}
+    +
+    \ve{e}_y \frac{2\eta_{\a,0}}{3} \partial_y\partial_z u^{z}_{\a}
+    -
+    \ve{e}_z
+    \frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}
+\end{align*}
+%
 
 
 
