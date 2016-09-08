@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper,oneside,openright]{report} % twosided
-\usepackage{../../../../LaTeX/general}
+\usepackage{styles/general}
 
 \title{\vspace{-8ex}Derivation of the CELMA equations\vspace{-1ex}}
 \author{Michael L{\o}iten}
@@ -96,22 +96,26 @@
 
 \chapter{Time solver}
 \label{app:timeSolver}
-\input{timeSolver}
+\input{workInProgress/timeSolver}
 
 \chapter{Preconditioning}
 \label{app:precon}
-\input{precondition}
+\input{workInProgress/precondition}
 
 \chapter{Constraint}
-\input{extra/constraint}
+\input{workInProgress/constraint}
 
 \chapter{Linearization of variables}
 \label{app:linearized}
-\input{extra/linearized}
+\input{workInProgress/linearized}
 
 \chapter{Waves}
 \label{app:waves}
-\input{extra/waves}
+\input{workInProgress/waves}
+
+\chapter{Boussinesq}
+\label{app:boussinesq}
+\input{workInProgress/boussinesq}
 
 \markboth{Bibliography}{}
 \bibliographystyle{bib/prsty}
