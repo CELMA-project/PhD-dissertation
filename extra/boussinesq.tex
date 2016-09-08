@@ -1,3 +1,4 @@
+\section{From slowlyVarying field}
 \subsection{The Boussinesq approximation}
 \label{sec:boussinesq}
 %
@@ -117,3 +118,154 @@ u_{i,\|}\partial_\| \L[ \frac{\grad_\perp \phi}{B} \R] \R)
 %
 Notice that the approximation is only done here, and that we keep $\grad n$
 elsewhere, although they according to the Boussinesq approximation are small.
+
+
+\section{From CELMAModel}
+Under the polarization contribution
+
+\subsubsection{With the Boussinesq approximation}
+If we use the Boussinesq approximation from section \ref{sec:boussinesq}, we
+can in the current magnetic field configuration rewrite equation
+(\ref{eq:boussinesq_vort}) as
+%
+\begin{align*}
+    &- \frac{n_0}{\om_{ci}}
+    \L( \div\L[ \d_t \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div\L[ \L(\partial_t
+     + \ve{u}_E\cdot\grad\R) \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div \partial_t\L( \frac{\grad_\perp \phi}{B} \R)
+     + \div \L(\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R)
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \note{Assume interchangibility of spatial and temporal derivatives}
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + u_{i,\|}\partial_\|\Om
+     + \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+     \R)
+\end{align*}
+
+-----
+Under the complete vorticity equation
+
+
+\subsubsection{With the Boussinesq approximation}
+%
+% FIXME:
+% - Write that the divergence of the source term with grad_perp phi does not cancel
+% - Write a sentence or 2 about the time derivative of n disappears
+From section \ref{sec:boussinesq}, we have that
+%
+\begin{align*}
+    \div\L(\frac{n}{\om_{ci}}\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
+    \simeq&
+    \frac{n_0}{\om_{ci}}\div\L(\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
+\end{align*}
+%
+Using this in equation (\ref{eq:non_norm_vort_2}) gives
+%
+% FIXME:
+%       Boussinesq on
+%       ? Ok to use boussinesq only one place
+%       ? Parallel current terms
+%       ? Pedersen current
+%       ? If take Boussinesq there, why keep it on the other terms
+\begin{align*}
+  %
+  \frac{n_0}{\om_{ci}}
+  \partial_t \Om
+  =&
+  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+  - \frac{n_0}{\om_{ci}}
+    \L(
+    \div\L[ \ve{u}_E\cdot\nabla \L(\frac{\grad_\perp \phi}{B} \R) \R]
+    + \div\L[u_{i,\|}\partial_\|\L(\frac{\grad_\perp \phi}{B}\R)\R]
+    \R)
+ \\
+ &
+ %
+- \frac{1}{\om_{ci}}
+    \div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \numberthis
+ \label{eq:boussinesq_non_norm}
+\end{align*}
+%
+
+
+
+----
+Under finding the potential
+
+If we are using the
+Boussinesq approximation we instead need to solve
+%
+\begin{align*}
+    \Om = \frac{\grad_\perp^2\phi}{B}
+\end{align*}
+%
+for $\phi$.
+
+
+----
+In the set of equations
+
+If we instead use the Boussinesq approximation, equation (\ref{eq:cyto_vort})
+and (\ref{eq:cyto_vortD_evolution}) will be replaced by
+%
+\begin{empheq}[box={\tcbhighmath}]{align*}
+    \frac{\grad_\perp^2 \phi}{B} =& \Om
+    \numberthis
+    \label{eq:cyto_phi_boussinesq}
+    \\
+%
+%
+%
+  \partial_t \Om
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad n
+ \\
+ &
+ %
+  - \div\L(\ve{u}_E\cdot \nabla \frac{\grad_\perp \phi}{B} \R)
+  - u_{i,\|}\partial_\|\Om
+  - \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+ \\
+ &
+ %
+ - S_n \Om - \grad S_n \cdot \frac{ \grad_\perp \phi }{B}
+ + n \partial_\| \L(u_{i,\|} - u_{e,\|}\R)
+ + \L(u_{i,\|} - u_{e,\|}\R) \partial_\| n
+  \\
+  %
+  &
+  + D_{\Om, \|, \text{art}}    \partial_{\|}^2 \Om
+  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om
+  \numberthis
+  \label{eq:cyto_vort_boussinesq}
+\end{empheq}
