@@ -38,6 +38,7 @@
 \begin{document}
 \maketitle
 %
+% FIXME: Use simeq where approximations are used
 \chapter{The kinetic equation}
 \input{kinetic}
 %
@@ -91,5 +92,10 @@
 \chapter{Advection of \texorpdfstring{$\Om^D$}{OmegaD}}
 \label{app:vortDAdv}
 \input{appendices/modifiedVorticityAdvection}
+
+\markboth{Bibliography}{}
+\bibliographystyle{styles/prsty}
+\bibliography{bib/library,bib/nonArticles}
+\addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
