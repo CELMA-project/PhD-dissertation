@@ -8,11 +8,8 @@ code
 We observe the dependency of $\phi$ in equation (\ref{eq:cyto_dens}) -
 (\ref{eq:cyto_vortD_evolution}), but that $\phi$ is not described by a
 initial boundary value problem equation. Instead, we must find alternative ways
-of extracting $\phi$. We will in the following discuss three ways of doing so.
-Two of the methods discussed finds $\phi$ by inversion of the non-linear
-boundary value problem $\Om^D = \div\L(n\grad_\perp\phi\R)$ for $\phi$ for
-every time step, and one finds $\phi$ by imposing a constraint on the system of
-equations.
+of extracting $\phi$. We will in the following discuss two ways of doing so.
+
 
 \subsubsection{As a matrix inversion problem}
 %
@@ -136,6 +133,7 @@ This would give
 which is symmetric. Although difficult, one can show that the non-linear
 elliptic equation in its symmetric form can be singular positive definite and
 thus be solved using the conjugate gradient method.
+% FIXME: Add reference
 
 \subsection{As a constraint}
 %
@@ -170,272 +168,158 @@ NOTE: CURRENTLY LOOKS IMPOSSIBLE AS EVOLVING VORTD RATHER THAN VORT
 
 \subsubsection{The Naulin solver}
 %
+The potential can also be found in an iterative way. The method first used by
+Naulin in \cite{Naulin2008} will be presented here, and will be refered to as
+the Naulin solver.
 
-
-
-
-
+The method can be used as long as
 %
-%FIXME:
-FIXME: Rewrite this as implementation has changed
-
+\begin{enumerate}[noitemsep,nolistsep]
+    \item $\div\L(\frac{\grad_\perp\phi}{B}\R) = \frac{\grad_\perp^2\phi}{B}$
+    \item $\grad f \cdot \grad_\perp g = \grad_\perp f \cdot \grad_\perp g$
+\end{enumerate}
 %
-We will solve the derived equations using the BOUT++ framework, using the field
-aligned discretization operators. We note that we are not working in a field
-aligned coordinate system, but in a cylindrical coordinate system described in
-appendix \ref{app:cylcoord}. The difference between the field aligned and our
-cylindrical coordinate system lays in the value of $B$, where $B_\text{Field
-    aligned}=\frac{1}{\rho}$, whereas $B_\text{Our system}=\text{Constant}$.
-The only place one needs to take care about this is when using the Poisson
-brackets to calculate the $\ve{E}\times \ve{B}$ advection, which will be
-discussed in the next section.
+Point 1. is satisfied in our system as $B$ is constant, and because derivatives
+of the perpendicular basis vectors does not yield parallel components in our
+system. Point 2. is satisfied as the dot product of the perpendicular basis
+vectors and the parallel basis vector is zero. We then get that
+%
+\begin{align*}
+    \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)\\
+    %
+    =& n\div\L(\frac{\grad_\perp\phi}{B}\R) +
+    \frac{\grad_\perp\phi}{B}\cdot\grad n
+    \\
+    %
+    =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
+    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \frac{\Om^D}{n} =& \Om +
+    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
+    \\
+    %
+    \Om =& \frac{\Om^D}{n} -
+    \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi}{B}
+\end{align*}
+%
+Using square bracket superscript as iteration number, the algorithm can be
+stated in the following way:
+%
+\begin{algorithm}
+\begin{enumerate}[noitemsep,nolistsep]
+    \item Calculate
+        $ \Om^{[i]} = \frac{\Om^D}{n} -
+        \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi^{[i]}}{B}
+        $
+    \item Invert $\grad_\perp^2 \frac{\phi^{[i+1]}}{B} = \Om^{[i]}$ by the method
+        described in \ref{app:lapInv}.
+    \item Calculate
+        $E_{\text{abs}, L_\infty} = \max \L|\phi^{[i]} - \phi^{[i+1]}\R|$
+        and
+        $E_{\text{rel}, L_\infty} = \max \L|\frac{\phi^{[i]} - \phi^{[i+1]}}{\phi^{[i]}}\R|$
+    \item Check whether $E_{\text{abs}, L_\infty} > \text{Tolerance}_\text{abs}$
+    \begin{itemize}[noitemsep,nolistsep]
+        \item If yes: Check $E_{\text{abs}, L_\infty} > \text{Tolerance}_\text{rel}$
+            \begin{itemize}[noitemsep,nolistsep]
+                \item If yes: Assign $\phi^{[i+1]} \to \phi^{[i]}$, increase the
+                    iteration number, throw an error if the iteration number is
+                    above a predefined max iteration number, if not repeat from
+                    step 1.
+                \item Else, if no: Stop. Function returns
+            \end{itemize}
+        \item Else, if no: Stop. Function returns
+    \end{itemize}
+\end{enumerate}
+\end{algorithm}
+%
 
-\subsection{\texorpdfstring{$\ve{E}\times \ve{B}$}{ExB} advection}
+
+%FIXME: MAKE APPENDIX
+FIXME: MAKE APPENDIX
+\subsubsection{LAPLACE INVERSION}
+
+
+\subsection{Advective terms}
 \label{sec:ExBadv}
-% FIXME:
-FIXME: See Derivation of pure solenoid field in the coordinates manual: We are
-interested in the pure solenoidal field. What about the strength of the field
-when normalizing? Metric of Clebsch and cylinder coincides, but BOUT++ return
-Arakawa in Clebsch. Note that our field strength is only appearing in units
-like $\rho_s$.
+As already noted in section \ref{sec:vecAdvTerm}, we can write
+$\ve{E}\times\ve{B}$-advective terms as Poisson brackets. The proof is found in
+appendix \ref{app:poisson}. The benefits of writing terms on Poisson brackets
+are presented in Arakawa's paper from 1966 \cite{Arakwa1966}. In short, the
+paper shows that a na\"ive finite difference discretization of the Poisson
+bracket does not conserve energy and enstrophy, and gives an alternative
+way of discretize in orthogonal curvilinear coordinates in order to keep these
+quantities conserved. If the energy and enstrophy is not conserved, fake
+generation of these quantities occur, which eventually will lead to a blow up
+of the simulation (in a way described by Phillips in \cite{Phillips1959}).
 
-FIXME: Must also be fixed in equations above. NOTE: Volker's implementation
-also works like that
-
-As described in appendix \ref{app:poisson}, we can write the
-$\ve{E}\times\ve{B}$ advection in a field aligned coordinate system as
-%
-\begin{align}
-    \ve{u}_E\cdot\nabla
-    = -\frac{\nabla\phi\times\ve{b}}{B}\cdot\nabla
-    = \{\phi, \cdot\}_{\theta,\rho}
-    = \partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta
-    \label{eq:non_norm_adv}
-\end{align}
-%
-Nevertheless, we are using a cylindrical coordinate system, where $B$ is
-constant.  Since $B$ is constant,
-we can choose $B_0$ in the normalization in such a way that $\widetilde{B}=1$.
-Accordingly, the derivation of the normalized $\ve{E}\times \ve{B}$ advection
-follows that of appendix \ref{app:poisson} with the only difference that we
-multiply the equations with
-$B_\text{Field aligned}=\frac{1}{J}\sqrt{g_{zz}}=\frac{1}{J}=\frac{1}{\rho}$.
-This means that in normalized units (dropping the subscript on the Poisson
-brackets from now in) gives
+It is also possible to discretize the term $\{\ve{u}_E^2, n\}$
+using Arakawa's method. We observe that in cylindrical coordinates, we have
 %
 \begin{align*}
-    \ve{u}_E\cdot\nabla = \frac{1}{J}\{\phi, \cdot\}
+    \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
+    \note{Constant $B$}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        \cdot
+        \L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        , n\R\}
+    \note{Orthogonality}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{g^{\rho\rho}\L(\partial_{\rho} \phi\R)^2+
+        g^{\theta\theta}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
 \end{align*}
-
-
-\subsection{The divergence terms}
 %
-The four divergence terms in equation (\ref{eq:normalized_non_boussinesq})
-cannot be implemented directly into BOUT++. The reason for this is that there
-are not implemented own finite difference (FD) operators for these terms in
-full. Neither can one put together the different FD operators composing the
-full terms in order to build these full term FD operators, as some of the
-boundary conditions will remain unspecified.
+Here, we must take care when we treat the ghost points. No ghost points is
+needed in the $\theta$ direction, as this direction is periodic. Thus, for
+$\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$
+derivatives at the ghost points in $\rho$.
 
-To exemplify this, consider a FD operator such as $\partial^{\text{FD}}_i$
-(where the $^\text{FD}$ denotes a discretized FD operator) working on $f$ to
-yield $g$ (that is $g = \partial^{\text{FD}}_if$). $g$ will be calculated in
-all inner points by using the information of the boundary condition of $f$.
-However, the information of the boundary conditions of $g$ will remain
-unspecified after this operation.  This means that operations such as
-$\partial^{\text{FD}}_j g = \partial_j^{\text{FD}}\L(\partial_i^{\text{FD}}
-f\R)$ is not possible to perform as the boundary condition of $g$ is
-unspecified.
-
-There are at least two ways to work around this problem. Firstly, one could use
-combined operators such as $\L(\parti{^2}{_j\partial_i}\R)^\text{FD}f$.  Given
-that we are using the appropriate finite difference approximation (FDA), we
-would not run into the trouble of the "missing" boundary condition as it does
-not go through the immediate step of calculating $g$.  However, rewriting the
-divergence terms in such a way that we will only make use of FDAs which does
-not give troubles of "missing" boundaries yields many terms, and implementing
-all the resulting terms can be error prone as there are so many of them. Also,
-one should not neglect the possibility of making an calculation mistake along
-the way.
-
-Secondly, one could calculate the boundary condition for $g$ by evaluating the
-derivative of the $f$ on the boundary, and apply it to $g$ before calculating
-$\partial^{\text{FD}}_j$. As this method is less error prone than the previous,
-we will pursue this method.
-
-\subsubsection{Writing out the vectors in the divergence terms}
-% FIXME: Rewrite what BC's you need. Should be properly written in the code
-Before we proceed any further, we will write out the vectors in the divergence
-terms in equation (\ref{eq:normalized_non_boussinesq}). First we consider
+For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost
+points as the derivative is not calculated there. For the inner ghost point,
+the same procedure as used in
+% FIXME: Add section
+FIXME: Add section
+can be used. For the outer ghost point, we use a fourth order Newton polynomial
+of the four previous points in the $\rho$ direction, evaluated in the ghost
+point. If we say that $f=\partial_{\rho} \phi$, this extrapolation reads
 %
 \begin{align*}
-    \ve{u}_E\cdot\grad\L[n\frac{\grad_\perp\phi}{B}\R]
-    =&
-    \frac{1}{J}
-    \L\{\phi, n\frac{\grad_\perp\phi}{B}\R\}
-    \\
-    =&
-    \frac{1}{J}\L(
-    \partial_\theta \phi \partial_\rho \L[n\frac{\grad_\perp\phi}{B}\R]
-    -
-    \partial_\rho \phi \partial_\theta \L[n\frac{\grad_\perp\phi}{B}\R]
-    \R)
-    \\
-    =&
-    \frac{1}{J}\L(
-    \partial_\theta \phi \partial_\rho
-    \L[\ve{e}^\rho n\frac{\partial_\rho \phi}{B}
-    + \ve{e}^\theta n\frac{\partial_\theta \phi}{B}\R]
-    -
-    \partial_\rho \phi \partial_\theta
-    \L[\ve{e}^\rho n\frac{\partial_\rho \phi}{B}
-    + \ve{e}^\theta n\frac{\partial_\theta \phi}{B}\R]
-    \R)
-    \\
-    =&
-    \frac{1}{J}\L(
-    \partial_\theta \phi \partial_\rho
-    \L[ \ve{e}^\rho n\frac{\partial_\rho \phi}{B} \R]
-    +
-    \partial_\theta \phi \partial_\rho
-    \L[ \ve{e}^\theta n\frac{\partial_\theta \phi}{B} \R]
-    -
-    \partial_\rho \phi \partial_\theta
-    \L[ \ve{e}^\rho n\frac{\partial_\rho \phi}{B} \R]
-    -
-    \partial_\rho \phi \partial_\theta
-    \L[ \ve{e}^\theta n\frac{\partial_\theta \phi}{B} \R]
-    \R)
-    \\
-    =&
-    \frac{1}{J}\L(
-    \ve{e}^\rho \partial_\theta \phi \partial_\rho
-    \L[ n\frac{\partial_\rho \phi}{B} \R]
-    +
-    n\frac{\partial_\rho \phi}{B}
-    \partial_\theta \phi \partial_\rho \ve{e}^\rho
-    +
-    \ve{e}^\theta \partial_\theta \phi \partial_\rho
-    \L[ n\frac{\partial_\theta \phi}{B} \R]
-    +
-    n\frac{\partial_\theta \phi}{B}
-    \partial_\theta \phi \partial_\rho \ve{e}^\theta
-    \R.
-    \\&
-    \L.
-    -
-    \ve{e}^\rho \partial_\rho \phi \partial_\theta
-    \L[ n\frac{\partial_\rho \phi}{B} \R]
-    -
-    n\frac{\partial_\rho \phi}{B}
-    \partial_\rho \phi \partial_\theta \ve{e}^\rho
-    -
-    \ve{e}^\theta \partial_\rho \phi \partial_\theta
-    \L[ n\frac{\partial_\theta \phi}{B} \R]
-    -
-    n\frac{\partial_\theta \phi}{B}
-    \partial_\rho \phi \partial_\theta \ve{e}^\theta
-    \R)
-    \\
-    =&
-    \frac{1}{J}\L(
-    \ve{e}^\rho \partial_\theta \phi \partial_\rho
-    \L[ n\frac{\partial_\rho \phi}{B} \R]
-    +
-    n\frac{\partial_\rho \phi}{B}
-    \partial_\theta \phi \L[0\R]
-    +
-    \ve{e}^\theta \partial_\theta \phi \partial_\rho
-    \L[ n\frac{\partial_\theta \phi}{B} \R]
-    +
-    n\frac{\partial_\theta \phi}{B}
-    \partial_\theta \phi
-    \L[ -\frac{1}{\rho} \ve{e}^\theta \R]
-    \R.
-    \\&
-    \L.
-    -
-    \ve{e}^\rho \partial_\rho \phi \partial_\theta
-    \L[ n\frac{\partial_\rho \phi}{B} \R]
-    -
-    n\frac{\partial_\rho \phi}{B}
-    \partial_\rho \phi
-    \L[\rho \ve{e}^\theta\R]
-    -
-    \ve{e}^\theta \partial_\rho \phi \partial_\theta
-    \L[ n\frac{\partial_\theta \phi}{B} \R]
-    -
-    n\frac{\partial_\theta \phi}{B}
-    \partial_\rho \phi
-    \L[ -\frac{1}{\rho} \ve{e}^\rho \R]
-    \R)
-    \\
-    =&
-    \ve{e}^\rho
-    \frac{1}{J}\L(
-    \partial_\theta \phi \partial_\rho  \L[ n\frac{\partial_\rho \phi}{B} \R]
-    -\partial_\rho \phi \partial_\theta \L[ n\frac{\partial_\rho \phi}{B} \R]
-    + \frac{1}{\rho}n\frac{\partial_\theta \phi}{B} \partial_\rho \phi
-    \R)
-    \\&
-    +
-    \ve{e}^\theta
-    \frac{1}{J}\L(
-    \partial_\theta \phi \partial_\rho   \L[ n\frac{\partial_\theta \phi}{B} \R]
-    - \partial_\rho \phi \partial_\theta \L[ n\frac{\partial_\theta \phi}{B} \R]
-    - \frac{1}{\rho} n\frac{\partial_\theta \phi}{B} \partial_\theta \phi
-    - \rho n\frac{\partial_\rho \phi}{B} \partial_\rho \phi
-    \R)
-    \\
-    =&
-    \ve{e}^\rho
-    \frac{1}{J} \L(
-    \L\{ \phi, n\frac{\partial_\rho \phi}{B} \R\}
-    + \frac{1}{J} n\frac{\partial_\theta \phi}{B} \partial_\rho \phi
-    \R)
-    +
-    \ve{e}^\theta
-    \frac{1}{J}\L(
-    \L\{ \phi, n\frac{\partial_\theta \phi}{B} \R\}
-    - \frac{1}{J} n\frac{\partial_\theta \phi}{B} \partial_\theta \phi
-    - Jn\frac{\partial_\rho \phi}{B} \partial_\rho \phi
-    \R)
-    \numberthis
-    \label{eq:vec_adv_expanded}
+    f_{0} = 4f_{-1} - 6f_{-2} + 4f_{-3} - f_{-4}
 \end{align*}
 %
-In order to implement equation (\ref{eq:vec_adv_expanded}) using FDAs as
-described above, we see that we need to specify the $\rho$ boundaries (see next
-section) of $n \partial_\rho \phi$ and $n \partial_\theta \phi$ in order to use
-the Poisson bracket. Note that we do not need to calculate any $\theta$
-boundaries, as the $\theta$-direction is periodical.
+where $f_{0}$ is the value of $f$ at the position of the ghost point and
+$f_{-i}$ is the value of $f$ in a position $-i\Delta \rho$ away from the ghost
+point (where $\Delta \rho$ is the grid spacing in $\rho$).
 
-We also need to figure out what boundaries we need to specify on the terms of
-equation (\ref{eq:vec_adv_expanded}) in order to take the divergence of this
-equation, using a FDA. The divergence in general coordinates is given in
-equation (2.6.39) in
-% FIXME: Fix this cite
-\cite{Dhaeseleer1991book}, and which reads
-%
-\begin{align}
-    \div\ve{A}=\frac{1}{J}\partial_i\L(JA^i\R)
-    \label{eq:div}
-\end{align}
-%
-The orthogonality of the cylindrical coordinate system ensures that
-$A_i\ve{e}^i=A_i g^{ii}\ve{e}_i$. Thus, from equation (\ref{eq:div}) we see that the
-divergence operator will take the $i$ derivatives of the $i$ terms in equation
-(\ref{eq:vec_adv_expanded}). From this we can conclude that we need to
-specify the $\rho$ boundaries of $ \frac{1}{J} \L\{ \phi, n\frac{\partial_\rho
-    \phi}{B} \R\} $ and $ \frac{1}{J^2} n\frac{\partial_\theta \phi}{B}
-\partial_\rho \phi $ before taking the divergence.
+This way of discretizing is second order accurate, as indicated in appendix
+%FIXME: Add to appendix MES
+FIXME: Add to appendix MES
+FIXME: ADD HOW PARALLEL DERIVATIVE OF RHO IS IMPLEMENTED
+YOU ARE HERE
 
-Again, we need not to specify any $\theta$ boundaries as $\theta$ is
-periodical. Further on, as the $\ve{e}^z$ component of equation
-(\ref{eq:vec_adv_expanded}) is $0$, the divergence of equation
-(\ref{eq:vec_adv_expanded}) will yield no parallel derivatives, and no $z$
-boundary conditions need to be set.
 
+
+
+THIS IS FROM DELETED STUFF
 Secondly we have
 %
 \begin{align*}
@@ -457,147 +341,8 @@ where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$
 and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel
 derivatives of equation (\ref{eq:par_vec_adv_expanded}) using a FDA.
 
-Following the discussion above, we need to specify the $\rho$ boundaries of
-$ u_{i,\|}\partial_\| \frac{\partial_\rho \phi}{B}n $ in order to take the
-divergence of equation (\ref{eq:par_vec_adv_expanded}) using a FDA.
-
-Thirdly, we have
-%
-\begin{align*}
-    \frac{\grad_\perp \phi}{B}\L(S_n - n\partial_\|u_{i,\|}\R)
-    =&
-    \ve{e}^\rho\frac{\partial_\rho \phi}{B}\L(S_n - n\partial_\|u_{i,\|}\R)
-    +\ve{e}^\theta\frac{\partial_\theta \phi}{B}\L(S_n - n\partial_\|u_{i,\|}\R)
-    \numberthis
-    \label{eq:i_cont_expanded}
-\end{align*}
-%
-This means that we need to find the $\rho$ boundaries of
-$\frac{\partial_\rho \phi}{B}S_n$
-and
-$\frac{\partial_\rho \phi}{B}n\partial_\|u_{i,\|}$
-before taking the divergence of equation (\ref{eq:i_cont_expanded}) using a FDA.
-
-Finally we have
-%
-\begin{align}
- S_n \frac{ \grad_\perp \phi }{B}
- &=
- \ve{e}^\rho S_n \frac{ \partial_\rho \phi }{B}
- +\ve{e}^\theta S_n \frac{ \partial_\theta \phi }{B}
- \label{eq:div_S}
-\end{align}
-%
-and we see that we need to specify the $\rho$ boundary condition of
-$ \ve{e}^\rho S_n \frac{ \partial_\rho \phi }{B}$ in order to find the
-divergence of equation (\ref{eq:div_S}) using a FDA.
-
-\subsubsection{Specification of BC of the intermediate fields}
-%
-% FIXME: Rewrite this as it is complicatedly written
-In our implementation we will place the boundaries half between the grid
-points. Assume now that we have our original field $f$ which the know the
-boundary condition for, and we wish to evaluate the derivative at the boundary
-so that $g_{\text{B}}=\partial^{\text{FD}}f\bigg|_\text{boundary}$, where
-$g_{\text{B}}$ denotes the value on the boundary of $g$. Approximating
-$g_{\text{B}}$ with a second order centred FDA yields
-%
-\begin{align*}
-    g_{\text{B}} \simeq \frac{f_\text{GP} - f_{\text{LIP}}}{h}
-\end{align*}
-%
-where $f_\text{GP}$ denotes the ghost point of $f$ located an additional grid
-space distance $h$ from $f_{\text{LIP}}$, which is the last inner grid point of
-$f$.
-
-% See
-% BOUT-projects/cylinder_tests/own_diffusion_python/boundary_polynomial
-From $g_{\text{B}}$ we can now use a Newton polynomial to extrapolate the
-value of the rightmost ghost point of $g$. The Newton polynomial reads
-%
-\begin{align}
-    p_N(x)=a_0+\sum_{i=1}^Na_i\prod_{j=0}^{i-1}(x-x_j)
-    \label{eq:new_pol}
-\end{align}
-%
-the coefficients of this polynomial can be found by solving the following set
-of equation up to order $N$ for the unknown coefficients
-%
-\begin{equation}
-    \begin{aligned}
-        g(x_0)=&a_0\\
-        g(x_1)=&a_0+a_1(x_1-x_0)\\
-        g(x_2)=&a_0+a_1(x_2-x_0) + a_2(x_2-x_0)(x_2-x_1)\\
-        \vdots&
-        \label{eq:divdiffsys}
-    \end{aligned}
-\end{equation}
-%
-which can be solved easily using Newton's divided differences.
-We would like to use a fourth order polynomial (standard order used when
-setting boundaries in BOUT++) to determine the value in at the ghost point,
-using information from the three preceding grid points and the value at the
-boundary.
-
-In other words, we let
-\begin{align*}
-x_i =
-\{x_{\text{GP}-3}, x_{\text{GP}-2}, x_{\text{GP}-1}, x_\text{GP}\}=
-\{x_{\text{GP}-3}, x_{\text{GP}-3}+h, x_{\text{GP}-3}+2h, x_{\text{GP}-3}+3h\}
-\end{align*}
-%
-be the four rightmost grid points (including the ghost point $\text{GP}$). We
-use the function values in these points to solve the equation system
-(\ref{eq:divdiffsys}) (by, for example, using the recursive divided differences
-formula), and insert them into the fourth order Newton polynomial of equation
-(\ref{eq:new_pol}). If we evaluate this in
-$x=x_\text{B}=x_{\text{GP}-1} +\frac{h}{2}$, we find that
-%
-\begin{align*}
-    g_\text{GP} =
-    -\frac{1}{5}g(x_{\text{GP}-3})
-    + g(x_{\text{GP}-2})
-    -3g(x_{\text{GP}-1})
-    +\frac{16}{5}g_{\text{B}}
-\end{align*}
-%
-Notice how $x_{\text{GP}-3}$ got cancelled in the equation system
-(\ref{eq:divdiffsys}), and how $h$ got cancelled through the divided differences.
-
-Needless to say, if we need the ghost point of a composite field, let's $e\cdot
-g$, in order to calculate $\partial_i^{\text{FD}} \L(e\cdot g\R)$, we can
-simply multiply the two ghost points together in order to find the composite
-ghost point, that is $\L(e \cdot g\R)_\text{GP} = e_\text{GP}\cdot g_\text{GP}$.
 
 
-\subsection{Finding the potential}
-The observant reader may have noticed that we do not evolve the potential $\phi$
-in time, and thus need another way of knowing $\phi$ at each time step. As we
-know that
-%
-\begin{align*}
-    \Om^D = \div\L(n\frac{\grad_\perp\phi}{B}\R)
-    = n\div\L(\frac{\grad_\perp\phi}{B}\R) +
-    \frac{\grad_\perp\phi}{B}\cdot\grad n
-    = n\frac{\grad_\perp^2\phi}{B} +
-    \grad n\cdot\frac{\grad_\perp\phi}{B}
-    = n\frac{\grad_\perp^2\phi}{B} +
-    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-\end{align*}
-%
-the current time step $\Om^D$ can be solved to find $\phi$. From that we find
-that
-%
-\begin{align*}
-    \Om^D =& n\frac{\grad_\perp^2\phi}{B} +
-    \grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-    \\
-    \frac{\Om^D}{n} =& \Om +
-    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-    \\
-    \Om =& \frac{\Om^D}{n} -
-    \frac{1}{n}\grad_\perp n\cdot\frac{\grad_\perp\phi}{B}
-\end{align*}
 
 
 \subsection{Artificial viscosity}\label{sec:art_visc}
