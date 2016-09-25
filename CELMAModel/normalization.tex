@@ -17,6 +17,8 @@ Thus, we can normalize this with $c_s$. In other words we use the normalization
 $\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} = \frac{\frac{\grad_\perp \phi}{B}}{c_s}$,
 which gives $\frac{\grad_\perp \phi}{B} = \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}c_s$.
 Hence, we can also use
+
+FIXME: Add E and eta. eta is a dynamic viscosity
 %
 \begin{align*}
  \wt{\Om} = \wt{\grad}\cdot\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
@@ -359,6 +361,9 @@ Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
  + 0.51 \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
+   \\&
+ + m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s\frac{4}{3m_i}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
  \\
  %
  =&
@@ -368,6 +373,9 @@ Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
  + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - c_s^2\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
+   \\&
+ + n_0\frac{c_s}{\rho_s}c_s\frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
  \\
  %
  =&
@@ -377,6 +385,9 @@ Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
  + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - c_s\om_{ci}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
+   \\&
+ + n_0\om_{ci}c_s\frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
  \\
  %
   \partial_t\L( n u_{i,\|}\R)
@@ -387,6 +398,9 @@ Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
  + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
+   \\&
+ + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
 \end{align*}
 %
 We notice how the ion mass in the electron pressure got normalized away.
@@ -410,6 +424,8 @@ parallel current can be done in the following way
    + \frac{m_i}{m_i}\frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0 T_e \partial_\| n
    + \frac{m_i}{m_i}n_0\frac{1}{\rho_s}\frac{T_{e,0}}{e}\frac{e^2}{m_e}n E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ - m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s\frac{4e\eta_{e,0}}{3m_e} \partial_z^2 u_{e,\|}
  \\
  %
 =&
@@ -423,6 +439,8 @@ parallel current can be done in the following way
    + \frac{m_i}{m_e}e\frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0 T_e \partial_\| n
    + \frac{m_i}{m_e}n_0\frac{1}{\rho_s}e\frac{T_{e,0}}{m_i}n E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ - n_0\frac{c_s}{\rho_s}c_s\mu\frac{4e\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \\
  %
 =&
@@ -436,6 +454,8 @@ parallel current can be done in the following way
    + \mu e\frac{c_s^2}{\rho_s}n_0 T_e \partial_\| n
    + \mu n_0\frac{c_s^2}{\rho_s}en E_\|
  + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ - n_0\om_{ci}c_se\mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \\
  %
  \partial_t j_\|
@@ -448,13 +468,15 @@ parallel current can be done in the following way
    + \mu T_e \partial_\| n
    + \mu n E_\|
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ - \mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:curNormE}
 \end{align*}
 %
 In section \ref{app:elstat} we show that we are operating in the
 electrostatic regime, and $E_\| \simeq -\partial_\|\phi$ (both normalized
-and non-normalized). This give
+and non-normalized). This gives
 %
 \begin{align*}
  \partial_t j_\|
@@ -467,6 +489,8 @@ and non-normalized). This give
    + \mu T_e \partial_\| n
   - \mu n \partial_\|\phi
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ - \mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:curNormNoE}
 \end{align*}

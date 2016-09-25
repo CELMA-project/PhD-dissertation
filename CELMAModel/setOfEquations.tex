@@ -7,14 +7,14 @@ full set of equations reads
 \begin{empheq}[box={\tcbhighmath}]{align*}
     \Om^D =& \div\L(n\grad_\perp\phi\R)
  \numberthis
- \label{eq:cyto_vortD}
+ \label{eq:celma_vortD}
  \\
 %
 %
 %
 \Om =& \frac{\grad_\perp^2\phi }{B}
  \numberthis
- \label{eq:cyto_vort}
+ \label{eq:celma_vort}
  \\
 %
 %
@@ -39,51 +39,55 @@ full set of equations reads
  + D_{\ln(n), \|, \text{art}} \partial_{\|}^2  \ln(n)
  + D_{\ln(n), \perp, \text{art}} \grad_\perp^2 \ln(n)
  \numberthis
- \label{eq:cyto_dens}
+ \label{eq:celma_dens}
  \\
 %
 %
 %
-\partial_t u_{e,\|}
+  \partial_t\L( n u_{i,\|}\R)
  =&
- -\frac{1}{J}\L\{\phi,u_{e,\|}\R\}
- - u_{e,\|} \partial_\| u_{e,\|}
- + \mu \partial_\| \L(\phi - T_e  \ln(n)\R)
+ - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
+ - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+   \\&
+ + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ - T_e \partial_\| n
+ - n \nu_{i n}u_{i,\|}
+   \\&
+ + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
   \\
   %
   &
- - 0.51 \nu_{ei} \L(u_{e,\|}-u_{i,\|}\R)
- - \nu_{en} u_{e,\|}
- - \frac{u_{e,\|}S_{n}}{n}
-  \\
-  %
-  &
- + \frac{D_{u_{e,\|}, \|, \text{art}   }}{n}  \partial_{\|}^2  u_{e,\|}
- + \frac{D_{u_{e,\|}, \perp, \text{art}}}{n} \grad_\perp^2 u_{e,\|}
+ + D_{n u_{i,\|}, \|, \text{art}} \partial_{\|}^2  n u_{i,\|}
+ + D_{n u_{i,\|}, \perp, \text{art}} \grad_\perp^2 n u_{i,\|}
  \numberthis
- \label{eq:cyto_e_mom}
+ \label{eq:celma_mom_dens}
  \\
 %
 %
 %
-\partial_t u_{i,\|}
+ \partial_t j_\|
  =&
- -\frac{1}{J}\L\{\phi,u_{i,\|}\R\}
- - u_{i,\|} \partial_\| u_{i,\|}
- - \partial_\|\phi
+ - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
+ -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   + \mu T_e \partial_\| n
+  - \mu n \partial_\|\phi
+ + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+   \\&
+ + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
+   \\&
+ - \frac{4}{3}\mu\eta_{e,0}\partial_z^2 u_{e,\|}
   \\
   %
   &
- - \frac{ 0.51 \nu_{ei} }{ \mu } \L(u_{i,\|}-u_{e,\|}\R)
- - \nu_{in} u_{i,\|}
- - \frac{u_{i,\|}S_{n}}{n}
-  \\
-  %
-  &
- +\frac{ D_{u_{i,\|}, \|, \text{art}   }}{n} \partial_{\|}^2  u_{i,\|}
- +\frac{ D_{u_{i,\|}, \perp, \text{art}}}{n} \grad_\perp^2 u_{i,\|}
+ + D_{j_\|, \|, \text{art}} \partial_{\|}^2  j_\|
+ + D_{j_\|, \perp, \text{art}} \grad_\perp^2 j_\|
  \numberthis
- \label{eq:cyto_i_mom}
+ \label{eq:celma_j_par}
  \\
 %
 %
@@ -110,5 +114,5 @@ full set of equations reads
   + D_{\Om^D, \|, \text{art}}    \partial_{\|}^2 \Om^D
   + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
  \numberthis
- \label{eq:cyto_vortD_evolution}
+ \label{eq:celma_vortD_evolution}
 \end{empheq}
