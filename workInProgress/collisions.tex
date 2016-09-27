@@ -1,0 +1,335 @@
+% NOTE: The integrals here can be checked with symbolab.com
+% NOTE: Derivation does not directly compare wit
+%       \nu_{\a\b} = n_\b\expt{\sigma_{\a\b} v}_\a
+%       as extra v^2 by considering drifting Maxwellians. Without this the
+%       nu_ei frequency becomes infinite
+FIXME: Normal ei collision not mentioned in main text, do so
+FIXME: Add definition of vth
+
+We will here follow the derivation of the electron-ion and the ion-ion
+collision frequency \cite{Goldstone1995} in order to derive an estimate for the
+elastic electron-neutral and ion-neutral collision frequency.
+
+We do so by calculating the frictional force experienced by species $\a$ as it
+is drifting thorugh species $\b$ which are stationary. We have
+%
+\begin{align*}
+    \ve{F}_\a = - n_\a m_\a \expt{n_\b\sigma_{\a\b} v\ve{v}}_\a
+\end{align*}
+%
+where $\expt{\cdot}_\a$ denotes the average over the drifting distribution
+function of species $\a$, and $\sigma_{\a\b}$ is the cross section of the
+process.
+If we let the particles stream towards the stationary target along $z$, so that
+the fuid velocity $\ve{u}_\a = u_z \ve{e}_z$, we get
+%
+\begin{align*}
+    f_\a
+    =&
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \exp\L(-\frac{\L[\ve{v}-\ve{u}\R]^2}{2v_{th,\a}^2}\R)
+    \\
+    %
+    %
+    =&
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \exp\L(-\frac{\ve{v}^2-2\ve{v}\ve{u}+\ve{u}^2}{2v_{th,\a}^2}\R)
+    \\
+    %
+    %
+    =&
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \exp\L(-\frac{-2\ve{v}\cdot\ve{u}+\ve{u}^2}{2v_{th,\a}^2}\R)\exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \note{Assume $\ve{u} \ll v_{th,\a}^2$}
+    \\
+    %
+    %
+    \simeq&
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \L(\frac{2\ve{v}\cdot\ve{u}+1}{2v_{th,\a}^2}\R)\exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \\
+    =&
+    \frac{2v_zu_z+1}{2v_{th,\a}^2}f_{\a,0}
+\end{align*}
+%
+where $\ve{v}$ denotes the particle velocity, $f_{\a,0}$ denotes the
+unshifted Maxwellian and
+%
+\begin{align*}
+    v_{th,\a} \defined \sqrt{\frac{T_\a}{m_\a}} .
+\end{align*}
+%
+Thus, the friction force in the direction of the drifting
+is
+%
+\begin{align*}
+    F_{\a,z} =& - n_\a m_\a \expt{n_\b\sigma_{\a\b} v v_z}_\a
+    \\
+    %
+    %
+    \simeq&
+    - n_\a m_\a
+    \frac{n_\b}{n_\a}\iiint\frac{2v_zu_z+1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    \frac{n_\b}{n_\a}
+    \L(
+    u_z\iiint\frac{2v_z}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    +\iiint\frac{1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    \R)
+    \note{Integral over $v_z$ is $1/3$ of integral over $v$ due to sperical
+        symmetry}
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    \frac{n_\b}{n_\a}
+    \frac{1}{3}
+    \L(
+    u_z\iiint\frac{2}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v^3\d^3v
+    +\iiint\frac{1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v^2\d^3v
+    \R)
+    \note{FIXME: NO EVEN FUNC ARG}
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    u_z
+    \frac{n_\b}{n_\a}
+    \frac{1}{3}
+    \frac{1}{v_{th,\a}^2}
+    \iiint f_{\a,0}\sigma_{\a\b} v^3\d^3v
+    \note{Spherical coordinates}
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    u_z
+    \frac{n_\b}{n_\a}
+    \frac{1}{3}
+    \frac{1}{v_{th,\a}^2}
+    \int_0^\infty\int_0^{2\pi}\int_0^\pi
+    f_{\a,0}\sigma_{\a\b} v^5
+    \sin\theta \d\theta \d \phi\d v
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    u_z
+    \frac{n_\b}{n_\a}
+    \frac{1}{3}
+    \frac{1}{v_{th,\a}^2}
+    4\pi
+    \int_0^\infty
+    f_{\a,0}\sigma_{\a\b} v^5
+    \d v
+     \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    u_z
+    \nu_{\a\b, \text{stationary target}}
+\end{align*}
+%
+where we here have defined the averaged collision frequency
+%
+\begin{align*}
+    \nu_{\a\b, \text{stationary target}}
+    \defined&
+    \frac{n_\b}{n_\a}
+    \frac{1}{3}
+    \frac{1}{v_{th,\a}^2}
+    4\pi
+    \int_0^\infty
+    f_{\a,0}\sigma_{\a\b} v^5
+    \d v
+    \\
+    %
+    %
+    =&
+    \frac{n_\b}{n_\a}
+    \frac{4\pi}{3v_{th,\a}^2}
+    \int_0^\infty
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \sigma_{\a\b} v^5
+    \d v
+    \\
+    %
+    %
+    =&
+    \frac{n_\b4\pi}{3(2\pi)^{3/2}v_{th,\a}^5}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \sigma_{\a\b} v^5
+    \d v
+\end{align*}
+%
+The subscript $_\text{stationary target}$ will be dropped from here on.
+
+\section{Electron collisions}
+Using the cross section for electron ion collisions
+%
+\begin{align*}
+    \sigma_{ei} = \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4}
+\end{align*}
+%
+yields
+%
+\begin{align*}
+    \nu_{ei}
+    =&
+    \frac{n_i4\pi}{3(2\pi)^{3/2}v_{th,e}^5}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
+    \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4} v^5
+    \d v
+    \\
+    %
+    %
+    =&
+    \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
+    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
+    v \d v
+    \\
+    %
+    %
+    =&
+    \frac{2}{2}
+    \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
+    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    v_{th,e}^2
+    \\
+    %
+    %
+    =&
+    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^2\L(\sqrt{\frac{T_e}{m_e}}\R)^3}
+    \\
+    %
+    %
+    =&
+    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
+\end{align*}
+%
+Using the cross section for electron neutral collision
+%
+\begin{align*}
+    \sigma_{en} = \pi a_0^2
+\end{align*}
+%
+yields
+%
+\begin{align*}
+    \nu_{en}
+    =&
+    \frac{n_n4\pi}{3(2\pi)^{3/2}v_{th,e}^5}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
+    \pi a_0^2 v^5
+    \d v
+    \\
+    %
+    %
+    =&
+    \frac{n_n4\pi^2 a_0^2 }{3(2\pi)^{3/2}v_{th,e}^5}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
+    v^5
+    \d v
+    \\
+    %
+    %
+    =&
+    \frac{n_n4\pi^2 a_0^2 }{3(2\pi)^{3/2}v_{th,e}^5} 8v_{th,e}^6
+    \\
+    %
+    %
+    =&
+    \frac{2}{2}
+    \frac{32 n_n\pi^2 a_0^2 v_{th,e}}{3(2\pi)^{3/2}}
+    \\
+    %
+    %
+    =&
+    \frac{2^{1/2}8 n_n\pi^{1/2} a_0^2 v_{th,e}}{3}
+    \\
+    %
+    %
+    =&
+    \frac{2^{1/2}8 n_n\pi^{1/2} a_0^2 \sqrt{T_e}}{3\sqrt{m_e}}
+\end{align*}
+%
+% NOTE: Corresponds rougly to what is reported in NRL plasma formulary in
+%       weakly ionized plasmas
+
+
+\section{Ion collisions}
+The analysis done above was valid when the target was stationary with respect
+to the colliding particles. This is a fairly good approximation when the
+stationary particles are much heavier than the colliding particles. Hence, the
+derivation of the average ion-ion collision frequency or the average
+ion-neutral collision frequency is strictly not valid. However, according to
+\cite{Goldstone1995}, the analysis yields the correct result within factors of
+orders of unity.
+
+One could do the analysis by going to the center of mass frame (which in the
+end gives an additional factor $2^{-1/2}$) and use relative velocities one find
+velocities
+%
+\begin{align*}
+    \nu_{ii}
+    %
+    =&
+    \frac{n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
+\end{align*}
+%
+As the mass of the neutral atom is approximately the same as the ion mass (as
+we are considering neutrals of the same species as the plasma), we get for the
+ion-neutral collision
+%
+\begin{align*}
+    \nu_{in}
+    =&
+    \frac{8 n_n\pi^{1/2} a_0^2 \sqrt{T_i}}{3\sqrt{m_i}}
+\end{align*}
+%
+
+
+
+
+
+
+
+We can estimate the neutral density from the neutral gas pressure if we assume
+%
+\begin{align*}
+    p_n = n_nT_{n}[\text{J}].
+\end{align*}
+%
+If we further assume that the neutrals are at room temperature, we have that
+%
+\begin{align*}
+    T_{n}[\text{K}] =& 293 \text{K}\\
+    T_{n}[\text{J}] =& T_{n}[\text{K}]k_b = 293\text{K}\cdot 1.38064852\cdot 10^{-23}
+    \text{J}\text{K}^{-1}\\
+    T_{n}[\text{J}] =& 4.0453001636\cdot 10^{-21}\text{J}
+\end{align*}
+%
+which means that
+%
+\begin{align*}
+    n_n = \frac{p_n}{4.0453001636\cdot 10^{-21}\text{J}}
+\end{align*}
+%
+FIXME: Schroeder scans from 0.16 Pa to 0.66Pa
+with this calculation, she would have more neutrals than plasma particles...
