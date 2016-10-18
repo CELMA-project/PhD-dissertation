@@ -1,0 +1,271 @@
+\section{From slowlyVarying field}
+\subsection{The Boussinesq approximation}
+\label{sec:boussinesq}
+%
+A somewhat common approximation is the so-called Boussinesq approximation.
+Starting from equation (\ref{eq:start_of_boussinesq}), one do the splitting
+%
+\begin{align*}
+    n = \overline{n} + \delta_n
+\end{align*}
+%
+where $\overline{n}$ is the background profile, and $\delta_n$ is the fluctuation.
+We now assume that
+%
+\begin{align*}
+    &\grad \overline{n} \propto \frac{\overline{n}}{L}&
+    &\grad \delta_n \propto \delta_n (k_\perp + k_\|) \simeq \delta_n k_\perp&
+\end{align*}
+%
+where we have assumed small parallel gradients.  By normalizing the densities
+with $n_0$ and the gradients with $\rho_s$, and writing the normalized units
+with a tilde ( $ \wt{ } $ ), we find find
+%
+\begin{align*}
+    &\wt{\grad} \wt{\overline{n}} \propto
+    \frac{\overline{n}}{L}\frac{\rho_s}{n_0}
+    \simeq \frac{\rho_s}{L}
+    &
+    %
+    &\wt{\grad} \wt{\delta_n} \propto \delta_n k_\perp\frac{\rho_s}{n_0}
+    = \frac{\delta_n}{n_0}k_\perp\rho_s
+    &
+\end{align*}
+%
+One of the underlying approximations is to say that $\frac{\delta_n}{n_0} \ll
+1$. This is not always a good approximation as the fluctuations can be larger
+than the background (especially when looking at
+blobs).
+
+% FIXME: Show that the last approximation is already taken
+The second assumption is that $\frac{\rho_s}{L} \ll 1$. The final assumption is
+that $k_\perp\rho_s \ll 1$, which is something we have already assumed
+when making the drift ordering approximation.
+
+Using the assumptions, we find that
+%
+\begin{align*}
+    &\grad \overline{n} \propto \wt{\grad} \wt{\overline{n}} \ll 1
+    &
+    %
+    &\grad \delta_n \propto \wt{\grad} \wt{\delta_n} \ll 1&
+\end{align*}
+%
+Inserting this in equation (\ref{eq:start_of_boussinesq}), and by assuming that
+$\delta_n$ is of order $\e^1$ in the fluid ordering, we find that
+%
+\begin{align*}
+ \div\L( n
+  \frac{1}{\om_{ci}}
+  \L[
+      \d_t + \ve{u}_{i,\|}\cdot\nabla
+  \R]
+  \L[
+     \frac{\grad_\perp \phi}{B}
+  \R]
+ \R)
+ \simeq&
+ %
+ (\overline{n} + \delta_n)\div\L(
+  \frac{1}{\om_{ci}}
+  \L[
+      \d_t + \ve{u}_{i,\|}\cdot\nabla
+  \R]
+  \L[
+     \frac{\grad_\perp \phi}{B}
+  \R]
+  \R)\\
+  %
+ \simeq&
+ \overline{n}\div\L(
+  \frac{1}{\om_{ci}}
+  \L[
+      \d_t + \ve{u}_{i,\|}\cdot\nabla
+  \R]
+  \L[
+     \frac{\grad_\perp \phi}{B}
+  \R]
+ \R)
+\end{align*}
+%
+where the second order term in $\e$ between $\delta_n$ and $\frac{1}{\om_{ci}}$ has
+been neglected. If we assume relatively flat background profiles, we will have
+$n_0 \simeq \overline{n}$.  This means that equation
+(\ref{eq:from_gyroviscous}) with the Boussinesq approximation yields
+%
+\begin{align*}
+ \div\L( n
+  \frac{1}{\om_{ci}}
+  \L[ \partial_t + (\ve{u}_{E} + \ve{u}_{i,\|})\cdot\nabla \R]
+  \L[ - \frac{\grad_\perp \phi}{B} \R] \R)
+ &\simeq
+ - \frac{n_0}{\om_{ci}} \div\L(
+     \d_t \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+- \frac{n_0}{\om_{ci}} \div\L(
+     \ve{u}_{i,\|}\cdot\nabla
+ \L[ \frac{\grad_\perp \phi}{B} \R]
+ \R)
+ \\
+ %
+ &=
+ - \frac{n_0}{\om_{ci}} \div\L(
+     \d_t \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+- \frac{n_0}{\om_{ci}} \div\L(
+u_{i,\|}\partial_\| \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+\numberthis
+\label{eq:boussinesq_vort}
+\end{align*}
+%
+Notice that the approximation is only done here, and that we keep $\grad n$
+elsewhere, although they according to the Boussinesq approximation are small.
+
+
+\section{From CELMAModel}
+Under the polarization contribution
+
+\subsubsection{With the Boussinesq approximation}
+If we use the Boussinesq approximation from section \ref{sec:boussinesq}, we
+can in the current magnetic field configuration rewrite equation
+(\ref{eq:boussinesq_vort}) as
+%
+\begin{align*}
+    &- \frac{n_0}{\om_{ci}}
+    \L( \div\L[ \d_t \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div\L[ \L(\partial_t
+     + \ve{u}_E\cdot\grad\R) \L( \frac{\grad_\perp \phi}{B} \R) \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}
+     \L( \div \partial_t\L( \frac{\grad_\perp \phi}{B} \R)
+     + \div \L(\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R)
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \note{Assume interchangibility of spatial and temporal derivatives}
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
+     \\
+     %
+     =&
+     - \frac{n_0}{\om_{ci}}\partial_t\Om
+     - \frac{n_0}{\om_{ci}}
+     \L(
+     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
+     + u_{i,\|}\partial_\|\Om
+     + \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+     \R)
+\end{align*}
+
+-----
+Under the complete vorticity equation
+
+
+\subsubsection{With the Boussinesq approximation}
+%
+% FIXME:
+% - Write that the divergence of the source term with grad_perp phi does not cancel
+% - Write a sentence or 2 about the time derivative of n disappears
+From section \ref{sec:boussinesq}, we have that
+%
+\begin{align*}
+    \div\L(\frac{n}{\om_{ci}}\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
+    \simeq&
+    \frac{n_0}{\om_{ci}}\div\L(\d_t\L[-\frac{\grad_\perp \phi}{B}\R]\R)
+\end{align*}
+%
+Using this in equation (\ref{eq:non_norm_vort_2}) gives
+%
+% FIXME:
+%       Boussinesq on
+%       ? Ok to use boussinesq only one place
+%       ? Parallel current terms
+%       ? Pedersen current
+%       ? If take Boussinesq there, why keep it on the other terms
+\begin{align*}
+  %
+  \frac{n_0}{\om_{ci}}
+  \partial_t \Om
+  =&
+  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+  \\
+  %
+  &
+  - \frac{n_0}{\om_{ci}}
+    \L(
+    \div\L[ \ve{u}_E\cdot\nabla \L(\frac{\grad_\perp \phi}{B} \R) \R]
+    + \div\L[u_{i,\|}\partial_\|\L(\frac{\grad_\perp \phi}{B}\R)\R]
+    \R)
+ \\
+ &
+ %
+- \frac{1}{\om_{ci}}
+    \div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+ + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \numberthis
+ \label{eq:boussinesq_non_norm}
+\end{align*}
+%
+
+
+
+----
+Under finding the potential
+
+If we are using the
+Boussinesq approximation we instead need to solve
+%
+\begin{align*}
+    \Om = \frac{\grad_\perp^2\phi}{B}
+\end{align*}
+%
+for $\phi$.
+
+
+----
+In the set of equations
+
+If we instead use the Boussinesq approximation, equation (\ref{eq:cyto_vort})
+and (\ref{eq:cyto_vortD_evolution}) will be replaced by
+%
+\begin{empheq}[box={\tcbhighmath}]{align*}
+    \frac{\grad_\perp^2 \phi}{B} =& \Om
+    \numberthis
+    \label{eq:cyto_phi_boussinesq}
+    \\
+%
+%
+%
+  \partial_t \Om
+  =&
+  - \nu_{in} n\Om - \nu_{in} \frac{\grad_\perp \phi}{B} \cdot \grad n
+ \\
+ &
+ %
+  - \div\L(\ve{u}_E\cdot \nabla \frac{\grad_\perp \phi}{B} \R)
+  - u_{i,\|}\partial_\|\Om
+  - \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
+ \\
+ &
+ %
+ - S_n \Om - \grad S_n \cdot \frac{ \grad_\perp \phi }{B}
+ + n \partial_\| \L(u_{i,\|} - u_{e,\|}\R)
+ + \L(u_{i,\|} - u_{e,\|}\R) \partial_\| n
+  \\
+  %
+  &
+  + D_{\Om, \|, \text{art}}    \partial_{\|}^2 \Om
+  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om
+  \numberthis
+  \label{eq:cyto_vort_boussinesq}
+\end{empheq}
