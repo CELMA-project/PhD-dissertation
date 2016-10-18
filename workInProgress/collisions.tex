@@ -28,28 +28,44 @@ the fuid velocity $\ve{u}_\a = u_z \ve{e}_z$, we get
     =&
     \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
     \exp\L(-\frac{\L[\ve{v}-\ve{u}\R]^2}{2v_{th,\a}^2}\R)
-    \\
-    %
-    %
-    =&
-    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
-    \exp\L(-\frac{\ve{v}^2-2\ve{v}\ve{u}+\ve{u}^2}{2v_{th,\a}^2}\R)
-    \\
-    %
-    %
-    =&
-    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
-    \exp\L(-\frac{-2\ve{v}\cdot\ve{u}+\ve{u}^2}{2v_{th,\a}^2}\R)\exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
     \note{Assume $\ve{u} \ll v_{th,\a}^2$}
     \\
     %
     %
     \simeq&
     \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
-    \L(\frac{2\ve{v}\cdot\ve{u}+1}{2v_{th,\a}^2}\R)\exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \L(
+    \L.\exp\L[-\frac{\L(\ve{v}-\ve{u}\R)^2}{2v_{th,\a}^2}\R]\R|_{\ve{u}=0}
+    +
+    \ve{u}\cdot
+    \L[
+    -2\frac{\L(\ve{v}-\ve{u}\R)}{2v_{th,\a}^2}(-1)
+    \exp\L(-\frac{\L(\ve{v}-\ve{u}\R)^2}{2v_{th,\a}^2}\R)
+    \R]_{\ve{u}=0}
+    \R)
     \\
+    %
+    %
     =&
-    \frac{2v_zu_z+1}{2v_{th,\a}^2}f_{\a,0}
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \L(
+    \exp\L[-\frac{\ve{v}^2}{2v_{th,\a}^2}\R]
+    +
+    2\frac{\ve{u}\cdot\ve{v}}{2v_{th,\a}^2}
+    \exp\L[-\frac{\ve{v}^2}{2v_{th,\a}^2}\R]
+    \R)
+    \\
+    %
+    %
+    =&
+    \frac{n_\a}{(2\pi)^{3/2}v_{th,\a}^3}
+    \L( 1 + \frac{2u_zv_z}{2v_{th,\a}^2} \R)
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    \\
+    %
+    %
+    =&
+    \L( 1 + \frac{u_zv_z}{v_{th,\a}^2} \R) f_{\a,0}
 \end{align*}
 %
 where $\ve{v}$ denotes the particle velocity, $f_{\a,0}$ denotes the
@@ -69,7 +85,7 @@ is
     %
     \simeq&
     - n_\a m_\a
-    \frac{n_\b}{n_\a}\iiint\frac{2v_zu_z+1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    \frac{n_\b}{n_\a}\iiint\L( 1 + \frac{u_zv_z}{v_{th,\a}^2} \R)f_{\a,0}\sigma_{\a\b} v v_z\d^3v
     \\
     %
     %
@@ -77,10 +93,21 @@ is
     - n_\a m_\a
     \frac{n_\b}{n_\a}
     \L(
-    u_z\iiint\frac{2v_z}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
-    +\iiint\frac{1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    u_z\iiint\frac{v_z}{v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v v_z\d^3v
+    +\iiint f_{\a,0}\sigma_{\a\b} v v_z\d^3v
     \R)
-    \note{Integral over $v_z$ is $1/3$ of integral over $v$ due to sperical
+    \note{Second integral even in $v_z$}
+    % Eventually: Can v_z cast to spherical coordinates and see it from there
+    \\
+    %
+    %
+    =&
+    - n_\a m_\a
+    \frac{n_\b}{n_\a}
+    \L(
+    u_z\iiint\frac{v_z^2}{v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v \d^3v
+    \R)
+    \note{Integral over $v_z^2$ is $1/3$ of integral over $v^2$ due to sperical
         symmetry}
     \\
     %
@@ -89,11 +116,7 @@ is
     - n_\a m_\a
     \frac{n_\b}{n_\a}
     \frac{1}{3}
-    \L(
-    u_z\iiint\frac{2}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v^3\d^3v
-    +\iiint\frac{1}{2v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v^2\d^3v
-    \R)
-    \note{FIXME: NO EVEN FUNC ARG}
+    \L(u_z\iiint\frac{1}{v_{th,\a}^2}f_{\a,0}\sigma_{\a\b} v^3\d^3v\R)
     \\
     %
     %
@@ -266,7 +289,7 @@ yields
     %
     %
     =&
-    \frac{2^{1/2}8 n_n\pi^{1/2} a_0^2 \sqrt{T_e}}{3\sqrt{m_e}}
+    \frac{(2\pi)^{1/2}8 n_n a_0^2 \sqrt{T_e}}{3\sqrt{m_e}}
 \end{align*}
 %
 % NOTE: Corresponds rougly to what is reported in NRL plasma formulary in
@@ -317,6 +340,8 @@ We can estimate the neutral density from the neutral gas pressure if we assume
 \end{align*}
 %
 If we further assume that the neutrals are at room temperature, we have that
+Hydrogen dissociated by Franck-condon process, which leaves the hydrogen with
+2eV neutrals: See stangeby
 %
 \begin{align*}
     T_{n}[\text{K}] =& 293 \text{K}\\
