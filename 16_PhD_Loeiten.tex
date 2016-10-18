@@ -39,31 +39,41 @@
 \maketitle
 %
 % FIXME: Use simeq where approximations are used
+\part{Derivation of model}
 \chapter{The kinetic equation}
-\input{kinetic}
+\input{derivation/kinetic}
 %
 \chapter{The drift fluid equations}
 \label{chap:drift-order}
-\input{driftOrder}
+\input{derivation/driftOrder}
 
 \chapter{The model in a slowly varying B-field}
-\input{slowlyVaryingBField}
+\input{derivation/slowlyVaryingBField}
 
 \chapter{The CELMA model}
-\input{CELMAModel/CELMAModel}
-\input{CELMAModel/currentMomentum}
-\input{CELMAModel/normalization}
-\input{CELMAModel/boundaries}
-\input{CELMAModel/implementation}
-\input{CELMAModel/setOfEquations}
+\input{derivation/CELMAModel/CELMAModel}
+\input{derivation/CELMAModel/currentMomentum}
+\input{derivation/CELMAModel/normalization}
+\input{derivation/CELMAModel/boundaries}
+% FIXME: Mention adding artificial dissipation
+\input{derivation/CELMAModel/setOfEquations}
 
-\chapter{Numerical solution of the equations}
-\input{solvingNumerically}
+\chapter{The boussinesq approximation}
+\input{derivation/boussinesq}
 
+\part{Implementation and verification}
+\chapter{Implementation}
+\input{numerics/implementation}
+\chapter{Time solver}
+\input{numerics/timeSolver}
 \chapter{Verification of the numerics}
 \label{app:verification}
-\input{verification}
+\input{numerics/verification}
 
+\part{Results}
+% FIXME: Insert awesome results here
+
+\part{Appendices}
 \appendix
 
 \chapter{The electrostatic approximation}
@@ -93,8 +103,6 @@
 \chapter{Advection of \texorpdfstring{$\Om^D$}{OmegaD}}
 \label{app:vortDAdv}
 \input{appendices/modifiedVorticityAdvection}
-
-input{workInProgress/boussinesq}
 
 \markboth{Bibliography}{}
 \bibliographystyle{styles/prsty}
