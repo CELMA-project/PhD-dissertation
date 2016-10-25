@@ -2,32 +2,72 @@
 \label{sec:norm}
 We will now normalize using the ``standard'' gyro-Bohm normalization%
 %
-\footnote{Also known as: Bohm normalization}%
+\footnote{Also known as: Bohm normalization}.%
 %
+That is, we let
+%
+\begin{align*}
+    &\wt{\ve{x}} = \frac{\ve{x}}{\rho_s}&
+    &\wt{t}      = t\om_{ci}&
+    &\wt{\ve{u}} = \frac{\ve{u}}{c_s}&
+    &\wt{\phi}   = \frac{e\phi}{T_{e,0}}&
+    &\wt{n}      = \frac{n}{n_{0}}&
+    &\wt{T_e}    = \frac{T_e}{T_{e,0}}&
+    &\wt{B}      = \frac{B}{B_0},&
+\end{align*}
+%
+where the tilde ($\wt{\quad}$) denotes a normalized (unit less) quantity.
 
-By looking at the Lorentz force, one can observe that $\|\ve{B}\|$ must have the
-same dimension as $\frac{\|\ve{E}\|}{\|\ve{u}\|}$ which in the electrostatic
-approximation can be written as $\frac{\|\grad \phi\|}{\|\ve{u}\|}$.
-If we use the normalizations $\wt{\phi} = \frac{\phi e}{T_{e,0}}$ and
-$\wt{\grad} = \frac{\grad}{\rho_s}$, we see that we
-can use the normalization $\wt{B}=\frac{B}{\frac{T_{e,0}}{e \rho_s c_s}}$.
-
-In addition we notice that $\frac{\grad_\perp \phi}{B}$ has the units of velocity.
-Thus, we can normalize this with $c_s$. In other words we use the normalization
-$\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} = \frac{\frac{\grad_\perp \phi}{B}}{c_s}$,
-which gives $\frac{\grad_\perp \phi}{B} = \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}c_s$.
-Hence, we can also use
-
-FIXME: Add E and eta. eta is a dynamic viscosity
+In order to take some shortcuts in the following derivation, we observe (from
+the Lorentz force) that $\|\ve{B}\|$ must have the same units as
+$\|\ve{E}\|/\|\ve{u}\|$. As a consequence $\|\ve{E}\|/\|\ve{B}\|$ must have the
+same units as $\|\ve{u}\|$. In the electrostatic approximation this means that
+$\|\grad_\perp \phi\|/\|\ve{B}\|$ must have the same normalization as
+$\|\ve{u}\|$, and thus
+%
+\begin{align*}
+    \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} =
+    \frac{\frac{\grad_\perp \phi}{B}}{c_s} =
+    \frac{\grad_\perp \phi}{c_sB}
+\end{align*}
+%
+We can see that this is true by looking at the normalization of the individual
+quantities. Due to the spatial normalization, we must have that
+$\grad = \wt{\grad}/\rho_s$, so that
+%
+\begin{align*}
+    \frac{\grad_\perp \phi}{B}\frac{1}{c_s}
+    =&
+    \frac{\frac{1}{\rho_s} \frac{T_{e,0}}{e} \wt{\grad}_\perp \wt{\phi}}
+    {B_0\wt{B}} \frac{1}{c_s}
+    \note{$\rho_s=\frac{c_s}{\om_{ci}}$}
+    \\
+    %
+    =&
+    \frac{\wt{\grad}_\perp \wt{\phi}}
+    {\wt{B}} \frac{\om_{ci}}{c_s^2} \frac{T_{e,0}}{eB_0}
+    \note{$c_s=\sqrt{\frac{T_{e,0}}{m_i}}$}
+    \\
+    %
+    =&
+    \frac{\wt{\grad}_\perp \wt{\phi}}
+    {\wt{B}} \frac{eB_0m_i}{m_iT_{e,0}} \frac{T_{e,0}}{eB_0}
+    \\
+    %
+    =&
+    \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+\end{align*}
+%
+From this we get that
 %
 \begin{align*}
  \wt{\Om} = \wt{\grad}\cdot\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
  = \rho_s\div\frac{\frac{\grad_\perp \phi}{B}}{c_s}
 = \rho_s\frac{\Om}{c_s}
- = \frac{\Om}{\om_{ci}},
+ = \frac{\Om}{\om_{ci}}
 \end{align*}
 %
-and similarly if we normalize $\wt{n} = \frac{n}{n_0}$, we get
+and that
 %
 \begin{align*}
 \wt{\Om}^D = \wt{\grad}\cdot\L(\wt{n}\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}\R)
@@ -36,40 +76,76 @@ and similarly if we normalize $\wt{n} = \frac{n}{n_0}$, we get
 = n_0\frac{\Om^D}{\om_{ci}}.
 \end{align*}
 %
-This yields
+Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and
+note that since the particle source $S$ has the units of density per second,
+it makes sense to normalize it with $n_0$ and $\om_{ci}$.
+
+Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$
+can easily be found by looking at the dimensions of the RHS of equation
+(\ref{eq:nonElstat}) and the corresponding $\eta_{\a,n}$. We have that the
+normalization constants corresponding to $m_\a \partial_t(nu_{\a,\|})$ must be
+$m_\a\om_{ci}n_0c_s$ as we have normalized the time with $\om_{ci}$. As
+$\partial_z^2 u_{\a,\|}$ must have to normalization constant
+$c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with
+$m_i\rho_s n_0c_s$. We see that this normalization constant has the proper
+units of mass per meter seconds (or equivalently pascal seconds).
+
+As a side note, we note that
+$\d_{t,\a} = \wt{\partial_t}\om_{ci} + c_s ([\ve{u}_\a]\cdot
+    \wt{\grad})/{\rho_s} = \om_{ci}\wt{\d}_{t,\a}$.
+
+To summarize, we have the normalization
 \\
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &\wt{\ve{x}}   =  \frac{\ve{x}}{\rho_s}&
     &\wt{t}        =  t\om_{ci}&
     &\wt{\ve{u}}   =  \frac{\ve{u}}{c_s}&
+    &\wt{B}        =  \frac{B}{B_{0}}
+    \\
     &\wt{\phi}     =  \frac{e\phi}{T_{e,0}}&
     &\wt{\Om}      =  \frac{\Om}{\om_{ci}}&
     &\wt{\Om}^D    =  \frac{\Om^D}{n_0\om_{ci}}&
+    &\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+    = \frac{\grad_\perp \phi}{Bc_s}
     \\
     &\wt{n}        =  \frac{n}{n_{0}}&
     &\wt{T_e}      =  \frac{T_e}{T_{e,0}}&
-    &\wt{B}        =  \frac{B e \rho_s c_s}{T_{e,0}}&
     &\wt{\nu}_{x}  =  \frac{\nu_{x}}{\om_{ci}}&
-    &\wt{S}        =  \frac{S}{n_0\om_{ci}}&
-    &\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
-    = \frac{\grad_\perp \phi}{Bc_s}
+    &\wt{S}        =  \frac{S}{n_0\om_{ci}}
+    \\
+    &\wt{\eta}_{\a,n} = \frac{\eta}{m_i\rho_s n_0c_s}&
+    &\wt{\nabla}      = \rho_s \nabla&
+    &\wt{\partial}_t  = \frac{1}{\om_{ci}}\partial_t &
+    &\wt{\d}_{t,\a}   = \frac{1}{\om_{ci}}\d_{t,\a}
 \end{empheq}
+%
+or equivalently
+%
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &\ve{x}       = \wt{\ve{x}}\rho_s&
     &    t        = \frac{\wt{t}}\om_{ci}&
     &\ve{u}       = \wt{\ve{u}}c_s&
+    &    B        = \wt{B}B_0&
+    \\
     &    \phi     = \wt{\phi}\frac{T_{e,0}}{e}&
     &    \Om      = \wt{\Om}\om_{ci}&
     &    \Om^D    = \wt{\Om}^D\om_{ci}n_0&
+    & \frac{\grad_\perp \phi}{B}
+    = c_s\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
     \\
     &    n        = \wt{n}n_{0}&
-    &    B        = \wt{B}\frac{T_{e,0}}{ec_s\rho_s}&
     &    T_e      = \wt{T_e}T_{e,0}&
     &    \nu_{x}  = \wt{\nu}_{x}\om_{ci}&
     &    S        = \wt{S}n_0\om_{ci}&
-    & \frac{\grad_\perp \phi}{B}
-    = c_s\frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}}
+    \\
+    &\eta       = \wt{\eta}_{\a,n}m_i\rho_s n_0c_s&
+    &\nabla     = \frac{1}{\rho_s} \wt{\nabla}&
+    &\partial_t = \om_{ci}\wt{\partial}_t&
+    &\d_{t,\a}  = \om_{ci}\wt{\d}_{t,\a}
 \end{empheq}
+%
+which means that
+%
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &\nabla       = \frac{1}{\rho_s} \wt{\nabla}&
     &\partial_t   = \om_{ci}\wt{\partial}_t&
@@ -78,9 +154,11 @@ This yields
     = \om_{ci}\wt{\d}_{t,\a}&
 \end{empheq}
 %
+% FIXME: Write somewhere that when doing a field scan, we can choose B0 = B,
+%        such that Btilde = 1, doing a scan in B will then only affect
+%        quantities related to B0, like omci and rhos
 
-\noindent
-where $\rho_s = \frac{c_s}{\om_{ci}}$ .
+FIXME: Add energy
 
 We will now normalize the equations derived above, and we will from here on
 drop the tilde to simplify the writing.
@@ -225,25 +303,6 @@ This yields
 %
 Next, normalization of equation (\ref{eq:non_norm_vort_2}) yields
 %
-\begin{align*}
-  \frac{1}{\om_{ci}}
-  \partial_t \Om^D
-  =&
-  - \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
-  \\
-  %
-  &
-  - \frac{1}{\om_{ci}\rho} \L(
- \frac{1}{B}\{\phi, \Om^D\}
- + \frac{1}{2}\{\ve{u}_E^2, n\} \R)
-  -
- \frac{1}{\om_{ci}} \partial_\|\div
- \L( u_{i,\|}\frac{\grad_\perp \phi}{B}n \R)
- \\
- &
- %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
-\end{align*}
 \begin{align*}
   %
   \frac{\om_{ci}\om_{ci}n_0}{\om_{ci}}
