@@ -5,7 +5,7 @@ This section describes the details in the numerical implementation of the CELMA 
 
 \subsection{Obtaining \texorpdfstring{$\phi$}{the potential}}
 %
-We observe the dependency of $\phi$ in \cref{eq:celma_dens, eq:celma_mom_dens, eq:celma_j_par, eq:celma_vortD_evolution}, but that $\phi$ is not described by a initial boundary value problem equation.
+We observe the dependency of $\phi$ in \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, but that $\phi$ is not described by a initial boundary value problem equation.
 Instead, we must find alternative ways of extracting $\phi$.
 We will in the following discuss two ways of doing so.
 % TODO: Delete me if not in thesis
@@ -298,7 +298,7 @@ Therefore, we add a dissipation on the form
     \label{eq:art_vort}
 \end{align*}
 %
-by exchanging $\div \te{\pi}$ in \cref{fluideq:mom} with \cref{eq:art_vort}.
+by exchanging $\div \te{\pi}$ in equarion (\ref{fluideq:mom}) with \cref{eq:art_vort}.
 This is a somewhat crude approximation, but serves as a good first approximation.
 In the non-normalized set of equations the $D$ coefficients would have the units of dynamical viscosity, and would be normalized by
 \\
@@ -317,7 +317,7 @@ In the non-normalized set of equations the $D$ coefficients would have the units
 \vspace{0.5cm}
 \\
 %
-We notice that when using \cref{fluideq:mom} in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
+We notice that when using equation (\ref{fluideq:mom}) in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
 The artificial viscosity in the density is not divided by $n$ as $\frac{1}{n}\grad n = \ln(n)$.
 
 \subsection{BC for Laplace inversion using FFT}
