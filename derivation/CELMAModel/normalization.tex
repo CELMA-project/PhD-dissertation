@@ -74,7 +74,7 @@ and that
 %
 Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and note that since the particle source $S$ has the units of density per second, it makes sense to normalize it with $n_0$ and $\om_{ci}$.
 
-Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$ can easily be found by looking at the dimensions of the RHS of equation (\ref{eq:nonElstat}) and the corresponding $\eta_{\a,n}$.
+Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$ can easily be found by looking at the dimensions of the RHS of \cref{eq:nonElstat} and the corresponding $\eta_{\a,n}$.
 We have that the normalization constants corresponding to $m_\a \partial_t(nu_{\a,\|})$ must be $m_\a\om_{ci}n_0c_s$ as we have normalized the time with $\om_{ci}$.
 As $\partial_z^2 u_{\a,\|}$ must have to normalization constant $c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with $m_i\rho_s n_0c_s$.
 We see that this normalization constant has the proper units of mass per meter seconds (or equivalently pascal seconds).
@@ -152,7 +152,7 @@ which means that
 We will now normalize the equations derived above, and we will from here on drop the tilde to simplify the writing.
 
 \subsection{Normalization of \texorpdfstring{$n$}{the density}}
-By normalizing equation (\ref{eq:non_norm_dens}) , we get
+By normalizing \cref{eq:non_norm_dens}, we get
 %
 \begin{align*}
  n_{0} \om_{ci}
@@ -288,7 +288,7 @@ This yields
 
 \subsection{Normalization of \texorpdfstring{$\Omega^D$}{the modified vorticity}}
 %
-Next, normalization of equation (\ref{eq:non_norm_vort_2}) yields
+Next, normalization of \cref{eq:non_norm_vort_2} yields
 %
 \begin{align*}
   %
@@ -314,7 +314,7 @@ Next, normalization of equation (\ref{eq:non_norm_vort_2}) yields
  %
  + \frac{n_0c_s}{\rho_s}
  \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
- \note{\ref{eq:gradperpGradperp}}
+ \note{\cref{eq:gradperpGradperp}}
  \\
  %
  %
@@ -394,7 +394,7 @@ and
 
 \subsection{Normalization of \texorpdfstring{$nu_{i,\|}$}{the parallel momentum density}}
 %
-Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
+Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
 %
 \begin{align*}
     \om_{ci}n_0c_s\partial_t\L( n u_{i,\|}\R)
@@ -516,7 +516,7 @@ Finally, by using $\ve{E}=\frac{\wt{E}T_e}{e\rho_s}$, normalization of the paral
  \label{eq:curNormE}
 \end{align*}
 %
-In section \ref{app:elstat} we show that we are operating in the electrostatic regime, and $E_\| \simeq -\partial_\|\phi$ (both normalized and non-normalized).
+In \cref{app:elstat} we show that we are operating in the electrostatic regime, and $E_\| \simeq -\partial_\|\phi$ (both normalized and non-normalized).
 This gives
 %
 \begin{align*}
@@ -537,4 +537,4 @@ This gives
 \end{align*}
 %
 On the other hand, it can be beneficial to maintain $\partial_t \ve{A}$ for numerical reasons, as these terms can in fact prevent fast waves in the system \cite{Dudson2015Private}.
-Although electromagnetic effects are outside the scope of this thesis, the derivation of the parallel current equation where this effect is taken into account is given in appendix \ref{app:elMag}.
+Although electromagnetic effects are outside the scope of this thesis, the derivation of the parallel current equation where this effect is taken into account is given in \cref{app:elMag}.

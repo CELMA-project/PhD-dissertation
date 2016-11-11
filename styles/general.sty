@@ -19,8 +19,6 @@
 %http://tex.stackexchange.com/questions/54055/
 %using-lower-case-roman-numerals-in-enumerate-lists
 %------------------------------------------
-%Cross-references with \vref{}
-\usepackage{varioref}
 %Post Script - illustrations with
 %\includegrapsics{} h=here t=top b=bottom p=own page !=override latex
 \usepackage{graphicx}
@@ -109,6 +107,8 @@ marginparwidth=2cm, marginparsep=0.5cm]{geometry}
             %Hyperref gives clickable links
             %in the document
             bookmarksnumbered=true]{hyperref}
+%Cross-references with \cref{} (must come last due to package collisions http://tex.stackexchange.com/questions/148699/equation-reference-undefined-when-using-cref-and-packageamsmath)
+\usepackage{cleveref}
 %===============================================================================
 
 
@@ -235,28 +235,6 @@ showstringspaces=false,
 breaklines=false
 }
 %===============================================================================
-
-
-%Gives boxed equations in align enviroment
-%===============================================================================
-% http://tex.stackexchange.com/questions/72692/highlight-an-equation-within-an
-% -align-environment-with-color-option/
-% \usepackage{calc}
-% \newlength\dlf
-% \newcommand\hlbox[3][boxcyan]{
-%   % #1 = color (optional, defaults to yellow)
-%   % #2 = before alignment
-%   % #3 = after alignment
-%   &
-%   \begingroup
-%   \settowidth\dlf{$\displaystyle #2$}
-%   \addtolength\dlf{\fboxsep+\fboxrule}
-%   \hspace{-\dlf}
-%   \fcolorbox{black}{#1}{$\displaystyle #2 #3$}
-%   \endgroup
-% }
-%===============================================================================
-
 
 %Tabulatur settings
 %===============================================================================

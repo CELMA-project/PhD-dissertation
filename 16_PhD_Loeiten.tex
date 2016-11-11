@@ -40,6 +40,8 @@
 %
 % FIXME: Use simeq where approximations are used
 % FIXME: Convert to currents in modified vorticity
+% FIXME: Check that there is no mix between length of perturbation and background scale length
+% FIXME: Highligth difference bout++ and bout
 \part{Derivation of model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
@@ -89,13 +91,9 @@
 \label{app:piTensor}
 \input{appendices/piTensor}
 
-\chapter{Clebsch coordinate system}
-\label{app:Clebsch}
-\input{appendices/clebsch}
-
-\chapter{Cylindrical coordinate system}
-\label{app:cylcoord}
-\input{appendices/cylinder}
+\chapter{The coordinate system}
+\label{app:coord}
+\input{appendices/coordinates}
 
 \chapter{The Poisson bracket operator}
 \label{app:poisson}
@@ -146,7 +144,8 @@
 \label{app:waves}
 \input{workInProgress/waves}
 
-\markboth{Bibliography}{}
+\part{Bibliography}
+%\markboth{Bibliography}{}
 \bibliographystyle{styles/prsty}
 \bibliography{bib/library,bib/nonArticles}
 \addcontentsline{toc}{chapter}{Bibliography}

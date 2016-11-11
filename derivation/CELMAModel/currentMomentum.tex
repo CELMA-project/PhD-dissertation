@@ -3,7 +3,7 @@
 % FIXME: Consider to show bad behavior when parallel is used
 In order to solve the system of equations, we need to determine $u_{\a,|}$.
 This could be done by solving for the ion momentum equation and for the electron momentum equation.
-However, as we are calculating $\partial_\|\L(n\L[u_{i,\|} - u_{e,\|}\R]\R)$ in equation (\ref{eq:complVort}), we require that this term is of high precision.
+However, as we are calculating $\partial_\|\L(n\L[u_{i,\|} - u_{e,\|}\R]\R)$ in \cref{eq:complVort}, we require that this term is of high precision.
 This because the vorticity is a first order term, and the numerical loss of precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
 As a result, the numerical error may pollute the calculated order of the modified vorticity.
 
@@ -12,7 +12,7 @@ We also choose to evolve the sum of the parallel density momentum equations, whi
 This has the advantage that the variation of the $nu_{i,\|}$ field is less than the variation in the $u_{i,\|}$, which is an advantage when solving numerically as the difference in magnitude of the largest and smallest eigenvalues is less.
 It further has the advantage that this sum is easy to simplify due to the difference in mass.
 
-Starting from equation \ref{eq:material_dot_bb}, we have that
+Starting from \cref{eq:material_dot_bb}, we have that
 %
 \begin{align*}
   m_\a n_\a\d_{t,\a} \ve{u}_{\a,\|}
@@ -45,7 +45,7 @@ Starting from equation \ref{eq:material_dot_bb}, we have that
  + \ve{R}_{\beta \to \a,\|}
  + \ve{R}_{n \to \a,\|}
  -m_\a S_{\a,n}\ve{u}_{\a,\|}
- \note{Quasi-neutrality and equation (\ref{eq:non_norm_dens})}
+ \note{Quasi-neutrality and \cref{eq:non_norm_dens}}
  \\
  %
  =&
@@ -93,7 +93,7 @@ Starting from equation \ref{eq:material_dot_bb}, we have that
  + \ve{b}R_{\beta \to \a,\|}
  + \ve{b}R_{n \to \a,\|}
  \note{$\partial_i \ve{b} \simeq 0$\\
-     Eq (\ref{eq:piTensor})
+     \cref{eq:piTensor}
   }
  \\
  %
@@ -224,8 +224,8 @@ and that the momentum density for electrons reads
 
 \subsection{Parallel momentum density equation}
 %
-We can obtain the total momentum density of the plasma by adding equation
-(\ref{eq:ionMomDens}) and (\ref{eq:elMomDens}). We obtain
+We can obtain the total momentum density of the plasma by adding \cref{eq:ionMomDens} and \cref{eq:elMomDens}.
+We obtain
 %
 \begin{align*}
  m_i \partial_t\L( n u_{i,\|}\R)
@@ -311,7 +311,7 @@ We can obtain the total momentum density of the plasma by adding equation
 
 \subsection{Parallel current equation}
 %
-We can obtain the equation for the time evolution of the parallel current by multiplying equation (\ref{eq:ionMomDens}) with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of equation (\ref{eq:elMomDens}).
+We can obtain the equation for the time evolution of the parallel current by multiplying \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of \cref{eq:elMomDens}.
 This yields
 %
 % FIXME: Proper drift ordering could shed light on how the density evolution

@@ -5,7 +5,7 @@ This section describes the details in the numerical implementation of the CELMA 
 
 \subsection{Obtaining \texorpdfstring{$\phi$}{the potential}}
 %
-We observe the dependency of $\phi$ in equation (\ref{eq:celma_dens}) - (\ref{eq:celma_vortD_evolution}), but that $\phi$ is not described by a initial boundary value problem equation.
+We observe the dependency of $\phi$ in \cref{eq:celma_dens, eq:celma_mom_dens, eq:celma_j_par, eq:celma_vortD_evolution}, but that $\phi$ is not described by a initial boundary value problem equation.
 Instead, we must find alternative ways of extracting $\phi$.
 We will in the following discuss two ways of doing so.
 % TODO: Delete me if not in thesis
@@ -162,7 +162,7 @@ Using square bracket superscript as iteration number, the algorithm can be state
         \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi^{[i]}}{B}
         $
     \item Invert $\grad_\perp^2 \frac{\phi^{[i+1]}}{B} = \Om^{[i]}$ by the method
-        described in \ref{app:lapInv}.
+        described in \cref{app:lapInv}.
     \item Calculate
         $E_{\text{abs}, L_\infty} = \max \L|\phi^{[i]} - \phi^{[i+1]}\R|$
         and
@@ -189,8 +189,8 @@ Using square bracket superscript as iteration number, the algorithm can be state
 \subsection{Advective terms}
 \label{sec:ExBadv}
 %
-As already noted in section \ref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms as Poisson brackets.
-The proof is found in appendix \ref{app:poisson}.
+As already noted in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms as Poisson brackets.
+The proof is found in \cref{app:poisson}.
 The benefits of writing terms on Poisson brackets are presented in Arakawa's paper from 1966 \cite{Arakwa1966}.
 In short, the paper shows that a na\"ive finite difference discretization of the Poisson bracket does not conserve energy and enstrophy, and gives an alternative way of discretize in orthogonal curvilinear coordinates in order to keep these quantities conserved.
 If the energy and enstrophy is not conserved, fake generation of these quantities occur, which eventually will lead to a blow up of the simulation (in a way described by Phillips in \cite{Phillips1959}).
@@ -266,7 +266,7 @@ Secondly we have
     \label{eq:par_vec_adv_expanded}
 \end{align*}
 %
-where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$ and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel derivatives of equation (\ref{eq:par_vec_adv_expanded}) using a FDA.
+where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$ and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel derivatives of \cref{eq:par_vec_adv_expanded} using a FDA.
 
 \subsection{Artificial viscosity}\label{sec:art_visc}
 %
@@ -298,7 +298,7 @@ Therefore, we add a dissipation on the form
     \label{eq:art_vort}
 \end{align*}
 %
-by exchanging $\div \te{\pi}$ in equation (\ref{fluideq:mom}) with equation (\ref{eq:art_vort}).
+by exchanging $\div \te{\pi}$ in \cref{fluideq:mom} with \cref{eq:art_vort}.
 This is a somewhat crude approximation, but serves as a good first approximation.
 In the non-normalized set of equations the $D$ coefficients would have the units of dynamical viscosity, and would be normalized by
 \\
@@ -317,7 +317,7 @@ In the non-normalized set of equations the $D$ coefficients would have the units
 \vspace{0.5cm}
 \\
 %
-We notice that when using equation (\ref{fluideq:mom}) in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
+We notice that when using \cref{fluideq:mom} in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
 The artificial viscosity in the density is not divided by $n$ as $\frac{1}{n}\grad n = \ln(n)$.
 
 \subsection{BC for Laplace inversion using FFT}
