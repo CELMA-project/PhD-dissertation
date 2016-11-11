@@ -1,9 +1,10 @@
 \section{Preconditioning}
-First we linearize in a way such that only linear terms of evolving variables
-comes into play. Also, resistivity and diffusion neglected (say that these are
-slow)
+%
+First we linearize in a way such that only linear terms of evolving variables comes into play.
+Also, resistivity and diffusion neglected (say that these are slow)
 
 \subsection{Linearize evolving variables}
+%
 \begin{align*}
  \partial_t n
  =&
@@ -44,7 +45,9 @@ slow)
  %
  + \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
+%
 Neglect resistivities and diffusivities, and for now also hard-core terms
+%
 \begin{align*}
  \partial_t n
  =&
@@ -77,8 +80,10 @@ Neglect resistivities and diffusivities, and for now also hard-core terms
   =&
   \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
-by using Boussinesq, we have that $\Om^D\simeq\Om=\grad_\perp^2\phi$. This
-means that $\phi\simeq\grad_\perp^{-2}\Om^D$
+%
+by using Boussinesq, we have that $\Om^D\simeq\Om=\grad_\perp^2\phi$.
+This means that $\phi\simeq\grad_\perp^{-2}\Om^D$
+%
 \begin{align*}
  \partial_t n
  =&
@@ -111,7 +116,9 @@ means that $\phi\simeq\grad_\perp^{-2}\Om^D$
   =&
   \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
+%
 As a first approximation, we neglect the non-linear terms
+%
 \begin{align*}
  \partial_t n
  =&
@@ -141,6 +148,7 @@ As a first approximation, we neglect the non-linear terms
   \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
 \subsection{Finding the Jacobian}
+%
 Recall that we have
 %
 \begin{align*}
@@ -243,9 +251,9 @@ Jacobian
 FIXME: See timestepping
 
 Equation $28$ in Knoll paper: Need to know inverse of preconditioner
-Approximate inverse of
-$A=\L( \mathbb{I} - \gamma\mathbb{J}\R)$ above.
+Approximate inverse of $A=\L( \mathbb{I} - \gamma\mathbb{J}\R)$ above.
 Have that
+%
 \begin{align*}
 \mathbb{I} - \gamma\mathbb{J} =
     \begin{bmatrix}
@@ -278,7 +286,9 @@ Have that
         & 1
     \end{bmatrix}
 \end{align*}
+%
 Have that
+%
 \begin{align*}
     M =&
     \begin{bmatrix}
@@ -329,7 +339,9 @@ Have that
         1
     \end{bmatrix}
 \end{align*}
+%
 Block decomposition
+%
 \begin{align*}
     \begin{bmatrix}
         M & U \\
@@ -414,28 +426,31 @@ Block decomposition
 %
 Have that $\|\ve{b}\|=1$, so \ldots cannot really do anyhting there
 But
+%
 \begin{align*}
     \grad_\perp f\cdot\frac{\ve{b}\times\grad_\perp\grad_\perp^{-2}\Om^D}{B}
     =& \grad_\perp f\cdot\frac{\ve{b}\times\grad_\perp\phi}{B}
 \end{align*}
+%
 So need somehow to invert the ExB advection
 
 \section{Longer Lz}
+%
 Lz = 10 rhos in simulation
 
 Lz = 100 rhos in simulations
 
-As physical length of machine does not increase, this means rhos must decrease,
-which can happen when $B$ increases
-
+As physical length of machine does not increase, this means rhos must decrease, which can happen when $B$ increases
 
 \section{Only parallel}
-But allow a radial gradient of $\phi$ in $\rho$. This means that all Arakawa
-brackets become zero.
+%
+But allow a radial gradient of $\phi$ in $\rho$.
+This means that all Arakawa brackets become zero.
 
 \section{Stuff from first attempt}
-Assume no background gradients. Use that $\ve{u}_E\cdot\nabla \propto
-\frac{1}{J}\{\phi,\cdot\}$, and that
+%
+Assume no background gradients. Use that $\ve{u}_E\cdot\nabla \propto \frac{1}{J}\{\phi,\cdot\}$, and that
+%
 \begin{align*}
   \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
   =&
@@ -453,7 +468,9 @@ Assume no background gradients. Use that $\ve{u}_E\cdot\nabla \propto
   %
   u_{i,\|}n \partial_\|\L(\frac{\grad_\perp^2 \phi}{B}\R)
 \end{align*}
+%
 which gives
+%
 \begin{align*}
 \Om^D =&
 n_0\frac{\grad_\perp^2\phi}{B}
@@ -498,7 +515,9 @@ n_0\frac{\grad_\perp^2\phi}{B}
  %
  + \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
+%
 Assume no background flow
+%
 \begin{align*}
 \Om^D =&
 n_0\frac{\grad_\perp^2\phi}{B}
@@ -538,12 +557,12 @@ n_0\frac{\grad_\perp^2\phi}{B}
   =&
  \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
-Notice in the case when the velocities are set equal to each other, the
-evolution of the parallel velocities of the two species differs except when
-$\phi = \frac{T_e\ln(n)}{1+\frac{1}{\mu}}$....
+%
+Notice in the case when the velocities are set equal to each other, the evolution of the parallel velocities of the two species differs except when $\phi = \frac{T_e\ln(n)}{1+\frac{1}{\mu}}$....
 
 Alternative approach:
 Assume just parallel gradients
+%
 \begin{align*}
 \Om^D =&
 0
@@ -580,7 +599,9 @@ Assume just parallel gradients
   =&
  \partial_\| \L(n\L[ u_{i,\|} - u_{e,\|} \R]\R)
 \end{align*}
+%
 which gives
+%
 \begin{align*}
     \partial_t n
 =&
@@ -628,7 +649,7 @@ k_\|u_{e,\|}
  =
  \om u_{e,\|}
 \end{align*}
-
+%
 \begin{align*}
 \partial_t u_{e,\|}
  =&
@@ -665,7 +686,9 @@ k_\|u_{e,\|}
  =&
  \frac{\mu k_\| T_e  \ln(n)}{ \om(1 + \mu) }
 \end{align*}
+%
 Insert in the above
+%
 \begin{align*}
 \om
 =&
@@ -682,8 +705,8 @@ k_\|\sqrt{\frac{\mu T_e  \ln(n)}{ 1 + \mu }}
 \simeq&
 k_\|\sqrt{\ln(n)}
 \end{align*}
-Dont have too big parallel gradients, nor too high $\ln(n)$...also $\ln(n)$ is
-negative...
+%
+Dont have too big parallel gradients, nor too high $\ln(n)$...also $\ln(n)$ is negative...
 
 % First split
 Check small perturbations

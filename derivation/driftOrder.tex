@@ -1,31 +1,19 @@
-The non-linear, coupled set of equations (\ref{fluideq:cont} -
-\ref{fluideq:mom}) consist of one continuity equation per species and one
-momentum equation per direction per species.
-With one electron fluid and one ion fluid, that totals $8$ partial differential
-equations (PDEs). Resolving all the details in these equations are
-computationally heavy, and we will here seek ways of simplifying the equations
-to lessen the computational demand.
+The non-linear, coupled set of equations (\ref{fluideq:cont} - \ref{fluideq:mom}) consist of one continuity equation per species and one momentum equation per direction per species.
+ With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs).
+Resolving all the details in these equations are computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
 
 % Fixme:
 FIXME: Not necessarily true in our case where we have sheaths
 
-The computational demand can be lessened by exploiting the difference in the
-parallel and the perpendicular dynamics. Due of the gyration of the particles,
-the dynamics parallel to the magnetic field are much faster than the dynamics
-perpendicular to the magnetic field. As a result the gradients perpendicular to
-the magnetic field tends to be much larger than the gradients parallel to the
-magnetic field. We can exploit this by using a courser grid in the parallel
-direction as compared to the perpendicular direction. By these two arguments, we
-have a good motivation to split our equations into perpendicular and parallel
-parts.
+The computational demand can be lessened by exploiting the difference in the parallel and the perpendicular dynamics.
+Due of the gyration of the particles, the dynamics parallel to the magnetic field are much faster than the dynamics perpendicular to the magnetic field.
+As a result the gradients perpendicular to the magnetic field tends to be much larger than the gradients parallel to the magnetic field.
+We can exploit this by using a courser grid in the parallel direction as compared to the perpendicular direction.
+By these two arguments, we have a good motivation to split our equations into perpendicular and parallel parts.
 
-Another way to lessen the demand is through the so called
-drift ordering of the perpendicular velocities. This lessen the details we can
-get out of the set of equations by neglecting the timescales which are faster
-than the ion cyclotron frequency in the perpendicular direction (see section
-\ref{sec:drift_order}). To derive the equations with the drift order
-approximation, we start out by decomposing the equations in parallel and
-perpendicular parts.
+Another way to lessen the demand is through the so called drift ordering of the perpendicular velocities.
+ This lessen the details we can get out of the set of equations by neglecting the timescales which are faster than the ion cyclotron frequency in the perpendicular direction (see section \ref{sec:drift_order}).
+ To derive the equations with the drift order approximation, we start out by decomposing the equations in parallel and perpendicular parts.
 
 \section{Decomposition}
 We start the derivation by rearranging equation (\ref{fluideq:mom}) in
@@ -105,17 +93,13 @@ the following way
 %
 where $\om_{c\a} = \frac{q_{\a}B}{m_\a}$ is the cyclotron frequency for species
 $\a$.%
-\footnote{Note that the ``frequency'' can be negative because of the $q_{\a}$
-          using this definition. However, this is just a ``remnant'' of the
-          vector version of this quantity: The angular velocity $\ve{\om}_{c\a}
-          = \frac{q_{\a}\ve{B}}{m_\a}$, where the $\pm$ sign from $q_{\a}$
-          tells us if a particle is rotating clockwise or counter-clockwise.}%
+\footnote{Note that the ``frequency'' can be negative because of the $q_{\a}$ using this definition.
+        However, this is just a ``remnant'' of the vector version of this quantity: The angular velocity $\ve{\om}_{c\a} = \frac{q_{\a}\ve{B}}{m_\a}$, where the $\pm$ sign from $q_{\a}$ tells us if a particle is rotating clockwise or counter-clockwise.}%
 %
 
-In general, an arbitrary vector $\ve{a}$ can be written $\ve{a} =
-\ve{a}\cdot\te{I}$, where $\te{I}$ is the identity tensor of rank $2$. We
-introduce the rank-2 tensor $\ve{b}\ve{b}$, which is the outer product with the
-unity vectors along $\ve{B}$. Thus
+In general, an arbitrary vector $\ve{a}$ can be written $\ve{a} = \ve{a}\cdot\te{I}$, where $\te{I}$ is the identity tensor of rank $2$.
+We introduce the rank-2 tensor $\ve{b}\ve{b}$, which is the outer product with the unity vectors along $\ve{B}$.
+Thus
 %
 \begin{align}
  \ve{a} = \ve{a}\cdot\L(\te{I}+\ve{b}\ve{b}-\ve{b}\ve{b}\R)
@@ -124,9 +108,8 @@ unity vectors along $\ve{B}$. Thus
         \label{eq:perp_par}
 \end{align}
 %
-In other words, we can find the parallel component (with respect to the
-magnetic field) by taking the dot product with $\ve{b}$ and use the result
-to scale $\ve{b}$. We further observe that
+In other words, we can find the parallel component (with respect to the magnetic field) by taking the dot product with $\ve{b}$ and use the result to scale $\ve{b}$.
+We further observe that
 %
 \begin{align*}
     -\ve{b}\times\L(\ve{b}\times\ve{a}\R)
@@ -200,18 +183,15 @@ Generally we have
  =& \d_{t,\a} \ve{a}_\|,
 \end{align*}
 %
-where we have used the electrostatic approximation $\d_t \ve{B} \simeq 0$ (see
-appendix \ref{app:elstat} for details).
+where we have used the electrostatic approximation $\d_t \ve{B} \simeq 0$ (see appendix \ref{app:elstat} for details).
 
 Further we have that
-%
 %
 \begin{align*}
  \L(\div\te{A}\R)_\|
  &\defined
  \L(\L[\div\te{A}\R]\cdot\ve{b}\R)\ve{b}
 \end{align*}
-%
 %
 and that
 %
@@ -232,8 +212,7 @@ and that
   &= \grad_\|\ve{a}
 \end{align*}
 %
-For further references, we also define all the gradient operators
-in this thesis here
+For further references, we also define all the gradient operators in this thesis here
 %
 \begin{empheq}[box=\tcbhighmath]{align}
     &\partial_\| \defined \ve{b}\cdot \nabla&
@@ -253,8 +232,7 @@ in this thesis here
 %a ces-not-commutative.94783/
 % http://en.wikipedia.org/wiki/Scalar_multiplication
 %
-This means that if we right dot equation (\ref{eq:no_assumptions_momentum})
-with $\ve{b}\ve{b}$, we get
+This means that if we right dot equation (\ref{eq:no_assumptions_momentum}) with $\ve{b}\ve{b}$, we get
 %
 \begin{align*}
   \L(\frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a}\R)\cdot\ve{b}\ve{b}
@@ -315,9 +293,7 @@ with $\ve{b}\ve{b}$, we get
  \label{eq:material_dot_bb}
 \end{empheq}
 %
-If we subtract equation (\ref{eq:material_dot_bb}) from equation
-(\ref{eq:no_assumptions_momentum}), and use that  $\nabla_\perp =
-\nabla - \nabla_\|$ and $\ve{a}\times\ve{b}=\ve{a}_\perp\times\ve{b}$, we get
+If we subtract equation (\ref{eq:material_dot_bb}) from equation (\ref{eq:no_assumptions_momentum}), and use that  $\nabla_\perp = \nabla - \nabla_\|$ and $\ve{a}\times\ve{b}=\ve{a}_\perp\times\ve{b}$, we get
 %
 \begin{align}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
@@ -357,11 +333,9 @@ If we subtract equation (\ref{eq:material_dot_bb}) from equation
 %       Normalize R_tilde = R/R0
 %       Normalize r_tilde = r/r0
 %       But must have r0 << R0 in order to say that r_tilde << R_tilde
-The goal of the drift ordering is to split the equations in
-(\ref{eq:perp_mom_start}) in a different orders, yielding algebraic
-equations for each order of $\ve{u}_{\a,\perp}$. In order to do the drift
-ordering we will use that $\ve{R}_{\g \to \a} \propto
-\nu_\g n_\a m_\a$, where $\nu_\g$ is the collision frequency. Thus
+The goal of the drift ordering is to split the equations in (\ref{eq:perp_mom_start}) in a different orders, yielding algebraic equations for each order of $\ve{u}_{\a,\perp}$.
+In order to do the drift ordering we will use that $\ve{R}_{\g \to \a} \propto \nu_\g n_\a m_\a$, where $\nu_\g$ is the collision frequency.
+Thus
 %
 \begin{align*}
  \frac{\ve{R}_{\g \to \a}}{n_\a q_\a B}
@@ -369,17 +343,15 @@ ordering we will use that $\ve{R}_{\g \to \a} \propto
  = \frac{\nu_\g}{\om_{c\a}}
 \end{align*}
 %
-We assume that the collision frequency is much smaller than the slowest
-cyclotron frequency (that is the ion cyclotron frequency), so that
+We assume that the collision frequency is much smaller than the slowest cyclotron frequency (that is the ion cyclotron frequency), so that
 %
 \begin{align*}
  \frac{\nu_\g}{\om_{ci}} \ll 1
 \end{align*}
 %
-The same argument can be used for the $\L(\div \te{\pi}_\a\R)_\perp$ term in
-equation (\ref{eq:perp_mom_start}).
-Further on, we will make an assumption on the timescale. By writing out the
-left hand side of equation (\ref{eq:perp_mom_start}) explicitly, we obtain
+The same argument can be used for the $\L(\div \te{\pi}_\a\R)_\perp$ term in equation (\ref{eq:perp_mom_start}).
+Further on, we will make an assumption on the timescale.
+By writing out the left hand side of equation (\ref{eq:perp_mom_start}) explicitly, we obtain
 %
 \begin{align*}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp} &=
@@ -405,9 +377,8 @@ We now assume that these are small, so that
  &\frac{\L|\ve{u}_{\a}\cdot\ve{k}_{\text{char}}\R|}{\L|\om_{c\a}\R|} \ll 1
 \end{align*}
 %
-In addition, as $S_{\a,n}$ represents the creation of particles per time per
-unit volume, $\frac{S_{\a,n}}{n_\a}$ can be interpreted as the creation of particles per
-time, which we will denote $\nu_{S,\a}$. We have that
+In addition, as $S_{\a,n}$ represents the creation of particles per time per unit volume, $\frac{S_{\a,n}}{n_\a}$ can be interpreted as the creation of particles per time, which we will denote $\nu_{S,\a}$.
+We have that
 %
 \begin{align*}
  \frac{
@@ -420,8 +391,8 @@ time, which we will denote $\nu_{S,\a}$. We have that
 \ve{u}_{\a,\perp}
 \end{align*}
 %
-We will now assume that the creation of particles happens on a much slower time
-scale than the ion cyclotron motion. In other words that
+We will now assume that the creation of particles happens on a much slower time scale than the ion cyclotron motion.
+In other words that
 %
 \begin{align*}
  \frac{
@@ -440,17 +411,13 @@ Finally, we assume that
  \nu_{S,\a}
 \end{align*}
 %
-With this, we can now introduce the \emph{label} $\e$ which indicates
-the order of the term. That is, $\e^0$ in front of a term indicates that it is
-of zeroth order, $\e^1$ is of the first order and so on. We then have
-$\e^0 f_a \gg \e^1 f_b \gg \e^2 f_c \gg \ldots$, where the different $f_i$
-represent different terms (not to be confused with the distribution function)
+With this, we can now introduce the \emph{label} $\e$ which indicates the order of the term.
+That is, $\e^0$ in front of a term indicates that it is of zeroth order, $\e^1$ is of the first order and so on.
+We then have $\e^0 f_a \gg \e^1 f_b \gg \e^2 f_c \gg \ldots$, where the different $f_i$ represent different terms (not to be confused with the distribution function)
 
 % FIXME: Write that these are not assumptions at all, but in fact use typical
 % values
-If we assume that $-\frac{\grad_\perp p_\a}{n_\a  q_\a B} +
-\frac{\ve{E}_\perp}{B} + \ve{u}_{\a}\times\ve{b}$ is of the zeroth order, we
-can write equation (\ref{eq:perp_mom_start}) in the label notation as
+If we assume that $-\frac{\grad_\perp p_\a}{n_\a  q_\a B} + \frac{\ve{E}_\perp}{B} + \ve{u}_{\a}\times\ve{b}$ is of the zeroth order, we can write equation (\ref{eq:perp_mom_start}) in the label notation as
 %
 \begin{align*}
   \e\frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
@@ -477,8 +444,8 @@ can write equation (\ref{eq:perp_mom_start}) in the label notation as
 \numberthis
 \end{align*}
 %
-By splitting the velocities in order of magnitudes, we can perform the drift
-ordering in an iterative manner (as shown below). We get
+By splitting the velocities in order of magnitudes, we can perform the drift ordering in an iterative manner (as shown below).
+We get
 %
 \begin{align*}
  \ve{u}_{\a,\perp} &= \ve{u}_{\a,0,\perp} + \e\ve{u}_{\a,1,\perp} +
@@ -488,9 +455,8 @@ ordering in an iterative manner (as shown below). We get
  \numberthis
 \end{align*}
 %
-which is correct to the first iteration. If we substitute equation
-(\ref{eq:u_first_orders}) into equation
-(\ref{eq:first_assumptions_momentum_before_split}), we obtain
+which is correct to the first iteration.
+If we substitute equation (\ref{eq:u_first_orders}) into equation (\ref{eq:first_assumptions_momentum_before_split}), we obtain
 %
 \begin{align}
   \e\frac{1}{\om_{c\a}}\d_{t,\a} \L(\ve{u}_{\a,0,\perp} +
@@ -520,8 +486,7 @@ which is correct to the first iteration. If we substitute equation
 \label{eq:first_assumptions_momentum}
 \end{align}
 %
-The left hand side of equation (\ref{eq:first_assumptions_momentum}) can now be
-written
+The left hand side of equation (\ref{eq:first_assumptions_momentum}) can now be written
 %
 \begin{align*}
  \frac{1}{\om_a}\e\d_{t,\a} (\ve{u}_{\a,0,\perp} + \e\ve{u}_{\a,1,\perp}) =
@@ -532,8 +497,8 @@ written
  \frac{1}{\om_a} \e\nabla (\ve{u}_{\a,0,\perp} + \e\ve{u}_{\a,1,\perp})
 \end{align*}
 %
-Further, we can order $\frac{1}{\om_a}\e\d_{t,\a} \ve{u}_\a$. By introducing
-the notation $\d_{t,\a}^n$, where $n$ denotes the order we have that
+Further, we can order $\frac{1}{\om_a}\e\d_{t,\a} \ve{u}_\a$.
+By introducing the notation $\d_{t,\a}^n$, where $n$ denotes the order we have that
 %
 \begin{align*}
  \d_{t,\a}^0 \ve{u}_{\a,\perp} &= 0
@@ -548,14 +513,9 @@ the notation $\d_{t,\a}^n$, where $n$ denotes the order we have that
  &\;\, \vdots \notag
 \end{align*}
 %
-As there seem not to be any natural ordering of
-parallel velocities, these are not ordere in the same way as the perpendicular
-velocities. However, as the general material derivative can be written
-$\d_{t,\a}=\partial_t + \ve{u}_{\a}\cdot\nabla$, and since
-$\ve{u}_\a = \ve{u}_{\a,\|} + \ve{u}_{\a,0,\perp} + \ve{u}_{\a,1,\perp} +
-\ldots$, the parallel advection needs to be accounted for. To simplify the
-coming notation, we will include the parallel advection in $\d_{t,\a}^1$, such
-that from this point on, we will write
+As there seem not to be any natural ordering of parallel velocities, these are not ordere in the same way as the perpendicular velocities.
+However, as the general material derivative can be written $\d_{t,\a}=\partial_t + \ve{u}_{\a}\cdot\nabla$, and since $\ve{u}_\a = \ve{u}_{\a,\|} + \ve{u}_{\a,0,\perp} + \ve{u}_{\a,1,\perp} + \ldots$, the parallel advection needs to be accounted for.
+To simplify the coming notation, we will include the parallel advection in $\d_{t,\a}^1$, such that from this point on, we will write
 %
 \begin{align*}
  \d_{t,\a}^1 &= \parti{}{t} + (\ve{u}_{\a,0,\perp} + \ve{u}_{\a,\|}) \cdot\nabla
@@ -586,8 +546,8 @@ is formally a first order term, and
 is formally a second order term.
 
 \section{Zeroth order perpendicular terms}
-The zeroth order term of equation (\ref{eq:first_assumptions_momentum}) can
-then be written
+%
+The zeroth order term of equation (\ref{eq:first_assumptions_momentum}) can then be written
 %
 \begin{align}
  0 &=
@@ -597,10 +557,8 @@ then be written
  \label{eq:zeroth_start}
 \end{align}
 %
-In general, we have that $-\ve{b}\times\L(\ve{b}\times\ve{a}\R) =
-\ve{a} - \ve{a}_\|=\ve{a}_\perp$. Thus, we can solve equation
-(\ref{eq:zeroth_start}) for $\ve{u}_{\a,0,\perp}$ by crossing the equation with
-$\ve{b}$
+In general, we have that $-\ve{b}\times\L(\ve{b}\times\ve{a}\R) = \ve{a} - \ve{a}_\|=\ve{a}_\perp$.
+Thus, we can solve equation (\ref{eq:zeroth_start}) for $\ve{u}_{\a,0,\perp}$ by crossing the equation with $\ve{b}$
 %
 \begin{align*}
  0 &=
@@ -629,10 +587,9 @@ $\ve{b}$
  \label{eq:u_0_balance}
 \end{align*}
 %
-As mentioned in appendix \ref{app:elstat}, a low $\beta$ plasmas justifies the
-electrostatic approximation. This means that $\ve{E} = -\grad\phi$, so
-$\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$. Thus can we
-rewrite equation (\ref{eq:u_0_balance}) as
+As mentioned in appendix \ref{app:elstat}, a low $\beta$ plasmas justifies the electrostatic approximation.
+This means that $\ve{E} = -\grad\phi$, so $\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$.
+Thus can we rewrite equation (\ref{eq:u_0_balance}) as
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
  \ve{u}_{\a,0,\perp} =&
@@ -658,8 +615,9 @@ rewrite equation (\ref{eq:u_0_balance}) as
 \end{empheq}
 
 \section{First order perpendicular terms}
-We obtain the algebraic equation of order $1$ of equation
-(\ref{eq:first_assumptions_momentum}) by collecting terms of order $1$. We get
+%
+We obtain the algebraic equation of order $1$ of equation (\ref{eq:first_assumptions_momentum}) by collecting terms of order $1$.
+We get
 %
 \begin{align}
   \frac{1}{\om_{c\a}}\d^1_{t,\a} \ve{u}_{\a,0,\perp}
@@ -676,10 +634,9 @@ We obtain the algebraic equation of order $1$ of equation
   \label{eq:u_1_clean}
 \end{align}
 %
-We see that the first order depends on the zeroth order, and hence we need to
-solve for the orders iteratively. The algebraic equation for
-$\ve{u}_{\a,1,\perp}$ can be found by crossing equation (\ref{eq:u_1_clean})
-with $\ve{b}$. Generally we have
+We see that the first order depends on the zeroth order, and hence we need to solve for the orders iteratively.
+The algebraic equation for $\ve{u}_{\a,1,\perp}$ can be found by crossing equation (\ref{eq:u_1_clean}) with $\ve{b}$.
+Generally we have
 %
 \begin{align*}
  \L(\d_{t,\a} \ve{a} \R)\times\ve{b}
@@ -756,9 +713,7 @@ This gives
  \numberthis
 \end{align*}
 %
-%
-By substituting equation (\ref{eq:u_0}) in equation (\ref{eq:u_1_u_0}), we
-obtain
+By substituting equation (\ref{eq:u_0}) in equation (\ref{eq:u_1_u_0}), we obtain
 %
 % FIXME: Consider not to expand u_s as this disappears
 \begin{align*}
@@ -868,5 +823,4 @@ Hence
   \numberthis
 \end{empheq}
 %
-We note that even though the material derivative contains parallel derivatives,
-the resulting vector is purely perpendicular.
+We note that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.

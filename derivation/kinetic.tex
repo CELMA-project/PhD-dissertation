@@ -1,20 +1,16 @@
-We will here derive the fluid equations used in the rest of this thesis from
-the Fokker-Planck equation. We will follow the approach of
-\cite{Helander2002book}, but we will he include an inelastic source (meaning
-that the source term adds or subtracts to the distribution function). This
-equation can again be derived from the Klimontovich equation (see for example
-\cite{Klimontovich1983book}.
+We will here derive the fluid equations used in the rest of this thesis from the Fokker-Planck equation.
+We will follow the approach of \cite{Helander2002book}, but we will he include an inelastic source (meaning that the source term adds or subtracts to the distribution function).
+This equation can again be derived from the Klimontovich equation (see for example \cite{Klimontovich1983book}.
 
-We are here looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ in at point
-$\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space over time $t$ of species
-$\a$. The particles obeys the conservation equation
+We are here looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ in at point $\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space over time $t$ of species $\a$.
+The particles obeys the conservation equation
 %
 \begin{align*}
     \partial_t f_\a + \partial_{\ve{z}} \L(\L[\d_t \ve{z}\R]f_\a\R) =& S'_\a
 \end{align*}
 %
-Where $S$ is a source in the distribution function for species $\a$. We
-will here use a source which fulfills the following
+Where $S$ is a source in the distribution function for species $\a$.
+We will here use a source which fulfills the following
 %
 \begin{align*}
     &\inde{S'_{\a}}{^3v} = S_{n,\a}&
@@ -35,7 +31,8 @@ Using that
     \partial_{\ve{v}} \L(\ve{E}'+\ve{v}\times\ve{B}'\R) =& 0
 \end{align*}
 %
-Where $\ve{E}'$ and $\ve{B}'$ are the total fields. We get
+Where $\ve{E}'$ and $\ve{B}'$ are the total fields.
+We get
 %
 \begin{align*}
       \partial_t f_\a
@@ -45,27 +42,22 @@ Where $\ve{E}'$ and $\ve{B}'$ are the total fields. We get
     =& S_\a
 \end{align*}
 
-
 \section{Fokker-Planck equation}
-We now introduce $\ve{E}$ and $\ve{B}$, which are the fields averaged over
-several Debye lengths. To incorporate the microscopic fluctuations of the
-fields, we are introducing the collision operator
+We now introduce $\ve{E}$ and $\ve{B}$, which are the fields averaged over several Debye lengths.
+To incorporate the microscopic fluctuations of the fields, we are introducing the collision operator
 %
 \begin{align*}
     C_\a = \sum_\g C_{\a\g}(f_\a,f_\g)
 \end{align*}
 %
-In the scope of this thesis, we will consider only elastic collisions between
-fully ionized, cold ions, electrons and cold neutrals (which only acts as a
-static background). In other words, we will let $\gamma \in \{e, i, n\}$
-(denoting electrons, ions and neutrals), so that
+In the scope of this thesis, we will consider only elastic collisions between fully ionized, cold ions, electrons and cold neutrals (which only acts as a static background).
+In other words, we will let $\gamma \in \{e, i, n\}$ (denoting electrons, ions and neutrals), so that
 %
 \begin{align*}
     C_\a = C_{\a\b}(f_\a,f_\b) + C_{\a n}(f_\a,f_n)
 \end{align*}
 %
-where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Further on, the collision operator
-has the following properties
+where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Further on, the collision operator has the following properties
 %
 \begin{align*}
     &\inde{C_{\a\g}}{^3v} = 0&
@@ -89,7 +81,6 @@ The resulting Fokker-Planck equation reads
     \label{eq:fp}
 \end{empheq}
 
-
 \section{Moments of Fokker-Planck}
 We will use the notation
 %
@@ -105,8 +96,7 @@ We now define
     \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_f \defined&\; \te{\Pi}_\a
 \end{align*}
 %
-We call the difference in the velocity of a single particle with respect to the
-macroscopic fluid velocity $\ve{w}$, so that
+We call the difference in the velocity of a single particle with respect to the macroscopic fluid velocity $\ve{w}$, so that
 %
 \begin{align*}
     \ve{w}_\a = \ve{v} - \ve{u}_\a
@@ -128,8 +118,8 @@ where $\te{I}$ is the identity tensor, and use that
 %
 
 \subsection{Zeroth moment}
-We will now work through the zeroth moment term by term by applying
-$\expt{n_\a \;\cdot\;}_f=n_\a\expt{\;\cdot\;}_f$ on equation (\ref{eq:fp}). We have that
+We will now work through the zeroth moment term by term by applying $\expt{n_\a \;\cdot\;}_f=n_\a\expt{\;\cdot\;}_f$ on equation (\ref{eq:fp}).
+We have that
 %
 \begin{align*}
     \expt{\partial_t n_\a}_f
@@ -235,14 +225,9 @@ Thus our continuity equation becomes
 \begin{align}
     \partial_t n_\a + \div\L(n_\a u_\a\R) = S_{n,\a} \label{kin:cont}
 \end{align}
-%
-
-
-
 
 \subsection{First moment}
-We will now work through the first moment term by term by applying
-$\expt{m_\a n_\a \ve{v} \;\cdot\;}_f=m_\a n_\a\expt{ \ve{v} \;\cdot\;}_f$ on equation (\ref{eq:fp}).
+We will now work through the first moment term by term by applying $\expt{m_\a n_\a \ve{v} \;\cdot\;}_f=m_\a n_\a\expt{ \ve{v} \;\cdot\;}_f$ on equation (\ref{eq:fp}).
 We have that
 %
 \begin{align*}
@@ -374,8 +359,7 @@ further that
     \ve{u_\a}\times\ve{B}
 \end{align*}
 %
-as we assume that the particles will be generated without any momentum, we have
-that
+as we assume that the particles will be generated without any momentum, we have that
 %
 \begin{align*}
     \inde{m_a\ve{v}S'_{\a}}{^3v} = 0
@@ -529,24 +513,18 @@ The second term can be expanded further by observing that
         \ve{u}_\a
 \end{align*}
 %
-The pressure tensor $\te{P}_\a$ would have been isotropic if the
-particles would be free to move in all directions. However, charged particles
-gyrates whenever moving with a vector component perpendicular to the
-magnetic field. Thus, the pressure along the magnetic field line
-is different from the pressure perpendicular to it. Nevertheless, we can
-observe from the definitions that the tensors must be symmetric.
+The pressure tensor $\te{P}_\a$ would have been isotropic if the particles would be free to move in all directions.
+However, charged particles gyrates whenever moving with a vector component perpendicular to the magnetic field.
+Thus, the pressure along the magnetic field line is different from the pressure perpendicular to it.
+Nevertheless, we can observe from the definitions that the tensors must be symmetric.
 
-The stress tensor is assumed to be small compared to the other terms, and can
-be further written as
+The stress tensor is assumed to be small compared to the other terms, and can be further written as
 %
 \begin{align*}
     \te{\pi} = \te{\pi}^S + \te{\pi}^C + \te{\pi}^G
 \end{align*}
 %
-where $\te{\pi}^S$ is the viscosity which comes as a consequence of similar
-species velocity shear, $\te{\pi}^C$ comes from velocity compression along
-the magnetic field and $\te{\pi}^G$ is attributed by finite Larmor radius
-(FLR) effects.
+where $\te{\pi}^S$ is the viscosity which comes as a consequence of similar species velocity shear, $\te{\pi}^C$ comes from velocity compression along the magnetic field and $\te{\pi}^G$ is attributed by finite Larmor radius (FLR) effects.
 
 The second term of equation (\ref{eq:mom_crude}) can now be written as
 %
@@ -616,8 +594,7 @@ Thus, equation (\ref{eq:mom_crude}) can be written like
     \label{kin:mom_wo_full_deriv}
 \end{align*}
 %
-If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and
-insert this into equation (\ref{kin:mom_wo_full_deriv}) we get
+If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert this into equation (\ref{kin:mom_wo_full_deriv}) we get
 %
 \begin{align*}
     n_\a m_\a \d_{t,\a} \ve{u}_{\a}
@@ -631,14 +608,10 @@ insert this into equation (\ref{kin:mom_wo_full_deriv}) we get
     \numberthis
     \label{kin:mom}
 \end{align*}
-%
-
-
 
 \subsection{Set of equations}
 %
-By neglecting collision with neutral species, we have found that the two
-first moments of the Fokker-Planck equations ((\ref{kin:cont}) and (\ref{kin:mom})) can be written like
+By neglecting collision with neutral species, we have found that the two first moments of the Fokker-Planck equations ((\ref{kin:cont}) and (\ref{kin:mom})) can be written like
 %
 \begin{empheq}[box=\tcbhighmath]{align}
     \partial_t n_\a + \div\L(n_\a \ve{u}_\a\R) =& S_{n,\a}
@@ -659,25 +632,16 @@ first moments of the Fokker-Planck equations ((\ref{kin:cont}) and (\ref{kin:mom
  \label{fluideq:mom}
 \end{empheq}
 %
-where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to
-\a}$ denotes the force acting on species $\a$ by $\g$.
+where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to \a}$ denotes the force acting on species $\a$ by $\g$.
 
-We could go on with our derivation, and included the third moment, namely the
-energy equation, which can be used to solve the temperature. The energy
-equation will depend on a quantity belonging to the next moment, namely the
-heat flux $Q$, due to the $\ve{v}\cdot\nabla f_\a$ term in equation
-(\ref{eq:fp}). The heat flux equation would again depend on a quantity
-belonging to the next order, and so on.
+We could go on with our derivation, and included the third moment, namely the energy equation, which can be used to solve the temperature.
+The energy equation will depend on a quantity belonging to the next moment, namely the heat flux $Q$, due to the $\ve{v}\cdot\nabla f_\a$ term in equation (\ref{eq:fp}).
+The heat flux equation would again depend on a quantity belonging to the next order, and so on.
 
-In other words, we would need a way to properly "close" the system. One often
-used method to close the set of equations, is the one suggested by Braginskii
-in his paper from $1965$ \cite{Braginskii1965}, which builds on the kinetic
-closure of gases derived by Chapman \cite{Chapman1916} and Enskog
-\cite{Enskog1917, Enskog1922}. Although the temperature dynamics have been
-shown to play a major role in turbulence dynamics (see for example
+In other words, we would need a way to properly "close" the system.
+One often used method to close the set of equations, is the one suggested by Braginskii in his paper from $1965$ \cite{Braginskii1965}, which builds on the kinetic closure of gases derived by Chapman \cite{Chapman1916} and Enskog \cite{Enskog1917, Enskog1922}.
+Although the temperature dynamics have been shown to play a major role in turbulence dynamics (see for example
 % NOTE: Consider to add better references
 \cite{Olsen2016}
-), the temperatures found in linear machines are
-relative low as compared with a fusions reactor, so we will here use a constant
-value for $T_e$, and set $T_i=0$. Improvements to this crude approximation will
-be subject to future work.
+), the temperatures found in linear machines are relative low as compared with a fusions reactor, so we will here use a constant value for $T_e$, and set $T_i=0$.
+Improvements to this crude approximation will be subject to future work.

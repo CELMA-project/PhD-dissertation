@@ -6,6 +6,7 @@ Time stepping
 %
 Implicit linear multistep (same goes for implicit multistage timesteppers like Runge-Kutta)
 LMM
+%
 \begin{align*}
     \sum_{j=0}^{r}\a_j\ve{f}(t_{n+j}) =& k\sum_{j=0}^{r}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
     %
@@ -20,8 +21,10 @@ LMM
     \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
     - \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j})
 \end{align*}
+%
 We now call $\frac{\b_r}{\a_r}\defined\gamma$.
 We want to solve
+%
 \begin{align*}
     \ve{f}(t_{n+r})
     - \gamma F(\ve{f}(t_{n+r}), t_{n+r})
@@ -32,21 +35,27 @@ We want to solve
     =&
     0
 \end{align*}
+%
 For $\ve{f}(t_{n+r})$. Newton iterations
+%
 \begin{align*}
     \ve{f}_0(t_{n+r}) =& \ve{f}(t_{n+r-1})\\
     \ve{f}_{l+1}(t_{n+r}) =& \ve{f}_l(t_{n+r})-
     \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)^{-1}
     G(\ve{f}_{l}(t_{n+r}))
 \end{align*}
+%
 The iterations can be rewritten as
+%
 \begin{align*}
     \parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}
     \L( \ve{f}_{l+1}(t_{n+r}) - \ve{f}_l(t_{n+r}) \R)
     =&
     -G(\ve{f}_{l}(t_{n+r}))
 \end{align*}
+%
 Where
+%
 \begin{align*}
     \parti{ G(\ve{f}(t_{n+r})) }{\ve{f}(t_{n+r})}
     =&
@@ -65,6 +74,7 @@ Where
     =&
     \mathbb{I} - \gamma\mathbb{J}
 \end{align*}
+%
 CITE JFNK FROM DA KNOLL
 
 We get
@@ -82,7 +92,6 @@ which needs can be recast to
     A \ve{x} =& \ve{b}
 \end{align*}
 %
-In other words, we need to invert $A$ (that is $\L( \mathbb{I} -
-\gamma\mathbb{J}\R)$) for each Newton iteration.
-The inversion of $ A \ve{x} = \ve{b}$ is done iteratively with GMRES. GMRES can
-further be preconditioned.
+In other words, we need to invert $A$ (that is $\L( \mathbb{I} - \gamma\mathbb{J}\R)$) for each Newton iteration.
+The inversion of $ A \ve{x} = \ve{b}$ is done iteratively with GMRES.
+GMRES can further be preconditioned.

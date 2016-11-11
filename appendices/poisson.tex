@@ -1,7 +1,5 @@
 We will here derive the bracket operators used for perpendicular advection.
-Under electrostatic conditions, we have that $\ve{u}_E =
--\frac{\nabla\phi\times\ve{b}}{B}$, which is similar to
-$\ve{u}=\ve{k}\times\nabla\psi$ found in incompressible fluid flow
+Under electrostatic conditions, we have that $\ve{u}_E = -\frac{\nabla\phi\times\ve{b}}{B}$, which is similar to $\ve{u}=\ve{k}\times\nabla\psi$ found in incompressible fluid flow
 %
 \begin{align*}
     \ve{u}_E =& -\frac{\nabla\phi\times\ve{b}}{B}\\
@@ -153,13 +151,10 @@ In a cylindrical geometry, all the off diagonal elements are zero, so
     \label{poi:defClebsh}
 \end{align}
 %
-We note that equation (\ref{poi:defClebsh}) is only valid for a Clebsch system. If
-the $B$-field is constant (as in our case), we are no longer in a Clebsch
-system. However, the metric of the two systems coincide, and the derivation
-could have been performed by removing the dependency of $B$ by multiplying the
-result with $B'$, which is equal to the Clebsch system $B$-field, but without
-any units.  Thus, for a constant $B$-field the $\ve{E}\times\ve{B}$ advection
-can be written
+We note that equation (\ref{poi:defClebsh}) is only valid for a Clebsch system.
+If the $B$-field is constant (as in our case), we are no longer in a Clebsch system.
+However, the metric of the two systems coincide, and the derivation could have been performed by removing the dependency of $B$ by multiplying the result with $B'$, which is equal to the Clebsch system $B$-field, but without any units.
+ Thus, for a constant $B$-field the $\ve{E}\times\ve{B}$ advection can be written
 %
 \begin{align}
     B'\ve{u}_E\cdot\nabla
@@ -170,8 +165,8 @@ can be written
     \label{poi:def}
 \end{align}
 %
-where $B$ is the constant magnetic field.  This operator can be discretized
-using the Arakawa bracket operator.
+where $B$ is the constant magnetic field.
+This operator can be discretized using the Arakawa bracket operator.
 
 FIXME: Small b changes as well. Is the above valid?
 grad phi times b (multiply with g22 J-1)

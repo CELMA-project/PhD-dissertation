@@ -1,16 +1,11 @@
 % FIXME: RELATIVE ERROR RATHER THAN ABSOULTE ERROR IN MES
-We will now use the above derived equation in a homogeneous magnetic field,
-assuming cold ions and constant electron temperature in a cylindrical geometry.
-The resulting model will from here be referred to as the CELMA model, standing
-for \textbf{C}onsistent \textbf{E}quations in a \textbf{L}inear \textbf{MA}chine
+We will now use the above derived equation in a homogeneous magnetic field, assuming cold ions and constant electron temperature in a cylindrical geometry.
+The resulting model will from here be referred to as the CELMA model, standing for \textbf{C}onsistent \textbf{E}quations in a \textbf{L}inear \textbf{MA}chine
 
 \section{The density equation}
 %
-We will now rewrite the electron density equation (equation
-(\ref{eq:dens_evol_gen})) using that we are in a straight magnetic field (so
-that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the
-electron temperature is constant and the ion temperature is negligible. This
-yields
+We will now rewrite the electron density equation (equation (\ref{eq:dens_evol_gen})) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
+This yields
 %
 \begin{align*}
     \d_t n
@@ -64,8 +59,6 @@ we find that
     \label{eq:non_norm_dens}
 \end{align}
 
-
-
 \section{The vorticity equation}
 %
 We will now define the vorticity
@@ -74,9 +67,7 @@ We will now define the vorticity
     \frac{\grad^2_\perp \phi}{B} \defined \Om
 \end{align*}
 %
-This is in principle not the full vorticity, but rather the parallel part of
-the advective vorticity, which has is analogue to what we find in fluid
-mechanics
+This is in principle not the full vorticity, but rather the parallel part of the advective vorticity, which has is analogue to what we find in fluid mechanics
 %
 \begin{align*}
     \L(\curl \ve{u}_E\R)\cdot\ve{b}
@@ -136,9 +127,7 @@ $
                    \div \L[ \ve{b} \ve{b}\cdot\grad \R]
 $
 %
-We will in light of this, using the current magnetic field topology,
-investigate the left hand side of equation (\ref{eq:full_vort_eq}) term by term.
-
+We will in light of this, using the current magnetic field topology, investigate the left hand side of equation (\ref{eq:full_vort_eq}) term by term.
 
 \subsection{The diamagnetic contribution}
 %
@@ -148,11 +137,10 @@ investigate the left hand side of equation (\ref{eq:full_vort_eq}) term by term.
 %
 disappears as $\mathcal{C}(f)$ vanishes for a straight magnetic field.
 
-
 \subsection{The neutral contribution}
 %
-The two next terms, origin from the Pedersen drift from (\ref{eq:div_ped}),
-can be rewritten using that we are dealing with cold ions. We get
+The two next terms, origin from the Pedersen drift from (\ref{eq:div_ped}), can be rewritten using that we are dealing with cold ions.
+We get
 %
 \begin{align*}
     \div\L(n\ve{u}_{i,\text{Ped}} \R)
@@ -174,11 +162,9 @@ can be rewritten using that we are dealing with cold ions. We get
 \end{align*}
 %
 
-
 \subsection{The polarization contribution}
-Further on, we will investigate the terms arising from the sum of the
-divergence of the ion polarization drift and ion viscosity drift multiplied
-with the density. The first term yields
+%
+Further on, we will investigate the terms arising from the sum of the divergence of the ion polarization drift and ion viscosity drift multiplied with the density. The first term yields
 %
 \begin{align*}
  &
@@ -262,10 +248,7 @@ As we have no curvature, the second term gives
 \end{align*}
 % TODO: Delete me if not included in thesis
 %       Boussinesq part
-
-
-This means that the polarization contribution from equation
-(\ref{eq:full_vort_eq}) can be written as
+This means that the polarization contribution from equation (\ref{eq:full_vort_eq}) can be written as
 %
 \begin{align*}
     &
@@ -282,9 +265,9 @@ This means that the polarization contribution from equation
 \end{align*}
 
 \subsection{The source contribution}
-Further on, the contribution from the source can be rewritten.  Under the
-assumption of cold ions ($T_i = 0$), we can simplify the source term in
-equation (\ref{eq:full_vort_eq}) to be
+%
+Further on, the contribution from the source can be rewritten.
+Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in equation (\ref{eq:full_vort_eq}) to be
 %
 \begin{align*}
     \div \L( \frac{ S_{i,n}}{\om_{ci}}
@@ -326,8 +309,7 @@ Next, the RHS of equation (\ref{eq:full_vort_eq}) reads
 \subsection{Collecting terms}
 \label{sec:CELMACollect}
 %
-From the calculations above, equation (\ref{eq:full_vort_eq}) can be rewritten
-to
+From the calculations above, equation (\ref{eq:full_vort_eq}) can be rewritten to
 %
 \begin{align*}
   %
@@ -380,17 +362,12 @@ Rearranging yields
  \label{eq:non_norm_vort_1}
 \end{align*}
 %
-We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)$
-arising from the time derivative of $n_i$ in the polarization term of the
-current conservation equation, cancels with the same term with opposite sign
-arising from the source term of the current conservation equation.
-
+We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)$ arising from the time derivative of $n_i$ in the polarization term of the current conservation equation, cancels with the same term with opposite sign arising from the source term of the current conservation equation.
 
 \subsection{Vector advective terms}
 \label{sec:vecAdvTerm}
 %
-We can simplify equation (\ref{eq:non_norm_vort_1}) even further by first
-observing that
+We can simplify equation (\ref{eq:non_norm_vort_1}) even further by first observing that
 %
 \begin{align*}
 u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]
@@ -399,8 +376,8 @@ u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]
 \partial_\| \L( u_{i,\|}\frac{\grad_\perp \phi}{B}n \R),
 \end{align*}
 %
-and using the fact that in cylindrical coordinates we have that
-$\partial_z \ve{e}_i = \partial_z \ve{e}^i = 0$. This yields
+and using the fact that in cylindrical coordinates we have that $\partial_z \ve{e}_i = \partial_z \ve{e}^i = 0$.
+This yields
 %
 \begin{align*}
   %
@@ -451,10 +428,8 @@ Next, we see from appendix \ref{app:vortDAdv} that
   \frac{1}{2\rho}\{\ve{u}_E^2, n\}
 \end{align*}
 %
-A similar expression is expected to be found for other geometries as well, at
-least as long as the $B$ field is constant. When this is not the case, terms
-arising from $\grad \frac{1}{B}$ are expected.
-
+A similar expression is expected to be found for other geometries as well, at least as long as the $B$ field is constant.
+When this is not the case, terms arising from $\grad \frac{1}{B}$ are expected.
 
 \subsection{The complete vorticity equation}
 %

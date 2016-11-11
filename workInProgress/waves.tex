@@ -1,8 +1,7 @@
 \section{Known waves}
 %
 We will have no plasma waves, as these requires the Poisson equation.
-We can also exclude electromagnetic waves (O, X, R, L, ligth waves, Alfv\'{e}n
-waves) as we do not have $\partial_t \ve{A}\neq0$
+We can also exclude electromagnetic waves (O, X, R, L, ligth waves, Alfv\'{e}n waves) as we do not have $\partial_t \ve{A}\neq0$
 \begin{align*}
     \ve{E} &= -\grad\phi -\partial_t\ve{A}\\
     \partial_t \ve{B} &= \curl\ve{E}
@@ -151,10 +150,7 @@ Insert
 k_\|
 \sqrt{\mu \L( T_e + \frac{n_0}{k_\perp^2} \R) }
 \end{align*}
-NOTE: Low $k_\perp^2$ gives troubles...that seems strange. When one has no
-gradients, then last term blows up.
-
-
+NOTE: Low $k_\perp^2$ gives troubles...that seems strange. When one has no gradients, then last term blows up.
 
 \subsection{Drift-waves}
 Ingredients
@@ -174,8 +170,7 @@ Assumptions
 \end{itemize}
 SEE ALSO EQ 3.5 IN PECSELI FOR PHYSICAL INTEPRETATION
 
-Neglect el mom gives Boltzman distributed perturbations (multiply through with
-$n$)
+Neglect el mom gives Boltzman distributed perturbations (multiply through with $n$)
 \begin{align*}
     0 =& -T_e\partial_\| n + n\partial_\|\phi\\
     \frac{\partial_\| n}{n} =& \frac{1}{T_e}\partial_\|\phi\\
@@ -236,6 +231,7 @@ Need then to include parallel el mom and ion mom. As for now, assume stationary 
 Also, perpendicular resistivity set to zero for now.
 
 Assumptions
+%
 \begin{itemize}
     \item Neglect electron inertia (this also drops $u_e \partial_i u_e$) (see eq 3.5 Pecseli)
     \item Stationary ions
@@ -246,7 +242,9 @@ Assumptions
     \item No background potential $\phi_0 = 0$ (no background electrical field)
     \item $\partial_\rho\phi = 0$
 \end{itemize}
+%
 Multiply through with $n$
+%
 \begin{align*}
 %
 =&
@@ -275,12 +273,14 @@ ik_\|T_e \L( n_0 + n_1 \R)
   %
   - 0.51 \frac{\nu_{ei}}{\mu }  u_{e,\|,1}
 \end{align*}
+%
 NOTE: Now we need to have expressions propto $n_1$
 
 % FIXME
 NOTE: $\phi_0=C \RA \Om_0 = 0$
 
 Useless
+%
 \begin{align*}
   %
   %
@@ -310,7 +310,9 @@ n_0 \phi_1+ n_1 \phi_1
 - n_0
 - 0.51 \frac{\nu_{ei}}{ik_\|\mu \L(T_e - \phi_1\R) }  u_{e,\|,1}
 \end{align*}
+%
 (This will lead to)
+%
 \begin{align*}
  \partial_t n_1
 =&
@@ -345,7 +347,9 @@ n_0 \phi_1+ n_1 \phi_1
  \frac{1}{J} k_\theta\phi_1\partial_\rho n_0
  + k_\|u_{e,\|,1} n_0
 \end{align*}
+%
 Useful is on the other hand
+%
 \begin{align*}
     0.51 \frac{\nu_{ei}}{\mu }  u_{e,\|,1}
 =&
@@ -363,11 +367,13 @@ ik_\|\L( n_0 + n_1\R) \L(\phi_1 -T_e \R)
 ik_\|\L( n_0 + n_1\R) \L(\phi_1 -T_e \R)
      \frac{\mu}{0.51\nu_{ei} }
 \end{align*}
-Here the problem is that we have a sum $n_0 + n_1$. Would be easier if had only
-$n_1$, so that the dispersion relation didn't depend on the amplitude in the
-end. Could maybe say $k_\|n_0 \ll k_\|n_1$, but a bit sketchy
+%
+Here the problem is that we have a sum $n_0 + n_1$.
+Would be easier if had only $n_1$, so that the dispersion relation didn't depend on the amplitude in the end.
+Could maybe say $k_\|n_0 \ll k_\|n_1$, but a bit sketchy
 
 Continuity
+%
 \begin{align*}
  \partial_t n_1
 =&

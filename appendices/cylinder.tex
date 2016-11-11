@@ -16,12 +16,10 @@ The coordinates in a cylindrical geometry are written\\
 \end{align*}
 \end{minipage}
 
-
 \section{In Clebsch formalism}
 %
 FIXME: Not Clebsch
-The cylindrical coordinates can be expressed in Clebsch formalism introduced in
-appendix \ref{app:cylcoord} if we let
+The cylindrical coordinates can be expressed in Clebsch formalism introduced in appendix \ref{app:cylcoord} if we let
 %
 \begin{align*}
     1 &\to \rho\\
@@ -32,8 +30,8 @@ appendix \ref{app:cylcoord} if we let
 
 \subsubsection{In BOUT++}
 %
-As a final note BOUT++ uses the indices $\{x,y,z\}$ rather than $\{1,2,3\}$. Be
-aware that this can be a source of confusion as $y$ maps to $z$ as shown below
+As a final note BOUT++ uses the indices $\{x,y,z\}$ rather than $\{1,2,3\}$.
+Be aware that this can be a source of confusion as $y$ maps to $z$ as shown below
 %
 \begin{center}
     \begin{tabular}{ccccc}
@@ -44,7 +42,6 @@ aware that this can be a source of confusion as $y$ maps to $z$ as shown below
     \end{tabular}
 \end{center}
 %
-
 
 \section{The metrics}
 \label{sec:metr}
@@ -58,10 +55,9 @@ We have that
 %
 where $u_i$ is the set of the coordinate curves
 
-To coordinate transform a covariant basis vector, we can consider an arbitrary
-line $f$ passing through the point under consideration written in the new set
-of coordinates. We then use the chain rule to determine how the basis vector is
-written in the new set of coordinates. We have
+To coordinate transform a covariant basis vector, we can consider an arbitrary line $f$ passing through the point under consideration written in the new set of coordinates.
+We then use the chain rule to determine how the basis vector is written in the new set of coordinates.
+We have
 %
 \begin{align*}
     \parti{f(\rho, \theta, z)}{x_i}
@@ -93,9 +89,8 @@ as the line $f$ is arbitrary, we have
 %
 where in our case $x_i \in \{x,y,z\}$.
 
-To coordinate transform a contravariant basis vector, we can apply the chain
-rule directly to determine how the basis vector is written in the new set of
-coordinates. We have
+To coordinate transform a contravariant basis vector, we can apply the chain rule directly to determine how the basis vector is written in the new set of coordinates.
+We have
 %
 \begin{align*}
     \ve{e}^i
@@ -115,8 +110,7 @@ coordinates. We have
     %
 \end{align*}
 %
-At this point we note that there are no difference between co and contravariant
-basis vectors in a Cartesian coordinate system.
+At this point we note that there are no difference between co and contravariant basis vectors in a Cartesian coordinate system.
 
 In the following, we are going to make use of the following relations
 \\
@@ -218,8 +212,7 @@ In the following, we are going to make use of the following relations
 \end{align*}
 \end{minipage}\\
 %
-This means that a basis vector written in a Cartesian basis can be written
-with a covariant basis vector using cylindrical coordinates as
+This means that a basis vector written in a Cartesian basis can be written with a covariant basis vector using cylindrical coordinates as
 %
 \begin{align*}
     \ve{e}_x
@@ -293,8 +286,7 @@ For the back transformation we have
     \ve{e}_z
 \end{align*}
 %
-Further, a basis vector written in a Cartesian basis can be written
-with a contravariant basis vector using cylindrical coordinates as
+Further, a basis vector written in a Cartesian basis can be written with a contravariant basis vector using cylindrical coordinates as
 %
 \begin{align*}
     \ve{e}^\rho
@@ -331,9 +323,8 @@ with a contravariant basis vector using cylindrical coordinates as
     \ve{e}^z
 \end{align*}
 %
-The covariant metric tensor $g^{ij}=\ve{e}^i\cdot\ve{e}^j$ and the
-contravariant metric tensor $g_{ij}=\ve{e}_i\cdot\ve{e}_j$ can now be
-computed. For the contravariant components, we get
+The covariant metric tensor $g^{ij}=\ve{e}^i\cdot\ve{e}^j$ and the contravariant metric tensor $g_{ij}=\ve{e}_i\cdot\ve{e}_j$ can now be computed.
+For the contravariant components, we get
 %
 \begin{align*}
     g^{\rho\rho}
@@ -520,8 +511,8 @@ Using this metric, we get that
 \end{align*}
 %
 Finally, we calculate the derivatives of the contravariant basis vectors.
-From what is calculated above, we see that $\partial_z e^i=0$ and $\partial_i
-e^z=0$. The other basis vectors gives
+From what is calculated above, we see that $\partial_z e^i=0$ and $\partial_i e^z=0$.
+The other basis vectors gives
 %
 \begin{align*}
     \partial_\rho \ve{e}^\theta

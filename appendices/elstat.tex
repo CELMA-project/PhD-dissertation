@@ -1,5 +1,4 @@
-Rearranging equation (\ref{fluideq:mom}), and multiplying it with
-$\frac{q_\a}{m_\a}$ yields
+Rearranging equation (\ref{fluideq:mom}), and multiplying it with $\frac{q_\a}{m_\a}$ yields
 %
 \begin{align*}
     q_{\a} \partial_t (n_{\a} \ve{u}_{\a})
@@ -45,7 +44,8 @@ Adding the equation for electrons and ions using quasi-neutrality yields
      \label{eq:current_eq}
 \end{align*}
 %
-where $\curl\ve{A}=\ve{B}$. We then have that
+where $\curl\ve{A}=\ve{B}$.
+We then have that
 %
 \begin{align*}
     \curl\curl\ve{A}=&\curl\ve{B}
@@ -71,20 +71,12 @@ Thus the LHS can be written
     \partial_t \ve{J} \simeq \partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}
 \end{align*}
 %
-We can now use order of magnitude arguments to compare the size of the terms
-$\partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}$ and $\frac{e^2}{m_e}\partial_t
-\ve{A}$. If the latter is larger than the former, it will mean that the time
-change of the magnetic field $\ve{B}$ will be a major contributor to the time
-change of the current $\ve{J}$, and electromagnetic effects be important%
+We can now use order of magnitude arguments to compare the size of the terms $\partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}$ and $\frac{e^2}{m_e}\partial_t \ve{A}$.
+If the latter is larger than the former, it will mean that the time change of the magnetic field $\ve{B}$ will be a major contributor to the time change of the current $\ve{J}$, and electromagnetic effects be important%
 %
 \footnote{
-    If the $\partial_t \ve{J}$ term was dominating (preferably by orders of
-    magnitude), then there would be terms (or sum of terms) in equation (\ref{eq:current_eq})
-    which would be dominating the electromagnetic terms.
-    Conversely, if the electromagnetic term was dominating, then the
-    electromagnetic term would be dominating the sum of the other terms (not
-    necessarily larger than each individual term, as terms may approximately
-    cancel).
+    If the $\partial_t \ve{J}$ term was dominating (preferably by orders of magnitude), then there would be terms (or sum of terms) in equation (\ref{eq:current_eq}) which would be dominating the electromagnetic terms.
+    Conversely, if the electromagnetic term was dominating, then the electromagnetic term would be dominating the sum of the other terms (not necessarily larger than each individual term, as terms may approximately cancel).
 }.%
 %
 That is if
@@ -121,10 +113,8 @@ That is if
     \frac{m_i}{2m_e}\frac{1}{\rho_s^2}\b
 \end{align*}
 %
-where the plasma beta ($\b$) is the kinetic pressure over the magnetic
-pressure. As
-$ k_\perp^2\rho_s^2$ is typically in the order of unity for drift wave
-turbulence, we find that electromagnetic effects becomes important whenever
+where the plasma beta ($\b$) is the kinetic pressure over the magnetic pressure.
+As $ k_\perp^2\rho_s^2$ is typically in the order of unity for drift wave turbulence, we find that electromagnetic effects becomes important whenever
 %
 \begin{align*}
     1
@@ -136,6 +126,5 @@ turbulence, we find that electromagnetic effects becomes important whenever
     \b
 \end{align*}
 %
-We observe that we get the identical condition if we choose to compare with
-$\frac{\ve{J}}{n}\partial_t n$ instead.
+We observe that we get the identical condition if we choose to compare with $\frac{\ve{J}}{n}\partial_t n$ instead.
 %FIXME; Consider to compare with other terms as well
