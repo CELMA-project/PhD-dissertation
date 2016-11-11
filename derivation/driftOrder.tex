@@ -1,4 +1,4 @@
-The non-linear, coupled set of \cref{fluideq:cont, fluideq:mom} consist of one continuity equation per species and one momentum equation per direction per species.
+The non-linear, coupled set of equation (\ref{fluideq:cont}) and (\ref{fluideq:mom}) consist of one continuity equation per species and one momentum equation per direction per species.
  With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs).
 Resolving all the details in these equations are computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
 % FIXME: Not necessarily true in our case where we have sheaths
@@ -14,7 +14,7 @@ Another way to lessen the demand is through the so called drift ordering of the 
  To derive the equations with the drift order approximation, we start out by decomposing the equations in parallel and perpendicular parts.
 
 \section{Decomposition}
-We start the derivation by rearranging \cref{fluideq:mom} in
+We start the derivation by rearranging equation (\ref{fluideq:mom}) in
 the following way
 %
 \begin{align*}
