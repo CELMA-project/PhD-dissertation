@@ -1,8 +1,8 @@
 We will here derive the bracket operators used for perpendicular advection.
-Under electrostatic conditions, we have that $\ve{u}_E = -\frac{\nabla\phi\times\ve{b}}{B}$, which is similar to $\ve{u}=\ve{k}\times\nabla\psi$ found in incompressible fluid flow
+Under electrostatic conditions, we have that $\ve{u}_{E, \text{with Clebsch B}} = -\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Clebsch}}$, which is similar to $\ve{u}=\ve{k}\times\nabla\psi$ found in incompressible fluid flow
 %
 \begin{align*}
-    \ve{u}_E =& -\frac{\nabla\phi\times\ve{b}}{B}\\
+    \ve{u}_{E, \text{with Clebsch B}} =& -\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Clebsch}}\\
          %
          =&-\frac{\nabla\phi\times\ve{e}_2}{
                \sqrt{g_{22}}J^{-1}\sqrt{g_{22}}}\\
@@ -72,11 +72,11 @@ Under electrostatic conditions, we have that $\ve{u}_E = -\frac{\nabla\phi\times
            \label{app:ExB}
 \end{align*}
 %
-The electrostatic $E\times B$ advection operator thus becomes
+The electrostatic $\ve{E}\times \ve{B}$ advection operator thus becomes
 %
 \begin{align*}
-    \ve{u}_E\cdot\nabla
-    =& -\frac{\nabla\phi\times\ve{b}}{B}\cdot\nabla\\
+    \ve{u}_{E, \text{with Clebsch B}}\cdot\nabla
+    =& -\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Clebsch}}\cdot\nabla\\
     %
     %
     =&\frac{1}{g_{22}}
@@ -135,15 +135,13 @@ The electrostatic $E\times B$ advection operator thus becomes
 Where we have used the definition of the Poisson bracket
 %
 \begin{align*}
-    \{a, b\}_{i,j} =
-      \L(\partial_i a\R) \partial_j b
-    - \L(\partial_j a\R) \partial_i b
+    \{f, g\}_{i,j} = \L(\partial_i f\R) \partial_j g - \L(\partial_j f\R) \partial_i g
 \end{align*}
 %
-In a cylindrical geometry, all the off diagonal elements are zero, so
+In a orthogonal system, all the off diagonal elements are zero, so
 %
 \begin{align}
-    \ve{u}_E\cdot\nabla
+    \ve{u}_{E, \text{with Clebsch B}}\cdot\nabla
     = \frac{1}{g_{22}} \L( g_{22}\{\phi, \cdot\}_{3,1} \R)
     = \{\phi, \cdot\}_{3,1}
     = \partial_3\phi\partial_1 - \partial_1\phi\partial_3
@@ -151,25 +149,17 @@ In a cylindrical geometry, all the off diagonal elements are zero, so
     \label{poi:defClebsh}
 \end{align}
 %
-We note that \cref{poi:defClebsh} is only valid for a Clebsch system.
-If the $B$-field is constant (as in our case), we are no longer in a Clebsch system.
-However, the metric of the two systems coincide, and the derivation could have been performed by removing the dependency of $B$ by multiplying the result with $B'$, which is equal to the Clebsch system $B$-field, but without any units.
- Thus, for a constant $B$-field the $\ve{E}\times\ve{B}$ advection can be written
+We note that \cref{poi:defClebsh} is derived for a system where we are using $B_\text{Clebsch}$.
+However, as stated in \cref{sec:clebschAlign}, the $B$-field in our case is constant (the one which is referred to as $B_\text{Cylindrical}$).
+Thus
 %
-\begin{align}
-    B'\ve{u}_E\cdot\nabla
-    = \frac{\sqrt{g_{\theta\theta}}}{J g_{\theta\theta}}
+\begin{align*}
+    \ve{u}_{E, \text{with const B}}\cdot\nabla
+    =& \frac{B_{\text{Clebsch}}}{B_{\text{Cylindrical}}}\ve{u}_{E, \text{with Clebsh B}}\cdot\nabla\\
+    =& \frac{\sqrt{g_{\theta\theta}}}{JB_{\text{Cylindrical}}}
+    (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)\\
+    =& \frac{1}{JB}
     (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)
-    = \frac{1}{JB}
-    (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)
+    \numberthis
     \label{poi:def}
-\end{align}
-%
-where $B$ is the constant magnetic field.
-This operator can be discretized using the Arakawa bracket operator.
-
-FIXME: Small b changes as well. Is the above valid?
-grad phi times b (multiply with g22 J-1)
-Get 1/J from the cross products
-Conclusion: F3 looks wrong
-should be no g thetas there
+\end{align*}
