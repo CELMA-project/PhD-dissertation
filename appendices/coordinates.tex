@@ -676,8 +676,10 @@ As most of the numerical differentiation operators in BOUT++ is only valid for a
 Note as whereas the Clebsch coordinate system gives
 %
 \begin{align*}
-    \ve{B}_{\text{Clebsch}}
-    =&\ve{e}^3 \times \ve{e}^1\\
+    \ve{B}_{\text{Clebsch}} =&\ve{e}^3 \times \ve{e}^1
+    \numberthis
+    \label{eq:clebschB}
+    \\
     J^{-1}\ve{e}_2=&\ve{e}^3 \times \ve{e}^1
 \end{align*}
 %
@@ -747,7 +749,7 @@ and
     =\ve{e}_\theta
 \end{align*}
 %
-In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system, in the sense that $\ve{b}_{\text{Cylinder}}\propto\ve{b}_{\text{Clebsch}}$, but that they are not equal since $\ve{b}_{\text{Cylinder}}\neq\ve{b}_{\text{Clebsch}}$.
+In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system, in the sense that the basis vectors and the Jacobian are the same, but that they are not the same as \cref{eq:clebschB} is not fulfilled for the pure cylindrical coordinate system.
 Care must therefore be taken when using BOUT++ operators which explicitly uses ${B}_{\text{Clebsch}}$.
 In the scope of this thesis, it means that care must be taken whenever using the Poisson bracket, as explained in \cref{app:poisson}.
-In this thesis, $\ve{B}$, $B$ and $\ve{b}$ is referring to $\ve{B}_{\text{Clebsch}}$, $B_{\text{Clebsch}}$ and $\ve{b}_{\text{Clebsch}}$ prior to \cref{chap:CELMA} and $\ve{B}_{\text{Cylinder}}$, $B_{\text{Cylinder}}$ and $\ve{b}_{\text{Cylinder}}$ after \cref{chap:CELMA}.
+To clarify the notation: $\ve{B}$, $B$ and $\ve{b}$ is referring to $\ve{B}_{\text{Clebsch}}$, $B_{\text{Clebsch}}$ and $\ve{b}_{\text{Clebsch}}$ prior to \cref{chap:CELMA} and $\ve{B}_{\text{Cylinder}}$, $B_{\text{Cylinder}}$ and $\ve{b}_{\text{Cylinder}}$ after \cref{chap:CELMA}.
