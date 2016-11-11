@@ -1,11 +1,11 @@
 \section{Parallel current and momentum density}
 % FIXME: Check drift order
-% FIXME: Consider to show bad behaviour when parallel is used
+% FIXME: Consider to show bad behavior when parallel is used
 In order to solve the system of equations, we need to determine $u_{\a,|}$.
 This could be done by solving for the ion momentum equation and for the electron momentum equation.
 However, as we are calculating $\partial_\|\L(n\L[u_{i,\|} - u_{e,\|}\R]\R)$ in equation (\ref{eq:complVort}), we require that this term is of high precision.
 This because the vorticity is a first order term, and the numerical loss of precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
-As a result, the numerical error may polute the calculated order of the modified vorticity.
+As a result, the numerical error may pollute the calculated order of the modified vorticity.
 
 Therefore, we will instead evolve the parallel current equation (which normalized equals $n\L(u_{i,\|} - u_{e,\|}\R)$).
 We also choose to evolve the sum of the parallel density momentum equations, which after some simplifications leads to evolving the density times the parallel ion velocity in time.
@@ -311,10 +311,10 @@ We can obtain the total momentum density of the plasma by adding equation
 
 \subsection{Parallel current equation}
 %
-We can obtain the equation for the time evolution of the parallel current by mutliplying equation (\ref{eq:ionMomDens}) with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of equation (\ref{eq:elMomDens}).
+We can obtain the equation for the time evolution of the parallel current by multiplying equation (\ref{eq:ionMomDens}) with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of equation (\ref{eq:elMomDens}).
 This yields
 %
-% FIXME: Proper drift ordering could shead light on how the density evolution
+% FIXME: Proper drift ordering could shed light on how the density evolution
 % is to enter the equations, see photo jmad
 %
 \begin{align*}

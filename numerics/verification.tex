@@ -29,7 +29,7 @@ To use a concrete example, let us consider the simplest differential equation
 where $f(x)$ and $g(x)$ are arbitrary functions (not to be confused with the distribution function and a metric element).
 We seek to solve equation (\ref{ver:ode}) for $f(x)$.
 
-Let us find the simplest approximation of the derivate in an arbitrary grid point $x_0$.
+Let us find the simplest approximation of the derivative in an arbitrary grid point $x_0$.
 We first Taylor expand $f(x)$ around $x_0$ (where $h$ is the grid spacing) and evaluate it in $x_0 + h$, which gives
 %
 \begin{align*}
@@ -60,7 +60,7 @@ Hence, the local truncation error LTE we do in a single point by using this appr
     + \mathcal{O}(h^2)\R|
 \end{align*}
 %
-In other words it scales with the gridspacing $h$ to the first order.
+In other words it scales with the grid spacing $h$ to the first order.
 The global error in some $L$-norm $n$ can be defined as
 %
 \begin{align*}
@@ -69,10 +69,9 @@ The global error in some $L$-norm $n$ can be defined as
 \end{align*}
 %
 % FIXME: LTE and global error
-FIXME: LTE and global error
 where $\ve{f}_{\text{true}}$ is an array of the analytic solution in each grid point, and $\ve{f}_{\text{numeric}}$ is an array of the solution obtained numerically.
-From linear PDE theory we have that the global error should converge to the LTE order if the scheme is consitent (the LTE $\to 0$ as $h\to 0$) and numerically stable%
-\footnote{Note that the deifintion of stability depends on the context, see \cite{Leveque2007book} for more details.}.
+From linear PDE theory we have that the global error should converge to the LTE order if the scheme is consistent (the LTE $\to 0$ as $h\to 0$) and numerically stable%
+\footnote{Note that the definition of stability depends on the context, see \cite{Leveque2007book} for more details.}.
 %
 If convergence is observed, the implementation is verified.
 
@@ -80,10 +79,10 @@ If convergence is observed, the implementation is verified.
 \label{sec:MMS}
 For most PDEs, the true solution $\ve{f}_{\text{true}}$ is not known in advance.
 Sometimes a solution can be found in some special limits.
-If convergence is found for these special cases, the code is not generally verified, as there could still be implementation mistakes (not discoverable in the limiting cases), but which could have dire consequences when a more general solution is sougth numerically.
+If convergence is found for these special cases, the code is not generally verified, as there could still be implementation mistakes (not discoverable in the limiting cases), but which could have dire consequences when a more general solution is sought numerically.
 One way to get around the problem is to manufacture a solution.
 
-Assume that we have a set of nonlinear spatiotemporal PDEs we would like to solve for.
+Assume that we have a set of nonlinear spatio-temporal PDEs we would like to solve for.
 Let us call the variables evolved in time for $\ve{f}=\{\ve{u}_e, \ve{u}_i, n, \Om^D, T_e, \ldots\}$.
 If there are no mixed spatial and temporal variables, we can write the set of nonlinear PDEs as
 %
@@ -93,7 +92,7 @@ If there are no mixed spatial and temporal variables, we can write the set of no
 \end{align}
 %
 where $F(\cdot)$ is a nonlinear operator which contains the discretized spatial differential operators.
-As stated above, we do not know apriori which $\ve{f}$ which satisfies equation (\ref{ver:setOfPDE}).
+As stated above, we do not know a priori which $\ve{f}$ which satisfies equation (\ref{ver:setOfPDE}).
 Therefore we manufacture a set of functions $\ve{f}_M$ which does not satisfy equation (\ref{ver:setOfPDE}), but rather
 %
 \begin{align*}
@@ -117,7 +116,7 @@ There are, however, implementations in this thesis which is not covered by the B
 As these implementations are single operations where an exact analytic solution can be found, the approach to verify these has been through the method of exact solutions (MES), i.e.
 there is no need to manufacture a solution.
 As with MMS, there are several things to be aware of when performing MES, in particular when dealing with cylinder geometry as there is an singularity at $\rho=0$.
-Calling $f(\rho,\theta,z)$ for the function we are operating on with a discretized operator $D$ (in such a way that $D[f(\rho,\theta,z)]=S$, where $S$ is the result of the operation), the following criteria must be fullfilled for the $f(\rho,\theta,z)$ under consideration
+Calling $f(\rho,\theta,z)$ for the function we are operating on with a discretized operator $D$ (in such a way that $D[f(\rho,\theta,z)]=S$, where $S$ is the result of the operation), the following criteria must be fulfilled for the $f(\rho,\theta,z)$ under consideration
 %
 \vspace{0.5cm}
 \begin{enumerate}[noitemsep,nolistsep]
@@ -133,7 +132,7 @@ Calling $f(\rho,\theta,z)$ for the function we are operating on with a discretiz
   \item Boundary conditions in $\rho$ and $z$ must be satisfied.
 \end{enumerate}
 %
-A function which satifies the above is
+A function which satisfies the above is
 %
 \begin{align*}
     f(\rho, \theta, z)
@@ -161,21 +160,21 @@ where
     \\
     &w = \frac{4}{5}L_\rho&
     &\text{
-        Width of gaussian
+        Width of Gaussian
     }&
     \\
     &\rho_0 = \frac{3}{10}L_\rho&
     &
     \rho
     \text{
-        - coordinate for center of gaussian
+        - coordinate for center of Gaussian
     }&
     \\
     &\theta_0 = \frac{5\pi}{4}&
     &
     \theta
     \text{
-        - coordinate for center of gaussian
+        - coordinate for center of Gaussian
     }&
 \end{align*}
 %
@@ -222,7 +221,7 @@ To overcome this problem the solution described in \cite{Naulin2008} has been us
     \label{fig:innerRho}
 \end{figure}
 %
-In this solution, the the innermost ghost points%
+In this solution, the innermost ghost points%
 \footnote{A grid point not belonging to the physical domain, but makes it possible to use a centered scheme when evaluating at the grid point closest to the physical boundary of the domain.}
 in $\rho$ (closest to the singularity) with a $\theta$ value lower than (and excluding) $\pi$ will be set to the value of the innermost internal point%
 \footnote{A grid point which is not a ghost points, i.e. it belongs to the physical domain.}%
@@ -286,7 +285,7 @@ where $h_x$ denotes the grid spacing, and the subscript the grid index.
 Hence, the observed divergence could be explained with poor information communication across the singularity.
 
 In the case of $\frac{\texttt{DDX}(f)}{J}$, the loss of expected convergence rate can be explained by looking at the operator under investigation.
-As the $\texttt{DDX}(f)$ operator used in this thesis is the standard $2$nd order operator (obtained by subtracing the function Taylor expanded around $x_0$, evaluated in $x+h$ from the function Taylor expanded around $x_0$, evaluated in $x-h$ and divided by $2h$), one find that
+As the $\texttt{DDX}(f)$ operator used in this thesis is the standard $2$nd order operator (obtained by subtracting the function Taylor expanded around $x_0$, evaluated in $x+h$ from the function Taylor expanded around $x_0$, evaluated in $x-h$ and divided by $2h$), one find that
 %
 \begin{align*}
     \deri{f}{x} - \texttt{DDX}(f) =
@@ -307,7 +306,7 @@ Thus for the first inner point, the scheme is not $2$nd order convergent.
 Only one extra operator is implemented in the $\theta$-direction.
 This is shown in table \ref{tb:singleZ}.
 Note that we use spectral methods in the $\theta$ direction, which is know to give minimal error.
-Machine precision is therefore quickly reached, and performing MES after machine precision is nonsense due to loss of percision when subtracting two amlost equal numbers.
+Machine precision is therefore quickly reached, and performing MES after machine precision is nonsense due to loss of precision when subtracting two almost equal numbers.
 Indications that machine precision is reached are low errors, and plots of the error appearing noisy
 %
 \begin{table}[h!]

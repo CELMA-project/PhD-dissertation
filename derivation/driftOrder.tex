@@ -1,9 +1,7 @@
 The non-linear, coupled set of equations (\ref{fluideq:cont} - \ref{fluideq:mom}) consist of one continuity equation per species and one momentum equation per direction per species.
  With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs).
 Resolving all the details in these equations are computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
-
-% Fixme:
-FIXME: Not necessarily true in our case where we have sheaths
+% FIXME: Not necessarily true in our case where we have sheaths
 
 The computational demand can be lessened by exploiting the difference in the parallel and the perpendicular dynamics.
 Due of the gyration of the particles, the dynamics parallel to the magnetic field are much faster than the dynamics perpendicular to the magnetic field.
@@ -513,7 +511,7 @@ By introducing the notation $\d_{t,\a}^n$, where $n$ denotes the order we have t
  &\;\, \vdots \notag
 \end{align*}
 %
-As there seem not to be any natural ordering of parallel velocities, these are not ordere in the same way as the perpendicular velocities.
+As there seem not to be any natural ordering of parallel velocities, these are not ordered in the same way as the perpendicular velocities.
 However, as the general material derivative can be written $\d_{t,\a}=\partial_t + \ve{u}_{\a}\cdot\nabla$, and since $\ve{u}_\a = \ve{u}_{\a,\|} + \ve{u}_{\a,0,\perp} + \ve{u}_{\a,1,\perp} + \ldots$, the parallel advection needs to be accounted for.
 To simplify the coming notation, we will include the parallel advection in $\d_{t,\a}^1$, such that from this point on, we will write
 %

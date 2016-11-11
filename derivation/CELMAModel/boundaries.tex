@@ -56,13 +56,13 @@ we have defined $\phi_{\text{sheath entrance}} = 0$, and $\Lambda=\ln\L(\sqrt{\f
 %      This means that n cannot change at the boundary
 %   2. Neumann = 0
 %      Could be that this it has a gradient
-%      Problem that neumann both at SE and non-SE site
+%      Problem that Neumann both at SE and non-SE site
 % NOTE: Idea
 %   1. Could try robin BC at non-SE site
 %
 % FIXME: Find out what this should be
 %
-Although the "standard" calcuation for the sheath gives us conditions for setting the velocities in steady state, non such conditions exists for the density.
+Although the "standard" calculation for the sheath gives us conditions for setting the velocities in steady state, non such conditions exists for the density.
 Instead, one would have to rely on other arguments.
 In \cite{Loizu2012a}, Loizu et al.  presents a boundary condition for the density in a field line geometry, where the field lines are allowed to be tilted with respect to the end-plate.
 For a field line geometry where the field lines are perpendicular to the end-plate (which is the case in this thesis), the boundary condition reduces to
@@ -122,9 +122,9 @@ One should note that if one has a Neumann condition in both ends of the machine,
 When numerically solving the system the solution found will be specified by the initial condition.
 Although it is important to be aware of, it is not believed to change the physical behavior of the system as the dynamics are driven by its source and its sinks.
 
-A third approach, which does not have the same problem, is to let the density be completely free at the sheath enterance and instead fix the value and the gradient at the stagnation point (where the velocities are $0$) using a Cauchy boundary condition (not to be confused with a Robin or "mixed" boundary condition).
+A third approach, which does not have the same problem, is to let the density be completely free at the sheath entrance and instead fix the value and the gradient at the stagnation point (where the velocities are $0$) using a Cauchy boundary condition (not to be confused with a Robin or "mixed" boundary condition).
 This kind of boundary condition specifies the parallel dynamics fully.
-The derivatives of $n$ at the last physical point before the SE can then be calculated numerically by either a one-sided stencil, or to exrapolate the solution to a ghost point and use this is a \emph{artificial boundary condition} \cite{Leveque2007book}.
+The derivatives of $n$ at the last physical point before the SE can then be calculated numerically by either a one-sided stencil, or to extrapolate the solution to a ghost point and use this is a \emph{artificial boundary condition} \cite{Leveque2007book}.
 
 A final possibility is to let the derived equation for the evolution of the density be valid at the boundary.
 
@@ -156,16 +156,16 @@ The latter has been chosen in the current implementation.
 % NOTE: Tried
 %   1. Neumann = 0
 %      Could be that this it has a gradient
-%      Problem that neumann both at SE and non-SE site
+%      Problem that Neumann both at SE and non-SE site
 % IDEA:
 %   1. Should be 0, as the wall is slowing down? Maybe not as not necessarily
 %      have a non-slip BC on the wall
 %
 % FIXME: Find out what this should be
 %
-FIXME
-No good physical argument yet.
-ATM implemented as neumann zero.
+% FIXME
+% No good physical argument yet.
+% ATM implemented as Neumann zero.
 
 \subsection{BCs at non-SE drift plane}
 % FIXME:
@@ -197,9 +197,9 @@ The cylindrical coordinate system has a discontinuity at the center where $\rho=
 One way to avoid this problem is to put the grid points close to, but not in the very center.
 In a cylinder, there is no real boundary condition in the center, but we anyway have to address $\rho$ derivatives for the grid points which lays close to the center.
 A workaround for this problem is to put the boundary condition half way between a inner ghost point and the first inner grid point (both located $\frac{\Delta \rho}{2}$ from the center, diametrically opposite of each other).
-This method was first suggested by Naulin, V. et.al. in \cite{Naulin2008}.
+This method was first suggested by Naulin, V. et al. in \cite{Naulin2008}.
 
-% FIXME: Describe how this is done in laplace inversion
+% FIXME: Describe how this is done in Laplace inversion
 
 \subsubsection{Density BC at outer radius}
 The density will go toward $0$ as we are approaching the wall, thus we set
@@ -216,7 +216,7 @@ In normalized units, $C = \frac{1}{20}$ of the maximum value in the equilibrium.
 % FIXME:
 % Not really physically explained
 % If we let u_|_ =\= 0 we have no physical explanation why this should be 0
-FIXME: Not really physically explained
+%FIXME: Not really physically explained
 
 There should be no parallel velocity towards the edge at the outer boundary, thus
 %
@@ -245,7 +245,7 @@ For that reason we have that
 %       condition of v_theta
 % FIXME: Write me, see blackboard photo: BC-rho-on-vort
 %
-FIXME
+% FIXME
 %
 \begin{align*}
     \Om \bigg|_{L_\rho} = 0

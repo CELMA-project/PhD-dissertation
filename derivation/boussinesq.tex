@@ -3,7 +3,7 @@ This approximation is also sometimes refered to as the local approximation.
 %FIXME: Is this true, and if yes, a reference should be there as well
 
 The name Boussinesq approximation is a bit of a misnomer, as this actually refers to a series of approximations in fluid mechanics where the small variation in density is one of them.
-%FIXME: Write about the actual boussinesq approximation
+%FIXME: Write about the actual Boussinesq approximation
 
 The usage of this approximation in drift fluid equation is not always sound, as the criterion for the approximation is easily broken.
 However, one argument to use the approximation is that one can make a set of equations which conserves energy without getting into the problem of having the polarization drift advecting itself (this leads to an infinite loop).
@@ -21,18 +21,18 @@ That is, we have
     n = \overline{n} + \delta_n
 \end{align*}
 %
-% NOTE: When is it ok to work with complex plane waves
+% NOTE: When is it OK to work with complex plane waves
 %       1. When summing and subtracting linear waves
 %       2. When it is part of a plane wave solution
-%       3. When the equations are fourier transformed
-%       When is it not ok to work with complex plane waves
-%       1. When we are manipulating a non-linear expression (as fourier modes
+%       3. When the equations are Fourier transformed
+%       When is it not OK to work with complex plane waves
+%       1. When we are manipulating a non-linear expression (as Fourier modes
 %          couple). That is: When the amplitude is not small
 %
 % NOTE: d/dx exp(ikx) = d/dx (cos(kx) + i sin(kx)) = k(sin(kx) - i cos(kx))
 %
 % NOTE: I cannot find any good reason to assume plane waves here. Seems like it
-%       sligthly complicates things a bit with the only gain that we get
+%       slightly complicates things a bit with the only gain that we get
 %       something like k_perp
 and we assume that $\overline{n} \gg \delta_n$.
 We now introduce the gradient scale length for a field $f$ to be
@@ -341,7 +341,7 @@ We note that as we have no time derivative of $n$, the term arising from the den
 % FIXME:
 % - Write a sentence or 2 about the time derivative of n disappears
 %       Boussinesq on
-%       ? Ok to use boussinesq only one place
+%       ? OK to use Boussinesq only one place
 %       ? Parallel current terms
 %       ? Pedersen current
 %       ? If take Boussinesq there, why keep it on the other terms
