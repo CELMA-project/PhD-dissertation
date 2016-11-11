@@ -19,8 +19,6 @@
 %http://tex.stackexchange.com/questions/54055/
 %using-lower-case-roman-numerals-in-enumerate-lists
 %------------------------------------------
-%Cross-references with \cref{}
-\usepackage{cleveref}
 %Post Script - illustrations with
 %\includegrapsics{} h=here t=top b=bottom p=own page !=override latex
 \usepackage{graphicx}
@@ -257,6 +255,8 @@ breaklines=false
 % }
 %===============================================================================
 
+%Cross-references with \cref{} (must be loaded last)
+\usepackage{cleveref}
 
 %Tabulatur settings
 %===============================================================================
