@@ -1,0 +1,39 @@
+In this chapter we aim to be as open as possible about the shortcomings of this thesis.
+In this way, the reader will be aware that the alteration of these points may affect the obtained results.
+The chapter is divided in two parts: Major and minor, where the major addresses issues which are believed to have svere impacts on the results, and the minor issues are believed to have a lesser impact.
+
+\section{Major}
+\begin{itemize}[noitemsep,nolistsep]
+    \item The plasma is assumed to be isothermal.
+        This assumption would be good if the heat flux were enough to equilibrate the temperature everywhere in the plasma for the time under consideration.
+        However, the heat fluxes are not big enough, and temperature gradients has been found experimentally \cite{Schroder2003}.
+    \item Not all the boundary conditions are not physically justified.
+        All the boundary conditions at the opposite direction of the sheath (given that this location is in fact a stagnation point), the sheath boundary condition for the velocities $u_{e,\|}$ and $u_{i,\|}$ are somewhat valid given that the plasma in the parallel direction are almost in the steady state.
+        The numerical boundary condition for $\phi$ at the sheath is valid given that the parallel boundary condition for $\Omega^D$ is valid.
+        There are however, no reason for why the gradient of $\Omega^D$ should be $0$ at the sheath, and it might as well have a fixed gradient.
+        Similarity, there is no reason for why the gradient of $n$ should be zero at the sheath.
+        Perpendicularily we are forcing the system to have zero gradients on all fields.
+        As stated before proper treatment of the boundary conditions should include the physical behavior of the surrounding chassis.
+\end{itemize}
+
+%FIXME: Move me to BC section
+% Parallel direction: sheath almost steady state
+
+% FIXME: Actually OK that the collisionality is assumed to be constant as
+% d/dx nu ei is (under the assumption that Te is constant), 0.5 log(x), which for
+% high number is almost constant. Just write it in
+
+The collisionality is assumed to be constant.
+The collisionality will vary across the domain.
+The collisionality is proportional to $n\ln(n^{-1/2})=-\frac{1}{2}n\ln(n)$
+
+\section{Minor}
+
+\begin{itemize}[noitemsep,nolistsep]
+    \item Treatment of the parallel resistivities.
+        A proper treatment has resulted in oscillations at the edge of the domain which evolves to turbulence.
+        The observed turbulence also has a different character as there are larger gradients, and more visible structures in the parallel direction.
+    \item Adding electromagnetic effects.
+        Although this has been reported to decrease the run time and increase the stability of the simulations.
+        It is here found that the extra terms blows up in $A_\|$.
+\end{itemize}

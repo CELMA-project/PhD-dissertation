@@ -1,0 +1,39 @@
+This was merged from commit
+f2a7b3b7b27187615d3a57ecb294f4e11cd12e92
+into
+ddc0800bcc76f2bb43ff6105d352ee74dc9fda73
+
+.
+We will in the following discuss three ways of doing so.
+Two of the methods discussed finds $\phi$ by inversion of the non-linear boundary value problem $\Om^D = \div\L(n\grad_\perp\phi\R)$ for $\phi$ for every time step, and one finds $\phi$ by imposing a constraint on the system of equations.
+
+\subsection{As a constraint}
+%
+\begin{align*}
+    \begin{bmatrix}
+                                        & & 0  \\
+        (\mathbb{I} - \gamma\mathbb{J}) & & 0  \\
+                                        & & 0  \\
+                                        & & 0  \\
+        0                               & -1 & \grad_\perp^2 & \\
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        \ve{\ln(n)}^{n+1}  \\
+        \ve{u_{e,\|}}^{n+1}\\
+        \ve{u_{i,\|}}^{n+1}\\
+        \ve{\Om}^{n+1}     \\
+        \ve{\phi}^{n+1}    \\
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}
+        \ve{\ln(n)}^{n}  \\
+        \ve{u_{e,\|}}^{n}\\
+        \ve{u_{i,\|}}^{n}\\
+        \ve{\Om}^{n}     \\
+        \ve{0}           \\
+    \end{bmatrix}
+\end{align*}
+%
+YOU ARE HERE:
+NOTE: CURRENTLY LOOKS IMPOSSIBLE AS EVOLVING VORTD RATHER THAN VORT

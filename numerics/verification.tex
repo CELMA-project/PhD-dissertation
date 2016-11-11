@@ -13,7 +13,7 @@ Thus a code can be verified numerically, but still fail to match the desired fea
 If the code has succuessfully passed a validation test, but fails a verification test, the success of the validation is questionable, and the success of the validation could be a mere coincident.
 The verification process can be time consuming, and can almost be regarded as an artform in itself.
 The process is throughly discussed in \cite{Oberkampf2010book}, and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
-The BOUT++ framework is verified using MMS in \cite{Dudson2016}, presented briefly in section \ref{sec:MMS} after introducing the concept of errors.
+The BOUT++ framework is verified using MMS in \cite{Dudson2016}, presented briefly in \cref{sec:MMS} after introducing the concept of errors.
 
 \section{Numerical errors}
 %
@@ -27,7 +27,7 @@ To use a concrete example, let us consider the simplest differential equation
 \end{align}
 %
 where $f(x)$ and $g(x)$ are arbitrary functions (not to be confused with the distribution function and a metric element).
-We seek to solve equation (\ref{ver:ode}) for $f(x)$.
+We seek to solve \cref{ver:ode} for $f(x)$.
 
 Let us find the simplest approximation of the derivative in an arbitrary grid point $x_0$.
 We first Taylor expand $f(x)$ around $x_0$ (where $h$ is the grid spacing) and evaluate it in $x_0 + h$, which gives
@@ -92,8 +92,8 @@ If there are no mixed spatial and temporal variables, we can write the set of no
 \end{align}
 %
 where $F(\cdot)$ is a nonlinear operator which contains the discretized spatial differential operators.
-As stated above, we do not know a priori which $\ve{f}$ which satisfies equation (\ref{ver:setOfPDE}).
-Therefore we manufacture a set of functions $\ve{f}_M$ which does not satisfy equation (\ref{ver:setOfPDE}), but rather
+As stated above, we do not know a priori which $\ve{f}$ which satisfies \cref{ver:setOfPDE}.
+Therefore we manufacture a set of functions $\ve{f}_M$ which does not satisfy \cref{ver:setOfPDE}, but rather
 %
 \begin{align*}
     \parti{\ve{f}_M}{t} - F(\ve{f}_M) = \ve{S}
@@ -178,7 +178,7 @@ where
     }&
 \end{align*}
 %
-Equation \ref{eqapp:MESf1} will be function used in the discussion below if nothing else is mentioned.
+\cref{eqapp:MESf1} will be function used in the discussion below if nothing else is mentioned.
 %
 \begin{figure}[t!]
     \centering
@@ -205,7 +205,7 @@ Equation \ref{eqapp:MESf1} will be function used in the discussion below if noth
 \subsection{Single operators}
 %
 Although the single operators available from BOUT++ is verified in \cite{Dudson2016}, the axis of a cylinder must be treated with care as there is a singularity there ($J=0$ at $\rho=0$).
-To overcome this problem the solution described in \cite{Naulin2008} has been used, and is illustrated in figure \ref{fig:innerRho}.
+To overcome this problem the solution described in \cite{Naulin2008} has been used, and is illustrated in \cref{fig:innerRho}.
 %
 \begin{figure}[htb]
     \centering
@@ -230,7 +230,7 @@ which lies $\theta + \pi$ away.
 The next ghost point will be set to the value of the second innermost internal point which lies $\theta + \pi$ away, and so on.
 In this thesis, only one ghost point is used.
 
-The convergence test for the single operators in $\rho$ direction can be found in table \ref{tb:singleRho}.
+The convergence test for the single operators in $\rho$ direction can be found in \cref{tb:singleRho}.
 %
 \begin{table}[h!]
 {\footnotesize \centerline{
@@ -266,7 +266,7 @@ No order $2$nd order convergence. Errors dominating close to $\rho=0$.
 For the cases where a convergence order of $2$ is found up until $2^{11}$ points, the schemes are considered convergent as the error is not dominating at any particular point of the domain.
 In general, one can observe from the plots of the error that they become a bit noisy in these cases, which could indicate that machine precision in reached.
 
-Note in the two last cases in table \ref{tb:singleRho} that the converge one naively would have expected is generally not reached.
+Note in the two last cases in \cref{tb:singleRho} that the converge one naively would have expected is generally not reached.
 In the case where we use $\texttt{DDX}(\texttt{DDX}[f])$, the boundaries are reset after the first operation.
 Notice that the resulting of stencil of these two operators is a wide stencil.
 That is
@@ -304,7 +304,7 @@ Thus, in this point, we have that
 Thus for the first inner point, the scheme is not $2$nd order convergent.
 
 Only one extra operator is implemented in the $\theta$-direction.
-This is shown in table \ref{tb:singleZ}.
+This is shown in \cref{tb:singleZ}.
 Note that we use spectral methods in the $\theta$ direction, which is know to give minimal error.
 Machine precision is therefore quickly reached, and performing MES after machine precision is nonsense due to loss of precision when subtracting two almost equal numbers.
 Indications that machine precision is reached are low errors, and plots of the error appearing noisy

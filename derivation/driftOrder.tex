@@ -1,4 +1,4 @@
-The non-linear, coupled set of equations (\ref{fluideq:cont} - \ref{fluideq:mom}) consist of one continuity equation per species and one momentum equation per direction per species.
+The non-linear, coupled set of \cref{fluideq:cont, fluideq:mom} consist of one continuity equation per species and one momentum equation per direction per species.
  With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs).
 Resolving all the details in these equations are computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
 % FIXME: Not necessarily true in our case where we have sheaths
@@ -10,11 +10,11 @@ We can exploit this by using a courser grid in the parallel direction as compare
 By these two arguments, we have a good motivation to split our equations into perpendicular and parallel parts.
 
 Another way to lessen the demand is through the so called drift ordering of the perpendicular velocities.
- This lessen the details we can get out of the set of equations by neglecting the timescales which are faster than the ion cyclotron frequency in the perpendicular direction (see section \ref{sec:drift_order}).
+ This lessen the details we can get out of the set of equations by neglecting the timescales which are faster than the ion cyclotron frequency in the perpendicular direction (see \cref{sec:drift_order}).
  To derive the equations with the drift order approximation, we start out by decomposing the equations in parallel and perpendicular parts.
 
 \section{Decomposition}
-We start the derivation by rearranging equation (\ref{fluideq:mom}) in
+We start the derivation by rearranging \cref{fluideq:mom} in
 the following way
 %
 \begin{align*}
@@ -181,7 +181,7 @@ Generally we have
  =& \d_{t,\a} \ve{a}_\|,
 \end{align*}
 %
-where we have used the electrostatic approximation $\d_t \ve{B} \simeq 0$ (see appendix \ref{app:elstat} for details).
+where we have used the electrostatic approximation $\d_t \ve{B} \simeq 0$ (see \cref{app:elstat} for details).
 
 Further we have that
 %
@@ -230,7 +230,7 @@ For further references, we also define all the gradient operators in this thesis
 %a ces-not-commutative.94783/
 % http://en.wikipedia.org/wiki/Scalar_multiplication
 %
-This means that if we right dot equation (\ref{eq:no_assumptions_momentum}) with $\ve{b}\ve{b}$, we get
+This means that if we right dot \cref{eq:no_assumptions_momentum} with $\ve{b}\ve{b}$, we get
 %
 \begin{align*}
   \L(\frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a}\R)\cdot\ve{b}\ve{b}
@@ -291,7 +291,7 @@ This means that if we right dot equation (\ref{eq:no_assumptions_momentum}) with
  \label{eq:material_dot_bb}
 \end{empheq}
 %
-If we subtract equation (\ref{eq:material_dot_bb}) from equation (\ref{eq:no_assumptions_momentum}), and use that  $\nabla_\perp = \nabla - \nabla_\|$ and $\ve{a}\times\ve{b}=\ve{a}_\perp\times\ve{b}$, we get
+If we subtract \cref{eq:material_dot_bb} from \cref{eq:no_assumptions_momentum}, and use that  $\nabla_\perp = \nabla - \nabla_\|$ and $\ve{a}\times\ve{b}=\ve{a}_\perp\times\ve{b}$, we get
 %
 \begin{align}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
@@ -331,7 +331,7 @@ If we subtract equation (\ref{eq:material_dot_bb}) from equation (\ref{eq:no_ass
 %       Normalize R_tilde = R/R0
 %       Normalize r_tilde = r/r0
 %       But must have r0 << R0 in order to say that r_tilde << R_tilde
-The goal of the drift ordering is to split the equations in (\ref{eq:perp_mom_start}) in a different orders, yielding algebraic equations for each order of $\ve{u}_{\a,\perp}$.
+The goal of the drift ordering is to split \cref{eq:perp_mom_start} in a different orders, yielding algebraic equations for each order of $\ve{u}_{\a,\perp}$.
 In order to do the drift ordering we will use that $\ve{R}_{\g \to \a} \propto \nu_\g n_\a m_\a$, where $\nu_\g$ is the collision frequency.
 Thus
 %
@@ -347,9 +347,9 @@ We assume that the collision frequency is much smaller than the slowest cyclotro
  \frac{\nu_\g}{\om_{ci}} \ll 1
 \end{align*}
 %
-The same argument can be used for the $\L(\div \te{\pi}_\a\R)_\perp$ term in equation (\ref{eq:perp_mom_start}).
+The same argument can be used for the $\L(\div \te{\pi}_\a\R)_\perp$ term in \cref{eq:perp_mom_start}.
 Further on, we will make an assumption on the timescale.
-By writing out the left hand side of equation (\ref{eq:perp_mom_start}) explicitly, we obtain
+By writing out the left hand side of \cref{eq:perp_mom_start} explicitly, we obtain
 %
 \begin{align*}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp} &=
@@ -415,7 +415,7 @@ We then have $\e^0 f_a \gg \e^1 f_b \gg \e^2 f_c \gg \ldots$, where the differen
 
 % FIXME: Write that these are not assumptions at all, but in fact use typical
 % values
-If we assume that $-\frac{\grad_\perp p_\a}{n_\a  q_\a B} + \frac{\ve{E}_\perp}{B} + \ve{u}_{\a}\times\ve{b}$ is of the zeroth order, we can write equation (\ref{eq:perp_mom_start}) in the label notation as
+If we assume that $-\frac{\grad_\perp p_\a}{n_\a  q_\a B} + \frac{\ve{E}_\perp}{B} + \ve{u}_{\a}\times\ve{b}$ is of the zeroth order, we can write \cref{eq:perp_mom_start} in the label notation as
 %
 \begin{align*}
   \e\frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
@@ -454,7 +454,7 @@ We get
 \end{align*}
 %
 which is correct to the first iteration.
-If we substitute equation (\ref{eq:u_first_orders}) into equation (\ref{eq:first_assumptions_momentum_before_split}), we obtain
+If we substitute \cref{eq:u_first_orders} into \cref{eq:first_assumptions_momentum_before_split}, we obtain
 %
 \begin{align}
   \e\frac{1}{\om_{c\a}}\d_{t,\a} \L(\ve{u}_{\a,0,\perp} +
@@ -484,7 +484,7 @@ If we substitute equation (\ref{eq:u_first_orders}) into equation (\ref{eq:first
 \label{eq:first_assumptions_momentum}
 \end{align}
 %
-The left hand side of equation (\ref{eq:first_assumptions_momentum}) can now be written
+The left hand side of \cref{eq:first_assumptions_momentum} can now be written
 %
 \begin{align*}
  \frac{1}{\om_a}\e\d_{t,\a} (\ve{u}_{\a,0,\perp} + \e\ve{u}_{\a,1,\perp}) =
@@ -500,7 +500,7 @@ By introducing the notation $\d_{t,\a}^n$, where $n$ denotes the order we have t
 %
 \begin{align*}
  \d_{t,\a}^0 \ve{u}_{\a,\perp} &= 0
- \note{No $\e^0$ terms in LHS of \ref{eq:first_assumptions_momentum}}\\
+ \note{No $\e^0$ terms in LHS of \cref{eq:first_assumptions_momentum}}\\
  %
  \d_{t,\a}^1 \ve{u}_{\a,\perp} &= \parti{}{t} \ve{u}_{\a,0,\perp} +
  \ve{u}_{\a,0,\perp} \cdot\nabla \ve{u}_{\a,0,\perp}\\
@@ -545,7 +545,7 @@ is formally a second order term.
 
 \section{Zeroth order perpendicular terms}
 %
-The zeroth order term of equation (\ref{eq:first_assumptions_momentum}) can then be written
+The zeroth order term of \cref{eq:first_assumptions_momentum} can then be written
 %
 \begin{align}
  0 &=
@@ -556,7 +556,7 @@ The zeroth order term of equation (\ref{eq:first_assumptions_momentum}) can then
 \end{align}
 %
 In general, we have that $-\ve{b}\times\L(\ve{b}\times\ve{a}\R) = \ve{a} - \ve{a}_\|=\ve{a}_\perp$.
-Thus, we can solve equation (\ref{eq:zeroth_start}) for $\ve{u}_{\a,0,\perp}$ by crossing the equation with $\ve{b}$
+Thus, we can solve \cref{eq:zeroth_start} for $\ve{u}_{\a,0,\perp}$ by crossing the equation with $\ve{b}$
 %
 \begin{align*}
  0 &=
@@ -585,9 +585,9 @@ Thus, we can solve equation (\ref{eq:zeroth_start}) for $\ve{u}_{\a,0,\perp}$ by
  \label{eq:u_0_balance}
 \end{align*}
 %
-As mentioned in appendix \ref{app:elstat}, a low $\beta$ plasmas justifies the electrostatic approximation.
+As mentioned in \cref{app:elstat}, a low $\beta$ plasmas justifies the electrostatic approximation.
 This means that $\ve{E} = -\grad\phi$, so $\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$.
-Thus can we rewrite equation (\ref{eq:u_0_balance}) as
+Thus can we rewrite \cref{eq:u_0_balance} as
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
  \ve{u}_{\a,0,\perp} =&
@@ -614,7 +614,7 @@ Thus can we rewrite equation (\ref{eq:u_0_balance}) as
 
 \section{First order perpendicular terms}
 %
-We obtain the algebraic equation of order $1$ of equation (\ref{eq:first_assumptions_momentum}) by collecting terms of order $1$.
+We obtain the algebraic equation of order $1$ of \cref{eq:first_assumptions_momentum} by collecting terms of order $1$.
 We get
 %
 \begin{align}
@@ -633,7 +633,7 @@ We get
 \end{align}
 %
 We see that the first order depends on the zeroth order, and hence we need to solve for the orders iteratively.
-The algebraic equation for $\ve{u}_{\a,1,\perp}$ can be found by crossing equation (\ref{eq:u_1_clean}) with $\ve{b}$.
+The algebraic equation for $\ve{u}_{\a,1,\perp}$ can be found by crossing \cref{eq:u_1_clean} with $\ve{b}$.
 Generally we have
 %
 \begin{align*}
@@ -711,7 +711,7 @@ This gives
  \numberthis
 \end{align*}
 %
-By substituting equation (\ref{eq:u_0}) in equation (\ref{eq:u_1_u_0}), we obtain
+By substituting \cref{eq:u_0} in \cref{eq:u_1_u_0}, we obtain
 %
 % FIXME: Consider not to expand u_s as this disappears
 \begin{align*}

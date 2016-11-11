@@ -4,7 +4,7 @@ The resulting model will from here be referred to as the CELMA model, standing f
 
 \section{The density equation}
 %
-We will now rewrite the electron density equation (equation (\ref{eq:dens_evol_gen})) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
+We will now rewrite the electron density equation (\cref{eq:dens_evol_gen}) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
 This yields
 %
 \begin{align*}
@@ -127,7 +127,7 @@ $
                    \div \L[ \ve{b} \ve{b}\cdot\grad \R]
 $
 %
-We will in light of this, using the current magnetic field topology, investigate the left hand side of equation (\ref{eq:full_vort_eq}) term by term.
+We will in light of this, using the current magnetic field topology, investigate the left hand side of \cref{eq:full_vort_eq} term by term.
 
 \subsection{The diamagnetic contribution}
 %
@@ -139,7 +139,7 @@ disappears as $\mathcal{C}(f)$ vanishes for a straight magnetic field.
 
 \subsection{The neutral contribution}
 %
-The two next terms, origin from the Pedersen drift from (\ref{eq:div_ped}), can be rewritten using that we are dealing with cold ions.
+The two next terms, origin from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
 We get
 %
 \begin{align*}
@@ -248,7 +248,7 @@ As we have no curvature, the second term gives
 \end{align*}
 % TODO: Delete me if not included in thesis
 %       Boussinesq part
-This means that the polarization contribution from equation (\ref{eq:full_vort_eq}) can be written as
+This means that the polarization contribution from \cref{eq:full_vort_eq} can be written as
 %
 \begin{align*}
     &
@@ -267,7 +267,7 @@ This means that the polarization contribution from equation (\ref{eq:full_vort_e
 \subsection{The source contribution}
 %
 Further on, the contribution from the source can be rewritten.
-Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in equation (\ref{eq:full_vort_eq}) to be
+Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in \cref{eq:full_vort_eq} to be
 %
 \begin{align*}
     \div \L( \frac{ S_{i,n}}{\om_{ci}}
@@ -286,7 +286,7 @@ Under the assumption of cold ions ($T_i = 0$), we can simplify the source term i
 
 \subsection{The parallel contribution}
 %
-Next, the RHS of equation (\ref{eq:full_vort_eq}) reads
+Next, the RHS of \cref{eq:full_vort_eq} reads
 %
 \begin{align*}
     \div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
@@ -309,7 +309,7 @@ Next, the RHS of equation (\ref{eq:full_vort_eq}) reads
 \subsection{Collecting terms}
 \label{sec:CELMACollect}
 %
-From the calculations above, equation (\ref{eq:full_vort_eq}) can be rewritten to
+From the calculations above, \cref{eq:full_vort_eq} can be rewritten to
 %
 \begin{align*}
   %
@@ -367,7 +367,7 @@ We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)$ a
 \subsection{Vector advective terms}
 \label{sec:vecAdvTerm}
 %
-We can simplify equation (\ref{eq:non_norm_vort_1}) even further by first observing that
+We can simplify \cref{eq:non_norm_vort_1} even further by first observing that
 %
 \begin{align*}
 u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]
@@ -414,7 +414,7 @@ $ - \frac{1}{\om_{ci}} \div
 %
 term arises from the ion continuity equation.
 
-Next, we see from appendix \ref{app:vortDAdv} that
+Next, we see from \cref{app:vortDAdv} that
 %
 \begin{align*}
  \frac{1}{\om_{ci}}
