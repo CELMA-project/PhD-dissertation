@@ -1,16 +1,12 @@
-Up until know we have derived the drift-fluid equation from the kinetic
-equation using the drift fluid approximation. We would now insert the fluid
-drifts in the fluid equation without making assumption of the topology of the
-$\ve{B}$ field. We will, on the other hand make the assumption that the plasma
-itself consists of only one type of atomic element which is fully ionized.
+Up until know we have derived the drift-fluid equation from the kinetic equation using the drift fluid approximation.
+We would now insert the fluid drifts in the fluid equation without making assumption of the topology of the $\ve{B}$ field.
+We will, on the other hand make the assumption that the plasma itself consists of only one type of atomic element which is fully ionized.
 %
 
 \section{The curvature operator}
 %
 To simplify further calculations, we will introduce the curvature operator.
-Assuming we are working in a field aligned Clebsch coordinate system (see
-appendix \ref{app:Clebsch}), where
-$\ve{b}$ is parallel to one of the basis vectors, we have that
+ Assuming we are working in a field aligned Clebsch coordinate system (see appendix \ref{app:Clebsch}), where $\ve{b}$ is parallel to one of the basis vectors, we have that
 %
 \begin{align*}
 \grad_\perp f \times \ve{b}= - \ve{b} \times \grad_\perp f
@@ -18,8 +14,8 @@ $\ve{b}$ is parallel to one of the basis vectors, we have that
 = - \ve{b} \times (\grad - \ve{b}\ve{b}\cdot\grad) f = -\grad f \times \ve{b}
 \end{align*}
 %
-as a vector crossed with a parallel vector yields
-$0$.  Therefore, we can write
+as a vector crossed with a parallel vector yields $0$.
+Therefore, we can write
 %
 \begin{align*}
 - \div \L( \frac{\grad_\perp f \times \ve{b}}{B} \R)
@@ -75,8 +71,7 @@ $0$.  Therefore, we can write
 which is non-zero only if the $\ve{B}$ field curves.
 
 \section{The electron continuity equation}
-From equation (\ref{fluideq:cont}), and the drift ordering presented in
-chapter \ref{chap:drift-order}, we have that
+From equation (\ref{fluideq:cont}), and the drift ordering presented in chapter \ref{chap:drift-order}, we have that
 %
 \begin{align*}
     \partial_t n_\a + \div (n_\a \ve{u}_\a) &= S_{n,\a}
@@ -93,11 +88,10 @@ chapter \ref{chap:drift-order}, we have that
  \label{eq:cont_eq}
 \end{align*}
 %
-Based on our assumptions, the evolution of the density can be
-described by both the electron continuity equation and the ion continuity
-equation due to quasi-neutrality. The two should only differ slightly. To show
-this, we can do an order of magnitude estimate comparison of $n_e$ and $n_i -
-n_e$. We find that
+Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation due to quasi-neutrality.
+The two should only differ slightly.
+To show this, we can do an order of magnitude estimate comparison of $n_e$ and $n_i - n_e$.
+We find that
 %
 \begin{align*}
     \frac{n_i - n_e}{n_e} =&
@@ -116,10 +110,8 @@ n_e$. We find that
     \L|\frac{\om_{ce}}{\om\om_{pe}}\R|
 \end{align*}
 %
-Where we have used the order of magnitude estimate $\curl\ve{E} = -\partial_t B
-\to |E| \simeq |B/\om k|$, where $k$ is a characteristic length scale, and
-$\om$ is a characteristic time scale. Since we are interested in phenomena
-slower than the ion cyclotron frequency, we set $\om\to\om_{ci}$, and get
+Where we have used the order of magnitude estimate $\curl\ve{E} = -\partial_t B \to |E| \simeq |B/\om k|$, where $k$ is a characteristic length scale, and $\om$ is a characteristic time scale.
+Since we are interested in phenomena slower than the ion cyclotron frequency, we set $\om\to\om_{ci}$, and get
 %
 \begin{align*}
     \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
@@ -130,10 +122,9 @@ slower than the ion cyclotron frequency, we set $\om\to\om_{ci}$, and get
 % NOTE: Consider adding numbers
 which for all practical purposes is a quantity much smaller than $1$.
 
-We choose to use the electron continuity equation to calculate the
-evolution of the density.  The reason for this, as will soon be demonstrated,
-is that certain terms can be neglected due to the mass ratio between electrons
-and ions. This gives
+We choose to use the electron continuity equation to calculate the evolution of the density.
+The reason for this, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
+This gives
 %
 \begin{align}
  \partial_t n + \div (n [
@@ -148,8 +139,7 @@ and ions. This gives
 We will now inspect the drifts in equation (\ref{eq:el_cont}) term by term.
 
 \subsection{First order perpendicular terms}
-By using the curvature operator from equation (\ref{eq:el_cont}), we find that
-the $\ve{E}\times\ve{B}$ term gives
+By using the curvature operator from equation (\ref{eq:el_cont}), we find that the $\ve{E}\times\ve{B}$ term gives
 %
 \begin{align*}
     \div \L(n \ve{u}_{E}\R)
@@ -186,16 +176,14 @@ for the diamagnetic term in (\ref{eq:el_cont}) we find that
  \label{eq:div_n_ued}
 \end{align*}
 %
-in other words, we find that $n \div \ve{u}_{\a,d}$ cancels $\ve{u}_{\a,d}
-\cdot \grad n$ in the absence of magnetic field inhomogeneities. This cancellation
-is referred to as \emph{diamagnetic cancellation} in the literature.
+in other words, we find that $n \div \ve{u}_{\a,d}$ cancels $\ve{u}_{\a,d} \cdot \grad n$ in the absence of magnetic field inhomogeneities.
+This cancellation is referred to as \emph{diamagnetic cancellation} in the literature.
 
 \subsection{Electron polarization}
 \label{sec:no_e_pol}
 %
-As a good approximation, one can neglect the electron polarization drift
-$\ve{u}_{e,p}$. As we are interested in low frequency dynamics
-$\om_{\text{char}}\ll\om_{\text{ci}}$, we can write $\ve{u}_{e,p}$ as
+As a good approximation, one can neglect the electron polarization drift $\ve{u}_{e,p}$.
+As we are interested in low frequency dynamics $\om_{\text{char}}\ll\om_{\text{ci}}$, we can write $\ve{u}_{e,p}$ as
 %
 \begin{align*}
     \ve{u}_{e,p}
@@ -224,13 +212,11 @@ $\om_{\text{char}}\ll\om_{\text{ci}}$, we can write $\ve{u}_{e,p}$ as
       \R)
 \end{align*}
 %
-As this term is first order, and since $\frac{m_e}{m_i} \ll 1$, this term will
-be much smaller than for example $\ve{u}_E$ (which in addition is of order $\e$
-larger), and can therefore be neglected in equation (\ref{eq:el_cont}).
+As this term is first order, and since $\frac{m_e}{m_i} \ll 1$, this term will be much smaller than for example $\ve{u}_E$ (which in addition is of order $\e$ larger), and can therefore be neglected in equation (\ref{eq:el_cont}).
 
 \subsection{Electron-ion resistivity}
-For the electron-ion resistivity term in equation (\ref{eq:el_cont}), we find
-that
+%
+For the electron-ion resistivity term in equation (\ref{eq:el_cont}), we find that
 %
 \begin{align*}
  \div\L( n \ve{u}_{e,R} \R) &=
@@ -271,8 +257,7 @@ and
     \frac{3}{2}\frac{n_e}{\om_e\tau_e}\ve{b}\times\grad T_e
 \end{align*}
 %
-where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$
-assuming constant $T_e$, we get that
+where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ assuming constant $T_e$, we get that
 %
 \begin{align}
     \ve{R}_{i \to e}
@@ -282,9 +267,8 @@ assuming constant $T_e$, we get that
    \label{eq:res_term_full}
 \end{align}
 %
-As $\ve{u}_{e,R}$ is already a first order drift, we substitute only the
-zeroth order drifts into the perpendicular velocities in equation
-(\ref{eq:res_term_full}). This yields
+As $\ve{u}_{e,R}$ is already a first order drift, we substitute only the zeroth order drifts into the perpendicular velocities in equation (\ref{eq:res_term_full}).
+This yields
 %
 \begin{align*}
     \ve{R}_{i \to e}
@@ -398,19 +382,15 @@ Inserting this into equation (\ref{eq:div_nur}) yields
    % \label{eq:div_nur_calc}
 \end{align*}
 %
-We see that we could have neglected this term as well on the basis of the mass
-ratio. However, we choose to keep this term as we see that it will contribute
-to perpendicular dissipation of $n$ through the divergence of the gradient of
-the pressures. This dissipation can help removing accumulation of small wave
-numbers which results from discretization of the grid.
+We see that we could have neglected this term as well on the basis of the mass ratio.
+However, we choose to keep this term as we see that it will contribute to perpendicular dissipation of $n$ through the divergence of the gradient of the pressures.
+This dissipation can help removing accumulation of small wave numbers which results from discretization of the grid.
 
 \subsection{The Pedersen drift}
 %
-There will also be a drift associated with collisions between charged particles
-and neutrals. This drift is often referred to as the Pedersen drift, due to the
-related quantity Pedersen conductivity (see for example
-\cite{Baumjohann1997book}). To address the Pedersen drift, we start by assuming
-that
+There will also be a drift associated with collisions between charged particles and neutrals.
+This drift is often referred to as the Pedersen drift, due to the related quantity Pedersen conductivity (see for example \cite{Baumjohann1997book}).
+To address the Pedersen drift, we start by assuming that
 %
 \begin{align*}
     \ve{R}_{n\to\a} =
@@ -434,8 +414,8 @@ As we here want to model the neutrals as a static background, we get that
         \R)
 \end{align*}
 %
-Again, since $\ve{u}_{\a,R}$ is already a first order drift, we substitute only the
-zeroth order drifts into the perpendicular velocities. We get that
+Again, since $\ve{u}_{\a,R}$ is already a first order drift, we substitute only the zeroth order drifts into the perpendicular velocities.
+We get that
 %
 \begin{align}
     \ve{R}_{n\to\a} =
@@ -445,8 +425,7 @@ zeroth order drifts into the perpendicular velocities. We get that
     \label{eq:neut_res}
 \end{align}
 %
-Inserting equation (\ref{eq:neut_res}) into the Pedersen drift of equation
-(\ref{eq:first_order}), assuming quasi-neutrality yields
+Inserting equation (\ref{eq:neut_res}) into the Pedersen drift of equation (\ref{eq:first_order}), assuming quasi-neutrality yields
 %
 \begin{align*}
     \ve{u}_{\a,\text{Ped}}
@@ -477,26 +456,19 @@ For the electron Pedersen drift, we find that
     + \frac{\grad_\perp \phi}{B} \R)
 \end{align*}
 %
-We see that this term can be neglected using the same arguments as in section
-\ref{sec:no_e_pol}.
+We see that this term can be neglected using the same arguments as in section \ref{sec:no_e_pol}.
 
 \subsection{Electron viscosity}
 %
 % FIXME: Should maybe explain a bit better?
-Typically we have that the magnitude of electron-electron collisions
-frequency $\nu_{ee}$ are around $\sqrt{\frac{m_e}{m_i}}$ as frequent as
-$\nu_{ii}$ collisions. Thus, we have that $\te{\pi}_e \simeq
-\sqrt{\frac{m_e}{m_i}}\te{\pi}_i$. If we substitute this into equation
-(\ref{eq:el_cont}), we see that the $\sqrt{\frac{m_e}{m_i}}$ factor in
-$\ve{u}_{e, \nu}$ makes this term much smaller than for example $\ve{u}_E$
-(which in addition is of order $\e$ larger).
+Typically we have that the magnitude of electron-electron collisions frequency $\nu_{ee}$ are around $\sqrt{\frac{m_e}{m_i}}$ as frequent as $\nu_{ii}$ collisions.
+Thus, we have that $\te{\pi}_e \simeq \sqrt{\frac{m_e}{m_i}}\te{\pi}_i$.
+If we substitute this into equation (\ref{eq:el_cont}), we see that the $\sqrt{\frac{m_e}{m_i}}$ factor in $\ve{u}_{e, \nu}$ makes this term much smaller than for example $\ve{u}_E$ (which in addition is of order $\e$ larger).
 
 \subsection{Electron source drift}
 \label{sec:no_e_source}
 %
-By using the same argument as given in section \ref{sec:no_e_pol}, we see that
-this term can also be neglected as we from the source drift of equation
-(\ref{eq:first_order}) have
+By using the same argument as given in section \ref{sec:no_e_pol}, we see that this term can also be neglected as we from the source drift of equation (\ref{eq:first_order}) have
 %
 \begin{align*}
     \ve{u}_{e,S}
@@ -521,8 +493,8 @@ this term can also be neglected as we from the source drift of equation
 \end{align*}
 
 \subsection{Resulting electron continuity equation}
-Using what we found above, we can write equation
-(\ref{eq:cont_eq}) for electrons as
+%
+Using what we found above, we can write equation (\ref{eq:cont_eq}) for electrons as
 %
 \begin{align*}
     \partial_t n + \div\L(n\ve{u}_e\R)
@@ -555,8 +527,7 @@ Using what we found above, we can write equation
     + S_{e,n}
 \end{align*}
 %
-If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we
-find that
+If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we find that
 %
 \begin{align}
     \d_t n
@@ -572,8 +543,7 @@ find that
 
 \section{Current conservation and vorticity}
 %
-If we multiply the two continuity equations of equation (\ref{eq:cont_eq}) with
-$q_\a$, and add them, we get by applying quasi-neutrality that
+If we multiply the two continuity equations of equation (\ref{eq:cont_eq}) with $q_\a$, and add them, we get by applying quasi-neutrality that
 %
 \begin{align*}
     q_i\partial_t n + q_i\div (n \ve{u}_i)
@@ -592,9 +562,8 @@ $q_\a$, and add them, we get by applying quasi-neutrality that
     e\L(S_{i,n} - S_{e,n}\R)
 \end{align*}
 %
-We will now use that the source produces equal amount of positive and
-negative charges, which means that $S_{n,e}=S_{n,i}=S_n$. If we in addition
-write $\ve{J} = \sum_{\a}q_\a n_\a\ve{u}_\a$, we get that
+We will now use that the source produces equal amount of positive and negative charges, which means that $S_{n,e}=S_{n,i}=S_n$.
+If we in addition write $\ve{J} = \sum_{\a}q_\a n_\a\ve{u}_\a$, we get that
 %
 \begin{align*}
     \\
@@ -616,10 +585,9 @@ This gives
     -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
 \end{align*}
 %
-As explained in section \ref{sec:no_e_pol}, the electron polarization drift,
-the electron drift and the electron source drift can be neglected.  However, we
-retain the ion terms up to order of $\e$, which due to the mass ratio is larger
-than the electron terms of order $\e$. This gives
+As explained in section \ref{sec:no_e_pol}, the electron polarization drift, the electron drift and the electron source drift can be neglected.
+However, we retain the ion terms up to order of $\e$, which due to the mass ratio is larger than the electron terms of order $\e$.
+This gives
 %
 \begin{align}
     \div \L( n [
@@ -637,10 +605,10 @@ than the electron terms of order $\e$. This gives
 %
 We will now inspect equation (\ref{eq:current_drifts}) term by term.
 
-
 \subsection{First order perpendicular terms}
-The $\ve{E}\times\ve{B}$ drift for the two species cancels as it is equal for
-both species.  The diamagnetic terms yields
+%
+The $\ve{E}\times\ve{B}$ drift for the two species cancels as it is equal for both species.
+The diamagnetic terms yields
 %
 \begin{align*}
  \div\L( n_e \ve{u}_{e,d} \R) - \div\L( n_i \ve{u}_{i,d} \R)
@@ -656,22 +624,17 @@ both species.  The diamagnetic terms yields
  &=
   -\frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
 \end{align*}
-%
-
 
 \subsection{Polarization and viscosity}
+%
 % FIXME: Gyroviscous cancellation in parallel
-As apparent from equation (\ref{eq:first_order}), there is a kind of material
-derivative appearing in the polarization drift. This material derivate, and
-more general, the other material derivatives appearing in the equations must be
-treated with care. Although it appears that all the drifts can contribute to
-the advective part of the material derivative, it is only the parallel velocity
-and the $\ve{E}\times\ve{B}$-drift that can contribute to the advection. The
-reason for this is not so trivial in the drift-fluid picture, but comes as a
-consequence of what is being referred to as gyroviscous cancellation
-\cite{Smolyakov1998}. The cancellation comes as a consequence of parts of the
-viscosity tensor canceling the drifts. Note that this also applies for the
-parallel momentum equation. This means that
+As apparent from equation (\ref{eq:first_order}), there is a kind of material derivative appearing in the polarization drift.
+This material derivative, and more general, the other material derivatives appearing in the equations must be treated with care.
+Although it appears that all the drifts can contribute to the advective part of the material derivative, it is only the parallel velocity and the $\ve{E}\times\ve{B}$-drift that can contribute to the advection.
+The reason for this is not so trivial in the drift-fluid picture, but comes as a consequence of what is being referred to as gyroviscous cancellation \cite{Smolyakov1998}.
+The cancellation comes as a consequence of parts of the viscosity tensor canceling the drifts.
+Note that this also applies for the parallel momentum equation.
+This means that
 % Remember that the u_e looking part in the polarization is not really u_e, but
 % u_exb
 %
@@ -723,13 +686,9 @@ parallel momentum equation. This means that
 \label{eq:from_gyroviscous_n_not_subs}
 \end{align*}
 %
-We see that we can insert the ion continuity equation in the last term of
-equation (\ref{eq:from_gyroviscous_n_not_subs}). We note that this term is of
-order $\e$, which means that when inserted the order $\e$ terms from the ion
-continuity equation (that is $\ve{u}_{i,p}$, $\ve{u}_{i,R}$,
-$\ve{u}_{i,\text{Ped}}$, $\ve{u}_{i,\nu}$, $\ve{u}_{i,S}$) will be of order
-$\e^2$, and will therefore be neglected. The ion continuity equation to order
-$\e^0$ reads
+We see that we can insert the ion continuity equation in the last term of equation (\ref{eq:from_gyroviscous_n_not_subs}).
+We note that this term is of order $\e$, which means that when inserted the order $\e$ terms from the ion continuity equation (that is $\ve{u}_{i,p}$, $\ve{u}_{i,R}$, $\ve{u}_{i,\text{Ped}}$, $\ve{u}_{i,\nu}$, $\ve{u}_{i,S}$) will be of order $\e^2$, and will therefore be neglected.
+The ion continuity equation to order $\e^0$ reads
 %
 \begin{align*}
  \partial_t n + \div (n [ \ve{u}_{i,d} + \ve{u}_E + \ve{u}_{i,\|} ])
@@ -793,6 +752,7 @@ Inserting equation (\ref{eq:i_cont}) into equation
 
 
 \subsection{The resistivity term}
+%
 The resistivity drifts for the two species cancels as
 %
 \begin{align*}
@@ -821,9 +781,8 @@ The resistivity drifts for the two species cancels as
 \end{align*}
 %
 
-
-
 \subsection{The neutral term}
+%
 The contribution from the Pedersen drift yields
 %
 \begin{align*}
@@ -861,13 +820,10 @@ The contribution from the Pedersen drift yields
     \numberthis
     \label{eq:div_ped}
 \end{align*}
-%
-
-
 
 \subsection{The source term}
-Finally we find that the divergence of the source drift multiplied with density
-gives
+%
+Finally we find that the divergence of the source drift multiplied with density gives
 %
 \begin{align*}
     \div\L(n\ve{u}_{\a,S}\R)
@@ -882,12 +838,10 @@ gives
       \R]
     \R)
 \end{align*}
-%
-
 
 \subsection{Summing terms}
-By summing the different contribution, equation (\ref{eq:current_drifts}) can be
-now written as
+%
+By summing the different contribution, equation (\ref{eq:current_drifts}) can be now written as
 %
 \begin{align*}
   -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)

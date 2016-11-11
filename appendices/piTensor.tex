@@ -1,7 +1,6 @@
-We will here make an estimate of the viscosities in the system. We should note
-that this estimate is rather crude. Following \cite{Helander2002book}, (which
-again is based on \cite{Braginskii1965}), we see that in a Cartesian coordinate
-system have that the rate of strain tensor is given by
+We will here make an estimate of the viscosities in the system.
+We should note that this estimate is rather crude.
+Following \cite{Helander2002book}, (which again is based on \cite{Braginskii1965}), we see that in a Cartesian coordinate system have that the rate of strain tensor is given by
 %
 \begin{align*}
     W^{ij}_{\a} \defined \partial_j u^{i}_{\a}
@@ -104,7 +103,8 @@ W^{yz}
 %
 \end{align*}
 %
-We use this to calculate the components of the stress tensor. We get
+We use this to calculate the components of the stress tensor.
+We get
 %
 % NOTE: Checked that agrees with Helander
 % NOTE: Cheked that inserted correct
@@ -350,12 +350,9 @@ By taking the divergence of this, we find that
     \R)
 \end{align*}
 %
-Up until this point, we have not made any further assumptions of the $\te{\pi}$
-tensor, that hasn't already been made in \cite{Braginskii1965}. Here however, we
-simplify the expression (on the cost of accuracy), and say that we assume that
-the viscosities are constants (note that we already did such an approximation
-when calculating the particle flux originating from the resistivity drift when
-we derived $\partial_t \ln(n)$). We then get
+Up until this point, we have not made any further assumptions of the $\te{\pi}$ tensor, that hasn't already been made in \cite{Braginskii1965}.
+Here however, we simplify the expression (on the cost of accuracy), and say that we assume that the viscosities are constants (note that we already did such an approximation when calculating the particle flux originating from the resistivity drift when we derived $\partial_t \ln(n)$).
+We then get
 %
 \begin{align*}
     \div\te{\pi}_\a
@@ -520,13 +517,10 @@ We have that
     &\eta_{4,e}=\frac{n_eT_e}{\Om_{ce}} &
 \end{align*}
 %
-and from figure \ref{fig:etas} we see that
-$\eta_{\a,0} \gg \eta_{\a,j} \quad j \in \{1,2,3,4\}$ for the parameter range
-that we are interested in. Although one should look at the different terms as a
-whole, one could again make an approximation and say that only the terms
-$\propto \eta_{\a,0}$ are contributing to the viscosity tensor. Note that this
-may not be a bad approximation due to the difference in magnitude for the
-different $\eta$s. This would yield
+and from figure \ref{fig:etas} we see that $\eta_{\a,0} \gg \eta_{\a,j} \quad j \in \{1,2,3,4\}$ for the parameter range that we are interested in.
+Although one should look at the different terms as a whole, one could again make an approximation and say that only the terms $\propto \eta_{\a,0}$ are contributing to the viscosity tensor.
+Note that this may not be a bad approximation due to the difference in magnitude for the different $\eta$s.
+This would yield
 %
 \begin{figure}[t!]
     \centering
@@ -593,9 +587,8 @@ different $\eta$s. This would yield
     \R)
 \end{align*}
 %
-Using that to first order, only the $\ve{E}\times\ve{B}$ drift advects
-particles perpendiculary. In Clebsch coordinates, we have that $\ve{u}_{E}$ is
-given by equation \ref{app:ExB}, which means that we get
+Using that to first order, only the $\ve{E}\times\ve{B}$ drift advects particles perpendiculary.
+In Clebsch coordinates, we have that $\ve{u}_{E}$ is given by equation \ref{app:ExB}, which means that we get
 %
 \begin{align*}
     \ve{u}_E
@@ -620,8 +613,8 @@ given by equation \ref{app:ExB}, which means that we get
     u_{E}^{z} = 0
 \end{align*}
 %
-We note that we are again operting with a left handed coordinate system. Using
-this, we find that
+We note that we are again operting with a left handed coordinate system.
+Using this, we find that
 %
 \begin{align*}
     \div\te{\pi}_\a
@@ -671,8 +664,5 @@ this, we find that
 \end{align*}
 %
 % FIXME: Check that this is actually the order
-From our drift approximation, we found that the viscosity drift was of
-$\mathcal{O}(\e)$, and we therefore neglected it. We will however use the
-parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3}
-\partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in order to have
-some diffusion in the system for numerical stability.
+From our drift approximation, we found that the viscosity drift was of $\mathcal{O}(\e)$, and we therefore neglected it.
+We will however use the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in order to have some diffusion in the system for numerical stability.

@@ -1,66 +1,43 @@
 \section{Implementation}
+%
 \label{sec:implementation}
-This section describes the details in the numerical implementation of the CELMA
-code
+This section describes the details in the numerical implementation of the CELMA code
 
 \subsection{Obtaining \texorpdfstring{$\phi$}{the potential}}
 %
-We observe the dependency of $\phi$ in equation (\ref{eq:celma_dens}) -
-(\ref{eq:celma_vortD_evolution}), but that $\phi$ is not described by a
-initial boundary value problem equation. Instead, we must find alternative ways
-of extracting $\phi$. We will in the following discuss two ways of doing so.
+We observe the dependency of $\phi$ in equation (\ref{eq:celma_dens}) - (\ref{eq:celma_vortD_evolution}), but that $\phi$ is not described by a initial boundary value problem equation.
+Instead, we must find alternative ways of extracting $\phi$.
+We will in the following discuss two ways of doing so.
 % TODO: Delete me if not in thesis
 %       extra/constraint can be inserted here
 
 \subsubsection{As a matrix inversion problem}
 %
-The problem of obtaining $\phi$ can be posed as a matrix problem
-$A\ve{x}=\ve{b}$, where $\ve{x}$ is an array of all the spatial values of
-$\phi$ ordered in some way, and $\ve{b}$ is an array of all the spatial values
-of $\Omega^D$ ordered in the same way. Since we are working in an orthogonal
-coordinate system, we have that $\Om^D = \div\L(n\grad_\perp\phi\R) =
-\grad_\perp\cdot\L(n\grad_\perp\phi\R)$, as no basis vector parallel to the
-magnetic field can be obtained from taking the derivative of the vector
-$n\grad_\perp\phi$, which has only perpendicular components. Thus, in our case,
-we can solve the $A\ve{x}=\ve{b}$ system for each plane perpendicular to the
-magnetic field. That is, our matrix $A$ would be a $n_x \times n_y$ matrix,
-where $n_x$ and $n_y$ is the number of points for the two perpendicular
-directions
+The problem of obtaining $\phi$ can be posed as a matrix problem $A\ve{x}=\ve{b}$, where $\ve{x}$ is an array of all the spatial values of $\phi$ ordered in some way, and $\ve{b}$ is an array of all the spatial values of $\Omega^D$ ordered in the same way.
+Since we are working in an orthogonal coordinate system, we have that $\Om^D = \div\L(n\grad_\perp\phi\R) = \grad_\perp\cdot\L(n\grad_\perp\phi\R)$, as no basis vector parallel to the magnetic field can be obtained from taking the derivative of the vector $n\grad_\perp\phi$, which has only perpendicular components.
+Thus, in our case, we can solve the $A\ve{x}=\ve{b}$ system for each plane perpendicular to the magnetic field.
+That is, our matrix $A$ would be a $n_x \times n_y$ matrix, where $n_x$ and $n_y$ is the number of points for the two perpendicular directions
 %
 \footnote{
-Note that in the BOUT++ implementation, $y$ is chosen as the direction parallel
-to the magnetic field.  due to historical reasons, and $n_y$ would be named
-$n_z$ in BOUT++ convention.  In order not to confuse readers unfamiliar with
-BOUT++, $z$ is chosen as the coordinate along the magnetic field unless other
-is specified.
+Note that in the BOUT++ implementation, $y$ is chosen as the direction parallel to the magnetic field.
+This is due to historical reasons.
+$n_y$ would be named $n_z$ in BOUT++ convention.
+In order not to confuse readers unfamiliar with BOUT++, $z$ is chosen as the coordinate along the magnetic field unless other is specified.
 }%
 %
-. We note that if $\div\L(n\grad_\perp\phi\R)$ were not purely
-perpendicular, we would have to solve $A\ve{x}=\ve{b}$ for the whole domain. In
-other words, the size of matrix $A$ would be $n_x \times n_y \times n_z$, and
-would be considerably harder to solve numerically.
+.
+We note that if $\div\L(n\grad_\perp\phi\R)$ were not purely perpendicular, we would have to solve $A\ve{x}=\ve{b}$ for the whole domain.
+In other words, the size of matrix $A$ would be $n_x \times n_y \times n_z$, and would be considerably harder to solve numerically.
 
-As noted in \cite{Wiesenberger2014Phd} (in the case where $P=1$, that is, in
-the finite difference case), the discretization of the elliptic equation
-$\div\L(n\grad_\perp\phi\R)=\Om^D$ can be formulated in a symmetric manner,
-when special care is taken at the boundary.
+As noted in \cite{Wiesenberger2014Phd} (in the case where $P=1$, that is, in the finite difference case), the discretization of the elliptic equation $\div\L(n\grad_\perp\phi\R)=\Om^D$ can be formulated in a symmetric manner, when special care is taken at the boundary.
 
-Solving for the ghost-point, meaning that the ghost-point would be one of the
-unknown in $A\ve{x}=\ve{b}$, would break the symmetry. Instead, one must
-reformulate the boundary condition in a way such that it becomes an equation
-for the ghost point. The equation of the ghost point can then be substituted
-into the equations for the first/last inner point (the point just before the
-boundary) and thus effictively eliminating the ghost point from the set of
-equations.
+Solving for the ghost-point, meaning that the ghost-point would be one of the unknown in $A\ve{x}=\ve{b}$, would break the symmetry.
+Instead, one must reformulate the boundary condition in a way such that it becomes an equation for the ghost point.
+The equation of the ghost point can then be substituted into the equations for the first/last inner point (the point just before the boundary) and thus effectively eliminating the ghost point from the set of equations.
 
-To exemplify, consider a second order dirichlet boundary condition with the
-boundary half between grid points for the equation $\partial_x^2 f = b$, where
-$f_{-1}$ denotes the value at the ghost point, $f_{\text{BC}}$ denotes the
-value at the boundary and $f_{1}$ denotes the value at the first inner ghost
-point. The boundary condition can now be written
-$\frac{f_{-1}+f_{1}}{2}=f_{\text{BC}}$, and the equation for the first inner
-point could be written $\frac{f_{-1}+2f{1}+f_{2}}{(\Delta x)^2}=b_1$. This
-would lead to the equation system
+To exemplify, consider a second order Dirichlet boundary condition with the boundary half between grid points for the equation $\partial_x^2 f = b$, where $f_{-1}$ denotes the value at the ghost point, $f_{\text{BC}}$ denotes the value at the boundary and $f_{1}$ denotes the value at the first inner ghost point.
+The boundary condition can now be written $\frac{f_{-1}+f_{1}}{2}=f_{\text{BC}}$, and the equation for the first inner point could be written $\frac{f_{-1}+2f{1}+f_{2}}{(\Delta x)^2}=b_1$.
+This would lead to the equation system
 %
 \begin{align*}
     A\cdot\ve{f}=&\ve{b}\\
@@ -92,9 +69,7 @@ would lead to the equation system
 %
 which is clearly non-symmetric.
 
-The symmetric way to implement this would be to write
-$f_{-1}=2f_{\text{BC}}-f_{1}$ for the boundary condition, and substitute this
-into the 2nd order finite difference equation for the first inner ghost point.
+The symmetric way to implement this would be to write $f_{-1}=2f_{\text{BC}}-f_{1}$ for the boundary condition, and substitute this into the 2nd order finite difference equation for the first inner ghost point.
 This gives
 %
 \begin{align*}
@@ -131,16 +106,14 @@ This would give
     \end{bmatrix}
 \end{align*}
 %
-which is symmetric. Although difficult, one can show that the non-linear
-elliptic equation in its symmetric form can be singular positive definite and
-thus be solved using the conjugate gradient method.
+which is symmetric.
+Although difficult, one can show that the non-linear elliptic equation in its symmetric form can be singular positive definite and thus be solved using the conjugate gradient method.
 % FIXME: Add reference
 
 \subsubsection{The Naulin solver}
 %
-The potential can also be found in an iterative way. The method first used by
-Naulin in \cite{Naulin2008} will be presented here, and will be refered to as
-the Naulin solver.
+The potential can also be found in an iterative way.
+The method first used by Naulin in \cite{Naulin2008} will be presented here, and will be referred to as the Naulin solver.
 
 The method can be used as long as
 %
@@ -149,10 +122,9 @@ The method can be used as long as
     \item $\grad f \cdot \grad_\perp g = \grad_\perp f \cdot \grad_\perp g$
 \end{enumerate}
 %
-Point 1. is satisfied in our system as $B$ is constant, and because derivatives
-of the perpendicular basis vectors does not yield parallel components in our
-system. Point 2. is satisfied as the dot product of the perpendicular basis
-vectors and the parallel basis vector is zero. We then get that
+Point 1. is satisfied in our system as $B$ is constant, and because derivatives of the perpendicular basis vectors does not yield parallel components in our system.
+Point 2. is satisfied as the dot product of the perpendicular basis vectors and the parallel basis vector is zero.
+We then get that
 %
 \begin{align*}
     \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)\\
@@ -181,8 +153,7 @@ vectors and the parallel basis vector is zero. We then get that
     \grad_\perp \ln(n) \cdot\frac{\grad_\perp\phi}{B}
 \end{align*}
 %
-Using square bracket superscript as iteration number, the algorithm can be
-stated in the following way:
+Using square bracket superscript as iteration number, the algorithm can be stated in the following way:
 %
 \begin{algorithm}
 \begin{enumerate}[noitemsep,nolistsep]
@@ -210,29 +181,22 @@ stated in the following way:
     \end{itemize}
 \end{enumerate}
 \end{algorithm}
-%
-
 
 %FIXME: MAKE APPENDIX
-FIXME: MAKE APPENDIX
 \subsubsection{LAPLACE INVERSION}
 
 
 \subsection{Advective terms}
 \label{sec:ExBadv}
-As already noted in section \ref{sec:vecAdvTerm}, we can write
-$\ve{E}\times\ve{B}$-advective terms as Poisson brackets. The proof is found in
-appendix \ref{app:poisson}. The benefits of writing terms on Poisson brackets
-are presented in Arakawa's paper from 1966 \cite{Arakwa1966}. In short, the
-paper shows that a na\"ive finite difference discretization of the Poisson
-bracket does not conserve energy and enstrophy, and gives an alternative
-way of discretize in orthogonal curvilinear coordinates in order to keep these
-quantities conserved. If the energy and enstrophy is not conserved, fake
-generation of these quantities occur, which eventually will lead to a blow up
-of the simulation (in a way described by Phillips in \cite{Phillips1959}).
+%
+As already noted in section \ref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms as Poisson brackets.
+The proof is found in appendix \ref{app:poisson}.
+The benefits of writing terms on Poisson brackets are presented in Arakawa's paper from 1966 \cite{Arakwa1966}.
+In short, the paper shows that a na\"ive finite difference discretization of the Poisson bracket does not conserve energy and enstrophy, and gives an alternative way of discretize in orthogonal curvilinear coordinates in order to keep these quantities conserved.
+If the energy and enstrophy is not conserved, fake generation of these quantities occur, which eventually will lead to a blow up of the simulation (in a way described by Phillips in \cite{Phillips1959}).
 
-It is also possible to discretize the term $\{\ve{u}_E^2, n\}$
-using Arakawa's method. We observe that in cylindrical coordinates, we have
+It is also possible to discretize the term $\{\ve{u}_E^2, n\}$ using Arakawa's method.
+We observe that in cylindrical coordinates, we have
 %
 \begin{align*}
     \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
@@ -258,32 +222,27 @@ using Arakawa's method. We observe that in cylindrical coordinates, we have
         , n\R\}
 \end{align*}
 %
-Here, we must take care when we treat the ghost points. No ghost points is
-needed in the $\theta$ direction, as this direction is periodic. Thus, for
-$\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$
-derivatives at the ghost points in $\rho$.
+Here, we must take care when we treat the ghost points.
+No ghost points is needed in the $\theta$ direction, as this direction is periodic.
+Thus, for $\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
 
-For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost
-points as the derivative is not calculated there. For the inner ghost point,
-the same procedure as used in
+For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
+For the inner ghost point, the same procedure as used in
 % FIXME: Add section
-FIXME: Add section
-can be used. For the outer ghost point, we use a fourth order Newton polynomial
-of the four previous points in the $\rho$ direction, evaluated in the ghost
-point. If we say that $f=\partial_{\rho} \phi$, this extrapolation reads
+can be used.
+For the outer ghost point, we use a fourth order Newton polynomial of the four previous points in the $\rho$ direction, evaluated in the ghost point.
+If we say that $f=\partial_{\rho} \phi$, this extrapolation reads
 %
 \begin{align*}
     f_{0} = 4f_{-1} - 6f_{-2} + 4f_{-3} - f_{-4}
 \end{align*}
 %
-where $f_{0}$ is the value of $f$ at the position of the ghost point and
-$f_{-i}$ is the value of $f$ in a position $-i\Delta \rho$ away from the ghost
-point (where $\Delta \rho$ is the grid spacing in $\rho$).
+where $f_{0}$ is the value of $f$ at the position of the ghost point and $f_{-i}$ is the value of $f$ in a position $-i\Delta \rho$ away from the ghost point (where $\Delta \rho$ is the grid spacing in $\rho$).
 
 This way of discretizing is second order accurate, as indicated in appendix
 %FIXME: Add to appendix MES
-FIXME: Add to appendix MES
-FIXME: ADD HOW PARALLEL DERIVATIVE OF RHO IS IMPLEMENTED
+%FIXME: Add to appendix MES
+%FIXME: ADD HOW PARALLEL DERIVATIVE OF RHO IS IMPLEMENTED
 YOU ARE HERE
 
 
@@ -307,23 +266,13 @@ Secondly we have
     \label{eq:par_vec_adv_expanded}
 \end{align*}
 %
-where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$
-and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel
-derivatives of equation (\ref{eq:par_vec_adv_expanded}) using a FDA.
-
-
-
-
+where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$ and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel derivatives of equation (\ref{eq:par_vec_adv_expanded}) using a FDA.
 
 \subsection{Artificial viscosity}\label{sec:art_visc}
 %
-In the derivation we have neglected terms which is of order lower than first
-order, as these terms are believed to have negligible contribution on the
-overall set of equation. One of the drawbacks is, however, that we also have
-neglected viscous terms which will dampen small scales in the system. Thus,
-if we no not re-introduce some dissipation for numerical purposes, energy is
-going to build-up on small scales, and would in the end make the simulation
-crash.
+In the derivation we have neglected terms which is of order lower than first order, as these terms are believed to have negligible contribution on the overall set of equation.
+One of the drawbacks is, however, that we also have neglected viscous terms which will dampen small scales in the system.
+Thus, if we no not re-introduce some dissipation for numerical purposes, energy is going to build-up on small scales, and would in the end make the simulation crash.
 %FIXME: Add cite to Phillips instability if applicable
 
 Therefore, we add a dissipation on the form
@@ -349,11 +298,9 @@ Therefore, we add a dissipation on the form
     \label{eq:art_vort}
 \end{align*}
 %
-by exchanging $\div \te{\pi}$ in equation (\ref{fluideq:mom}) with equation
-(\ref{eq:art_vort}). This is a somewhat crude approximation, but serves as a
-good first approximation. In the non-normalized set of equations the $D$
-coefficients would have the units of dynamical viscosity, and would be
-normalized by
+by exchanging $\div \te{\pi}$ in equation (\ref{fluideq:mom}) with equation (\ref{eq:art_vort}).
+This is a somewhat crude approximation, but serves as a good first approximation.
+In the non-normalized set of equations the $D$ coefficients would have the units of dynamical viscosity, and would be normalized by
 \\
 %
 \begin{minipage}{0.4\textwidth}
@@ -370,15 +317,9 @@ normalized by
 \vspace{0.5cm}
 \\
 %
-We notice that when using equation (\ref{fluideq:mom}) in the derivations,
-division by $n$ on the RHS of the equations occurs in the density equation and
-the parallel momentum equations, but not in the vorticity equation. The
-artificial viscosity in the density is not divided by $n$ as $\frac{1}{n}\grad
-n = \ln(n)$.
-
-
+We notice that when using equation (\ref{fluideq:mom}) in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
+The artificial viscosity in the density is not divided by $n$ as $\frac{1}{n}\grad n = \ln(n)$.
 
 \subsection{BC for Laplace inversion using FFT}
 %
-% FIXME:
-Write me
+% FIXME:Write me

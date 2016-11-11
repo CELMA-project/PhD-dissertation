@@ -18,12 +18,9 @@ That is, we let
 %
 where the tilde ($\wt{\quad}$) denotes a normalized (unit less) quantity.
 
-In order to take some shortcuts in the following derivation, we observe (from
-the Lorentz force) that $\|\ve{B}\|$ must have the same units as
-$\|\ve{E}\|/\|\ve{u}\|$. As a consequence $\|\ve{E}\|/\|\ve{B}\|$ must have the
-same units as $\|\ve{u}\|$. In the electrostatic approximation this means that
-$\|\grad_\perp \phi\|/\|\ve{B}\|$ must have the same normalization as
-$\|\ve{u}\|$, and thus
+In order to take some shortcuts in the following derivation, we observe (from the Lorentz force) that $\|\ve{B}\|$ must have the same units as $\|\ve{E}\|/\|\ve{u}\|$.
+As a consequence $\|\ve{E}\|/\|\ve{B}\|$ must have the same units as $\|\ve{u}\|$.
+In the electrostatic approximation this means that $\|\grad_\perp \phi\|/\|\ve{B}\|$ must have the same normalization as $\|\ve{u}\|$, and thus
 %
 \begin{align*}
     \frac{\wt{\grad}_\perp \wt{\phi}}{\wt{B}} =
@@ -31,9 +28,8 @@ $\|\ve{u}\|$, and thus
     \frac{\grad_\perp \phi}{c_sB}
 \end{align*}
 %
-We can see that this is true by looking at the normalization of the individual
-quantities. Due to the spatial normalization, we must have that
-$\grad = \wt{\grad}/\rho_s$, so that
+We can see that this is true by looking at the normalization of the individual quantities.
+Due to the spatial normalization, we must have that $\grad = \wt{\grad}/\rho_s$, so that
 %
 \begin{align*}
     \frac{\grad_\perp \phi}{B}\frac{1}{c_s}
@@ -76,19 +72,12 @@ and that
 = n_0\frac{\Om^D}{\om_{ci}}.
 \end{align*}
 %
-Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and
-note that since the particle source $S$ has the units of density per second,
-it makes sense to normalize it with $n_0$ and $\om_{ci}$.
+Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and note that since the particle source $S$ has the units of density per second, it makes sense to normalize it with $n_0$ and $\om_{ci}$.
 
-Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$
-can easily be found by looking at the dimensions of the RHS of equation
-(\ref{eq:nonElstat}) and the corresponding $\eta_{\a,n}$. We have that the
-normalization constants corresponding to $m_\a \partial_t(nu_{\a,\|})$ must be
-$m_\a\om_{ci}n_0c_s$ as we have normalized the time with $\om_{ci}$. As
-$\partial_z^2 u_{\a,\|}$ must have to normalization constant
-$c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with
-$m_i\rho_s n_0c_s$. We see that this normalization constant has the proper
-units of mass per meter seconds (or equivalently pascal seconds).
+Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$ can easily be found by looking at the dimensions of the RHS of equation (\ref{eq:nonElstat}) and the corresponding $\eta_{\a,n}$.
+We have that the normalization constants corresponding to $m_\a \partial_t(nu_{\a,\|})$ must be $m_\a\om_{ci}n_0c_s$ as we have normalized the time with $\om_{ci}$.
+As $\partial_z^2 u_{\a,\|}$ must have to normalization constant $c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with $m_i\rho_s n_0c_s$.
+We see that this normalization constant has the proper units of mass per meter seconds (or equivalently pascal seconds).
 
 As a side note, we note that
 $\d_{t,\a} = \wt{\partial_t}\om_{ci} + c_s ([\ve{u}_\a]\cdot
@@ -158,10 +147,9 @@ which means that
 %        such that Btilde = 1, doing a scan in B will then only affect
 %        quantities related to B0, like omci and rhos
 
-FIXME: Add energy
+% FIXME: Add energy
 
-We will now normalize the equations derived above, and we will from here on
-drop the tilde to simplify the writing.
+We will now normalize the equations derived above, and we will from here on drop the tilde to simplify the writing.
 
 \subsection{Normalization of \texorpdfstring{$n$}{the density}}
 By normalizing equation (\ref{eq:non_norm_dens}) , we get
@@ -199,8 +187,8 @@ By normalizing equation (\ref{eq:non_norm_dens}) , we get
  + S_n
 \end{align*}
 %
-we will divide through by $1/n$ to ensure the non-negativity of the density when
-solving the equations numerically. This gives
+we will divide through by $1/n$ to ensure the non-negativity of the density when solving the equations numerically.
+This gives
 %
 \begin{align*}
     \d_t \ln(n)
@@ -298,8 +286,7 @@ This yields
  \label{eq:norm_ln_n}
 \end{align*}
 
-\subsection{Normalization of \texorpdfstring{$\Omega^D$}{the
-            modified vorticity}}
+\subsection{Normalization of \texorpdfstring{$\Omega^D$}{the modified vorticity}}
 %
 Next, normalization of equation (\ref{eq:non_norm_vort_2}) yields
 %
@@ -405,8 +392,7 @@ and
 \end{align*}
 %
 
-\subsection{Normalization of \texorpdfstring{$nu_{i,\|}$}{the
-            parallel momentum density}}
+\subsection{Normalization of \texorpdfstring{$nu_{i,\|}$}{the parallel momentum density}}
 %
 Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
 %
@@ -463,11 +449,9 @@ Further, we normalize equation (\ref{eq:parMomDensNonNorm}) in the following way
 %
 We notice how the ion mass in the electron pressure got normalized away.
 
-\subsection{Normalization of \texorpdfstring{$j_{\|}$}{the
-            parallel current}}
+\subsection{Normalization of \texorpdfstring{$j_{\|}$}{the parallel current}}
 %
-Finally, by using $\ve{E}=\frac{\wt{E}T_e}{e\rho_s}$, normalization of the
-parallel current can be done in the following way
+Finally, by using $\ve{E}=\frac{\wt{E}T_e}{e\rho_s}$, normalization of the parallel current can be done in the following way
 %
 \begin{align*}
  \om_{ci}en_0c_s\partial_t j_\|
@@ -532,9 +516,8 @@ parallel current can be done in the following way
  \label{eq:curNormE}
 \end{align*}
 %
-In section \ref{app:elstat} we show that we are operating in the
-electrostatic regime, and $E_\| \simeq -\partial_\|\phi$ (both normalized
-and non-normalized). This gives
+In section \ref{app:elstat} we show that we are operating in the electrostatic regime, and $E_\| \simeq -\partial_\|\phi$ (both normalized and non-normalized).
+This gives
 %
 \begin{align*}
  \partial_t j_\|
@@ -553,8 +536,5 @@ and non-normalized). This gives
  \label{eq:curNormNoE}
 \end{align*}
 %
-On the other hand, it can be beneficial to maintain $\partial_t \ve{A}$ for
-numerical reasons, as these terms can in fact prevent fast waves in the system
-\cite{Dudson2015Private}. Although electromagnetic effects are outside the
-scope of this thesis, the derivation of the parallel current equation where
-this effect is taken into account is given in appendix \ref{app:elMag}.
+On the other hand, it can be beneficial to maintain $\partial_t \ve{A}$ for numerical reasons, as these terms can in fact prevent fast waves in the system \cite{Dudson2015Private}.
+Although electromagnetic effects are outside the scope of this thesis, the derivation of the parallel current equation where this effect is taken into account is given in appendix \ref{app:elMag}.
