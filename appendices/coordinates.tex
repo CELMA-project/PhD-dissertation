@@ -16,33 +16,6 @@ The coordinates in a cylindrical geometry are written\\
 \end{align*}
 \end{minipage}
 
-\section{In Clebsch formalism}
-%
-% FIXME: Not Clebsch
-The cylindrical coordinates can be expressed in Clebsch formalism introduced in appendix \ref{app:cylcoord} if we let
-%
-\begin{align*}
-    1 &\to \rho\\
-    2 &\to z\\
-    3 &\to \theta
-\end{align*}
-%
-
-\subsubsection{In BOUT++}
-%
-As a final note BOUT++ uses the indices $\{x,y,z\}$ rather than $\{1,2,3\}$.
-Be aware that this can be a source of confusion as $y$ maps to $z$ as shown below
-%
-\begin{center}
-    \begin{tabular}{ccccc}
-        Generic &     & BOUT++ indices &     & Cylindrical coordinates\\
-        $1$     &$\to$& $x$            &$\to$& $\rho$                 \\
-        $2$     &$\to$& $y$            &$\to$& $z$                    \\
-        $3$     &$\to$& $z$            &$\to$& $\theta$
-    \end{tabular}
-\end{center}
-%
-
 \section{The metrics}
 \label{sec:metr}
 %
@@ -503,13 +476,6 @@ The Jacobian
     J=\sqrt{\det(g_{ij})}=\rho
 \end{align*}
 %
-Using this metric, we get that
-%
-\begin{align*}
-    &B = \frac{1}{\rho}&
-    & \ve{b}= \ve{e}_z
-\end{align*}
-%
 Finally, we calculate the derivatives of the contravariant basis vectors.
 From what is calculated above, we see that $\partial_z e^i=0$ and $\partial_i e^z=0$.
 The other basis vectors gives
@@ -575,7 +541,7 @@ The other basis vectors gives
 \end{align*}
 %
 
-\section{Summary}
+\subsection{Summary}
 \label{app:cylSummary}
 %
 Basis vector transformations\\
@@ -683,14 +649,8 @@ The Jacobian
     J=\rho
 \end{align*}
 %
-The magnetic filed
-%
-\begin{align*}
-    &B = \frac{1}{\rho}&
-    & \ve{b}= \ve{e}_z
-\end{align*}
-%
 The derivatives of the contravariant basis vectors.
+%
 \begin{align*}
     \partial_\rho \ve{e}^\rho =&
     \partial_\rho \ve{e}^z =
@@ -708,3 +668,84 @@ The derivatives of the contravariant basis vectors.
     %
     \partial_\theta \ve{e}^\rho =& \rho \ve{e}^\theta
 \end{align*}
+
+\section{Alignment with the Clebsch formalism}
+%
+As most of the numerical differentiation operators in BOUT++ is only valid for a coordinate system written on the Clebsch form (at least at the time of writing), it makes sense to align our coordinates with the Clebsch coordinates.
+Note as whereas the Clebsch coordinate system gives
+%
+\begin{align*}
+    \ve{B}_{\text{Clebsch}}
+    =&\ve{e}^3 \times \ve{e}^1\\
+    J^{-1}\ve{e}_2=&\ve{e}^3 \times \ve{e}^1
+\end{align*}
+%
+so that
+%
+\begin{align*}
+    B_{\text{Clebsch}}\defined & \sqrt{\ve{B}_{\text{Clebsch}}\cdot\ve{B}_{\text{Clebsch}}}
+    = \sqrt{J^{-1}\ve{e}_2\cdot J^{-1}\ve{e}_2}
+    = \sqrt{J^{-2}g_{22}}
+    = J^{-1}\sqrt{g_{22}}
+\end{align*}
+%
+and
+%
+\begin{align*}
+    \ve{B}_{\text{Clebsch}}=&B_{\text{Clebsch}}\ve{b}_{\text{Clebsch}}\\
+    \ve{b}_{\text{Clebsch}}
+    =&\frac{\ve{B}_{\text{Clebsch}}}{B_{\text{Clebsch}}}
+    =\frac{J^{-1}\ve{e}_2}{J^{-1}\sqrt{g_{22}}}
+    =\frac{\ve{e}_2}{\sqrt{g_{22}}},
+\end{align*}
+%
+the $B$-field in our case is constant. This can be obtained if we let%
+%
+\footnote{
+    BOUT++ uses the indices $\{x,y,z\}$ for $\{1,2,3\}$.
+    Be aware that this can be a source of confusion as $y$ in BOUT++ coordinates maps to $z$ in cylindrical coordinates as shown below
+    %
+    \begin{center}
+        \begin{tabular}{ccccc}
+            Generic &     & BOUT++ indices &     & Cylindrical coordinates\\
+            $1$     &$\to$& $x$            &$\to$& $\rho$                 \\
+            $2$     &$\to$& $y$            &$\to$& $z$                    \\
+            $3$     &$\to$& $z$            &$\to$& $\theta$
+        \end{tabular}
+    \end{center}
+}%
+%
+\footnote{
+    Note that this system is left-handed.
+}
+%
+\begin{align*}
+    1 &\to \rho\\
+    2 &\to z\\
+    3 &\to \theta
+\end{align*}
+%
+We now have that $\ve{B}_{\text{Cylinder}}=B_0J\ve{B}_{\text{Clebsch}}$, where $B_0$ is a constant value, which means that
+%
+\begin{align*}
+    B_{\text{Cylinder}}\defined &
+    \sqrt{B_0J\ve{B}_{\text{Clebsch}}\cdot B_0J\ve{B}_{\text{Clebsch}}}
+    = \sqrt{B_0\ve{e}_\theta\cdot B_0\ve{e}_\theta}
+    = B_0\sqrt{g_{\theta\theta}}
+    = B_0
+\end{align*}
+%
+and
+%
+\begin{align*}
+    \ve{B}_{\text{Cylinder}}=&B_{\text{Cylinder}}\ve{b}_{\text{Cylinder}}\\
+    \ve{b}_{\text{Cylinder}}
+    =&\frac{\ve{B}_{\text{Cylinder}}}{B_{\text{Cylinder}}}
+    =\frac{B_0J\ve{B}_{\text{Clebsch}}}{B_0}
+    =\frac{B_0JJ^{-1}\ve{e}_\theta}{B_0}
+    =\ve{e}_\theta
+\end{align*}
+%
+In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system, in the sense that $\ve{b}_{\text{Cylinder}}\propto\ve{b}_{\text{Clebsh}}$, but that they are not equal since $\ve{b}_{\text{Cylinder}}\neq\ve{b}_{\text{Clebsh}}$.
+Care must therefore be taken when using BOUT++ operators which explicitly uses ${B}_{\text{Clebsch}}$.
+In the scope of this thesis, it means that care must be taken whenever using the Poisson bracket, as explained in \cref{app:poisson}.

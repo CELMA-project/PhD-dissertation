@@ -40,6 +40,8 @@
 %
 % FIXME: Use simeq where approximations are used
 % FIXME: Convert to currents in modified vorticity
+% FIXME: Check that there is no mix between length of perturbation and background scale length
+% FIXME: Highligth difference bout++ and bout
 \part{Derivation of model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
@@ -89,13 +91,9 @@
 \label{app:piTensor}
 \input{appendices/piTensor}
 
-\chapter{Clebsch coordinate system}
-\label{app:Clebsch}
-\input{appendices/clebsch}
-
-\chapter{Cylindrical coordinate system}
-\label{app:cylcoord}
-\input{appendices/cylinder}
+\chapter{The coordinate system}
+\label{app:coord}
+\input{appendices/coordinates}
 
 \chapter{The Poisson bracket operator}
 \label{app:poisson}
@@ -104,51 +102,5 @@
 \chapter{Advection of \texorpdfstring{$\Om^D$}{OmegaD}}
 \label{app:vortDAdv}
 \input{appendices/modifiedVorticityAdvection}
-
-\part{Work in progress}
-
-\chapter{Energies}
-\label{app:energies}
-\input{workInProgress/energies}
-
-\chapter{Collisions}
-\label{app:collisions}
-\input{workInProgress/collisions}
-
-\chapter{Better drift order}
-\label{app:betterDO}
-\input{workInProgress/betterDriftOrdering}
-
-\chapter{Shortcomings}
-\label{app:shortcomings}
-\input{workInProgress/shortComings}
-
-\chapter{Parallel momentum equations}
-\label{app:parMom}
-\input{workInProgress/parallelMomentum}
-
-\chapter{Time solver}
-\label{app:timeSolver}
-\input{workInProgress/timeSolver}
-
-\chapter{Preconditioning}
-\label{app:precon}
-\input{workInProgress/precondition}
-
-\chapter{Constraint}
-\input{workInProgress/constraint}
-
-\chapter{Linearization of variables}
-\label{app:linearized}
-\input{workInProgress/linearized}
-
-\chapter{Waves}
-\label{app:waves}
-\input{workInProgress/waves}
-
-\markboth{Bibliography}{}
-\bibliographystyle{styles/prsty}
-\bibliography{bib/library,bib/nonArticles}
-\addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
