@@ -331,7 +331,7 @@ If we subtract \cref{eq:material_dot_bb} from \cref{eq:no_assumptions_momentum},
 %       Normalize R_tilde = R/R0
 %       Normalize r_tilde = r/r0
 %       But must have r0 << R0 in order to say that r_tilde << R_tilde
-The goal of the drift ordering is to split \cref{eq:perp_mom_start} in a different orders, yielding algebraic equations for each order of $\ve{u}_{\a,\perp}$.
+The goal of the drift ordering is to split \cref{eq:perp_mom_start} in different orders, yielding algebraic equations for each order of $\ve{u}_{\a,\perp}$.
 In order to do the drift ordering we will use that $\ve{R}_{\g \to \a} \propto \nu_\g n_\a m_\a$, where $\nu_\g$ is the collision frequency.
 Thus
 %
@@ -351,30 +351,58 @@ The same argument can be used for the $\L(\div \te{\pi}_\a\R)_\perp$ term in \cr
 Further on, we will make an assumption on the timescale.
 By writing out the left hand side of \cref{eq:perp_mom_start} explicitly, we obtain
 %
-\begin{align*}
+\begin{align}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp} &=
  \L(\frac{\partial_t}{\om_{c\a}} +
  \frac{\ve{u}_{\a}\cdot\nabla}{\om_{c\a}}\R) \ve{u}_{\a,\perp}
-\end{align*}
+ \label{eq:LHSPerpMom}
+\end{align}
 %
-Order of magnitude estimates gives
+We will now do an order of magnitude estimate, and will therefore introduce the gradient length scale.
+The gradient scale length serves as an estimate for the size of $\grad$.
+That is, it tells us over how large distances there are sharp gradients for a bounded, smooth function.
+For a field $f$, the gradient length scale $L_f$ is defined as%
+\footnote{
+    Note that the inverse gradient length scale is often denoted $k$ in the literature.
+    This make sense for for example plane wave perturbations, which happens to have $\frac{1}{L_f}=k$, where $k$ is the inverse wavenumber.
+    However, in order to avoid ambiguity, we will in this thesis use $L_f$ for the gradient scale length.
+}%
+%
+\begin{align}
+    \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)}
+    \label{eq:gradientScaleLength}
+\end{align}
+%
+i.e. short and sharp gradients in $f$ have a short $L_f$.
+We can similarily define the temporal scale as
+%
+\begin{align}
+    \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}
+    \label{eq:temporalScale}
+\end{align}
+%
+However, by doing an order magnitudes estimate, we are interested in an easy, approximate way to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
+Thus, in the scope of this thesis, the scales are taken as "typical" scales, which would mean something like changing "$\max$" in \cref{eq:gradientScaleLength,eq:temporalScale} with something like an average.
+
+Returning back to \cref{eq:LHSPerpMom}, we have that
 %
 \begin{align*}
  &\frac{\L|\partial_t\R|}{\L|\om_{c\a}\R|}  \sim
- \frac{\L|\om_{\text{char}}\R|}{\L|\om_{c\a}\R|}&
+ \frac{1}{\L|\tau_{\ve{u}_\a}\R|\L|\om_{c\a}\R|}&
 %
  &\frac{\L|\ve{u}_{\a}\cdot\nabla\R|}{\L|\om_{c\a}\R|} \sim
- \frac{\L|\ve{u}_{\a}\cdot\ve{k}_{\text{char}}\R|}{\L|\om_{c\a}\R|}
+ \frac{\L|u_{\a}\R|}{\L|L_{\ve{u}_\a}\R|\L|\om_{c\a}\R|}
 \end{align*}
 %
-We now assume that these are small, so that
+We will now assume that
 %
 \begin{align*}
- &\frac{\L|\om_{\text{char}}\R|}{\L|\om_{c\a}\R|} \ll 1&
+ &\frac{1}{\L|\tau_{\ve{u}_\a}\R|\L|\om_{c\a}\R|} \ll 1&
 %
- &\frac{\L|\ve{u}_{\a}\cdot\ve{k}_{\text{char}}\R|}{\L|\om_{c\a}\R|} \ll 1
+ &\frac{\L|u_{\a}\R|}{\L|L_{\ve{u}_\a}\R|\L|\om_{c\a}\R|} \ll 1
 \end{align*}
 %
+I.e. we assume that the evolution of the fastest scale (the turbulence scale) evolves slowly as compared with the ion cyclotron frequency, and that the advection time is slow compared with the ion cyclotron frequency.
 In addition, as $S_{\a,n}$ represents the creation of particles per time per unit volume, $\frac{S_{\a,n}}{n_\a}$ can be interpreted as the creation of particles per time, which we will denote $\nu_{S,\a}$.
 We have that
 %
@@ -389,7 +417,7 @@ We have that
 \ve{u}_{\a,\perp}
 \end{align*}
 %
-We will now assume that the creation of particles happens on a much slower time scale than the ion cyclotron motion.
+We will now assume that the creation of particles happens on a much slower time  scale than the ion cyclotron motion.
 In other words that
 %
 \begin{align*}
@@ -404,8 +432,8 @@ Finally, we assume that
 %
 \begin{align*}
  \nu_\a \simeq
- \om_{\text{char}} \simeq
- \ve{u}_{\a}\cdot\ve{k}_{\text{char}}\simeq
+ \tau_{\ve{u}_\a} \simeq
+ \frac{\L|u_{\a}\R|}{\L|L_{\ve{u}_\a}\R|}\simeq
  \nu_{S,\a}
 \end{align*}
 %
