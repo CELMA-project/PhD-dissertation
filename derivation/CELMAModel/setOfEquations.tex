@@ -4,7 +4,7 @@
 By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equations reads
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
-    \Om^D =& \div\L(n\grad_\perp\phi\R)
+    \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
  \numberthis
  \label{eq:celma_vortD}
  \\
@@ -78,7 +78,6 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
    \\&
  + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
  + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
-   \\&
  - \frac{4}{3}\mu\eta_{e,0}\partial_z^2 u_{e,\|}
   \\
   %
@@ -93,11 +92,7 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
 %
   \partial_t \Om^D
   =&
-  - \nu_{in} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
-  \\
-  %
-  &
-  -\frac{1}{\rho}
+  -\frac{1}{J}
   \L(
       \frac{1}{B}\{\phi, \Om^D\}
     + \frac{1}{2}\{\ve{u}_E^2, n\}
@@ -106,12 +101,13 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
  \\
  &
  %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
-  \\
-  %
-  &
-  + D_{\Om^D, \|, \text{art}}    \partial_{\|}^2 \Om^D
-  + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
+ + \partial_\| j_\|
+ - \nu_{in} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
+ \\
+ %
+ &
+ + D_{\Om^D, \|, \text{art}}    \partial_{\|}^2 \Om^D
+ + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
  \numberthis
  \label{eq:celma_vortD_evolution}
 \end{empheq}
