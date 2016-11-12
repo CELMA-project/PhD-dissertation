@@ -116,11 +116,11 @@ Inserting this in \cref{eq:quasiNeutral} yields
 \begin{align*}
     \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
     \simeq
-    \frac{\L|\e_0\R||L_E||B|}{\L|L_E\R|\L|e\R|\L|n_e\R||\tau_B|}\frac{\L|m_e\R|\L|e\R|}{\L|m_e\R|\L|e\R|}
+    \frac{\L|\e_0\R||L_E||B|}{\L|L_E\R|\L|e\R|\L|n_e\R||\tau_B|}\frac{\L|m_i\R|\L|e\R|}{\L|m_i\R|\L|e\R|}
     =
-    \frac{\e_0}{\L|e\R|n_e\tau_B\om_{ce}}\frac{m_e}{\L|e\R|}
+    \frac{\om_{ci}\e_0}{\L|e\R|n_e\tau_B}\frac{m_i}{\L|e\R|}
     =
-    \frac{1}{\tau_B\om_{ce}\om_{pe}^2}
+    \frac{\om_{ci}}{\tau_B\om_{pe}^2}
 \end{align*}
 %
 Since we are interested in phenomena slower than the ion cyclotron frequency, we set $1/\tau_B\to\om_{ci}$, and get
@@ -128,12 +128,13 @@ Since we are interested in phenomena slower than the ion cyclotron frequency, we
 \begin{align*}
     \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
     \simeq
-    \frac{\om_{ci}}{\om_{ce}\om_{pe}^2}
+    \frac{\om_{ci}^2}{\om_{pe}^2}
     =
-    \frac{\frac{m_e}{m_i}}{\om_{pe}^2}
+    \frac{\om_{ci}^2}{\om_{pe}^2}
 \end{align*}
 %
-% NOTE: Consider adding numbers
+% NOTE: Quasi-neutrality is usually a statement that spatial scale length of plasma is much large than Debye length
+% FIXME: Consider adding numbers
 which for our interest is a quantity much smaller than $1$.
 
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
