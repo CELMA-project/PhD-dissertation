@@ -54,8 +54,8 @@ where we have defined
 %
 \begin{align*}
     G^j =& \frac{1}{J} \partial_i \L(J g^{ij} \R)\\ =& \frac{1}{J} \L(
-    \partial_x \L[J g^{xj} \R] + \partial_y \L[J g^{yj} \R] + \partial_z \L[J
-    g^{zj} \R] \R)
+    \partial_1 \L[J g^{1j} \R] + \partial_2 \L[J g^{2j} \R] + \partial_3 \L[J
+    g^{3j} \R] \R)
 \end{align*}
 %
 By writing the terms out, we get
@@ -63,36 +63,36 @@ By writing the terms out, we get
 \begin{align*}
     \grad^2 =& g^{ij} \partial_i \partial_j + G^j \partial_j\\
 %
-            =& \L(  g^{xj} \partial_x \partial_j + g^{yj} \partial_y \partial_j
-    + g^{zj} \partial_z \partial_j\R) + \L(G^j \partial_j\R)\\
+            =& \L(  g^{1j} \partial_1 \partial_j + g^{2j} \partial_2 \partial_j
+    + g^{3j} \partial_3 \partial_j\R) + \L(G^j \partial_j\R)\\
 %
-            =& \quad \, \L(  g^{xx} \partial_x^2 + g^{yx} \partial_y \partial_x
-    + g^{zx} \partial_z \partial_x\R) + \L(G^x \partial_x\R)\\ &+ \L(  g^{xy}
-    \partial_x \partial_y + g^{yy} \partial_y^2 + g^{zy} \partial_z
-    \partial_y\R) + \L(G^y \partial_y\R)\\ &+ \L(  g^{xz} \partial_x \partial_z
-    + g^{yz} \partial_y \partial_z + g^{zz} \partial_z^y\R) + \L(G^z
-    \partial_z\R)
+            =& \quad \, \L(  g^{11} \partial_1^2 + g^{21} \partial_2 \partial_1
+    + g^{31} \partial_3 \partial_1\R) + \L(G^1 \partial_1\R)\\ &+ \L(  g^{12}
+    \partial_1 \partial_2 + g^{22} \partial_2^2 + g^{32} \partial_3
+    \partial_2\R) + \L(G^2 \partial_2\R)\\ &+ \L(  g^{13} \partial_1 \partial_3
+    + g^{23} \partial_2 \partial_3 + g^{33} \partial_3^2\R) + \L(G^3
+    \partial_3\R)
 \end{align*}
 %
 We now use that the metric tensor is symmetric (by definition), so that $g^{ij}=g^{ji}$, and $g_{ij}=g_{ji}$, and that the partial derivatives commutes for smooth functions $\partial_i\partial_j=\partial_j\partial_i$.
 This gives
 %
 \begin{align*}
-    \grad^2 =&\quad \, \L(g^{xx} \partial_x^2 \R) + \L(G^x \partial_x\R)\\ &+
-    \L(g^{yy} \partial_y^2 \R) + \L(G^y \partial_y\R)\\ &+ \L(g^{zz}
-    \partial_z^2\R) + \L(G^z \partial_z\R)\\ &+ 2\L( g^{xy} \partial_x
-    \partial_y + g^{xz} \partial_x \partial_z + g^{yz} \partial_y \partial_z
+    \grad^2 =&\quad \, \L(g^{11} \partial_1^2 \R) + \L(G^1 \partial_1\R)\\ &+
+    \L(g^{22} \partial_2^2 \R) + \L(G^2 \partial_2\R)\\ &+ \L(g^{33}
+    \partial_3^2\R) + \L(G^3 \partial_3\R)\\ &+ 2\L( g^{12} \partial_1
+    \partial_2 + g^{13} \partial_1 \partial_3 + g^{23} \partial_2 \partial_3
     \R)\\
 %
-           =&\quad \, \L(g^{xx} \partial_x^2\R) + \L( \frac{1}{J} \L[
-\partial_x \L\{J g^{xx} \R\} + \partial_y \L\{J g^{yx} \R\} + \partial_z \L\{J
-g^{zx} \R\} \R] \partial_x\R)\\ &+ \L(g^{yy} \partial_y^2\R) + \L( \frac{1}{J}
-    \L[ \partial_x \L\{J g^{xy} \R\} + \partial_y \L\{J g^{yy} \R\} +
-    \partial_z \L\{J g^{zy} \R\} \R] \partial_y\R)\\ &+ \L(g^{zz}
-        \partial_z^2\R) + \L( \frac{1}{J} \L[ \partial_x \L\{J g^{xz} \R\} +
-        \partial_y \L\{J g^{yz} \R\} + \partial_z \L\{J g^{zz} \R\} \R]
-        \partial_z\R)\\ &+ 2\L( g^{xy} \partial_x \partial_y + g^{xz}
-        \partial_x \partial_z + g^{yz} \partial_y \partial_z \R)
+           =&\quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J} \L[
+\partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} + \partial_3 \L\{J
+g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{12} \R\} + \partial_2 \L\{J g^{22} \R\} +
+    \partial_3 \L\{J g^{32} \R\} \R] \partial_2\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
+        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)
 \end{align*}
 %
 Notice that $G^i$ does not operate on $\partial_i$, but rather that the two are
@@ -105,25 +105,25 @@ We have that
 %
 \begin{align*}
     \grad_\| =& \L(\ve{b} \cdot \grad\R) \ve{b}\ = \ve{b} \ve{b} \cdot \grad =
-    \frac{\ve{e}_y \ve{e}_y}{g_{yy}} \cdot \grad = \frac{\ve{e}_y
-    \ve{e}_y}{g_{yy}} \cdot \ve{e}^i \partial_i = \frac{\ve{e}_y}{g_{yy}}
-    \partial_y
+    \frac{\ve{e}_2 \ve{e}_2}{g_{22}} \cdot \grad = \frac{\ve{e}_2
+    \ve{e}_2}{g_{22}} \cdot \ve{e}^i \partial_i = \frac{\ve{e}_2}{g_{22}}
+    \partial_2
 \end{align*}
 %
 and that
 %
 \begin{align*}
-    \grad_\|^i =& \L(\frac{\ve{e}_y}{g_{yy}} \partial_y\R)\cdot \ve{e}^i =
-    \ve{e}^i \cdot \L(\frac{\ve{e}_y}{g_{yy}} \partial_y\R)
+    \grad_\|^i =& \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)\cdot \ve{e}^i =
+    \ve{e}^i \cdot \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)
 \end{align*}
 %
 so that by equation (\ref{eq:divA}),
 %
 \begin{align*}
     \grad_\|^2 =& \div\L(\ve{b} \ve{b} \cdot \grad\R)\\ =&
-    \div\L(\frac{\ve{e}_y}{g_{yy}} \cdot \partial_y\R)\\ =& \frac{1}{J}
-    \partial_i \L( J\ve{e}^i \cdot \L[\frac{\ve{e}_y}{g_{yy}} \partial_y\R]
-    \R)\\ =& \frac{1}{J} \partial_y \L(\frac{J}{g_{yy}} \partial_y\R)
+    \div\L(\frac{\ve{e}_2}{g_{22}} \cdot \partial_2\R)\\ =& \frac{1}{J}
+    \partial_i \L( J\ve{e}^i \cdot \L[\frac{\ve{e}_2}{g_{22}} \partial_2\R]
+    \R)\\ =& \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)
 \end{align*}
 
 
@@ -133,18 +133,18 @@ For the perpendicular Laplacian, we have that
 %
 \begin{align*}
     \grad_\perp^2 =& \grad^2 - \grad_\|^2\\ =& g^{ij} \partial_i \partial_j +
-    G^j \partial_j -\frac{1}{J} \partial_y \L(\frac{J}{g_{yy}} \partial_y\R)\\
+    G^j \partial_j -\frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)\\
 %
-            =& \quad \, \L(g^{xx} \partial_x^2\R) + \L( \frac{1}{J} \L[
-\partial_x \L\{J g^{xx} \R\} + \partial_y \L\{J g^{yx} \R\} + \partial_z \L\{J
-g^{zx} \R\} \R] \partial_x\R)\\ &+ \L(g^{yy} \partial_y^2\R) + \L( \frac{1}{J}
-    \L[ \partial_x \L\{J g^{xy} \R\} + \partial_y \L\{J g^{yy} \R\} +
-    \partial_z \L\{J g^{zy} \R\} \R] \partial_y\R)\\ &+ \L(g^{zz}
-        \partial_z^2\R) + \L( \frac{1}{J} \L[ \partial_x \L\{J g^{xz} \R\} +
-        \partial_y \L\{J g^{yz} \R\} + \partial_z \L\{J g^{zz} \R\} \R]
-        \partial_z\R)\\ &+ 2\L( g^{xy} \partial_x \partial_y + g^{xz}
-        \partial_x \partial_z + g^{yz} \partial_y \partial_z \R)\\ &-
-        \frac{1}{J} \partial_y \L(\frac{J}{g_{yy}} \partial_y\R)
+            =& \quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J} \L[
+\partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} + \partial_3 \L\{J
+g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{12} \R\} + \partial_2 \L\{J g^{22} \R\} +
+    \partial_3 \L\{J g^{32} \R\} \R] \partial_2\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
+        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)\\ &-
+        \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)
 \end{align*}
 %
 
@@ -152,20 +152,20 @@ g^{zx} \R\} \R] \partial_x\R)\\ &+ \L(g^{yy} \partial_y^2\R) + \L( \frac{1}{J}
 \subsection{The perpendicular Laplacian in Laplacian inversion}
 %
 Notice that BOUT++ currently assumes small parallel gradients in the dependent
-variable in Laplacian inversion if $g_{xy}$ and $g_{yz}$ are non-zero (if these
+variable in Laplacian inversion if $g_{12}$ and $g_{23}$ are non-zero (if these
 are zero, the derivation can be done directly from equation
 (\ref{eq:reduced_grad_perp}) instead), so that
 %
 \begin{align*}
-    \grad_\perp^2 \simeq& \quad \, \L(g^{xx} \partial_x^2\R) + \L( \frac{1}{J}
-    \L[ \partial_x \L\{J g^{xx} \R\} + \partial_y \L\{J g^{yx} \R\} +
-    \partial_z \L\{J g^{zx} \R\} \R] \partial_x\R)\\ &+ \L(g^{zz}
-        \partial_z^2\R) + \L( \frac{1}{J} \L[ \partial_x \L\{J g^{xz} \R\} +
-        \partial_y \L\{J g^{yz} \R\} + \partial_z \L\{J g^{zz} \R\} \R]
-        \partial_z\R)\\ &+ 2\L(g^{xz} \partial_x \partial_z\R)\\
+    \grad_\perp^2 \simeq& \quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} +
+    \partial_3 \L\{J g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L(g^{13} \partial_1 \partial_3\R)\\
 %
-           =& \L(g^{xx} \partial_x^2\R) + G^x\partial_x + \L(g^{zz}
-        \partial_z^2\R) + G^z \partial_z + 2\L(g^{xz} \partial_x \partial_z\R)
+           =& \L(g^{11} \partial_1^2\R) + G^1\partial_1 + \L(g^{33}
+        \partial_3^2\R) + G^3 \partial_3 + 2\L(g^{13} \partial_1 \partial_3\R)
 \end{align*}
 %
 
@@ -184,15 +184,15 @@ We would like to solve the following equation for $f$
 %
 \end{align}
 %
-BOUT++ is neglecting the $y$-parallel derivatives if $g_{xy}$ and $g_{yz}$ are no-zero when using the solvers \texttt{Laplacian} and \texttt{LaplaceXZ}.
+BOUT++ is neglecting the $y$-parallel derivatives if $g_{12}$ and $g_{23}$ are no-zero when using the solvers \texttt{Laplacian} and \texttt{LaplaceXZ}.
 For these two solvers, equation (\ref{eq:to_invert}) becomes (see \texttt{coordinates} manual for derivation)
 %
 \begin{align*}
-    \, &d \L(    g^{xx} \partial_x^2 + G^x \partial_x + g^{zz} \partial_z^2 +
-    G^z \partial_z + 2g^{xz} \partial_x \partial_z \R) f \\
+    \, &d \L(    g^{11} \partial_1^2 + G^1 \partial_1 + g^{33} \partial_3^2 +
+    G^3 \partial_3 + 2g^{13} \partial_1 \partial_3 \R) f \\
 %
-    +& \frac{1}{c_1}\L( \ve{e}^x \partial_x +  \ve{e}^z \partial_z \R) c_2
-    \cdot \L( \ve{e}^x \partial_x +  \ve{e}^z \partial_z \R) f \\
+    +& \frac{1}{c_1}\L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) c_2
+    \cdot \L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) f \\
 %
     +& af = b \numberthis
 %
@@ -213,7 +213,7 @@ When using the tridiagonal solvers, $c_1 = c_2$ in equation (\ref{eq:to_invert})
 %
 \end{align}
 %
-Since there are no parallel $y$-derivatives if $g_{xy}=g_{yz}=0$ (or if they are neglected), equation (\ref{eq:to_invert_tri}) will only contain derivatives of $x$ and $z$ for the dependent variable.
+Since there are no parallel $y$-derivatives if $g_{12}=g_{23}=0$ (or if they are neglected), equation (\ref{eq:to_invert_tri}) will only contain derivatives of $x$ and $z$ for the dependent variable.
 The hope is that the modes in the periodic $z$ direction will decouple, so that we in the end only have to invert for the $x$ coordinate.
 
 If the modes decouples when Fourier transforming equation (\ref{eq:invert_expanded}), we can use a tridiagonal solver to solve the equation for each Fourier mode.
@@ -228,22 +228,22 @@ Using the discrete Fourier transform
 we see that the modes will not decouple if a term consist of a product of two terms which depends on $z$, as this would give terms like
 %
 \begin{align*}
-    \frac{1}{N}\sum_{Z=0}^{N-1} a(x,y)_Z f(x,y)_Z \exp\L(\frac{-2\pi i k
+    \frac{1}{N}\sum_{Z=0}^{N-1} a(x,y)_3 f(x,y)_3 \exp\L(\frac{-2\pi i k
     Z}{N}\R)
 \end{align*}
 %
 Thus, in order to use a tridiagonal solver, $a$, $c$ and $d$ cannot be functions of $z$.
-Because of this, the $\ve{e}^z \partial_z c$ term in equation (\ref{eq:invert_expanded}) is zero.
-In principle the modes would still decouple if the $\ve{e}^z \partial_z f$ part of equation (\ref{eq:invert_expanded}) was kept, but currently this part is also neglected in solvers using a tridiagonal matrix.
+Because of this, the $\ve{e}^3 \partial_3 c$ term in equation (\ref{eq:invert_expanded}) is zero.
+In principle the modes would still decouple if the $\ve{e}^3 \partial_3 f$ part of equation (\ref{eq:invert_expanded}) was kept, but currently this part is also neglected in solvers using a tridiagonal matrix.
 Thus the tridiagonal solvers are solving equations on the form
 %
 \begin{align*}
-    \, &d(x,y) \L(    g^{xx}(x,y) \partial_x^2 + G^x(x,y) \partial_x +
-    g^{zz}(x,y) \partial_z^2 + G^z(x,y) \partial_z + 2g^{xz}(x,y) \partial_x
-    \partial_z \R) f(x,y,z) \\
+    \, &d(x,y) \L(    g^{11}(x,y) \partial_1^2 + G^1(x,y) \partial_1 +
+    g^{33}(x,y) \partial_3^2 + G^3(x,y) \partial_3 + 2g^{13}(x,y) \partial_1
+    \partial_3 \R) f(x,y,z) \\
 %
-    +& \frac{1}{c(x,y)}\L( \ve{e}^x \partial_x \R) c(x,y) \cdot \L( \ve{e}^x
-    \partial_x \R) f(x,y,z) \\
+    +& \frac{1}{c(x,y)}\L( \ve{e}^1 \partial_1 \R) c(x,y) \cdot \L( \ve{e}^1
+    \partial_1 \R) f(x,y,z) \\
 %
    +& a(x,y)f(x,y,z) = b(x,y,z)
 \end{align*}
@@ -251,48 +251,48 @@ Thus the tridiagonal solvers are solving equations on the form
 after using the discrete Fourier transform (see section \ref{sec:deriv_of_FT}), we get
 %
 \begin{align*}
-    \, &d \L(    g^{xx} \partial_x^2F_z + G^x \partial_xF_z + g^{zz} [i k]^2F_z
-    + G^z [i k]F_z + 2g^{xz} \partial_x[i k]F_z \R) \\
+    \, &d \L(    g^{11} \partial_1^2F_3 + G^1 \partial_1F_3 + g^{33} [i k]^2F_3
+    + G^3 [i k]F_3 + 2g^{13} \partial_1[i k]F_3 \R) \\
 %
-    +& \frac{1}{c}\L( \ve{e}^x \partial_x \R) c \cdot \L( \ve{e}^x
-    \partial_xF_z \R) \\
+    +& \frac{1}{c}\L( \ve{e}^1 \partial_1 \R) c \cdot \L( \ve{e}^1
+    \partial_1F_3 \R) \\
 %
-    +& aF_z = B_z
+    +& aF_3 = B_3
 \end{align*}
 %
 which gives
 %
 \begin{align*}
-    \, &d \L(    g^{xx} \partial_x^2 + G^x \partial_x - k^2 g^{zz} + i kG^z + i
-    k2g^{xz} \partial_x \R)F_z \\
+    \, &d \L(    g^{11} \partial_1^2 + G^1 \partial_1 - k^2 g^{33} + i kG^3 + i
+    k2g^{13} \partial_1 \R)F_3 \\
 %
-    +& \frac{g^{xx}}{c} \L( \partial_x c \R) \partial_xF_z \\
+    +& \frac{g^{11}}{c} \L( \partial_1 c \R) \partial_1F_3 \\
 %
-    +& aF_z = B_z \numberthis
+    +& aF_3 = B_3 \numberthis
 %
 \label{eq:FT_laplace_inversion}
 %
 \end{align*}
 %
-As nothing in equation (\ref{eq:FT_laplace_inversion}) couples points in $y$ together (since we neglected the $y$-derivatives if $g_{xy}$ and $g_{yz}$ were non-zero).
+As nothing in equation (\ref{eq:FT_laplace_inversion}) couples points in $y$ together (since we neglected the $y$-derivatives if $g_{12}$ and $g_{23}$ were non-zero).
 Also, as the modes are decoupled, we may solve equation (\ref{eq:FT_laplace_inversion})  $k$ mode by $k$ mode in addition to $y$-plane by $y$-plane.
 
 The second order centred approximation of the first and second derivatives in $x$ reads
 %
 \begin{align*}
-    &&\partial_x f \simeq \frac{-f_{n-1} + f_{n+1}}{2\text{d}x}&&
-    &&\partial_x^2 f \simeq \frac{f_{n-1} - f_{n} + f_{n+1}}{\text{d}x^2}&&
+    &&\partial_1 f \simeq \frac{-f_{n-1} + f_{n+1}}{2\text{d}x}&&
+    &&\partial_1^2 f \simeq \frac{f_{n-1} - f_{n} + f_{n+1}}{\text{d}x^2}&&
 \end{align*}
 %
 This gives
 %
 \begin{align*}
-    \, &d \L(    g^{xx} \frac{F_{z,n-1} - 2F_{z,n} + F_{z, n+1}}{\text{d}x^2} +
-    G^x \frac{-F_{z,n-1} + F_{z,n+1}}{2\text{d}x} - k^2 g^{zz}F_{z,n} \R.\\
-    &\quad\L.  + i kG^zF_{z,n} + i k2g^{xz} \frac{-F_{z,n-1} +
+    \, &d \L(    g^{11} \frac{F_{z,n-1} - 2F_{z,n} + F_{z, n+1}}{\text{d}x^2} +
+    G^1 \frac{-F_{z,n-1} + F_{z,n+1}}{2\text{d}x} - k^2 g^{33}F_{z,n} \R.\\
+    &\quad\L.  + i kG^3F_{z,n} + i k2g^{13} \frac{-F_{z,n-1} +
 F_{z,n+1}}{2\text{d}x} \R) \\
 %
-    +& \frac{g^{xx}}{c} \L( \frac{-c_{n-1} + c_{n+1}}{2\text{d}x} \R)
+    +& \frac{g^{11}}{c} \L( \frac{-c_{n-1} + c_{n+1}}{2\text{d}x} \R)
 \frac{-F_{z,n-1} + F_{z,n+1}}{2\text{d}x} \\
 %
     +& aF_{z,n} = B_{z,n}
@@ -301,16 +301,16 @@ F_{z,n+1}}{2\text{d}x} \R) \\
 collecting point by point
 %
 \begin{align*}
-    &\L( \frac{dg^{xx}}{\text{d}x^2} - \frac{dG^x}{2\text{d}x} -
-    \frac{g^{xx}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} - i\frac{d
-    k2g^{xz}}{2\text{d}x} \R) F_{z,n-1} \\
+    &\L( \frac{dg^{11}}{\text{d}x^2} - \frac{dG^1}{2\text{d}x} -
+    \frac{g^{11}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} - i\frac{d
+    k2g^{13}}{2\text{d}x} \R) F_{z,n-1} \\
     %
-    +&\L( - \frac{ dg^{xx} }{\text{d}x^2} - dk^2 g^{zz} + a + idkG^z \R)
+    +&\L( - \frac{ dg^{11} }{\text{d}x^2} - dk^2 g^{33} + a + idkG^3 \R)
     F_{z,n} \\
     %
-    +&\L( \frac{dg^{xx}}{\text{d}x^2} + \frac{dG^x}{2\text{d}x} +
-    \frac{g^{xx}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} +
-    i\frac{dk2g^{xz}}{2\text{d}x} \R) F_{z, n+1} \\
+    +&\L( \frac{dg^{11}}{\text{d}x^2} + \frac{dG^1}{2\text{d}x} +
+    \frac{g^{11}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} +
+    i\frac{dk2g^{13}}{2\text{d}x} \R) F_{z, n+1} \\
 %
      =& B_{z,n} \numberthis
 %
@@ -321,9 +321,9 @@ collecting point by point
 We now introduce
 %
 \begin{align*}
-    &c_1 = \frac{dg^{xx}}{\text{d}x^2}& &c_2 = dg^{zz}& &c_3 =
-    \frac{2dg^{xz}}{2\text{d}x}& && \\ &c_4 = \frac{dG^x + g^{xx}\frac{-c_{n-1}
-    + c_{n+1}}{2c_n\text{d}x}}{2\text{d}x}& &c_5 = dG^z& &&
+    &c_1 = \frac{dg^{11}}{\text{d}x^2}& &c_2 = dg^{33}& &c_3 =
+    \frac{2dg^{13}}{2\text{d}x}& && \\ &c_4 = \frac{dG^1 + g^{11}\frac{-c_{n-1}
+    + c_{n+1}}{2c_n\text{d}x}}{2\text{d}x}& &c_5 = dG^3& &&
 \end{align*}
 %
 which inserted in equation (\ref{eq:discretized_laplace}) gives
@@ -341,8 +341,8 @@ which inserted in equation (\ref{eq:discretized_laplace}) gives
 This can be formulated as the matrix equation
 %
 \begin{align*}
-    AF_z=B_z
+    AF_3=B_3
 \end{align*}
 %
 where the matrix $A$ is tridiagonal. The boundary conditions are set by setting
-the first and last rows in $A$ and $B_z$.
+the first and last rows in $A$ and $B_3$.
