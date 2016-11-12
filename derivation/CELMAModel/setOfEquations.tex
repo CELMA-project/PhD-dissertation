@@ -1,7 +1,11 @@
 \section{The set of equations}
 % FIXME: Update artificial viscosity (remove non-used) and add hyper perp
 % FIXME: Write a note about why j is chosen conservative
-By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equations reads
+By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equations reads%
+%
+\footnote{
+As mentioned in \cref{chap:implementation}, the actual viscosities has been replaced by artificial viscosities (for simplicity not shown in \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}).
+}
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
     \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
@@ -32,11 +36,6 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
 - \partial_\|u_{e,\|}
 - u_{e,\|} \partial_\| \ln(n)
  + \frac{S_n}{n}
-  \\
-  %
-  &
- + D_{\ln(n), \|, \text{art}} \partial_{\|}^2  \ln(n)
- + D_{\ln(n), \perp, \text{art}} \grad_\perp^2 \ln(n)
  \numberthis
  \label{eq:celma_dens}
  \\
@@ -51,14 +50,6 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
  + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
-   \\&
- + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
-  \\
-  %
-  &
- + D_{n u_{i,\|}, \|, \text{art}} \partial_{\|}^2  n u_{i,\|}
- + D_{n u_{i,\|}, \perp, \text{art}} \grad_\perp^2 n u_{i,\|}
  \numberthis
  \label{eq:celma_mom_dens}
  \\
@@ -75,15 +66,6 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
    + \mu T_e \partial_\| n
   - \mu n \partial_\|\phi
  + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- + \frac{4}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
- - \frac{4}{3}\mu\eta_{e,0}\partial_z^2 u_{e,\|}
-  \\
-  %
-  &
- + D_{j_\|, \|, \text{art}} \partial_{\|}^2  j_\|
- + D_{j_\|, \perp, \text{art}} \grad_\perp^2 j_\|
  \numberthis
  \label{eq:celma_j_par}
  \\
@@ -103,11 +85,6 @@ By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equati
  %
  + \partial_\| j_\|
  - \nu_{in} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
- \\
- %
- &
- + D_{\Om^D, \|, \text{art}}    \partial_{\|}^2 \Om^D
- + D_{\Om^D, \perp, \text{art}} \grad_\perp^2 \Om^D
  \numberthis
  \label{eq:celma_vortD_evolution}
 \end{empheq}
