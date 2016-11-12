@@ -358,7 +358,11 @@ By writing out the left hand side of \cref{eq:perp_mom_start} explicitly, we obt
  \label{eq:LHSPerpMom}
 \end{align}
 %
-We will now do an order of magnitude estimate, and will therefore introduce the gradient length scale.
+We will now do an order of magnitude estimate%
+\footnote{
+    An easy, approximate way to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
+}%
+, and will therefore introduce the gradient length scale.
 The gradient scale length serves as an estimate for the size of $\grad$.
 That is, it tells us over how large distances there are sharp gradients for a bounded, smooth function.
 For a field $f$, the gradient length scale $L_f$ is defined as%
@@ -368,22 +372,17 @@ For a field $f$, the gradient length scale $L_f$ is defined as%
     However, in order to avoid ambiguity, we will in this thesis use $L_f$ for the gradient scale length.
 }%
 %
-\begin{align}
+\begin{align*}
     \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)}
-    \label{eq:gradientScaleLength}
-\end{align}
+\end{align*}
 %
 i.e. short and sharp gradients in $f$ have a short $L_f$.
 We can similarily define the temporal scale as
 %
-\begin{align}
+\begin{align*}
     \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}
-    \label{eq:temporalScale}
-\end{align}
+\end{align*}
 %
-However, by doing an order magnitudes estimate, we are interested in an easy, approximate way to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
-Thus, in the scope of this thesis, the scales are taken as "typical" scales, which would mean something like changing "$\max$" in \cref{eq:gradientScaleLength,eq:temporalScale} with something like an average.
-
 Returning back to \cref{eq:LHSPerpMom}, we have that
 %
 \begin{align*}
