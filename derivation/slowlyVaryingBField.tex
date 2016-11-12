@@ -93,36 +93,50 @@ The two should only differ slightly.
 To show this, we can do an order of magnitude estimate comparison of $n_e$ and $n_i - n_e$.
 We find that
 %
-\begin{align*}
-    \frac{n_i - n_e}{n_e} =&
+\begin{align}
+    \frac{n_i - n_e}{n_e} =
     \frac{e(n_i - n_e)}{en_e}
     =
-    \frac{\frac{\div\ve{E}}{\e_0}}{en_e}
-    =
-    \frac{\frac{\div\ve{E}}{\e_0}}{en_e}
+    \frac{\e_0\div\ve{E}}{en_e}
     \to
-    \frac{\L|\frac{kE}{\e_0}\R|}{\L|en_e\R|}
-    =
-    \frac{\L|\frac{B}{\om\e_0}\R|}{\L|en_e\R|}
-    =
-    \L|\frac{eB}{m_e\om\e_0}\R|\L|\frac{m_e}{e^2n_e}\R|
-    =
-    \L|\frac{\om_{ce}}{\om\om_{pe}}\R|
+    \frac{\L|\e_0\R|\L|E\R|}{\L|L_E\R|\L|e\R|\L|n_e\R|}
+    \label{eq:quasiNeutral}
+\end{align}
+%
+Using order of magnitudes estimates, we can find an expression for $E$ through Faraday's induction law:
+%
+\begin{align*}
+    \curl\ve{E} =& -\partial_t B\\
+    \frac{|E|}{|L_E|} \sim& \frac{|B|}{|\tau_B|}\\
+    |E| \sim& \frac{|L_E||B|}{|\tau_B|}
 \end{align*}
 %
-Where we have used the order of magnitude estimate $\curl\ve{E} = -\partial_t B \to |E| \simeq |B/\om k|$, where $k$ is a characteristic length scale, and $\om$ is a characteristic time scale.
-Since we are interested in phenomena slower than the ion cyclotron frequency, we set $\om\to\om_{ci}$, and get
+Inserting this in \cref{eq:quasiNeutral} yields
 %
 \begin{align*}
     \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
     \simeq
-    \L|\frac{\frac{m_i}{m_e}}{\om_{pe}}\R|
+    \frac{\L|\e_0\R||L_E||B|}{\L|L_E\R|\L|e\R|\L|n_e\R||\tau_B|}\frac{\L|m_e\R|\L|e\R|}{\L|m_e\R|\L|e\R|}
+    =
+    \frac{\e_0}{\L|e\R|n_e\tau_B\om_{ce}}\frac{m_e}{\L|e\R|}
+    =
+    \frac{1}{\tau_B\om_{ce}\om_{pe}^2}
+\end{align*}
+%
+Since we are interested in phenomena slower than the ion cyclotron frequency, we set $1/\tau_B\to\om_{ci}$, and get
+%
+\begin{align*}
+    \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
+    \simeq
+    \frac{\om_{ci}}{\om_{ce}\om_{pe}^2}
+    =
+    \frac{\frac{m_e}{m_i}}{\om_{pe}^2}
 \end{align*}
 %
 % NOTE: Consider adding numbers
-which for all practical purposes is a quantity much smaller than $1$.
+which for our interest is a quantity much smaller than $1$.
 
-We choose to use the electron continuity equation to calculate the evolution of the density.
+We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
 The reason for this, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
 This gives
 %
