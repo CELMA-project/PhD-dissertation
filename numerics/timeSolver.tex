@@ -1,2 +1,154 @@
-Mention MOL and GMRES, Arnoldi process
-Mail from Ben what method is used
+This chapter will briefly discuss the time solver used in this thesis.
+At the time of writing the following time solvers are available in the BOUT++ framework
+% FIXME: Mention time solvers, and add references.
+
+The \texttt{cvode}\cite{Hindmarsh2012book} has been found to be a robust and fast time solver for solving \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} in time.
+
+As \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} contains no mixed temporal and spatial derivatives in the equations, the PDEs can first be discretized in the spatial dimension while keeping the time derivatives continuous.
+The set of PDEs is thereby rewritten to a set of ODEs (one for each of the discretized point in space) which needs to be solved simultaneously.
+This method is known as the "Method of Lines" (MOL) \cite{Leveque2007book}, and is widely used when solving a set of non-linear PDEs.
+
+The problem can now be stated in the following way:
+Let $\ve{f} = \{\ln(n), nu_{i,\|}, j_\|, \Om^D\}$, for $\ln(n)$, $nu_{i,\|}$, $j_\|$ and $\Om^D$ discretized in space.
+That is, $\ve{f}$ is the tuple of the time dependent variables, and contains $\ln(n)_{0,0,0}$, $\ln(n)_{0,0,1}$ \ldots $\ln(n)_{n_\rho,n_z,n_\theta}$, \ldots $nu_{{i,\|}_{0,0,0}}$, \ldots $\Om^D_{n_\rho,n_z,n_\theta}$ where the subscripts denotes the grid index.
+Hence, we would like to solve
+%
+\begin{align}
+    \parti{\ve{f}(t)}{t} = F(\ve{f})
+    \label{eq:MOL}
+\end{align}
+%
+for $\ve{f}$, where $F(\cdot)$ denotes the nonlinear operator which contains discretized differential operators in the spatial dimension.
+
+\cref{eq:MOL} can be stepped forward in time by using an appropriate time solver, like Runge-Kutta or a Linear Multistep Method (LMM).
+Due to it's good stability properties \cite{Leveque2007book} an implicit LMM has been chosen.
+By using a generic LMM to \cref{eq:MOL}, we get
+%
+\begin{align*}
+    \sum_{j=0}^{r}\a_j\ve{f}(t_{n+j}) =& k\sum_{j=0}^{r}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
+    %
+    \a_r\ve{f}(t_{n+r}) + \sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j}) =&
+    \b_rF(\ve{f}(t_{n+r}), t_{n+r}) +
+    k\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
+    %
+    \ve{f}(t_{n+r})
+    -
+    \frac{\b_r}{\a_r}F(\ve{f}(t_{n+r}), t_{n+r})
+    =&
+    \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
+    - \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j})
+    \numberthis
+    \label{eq:LMM}
+\end{align*}
+%
+The method is implicit if $\b_r\neq0$.
+That is, the solution for the next time step depends on the next time step itself.
+In other words \cref{eq:LMM} can be stated as an optimization problem.
+By defing $\frac{\b_r}{\a_r}\defined\gamma$, we have
+%
+\begin{align*}
+    \ve{f}(t_{n+r})
+    - \gamma F(\ve{f}(t_{n+r}), t_{n+r})
+    - \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
+    + \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j})
+    =
+    G(\ve{f}(t_{n+r}))
+    =&
+    0
+\end{align*}
+%
+Which we would like to solve for $\ve{f}(t_{n+r})$.
+This can be done by using Newton Raphson's method.
+I. e. we do a multivariate Taylor expansion of $G(\ve{f}(t_{n+r}))$ around an approximate point $\ve{f}_l(t_{n+r})$, and retain only the linear terms
+%
+\begin{align*}
+    G(\ve{f}(t_{n+r})) \simeq
+    G(\ve{f}_{l}(t_{n+r})) + \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)
+    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R)
+\end{align*}
+%
+as $ G(\ve{f}(t_{n+r})) = 0$, we get
+%
+\begin{align*}
+    0 \simeq
+    G(\ve{f}_{l}(t_{n+r})) + \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)
+    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R)
+\end{align*}
+%
+the solution $\ve{f}(t_{n+r})$ to this problem can then serve as the next iteration, so that
+%
+\begin{align*}
+    \ve{f}_0(t_{n+r}) =& \ve{f}(t_{n+r-1})\\
+    \ve{f}_{l+1}(t_{n+r}) =& \ve{f}_l(t_{n+r})-
+    \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)^{-1}
+    G(\ve{f}_{l}(t_{n+r})),
+\end{align*}
+%
+where $l$ denote the $l$'th Newton iteration.
+The iterations can be rewritten to
+%
+\begin{align}
+    \parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}
+    \L( \ve{f}_{l+1}(t_{n+r}) - \ve{f}_l(t_{n+r}) \R)
+    =&
+    -G(\ve{f}_{l}(t_{n+r}))
+    \label{eq:newtonIt}
+\end{align}
+%
+Where
+%
+\begin{align*}
+    \parti{ G(\ve{f}(t_{n+r})) }{\ve{f}(t_{n+r})}
+    =&
+    \parti{ }{\ve{f}(t_{n+r})}
+    \L(
+    \ve{f}(t_{n+r})
+    - \gamma F(\ve{f}(t_{n+r}), t_{n+r})
+    - \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
+    + \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j})
+    \R)
+    \\
+    =&
+    \mathbb{I}
+    - \gamma\parti{F(\ve{f}(t_{n+r}), t_{n+r})}{\ve{f}(t_{n+r})}
+    \\
+    =&
+    \mathbb{I} - \gamma\mathbb{J}
+    \numberthis
+    \label{eq:AInNewton}
+\end{align*}
+%
+By inserting \cref{eq:AInNewton} in \cref{eq:newtonIt}, we get
+%
+\begin{align*}
+    \L( \mathbb{I} - \gamma\mathbb{J}\R)
+    \L( \ve{f}_{l+1}(t_{n+r}) - \ve{f}_l(t_{n+r}) \R)
+    =&
+    -G(\ve{f}_{l}(t_{n+r}))
+\end{align*}
+%
+which can be recast to
+%
+\begin{align}
+    A \ve{x} =& \ve{b}
+    \label{eq:newtonInverse}
+\end{align}
+%
+In other words, we need to invert $A$ (that is $\L( \mathbb{I} - \gamma\mathbb{J}\R)$) for each Newton iteration.
+As the system of equations in \cref{eq:newtonInverse} is rather large (and also generally non-symmetric), a robust an fast method is sougth to solve for $\ve{x}$.
+This can be done by using the \textbf{G}eneralized \textbf{M}inimal \textbf{RES}idual method (GMRES).
+
+% NOTE: Finding the Krylov subspace is almost like using the von Mises (power iteration method) of finding the eigenvector with the highest eigenmode
+This method approximates the exact solution of \cref{eq:newtonInverse} by a vector in the Krylov subspace (spanned by vectors obtained through the Arnoldi process), which minimizes the residual $\ve{r}_n = A \ve{x}_n - \ve{b}$. See \cite{Saad2003book} for details.
+
+One of the advantages is that the Jacobian for the GMRES needs not to be expanded in memory as the Arnoldi process only needs to evaluate a Jacobian vector product \cite{Knoll2004}.
+
+The method is also easily preconditioned%
+\footnote{
+    To precondition means to find a $P_L$ and/or $P_R$, which is easy to invert, and makes either $(P_L^{-1}A) \ve{x} = P_L^{-1}\ve{b}$, $(A P_R^{-1})P_R\ve{x} = \ve{b}$ or $(P_L^{-1}AP_R^{-1}) \ve{x} = P_L^{-1}\ve{b}$ numerically easier to solve than \cref{eq:newtonInverse}, as the matrices in parantheses is used in finding vectors spanning the Krylov subspace rather than $A$ itself.
+}
+%
+, as shown in \cite{Dudson2012}.
+Although preconditioning is expected to give substaintial speed-ups \cite{Hindmarsh2012book}, it is outside the scope of this thesis.
+
+% FIXME: Mention that IMEX has been tried out, but has not worked
