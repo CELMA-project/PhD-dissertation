@@ -33,7 +33,6 @@
 
 % Shorcuts for this document
 \def\vt{\ve{\vartheta}}
-% References
 
 \begin{document}
 \maketitle
@@ -42,6 +41,7 @@
 % FIXME: Convert to currents in modified vorticity
 % FIXME: Check that there is no mix between length of perturbation and background scale length
 % FIXME: Highligth difference bout++ and bout
+% NOTE: USE input rather than include!!!
 \part{Derivation of model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
@@ -108,11 +108,11 @@
 
 \chapter{Laplace inversion using FFT}
 \label{app:lapInv}
-\include{appendices/lapInv}
+\input{appendices/lapInv}
 
 \chapter{Derivatives of the fourier transform}
 \label{app:deriv_of_FT}
-\include{appendices/FFTDeriv}
+\input{appendices/FFTDeriv}
 
 \part{Work in progress}
 
