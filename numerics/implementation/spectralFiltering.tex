@@ -1,0 +1,34 @@
+\section{Spectral filtering}
+%
+In order to ensure that no aliasing will occur and create a numerical instability like the one mentioned in \cite{Phillips1959}, we must use a spectral filter in the periodic direction.
+Although sufficiently high viscosities or diffusions can prevent aliasing (such that all the higher modes are damped out), they typically also damp on modes which we would like to include in our simulation.
+One way to get around this is to use spectral filters.
+
+\subsection{Orszag's 2/3 rule}
+As mentioned in \cite{Orszag1971}, only the $2/3$ of the topmost modes leads to aliasing.
+To see this, recall that only mode numbers equal to or less than $N/2$ can be represented exactly on a grid discretized with $N$ points \cite{Bracewell2000book}.
+Next, consider two mode numbers $k_1$ and $k_2$ which adds up to a mode $k_3$.
+If $k_3=k_1+k_2>N/2$, the mode will be intepredet as $k_1+k_2 - N$ (i.e. it will be aliased to the negative frequencies).
+If we call $M$ the highest mode we can have which would not give aliasing, we must then require that
+%
+\begin{align*}
+    k_1+k_2 - N &< -M\\
+    M + M - N &< -M\\
+    2M - N &< -M\\
+    3M &<  N\\
+    M &< \frac{N}{3}
+\end{align*}
+%
+In order words, modes with mode number less than $N/3$ does not contribute to aliasing.
+Hence the name $2/3$-rule as $M$ is $2/3$ of the Nyquist frequency $M < (2/3)(N/2)$.
+
+Thus aliasing in this case is prevented if we set all modes with a mode number equal or above $N/3$ to zero.
+As we see in the next section, this does not completely eliminate the aliasing in a cylinder, due to radial coupling.
+
+\subsection{Radial coupling}
+%
+As terms like $\{\phi, f\}$ effectively advects modes of $f$ radially, we must ask ourselves what the smallest allowed wave length in the periodic dircetion is.
+The resolution is limited by the shortest allowed wave length at the outermost radius, as the points in the $\theta$-direction is furthest appart there.
+
+
+YOU ARE HERE: Add what is the min wavelength etc., see ipynb
