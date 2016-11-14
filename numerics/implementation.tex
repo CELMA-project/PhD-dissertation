@@ -179,9 +179,40 @@ Using square bracket superscript as iteration number, the algorithm can be state
 \end{enumerate}
 \end{algorithm}
 
-\section{BC for Laplace inversion using FFT}
+\subsection{The inner boundary condition for \texorpdfstring{$\phi$}{the potential}}
+\label{sec:innerPhiBC}
 %
-% FIXME:Write me
+As mentioned in \cref{sec:BCs} there are no real inner boundary in the cylinder.
+However, the inversion method described in \cref{app:lapInv} requires a boundary condition for the inner $\rho$ for each mode number.
+A method to do this, first used in \cite{Naulin2008} sets the inner ghost point depending on the evenness of the mode.
+
+If the mode is even, the mode under consideration would have the same value diametrically opposite of the innermost point.
+Hence, the ghost point for the inner $\rho$ value is set to the same as the value at the innermost $\rho$.
+
+If the mode is odd, the mode under consideration would have value of the point diametrically opposite of the innermost point, but with a changed sign.
+Thus, the ghost point for the inner $\rho$ value is set to the negative of the value at the innermost $\rho$.
+This is depicted in \cref{fig:BCLaplace}
+%
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/mode_4}
+        \caption{An even mode.}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/mode_5}
+        \caption{An odd mode.}
+    \end{subfigure}
+        \caption{The point diametrically opposite for a mode located at radius $\rho$ has the same value as the point under consideration for an even mode, but the same value with a changed sign for even modes.
+        The red soid line connects points diametrically opposite of each other.}
+    \label{fig:BCLaplace}
+\end{figure}
+
+
+
 \section{Advective terms}
 \label{sec:ExBadv}
 %
