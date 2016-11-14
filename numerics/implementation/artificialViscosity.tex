@@ -1,0 +1,51 @@
+\section{Artificial viscosity}\label{sec:art_visc}
+%
+In the derivation we have neglected terms which is of order lower than first order, as these terms are believed to have negligible contribution on the overall set of equation.
+One of the drawbacks is, however, that we also have neglected viscous terms which will dampen small scales in the system.
+Thus, if we no not re-introduce some dissipation for numerical purposes, energy is going to build-up on small scales, and would in the end make the simulation crash.
+%FIXME: Add cite to Phillips instability if applicable
+
+Therefore, we add a dissipation on the form
+%
+\begin{align*}
+    D_{f, \|, \text{art}} \nabla_{\|}^2 f
+    + D_{f, \perp, \text{art}} \grad_\perp^2 f
+    &=
+    D_{f, \|, \text{art}} \div \L(\ve{b}\ve{b}\cdot\grad\R) f
+    + D_{f, \perp, \text{art}} \grad_\perp^2 f
+    \note{$\partial_i \ve{b} = 0$}
+    \\
+    %
+    &=
+    D_{f, \|, \text{art}} \ve{b}\cdot\grad \L(\ve{b}\cdot\grad\R) f
+    + D_{f, \perp, \text{art}} \grad_\perp^2 f
+    \\
+    %
+    &=
+    D_{f, \|, \text{art}} \partial_\|^2 f
+    + D_{f, \perp, \text{art}} \grad_\perp^2 f
+    \numberthis
+    \label{eq:art_vort}
+\end{align*}
+%
+by exchanging $\div \te{\pi}$ in equarion (\ref{fluideq:mom}) with \cref{eq:art_vort}.
+This is a somewhat crude approximation, but serves as a good first approximation.
+In the non-normalized set of equations the $D$ coefficients would have the units of dynamical viscosity, and would be normalized by
+\\
+%
+\begin{minipage}{0.4\textwidth}
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &    D_{f, \text{art}}  = \wt{D}_{f, \text{art}}m_\a n_0 \rho_s c_s&
+\end{empheq}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &\wt{D}_{f, \text{art}}  =  \frac{D_{f, \text{art}}}{m_\a n_0 \rho_s c_s}&
+\end{empheq}
+\end{minipage}
+\vspace{0.5cm}
+\\
+%
+We notice that when using equation (\ref{fluideq:mom}) in the derivations, division by $n$ on the RHS of the equations occurs in the density equation and the parallel momentum equations, but not in the vorticity equation.
+The artificial viscosity in the density is not divided by $n$ as $\frac{1}{n}\grad n = \ln(n)$.
