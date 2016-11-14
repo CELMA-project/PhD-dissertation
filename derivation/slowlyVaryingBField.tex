@@ -89,7 +89,7 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
 \end{align*}
 %
 Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation due to quasi-neutrality.
-The two should only differ slightly.
+The two should differ only slightly.
 To show this, we can do an order of magnitude estimate comparison of $n_e$ and $n_i - n_e$.
 We find that
 %
@@ -125,17 +125,42 @@ Inserting this in \cref{eq:quasiNeutral} yields
 %
 Since we are interested in phenomena slower than the ion cyclotron frequency, we set $1/\tau_B\to\om_{ci}$, and get
 %
-\begin{align*}
+\begin{align}
     \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
     \simeq
     \frac{\om_{ci}^2}{\om_{pe}^2}
     =
     \frac{\om_{ci}^2}{\om_{pe}^2}
+    \label{eq:quasiNCompare}
+\end{align}
+%
+which for our interest is a quantity much smaller than $1$.
+Equivalentely, \cref{eq:quasiNCompare} can be stated as
+%
+\begin{align*}
+    \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
+    \simeq
+    \frac{\om_{ci}^2}{\om_{pe}^2}
+    =
+    \frac{c_s^2\om_{ci}^2}{c_s^2\om_{pe}^2}
+    =
+    \frac{c_s^2}{\rho_s^2\om_{pe}^2}
+    =
+    \frac{\frac{T_e}{m_i}}{\rho_s^2\frac{ne^2}{m_i\e_0}}
+    =
+    \frac{\frac{T_e\e_0}{ne^2}}{\rho_s^2}
+    =
+    \frac{\lambda_D^2}{\rho_s^2}
 \end{align*}
 %
-% NOTE: Quasi-neutrality is usually a statement that spatial scale length of plasma is much large than Debye length
-% FIXME: Consider adding numbers
-which for our interest is a quantity much smaller than $1$.
+In other words, the quasi neutrality is just a statement of what scales we are looking at.
+Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the LHS of
+%
+\begin{align*}
+    \frac{\div \ve{E}}{n_e} = \frac{e}{\e_0}\frac{n_i-n_e}{n_e}
+\end{align*}
+%
+is small (as $e$ and $\e_0$ is of the same order of magnitude).
 
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
 The reason for this, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
