@@ -1,6 +1,8 @@
+No preferred direction of perp, therefore u characteristic a speed rather than velocity
+
 Attempt of better drift ordering
 %
-\begin{align}
+\begin{align*}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
  &=
  -
@@ -27,14 +29,14 @@ Attempt of better drift ordering
  \frac{
      S_{\a,n}\ve{u}_{\a,\perp}
  }{n_\a \om_{c\a}}
-\end{align}
+\end{align*}
 %
 ok
 should normalize?
 Normalize so that quantities are order 1
 LHS
 %
-\begin{align}
+\begin{align*}
  \frac{1}{\om_{c\a}}
  \L(
  \partial_t \ve{u}_{\a,\perp}
@@ -91,14 +93,54 @@ LHS
  + \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
  \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
  \R)
-\end{align}
+\end{align*}
 %
 superscript c for characteristic
 could say characteristic upar is cs and lperp is rhos
 these must be comparable in order to say that this is an order
+%
+\begin{align*}
+ \frac{\om^c}{\om_{c\a}}
+ u^c_{\a,\perp}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \frac{1}{\om_{c\a}}
+ \frac{\L(u^c_{\a,\perp}\R)^2}{L_{\perp, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \frac{1}{\om_{c\a}}
+ u^c_{\a,\perp}
+ \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+\end{align*}
+%
+Shall this count as one order, must have
+%
+\begin{align*}
+ \frac{\om^c}{\om_{c\a}}
+ u^c_{\a,\perp}
+ \sim
+ \frac{1}{\om_{c\a}}
+ \frac{\L(u^c_{\a,\perp}\R)^2}{L_{\perp, u_{\a,\perp}}}
+ \sim
+ \frac{1}{\om_{c\a}}
+ u^c_{\a,\perp}
+ \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+ \\
+ %
+ %
+ \om^c
+ \sim
+ \frac{u^c_{\a,\perp}}{L_{\perp, u_{\a,\perp}}}
+ \sim
+ \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+\end{align*}
+%
+Can here introduce a lambda, or whatever, which relates the characteristic velocity to the termal velocity
+%
 RHS
 %
-\begin{align}
+\begin{align*}
 &=
 - \frac{ \grad_\perp p_\a }{n_\a  q_\a B}
 + \frac{\ve{E}_\perp}{B}
@@ -126,7 +168,7 @@ RHS
  %
  %
 &=
-- \frac{p^\a_c}{L_{\perp, p_\a}n^cq_\a B^c}
+- \frac{n^c T^c_\a}{L_{\perp, p_\a}n^cq_\a B^c}
 \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
 + \frac{E_\perp^c}{B^c}
 \frac{\wt{\ve{E}}_\perp}{\wt{B}}
@@ -136,9 +178,185 @@ RHS
 + \frac{ \wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a q_\a B}
 + \frac{ \wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a q_\a B}
 - \frac{ \wt{\nu}_{S,\a}\wt{\ve{u}}_{\a,\perp} }{\om_{c\a}}
-\end{align}
+\end{align*}
+%
+FIXME: Deal with the others in the end
+%
+\begin{align*}
+- \frac{n^c T^c_\a}{L_{\perp, p_\a}n^cq_\a B^c}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
+&=
+- \frac{m_\a}{m_\a}\frac{T^c_\a}{q_\a B^c}
+\frac{1}{L_{\perp, p_\a}}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
+\\
+%
+%
+&=
+- \frac{\rho_\a}{\rho_\a}
+\frac{\om^c_{c\a}}{L_{\perp, p_\a}}\L(v^c_{th,\a}\R)^2
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
+\\
+%
+%
+&=
+- \frac{\rho_\a}{L_{\perp, p_\a}}v^c_{th,\a}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
+\end{align*}
+%
+This sets
+%
+\begin{align*}
+    \frac{\rho_{\a}}{L_{\perp, p_\a}}v^c_{th,\a} \sim \frac{E_\perp^c}{B^c} \sim \mathcal{O}(1)
+\end{align*}
+%
 %
 Next term: See electron-ion resistivity, can not insert perp drifts!
 
 Idea: If can get a perpendicular velocity out of all these, then we can compare
 the terms
+
+See FitzPatric
+%
+\begin{align*}
+- \frac{ \L(\div\te{\pi}_\a\R)_\perp }{n_\a  q_\a B}
++ \frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
++ \frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
+- \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+\end{align*}
+%
+Res
+%
+\begin{align*}
+\frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{n_\a q_\a B}
+\note{Quasi-neutrality}
+\\
+=&
+\frac{m_\a}{m_\a}
+\frac{ m_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{q_\a B}
+\\
+=&
+\pm
+\frac{m_e}{m_\a}
+\frac{\nu_{ei} }{(Z) \om_{c\a}}
+\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R)
+\\
+=&
+\pm
+\frac{m_e}{m_\a}
+\frac{\nu_{ei} }{(Z) \om_{c\a}}
+\L(u^c_{e,\perp}\wt{\ve{u}}_{e,\perp}-u^c_{i,\perp}\wt{\ve{u}}_{i,\perp}\R)
+\end{align*}
+%
+NOTE: Looks like it is better to use a current here, and use a characteristic current, if not must assume something weird like diff char speeds are the same, which would mean that assume perp velo is of same order.
+This should not be the case when $Ti=0$
+Pedersen
+%
+\begin{align*}
+\frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_\a n_\a \nu_{\a n}\ve{u}_{\a,\perp} }{n_\a q_\a B}
+\\
+=&
+\frac{\nu_{\a n} }{\om_{c\a}}\ve{u}_{\a,\perp}
+\\
+=&
+\frac{\nu_{\a n} }{\om_{c\a}}u^c_{\a,\perp}\wt{\ve{u}}_{\a,\perp}
+\end{align*}
+%
+\begin{align*}
+- \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+=
+- \frac{ \nu_{S,\a} }{\om_{c\a}}\ve{u}_{\a,\perp}
+=
+- \frac{ \nu^c_{S,\a}}{\om_{c\a}}u^c_{\a,\perp}\wt{\ve{u}}_{\a,\perp}
+\wt{\nu}_{S,\a}
+\end{align*}
+%
+Assuming constant viscosities and that $\eta_{\a,0}$ is dominating (see \cref{app:piTensor}).
+That is
+%
+\begin{align*}
+-  \L(\div\te{\pi}_\a\R)_\perp \simeq
+-  \eta_{\a,0}\grad_\perp^2\ve{u}_{\a,\perp}
+\end{align*}
+%
+terms differ, but both propto nT collfreq
+so that
+%
+\begin{align*}
+- \frac{ \L(\div\te{\pi}_\a\R)_\perp }{n_\a  q_\a B}
+\simeq
+- \frac{ \eta_{\a,0}\grad_\perp^2\ve{u}_{\a,\perp} }{n_\a  q_\a B}
+=
+- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
+\eta_{\a,0}
+\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
+\end{align*}
+%
+example electron
+%
+\begin{align*}
+- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
+\eta_{\a,0}
+\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
+=&
+- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
+0.73nT_e\nu_{ei}
+\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
+\note{Quasi-neutrality}
+\\
+%
+%
+=&
+- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
+0.73T_e\nu_{ei}\frac{m_e}{m_e}
+\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{q_\a B}
+\\
+%
+%
+=&
+- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
+0.73\nu_{ei}\frac{v_{th,e}^2}{\om_{ce}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp}
+\\
+%
+%
+=&
+-
+u^c_{\a,\perp}
+\frac{v_{th,e}^2}{L_{u_{\a,\perp}}^2}
+\frac{\nu_{ei}}{\om_{ce}}
+0.73
+\wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp}
+\end{align*}
+%
+So for electrons, have that
+%
+\begin{align*}
+ foo
+\end{align*}
+
+\subsection{Electron-ion resistivity}
+Fu is propto current ui-ue
+
+ion: - fu, so ions lose momentum by Fu
+\begin{align}
+    \ve{R}_{i \to e}
+    = \ve{R}_{u}
+   &= -m_en_e\nu_{ei}\L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
+      \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R)
+      \\
+    \ve{R}_{i \to e,\perp}
+   &= -m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R)
+\end{align}
