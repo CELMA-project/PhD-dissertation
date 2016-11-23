@@ -93,50 +93,78 @@ LHS
  + \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
  \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
  \R)
-\end{align*}
-%
-superscript c for characteristic
-could say characteristic upar is cs and lperp is rhos
-these must be comparable in order to say that this is an order
-%
-\begin{align*}
- \frac{\om^c}{\om_{c\a}}
- u^c_{\a,\perp}
- \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
- +
- \frac{1}{\om_{c\a}}
- \frac{\L(u^c_{\a,\perp}\R)^2}{L_{\perp, u_{\a,\perp}}}
- \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
- +
- \frac{1}{\om_{c\a}}
- u^c_{\a,\perp}
- \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
- \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
-\end{align*}
-%
-Shall this count as one order, must have
-%
-\begin{align*}
- \frac{\om^c}{\om_{c\a}}
- u^c_{\a,\perp}
- \sim
- \frac{1}{\om_{c\a}}
- \frac{\L(u^c_{\a,\perp}\R)^2}{L_{\perp, u_{\a,\perp}}}
- \sim
- \frac{1}{\om_{c\a}}
- u^c_{\a,\perp}
- \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
  \\
  %
  %
+ %
+ %
+ \lambda_{u_{\a,\perp}}
+ \frac{u_{\a,th}}{\om_{c\a}}
+ \L(
  \om^c
- \sim
- \frac{u^c_{\a,\perp}}{L_{\perp, u_{\a,\perp}}}
- \sim
- \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\perp}}
+ \frac{ u_{\a,th} }{L_{\perp, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \frac{u_{\a,th}}{L_{\|, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ %
+ %
+ \lambda_{u_{\a,\perp}}
+ \rho_\a
+ \L(
+ \om^c
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\perp}}
+ \om^c_{u_{\a,\perp}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \om^c_{u_{\a,\|}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ %
+ %
+ \lambda_{u_{\a,\perp}}
+ \rho_\a
+ \om^c
+ \L(
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\perp}}
+ \lambda_{\om^c_{u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \lambda_{\om^c_{u_{\a,\|}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
 \end{align*}
 %
-Can here introduce a lambda, or whatever, which relates the characteristic velocity to the termal velocity
+Shall this be of same order, must have (note: OK if perp is faster...in principle)
+%
+\begin{align*}
+ \lambda_{u_{\a,\perp}}
+ \lambda_{\om^c_{u_{\a,\perp}}}
+ \sim
+ \lambda_{u_{\a,\|}}
+ \lambda_{\om^c_{u_{\a,\|}}}
+ \sim
+ \mathcal{O}(1)
+\end{align*}
+%
+The lambdas are dimensionless constants
 %
 RHS
 %
@@ -259,6 +287,95 @@ Res
 \end{align*}
 %
 NOTE: Looks like it is better to use a current here, and use a characteristic current, if not must assume something weird like diff char speeds are the same, which would mean that assume perp velo is of same order.
+%
+\begin{align*}
+\frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{n_\a q_\a B}
+\\
+%
+%
+=&
+\frac{m_\a}{m_\a}
+\frac{q_\a}{q_\a}
+\frac{ m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{n_\a q_\a B}
+\\
+%
+%
+=&
+-
+\frac{ m_e}{m_\a}
+\frac{1}{q_\a}
+\frac{m_\a \nu_{ei}\ve{j}_{e,\perp} }{n_\a q_\a B}
+\end{align*}
+%
+But then again $\ldots$, what should perp current be
+%
+\begin{align*}
+\frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{n_\a q_\a B}
+\note{Quasi-neutrality}
+\\
+=&
+\frac{m_\a}{m_\a}
+\frac{ m_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{q_\a B}
+\\
+=&
+\pm
+\frac{m_e}{m_\a}
+\frac{\nu_{ei} }{(Z) \om_{c\a}}
+\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R)
+\\
+=&
+\pm
+\frac{m_e}{m_\a}
+\frac{\nu_{ei} }{(Z) \om_{c\a}}
+\L(u^c_{e,\perp}\wt{\ve{u}}_{e,\perp}-u^c_{i,\perp}\wt{\ve{u}}_{i,\perp}\R)
+\\
+=&
+\pm
+\frac{m_e}{m_\a}
+\frac{\nu_{ei} }{(Z) \om_{c\a}}
+u_{e,th}
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\end{align*}
+%
+For electrons
+%
+\begin{align*}
+-
+\frac{\nu_{ei} }{\om_{ce}}
+u_{e,th}
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\\
+-
+\nu_{ei}
+\frac{ u_{e,th}}{\om_{ce}}
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\\
+-
+\nu_{ei}
+\rho_e
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\end{align*}
+%
+For ions
+%
+\begin{align*}
+\frac{m_e}{m_i}
+\frac{1}{Z}
+\nu_{ei}
+\frac{ u_{e,th}}{\om_{ci}}
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\\
+\frac{1}{\mu}
+\frac{1}{Z}
+\nu_{ei}
+\rho_s
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+\end{align*}
+%
 This should not be the case when $Ti=0$
 Pedersen
 %
@@ -272,7 +389,15 @@ Pedersen
 \\
 =&
 \frac{\nu_{\a n} }{\om_{c\a}}u^c_{\a,\perp}\wt{\ve{u}}_{\a,\perp}
+\\
+=&
+\nu_{\a n}\lambda_{u_{\a,\perp}}\frac{u^c_{\a,th}}{\om_{c\a}}\wt{\ve{u}}_{\a,\perp}
+\\
+=&
+\nu_{\a n}\lambda_{u_{\a,\perp}}\rho_\a\wt{\ve{u}}_{\a,\perp}
 \end{align*}
+%
+Source
 %
 \begin{align*}
 - \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
@@ -280,7 +405,10 @@ Pedersen
 - \frac{ \nu_{S,\a} }{\om_{c\a}}\ve{u}_{\a,\perp}
 =
 - \frac{ \nu^c_{S,\a}}{\om_{c\a}}u^c_{\a,\perp}\wt{\ve{u}}_{\a,\perp}
-\wt{\nu}_{S,\a}
+=
+-  \nu^c_{S,\a}\lambda_{u_{\a,\perp}}\frac{u^{\a,th}}{\om_{c\a}}\wt{\ve{u}}_{\a,\perp} \wt{\nu}_{S,\a}
+=
+-  \nu^c_{S,\a}\lambda_{u_{\a,\perp}}\rho_\a\wt{\ve{u}}_{\a,\perp} \wt{\nu}_{S,\a}
 \end{align*}
 %
 Assuming constant viscosities and that $\eta_{\a,0}$ is dominating (see \cref{app:piTensor}).
@@ -301,62 +429,414 @@ so that
 =
 - \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
 \eta_{\a,0}
+\frac{m_\a}{m_\a}
 \frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
+\\
+=
+-
+ \lambda_{u_{\a,\perp}}u_{\a,th}
+\frac{1}{L_{u_{\a,\perp}}^2}
+\eta_{\a,0}
+\frac{1}{m_\a n_\a\om_{c\a}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp}
 \end{align*}
 %
 example electron
 %
 \begin{align*}
-- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
-\eta_{\a,0}
-\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
-=&
-- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
-0.73nT_e\nu_{ei}
-\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{n_\a  q_\a B}
+ \lambda_{u_{e,\perp}}u_{e,th}
+\frac{1}{L_{u_{e,\perp}}^2}
+0.73\frac{n_eT_e}{\nu_{ei}}
+\frac{1}{m_e n_e \om_{ce}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \note{Quasi-neutrality}
+=&
+ \lambda_{u_{e,\perp}}
+\frac{u_{e,th}^2}{L_{u_{e,\perp}}^2}
+0.73\frac{1}{\nu_{ei}}
+\frac{u_{e,th}}{m_e\om_{ce}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \\
 %
 %
 =&
-- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
-0.73T_e\nu_{ei}\frac{m_e}{m_e}
-\frac{ \wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp} }{q_\a B}
+ \lambda_{u_{e,\perp}}
+ \L(\om^c_{u_{e,\perp}}\R)^2
+0.73\frac{1}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \\
 %
 %
 =&
-- \frac{u^c_{\a,\perp}}{L_{u_{\a,\perp}}^2}
-0.73\nu_{ei}\frac{v_{th,e}^2}{\om_{ce}}
-\wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp}
+ \lambda_{u_{e,\perp}}
+ \L(\om^c\R)^2\lambda_{\om^c_{u_{e,\perp}}}^2
+0.73\frac{1}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \\
 %
 %
 =&
--
-u^c_{\a,\perp}
-\frac{v_{th,e}^2}{L_{u_{\a,\perp}}^2}
-\frac{\nu_{ei}}{\om_{ce}}
 0.73
-\wt{\grad}_\perp^2\wt{\ve{u}}_{\a,\perp}
+ \lambda_{u_{e,\perp}}
+\lambda_{\om^c_{u_{e,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \end{align*}
 %
-So for electrons, have that
+for ions
 %
 \begin{align*}
- foo
+ \lambda_{u_{i,\perp}}u_{i,th}
+\frac{1}{L_{u_{i,\perp}}^2}
+0.96\sqrt{2}\frac{n_iT_i}{\nu_{ii}}
+\frac{1}{m_i n_i \om_{ci}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+\note{Quasi-neutrality}
+=&
+ \lambda_{u_{i,\perp}}
+\frac{u_{i,th}^2}{L_{u_{i,\perp}}^2}
+0.96\sqrt{2}\frac{1}{\nu_{ii}}
+\frac{u_{i,th}}{m_i\om_{ci}}
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+\\
+%
+%
+=&
+ \lambda_{u_{i,\perp}}
+ \L(\om^c_{u_{i,\perp}}\R)^2
+0.96\sqrt{2}\frac{1}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+\\
+%
+%
+=&
+ \lambda_{u_{i,\perp}}
+ \L(\om^c\R)^2\lambda_{\om^c_{u_{i,\perp}}}^2
+0.96\sqrt{2}\frac{1}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+\\
+%
+%
+=&
+0.96\sqrt{2}
+ \lambda_{u_{i,\perp}}
+\lambda_{\om^c_{u_{i,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
 \end{align*}
+%
+Checking the order.
 
-\subsection{Electron-ion resistivity}
-Fu is propto current ui-ue
+\section{Electrons}
+%
+Under assumption that convection is the same
+TAKE CARE OF SIGNS!!!
+Note that all tildes are of $\mathcal{O}(1)$
+%
+\begin{align*}
+ \lambda_{u_{e,\perp}}
+ \rho_e
+ \om^c
+ \wt{\d}_{\wt{t},e} \wt{\ve{u}}_{e,\perp}
+ =&
+ -
+ \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}
+ \wt{\grad}_\perp \wt{p_e}
+ +
+ \frac{E_\perp^c}{B^c}
+ \frac{\wt{\ve{E}}_\perp}{\wt{B}}
+ +
+ \lambda_{u_{e,\perp}}
+ v_{th,e}
+ \wt{\ve{u}}_{e,\perp}\times\ve{b}
+ \\&
+ -
+0.73
+ \lambda_{u_{e,\perp}}
+\lambda_{\om^c_{u_{e,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
+-
+\nu_{ei}
+\rho_e
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+ \\&
+ +
+\nu_{e n}\lambda_{u_{e,\perp}}\rho_e\wt{\ve{u}}_{e,\perp}
+-
+\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_e\wt{\ve{u}}_{e,\perp} \wt{\nu}_{S,e}
+\end{align*}
+%
+Again, we assume (cross b need to be included?)
+%
+\begin{align*}
+ \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}
+ \sim
+ \frac{E_\perp^c}{B^c}
+ \sim
+ \mathcal{O}(1)
+\end{align*}
+%
+And then (group by $\lambda_{u_{e,\perp}}$)
+NOTE, here just have $\lambda_{u_{e,\perp}}$ on resistivity
+Then we can set
+$\lambda_{u_{e,\perp}} \ll \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}$
 
-ion: - fu, so ions lose momentum by Fu
-\begin{align}
-    \ve{R}_{i \to e}
-    = \ve{R}_{u}
-   &= -m_en_e\nu_{ei}\L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
-      \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R)
-      \\
-    \ve{R}_{i \to e,\perp}
-   &= -m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R)
-\end{align}
+...actually looks like we need to state it for the other terms as well
+%
+\begin{align*}
+ \lambda_{u_{e,\perp}}
+ \rho_e
+ \om^c
+%
+ \sim
+ \lambda_{u_{e,\perp}}
+ v_{th,e}
+%
+ \sim
+0.73
+ \lambda_{u_{e,\perp}}
+\lambda_{\om^c_{u_{e,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
+%
+ \sim
+\nu_{ei}
+\rho_e
+\lambda_{u_{e,\perp}}
+%
+ \sim
+\nu_{e n}\lambda_{u_{e,\perp}}\rho_e
+%
+ \sim
+\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_e
+\\
+%
+%
+%
+ \rho_e
+ \om^c
+%
+ \sim
+ v_{th,e}
+%
+ \sim
+0.73
+\lambda_{\om^c_{u_{e,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ei} }
+\rho_e
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
+%
+ \sim
+\nu_{ei}
+\rho_e
+%
+ \sim
+\nu_{e n}
+\rho_e
+%
+ \sim
+\nu^c_{S,e}
+\rho_e
+\\
+\end{align*}
+%
+FIXME: What happens with cross b term? Here just drop it to investigate
+so that take away $\rho_e$
+%
+\begin{align*}
+ \om^c
+%
+ \sim
+0.73
+\lambda_{\om^c_{u_{e,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ei} }
+\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
+%
+ \sim
+\nu_{ei}
+%
+ \sim
+\nu_{e n}
+%
+ \sim
+\nu^c_{S,e}
+\end{align*}
+%
+Note that $\om^c$ is for the electrons...should probably explicitly state that
+
+\section{Ions}
+%
+YOU ARE HERE!!!
+Under assumption that convection is the same
+TAKE CARE OF SIGNS!!!
+Note that all tildes are of $\mathcal{O}(1)$
+%
+\begin{align*}
+ \lambda_{u_{i,\perp}}
+ \rho_i
+ \om^c
+ \wt{\d}_{\wt{t},i} \wt{\ve{u}}_{i,\perp}
+ =&
+ -
+ \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}
+ \wt{\grad}_\perp \wt{p_i}
+ +
+ \frac{E_\perp^c}{B^c}
+ \frac{\wt{\ve{E}}_\perp}{\wt{B}}
+ +
+ \lambda_{u_{i,\perp}}
+ v_{th,i}
+ \wt{\ve{u}}_{i,\perp}\times\ve{b}
+ \\&
+ -
+0.96\sqrt{2}
+ \lambda_{u_{i,\perp}}
+\lambda_{\om^c_{u_{i,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+-
+\frac{1}{\mu}
+\frac{1}{Z}
+\nu_{ei}
+\rho_s
+\L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
+ \\&
+ +
+\nu_{i n}\lambda_{u_{i,\perp}}\rho_i\wt{\ve{u}}_{i,\perp}
+-
+\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_i\wt{\ve{u}}_{i,\perp} \wt{\nu}_{S,i}
+\end{align*}
+%
+The below is problematic as we above have put a restriction on E...
+or wait...
+aren't the two the same if we assume that the gradients have same len scale
+also need to assume temps are almost the same...
+a bit problematic as Ti=0.
+Nevertheless
+$\rho_iv_{th,i}^2=\frac{T_i}{qB}$
+So could assume the temperatures are the same
+%
+\begin{align*}
+ \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}
+ \sim
+ \frac{E_\perp^c}{B^c}
+ \sim
+ \mathcal{O}(1)
+\end{align*}
+%
+And then (group by $\lambda_{u_{i,\perp}}$)
+NOTE, here just have $\lambda_{u_{i,\perp}}$ on resistivity
+Then we can set
+
+$\lambda_{u_{i,\perp}} \ll \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}$
+
+...actually looks like we need to state it for the other terms as well
+
+NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
+%
+\begin{align*}
+ \lambda_{u_{i,\perp}}
+ \rho_i
+ \om^c
+%
+ \sim
+ \lambda_{u_{i,\perp}}
+ v_{th,i}
+%
+ \sim
+0.96\sqrt{2}
+ \lambda_{u_{i,\perp}}
+\lambda_{\om^c_{u_{i,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+%
+ \sim
+\frac{1}{\mu}
+\frac{1}{Z}
+\nu_{ei}
+\rho_s
+\lambda_{u_{e,\perp}}
+%
+ \sim
+\nu_{i n}\lambda_{u_{i,\perp}}\rho_i
+%
+ \sim
+\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_i
+\\
+%
+%
+%
+ \rho_i
+ \om^c
+%
+ \sim
+ v_{th,i}
+%
+ \sim
+0.96\sqrt{2}
+\lambda_{\om^c_{u_{i,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ii} }
+\rho_i
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+%
+ \sim
+\frac{1}{\mu}
+\frac{1}{Z}
+\nu_{ei}
+\rho_s
+\frac{\lambda_{u_{e,\perp}}}{\lambda_{u_{i,\perp}}}
+%
+ \sim
+\nu_{i n}
+\rho_i
+%
+ \sim
+\nu^c_{S,i}
+\rho_i
+\\
+\end{align*}
+%
+FIXME: What happens with cross b term? Here just drop it to investigate
+so that take away $\rho_i$
+%
+\begin{align*}
+ \om^c
+%
+ \sim
+0.96\sqrt{2}
+\lambda_{\om^c_{u_{i,\perp}}}^2
+ \om^c
+\frac{\om^c}{\nu_{ii} }
+\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
+%
+ \sim
+\nu_{ei}
+%
+ \sim
+\nu_{i n}
+%
+ \sim
+\nu^c_{S,i}
+\end{align*}
+%
+Note that $\om^c$ is for the ions...should probably explicitly state that
