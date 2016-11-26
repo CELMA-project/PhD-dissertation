@@ -193,7 +193,9 @@ The subscript $_\text{stationary target}$ will be dropped from here on.
 Using the cross section for electron ion collisions
 %
 \begin{align*}
-    \sigma_{ei} = \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4}
+    \sigma_{ei} = \frac{Z^2e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4}
+    &&
+    \ln\Lambda = \ln\L(\frac{12\pi n \lambda_D^3}{Z}\R)
 \end{align*}
 %
 yields
@@ -204,14 +206,14 @@ yields
     \frac{n_i4\pi}{3(2\pi)^{3/2}v_{th,e}^5}
     \int_0^\infty
     \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
-    \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4} v^5
+    \frac{Z^2e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4} v^5
     \d v
     \\
     %
     %
     =&
     \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
-    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    \frac{Z^2e^4\ln\Lambda}{\e_0^2m_e^2}
     \int_0^\infty
     \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
     v \d v
@@ -221,18 +223,18 @@ yields
     =&
     \frac{2}{2}
     \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
-    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    \frac{Z^2e^4\ln\Lambda}{\e_0^2m_e^2}
     v_{th,e}^2
     \\
     %
     %
     =&
-    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^2\L(\sqrt{\frac{T_e}{m_e}}\R)^3}
+    \frac{2^{1/2}n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^2\L(\sqrt{\frac{T_e}{m_e}}\R)^3}
     \\
     %
     %
     =&
-    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
+    \frac{2^{1/2}n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
 \end{align*}
 %
 Using the cross section for electron neutral collision
@@ -299,7 +301,7 @@ One could do the analysis by going to the center of mass frame (which in the end
     \nu_{ii}
     %
     =&
-    \frac{n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
+    \frac{n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
 \end{align*}
 %
 As the mass of the neutral atom is approximately the same as the ion mass (as we are considering neutrals of the same species as the plasma), we get for the ion-neutral collision
