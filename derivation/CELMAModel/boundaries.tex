@@ -1,23 +1,57 @@
 \section{Boundary conditions}
 \label{sec:BCs}
 %
-Setting correct boundary condition when calculating PDEs of plasma quantities turns out to be a challenge.
-One of the reasons for this is the formation of plasma sheaths between the plasma and the material which is due to the difference in mobility between the ion species and the electron species.
+Setting correct boundary conditions (BCs) when calculating PDEs of plasma quantities turns out to be a challenge.
+In the parallel dirction there will be formation of plasma sheaths between the plasma and the material which is due to the difference in mobility between the ion species and the electron species \cite{Stangeby2000book}.
 This leads to a potential build-up on the material surface which affects the plasma upstream.
 
 Unfortunately the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
-Hence, a proper description in this area can only be accounted for with kinetic codes, solving for example the Fokker-Planck equation.
-In other words, the fluid models are only valid up until the sheath entrance.
+This is mainly due to the fact that there will be more ions than electrons in this area and the assumption quasi-neutrality breaks down.
+In other words, the fluid models are only valid up until the sheath entrance (SE), and a proper description in this area can only be accounted for with kinetic codes, solving for example the Fokker-Planck equation.
 One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma end, and where does the sheath start.
 
+There are mainly two challenges in setting the radial boundary conditions.
+Firstly, the plasma does not usually extent all the way to the chasis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
+Secondly, assuming that the plasma could extend all the way out to the chasis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma have no way not adhere to the surface as a neutral fluid would do.
+
+The boundaries for the cylindrical plasma consist of four parts.
+Parallely, we have the SE at one end.
+We could in principle place a SE at the other parallel end as well, which would be ok if the plasma streamed in both direction from some point.
+Instead we have chosen to model the other parallel end as a stagnation point, i. e. a point where the velocities parallel are zero.
+Such a point exists if the plasma is streaming in two opposite directions, and is encountered on for example open field lines  divertor plasmas.
+Radially we have the outer radial boundary condition, and an artificial inner condition which is treated in \cref{sec:innerCenter}.
 %
-\subsection{Boundary conditions at SE}
+
+\subsection{Boundary conditions at the stagnation point}
+% FIXME: Add references
+The boundary conditions at the opposite site of the SE in the cylinder varies from experiment to experiment (as does also the source term in the distribution function itself).
+By using a stagnation point, the model does not fully reflect any experimental linear devices, but can help to shed light on some of the features found in real life experiments.
+The stagnation condition acts as a kind of mirror.
+To be more specific the velocities changes sign at this point, and hece must be exactly zero there.
+The spinning of the plasma does not change from one side to the other across the mirror, and hence we get the following set of boundary conditions
+%
+\begin{align*}
+    &\partial_\| n \bigg|_0    =0 &
+    &u_{e,\|} \bigg|_0         =0 &
+    &u_{i,\|} \bigg|_0         =0 &
+    &\partial_\| \phi \bigg|_0 =0 &
+    &\partial_\|\Om \bigg|_0   =0 &
+\end{align*}
+
+\subsection{Boundary conditions at the SE}
 % NOTE: Consider to add calculation of sheath velocities
 Following the calculations of Choudora and Bohm (see for example \cite{Stangeby2000book}), it is common practice to define the sheath entrance to be the place where ion velocity reaches the ion sound speed (that is where $u_{i,\|}=c_s$), and we will adopt this practice in this thesis.
-Considering a quiescent plasma, one can calculate the equilibrium profiles which the plasma obtains in contact with materials, and use this to set the boundaries for $u_{i, \|}$ and $u_{e, \|}$ at the sheath entrance (SE).
+Considering a quiescent plasma, one can calculate the equilibrium profiles which the plasma obtains in contact with materials, and use this to set the boundaries for $u_{i, \|}$ and $u_{e, \|}$ at the SE.
+This is then used to calculate the boundary condition
+%
+\begin{align*}
+    j_\|\bigg|_{L_z}=en\bigg|_{L_z}\L(u_{i, \|}\bigg|_{L_z}-u_{e, \|}\bigg|_{L_z}\R),
+\end{align*}
+%
+where $L_z$ is the position of the SE.
 One should note though, that even these boundary conditions are valid only in steady state.
 
-\subsubsection{Ion velocity at SE}
+\subsubsection{Ion velocity at the SE}
 For the ion velocity, we have from steady state calculations defined the sheath entrance to be the point where
 %
 \begin{align*}
@@ -31,7 +65,7 @@ Normalization gives
 \end{align*}
 %
 
-\subsubsection{Electron velocity at SE}
+\subsubsection{Electron velocity at the SE}
 %
 Further, the steady state gives the following condition on the parallel electron velocity
 %
@@ -39,25 +73,27 @@ Further, the steady state gives the following condition on the parallel electron
     u_{e,\|} \bigg|_{L_z} = c_s \exp\L(\Lambda - \frac{e[\phi_0 + \phi]}{T_e}\R),
 \end{align*}
 %
-where $\phi_0$ is an arbitrary potential%
+where $\phi_0$ is an arbitrary potential and $\Lambda=\ln\L(\sqrt{\frac{\mu}{2\pi}}\R)$.
+In this thesis, we set $\phi_0=\Lambda T_e/e$, so that $\phi=0$ for ampipolar flow %
 %
-\footnote{Due to the inversion algorithm $\phi_0$ has been set to $\Lambda$ for better numerical stability}%
+\footnote{We do this as we have observed that the inversion algorithm for $\phi$ mentionded in \cref{app:lapInv} is more numerically stabilie}%
 %
-we have defined $\phi_{\text{sheath entrance}} = 0$, and $\Lambda=\ln\L(\sqrt{\frac{\mu}{2\pi}}\R)$. Normalization gives
+.
+Normalization gives
 %
 \begin{align*}
     u_{e,\|} \bigg|_{L_z} = \exp\L(\Lambda - \phi\R)
 \end{align*}
 %
 
-\subsubsection{Density BC at SE}
+\subsubsection{Density BC at the SE}
 %
 % NOTE: Tried
 %   1. From steady state electron continuity
 %      This means that n cannot change at the boundary
 %   2. Neumann = 0
 %      Could be that this it has a gradient
-%      Problem that Neumann both at SE and non-SE site
+%      Problem that Neumann both at the SE and non-SE site
 % NOTE: Idea
 %   1. Could try robin BC at non-SE site
 %
@@ -83,7 +119,7 @@ For a field line geometry where the field lines are perpendicular to the end-pla
     \L.\grad_\|\cdot\L(\ve{u}_{i,\|} n \R)\R|_{L_z}&= 0
     \note{$\grad_\| \cdot \ve{u}_{i,\perp} = 0$}
     \\
-    \L.\div_\|\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0
+    \L.\grad_\|\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0
     \note{Continuity equation}
     \\
     \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0\\
@@ -119,7 +155,8 @@ If we follow the derivation of \cref{eq:nBC} and use the ion continuity equation
 \end{align*}
 %
 which means that the flux through the SE is no longer fixed.
-One should note that if one has a Neumann condition in both ends of the machine, the PDE is formally ill-posed, and the solutions found are unique only up to some constant.
+One should note though that this boundary condition will try to enforce a zero gradient on $n$ at the SE, which migth be unphysical.
+Also one should note that if one has a Neumann condition in both ends of the machine, the PDE is formally ill-posed, and the solutions found are unique only up to some constant.
 When numerically solving the system the solution found will be specified by the initial condition.
 Although it is important to be aware of, it is not believed to change the physical behavior of the system as the dynamics are driven by its source and its sinks.
 
@@ -129,15 +166,15 @@ The derivatives of $n$ at the last physical point before the SE can then be calc
 %
 \footnote{A ghost point is a point not belonging to the physical domain, but a helper point which makes it possible to use a centered scheme when evaluating a grid point closest to the physical boundary of the domain.}
 %
-and use this is a \emph{artificial boundary condition} \cite{Leveque2007book}.
+and use this is an \emph{artificial boundary condition} \cite{Leveque2007book}.
 
 A final possibility is to let the derived equation for the evolution of the density be valid at the boundary.
 
-In the scope of this thesis the differences between $\L. \partial_\| n \R|_{L_z} = 0$ and the Cauchy BC has been investigated.
+In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} &= 0$ boundary condition has been choosen.
+% FIXME: Remove the comment below if Cauchy is not considere
+% In the scope of this thesis the differences between $\L. \partial_\| n \R|_{L_z} = 0$ and the Cauchy BC has been investigated.
 
-% FIXME: Add reference to where stuff is compared
-
-\subsubsection{Potential BC at SE}
+\subsubsection{Potential BC at the SE}
 %
 % NOTE: Tried
 %   1. Fixed value
@@ -157,36 +194,18 @@ However, parallel derivatives of the potential is being taken in our set of equa
 In order to calculate the parallel derivative of $\phi$ in the last point before the SE, we need either to make a one sided stencil for this very point (as the value of the boundary, and thereby the value of the ghost point is unknown), or we can extrapolate the value of $\phi$ to the ghost point (as we anyway assume that $\phi$ is a smooth function in order to discretize the differential operators working on $\phi$).
 The latter has been chosen in the current implementation.
 
-\subsubsection{Vorticity BC at SE}
+\subsubsection{Vorticity BC at the SE}
 % NOTE: Tried
 %   1. Neumann = 0
 %      Could be that this it has a gradient
-%      Problem that Neumann both at SE and non-SE site
+%      Problem that Neumann both at the SE and non-SE site
 % IDEA:
 %   1. Should be 0, as the wall is slowing down? Maybe not as not necessarily
 %      have a non-slip BC on the wall
 %
 % FIXME: Find out what this should be
-%
-% FIXME
-% No good physical argument yet.
-% ATM implemented as Neumann zero.
+Neumann zero
 
-\subsection{BCs at non-SE drift plane}
-% FIXME:
-% Check that this is what you really want to do
-The boundary conditions at the opposite site of the SE in the cylinder varies from experiment to experiment (as does also the source term in the distribution function itself).
-In the following model, we want to model a cylinder which is mirrored at the opposite side of SE.
-In other words, the model does not reflect any experimental linear devices, but can help to shed light on some of the features found in real world experiments.
-The mirroring condition gives the following set of boundary conditions
-%
-\begin{align*}
-    &\partial_\| n \bigg|_0    =0 &
-    &u_{e,\|} \bigg|_0         =0 &
-    &u_{i,\|} \bigg|_0         =0 &
-    &\partial_\| \phi \bigg|_0 =0 &
-    &\partial_\|\Om \bigg|_0   =0 &
-\end{align*}
 
 \subsection{Outer radial boundary conditions}
 \label{sec:outerBC}
