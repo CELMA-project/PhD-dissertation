@@ -22,6 +22,8 @@ def plotLaplaceBCOnCylinder(mode               =  5   ,\
         Mode number
     lineThroughPointNr : int
         What point should the red line go diametrically opposite from
+    showPlot: bool
+        Whether or not to show the plot
     extension : str
         Extension of the plot to save
 

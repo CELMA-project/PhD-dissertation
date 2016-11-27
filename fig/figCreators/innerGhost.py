@@ -28,6 +28,10 @@ def plotInnerGhost(nx        =  4   ,\
         Number of points in theta
     outerBC: bool
         Whether or not to plot the outer boundary condition
+    annotate: bool
+        Whether or not to annotate
+    showPlot: bool
+        Whether or not to show the plot
     extension: str
         Extension of the plot to save
 
