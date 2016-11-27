@@ -35,6 +35,17 @@ ok
 should normalize?
 Normalize so that quantities are order 1
 LHS
+Use $c_s$ as typical vel for both el and ions
+Assume the grad len scale of gradients are of the same order (in the end, all related to the velocity)
+$v_0+v_1+\ldots$
+$u_{\a,th}=\sqrt{\frac{T_\a}{m_\a}}$
+FIXME: Use cs consistently
+$c_s = \sqrt{\frac{T_e}{m_i}}=\sqrt{\frac{T_e}{m_i}}\sqrt{\frac{m_\a}{T_\a}}u_{\a,th}$
+....
+actually, as we have the lambda, no need for tweaking out $c_s$
+
+Also have
+$\rho_s=\frac{c_s}{\om_{ci}}$
 %
 \begin{align*}
  \frac{1}{\om_{c\a}}
@@ -99,17 +110,18 @@ LHS
  %
  %
  \lambda_{u_{\a,\perp}}
- \frac{u_{\a,th}}{\om_{c\a}}
+ \frac{c_s}{\om_{c\a}}
  \L(
  \om^c
  \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
  +
  \lambda_{u_{\a,\perp}}
- \frac{ u_{\a,th} }{L_{\perp, u_{\a,\perp}}}
+ \frac{ c_s }{L_{\perp, u_{\a,\perp}}}
  \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
  +
  \lambda_{u_{\a,\|}}
- \frac{u_{\a,th}}{L_{\|, u_{\a,\perp}}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\perp, u_{\a,\perp}}}
+ \frac{c_s}{L_{\|, u_{\a,\perp}}}
  \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
  \R)
  \\
@@ -118,41 +130,58 @@ LHS
  %
  %
  \lambda_{u_{\a,\perp}}
- \rho_\a
+ \frac{c_s}{\om_{c\a}}
  \L(
  \om^c
  \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
  +
  \lambda_{u_{\a,\perp}}
- \om^c_{u_{\a,\perp}}
+ \frac{ \rho_s }{L_{\perp, u_{\a,\perp}}}
+ \om_{ci}
  \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
  +
  \lambda_{u_{\a,\|}}
- \om^c_{u_{\a,\|}}
- \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
- \R)
- \\
- %
- %
- %
- %
- \lambda_{u_{\a,\perp}}
- \rho_\a
- \om^c
- \L(
- \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
- +
- \lambda_{u_{\a,\perp}}
- \lambda_{\om^c_{u_{\a,\perp}}}
- \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
- +
- \lambda_{u_{\a,\|}}
- \lambda_{\om^c_{u_{\a,\|}}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\|, u_{\a,\perp}}}
+ \frac{\rho_s}{L_{\perp, u_{\a,\perp}}}
+ \om_{ci}
  \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
  \R)
 \end{align*}
 %
+where (assuming $u^c$ is the same for ions and electrons, such that $u^c_{e,\perp}\sim u^c_{i,\perp}$) and $L_\perp$ is the same for all
+\begin{align*}
+    \lambda = \frac{u^c}{c_s} (= \delta)\\
+    \frac{ \rho_s }{L_{\perp}} = \gamma(= \delta)\\
+    \zeta\\
+    \xi\\
+    \sigma\\
+\end{align*}
+%
+so
+%
+\begin{align*}
+ \lambda
+ \frac{c_s}{\om_{c\a}}
+ \L(
+ \om^c
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda
+ \gamma
+ \om_{ci}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\|, u_{\a,\perp}}}
+ \gamma
+ \om_{ci}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+\end{align*}
+%
+%
 Shall this be of same order, must have (note: OK if perp is faster...in principle)
+FIXME
 %
 \begin{align*}
  \lambda_{u_{\a,\perp}}
@@ -215,37 +244,125 @@ FIXME: Deal with the others in the end
 \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
 + \frac{E_\perp^c}{B^c}
 \frac{\wt{\ve{E}}_\perp}{\wt{B}}
-&=
-- \frac{m_\a}{m_\a}\frac{T^c_\a}{q_\a B^c}
-\frac{1}{L_{\perp, p_\a}}
++ \ve{u}^c_{\a,\perp}
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+&\sim
+- \frac{T^c_\a}{q_\a B^c}
+\frac{1}{L_{\perp}}
 \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
 + \frac{E_\perp^c}{B^c}
 \frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\end{align*}
+%
+electron (watch signs)
+%
+\begin{align*}
+    \frac{T^c_e}{e B^c}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_e }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{e,\perp}\times\ve{b}
+=&
+\frac{m_i}{m_i}
+\frac{T^c_e}{e B^c}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_e }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{e,\perp}\times\ve{b}
 \\
-%
-%
-&=
-- \frac{\rho_\a}{\rho_\a}
-\frac{\om^c_{c\a}}{L_{\perp, p_\a}}\L(v^c_{th,\a}\R)^2
-\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
+=&
+\frac{c^2}{\om_{ci}}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_e }{\wt{n}_\a \wt{B}}
 + \frac{E_\perp^c}{B^c}
 \frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{e,\perp}\times\ve{b}
 \\
-%
-%
-&=
-- \frac{\rho_\a}{L_{\perp, p_\a}}v^c_{th,\a}
-\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
+=&
+c_s
+\frac{\rho_s}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_e }{\wt{n}_\a \wt{B}}
 + \frac{E_\perp^c}{B^c}
 \frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{e,\perp}\times\ve{b}
+\\
+=&
+c_s
+\gamma
+\frac{ \wt{\grad}_\perp \wt{p}_e }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{e,\perp}\times\ve{b}
+\end{align*}
+%
+ion
+%
+\begin{align*}
+    - \frac{T^c_i}{q_i B^c}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_i }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{i,\perp}\times\ve{b}
+=&
+- \frac{T_e}{T_e}
+\frac{m_i}{m_i}
+\frac{T^c_i}{e B^c}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_i }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{i,\perp}\times\ve{b}
+\\
+=&
+- \frac{T^c_i}{T_e}
+\frac{c_s^2}{\om_{ci}}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_i }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{i,\perp}\times\ve{b}
+\\
+=&
+- \frac{T^c_i}{T_e}
+c_s
+\frac{\rho_s}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_i }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{i,\perp}\times\ve{b}
+\\
+=&
+- \frac{T^c_i}{T_e}
+c_s
+\gamma
+\frac{ \wt{\grad}_\perp \wt{p}_i }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \lambda c_s
+\wt{\ve{u}}_{i,\perp}\times\ve{b}
 \end{align*}
 %
 This sets
 %
 \begin{align*}
-    \frac{\rho_{\a}}{L_{\perp, p_\a}}v^c_{th,\a} \sim \frac{E_\perp^c}{B^c} \sim \mathcal{O}(1)
+    \gamma c_s \sim \frac{E_\perp^c}{B^c} \sim \lambda c_s \sim \mathcal{O}(1)
 \end{align*}
 %
+YOU ARE HERE
 %
 Next term: See electron-ion resistivity, can not insert perp drifts!
 
@@ -337,7 +454,7 @@ But then again $\ldots$, what should perp current be
 \pm
 \frac{m_e}{m_\a}
 \frac{\nu_{ei} }{(Z) \om_{c\a}}
-u_{e,th}
+c_s
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
 \end{align*}
 %
@@ -346,17 +463,17 @@ For electrons
 \begin{align*}
 -
 \frac{\nu_{ei} }{\om_{ce}}
-u_{e,th}
+c_s
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
 \\
 -
 \nu_{ei}
-\frac{ u_{e,th}}{\om_{ce}}
+\frac{ c_s}{\om_{ce}}
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
 \\
 -
 \nu_{ei}
-\rho_e
+\rho_s
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
 \end{align*}
 %
@@ -366,7 +483,7 @@ For ions
 \frac{m_e}{m_i}
 \frac{1}{Z}
 \nu_{ei}
-\frac{ u_{e,th}}{\om_{ci}}
+\frac{ c_s}{\om_{ci}}
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
 \\
 \frac{1}{\mu}
@@ -394,7 +511,7 @@ Pedersen
 \nu_{\a n}\lambda_{u_{\a,\perp}}\frac{u^c_{\a,th}}{\om_{c\a}}\wt{\ve{u}}_{\a,\perp}
 \\
 =&
-\nu_{\a n}\lambda_{u_{\a,\perp}}\rho_\a\wt{\ve{u}}_{\a,\perp}
+\nu_{\a n}\lambda_{u_{\a,\perp}}\rho_s\wt{\ve{u}}_{\a,\perp}
 \end{align*}
 %
 Source
@@ -408,7 +525,7 @@ Source
 =
 -  \nu^c_{S,\a}\lambda_{u_{\a,\perp}}\frac{u^{\a,th}}{\om_{c\a}}\wt{\ve{u}}_{\a,\perp} \wt{\nu}_{S,\a}
 =
--  \nu^c_{S,\a}\lambda_{u_{\a,\perp}}\rho_\a\wt{\ve{u}}_{\a,\perp} \wt{\nu}_{S,\a}
+-  \nu^c_{S,\a}\lambda_{u_{\a,\perp}}\rho_s\wt{\ve{u}}_{\a,\perp} \wt{\nu}_{S,\a}
 \end{align*}
 %
 Assuming constant viscosities and that $\eta_{\a,0}$ is dominating (see \cref{app:piTensor}).
@@ -434,7 +551,7 @@ so that
 \\
 =
 -
- \lambda_{u_{\a,\perp}}u_{\a,th}
+ \lambda_{u_{\a,\perp}}c_s
 \frac{1}{L_{u_{\a,\perp}}^2}
 \eta_{\a,0}
 \frac{1}{m_\a n_\a\om_{c\a}}
@@ -444,7 +561,7 @@ so that
 example electron
 %
 \begin{align*}
- \lambda_{u_{e,\perp}}u_{e,th}
+ \lambda_{u_{e,\perp}}c_s
 \frac{1}{L_{u_{e,\perp}}^2}
 0.73\frac{n_eT_e}{\nu_{ei}}
 \frac{1}{m_e n_e \om_{ce}}
@@ -452,45 +569,16 @@ example electron
 \note{Quasi-neutrality}
 =&
  \lambda_{u_{e,\perp}}
-\frac{u_{e,th}^2}{L_{u_{e,\perp}}^2}
+\frac{c_s^2}{L_{u_{e,\perp}}^2}
 0.73\frac{1}{\nu_{ei}}
-\frac{u_{e,th}}{m_e\om_{ce}}
-\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
-\\
-%
-%
-=&
- \lambda_{u_{e,\perp}}
- \L(\om^c_{u_{e,\perp}}\R)^2
-0.73\frac{1}{\nu_{ei} }
-\rho_e
-\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
-\\
-%
-%
-=&
- \lambda_{u_{e,\perp}}
- \L(\om^c\R)^2\lambda_{\om^c_{u_{e,\perp}}}^2
-0.73\frac{1}{\nu_{ei} }
-\rho_e
-\wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
-\\
-%
-%
-=&
-0.73
- \lambda_{u_{e,\perp}}
-\lambda_{\om^c_{u_{e,\perp}}}^2
- \om^c
-\frac{\om^c}{\nu_{ei} }
-\rho_e
+\frac{c_s}{m_e\om_{ce}}
 \wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 \end{align*}
 %
 for ions
 %
 \begin{align*}
- \lambda_{u_{i,\perp}}u_{i,th}
+ \lambda_{u_{i,\perp}}c_s
 \frac{1}{L_{u_{i,\perp}}^2}
 0.96\sqrt{2}\frac{n_iT_i}{\nu_{ii}}
 \frac{1}{m_i n_i \om_{ci}}
@@ -498,38 +586,9 @@ for ions
 \note{Quasi-neutrality}
 =&
  \lambda_{u_{i,\perp}}
-\frac{u_{i,th}^2}{L_{u_{i,\perp}}^2}
+\frac{c_s^2}{L_{u_{i,\perp}}^2}
 0.96\sqrt{2}\frac{1}{\nu_{ii}}
-\frac{u_{i,th}}{m_i\om_{ci}}
-\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
-\\
-%
-%
-=&
- \lambda_{u_{i,\perp}}
- \L(\om^c_{u_{i,\perp}}\R)^2
-0.96\sqrt{2}\frac{1}{\nu_{ii} }
-\rho_i
-\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
-\\
-%
-%
-=&
- \lambda_{u_{i,\perp}}
- \L(\om^c\R)^2\lambda_{\om^c_{u_{i,\perp}}}^2
-0.96\sqrt{2}\frac{1}{\nu_{ii} }
-\rho_i
-\wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
-\\
-%
-%
-=&
-0.96\sqrt{2}
- \lambda_{u_{i,\perp}}
-\lambda_{\om^c_{u_{i,\perp}}}^2
- \om^c
-\frac{\om^c}{\nu_{ii} }
-\rho_i
+\frac{c_s}{m_i\om_{ci}}
 \wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
 \end{align*}
 %
@@ -543,12 +602,12 @@ Note that all tildes are of $\mathcal{O}(1)$
 %
 \begin{align*}
  \lambda_{u_{e,\perp}}
- \rho_e
+ \rho_s
  \om^c
  \wt{\d}_{\wt{t},e} \wt{\ve{u}}_{e,\perp}
  =&
  -
- \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}
+ \frac{\rho_s}{L_{\perp, p_e}}v^c_{th,e}
  \wt{\grad}_\perp \wt{p_e}
  +
  \frac{E_\perp^c}{B^c}
@@ -564,23 +623,23 @@ Note that all tildes are of $\mathcal{O}(1)$
 \lambda_{\om^c_{u_{e,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ei} }
-\rho_e
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 -
 \nu_{ei}
-\rho_e
+\rho_s
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
  \\&
  +
-\nu_{e n}\lambda_{u_{e,\perp}}\rho_e\wt{\ve{u}}_{e,\perp}
+\nu_{e n}\lambda_{u_{e,\perp}}\rho_s\wt{\ve{u}}_{e,\perp}
 -
-\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_e\wt{\ve{u}}_{e,\perp} \wt{\nu}_{S,e}
+\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_s\wt{\ve{u}}_{e,\perp} \wt{\nu}_{S,e}
 \end{align*}
 %
 Again, we assume (cross b need to be included?)
 %
 \begin{align*}
- \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}
+ \frac{\rho_s}{L_{\perp, p_e}}v^c_{th,e}
  \sim
  \frac{E_\perp^c}{B^c}
  \sim
@@ -590,13 +649,13 @@ Again, we assume (cross b need to be included?)
 And then (group by $\lambda_{u_{e,\perp}}$)
 NOTE, here just have $\lambda_{u_{e,\perp}}$ on resistivity
 Then we can set
-$\lambda_{u_{e,\perp}} \ll \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}$
+$\lambda_{u_{e,\perp}} \ll \frac{\rho_s}{L_{\perp, p_e}}v^c_{th,e}$
 
 ...actually looks like we need to state it for the other terms as well
 %
 \begin{align*}
  \lambda_{u_{e,\perp}}
- \rho_e
+ \rho_s
  \om^c
 %
  \sim
@@ -609,24 +668,24 @@ $\lambda_{u_{e,\perp}} \ll \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}$
 \lambda_{\om^c_{u_{e,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ei} }
-\rho_e
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 %
  \sim
 \nu_{ei}
-\rho_e
+\rho_s
 \lambda_{u_{e,\perp}}
 %
  \sim
-\nu_{e n}\lambda_{u_{e,\perp}}\rho_e
+\nu_{e n}\lambda_{u_{e,\perp}}\rho_s
 %
  \sim
-\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_e
+\nu^c_{S,e}\lambda_{u_{e,\perp}}\rho_s
 \\
 %
 %
 %
- \rho_e
+ \rho_s
  \om^c
 %
  \sim
@@ -637,25 +696,25 @@ $\lambda_{u_{e,\perp}} \ll \frac{\rho_e}{L_{\perp, p_e}}v^c_{th,e}$
 \lambda_{\om^c_{u_{e,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ei} }
-\rho_e
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{e,\perp}
 %
  \sim
 \nu_{ei}
-\rho_e
+\rho_s
 %
  \sim
 \nu_{e n}
-\rho_e
+\rho_s
 %
  \sim
 \nu^c_{S,e}
-\rho_e
+\rho_s
 \\
 \end{align*}
 %
 FIXME: What happens with cross b term? Here just drop it to investigate
-so that take away $\rho_e$
+so that take away $\rho_s$
 %
 \begin{align*}
  \om^c
@@ -688,12 +747,12 @@ Note that all tildes are of $\mathcal{O}(1)$
 %
 \begin{align*}
  \lambda_{u_{i,\perp}}
- \rho_i
+ \rho_s
  \om^c
  \wt{\d}_{\wt{t},i} \wt{\ve{u}}_{i,\perp}
  =&
  -
- \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}
+ \frac{\rho_s}{L_{\perp, p_i}}v^c_{th,i}
  \wt{\grad}_\perp \wt{p_i}
  +
  \frac{E_\perp^c}{B^c}
@@ -709,7 +768,7 @@ Note that all tildes are of $\mathcal{O}(1)$
 \lambda_{\om^c_{u_{i,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ii} }
-\rho_i
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
 -
 \frac{1}{\mu}
@@ -719,9 +778,9 @@ Note that all tildes are of $\mathcal{O}(1)$
 \L( \lambda_{u_{e,\perp}}\wt{\ve{u}}_{e,\perp}-\lambda_{u_{i,\perp}}\wt{\ve{u}}_{i,\perp}\R)
  \\&
  +
-\nu_{i n}\lambda_{u_{i,\perp}}\rho_i\wt{\ve{u}}_{i,\perp}
+\nu_{i n}\lambda_{u_{i,\perp}}\rho_s\wt{\ve{u}}_{i,\perp}
 -
-\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_i\wt{\ve{u}}_{i,\perp} \wt{\nu}_{S,i}
+\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_s\wt{\ve{u}}_{i,\perp} \wt{\nu}_{S,i}
 \end{align*}
 %
 The below is problematic as we above have put a restriction on E...
@@ -730,11 +789,11 @@ aren't the two the same if we assume that the gradients have same len scale
 also need to assume temps are almost the same...
 a bit problematic as Ti=0.
 Nevertheless
-$\rho_iv_{th,i}^2=\frac{T_i}{qB}$
+$\rho_sv_{th,i}^2=\frac{T_i}{qB}$
 So could assume the temperatures are the same
 %
 \begin{align*}
- \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}
+ \frac{\rho_s}{L_{\perp, p_i}}v^c_{th,i}
  \sim
  \frac{E_\perp^c}{B^c}
  \sim
@@ -745,15 +804,15 @@ And then (group by $\lambda_{u_{i,\perp}}$)
 NOTE, here just have $\lambda_{u_{i,\perp}}$ on resistivity
 Then we can set
 
-$\lambda_{u_{i,\perp}} \ll \frac{\rho_i}{L_{\perp, p_i}}v^c_{th,i}$
+$\lambda_{u_{i,\perp}} \ll \frac{\rho_s}{L_{\perp, p_i}}v^c_{th,i}$
 
 ...actually looks like we need to state it for the other terms as well
 
-NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
+NOTE: $\frac{\rho_s}{\rho_s}=\sqrt{\frac{T_e}{T_i}}$
 %
 \begin{align*}
  \lambda_{u_{i,\perp}}
- \rho_i
+ \rho_s
  \om^c
 %
  \sim
@@ -766,7 +825,7 @@ NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
 \lambda_{\om^c_{u_{i,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ii} }
-\rho_i
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
 %
  \sim
@@ -777,15 +836,15 @@ NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
 \lambda_{u_{e,\perp}}
 %
  \sim
-\nu_{i n}\lambda_{u_{i,\perp}}\rho_i
+\nu_{i n}\lambda_{u_{i,\perp}}\rho_s
 %
  \sim
-\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_i
+\nu^c_{S,i}\lambda_{u_{i,\perp}}\rho_s
 \\
 %
 %
 %
- \rho_i
+ \rho_s
  \om^c
 %
  \sim
@@ -796,7 +855,7 @@ NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
 \lambda_{\om^c_{u_{i,\perp}}}^2
  \om^c
 \frac{\om^c}{\nu_{ii} }
-\rho_i
+\rho_s
 \wt{\grad}_\perp^2\wt{\ve{u}}_{i,\perp}
 %
  \sim
@@ -808,16 +867,16 @@ NOTE: $\frac{\rho_s}{\rho_i}=\sqrt{\frac{T_e}{T_i}}$
 %
  \sim
 \nu_{i n}
-\rho_i
+\rho_s
 %
  \sim
 \nu^c_{S,i}
-\rho_i
+\rho_s
 \\
 \end{align*}
 %
 FIXME: What happens with cross b term? Here just drop it to investigate
-so that take away $\rho_i$
+so that take away $\rho_s$
 %
 \begin{align*}
  \om^c
