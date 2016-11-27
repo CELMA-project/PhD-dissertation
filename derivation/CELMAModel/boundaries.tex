@@ -20,7 +20,19 @@ We could in principle place a SE at the other parallel end as well, which would 
 Instead we have chosen to model the other parallel end as a stagnation point, i. e. a point where the velocities parallel are zero.
 Such a point exists if the plasma is streaming in two opposite directions, and is encountered on for example open field lines  divertor plasmas.
 Radially we have the outer radial boundary condition, and an artificial inner condition which is treated in \cref{sec:innerCenter}.
+
+The boundary conditions will be set on $n$, $u_{i,\|}$, $u_{e,\|}$ and $\Om$.
+From these the boundary conditions for $j_\|$, $nu_{i,\|}$ and $\Om^D$ can be calculated in a straight forward manner.
+A summary of the boundary conditions used in this thesis is found in \cref{fig:BCs}.
 %
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{fig/BCs}
+    \caption{\textit{
+Boundary conditions used in this thesis.
+    }}
+    \label{fig:BCs}
+\end{figure}
 
 \subsection{Boundary conditions at the stagnation point}
 % FIXME: Add references
@@ -97,8 +109,6 @@ Normalization gives
 % NOTE: Idea
 %   1. Could try robin BC at non-SE site
 %
-% FIXME: Find out what this should be
-%
 Although the "standard" calculation for the sheath gives us conditions for setting the velocities in steady state, non such conditions exists for the density.
 Instead, one would have to rely on other arguments.
 In \cite{Loizu2012a}, Loizu et al.  presents a boundary condition for the density in a field line geometry, where the field lines are allowed to be tilted with respect to the end-plate.
@@ -170,8 +180,8 @@ and use this is an \emph{artificial boundary condition} \cite{Leveque2007book}.
 
 A final possibility is to let the derived equation for the evolution of the density be valid at the boundary.
 
-In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} &= 0$ boundary condition has been choosen.
-% FIXME: Remove the comment below if Cauchy is not considere
+In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} = 0$ boundary condition has been choosen.
+% FIXME: Remove the comment below if Cauchy is not considered
 % In the scope of this thesis the differences between $\L. \partial_\| n \R|_{L_z} = 0$ and the Cauchy BC has been investigated.
 
 \subsubsection{Potential BC at the SE}
@@ -182,10 +192,9 @@ In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} &= 0$ boundary cond
 %      potential
 %   2. Neumann 0
 %      Bad idea as this may make an artificial constraint on the system
-% FIXME: Maybe flawed?
 The potential in our equations are not being evolved in time directly, but is calculated by inverting either $\Om$ or $\Om^D$ for each drift plane (that is for each perpendicular plane).
 This inversion takes into account the outer radial boundary condition in $\phi$.
-This outer radial boundary condition is set from the material properties of the wall.
+This outer radial boundary condition can be set from the material properties of the wall.
 On the other hand, we do not have any physical material constraint at the SE.
 The only thing we impose it that $\phi$ on the plate very close to the SE is set to an arbitrary constant.
  It is not clear how this is reflected at the SE in a non-steady state plasma.
@@ -202,10 +211,10 @@ The latter has been chosen in the current implementation.
 % IDEA:
 %   1. Should be 0, as the wall is slowing down? Maybe not as not necessarily
 %      have a non-slip BC on the wall
-%
-% FIXME: Find out what this should be
-Neumann zero
-
+As with $\phi$, the sheath boundary condition sets no restrain on the vorticity at the SE.
+However, as $\Om$ is a variable being solved in time, a boundary condition is needed in order to fully specify the system.
+In the current implementation $\L. \partial_\| \Om \R|_{L_z} = 0$ has been choosen.
+Note that this may not be a particularily good boundary condition as it physically means that there can be no parallel shear in the perpendicular spinning at the SE.
 
 \subsection{Outer radial boundary conditions}
 \label{sec:outerBC}
@@ -217,38 +226,52 @@ We will therefore in this thesis focus on a much simplified approximation of the
 In fact we will let the radial boundary condition be approximately where the neutrals are dominating, and thus dampening out the plasma dynamics.
 
 \subsubsection{Density BC at outer radius}
-The density will go toward $0$ as we are approaching the wall, thus we set
+As the density will go toward $0$ as we are approaching the wall, we could set
 %
 \begin{align*}
     n \bigg|_{L_\rho} = C,
 \end{align*}
 %
 where $C$ is a small constant.
-Setting this too small, however gives numerical problems due to loss of precision.
-In normalized units, $C = \frac{1}{20}$ of the maximum value in the equilibrium.
+Setting this too small, however can give rise to numerical problems due to loss of precision.
 
-\subsubsection{Velocity BCs at outer radius}
-% FIXME:
-% Not really physically explained
-% If we let u_|_ =\= 0 we have no physical explanation why this should be 0
-%FIXME: Not really physically explained
-
-There should be no parallel velocity towards the edge at the outer boundary, thus
+In this thesis, another approach has been used.
+As the density profile is approximately Gaussian, the profile will be relative flat towards the radial edge.
+We therefore set
 %
 \begin{align*}
-    u_{e,\|} \bigg|_{L_\rho} = u_{i,\|} \bigg|_{L_\rho} = 0
+    \partial_\| n \bigg|_{L_\rho} = 0
 \end{align*}
+%
+Note however that this can be too restrictive if coherent structures such as "blobs"
+% FIXME: Add blob reference, krashenenikov and grulke naulin
+are reaching the domian boundary.
+
+\subsubsection{Velocity BCs at outer radius}
+% Not really physically explained
+% If we let u_|_ =\= 0 we have no physical explanation why this should be 0
+%
+The parallel velocities are not contrained by any forces at the radial edge, and can thus take any value.
+In this thesis we set
+%
+\begin{align*}
+    \partial_\| u_{e,\|} \bigg|_{L_\rho} = \partial_\| u_{i,\|} \bigg|_{L_\rho} = 0
+\end{align*}
+%
+although there in principle are no physical reason for why this should be.
 
 \subsubsection{Potential BC at outer radius}
 %
-As there are no real sheath where the magnetic field lines are perpendicular to the material, thus the potential at outer wall should be the at the floating potential in an ideal conductor which we have assumed here.
-Of course, there will be a small deviation from this as ions are lost a bit more rapidly radially due a larger Larmor radius of the ions as compared to the electrons.
- This is neglected here as finite Larmor radius (FLR) effects are not taken into account here.
+There are no sheath where the magnetic field lines are perpendicular to the material.
+Thus, if we assume that the chassis is an ideal conductor, the potential there should be at the floating potential if we exlude finite Larmor radius (FLR) effects.
 For that reason we have that
 %
 \begin{align*}
     \phi \bigg|_{L_\rho} = 0
 \end{align*}
+%
+As the ion Larmor radius is larger than the electron Larmor radius, more ions than electron would be lost radially initially if FLR effect were included.
+This would result in a small potential difference which would increase the poloidal $\ve{E}\times\ve{B}$ drift.
 
 \subsubsection{Vorticity velocity BC at outer radius}
 %
@@ -258,17 +281,22 @@ For that reason we have that
 %       eventual solid body rotation in the center
 % NOTE: The boundary here is set from either the non-slip or the free-slip
 %       condition of v_theta
-% FIXME: Write me, see blackboard photo: BC-rho-on-vort
+% FIXME: There is a see blackboard photo: BC-rho-on-vort, which could say what this should be
 %
-% FIXME
+As stated in the introduction of \cref{sec:BCs}, there exsists no analouge to the no-slip condition in plasmas.
+In other words, there is nothing which constrains the poloidal flow at the material surface.
+As a consequence, there will be nothing constraining the poloidal flow at the position where the plasma terminates (where neutrals are starting to dominate) radially.
+One could assume that
 %
 \begin{align*}
-    \Om \bigg|_{L_\rho} = 0
+    \Om \bigg|_{L_\rho} = 0,
 \end{align*}
+%
+which is set in this thesis, although no physical explanation for this is given.
 
 \subsection{Inner radial boundary conditions}
 \label{sec:BCInnerRho}
 %
 Physically, there are no boundary condition around the central axis of a cylinder.
-However, we need some artificial boundary conditions around this area as our domains covers $\rho \in ]0, L_\rho[$ (where $L_\rho$ is the radius of the system) and we are using a FD scheme to calculate radial derivatives.
+However, we need some artificial boundary conditions around this area as our domains covers $\rho \in \; ]0, L_\rho[$ (where $L_\rho$ is the radius of the system) and we are using a finite difference (FD) scheme to calculate radial derivatives.
 As this is not related to the physics of the problem, the discussion is given in \cref{sec:innerCenter}.
