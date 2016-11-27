@@ -75,7 +75,7 @@ From linear PDE theory we have that the global error should converge to the LTE 
 %
 If convergence is observed, the implementation is verified.
 
-\section{MMS}
+\section{Method of Manufactured Solution}
 \label{sec:MMS}
 For most PDEs, the true solution $\ve{f}_{\text{true}}$ is not known in advance.
 Sometimes a solution can be found in some special limits.
@@ -110,7 +110,8 @@ We can therefore solve numerically $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$ for 
 One can now test if the global error show the expected order of convergence.
 Note that $\ve{f}_M$ and the coefficients in the various terms in the PDEs does not need to be physical, but that in order to test all terms in this set of equations, the parameters of the simulation should be chosen so that the magnitude of each term is of a similar order of magnitude.
 
-\section{MES}
+\section{Method of Exact Solution}
+\label{sec:MES}
 %
 There are, however, implementations in this thesis which is not covered by the BOUT++ framework, and these should be verified as well.
 As these implementations are single operations where an exact analytic solution can be found, the approach to verify these has been through the method of exact solutions (MES), i.e.
@@ -204,31 +205,8 @@ where
 
 \subsection{Single operators}
 %
-Although the single operators available from BOUT++ is verified in \cite{Dudson2016}, the axis of a cylinder must be treated with care as there is a singularity there ($J=0$ at $\rho=0$).
-To overcome this problem the solution described in \cite{Naulin2008} has been used, and is illustrated in \cref{fig:innerRho}.
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.3\textwidth]{fig/innerGhost}
-    \caption{\textit{
-        The green full circles represents the inner grid points at
-        $\theta=\theta_i$. The green dashed circles at $\theta=\theta_i + \pi$
-        are the ghost points (in the $\rho$-direction) belonging to the
-        $\theta=\theta_i$ inner points. Equally the inner grid points at
-        $\theta=\theta_i$ serves as ghost points (in the $\rho$-direction) for
-        the inner points of $\theta=\theta_i + \pi$.
-    }}
-    \label{fig:innerRho}
-\end{figure}
-%
-In this solution, the innermost ghost points%
-\footnote{A grid point not belonging to the physical domain, but makes it possible to use a centered scheme when evaluating at the grid point closest to the physical boundary of the domain.}
-in $\rho$ (closest to the singularity) with a $\theta$ value lower than (and excluding) $\pi$ will be set to the value of the innermost internal point%
-\footnote{A grid point which is not a ghost points, i.e. it belongs to the physical domain.}%
-%
-which lies $\theta + \pi$ away.
-The next ghost point will be set to the value of the second innermost internal point which lies $\theta + \pi$ away, and so on.
-In this thesis, only one ghost point is used.
+%FIXME: Reformulate and add as shown in...
+Although the single operators available from BOUT++ is verified in \cite{Dudson2016}, the axis of a cylinder must be treated with care as there is a singularity there ($J=0$ at $\rho=0$)
 
 The convergence test for the single operators in $\rho$ direction can be found in \cref{tb:singleRho}.
 %

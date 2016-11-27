@@ -41,15 +41,15 @@ The smallest resolved wavelength on $\rho=L_\rho$, where $L_\rho$ is the outermo
 This gives the wavelength $\lambda_{\text{Nyquist}} = \frac{C_{L_\rho}}{n_\theta/2}$, where $n_\theta$ is the number of points in the $\theta$ direction.
 However, the smallest wavelength which does not give aliasing is given by the $2/3$-rule, so that
 %
-\begin{align}
+\begin{align*}
     \lambda_\min = \frac{C_{L_\rho}}{\frac{2}{3}\frac{n_\theta}{2}} = \frac{3C_{L_\rho}}{n_\theta}.
-\end{align}
+\end{align*}
 %
 By rearranging \cref{eq:wavelen}, we find that the max allowed modenumber for the circumference $C$ at radius $\rho$ is
 %
-\begin{align}
+\begin{align*}
     m_\max = \L\lfloor \frac{C}{\lambda_\min}\R\rfloor,
-\end{align}
+\end{align*}
 %
 where $\lfloor \cdot \rfloor$ denotes the floor function.
 Note that we take the floor as we are looking for the maximum allowed integer.
