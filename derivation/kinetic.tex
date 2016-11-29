@@ -609,7 +609,7 @@ If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert
     \label{kin:mom}
 \end{align*}
 
-\subsection{Set of equations}
+\section{Set of equations}
 %
 By neglecting collision with neutral species, we have found that the two first moments of the Fokker-Planck equations (\cref{kin:cont,kin:mom}) can be written like
 %
@@ -639,7 +639,12 @@ The energy equation will depend on a quantity belonging to the next moment, name
 The heat flux equation would again depend on a quantity belonging to the next order, and so on.
 
 In other words, we would need a way to properly "close" the system.
-One often used method to close the set of equations, is the one suggested by Braginskii in his paper from $1965$ \cite{Braginskii1965}, which builds on the kinetic closure of gases derived by Chapman and Enskog \cite{Chapman1970, Brush1972}.
+One often used method to close the set of equations, is the one suggested by Braginskii in his paper from $1965$ \cite{Braginskii1965}, which builds on the kinetic closure of gases derived by Chapman and Enskog \cite{Chapman1970, Brush1972}. A breif overview of this closure method is given in \cite{Fitzpatrick2014book}.
+The closure procedure uses that the mean free path is much larger than the ion Larmor radius (i.e.  the plasma is magnetized), and uses this as an expansion parameter.
+This gives an analytical expressions for $\ve{R}_{\b\to\a}$ (see \cref{app:collisions}) and the components of $\te{\pi}_\a$ (see \cref{app:piTensor}), and the set of equations (including the energy equations) are known as the Braginskii equations.
+
+% FIXME: Is this correct?
+% FIXME: Requires characteristic speeds to be much larger then cs to communicate the temperature
 Although the temperature dynamics have been shown to play a major role in turbulence dynamics (see for example
 % NOTE: Consider to add better references
 \cite{Olsen2016}
