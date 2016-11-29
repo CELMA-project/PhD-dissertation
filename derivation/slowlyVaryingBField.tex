@@ -284,7 +284,7 @@ where
     \ve{R}_{u}
     =
     -\frac{m_en_e}{\tau_e}\L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
-    \L[\ve{u}_{i,\perp}-\ve{u}_{e,\perp}\R]\R)
+    \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R)
 \end{align*}
 %
 and
@@ -301,7 +301,7 @@ where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$
 \begin{align}
     \ve{R}_{i \to e}
     = \ve{R}_{u}
-   &= -0.51m_en_e\nu_{ei}\L(\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
+   &= -m_en_e\nu_{ei}\L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
       \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R)
    \label{eq:res_term_full}
 \end{align}
@@ -312,8 +312,8 @@ This yields
 \begin{align*}
     \ve{R}_{i \to e}
     =&
-    -0.51m_en_e\nu_{ei}
-   \L(\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
+    -m_en_e\nu_{ei}
+   \L( 0.51 \L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
       \L[
          \L(
            \ve{u}_{e,d} + \ve{u}_E
@@ -328,8 +328,8 @@ This yields
 %
 %
    =&
-   -0.51m_en_e\nu_{ei}
-   \L(\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
+   -m_en_e\nu_{ei}
+   \L( 0.51 \L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
       \L[
          \L(
             -
@@ -350,8 +350,8 @@ This yields
 %
 %
    =&
-   -0.51m_en_e\nu_{ei}
-   \L(\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
+   -m_en_e\nu_{ei}
+   \L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
       \L[
             -
             \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB}
@@ -366,8 +366,8 @@ Inserting this into \cref{eq:div_nur} yields
   =&
   -\frac{1}{e}
  \div\L(
- -\frac{0.51m_en_e\nu_{ei}}{B}
-   \L[\L(\ve{u}_{e,\|}-\ve{u}_{i,\|}\R) +
+ -\frac{m_en_e\nu_{ei}}{B}
+   \L[0.51\L(\ve{u}_{e,\|}-\ve{u}_{i,\|}\R) +
       \L( - \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB} \R)
    \R]
    \times\ve{b}
@@ -378,7 +378,7 @@ Inserting this into \cref{eq:div_nur} yields
   =&
   -\frac{1}{e}
  \div\L(
- \frac{0.51m_en_e\nu_{ei}}{B}
+ \frac{m_en_e\nu_{ei}}{B}
    \ve{b}\times
  \L[- \frac{\grad_\perp \L(p_e + p_i\R) \times\ve{b} }{enB} \R]
  \R)
@@ -387,7 +387,7 @@ Inserting this into \cref{eq:div_nur} yields
   =&
   -\frac{1}{e}
  \div\L(
-   -\frac{0.51m_en_e\nu_{ei}}{B}
+   -\frac{m_en_e\nu_{ei}}{B}
     \ve{b}\times
    \L[ \ve{b} \times \frac{\grad_\perp \L(p_e + p_i\R)}{enB}
    \R]
@@ -396,7 +396,7 @@ Inserting this into \cref{eq:div_nur} yields
  \\
  %
   =&
-  -\frac{0.51m_e\nu_{ei}}{e^2}
+  -\frac{m_e\nu_{ei}}{e^2}
  \div\L(
  \frac{n_e}{B}
  \frac{\grad_\perp \L(p_e + p_i\R)}{nB}
@@ -405,17 +405,17 @@ Inserting this into \cref{eq:div_nur} yields
  \\
  %
   =&
-  -\frac{0.51m_e\nu_{ei}}{e^2}
+  -\frac{m_e\nu_{ei}}{e^2}
  \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
  \\
  %
   =&
-  -\frac{m_i}{m_i}\frac{0.51m_e\nu_{ei}}{e^2}
+  -\frac{m_i}{m_i}\frac{m_e\nu_{ei}}{e^2}
  \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
  \\
  %
   =&
-  -\frac{1}{\mu}\frac{0.51m_i\nu_{ei}}{e^2}
+  -\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
  \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
    % \numberthis
    % \label{eq:div_nur_calc}
@@ -574,7 +574,7 @@ If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we f
     &=
     - n\mathcal{C}(\phi)
     + \frac{1}{e}\mathcal{C}(\phi)
-    +\frac{1}{\mu}\frac{0.51m_i\nu_{ei}}{e^2}
+    +\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
     \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
     - \div\L(n \ve{u}_{e,\|}\R)
     + S_{e,n}

@@ -25,7 +25,7 @@ As mentioned in \cref{chap:implementation}, the actual viscosities has been repl
 \partial_t \ln(n)
 =&
 -\frac{1}{J}\L\{\phi,\ln(n)\R\}
- +\frac{0.51\nu_{ei}}{\mu}
+ +\frac{\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
    + \L[\grad_\perp \ln(n)\R]^2
@@ -47,7 +47,7 @@ As mentioned in \cref{chap:implementation}, the actual viscosities has been repl
  - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
  \numberthis
