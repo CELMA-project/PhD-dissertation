@@ -50,7 +50,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  %
  =&
   m_\a \ve{u}_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    - \div\L[n \ve{u}_{e,\|} \R] + S_n
    \R)
    \\&
@@ -66,7 +66,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  %
  =&
     m_\a\ve{u}_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    - \div\L[n \ve{u}_{e,\|} \R]
    \R)
    \\&
@@ -83,7 +83,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  \note{Only $\ve{E}\times\ve{B}$ advection \cite{Smolyakov1998}}
    \\&
  + m_\a\ve{b}u_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    - \div\L[n \ve{b}u_{e,\|} \R]
    \R)
    \\&
@@ -103,7 +103,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  -m_\a u_{\a,\|}\partial_\|\L( n u_{\a,\|}\R)
    \\&
  + m_\a u_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    - \partial_\|\L[n u_{e,\|} \R]
    \R)
    \\&
@@ -119,7 +119,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
    \\&
  + m_\a u_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    \R)
  \note{$+$ for $\a=i$\\ $-$ for $\a=e$}
    \\&
@@ -137,7 +137,7 @@ Starting from \cref{eq:material_dot_bb}, we have that
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
    \\&
  + m_\a u_{\a,\|}\L(
-   \frac{0.51\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
    \R)
    \\&
    - \partial_\| p_\a
@@ -152,9 +152,9 @@ Starting from \cref{eq:material_dot_bb}, we have that
  -\frac{m_\a}{JB}\L\{\phi, n u_{\a,\|}\R\}
  -m_\a u_{\a,\|}\partial_\|\L( n \L[u_{\a,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
    m_\a \rho_s^2\frac{u_{\a,\|}}{\mu} \grad_\perp^2 n
-   \mp m_e \frac{j_\|}{e}
+   \mp 0.51m_e \frac{j_\|}{e}
    \R)
    \\&
    - \partial_\| p_\a
@@ -188,9 +188,9 @@ $p_i=0$ as $T_i=0$)
  -\frac{m_i}{JB}\L\{\phi, n u_{i,\|}\R\}
  -m_i u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
    m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
-   - m_e \frac{j_\|}{e}
+   - 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
    + n e E_\|
@@ -208,9 +208,9 @@ and that the momentum density for electrons reads
  -\frac{m_e}{JB}\L\{\phi, n u_{e,\|}\R\}
  -2m_e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ +  \nu_{ei}\L(
    m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   + m_e \frac{j_\|}{e}
+   + 0.51m_e \frac{j_\|}{e}
    \R)
    \\&
    - \partial_\| p_e
@@ -237,14 +237,14 @@ We obtain
  -m_i u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  -2m_e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
    m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
-   - m_e \frac{j_\|}{e}
+   - 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
    m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   + m_e \frac{j_\|}{e}
+   + 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
    - \partial_\| p_e
@@ -264,11 +264,11 @@ We obtain
  -m_i u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  -2m_e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
    m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
    +m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   - m_e \frac{j_\|}{e}
-   + m_e \frac{j_\|}{e}
+   - 0.51 m_e \frac{j_\|}{e}
+   + 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
    - \partial_\| p_e
@@ -283,7 +283,7 @@ We obtain
  -\frac{m_i}{JB}\L\{\phi, n u_{i,\|}\R\}
  -m_i u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 m_i \rho_s^2\nu_{ei}
+ + m_i \rho_s^2\nu_{ei}
    \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
    - \partial_\| p_e
  - m_i n \nu_{i n}u_{i,\|}
@@ -298,7 +298,7 @@ We obtain
  -\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - \frac{1}{m_i}T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
    \\&
@@ -323,9 +323,9 @@ This yields
  -\frac{e}{JB}\L\{\phi, n u_{i,\|}\R\}
  -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \nu_{ei}\frac{e}{m_i}\L(
+ + \nu_{ei}\frac{e}{m_i}\L(
    m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
-   - m_e \frac{j_\|}{e}
+   -0.51  m_e \frac{j_\|}{e}
    \R)
    \\&
    +\frac{e^2}{m_i} n  E_\|
@@ -338,9 +338,9 @@ This yields
   \frac{e}{JB}\L\{\phi, n u_{e,\|}\R\}
  + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- - 0.51 \nu_{ei}\frac{e}{m_e}\L(
+ - \nu_{ei}\frac{e}{m_e}\L(
    m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   + m_e \frac{j_\|}{e}
+   + 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
    +\frac{e}{m_e} \partial_\| p_e
@@ -358,14 +358,14 @@ This yields
  -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\frac{e}{m_i}\L(
+ + \nu_{ei}\frac{e}{m_i}\L(
    m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
-   - m_e \frac{j_\|}{e}
+   - 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
- - 0.51 \nu_{ei}\frac{e}{m_e}\L(
+ - \nu_{ei}\frac{e}{m_e}\L(
    m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   + m_e \frac{j_\|}{e}
+   + 0.51 m_e \frac{j_\|}{e}
    \R)
    \\&
    +\frac{e}{m_e} \partial_\| p_e
@@ -385,11 +385,11 @@ This yields
  -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
      e \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n
    - e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n
-   - \frac{e}{\mu} \frac{j_\|}{e}
-   - e \frac{j_\|}{e}
+   - 0.51 \frac{e}{\mu} \frac{j_\|}{e}
+   - 0.51 e \frac{j_\|}{e}
    \R)
    \\&
    +\frac{e}{m_e} \partial_\| p_e
@@ -408,9 +408,9 @@ This yields
  -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
    \\&
- + 0.51 \nu_{ei}\L(
+ + \nu_{ei}\L(
      \rho_s^2\frac{j_{\|}}{n\mu} \grad_\perp^2 n
-   - j_\|
+   - 0.51 j_\|
    \R)
    \\&
    +\frac{e}{m_e} \partial_\| p_e
@@ -424,11 +424,11 @@ This yields
    \\&
  -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
  + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \note{Assume\\ \hspace*{-0.5cm}$\L|\rho_s^2\frac{\grad_\perp^2 n}{n\mu} \R| \ll |1|$}
+   \note{Assume\\ \hspace*{-0.5cm}$\L|\rho_s^2\frac{\grad_\perp^2 n}{n\mu} \R| \ll |0.51|$}
    \\&
- + 0.51 \nu_{ei}j_\|\L(
+ + \nu_{ei}j_\|\L(
      \rho_s^2\frac{1}{n\mu} \grad_\perp^2 n
-   - 1
+   - 0.51
    \R)
    \\&
    +\frac{e}{m_e} \partial_\| p_e

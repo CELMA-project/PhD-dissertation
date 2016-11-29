@@ -1,0 +1,55 @@
+\section{Spectral filtering}
+%
+In order to ensure that no aliasing will occur and create a numerical instability like the one mentioned in \cite{Phillips1959}, we must use a spectral filter in the periodic direction.
+Although sufficiently high viscosities or diffusions can prevent aliasing (such that all the higher modes are damped out), they typically also damp on modes which we would like to include in our simulation.
+One way to get around this is to use spectral filters.
+
+\subsection{Orszag's 2/3 rule}
+As mentioned in \cite{Orszag1971}, only the $2/3$ of the topmost modes leads to aliasing.
+To see this, recall that only mode numbers equal to or less than $N/2$ can be represented exactly on a grid discretized with $N$ points \cite{Bracewell2000book}.
+Next, consider two mode numbers $m_1$ and $m_2$ which adds up to a mode $m_3$.
+If $m_3=m_1+m_2>N/2$, the mode will be intepredet as $m_1+m_2 - N$ (i.e. it will be aliased to the negative frequencies).
+If we call $M$ the highest mode we can have which would not give aliasing, we must then require that
+%
+\begin{align*}
+    m_1+m_2 - N &< -M\\
+    M + M - N &< -M\\
+    2M - N &< -M\\
+    3M &<  N\\
+    M &< \frac{N}{3}
+\end{align*}
+%
+In order words, modes with mode number less than $N/3$ does not contribute to aliasing.
+Hence the name $2/3$-rule as $M$ is $2/3$ of the Nyquist frequency $M < (2/3)(N/2)$.
+
+Thus aliasing in this case is prevented if we set all modes with a mode number equal or above $N/3$ to zero.
+As we see in the next section, this does not completely eliminate the aliasing in a cylinder, due to radial coupling.
+
+\subsection{Radial coupling}
+%
+As terms like $\{\phi, f\}$ effectively advects modes of $f$ radially, we must ask ourselves what the smallest allowed wave length in the periodic dircetion is.
+Since the circumference is given by $C=2\pi\rho$, and since the number of points in the periodic $\theta$-direction is constant, we see that resolution is limited by the shortest allowed wave length at the outermost radius $L_\rho$.
+Let us now consider sinusoids on the form $\sin(kx)$, living on the circumference $C$ at radius $\rho$.
+The wavenumber is then given by $k=\frac{2\pi m}{C}$, and thereby the wavelength by
+%
+\begin{align}
+    \lambda = \frac{C}{m}.
+    \label{eq:wavelen}
+\end{align}
+%
+The smallest resolved wavelength on $\rho=L_\rho$, where $L_\rho$ is the outermost radius is given by the Nyquist frequency.
+This gives the wavelength $\lambda_{\text{Nyquist}} = \frac{C_{L_\rho}}{n_\theta/2}$, where $n_\theta$ is the number of points in the $\theta$ direction.
+However, the smallest wavelength which does not give aliasing is given by the $2/3$-rule, so that
+%
+\begin{align*}
+    \lambda_\min = \frac{C_{L_\rho}}{\frac{2}{3}\frac{n_\theta}{2}} = \frac{3C_{L_\rho}}{n_\theta}.
+\end{align*}
+%
+By rearranging \cref{eq:wavelen}, we find that the max allowed modenumber for the circumference $C$ at radius $\rho$ is
+%
+\begin{align*}
+    m_\max = \L\lfloor \frac{C}{\lambda_\min}\R\rfloor,
+\end{align*}
+%
+where $\lfloor \cdot \rfloor$ denotes the floor function.
+Note that we take the floor as we are looking for the maximum allowed integer.

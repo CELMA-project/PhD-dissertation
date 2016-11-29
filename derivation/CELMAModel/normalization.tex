@@ -159,7 +159,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
  \d_t n
  &=
  \frac{\rho_s^2\om_{ci}n_0}{\rho_s^2}
- \frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 n
+ \frac{\nu_{ei}}{\mu} \grad_\perp^2 n
  - \frac{n_{0} c_s}{\rho_s}
  \partial_\|\L(n u_{e,\|}\R)
  + n_0 \om_{ci}
@@ -170,7 +170,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
  n_{0} \om_{ci}
  \d_t n
  &=
- \om_{ci}n_0 \frac{0.51\nu_{ei}}{\mu}
+ \om_{ci}n_0 \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 n
  - n_{0} \om_{ci}
  \partial_\|\L(n u_{e,\|}\R)
@@ -181,7 +181,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
 %
  \d_t n
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 n
    - \partial_\|\L(n u_{e,\|}\R)
  + S_n
@@ -193,14 +193,14 @@ This gives
 \begin{align*}
     \d_t \ln(n)
  &=
- \frac{0.51\nu_{ei}}{\mu} \frac{1}{n} \grad_\perp^2 n
+ \frac{\nu_{ei}}{\mu} \frac{1}{n} \grad_\perp^2 n
  - \frac{1}{n} \partial_\|\L(n u_{e,\|}\R)
  + \frac{S_n}{n}
  \\
 %
 %
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
  \L(
   \div \L[\frac{1}{n}\grad_\perp n\R]
    - \grad\frac{1}{n} \cdot \grad_\perp n
@@ -212,7 +212,7 @@ This gives
 %
 %
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
    - \frac{n}{n} \grad\frac{1}{n} \cdot \grad_\perp n
@@ -224,7 +224,7 @@ This gives
 %
 %
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
    - \grad\ln(n^{-1}) \cdot \grad_\perp \ln(n)
@@ -236,7 +236,7 @@ This gives
 %
 %
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
    + \grad\ln(n) \cdot \grad_\perp \ln(n)
@@ -273,7 +273,7 @@ This yields
 \begin{align*}
     \d_t \ln(n)
  &=
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
  \L(
    \grad_\perp^2 \ln(n)
    + \grad_\perp\ln(n) \cdot \grad_\perp \ln(n)
@@ -402,7 +402,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  -\frac{1}{\rho_s}\frac{ec_s\rho_s}{T_{e,0}}\frac{1}{\rho_s}\frac{T_{e,0}}{e}n_0c_s\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
    \\&
@@ -414,7 +414,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  - c_s\frac{c_s}{\rho_s}n_0\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - c_s^2\frac{1}{\rho_s}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
    \\&
@@ -426,7 +426,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  - c_s\om_{ci}n_0\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - \om_{ci}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - c_s\om_{ci}n_0T_e \partial_\| n
  - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
    \\&
@@ -439,7 +439,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
  - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
    \\&
- + 0.51 \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - T_e \partial_\| n
  - n \nu_{i n}u_{i,\|}
    \\&
