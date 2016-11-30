@@ -75,10 +75,9 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
 %
 \begin{align*}
     \partial_t n_\a + \div (n_\a \ve{u}_\a) &= S_{n,\a}
- \note{\hspace{-1cm}Quasi-neutrality}
  \\
  %
- \partial_t n + \div (n [
+ \partial_t n_\a + \div (n_\a [
  \ve{u}_{\a,d} + \ve{u}_E + \ve{u}_{\a,p} + \ve{u}_{\a,R}
  + \ve{u}_{\a,\text{Ped}}
  + \ve{u}_{\a,\nu}
@@ -88,7 +87,7 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
  \label{eq:cont_eq}
 \end{align*}
 %
-Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation due to quasi-neutrality.
+Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation (times the ioniziation degree) due to quasi-neutrality.
 The two should differ only slightly.
 To show this, we can do an order of magnitude estimate comparison of $Zn_i$ and $Zn_i - n_e$.
 We find that
@@ -161,8 +160,12 @@ Note that this does not imply that there cannot be large electrical field throug
 \end{align*}
 %
 is small (as $e$ and $\e_0$ is of the same order of magnitude).
-We therefore have $n\simeq Zn_i \simeq n_e$
-
+We therefore have
+%
+\begin{align*}
+    n\simeq Zn_i \simeq n_e
+\end{align*}
+%
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
 The reason for this, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
 This gives
@@ -600,13 +603,13 @@ If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, an
     \note{Quasi-neutrality}
     \\
     %
-    e\partial_t n + eZ\div (n_i \ve{u}_i)
-    - e\partial_t n - e\div (n_e \ve{u}_e)
+    e\partial_t n + e\div (n \ve{u}_i)
+    - e\partial_t n - e\div (n \ve{u}_e)
     =&
     eZS_{i,n} - eS_{e,n}
     \\
     %
-    \div (eZn_i \ve{u}_i - en_e \ve{u}_e) =&
+    \div (en \ve{u}_i - en \ve{u}_e) =&
     e\L(ZS_{i,n} - S_{e,n}\R)
 \end{align*}
 %
