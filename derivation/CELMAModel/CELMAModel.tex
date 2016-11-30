@@ -164,7 +164,8 @@ We get
 
 \subsection{The polarization contribution}
 %
-Further on, we will investigate the terms arising from the sum of the divergence of the ion polarization drift and ion viscosity drift multiplied with the density. The first term yields
+Further on, we will investigate the terms arising from the sum of the divergence of the ion polarization drift and ion viscosity drift multiplied with the density.
+The first term of \cref{eq:from_gyroviscous} yields
 %
 \begin{align*}
  &
@@ -213,35 +214,35 @@ which gives
     u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R)
 \end{align*}
 %
-As we have no curvature, the second term gives
+As we have no curvature, the second term of \cref{eq:from_gyroviscous} gives
 %
 \begin{align*}
     &
  - \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
+ \L[S_{i,n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
  \\
  =&
  - \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - n \div \L(\ve{b}u_{i,\|}\R) \R] \R)
+ \L[S_{i,n} - n \div \L(\ve{b}u_{i,\|}\R) \R] \R)
  \note{$\partial_i \ve{b}=0$}
  \\
  =&
  - \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - n \ve{b}\cdot\grad u_{i,\|} \R] \R)
+ \L[S_{i,n} - n \ve{b}\cdot\grad u_{i,\|} \R] \R)
  \\
  =&
  - \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - n \partial_\| u_{i,\|} \R] \R)
+ \L[S_{i,n} - n \partial_\| u_{i,\|} \R] \R)
  \\
  =&
  - \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
- S_{n} \R)
+ S_{i,n} \R)
  + \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
  n \partial_\| u_{i,\|} \R)
@@ -259,7 +260,7 @@ This means that the polarization contribution from \cref{eq:full_vort_eq} can be
     u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R)
     \\
     -&
-  \frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)
+    \frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i, n} \R)
  + \frac{1}{\om_{ci}}
  \div\L( \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|} \R)
 \end{align*}
@@ -275,12 +276,12 @@ Under the assumption of cold ions ($T_i = 0$), we can simplify the source term i
     \R)
     =&
     \div \L( \frac{ S_{i,n}}{\om_{ci}} \L[ \frac{\grad_\perp \phi}{B} \R] \R)
-    \note{$T_i \simeq 0$\\ Const $B$\\ $S_{\a,n}=S_n$}
+    \note{$T_i \simeq 0$\\ Const $B$}
     \\
 %
 %
     =&
-    \frac{1}{\om_{ci}} \div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+    \frac{1}{\om_{ci}} \div \L( S_{i,n} \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
 \end{align*}
 %
 
@@ -289,20 +290,18 @@ Under the assumption of cold ions ($T_i = 0$), we can simplify the source term i
 Next, the RHS of \cref{eq:full_vort_eq} reads
 %
 \begin{align*}
-    \div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
-    &=
-    \div \L(n [\ve{b}u_{i,\|} - \ve{b}u_{e,\|}]\R)
+    \frac{1}{e}
+    \div \ve{j}_\|
+    =
+    \frac{1}{e}
+    \div \L(\ve{b}j_{\|}\R)
     \note{$\partial_i \ve{b} = 0$}
-    \\
-    %
-    %
-    &=
-    \ve{b}\cdot\nabla \L(n [u_{i,\|} - u_{e,\|}]\R)
-    \\
-    %
-    %
-    &=
-    \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+    =
+    \frac{1}{e}
+    \ve{b}\cdot\nabla j_{\|}
+    =
+    \frac{1}{e}
+    \partial_\| j_{\|}
 \end{align*}
 %
 
@@ -325,16 +324,16 @@ From the calculations above, \cref{eq:full_vort_eq} can be rewritten to
  + u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]
  + \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|}
  \R)
- - \frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)
+ - \frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i,n} \R)
  \\
  %
  &
  + \frac{1}{\om_{ci}}
-    \div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+ \div \L( S_{i,n} \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
  \\
  %
  =&
- \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \frac{1}{e} \partial_\| j_\|
 \end{align*}
 %
 Rearranging yields
@@ -357,12 +356,13 @@ Rearranging yields
  \\
  &
  %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ +
+ \frac{1}{e} \partial_\| j_\|
  \numberthis
  \label{eq:non_norm_vort_1}
 \end{align*}
 %
-We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{n} \R)$ arising from the time derivative of $n_i$ in the polarization term of the current conservation equation, cancels with the same term with opposite sign arising from the source term of the current conservation equation.
+We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i,n} \R)$ arising from the time derivative of $n_i$ in the polarization term of the current conservation equation, cancels with the same term with opposite sign arising from the source term of the current conservation equation.
 
 \subsection{Vector advective terms}
 \label{sec:vecAdvTerm}
@@ -397,7 +397,8 @@ This yields
  \\
  &
  %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ +
+ \frac{1}{e} \partial_\| j_\|
  \numberthis
  \label{eq:non_norm_vort_2}
 \end{align*}
@@ -457,7 +458,8 @@ The evolution of the modified vorticity can now be written as
  \\
  &
  %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ +
+ \frac{1}{e} \partial_\| j_\|
  \numberthis
  \label{eq:complVort}
 \end{align*}

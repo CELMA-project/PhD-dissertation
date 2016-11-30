@@ -307,13 +307,14 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
   %
   &
  - \frac{1}{\om_{ci}}
-    \frac{c_sn_0c_s}{\rho_s\rho_s}
+ \frac{c_sn_0c_se}{\rho_s\rho_s}
 \partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)
+\note{$j_\| = \sum_\a q_\a n_\a u_{\a, \|}$}
  \\
  &
  %
- + \frac{n_0c_s}{\rho_s}
- \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \frac{n_0c_se}{e\rho_s}
+ \partial_\| j_\|
  \note{\cref{eq:gradperpGradperp}}
  \\
  %
@@ -337,7 +338,7 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
  \\
  &
  %
- + n_0\om_{ci} \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + n_0\om_{ci} \partial_\| j_\|
  \\
  %
  %
@@ -360,7 +361,7 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
  \\
  &
  %
- + n_0\om_{ci} \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + n_0\om_{ci} \partial_\| j_\|
  \\
  %
  %
@@ -379,7 +380,7 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
  \\
  &
  %
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \partial_\| j_\|
  \numberthis
  \label{eq:normalized_non_boussinesq}
 \end{align*}
