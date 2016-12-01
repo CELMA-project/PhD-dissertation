@@ -293,9 +293,9 @@ This means that if we right dot \cref{eq:no_assumptions_momentum} with $\ve{b}\v
 %
 If we subtract \cref{eq:material_dot_bb} from \cref{eq:no_assumptions_momentum}, and use that  $\nabla_\perp = \nabla - \nabla_\|$ and $\ve{a}\times\ve{b}=\ve{a}_\perp\times\ve{b}$, we get
 %
-\begin{align}
+\begin{empheq}[box=\tcbhighmath]{align}
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a,\perp}
- &=
+ =&
  -
  \frac{
    \grad_\perp p_\a
@@ -304,6 +304,8 @@ If we subtract \cref{eq:material_dot_bb} from \cref{eq:no_assumptions_momentum},
  \frac{\ve{E}_\perp}{B}
  +
  \ve{u}_{\a,\perp}\times\ve{b}
+ \notag
+ \\&
  -
   \frac{
    \L(\div\te{\pi}_\a\R)_\perp
@@ -321,7 +323,7 @@ If we subtract \cref{eq:material_dot_bb} from \cref{eq:no_assumptions_momentum},
      S_{\a,n}\ve{u}_{\a,\perp}
  }{n_\a \om_{c\a}}
  \label{eq:perp_mom_start}
-\end{align}
+\end{empheq}
 
 \section{Drift ordering}\label{sec:drift_order}
 % NOTE: As Aske Olsen pointed out, it would maybe be more stringent to
