@@ -1,6 +1,144 @@
 We will in this section look at big and small terms in the perpendicular momentum equation in \cref{eq:perp_mom_start}.
 The motivation for this is to make a drift ordering similar to what is done in \cite{Fitzpatrick2014book}, and from this get algebraic equations for each order of the perpendicular velocities.
 We will do so by looking at characteristic scales of the system.
+Before starting, we will have a brief look at the definition of the gradient length scales and of the quasi-neutrality of the system.
+
+\section{Gradient length scale}
+When doing order of magnitude estimates%
+\footnote{
+    Easy, approximate ways to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
+}%
+, and will therefore introduce the \emph{gradient length scale}.
+The gradient scale length serves as an estimate for the size of $\grad$.
+That is, it tells us over how large distances there are sharp gradients for a bounded, smooth function.
+For a field $f$, the gradient length scale $L_f$ is defined as%
+\footnote{
+    Note that the inverse gradient length scale is often denoted $k$ in the literature.
+    This make sense for for example plane wave perturbations, which happens to have $\frac{1}{L_f}=k$, where $k$ is the inverse wave number.
+    However, in order to avoid ambiguity, we will in this thesis use $L_f$ for the gradient scale length.
+}%
+%
+\begin{align}
+    \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)}
+    \label{eq:lenScale}
+\end{align}
+%
+i.e. short and sharp gradients in $f$ have a short $L_f$.
+We can similarly define the temporal scale as
+%
+\begin{align}
+    \om_f = \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}
+    \label{eq:timeScale}
+\end{align}
+%
+The definitions in \cref{eq:lenScale,eq:timeScale} are quite strict, and we will in this thesis use a more approximate estimate for the gradient length scale.
+Thus, when referring to gradient length scales in this thesis, we will mean "typical" values for the gradient scale lengths, so that
+%
+\begin{align*}
+    \grad \sim \frac{1}{L},
+\end{align*}
+%
+where $\sim$ denotes "of same order".
+
+\section{Quasi-neutrality}
+\label{sec:qn}
+To get the condition of whether the system is quasi-neutral or not, we can do an order of magnitude estimate comparison of $Zn_i$ and $Zn_i - n_e$.
+We find that
+%
+\begin{align}
+    \frac{Zn_i - n_e}{Zn_i} =
+    \frac{e(Zn_i - n_e)}{eZn_i}
+    =
+    \frac{\e_0\div\ve{E}}{eZn_i}
+    \sim
+    \frac{\e_0\L|E\R|}{\L|L_E\R|eZn_i}
+    \label{eq:quasiNeutral}
+\end{align}
+%
+We can find an approximate expression for $E$ through Faraday's induction law:
+%
+\begin{align*}
+    \curl\ve{E} =& -\partial_t B\\
+    \frac{|E|}{|L_E|} \sim& \frac{|B|}{\tau_B}\\
+    |E| \sim& \frac{|L_E||B|}{\tau_B}
+\end{align*}
+%
+Inserting this in \cref{eq:quasiNeutral} yields
+%
+\begin{align*}
+    \frac{Zn_i - n_e}{Zn_i}
+    \sim
+    \frac{\e_0 |L_E||B|}{|L_E| e Zn_i \tau_B}\frac{m_i Ze}{m_i Ze}
+    =
+    \frac{\om_{ci}\e_0}{Z e n_i\tau_B}\frac{m_i}{Z e}
+    =
+    \frac{\om_{ci}}{\tau_B\om_{pi}^2},
+\end{align*}
+%
+where $\om_{pi}$ denotes the ion plasma frequency%
+\footnote{This can be interpreted as something like the typical frequency the ions would oscillate with if the ions where perturbed in a completely quiescent plasma.}
+%
+.
+We will now assume that the fastest time scales which can occur in our system is much slower than the ion cyclotron frequency.
+If we therefore set $1/\tau_B\to\om_{ci}$, we get
+%
+\begin{align}
+    \frac{Zn_i - n_e}{Zn_i}
+    \simeq
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    =
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    \label{eq:quasiNCompare}
+\end{align}
+%
+which for our interest is a quantity much smaller than $1$.
+Equivalently, if we introduce the \emph{normalizing} ion sound speed%
+%
+\footnote{Although the real ion sound speed is given by $c_s=\sqrt{\frac{T_e+\gamma' T_i}{m_i}}\;\gamma'=\frac{N+2}{N}$ for $N$ degrees of freedom, we will in this thesis use the symbol $c_s$ for $\sqrt{\frac{T_e}{m_i}}$, as this term frequently pops up in the derivations.}
+%
+\begin{align*}
+    c_s = \sqrt{\frac{T_e}{m_i}},
+\end  {align*}
+%
+and the ion hybrid radius (the ion gyro radius at the electron temperature)
+%
+\begin{align*}
+   \rho_s=\frac{c_s}{\om_{ci}},
+\end  {align*}
+%
+\cref{eq:quasiNCompare} can be stated as
+%
+\begin{align*}
+    \frac{Zn_i - n_e}{Zn_i}
+    \simeq
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    =
+    \frac{c_s^2\om_{ci}^2}{c_s^2\om_{pi}^2}
+    =
+    \frac{c_s^2}{\rho_s^2\om_{pi}^2}
+    =
+    \frac{\frac{T_e}{m_i}}{\rho_s^2\frac{n_iZ^2e^2}{m_i\e_0}}
+    =
+    \frac{\frac{T_e\e_0}{n_iZ^2e^2}}{\rho_s^2}
+    =
+    \frac{\lambda_D^2}{\rho_s^2},
+\end{align*}
+%
+where $\lambda_D$ is the Debye length, which tells at what radius an isolated charge is effectively electrically shielded by surrounding charged particles.
+
+In other words, the quasi-neutrality is just a statement of what scales we are looking at.
+Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the left hand side of
+%
+\begin{align*}
+    \frac{\div \ve{E}}{Zn_i} = \frac{e}{\e_0} \frac{Zn_i-n_e}{Zn_i}
+\end{align*}
+%
+is small (as $e$ and $\e_0$ is of the same order of magnitude).
+We therefore have
+%
+\begin{align*}
+    n\simeq Zn_i \simeq n_e
+\end{align*}
 
 \section{The inertia term}
 \label{sec:doInert}
@@ -77,17 +215,13 @@ If we now apply this on \cref{eq:do_inertia}, we get
  \R)
 \end{align*}
 %
-We now relate the velocities to the \emph{normalizing} ion sound speed%
-%
-\footnote{Although the real ion sound speed is given by $c_s=\sqrt{\frac{T_e+\gamma' T_i}{m_i}}\;\gamma'=\frac{N+2}{N}$ for $N$ degrees of freedom, we will in this thesis use the symbol $c_s$ for $\sqrt{\frac{T_e}{m_i}}$, as this term frequently pops up in the derivations.}
-%
-$c_s = \sqrt{\frac{T_e}{m_i}}$, so that
+We now relate the velocities to $c_s$, so that
 %
 \begin{align*}
     \lambda \defined \frac{u^c}{c^c_s}.
 \end{align*}
 %
-Further, we can define the ion hybrid radius (the ion gyro radius at the electron temperature) $\rho_s=\frac{c_s}{\om_{ci}}$, which gives
+Further, by using the ion hybrid radius, we get
 %
 \begin{align*}
     &
@@ -492,7 +626,7 @@ c^c_s
 %
 Next, we look at the collisionalities and sources of \cref{eq:perp_mom_start}.
 We would like these to be (at maximum) of the same order of magnitude as the inertia terms of \cref{sec:doInert}.
-Before we start, we will assume qusai-neutrality%
+Before we start, we will assume quasi-neutrality%
 \footnote{This is discussed further in \cref{sec:qn}}%
 %
 , i.e.
@@ -502,7 +636,7 @@ Before we start, we will assume qusai-neutrality%
 \end{align*}
 %
 
-\subsection{Coulumb collisions}
+\subsection{Coulomb collisions}
 %
 For the electron-ion collisionalities, we find
 %
@@ -973,7 +1107,7 @@ Thus
 
 \section{The order of the terms}
 %
-Befor we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitulate the size of the non-dimensional terms
+Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitulate the size of the non-dimensional terms
 %
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &\e      \defined \frac{\om^c}{\om^c_{ci}}                    \ll 1  &
