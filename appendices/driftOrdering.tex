@@ -823,11 +823,12 @@ By using \cref{eq:kinSource}, the source term can be written
 \label{eq:doSource}
 \end{align*}
 %
-The ion equation of \cref{eq:doSource} will be at the same order as the ion equation of \cref{eq:doInertiaEps} if
+We see that this term will be at its greatest for the electron equation, and will therefore compare electron equation of \cref{eq:doSource} to the ion equation of \cref{eq:doInertiaEps}
+These will be at the same order if
 %
 \begin{align*}
-    \lambda c^c_s \e \sim& \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
-    \e               \sim& \frac{1}{\lambda }\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
+    \lambda c^c_s \e \sim& \mu\frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
+    \e               \sim& \frac{1}{\lambda }\mu\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
 \end{align*}
 %
 Hence, we have that the source terms give
@@ -835,8 +836,10 @@ Hence, we have that the source terms give
 \begin{align*}
 \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
     \sim
-    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_i}{m_\a} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_e}{m_\a} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
 \end{align*}
+%
+Notice the change from $m_i$ to $m_e$ due to the definition of $\sigma$.
 
 \section{Viscosities}
 %
@@ -1113,7 +1116,7 @@ Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitula
     &\e      \defined \frac{\om^c}{\om^c_{ci}}                    \ll 1  &
     &\xi     \defined \frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}} \sim \e&
     &\Theta  \defined \frac{\nu^c_{i n}}{\om^c_{ci}}              \sim \e&
-    &\sigma  \defined \frac{\nu^c_{S_{i,n}}}{\om^c_{ci}}          \sim \e&
+    &\sigma  \defined \mu\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}}       \sim \e&
     \\
     &\lambda \defined \frac{u^c}{c^c_s}             \sim \sqrt{\e}&
     &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }} \sim \sqrt{\e}&
