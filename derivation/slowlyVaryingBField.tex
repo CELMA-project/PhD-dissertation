@@ -87,26 +87,26 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
  \label{eq:cont_eq}
 \end{align*}
 %
-Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation (times the ioniziation degree) due to quasi-neutrality, as described in \cref{sec:qn}.
+Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation (times the ionization degree) due to quasi-neutrality, as described in \cref{sec:qn}.
 The two should differ only slightly.
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
-The reason for this choise, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
+The reason for this choice, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
 We get
 %
 \begin{align}
  \partial_t n + \div (n [
- \ve{u}_{\a,d} + \ve{u}_E + \ve{u}_{\a,p} + \ve{u}_{\a,R}
- + \ve{u}_{\a,\text{Ped}}
- + \ve{u}_{\a,\nu}
- + \ve{u}_{\a,S} + \ve{u}_{\a,\|}
- ]) &= S_{n, \a}
+ \ve{u}_{e,d} + \ve{u}_E + \ve{u}_{e,p} + \ve{u}_{e,R}
+ + \ve{u}_{e,\text{Ped}}
+ + \ve{u}_{e,\nu}
+ + \ve{u}_{e,S} + \ve{u}_{e,\|}
+ ]) &= S_{n, e}
  \label{eq:el_cont}
 \end{align}
 %
 We will now inspect the drifts in \cref{eq:el_cont} term by term.
 
 \subsection{First order perpendicular terms}
-By using the curvature operator from \cref{eq:el_cont}, we find that the $\ve{E}\times\ve{B}$ term gives
+By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}\times\ve{B}$ term gives
 %
 \begin{align*}
     \div \L(n \ve{u}_{E}\R)
@@ -149,7 +149,7 @@ This cancellation is referred to as \emph{diamagnetic cancellation} in the liter
 \label{sec:no_e_pol}
 %
 As a good approximation, one can neglect the electron polarization drift $\ve{u}_{e,p}$.
-As we are interested in low frequency dynamics $\om_{\text{char}}\ll\om_{\text{ci}}$, we can write $\ve{u}_{e,p}$ as
+As we are interested in low frequency dynamics $\om^c\ll\om_{\text{ci}}$, we can write $\ve{u}_{e,p}$ as
 %
 \begin{align*}
     \ve{u}_{e,p}
@@ -223,7 +223,7 @@ and
     \frac{3}{2}\frac{n_e}{\om_e\tau_e}\ve{b}\times\grad T_e
 \end{align*}
 %
-where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ (given analyticall in \cref{sec:nue}) assuming constant $T_e$, we get that
+where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ (given analytically in \cref{sec:nue}) assuming constant $T_e$, we get that
 %
 \begin{align}
     \ve{R}_{i \to e}
@@ -344,8 +344,6 @@ Inserting this into \cref{eq:div_nur} yields
   =&
   -\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
  \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
-   % \numberthis
-   % \label{eq:div_nur_calc}
 \end{align*}
 %
 We see that we could have neglected this term as well on the basis of the mass ratio.
@@ -427,10 +425,8 @@ We see that this term can be neglected using the same arguments as in section \c
 
 \subsection{Electron viscosity}
 %
-% FIXME: Should maybe explain a bit better?
-Typically we have that the magnitude of electron-electron collisions frequency $\nu_{ee}$ are around $\sqrt{\frac{m_e}{m_i}}$ as frequent as $\nu_{ii}$ collisions.
-Thus, we have that $\te{\pi}_e \simeq \sqrt{\frac{m_e}{m_i}}\te{\pi}_i$.
-If we substitute this into \cref{eq:el_cont}, we see that the $\sqrt{\frac{m_e}{m_i}}$ factor in $\ve{u}_{e, \nu}$ makes this term much smaller than for example $\ve{u}_E$ (which in addition is of order $\e$ larger).
+From \cref{eq:DO} we see that the electron viscosity is of order $\mathcal{O}(\e^2)$.
+As this is of one order lower than what we would like to resolve, we neglect this contribution from \cref{eq:el_cont}.
 
 \subsection{Electron source drift}
 \label{sec:no_e_source}
