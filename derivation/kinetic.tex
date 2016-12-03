@@ -644,8 +644,8 @@ By neglecting collision with neutral species, we have found that the two first m
  \label{fluideq:mom}
 \end{empheq}
 %
-where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to \a}$ denotes the force acting on species $\a$ by $\g$, i.e. the resisitivity.
-Both the resisitivity and the viscosity tensor depend on the temperature.
+where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to \a}$ denotes the force acting on species $\a$ by $\g$, i.e. the resistivity.
+Both the resistivity and the viscosity tensor depend on the temperature.
 
 We could go on with our derivation, and included the third moment, namely the energy equation, which can be used to solve the temperature.
 The energy equation will depend on a quantity belonging to the next moment, namely the heat flux $Q$, due to the $\ve{v}\cdot\nabla f_\a$ term in \cref{eq:fp}.
@@ -653,14 +653,15 @@ The heat flux equation would again depend on a quantity belonging to the next or
 
 In other words, we would need a way to properly "close" the system.
 One often used method to close the set of equations, is the one suggested by Braginskii in his paper from $1965$ \cite{Braginskii1965}, which builds on the kinetic closure of gases derived by Chapman and Enskog \cite{Chapman1970book, Brush1972book}.
-A breif overview of this closure method is given in \cite{Fitzpatrick2014book}.
-The closure procedure uses that the mean free path is much larger than the ion Larmor radius (i.e.  the plasma is magnetized), and uses this as an expansion parameter.
+A brief overview of this closure method is given in \cite{Fitzpatrick2014book}.
+The closure procedure uses that the mean free path is much larger than the ion Larmor radius (i.e. the plasma is magnetized), and uses this as an expansion parameter.
 This gives an analytical expressions for $\ve{R}_{\b\to\a}$ (see \cref{app:collisions}) and the components of $\te{\pi}_\a$ (see \cref{app:piTensor}), and the set of equations (including the energy equations) are known as the Braginskii equations.
 
 We will in this thesis close the system in a much simpler way.
-If we assume that the electrons are isothermal, it can be described by a constant temperature, so that there is no need for an equation to solve for $T_e$.
+If we assume that the electrons are isothermal, it can be described by a constant temperature, and hence there is no need for an equation to solve for $T_e$.
 We will further assume that the ions are cold.
-That is that $T_i$ is isothermal with temperature $0$.
+That is that $T_i$ is isothermal with a constant temperature equal $0$.
 In this thesis we would like to study systems with the drift fluid approach (see \cref{chap:drift-order} for details), and we will therefore assume that the velocity component perpendicular to the magnetic field is much less than the ion sound speed.
 This is in direct contradiction to our assumption of an isothermal system, which requires that the fluid velocity is much larger than the ion sound speed, so that any difference in temperature is quickly smoothed out.
+Despite of this, we choose to use the assumption as it gives a much simpler system to solve and analyze.
 Improvements to this crude approximation is therefore subject to future work.
