@@ -75,10 +75,9 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
 %
 \begin{align*}
     \partial_t n_\a + \div (n_\a \ve{u}_\a) &= S_{n,\a}
- \note{\hspace{-1cm}Quasi-neutrality}
  \\
  %
- \partial_t n + \div (n [
+ \partial_t n_\a + \div (n_\a [
  \ve{u}_{\a,d} + \ve{u}_E + \ve{u}_{\a,p} + \ve{u}_{\a,R}
  + \ve{u}_{\a,\text{Ped}}
  + \ve{u}_{\a,\nu}
@@ -88,83 +87,11 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
  \label{eq:cont_eq}
 \end{align*}
 %
-Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation due to quasi-neutrality.
+Based on our assumptions, the evolution of the density can be described by both the electron continuity equation and the ion continuity equation (times the ioniziation degree) due to quasi-neutrality, as described in \cref{sec:qn}.
 The two should differ only slightly.
-To show this, we can do an order of magnitude estimate comparison of $n_e$ and $n_i - n_e$.
-We find that
-%
-\begin{align}
-    \frac{n_i - n_e}{n_e} =
-    \frac{e(n_i - n_e)}{en_e}
-    =
-    \frac{\e_0\div\ve{E}}{en_e}
-    \to
-    \frac{\L|\e_0\R|\L|E\R|}{\L|L_E\R|\L|e\R|\L|n_e\R|}
-    \label{eq:quasiNeutral}
-\end{align}
-%
-Using order of magnitudes estimates, we can find an expression for $E$ through Faraday's induction law:
-%
-\begin{align*}
-    \curl\ve{E} =& -\partial_t B\\
-    \frac{|E|}{|L_E|} \sim& \frac{|B|}{|\tau_B|}\\
-    |E| \sim& \frac{|L_E||B|}{|\tau_B|}
-\end{align*}
-%
-Inserting this in \cref{eq:quasiNeutral} yields
-%
-\begin{align*}
-    \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
-    \simeq
-    \frac{\L|\e_0\R||L_E||B|}{\L|L_E\R|\L|e\R|\L|n_e\R||\tau_B|}\frac{\L|m_i\R|\L|e\R|}{\L|m_i\R|\L|e\R|}
-    =
-    \frac{\om_{ci}\e_0}{\L|e\R|n_e\tau_B}\frac{m_i}{\L|e\R|}
-    =
-    \frac{\om_{ci}}{\tau_B\om_{pe}^2}
-\end{align*}
-%
-Since we are interested in phenomena slower than the ion cyclotron frequency, we set $1/\tau_B\to\om_{ci}$, and get
-%
-\begin{align}
-    \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
-    \simeq
-    \frac{\om_{ci}^2}{\om_{pe}^2}
-    =
-    \frac{\om_{ci}^2}{\om_{pe}^2}
-    \label{eq:quasiNCompare}
-\end{align}
-%
-which for our interest is a quantity much smaller than $1$.
-Equivalentely, \cref{eq:quasiNCompare} can be stated as
-%
-\begin{align*}
-    \frac{\L|n_i - n_e\R|}{\L|n_e\R|}
-    \simeq
-    \frac{\om_{ci}^2}{\om_{pe}^2}
-    =
-    \frac{c_s^2\om_{ci}^2}{c_s^2\om_{pe}^2}
-    =
-    \frac{c_s^2}{\rho_s^2\om_{pe}^2}
-    =
-    \frac{\frac{T_e}{m_i}}{\rho_s^2\frac{ne^2}{m_i\e_0}}
-    =
-    \frac{\frac{T_e\e_0}{ne^2}}{\rho_s^2}
-    =
-    \frac{\lambda_D^2}{\rho_s^2}
-\end{align*}
-%
-In other words, the quasi neutrality is just a statement of what scales we are looking at.
-Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the LHS of
-%
-\begin{align*}
-    \frac{\div \ve{E}}{n_e} = \frac{e}{\e_0}\frac{n_i-n_e}{n_e}
-\end{align*}
-%
-is small (as $e$ and $\e_0$ is of the same order of magnitude).
-
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
-The reason for this, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
-This gives
+The reason for this choise, as will soon be demonstrated, is that certain terms can be neglected due to the mass ratio between electrons and ions.
+We get
 %
 \begin{align}
  \partial_t n + \div (n [
@@ -434,7 +361,7 @@ To address the Pedersen drift, we start by assuming that
 \begin{align*}
     \ve{R}_{n\to\a} =
     -
-     m_\a n \nu_{\a n}\L(
+     m_\a n_\a \nu_{\a n}\L(
         \L[\ve{u}_{\a,\|}-\ve{u}_{n,\|} \R]
         +
         \L[\ve{u}_{\a,\perp}-\ve{u}_{n,\perp} \R]
@@ -447,7 +374,7 @@ As we here want to model the neutrals as a static background, we get that
 \begin{align*}
     \ve{R}_{n\to\a} =
     -
-     m_\a n \nu_{\a n}\L(
+     m_\a n_\a \nu_{\a n}\L(
         \ve{u}_{\a,\|}
         +
         \ve{u}_{\a,\perp}
@@ -459,8 +386,8 @@ We get that
 %
 \begin{align}
     \ve{R}_{n\to\a} =
-    - m_\a n \nu_{\a n}\L( \ve{u}_{\a,\|}
-    - \frac{\grad_\perp p_\a \times \ve{b}}{q_\a nB}
+    - m_\a n_\a \nu_{\a n}\L( \ve{u}_{\a,\|}
+    - \frac{\grad_\perp p_\a \times \ve{b}}{q_\a n_\a B}
     - \frac{\grad_\perp \phi \times \ve{b}}{B} \R)
     \label{eq:neut_res}
 \end{align}
@@ -470,14 +397,14 @@ Inserting \cref{eq:neut_res} into the Pedersen drift of \cref{eq:first_order}, a
 \begin{align*}
     \ve{u}_{\a,\text{Ped}}
     =&
-    - \frac{ m_\a n \nu_{\a n} }{n q_\a B} \L( \ve{u}_{\a,\|}
-    - \frac{\grad_\perp p_\a \times \ve{b}}{q_\a nB}
+    - \frac{ m_\a n_\a \nu_{\a n} }{n q_\a B} \L( \ve{u}_{\a,\|}
+    - \frac{\grad_\perp p_\a \times \ve{b}}{q_\a n_\a B}
     - \frac{\grad_\perp \phi \times \ve{b}}{B} \R) \times\ve{b}
     \note{Definition of perp. vectors}
     \\
     =&
     - \frac{\nu_{\a n} }{\om_{c\a}}
-    \L(\frac{\grad_\perp p_\a}{q_\a nB}
+    \L(\frac{\grad_\perp p_\a}{q_\a n_\a B}
     + \frac{\grad_\perp \phi}{B} \R)
 \end{align*}
 %
@@ -487,12 +414,12 @@ For the electron Pedersen drift, we find that
     \ve{u}_{e,\text{Ped}}
     =&
     \frac{m_i}{m_i}\frac{ m_e \nu_{e n} }{e B}
-    \L(\frac{\grad_\perp p_e}{q_e nB}
+    \L(\frac{\grad_\perp p_e}{q_e n_\a B}
     + \frac{\grad_\perp \phi}{B} \R)
     \\
     =&
     \frac{m_e}{m_i}\frac{\nu_{e n} }{\om_{ci}}
-    \L(\frac{\grad_\perp p_e}{q_e nB}
+    \L(\frac{\grad_\perp p_e}{q_e n_\a B}
     + \frac{\grad_\perp \phi}{B} \R)
 \end{align*}
 %
@@ -586,24 +513,30 @@ If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we f
 If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, and add them, we get by applying quasi-neutrality that
 %
 \begin{align*}
-    q_i\partial_t n + q_i\div (n \ve{u}_i)
-    + q_e\partial_t n + q_e\div (n \ve{u}_e)
+    q_i\partial_t n_i + q_i\div (n_i \ve{u}_i)
+    + q_e\partial_t n_e + q_e\div (n_e \ve{u}_e)
     =&
     q_iS_{i,n} + q_eS_{e,n}
+    \\
+    %
+    Ze\partial_t n_i + Ze\div (n_i \ve{u}_i)
+    - e\partial_t n_e - e\div (n_e \ve{u}_e)
+    =&
+    eZS_{i,n} - eS_{e,n}
+    \note{Quasi-neutrality}
     \\
     %
     e\partial_t n + e\div (n \ve{u}_i)
     - e\partial_t n - e\div (n \ve{u}_e)
     =&
-    eS_{i,n} - eS_{e,n}
+    eZS_{i,n} - eS_{e,n}
     \\
     %
     \div (en \ve{u}_i - en \ve{u}_e) =&
-    e\L(S_{i,n} - S_{e,n}\R)
+    e\L(ZS_{i,n} - S_{e,n}\R)
 \end{align*}
 %
-We will now use that the source produces equal amount of positive and negative charges, which means that $S_{n,e}=S_{n,i}=S_n$.
-If we in addition write $\ve{J} = \sum_{\a}q_\a n_\a\ve{u}_\a$, we get that
+If we use \cref{eq:kinSource} together with $\ve{J} = \sum_{\a}q_\a n_\a\ve{u}_\a$, we get that
 %
 \begin{align*}
     \\
@@ -651,18 +584,20 @@ The $\ve{E}\times\ve{B}$ drift for the two species cancels as it is equal for bo
 The diamagnetic terms yields
 %
 \begin{align*}
- \div\L( n_e \ve{u}_{e,d} \R) - \div\L( n_i \ve{u}_{i,d} \R)
+ \div\L( n\ve{u}_{e,d} \R) - \div\L( n \ve{u}_{i,d} \R)
  &=
-  \frac{1}{q_e}\mathcal{C}(p_e) - \frac{1}{q_i}\mathcal{C}(p_i)
+ \div\L( n \frac{-\grad_\perp p_e}{-n_ee B} \R) - \div\L( n \frac{-\grad_\perp p_i}{n_iZe B} \R)
+ \note{Quasi-neutrality}
  \\
  %
  &=
   -\frac{1}{e}\L[\mathcal{C}(p_e) + \mathcal{C}(p_i)\R]
-  \note{$\mathcal{C}(f) + \mathcal{C}(g) = \mathcal{C}(f+g)$}
+  \note{$\mathcal{C}(f) + \mathcal{C}(g) = \mathcal{C}(f+g)$\\
+  }
  \\
  %
  &=
-  -\frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
+  -\frac{1}{e}\L[\mathcal{C}\L(p_e+p_i\R)\R]
 \end{align*}
 
 \subsection{Polarization and viscosity}
@@ -732,10 +667,10 @@ The ion continuity equation to order $\e^0$ reads
 %
 \begin{align*}
  \partial_t n + \div (n [ \ve{u}_{i,d} + \ve{u}_E + \ve{u}_{i,\|} ])
- &= S_{n}
+ &= S_{i, n}
  \\
  \partial_t n + \div (n \ve{u}_{i,d}) + \div (n\ve{u}_E) + \div (n\ve{u}_{i,\|} )
- &= S_{n}
+ &= S_{i, n}
  \note{\cref{eq:div_ExB,eq:div_n_ued} for ions}
  \\
  \partial_t n
@@ -744,21 +679,21 @@ The ion continuity equation to order $\e^0$ reads
  + \ve{u}_E \cdot \grad n
  + n \div \ve{u}_{i,\|}
  + \ve{u}_{i,\|} \cdot \grad n
- &= S_{n}
+ &= S_{i, n}
  \\
  \partial_t n
  + \ve{u}_E \cdot \grad n
  + \ve{u}_{i,\|} \cdot \grad n
  &=
- S_{n}
- - \frac{1}{e}\mathcal{C}(p_i)
+ S_{i, n}
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \\
  \L(\d_t + \ve{u}_{i,\|} \cdot \grad\R) n
  &=
- S_{n}
- - \frac{1}{e}\mathcal{C}(p_i)
+ S_{i, n}
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \numberthis
@@ -779,8 +714,8 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
  \L[
- S_{n}
- - \frac{1}{e}\mathcal{C}(p_i)
+ S_{i, n}
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \R]
@@ -789,18 +724,21 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
 \label{eq:from_gyroviscous}
 \end{align*}
 
-
 \subsection{The resistivity term}
 %
 The resistivity drifts for the two species cancels as
 %
 \begin{align*}
  n\ve{u}_{i,R} - n\ve{u}_{e,R} &=
- n
-   \frac{\ve{R}_{e \to i,\perp}\times \ve{b}}{nq_i B}
+ n \frac{\ve{R}_{e \to i,\perp}\times \ve{b}}{n_iq_i B}
  -
- n
-   \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{nq_e B}
+ n \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{n_eq_e B}
+ \\
+  %
+  &=
+ n \frac{\ve{R}_{e \to i,\perp}\times \ve{b}}{n_iZe B}
+ -
+ n \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{n_ee B}
  \\
   %
   &=
@@ -830,11 +768,13 @@ The contribution from the Pedersen drift yields
     -
     \div\L(\frac{n\nu_{in}}{\om_{ci}}
         \L[
-            \frac{\grad_\perp p_i}{enB}
+            \frac{\grad_\perp p_i}{eZn_iB}
             +
             \frac{\grad_\perp \phi}{B}
         \R]
-        \R)\\
+        \R)
+        \note{$Zn_i \simeq n$}
+        \\
     %
     =&
     -
@@ -914,7 +854,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
  +
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
  \\
 %
@@ -925,7 +865,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
   \\
 %
 %
-\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
+\frac{1}{e}\div \ve{j}_\|
 =&
   \frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
   \\
@@ -945,7 +885,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
  -
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
   \\
 %

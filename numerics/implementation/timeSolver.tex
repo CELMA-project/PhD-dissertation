@@ -22,7 +22,14 @@ Hence, we would like to solve
 for $\ve{f}$, where $F(\cdot)$ denotes the nonlinear operator which contains discretized differential operators in the spatial dimension.
 
 \cref{eq:MOL} can be stepped forward in time by using an appropriate time solver, like Runge-Kutta or a Linear Multistep Method (LMM).
-Due to it's good stability properties \cite{Leveque2007book} an implicit LMM has been chosen.
+Due to it's good stability properties \cite{Leveque2007book} an implicit LMM has been chosen%
+\footnote{
+    Unless other is explicitly stated, \texttt{cvode}'s variable step size Backward Differentiation Formula (BDF) of variable order (1-5) has been chosen.
+    This includes the STAbility Limit Detection (STALD) algorithm, which detect linear stability regions, and chooses the step-size thereby.
+}
+%
+.
+
 By using a generic LMM to \cref{eq:MOL}, we get
 %
 \begin{align*}
