@@ -800,7 +800,7 @@ By using \cref{eq:kinSource}, the source term can be written
 %
 =&
 \frac{|q_\a|}{e}
-\frac{m_i}{m_\a}
+\frac{m_\a}{m_i}
 \frac{ S_{i,n}\ve{u}_{\a,\perp} }{n_\a \om^c_{ci}}
 \note{Quasi-neutrality}
 \\
@@ -808,7 +808,7 @@ By using \cref{eq:kinSource}, the source term can be written
 %
 =&
 \frac{|q_\a|}{e}
-\frac{m_i}{m_\a}
+\frac{m_\a}{m_i}
 \frac{S^c_{i,n}c^c_s}{n^c \om^c_{ci}}
 \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
 \\
@@ -816,19 +816,18 @@ By using \cref{eq:kinSource}, the source term can be written
 %
 =&
 \frac{|q_\a|}{e}
-\frac{m_i}{m_\a}
+\frac{m_\a}{m_i}
 \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}
 \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
 \numberthis
 \label{eq:doSource}
 \end{align*}
 %
-We see that this term will be at its greatest for the electron equation, and will therefore compare electron equation of \cref{eq:doSource} to the ion equation of \cref{eq:doInertiaEps}
-These will be at the same order if
+The order of the ion equation of \cref{eq:doSource} would be of same the same order as \cref{eq:doInertiaEps} if
 %
 \begin{align*}
-    \lambda c^c_s \e \sim& \mu\frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
-    \e               \sim& \frac{1}{\lambda }\mu\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
+    \lambda c^c_s \e \sim& \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
+    \e               \sim& \frac{1}{\lambda }\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
 \end{align*}
 %
 Hence, we have that the source terms give
@@ -836,7 +835,7 @@ Hence, we have that the source terms give
 \begin{align*}
 \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
     \sim
-    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_e}{m_\a} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
 \end{align*}
 %
 Notice the change from $m_i$ to $m_e$ due to the definition of $\sigma$.
@@ -1113,10 +1112,10 @@ Thus
 Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitulate the size of the non-dimensional terms
 %
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
-    &\e      \defined \frac{\om^c}{\om^c_{ci}}                    \ll 1  &
-    &\xi     \defined \frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}} \sim \e&
-    &\Theta  \defined \frac{\nu^c_{i n}}{\om^c_{ci}}              \sim \e&
-    &\sigma  \defined \mu\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}}       \sim \e&
+    &\e      \defined \frac{\om^c}{\om^c_{ci}}                            \ll 1  &
+    &\xi     \defined \frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}}         \sim \e&
+    &\Theta  \defined \frac{\nu^c_{i n}}{\om^c_{ci}}                      \sim \e&
+    &\sigma  \defined \frac{1}{\lambda}\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \sim \e&
     \\
     &\lambda \defined \frac{u^c}{c^c_s}             \sim \sqrt{\e}&
     &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }} \sim \sqrt{\e}&
@@ -1148,7 +1147,7 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
  \\&
  + \lambda c^c_s \frac{q_i}{q_\a} \xi \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
  + \lambda c^c_s\frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
- - \lambda c^c_s \frac{|q_\a|}{e} \frac{m_i}{m_\a} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ - \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
  \\
  %
  %
@@ -1160,7 +1159,7 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
  \\&
  + \frac{q_i}{q_\a} \xi \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
  + \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
- - \frac{|q_\a|}{e} \frac{m_i}{m_\a} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ - \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
  \\
  %
  %
@@ -1172,7 +1171,7 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
  \\&
  +\e \frac{q_i}{q_\a} \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
  +\e \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}}  \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
- -\e \frac{|q_\a|}{e} \frac{m_i}{m_\a} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ -\e \frac{|q_\a|}{e} \frac{m_\a}{m_i} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
  \\
  %
  %
@@ -1186,7 +1185,7 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
  \L(
   \frac{q_i}{q_\a} \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
  + \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}}  \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
- - \frac{|q_\a|}{e} \frac{m_i}{m_\a} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ - \frac{|q_\a|}{e} \frac{m_\a}{m_i} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
  \R)
  \numberthis
  \label{eq:DO}
