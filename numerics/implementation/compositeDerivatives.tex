@@ -1,5 +1,6 @@
 \section{Composite derivatives}
-In \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution,eq:cyto_vort_boussinesq} there are some terms not treated by standard discretization as they are a combinations of different spatial derivatives.
+%
+In \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} and \cref{eq:celma_vort_boussinesq} there are some terms which are written as a combination of two or more FDs.
 These are
 %
 \begin{align*}
@@ -10,14 +11,71 @@ These are
     &\div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)&
 \end{align*}
 %
-As already noted in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$) as Poisson brackets.
+These can either be calculated by applying two (or more) different FDs consecutively to a field $f$, or by making a new FD stencil specifically for the operator under consideration.
+
+Special care must be taken at the ghost points if one choose to apply two (or more) different FDs consecutively.
+To see this, we can call $g$ the result of calculating the FD of a field $f$.
+As we are using centred stencils (as described in
+% FIXME: Add reference to the FD stencils used
+), then the ghost points of $g$ is not calculated by the FD%
+%
+\footnote{There is by definition no way to apply a centred stencil to the last grid point.}%
+%
+\footnote{One could in principle use a one-sided stencil on the ghost points $f$ when calculating the FD of $f$, so that the ghost point of $g$ would be known.
+This is however not done here.}
+%
+.
+
+\subsection{Arakawa's stencil}
+%
+As already noted in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$ terms) as Poisson brackets.
 The proof is found in \cref{app:poisson}.
 The benefits of writing terms on Poisson brackets are presented in Arakawa's paper from 1966 \cite{Arakwa1966}.
-In short, the paper shows that a na\"ive finite difference discretization of the Poisson bracket does not conserve energy and enstrophy, and gives an alternative way of discretize in orthogonal curvilinear coordinates in order to keep these quantities conserved.
+In short, the paper shows that a na\"ive FD discretization of the Poisson bracket does not conserve energy and enstrophy.
+At the same time it gives an alternative way of discretize in orthogonal curvilinear coordinates in order to keep these quantities conserved.
 If the energy and enstrophy is not conserved, fake generation of these quantities occur, which eventually will lead to a blow up of the simulation (in a way described by Phillips in \cite{Phillips1959}).
 
-New stencils could in principle be made for the other terms as well.
-As this would require setting composite boundary condition for this field, a simpler approach has been made.
+\subsection{Advection by \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
+\label{sec:ExBadv}
+%
+It is also possible to discretize the term $\{\ve{u}_E^2, n\}$ using Arakawa's method.
+We observe that in cylindrical coordinates, we have
+%
+\begin{align*}
+    \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
+    \note{Constant $B$}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        \cdot
+        \L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
+        , n\R\}
+    \note{Orthogonality}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{g^{\rho\rho}\L(\partial_{\rho} \phi\R)^2+
+        g^{\theta\theta}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
+    \\
+    %
+    &= \L(\frac{1}{B}\R)^2
+    \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2
+        , n\R\}
+\end{align*}
+%
+Here, we must take care when we treat the ghost points.
+No ghost points is needed in the $\theta$ direction, as this direction is periodic.
+Thus, for $\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
+
+For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
+For the inner ghost point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
+For the outer ghost point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost point.
+
+This way of discretizing is second order accurate, as indicated in MES
+%FIXME: Refer to table or so in MES
+
 
 \subsection{\texorpdfstring{$\div(g\grad_\perp f)$}{Divergence of g times the perpendicular gradient of f} terms}
 %
@@ -62,12 +120,14 @@ However, from \cref{app:coord}, we that
   g^{zz}\partial_z^2 - \frac{1}{J}\partial_z\left(\frac{J}{g^{zz}}\partial_z\right) =& 0,
 \end{align*}
 %
-in cylindrical coordinates, \cref{eq:perpPerpDeriv} above can be rewritten
+in cylindrical coordinates.
+Thus \cref{eq:perpPerpDeriv} can be rewritten to
 %
 \begin{align*}
-    f\L(g^{\rho\rho} \partial_\rho \partial_\rho + g^{\theta\theta} \partial_\theta \partial_\theta + G^\rho \partial_\rho \R)g
+    &f\L(g^{\rho\rho} \partial_\rho \partial_\rho + g^{\theta\theta} \partial_\theta \partial_\theta + G^\rho \partial_\rho \R)g
     + g^{\rho\rho} \partial_\rho f \partial_\rho g
     + g^{\theta\theta} \partial_\theta f \partial_\theta g
+    \\
     =&
     f \partial^2_\rho g
     + f \frac{1}{\rho^2}\partial^2_\theta g
@@ -76,76 +136,33 @@ in cylindrical coordinates, \cref{eq:perpPerpDeriv} above can be rewritten
     +  \frac{1}{\rho^2} \partial_\theta f \partial_\theta g
 \end{align*}
 %
+%FIXME: Has this been MESed?
+%
 which is what is implemented for this operator in the CELMA code.
 
-\subsection{Advective terms}
-\label{sec:ExBadv}
+\subsection{Parallel derivative of the divergence of the cross term}
 %
-It is also possible to discretize the term $\{\ve{u}_E^2, n\}$ using Arakawa's method.
-We observe that in cylindrical coordinates, we have
-%
-\begin{align*}
-    \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
-    \note{Constant $B$}
-    \\
-    %
-    &= \L(\frac{1}{B}\R)^2
-    \L\{\L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
-        \cdot
-        \L(\L[\ve{e}^{\rho}\partial_{\rho} + \ve{e}^{\theta}\partial_{\theta}\R] \phi\R)
-        , n\R\}
-    \note{Orthogonality}
-    \\
-    %
-    &= \L(\frac{1}{B}\R)^2
-    \L\{g^{\rho\rho}\L(\partial_{\rho} \phi\R)^2+
-        g^{\theta\theta}\L(\partial_{\theta} \phi\R)^2
-        , n\R\}
-    \\
-    %
-    &= \L(\frac{1}{B}\R)^2
-    \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2
-        , n\R\}
-\end{align*}
-%
-Here, we must take care when we treat the ghost points.
-No ghost points is needed in the $\theta$ direction, as this direction is periodic.
-Thus, for $\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
+As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivate.
+We can use \cref{eq:extraPolUp} for calculation of the upper ghost point, and \cref{eq:extraPolDown}  for calculation of the lower ghost point.
 
-For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
-For the inner ghost point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
-For the outer ghost point, we use a fourth order Newton polynomial of the four previous points in the $\rho$ direction, evaluated in the ghost point.
-If we say that $f=\partial_{\rho} \phi$, this extrapolation reads
-%
-\begin{align*}
-    f_{0} = 4f_{-1} - 6f_{-2} + 4f_{-3} - f_{-4}
-\end{align*}
-%
-where $f_{0}$ is the value of $f$ at the position of the ghost point and $f_{-i}$ is the value of $f$ in a position $-i\Delta \rho$ away from the ghost point (where $\Delta \rho$ is the grid spacing in $\rho$).
 
-This way of discretizing is second order accurate, as indicated in MES
-%FIXME: Refer to table or so in MES
+%=============
 
-Secondly we have
+Along a grid, index of the last ghost point along the grid given as $N+1$, counting from $0$ where $-1$ is the index of first ghost point.
+See figure
+-1           1         2     N   N+1
+o |          x         x ... x | o
+    |------|  |------|
+ BC delta/2     delta          BC
+
+\begin{align}
+    f_{N+1} = 4f_{N} - 6f_{N-1} + 4f_{N-2} - f_{N-3}
+    \label{eq:extraPolUp}
+\end{align}
 %
-\begin{align*}
-    \partial_\|\div \L(u_{i,\|}\frac{\grad_\perp \phi}{B}n\R)
-    =&
-    \partial_\|\div
-    \L(
-    u_{i,\|}\partial_\|
-    \L[
-    \ve{e}^\rho\frac{\partial_\rho \phi}{B}n
-    + \ve{e}^\theta\frac{\partial_\theta \phi}{B}n
-    \R]
-    \R)
-    \note{$\partial_z \ve{e}^i=0$}
-    \\
-    =&
-    \ve{e}^\rho u_{i,\|}\partial_\|\L( \frac{\partial_\rho \phi}{B}n \R)
-    + \ve{e}^\theta u_{i,\|}\partial_\|\L( \frac{\partial_\theta \phi}{B}n\R)
-    \numberthis
-    \label{eq:par_vec_adv_expanded}
-\end{align*}
+lol
 %
-where we have to set the $z$ boundaries of $\frac{\partial_\rho \phi}{B}n$ and $\frac{\partial_\theta \phi}{B}n$ in order to calculate the parallel derivatives of \cref{eq:par_vec_adv_expanded} using a FDA.
+\begin{align}
+    f_{-1} = 4f_{0} - 6f_{1} + 4f_{2} - f_{3}
+    \label{eq:extraPolDown}
+\end{align}
