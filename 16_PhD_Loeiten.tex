@@ -66,15 +66,18 @@
 \input{derivation/boussinesq}
 
 \part{Implementation and verification}
-\chapter{Implementation}
-\label{chap:implementation}
-\input{numerics/implementation/implementation}
+\chapter{Implementation using the BOUT++ framework}
+\input{numerics/implementation/BOUT++}
+\input{numerics/implementation/spatial}
 \input{numerics/implementation/artificialViscosity}
+\input{numerics/implementation/timeSolver}
+\chapter{Additional implementations}
+\label{chap:implementation}
+\input{numerics/implementation/additionalImplementation}
 \input{numerics/implementation/compositeDerivatives}
 \input{numerics/implementation/obtainPhi}
 \input{numerics/implementation/innerBoundary}
 \input{numerics/implementation/spectralFiltering}
-\input{numerics/implementation/timeSolver}
 \chapter{Verification of the numerics}
 \label{app:verification}
 \input{numerics/verification}
