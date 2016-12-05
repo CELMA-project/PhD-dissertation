@@ -1,4 +1,5 @@
 \section{Composite derivatives}
+\label{sec:compDeriv}
 %
 In \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} and \cref{eq:celma_vort_boussinesq} there are some terms which are written as a combination of two or more FDs.
 These are
@@ -144,24 +145,3 @@ which is what is implemented for this operator in the CELMA code.
 %
 As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivate.
 We can use \cref{eq:extraPolUp} for calculation of the upper ghost point, and \cref{eq:extraPolDown}  for calculation of the lower ghost point.
-
-
-%FIXME: Add these polynomials in additional implementations
-Along a grid, index of the last ghost point along the grid given as $N+1$, counting from $0$ where $-1$ is the index of first ghost point.
-See figure
--1           1         2     N   N+1
-o |          x         x ... x | o
-    |------|  |------|
- BC delta/2     delta          BC
-
-\begin{align}
-    f_{N+1} = 4f_{N} - 6f_{N-1} + 4f_{N-2} - f_{N-3}
-    \label{eq:extraPolUp}
-\end{align}
-%
-lol
-%
-\begin{align}
-    f_{-1} = 4f_{0} - 6f_{1} + 4f_{2} - f_{3}
-    \label{eq:extraPolDown}
-\end{align}
