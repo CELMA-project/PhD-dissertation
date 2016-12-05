@@ -159,5 +159,28 @@ The method is also easily preconditioned%
 , as shown in \cite{Dudson2012}.
 Although preconditioning is expected to give substaintial speed-ups \cite{Hindmarsh2012book}, it is outside the scope of this thesis.
 
-% FIXME: Add the options used in a table
+In this thesis, the options for the time solver is given in \cref{tb:timeSolve}.
+%
+\begin{table}[h!]
+{\footnotesize \centerline{
+\begin{tabular}{c|l}
+\hline\hline
+%
+Variable & Value\\
+%
+\hline
+%
+Absolute tolerance              & $1.0\cdot10^{-10}$\\
+Relative tolerance              & $1.0\cdot10^{-5} $\\
+Max allowed iterations per step & $1.0\cdot10^{8}  $\\
+%
+\hline\hline
+\end{tabular}
+}}
+\caption[]{\textit{
+        Time solver options used in the CELMA code.
+    }}
+\protect\label{tb:timeSolve}
+\end{table}
+%
 % FIXME: Mention that IMEX has been tried out, but has not worked
