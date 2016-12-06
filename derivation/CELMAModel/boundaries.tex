@@ -201,7 +201,7 @@ The only thing we impose it that $\phi$ on the plate very close to the SE is set
 
 However, parallel derivatives of the potential is being taken in our set of equations.
 In order to calculate the parallel derivative of $\phi$ in the last point before the SE, we need either to make a one sided stencil for this very point (as the value of the boundary, and thereby the value of the ghost point is unknown), or we can extrapolate the value of $\phi$ to the ghost point (as we anyway assume that $\phi$ is a smooth function in order to discretize the differential operators working on $\phi$).
-The latter has been chosen in the current implementation.
+The latter has been chosen in the current implementation, with the polynomial given in \cref{sec:extrapolGhost}.
 
 \subsubsection{Vorticity BC at the SE}
 % NOTE: Tried
