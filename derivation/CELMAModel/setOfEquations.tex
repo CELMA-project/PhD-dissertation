@@ -88,3 +88,13 @@ As mentioned in \cref{chap:additionalImplementation}, the actual viscosities has
  \numberthis
  \label{eq:celma_vortD_evolution}
 \end{empheq}
+%
+From \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can calculate
+%
+\begin{align*}
+    n       =&\exp\L(\ln(n)\R)\\
+    u_{i,\|}=&\frac{n u_{i,\|}}{n}\\
+    u_{e,\|}=&u_{i,\|} - \frac{j_{i,\|}}{n}\\
+    \Om     =& \frac{\Om^D}{n} - \grad_\perp \ln(n)\cdot \grad_\perp \phi
+    \note{See \cref{sec:NaulinSolver}}
+\end{align*}
