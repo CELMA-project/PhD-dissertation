@@ -156,14 +156,8 @@ If we are to take derivatives in the $\theta$ direction, we must take care that
 %
 Note that there are functions not fulfilling all the criteria that can give convergence.
 
-
 \subsection{Derivative operators}
-% D2DX2 - used in arakawa
-% DDZ   - used in div(g(grad(f))) - highlights that DDZ is spectral and has superior error properties
-% D2DZ2 - used in div(g(grad(f)))
-% Notice that 1/J DDX(f) gives poor convergence
-% FIXME: Put everything into one table in the end, one column is also the function used
-% FIXME: Notice: Certain functions can give convergence even though these are not fulfulled
+%
 We will in this section use the following notation, which is consistent with BOUT++ notation (see \cref{foot:BOUT++coord} in \cref{sec:clebschAlign})
 %
 \begin{itemize}[noitemsep]
@@ -256,7 +250,6 @@ In order to check that the singularity is correctly implemented, we can check th
 The error of the operation for $2^{11}$ points is shown in \cref{fig:errorsMES}.
 It is important to notice that the error is not dominating at one particular point, but is spread out over domain.
 If the inner ghost point were incorreclty implemented, this would be detected by a localized high error around $\rho=0$, and it is expected that the correct order of convergence would not be found.
-
 In addition, we would like to check the convergence of \texttt{D2DX2}, \texttt{DDZ} and \texttt{D2DZ2} as these are used in the $\div\L(g[\grad f]\R)$ operator, and in the $\ve{u}_E^2$ advection of $n$.
 The results are given in \cref{tb:MESResults}.
 We note that the derivatives in the $\rho$ direction gives the expected second order convergence.
@@ -264,117 +257,72 @@ We also see that although the derivatives in the $\theta$ direction seems not to
 This is because machine precision is quickly reached.
 That is, the loss of precision due to subtraction of two almost equal quantities becomes larger than the error from the discretization itself.
 The behaviour is depicted in \cref{fig:divDDZ}.
-By inspecting the resulting plots, one also observe that the plot is "noisy" as compared with \cref{fig:errorsMES}, which is an indication of loss precision.
+
 %
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{fig/divDDZ}
+    \includegraphics[width=0.5\textwidth]{fig/divDDZ}
     \caption{\textit{
             Divergence due to loss of precision of the operator \texttt{DDZ(f)}.
         }}
-    \label{fig:flatBC}
+    \label{fig:divDDZ}
 \end{figure}
 %
+We therefore consider the schemes up until this point for convergent.
 
-YOU ARE HERE!
-
-For the cases where a convergence order of $2$ is found up until $2^{11}$ points, the schemes are considered convergent as the error is not dominating at any particular point of the domain.
-In general, one can observe from the plots of the error that they become a bit noisy in these cases, which could indicate that machine precision in reached.
-
-Note in the two last cases in \cref{tb:singleRho} that the converge one naively would have expected is generally not reached.
-In the case where we use $\texttt{DDX}(\texttt{DDX}[f])$, the boundaries are reset after the first operation.
-Notice that the resulting of stencil of these two operators is a wide stencil.
-That is
+Finally, we will point out an important caveat.
+Several operators used in the CELMA code can be written as $\rho^{-n}\partial_i f$, and care must be taken as the division by $\rho$ can appear to break the convergence.
+In the case of $\frac{\texttt{DDX}(f)}{\rho}$, the loss of expected convergence rate can be explained by looking at the finite difference stencil.
+We have that%
 %
-\begin{align*}
-D[D[f_i]] =& D\L[\frac{-f_{i-1} + f_{i+1}}{h_x}\R]
-\\
-=& \frac{-D[f_{i-1}] + D[f_{i+1}]}{h_x}
-\\
-=& \frac{-\frac{-f_{i-2} + f_{i}}{h_x} + \frac{-f_{i} + f_{i+2}}{h_x}}{h_x}
-\\
-=& \frac{f_{i-2} - 2f_{i} + f_{i+2}}{h_x^2}
-\end{align*}
-%
-where $h_x$ denotes the grid spacing, and the subscript the grid index.
-Hence, the observed divergence could be explained with poor information communication across the singularity.
-
-In the case of $\frac{\texttt{DDX}(f)}{J}$, the loss of expected convergence rate can be explained by looking at the operator under investigation.
-As the $\texttt{DDX}(f)$ operator used in this thesis is the standard $2$nd order operator (obtained by subtracting the function Taylor expanded around $x_0$, evaluated in $x+h$ from the function Taylor expanded around $x_0$, evaluated in $x-h$ and divided by $2h$), one find that
+\footnote{
+Found by Taylor expanding $f$ around $x_0$, evaluating it in $x+\Delta$ and subtracting it from the function Taylor expanded around $x_0$ and evaluated in $x-\Delta$. The final result is then divided by $2\Delta$
+}
 %
 \begin{align*}
     \deri{f}{x} - \texttt{DDX}(f) =
-    \frac{h^2}{6}\deri{^2f}{x^2} + \mathcal{O}(h^3)
+    \frac{\Delta^2}{6}\deri{^2f}{x^2} + \mathcal{O}(\Delta^3),
 \end{align*}
 %
-In the first inner point $J=h_x$ as the boundaries lays half between the grid points.
+where $\Delta$ denotes the grid spacing as showin in \cref{fig:flatBC}.
+As the boundaries lays half between the grid points, $\L.\rho\R|_{\text{Index}=1}=\frac{\Delta}{2}$
 Thus, in this point, we have that
 %
 \begin{align*}
-    \frac{ \L.\deri{f}{x} \R|_{\text{first} \rho}}{J}
-    - \frac{\L. \texttt{DDX}(f)\R|_{\text{first} \rho}}{J}=
-    \frac{h}{6}\deri{^2f}{x^2} + \mathcal{O}(h^2)
+    \L.\frac{\deri{f}{x}}{\rho}\R|_{\text{Index}=1}
+    - \L.\frac{\texttt{DDX}(f)}{\rho}\R|_{\text{Index}=1}
+    = \frac{\Delta}{3}\deri{^2f}{x^2} + \mathcal{O}(\Delta^2)
 \end{align*}
 %
-Thus for the first inner point, the scheme is not $2$nd order convergent.
+Thus for the first inner point, the scheme is only $1$st order convergent in $\Delta$.
 
-Only one extra operator is implemented in the $\theta$-direction.
-This is shown in \cref{tb:singleZ}.
-Note that we use spectral methods in the $\theta$ direction, which is know to give minimal error.
-Machine precision is therefore quickly reached, and performing MES after machine precision is nonsense due to loss of precision when subtracting two almost equal numbers.
-Indications that machine precision is reached are low errors, and plots of the error appearing noisy
+\subsubsection{The Naulin Solver}
 %
-\begin{table}[h!]
-{\footnotesize \centerline{
-\begin{tabular}{c|llllp{3cm}}
-\hline\hline
-Operation & $L_\inf$ order & $L_2$ order &
-$L_\inf$ error ($2^{6}$ points) & $L_2$ error ($2^{6}$ points) & Comment\\
-\hline
-\texttt{D3DZ3}$(f)$ & $2.06$ & $2.10$ & $7.44\cdot10^{-11}$ & $7.33\cdot10^{-12}$&
-Reaches machine precision at $2^6$.
-\\
-\hline\hline
-\end{tabular}
-}}
-\caption[]{\textit{Convergence test single operators in the $\theta$ direction.}}
-\protect\label{tb:singleZ}
-\end{table}
-
-\subsubsection{Divergence operators}
-% FIXME: These belongs to a previous advection solver, and can be deleted
-%           ▸ 1a-divPerp/
-%           ▸ 1b-JTimesDivPerp/
-%           ▸ 2a-divSource/
-%           ▸ 2b-JTimesDivSource/
-%           ▸ 3a-divExBAdv/
-%           ▸ 3b-J4divExBAdv/
-
-
+For the Naulin Solver we will use \cref{eq:MESf1} for $n$ and a cartesian Gaussian for $\phi$.
+Specifically, we use
+%
+\begin{align}
+\phi = \exp\L(-\frac{1}{2w^2}[\rho^2 + \rho_0^2 - 2\rho\rho_0\cos(\theta - \theta_0)] \R)
+\label{eq:MESf2}
+\end{align}
+%
+with
+%
+\begin{align*}
+& w = \frac{1}{2}L_\rho &
+& \rho_0 = \frac{1}{5}L_\rho &
+& \theta_0 = \pi &
+\end{align*}
+%
+for $n$%
+\footnote{The same convergence rate was found if the functions were swapped.}%
+.
+The results are given in \cref{tb:MESResults}.
+We note that the method seems to be non converging for when increasing the number of points in $\theta$.
+However, since we are using an spectral discretization in the $\theta$-direction, the error drops rapidly.
+As a result, the error arising from discretization in $\rho$ quickly becomes dominant even with high resultion in the $\rho$ direction.
 
 \subsection{Boundary operators}
-
-\subsection{The Naulin Solver}
-% FIXME: Make work
-% FIXME: Write about the function
-functions here
-mention BC
-write implementation somewhere
-\begin{table}[h!]
-{\footnotesize \centerline{
-        \begin{tabular}{lllll}
-\hline\hline
-$L_\inf$ order & $L_2$ order &
-$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points)\\
-\hline
-$2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
-\hline\hline
-\end{tabular}
-}}
-\caption[]{\textit{Convergence test of the Naulin Solver in the $\rho$ direction}}
-\protect\label{tb:naulinSolverConv}
-\end{table}
-%          ▸ Naulinsolver0Bndry/
 
 \subsection{Arakawa implementation of \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
 % FIXME: Make work
@@ -405,31 +353,32 @@ $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
 
 \subsection{Integration operators}
 
+\subsection{Summary of convergence rates obtained}
 
 \begin{table}[h!]
 {\footnotesize \centerline{
-\begin{tabular}{c|llllp{3cm}}
+\begin{tabular}{cc|llllp{3cm}p{3cm}}
 \hline\hline
-Operation & $L_\inf$ order & $L_2$ order &
-$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points) & Comment\\
+Operation \hfill&
+Direction \hfill&
+\scell{$L_\inf$}{order} \hfill&
+\scell{$L_2$}{order} \hfill&
+\scell{$L_\inf$ error}{$2^{11}$ points}\hfill&
+\scell{$L_2$ error}{$2^{11}$ points}\hfill&
+Equations \hfill&
+Comment\hfill
+\\
 \hline
-$\texttt{DDX}  (f)$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9}$& \\
-$\texttt{D2DX2}(f)$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$& \\
-$\texttt{D3DX3}(f)$ & $1.73$ & $2.00$ & $9.66\cdot10^{-10}$ & $1.57\cdot10^{-9}$&
-$L_\inf$ order $=2$ until $2^{11}$ points
-\\
-$\texttt{D2DXDZ} (f)$ & $2.00$ & $2.00$ & $1.09\cdot10^{-8}$ & $2.97\cdot10^{-8}$& \\
-$\texttt{D3DX2DZ}(f)$ & $2.00$ & $1.94$ & $2.33\cdot10^{-9}$ & $8.51\cdot10^{-10}$&
-$L_\inf$ order $=2$ until $2^{11}$ points
-\\
-$\texttt{D3DZ2DX}(f)$ & $2.00$ & $2.00$ & $7.68\cdot10^{-8}$ & $2.88\cdot10^{-8}$& \\
-$\texttt{DDX}   (Jf)$ & $2.00$ & $2.00$ & $5.22\cdot10^{-7}$ & $1.71\cdot10^{-7}$& \\
-$\texttt{DDX}(\texttt{DDX}[f])$ & $-1.00$ & $-0.50$ & $1.67\cdot10^{0}$ & $2.60\cdot10^{-2}$&
-Solution diverges. Errors dominating close to $\rho=0$.
-\\
-$\frac{\texttt{DDX}(f)}{J}$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7}$&
-No order $2$nd order convergence. Errors dominating close to $\rho=0$.
-\\
+$\texttt{DDX}  (f)$         & $\rho$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9} $&\Cref{eq:MESf1}&\\
+$\texttt{D2DX2}(f)$         & $\rho$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$&\Cref{eq:MESf1}&\\
+$\frac{\texttt{DDX}(f)}{J}$ & $\rho$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7} $&\Cref{eq:MESf1}&
+No order $2$nd order convergence. Errors dominating close to $\rho=0$.\\
+$\texttt{DDZ}(f)$ & $\theta$ &  $-1.00$ & $-0.54$ & $9.12\cdot10^{-12}$ & $1.26\cdot10^{-13}$ & \Cref{eq:MESf1}&
+Machine precision reached.\\
+$\texttt{D2DZ2}(f)$ & $\theta$ & $-1.99$ & $-1.57$ & $3.83\cdot10^{-9}$ & $6.65\cdot10^{-11}$ & \Cref{eq:MESf1}&
+Machine precision reached.\\
+\scell{Naulin}{Solver} & $\rho$ & $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$& $n_\theta=2^{12}$\\
+\scell{Naulin}{Solver} & $\theta$ & $0.00$ & $0.00$ & $7.98\cdot10^{-9}$ & $4.13\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$ & $n_\rho=2^{12}$, errors in $\rho$ dominating\\
 \hline\hline
 \end{tabular}
 }}
