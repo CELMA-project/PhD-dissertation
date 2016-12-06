@@ -1,4 +1,6 @@
-In the same sense that it is important to verify that the assumption in our models are good, we need to ensure that the machinery handeling the numerical calculation is correctly implemented.
+In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure ourselves that the assumption in our models are sound.
+As important is it to check that the machinery handeling the numerical calculation is correctly implemented.
+This can be done by code verification.
 
 Quoting \cite{Dudson2016}
 
@@ -9,11 +11,16 @@ Code verification is also not concerned with testing the ability of a given mode
 This testing is dealt with in the subsequent validation process.
 }
 
-Thus a code can be verified numerically, but still fail to match the desired features of a real life experiment, and hence fail the validation process.
-If the code has succuessfully passed a validation test, but fails a verification test, the success of the validation is questionable, and the success of the validation could be a mere coincident.
-The verification process can be time consuming, and can almost be regarded as an artform in itself.
-The process is throughly discussed in \cite{Oberkampf2010book}, and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
-The BOUT++ framework is verified using MMS in \cite{Dudson2016}, presented briefly in \cref{sec:MMS} after introducing the concept of errors.
+Thus, a code can be verified numerically, but still fail to match the desired features of a real life experiment.
+In other words, it would have passed the verification failed the validation.
+If the code has succuessfully passed a validation test, but fails a verification test, the success of the validation is questionable.
+The success of the validation in this case could have been a mere coincident.
+
+The verification process is throughly discussed in \cite{Oberkampf2010book}, and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
+Note that the verification process can be time consuming, and can be regarded as an artform in itself.
+Luckly, a major part of the implemntation has already been verified in the BOUT++ framework using MMS in \cite{Dudson2016}.
+
+After a quick introduction of the concept of truncation errors, the MMS process will be briefly presented in \cref{sec:MMS} before verification of additional implementations in the CELMA code is given in \cref{sec:MES}.
 
 \section{Numerical errors}
 %
@@ -30,7 +37,8 @@ where $f(x)$ and $g(x)$ are arbitrary functions (not to be confused with the dis
 We seek to solve \cref{ver:ode} for $f(x)$.
 
 Let us find the simplest approximation of the derivative in an arbitrary grid point $x_0$.
-We first Taylor expand $f(x)$ around $x_0$ (where $h$ is the grid spacing) and evaluate it in $x_0 + h$, which gives
+We first Taylor expand $f(x)$ around $x_0$ and evaluate it in $x_0 + h$ (where $h$ is the grid spacing).
+This gives
 %
 \begin{align*}
     f(x_0+h)
@@ -52,12 +60,11 @@ Subtraction of $f(x_0)$ and division by $h$ now yields the following approximati
 Hence, the local truncation error LTE we do in a single point by using this approximation is
 %
 \begin{align*}
-    |e_{\text{LTE}}|
+    \|e_{\text{LTE}}\|
     =
-    \L|\frac{f(x_0+h) - f(x_0)}{h} - \L.\deri{f(x)}{x}\R|_{x=x_0}\R|
+    \L\|\frac{f(x_0+h) - f(x_0)}{h} - \L.\deri{f(x)}{x}\R|_{x=x_0}\R\|
     =
-    \L| \L.\frac{h}{2}\deri{^2f(x)}{x^2}\R|_{x=x_0}
-    + \mathcal{O}(h^2)\R|
+    \L\| \L.\frac{h}{2}\deri{^2f(x)}{x^2}\R|_{x=x_0} + \mathcal{O}(h^2)\R\|
 \end{align*}
 %
 In other words it scales with the grid spacing $h$ to the first order.
@@ -79,7 +86,8 @@ If convergence is observed, the implementation is verified.
 \label{sec:MMS}
 For most PDEs, the true solution $\ve{f}_{\text{true}}$ is not known in advance.
 Sometimes a solution can be found in some special limits.
-If convergence is found for these special cases, the code is not generally verified, as there could still be implementation mistakes (not discoverable in the limiting cases), but which could have dire consequences when a more general solution is sought numerically.
+If convergence is found for these special cases, the code is not generally verified.
+There could still be implementation mistakes (not discoverable in the limiting cases) which could have dire consequences when a more general solution is sought numerically.
 One way to get around the problem is to manufacture a solution.
 
 Assume that we have a set of nonlinear spatio-temporal PDEs we would like to solve for.
@@ -108,32 +116,64 @@ We can therefore solve numerically $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$ for 
 \end{align*}
 %
 One can now test if the global error show the expected order of convergence.
-Note that $\ve{f}_M$ and the coefficients in the various terms in the PDEs does not need to be physical, but that in order to test all terms in this set of equations, the parameters of the simulation should be chosen so that the magnitude of each term is of a similar order of magnitude.
+Note that $\ve{f}_M$ and the coefficients in the various terms in the PDEs does not need to be physical, but that in order to test all terms in this set of equations, the parameters of the simulation should be chosen so that the magnitude of each term are of a similar order of magnitude.
 
 \section{Method of Exact Solution}
 \label{sec:MES}
 %
-There are, however, implementations in this thesis which is not covered by the BOUT++ framework, and these should be verified as well.
-As these implementations are single operations where an exact analytic solution can be found, the approach to verify these has been through the method of exact solutions (MES), i.e.
-there is no need to manufacture a solution.
-As with MMS, there are several things to be aware of when performing MES, in particular when dealing with cylinder geometry as there is an singularity at $\rho=0$.
-Calling $f(\rho,\theta,z)$ for the function we are operating on with a discretized operator $D$ (in such a way that $D[f(\rho,\theta,z)]=S$, where $S$ is the result of the operation), the following criteria must be fulfilled for the $f(\rho,\theta,z)$ under consideration
+
+Since there are implementations in this thesis which is not covered by the BOUT++ framework (see \cref{chap:additionalImplementation} for details), these implementation should be verified as well.
+All of these implementations are either differencing operators, extrapolations or integration operators where an exact analytic solution can be found.
+Hence, one can use the approach of method of exact solutions (MES) to verify these operations, and there will be no need for manufacturing a solution.
+
+Although it is simpler to perform MES than MMS, there are certain points one should be aware of.
+Especially since we are dealing with a periodic domain with a singularity in the center.
+Let us now call the function we are operating on with a discretized operator $D$ for $f(\rho,\theta,z)$.
+Hence, the source $S$ is given by $D[f(\rho,\theta,z)]=S$, where $S$.
+If we are to take derivatives in the $\rho$ direction, we must take care that
 %
 \vspace{0.5cm}
 \begin{enumerate}[noitemsep,nolistsep]
-    \item $f(\rho,\theta,z) = f(\rho,\theta+2\pi,z)$.
-    \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$, particularly at
-    \begin{enumerate}[noitemsep,nolistsep]
-        \item $f(\rho,\theta=0,z)$ and $f(\rho,\theta=2\pi,z)$.
-        \item $f(\rho=0,\theta,z)$ (although the coordinates has a singularity
-            there).
-    \end{enumerate}
-    \item $f(\rho, \theta, z)$ must be continuous in the $\rho$ direction with
-          $f(\rho, \theta + \pi, z)$.
-  \item Boundary conditions in $\rho$ and $z$ must be satisfied.
+    \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$ along $\rho$, particularly at \item $f(\rho=0,\theta,z)$.%
+    \begin{itemize}[noitemsep,nolistsep]
+            \item This implies that the function must also be single valued in $f(\rho=0,\theta,z)$.
+            \item Even though the coordinate system have a singularity in $f(\rho=0,\theta,z)$, the function may be continuous in a different coordinate system.
+    \end{itemize}
+  \item Boundary conditions in $\rho$ must be satisfied.
 \end{enumerate}
+\vspace{0.5cm}
 %
-A function which satisfies the above is
+If we are to take derivatives in the $\theta$ direction, we must take care that
+%
+\vspace{0.5cm}
+\begin{enumerate}[noitemsep,nolistsep]
+    \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$ along $\theta$, particularly at $f(\rho,\theta=0,z)$ and $f(\rho,\theta=2\pi,z)$%
+    \begin{itemize}[noitemsep,nolistsep]
+            \item This implies that the function must also be periodic
+    \end{itemize}
+\end{enumerate}
+\vspace{0.5cm}
+%
+Note that there are functions not fulfilling all the criteria that can give convergence.
+
+
+\subsection{Derivative operators}
+% D2DX2 - used in arakawa
+% DDZ   - used in div(g(grad(f))) - highlights that DDZ is spectral and has superior error properties
+% D2DZ2 - used in div(g(grad(f)))
+% Notice that 1/J DDX(f) gives poor convergence
+% FIXME: Put everything into one table in the end, one column is also the function used
+% FIXME: Notice: Certain functions can give convergence even though these are not fulfulled
+We will in this section use the following notation, which is consistent with BOUT++ notation (see \cref{foot:BOUT++coord} in \cref{sec:clebschAlign})
+%
+\begin{itemize}[noitemsep]
+    \item \texttt{DDX(f)} for the second order discretization of $\partial_\rho f$.
+    \item \texttt{D2DX2(f)} for the second order discretization of $\partial^2_\rho f$.
+    \item \texttt{DDZ(f)} for the spectral discretization of $\partial_\theta f$.
+    \item \texttt{D2DZ2(f)} for the spectral discretization of $\partial^2_\theta f$.
+\end{itemize}
+%
+A function which satisfies most of the criteria in \cref{sec:MES} is
 %
 \begin{align*}
     f(\rho, \theta, z)
@@ -146,9 +186,9 @@ A function which satisfies the above is
             \L[\rho^2 + \rho_0^2 - 2\rho\rho_0(\cos[\theta - \theta_0])\R]
           \R)
       \\&
-        \L(\frac{\rho\cos[\theta]+L_\rho}{2L_\rho}\R)^2
+        \L(\frac{\rho\cos[\theta]+L_\rho}{2L_\rho}\R)^2,
         \numberthis
-        \label{eqapp:MESf1}
+        \label{eq:MESf1}
 \end{align*}
 %
 where
@@ -179,68 +219,65 @@ where
     }&
 \end{align*}
 %
-\cref{eqapp:MESf1} will be function used in the discussion below if nothing else is mentioned.
+The function is depicted in \cref{fig:typicalMES}, and has the advantage that it is not symmetric across the axis.
+However, it is not $\mathcal{C}^\infty$ in $\rho=0$, as the first derivative of the function (with respect to $\rho$) is multivalued there.
+As a consequence it is found that for example \texttt{DDX(DDX(f))} diverges rather than converges when applying MES to \cref{eq:MESf1}%
+%
+\footnote{The ghost points are re-calculated after using the first operation on $f$.}
+\footnote{Note that convergence is found for \cref{eq:MESf1} when using \texttt{D2DX2(f)}, and that convergence for \texttt{DDX(DDX(f))} is found using functions which are of $\mathcal{C}^\infty$, but which are not symmetric.}
 %
 \begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/f}
-        \caption{The function used in the MES}
+        \caption{Vizualisation of \cref{eq:MESf1}}
+        \label{fig:typicalMES}
     \end{subfigure}%
     ~
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/err}
-        \caption{Typical plot of the errors}
+        \caption{Errors of \texttt{DDX(f)}, where $f$ is given in \cref{eq:MESf1}}
+        \label{fig:errorsMES}
     \end{subfigure}
     ~
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/conv}
-        \caption{Typical convergence plot}
+        \caption{Convergence rate of \texttt{DDX(f)}, where $f$ is given in \cref{eq:MESf1}}
     \end{subfigure}
-    \caption{Typical function and errors for MES}
+    \caption{An example of functions and errors found when using MES.}
 \end{figure}
 
-\subsection{Single operators}
+\subsubsection{Single operators}
 %
-%FIXME: Reformulate and add as shown in...
-Although the single operators available from BOUT++ is verified in \cite{Dudson2016}, the axis of a cylinder must be treated with care as there is a singularity there ($J=0$ at $\rho=0$)
+In order to check that the singularity is correctly implemented, we can check that \texttt{DDX(f)} is giving the expected order of convergence on \cref{eq:MESf1} as this is not symmetric.
+The error of the operation for $2^{11}$ points is shown in \cref{fig:errorsMES}.
+It is important to notice that the error is not dominating at one particular point, but is spread out over domain.
+If the inner ghost point were incorreclty implemented, this would be detected by a localized high error around $\rho=0$, and it is expected that the correct order of convergence would not be found.
 
-The convergence test for the single operators in $\rho$ direction can be found in \cref{tb:singleRho}.
+In addition, we would like to check the convergence of \texttt{D2DX2}, \texttt{DDZ} and \texttt{D2DZ2} as these are used in the $\div\L(g[\grad f]\R)$ operator, and in the $\ve{u}_E^2$ advection of $n$.
+The results are given in \cref{tb:MESResults}.
+We note that the derivatives in the $\rho$ direction gives the expected second order convergence.
+We also see that although the derivatives in the $\theta$ direction seems not to be converging, the errors are quite small.
+This is because machine precision is quickly reached.
+That is, the loss of precision due to subtraction of two almost equal quantities becomes larger than the error from the discretization itself.
+The behaviour is depicted in \cref{fig:divDDZ}.
+By inspecting the resulting plots, one also observe that the plot is "noisy" as compared with \cref{fig:errorsMES}, which is an indication of loss precision.
 %
-\begin{table}[h!]
-{\footnotesize \centerline{
-\begin{tabular}{c|llllp{3cm}}
-\hline\hline
-Operation & $L_\inf$ order & $L_2$ order &
-$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points) & Comment\\
-\hline
-$\texttt{DDX}  (f)$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9}$& \\
-$\texttt{D2DX2}(f)$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$& \\
-$\texttt{D3DX3}(f)$ & $1.73$ & $2.00$ & $9.66\cdot10^{-10}$ & $1.57\cdot10^{-9}$&
-$L_\inf$ order $=2$ until $2^{11}$ points
-\\
-$\texttt{D2DXDZ} (f)$ & $2.00$ & $2.00$ & $1.09\cdot10^{-8}$ & $2.97\cdot10^{-8}$& \\
-$\texttt{D3DX2DZ}(f)$ & $2.00$ & $1.94$ & $2.33\cdot10^{-9}$ & $8.51\cdot10^{-10}$&
-$L_\inf$ order $=2$ until $2^{11}$ points
-\\
-$\texttt{D3DZ2DX}(f)$ & $2.00$ & $2.00$ & $7.68\cdot10^{-8}$ & $2.88\cdot10^{-8}$& \\
-$\texttt{DDX}   (Jf)$ & $2.00$ & $2.00$ & $5.22\cdot10^{-7}$ & $1.71\cdot10^{-7}$& \\
-$\texttt{DDX}(\texttt{DDX}[f])$ & $-1.00$ & $-0.50$ & $1.67\cdot10^{0}$ & $2.60\cdot10^{-2}$&
-Solution diverges. Errors dominating close to $\rho=0$.
-\\
-$\frac{\texttt{DDX}(f)}{J}$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7}$&
-No order $2$nd order convergence. Errors dominating close to $\rho=0$.
-\\
-\hline\hline
-\end{tabular}
-}}
-\caption[]{\textit{Convergence test of single operators in the $\rho$ direction}}
-\protect\label{tb:singleRho}
-\end{table}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{fig/divDDZ}
+    \caption{\textit{
+            Divergence due to loss of precision of the operator \texttt{DDZ(f)}.
+        }}
+    \label{fig:flatBC}
+\end{figure}
 %
+
+YOU ARE HERE!
+
 For the cases where a convergence order of $2$ is found up until $2^{11}$ points, the schemes are considered convergent as the error is not dominating at any particular point of the domain.
 In general, one can observe from the plots of the error that they become a bit noisy in these cases, which could indicate that machine precision in reached.
 
@@ -304,7 +341,8 @@ Reaches machine precision at $2^6$.
 \protect\label{tb:singleZ}
 \end{table}
 
-\subsection{Divergence operators}
+\subsubsection{Divergence operators}
+% FIXME: These belongs to a previous advection solver, and can be deleted
 %           ▸ 1a-divPerp/
 %           ▸ 1b-JTimesDivPerp/
 %           ▸ 2a-divSource/
@@ -312,7 +350,34 @@ Reaches machine precision at $2^6$.
 %           ▸ 3a-divExBAdv/
 %           ▸ 3b-J4divExBAdv/
 
+
+
+\subsection{Boundary operators}
+
 \subsection{The Naulin Solver}
+% FIXME: Make work
+% FIXME: Write about the function
+functions here
+mention BC
+write implementation somewhere
+\begin{table}[h!]
+{\footnotesize \centerline{
+        \begin{tabular}{lllll}
+\hline\hline
+$L_\inf$ order & $L_2$ order &
+$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points)\\
+\hline
+$2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
+\hline\hline
+\end{tabular}
+}}
+\caption[]{\textit{Convergence test of the Naulin Solver in the $\rho$ direction}}
+\protect\label{tb:naulinSolverConv}
+\end{table}
+%          ▸ Naulinsolver0Bndry/
+
+\subsection{Arakawa implementation of \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
+% FIXME: Make work
 % FIXME: Write about the function
 functions here
 mention BC
@@ -337,3 +402,37 @@ $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
 %          ▸ 1-yExtrapolation/
 %          ▸ 2-uEParSheath/
 %          ▸ 3-cauchyBC/
+
+\subsection{Integration operators}
+
+
+\begin{table}[h!]
+{\footnotesize \centerline{
+\begin{tabular}{c|llllp{3cm}}
+\hline\hline
+Operation & $L_\inf$ order & $L_2$ order &
+$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points) & Comment\\
+\hline
+$\texttt{DDX}  (f)$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9}$& \\
+$\texttt{D2DX2}(f)$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$& \\
+$\texttt{D3DX3}(f)$ & $1.73$ & $2.00$ & $9.66\cdot10^{-10}$ & $1.57\cdot10^{-9}$&
+$L_\inf$ order $=2$ until $2^{11}$ points
+\\
+$\texttt{D2DXDZ} (f)$ & $2.00$ & $2.00$ & $1.09\cdot10^{-8}$ & $2.97\cdot10^{-8}$& \\
+$\texttt{D3DX2DZ}(f)$ & $2.00$ & $1.94$ & $2.33\cdot10^{-9}$ & $8.51\cdot10^{-10}$&
+$L_\inf$ order $=2$ until $2^{11}$ points
+\\
+$\texttt{D3DZ2DX}(f)$ & $2.00$ & $2.00$ & $7.68\cdot10^{-8}$ & $2.88\cdot10^{-8}$& \\
+$\texttt{DDX}   (Jf)$ & $2.00$ & $2.00$ & $5.22\cdot10^{-7}$ & $1.71\cdot10^{-7}$& \\
+$\texttt{DDX}(\texttt{DDX}[f])$ & $-1.00$ & $-0.50$ & $1.67\cdot10^{0}$ & $2.60\cdot10^{-2}$&
+Solution diverges. Errors dominating close to $\rho=0$.
+\\
+$\frac{\texttt{DDX}(f)}{J}$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7}$&
+No order $2$nd order convergence. Errors dominating close to $\rho=0$.
+\\
+\hline\hline
+\end{tabular}
+}}
+\caption[]{\textit{Results of the convergence test}}
+\protect\label{tb:MESResults}
+\end{table}
