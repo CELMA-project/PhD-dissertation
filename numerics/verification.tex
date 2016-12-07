@@ -157,6 +157,7 @@ If we are to take derivatives in the $\theta$ direction, we must take care that
 Note that there are functions not fulfilling all the criteria that can give convergence.
 
 \subsection{Derivative operators}
+\label{sec:derOp}
 %
 We will in this section use the following notation, which is consistent with BOUT++ notation (see \cref{foot:BOUT++coord} in \cref{sec:clebschAlign})
 %
@@ -370,45 +371,97 @@ Inspection of the error plot shows that the error is not dominating in any perti
 
 Also note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
 
-\subsection{Boundary extrapolation}
-%          ▸ 1-yExtrapolation/
-%          ▸ 2-uEParSheath/
-%          ▸ 3-cauchyBC/
+\subsection{Extrapolation to ghost points}
+%
+The verification of extrapolation to the outer ghost points in $\rho$ was verified in \cref{sec:derOp}.
+What remains is to verify the parallel extrapolation of the ghost points for $\phi$, and to verify the sheath boundary condition for $j_{\|}$.
+Notice that the polynomials in \cref{sec:extrapolGhost} are of fourth order.
+This is to avoid propagation of one point errors when the ghost point is re-inserted in the FDA.
+For the sheath boundary condition, the following functions are used
+%
+\begin{align}
+    \phi =& \sin\L(\frac{1}{\sqrt{2}}[\rho + z]\frac{2\pi}{2L_\rho}\R)
+    \label{eq:MESPhiSheath}
+    \\
+    n =& \cos\L(\frac{2\pi z}{L_z}\R)\sin^2\L(\frac{2\pi\rho}{L_\rho}\R)
+    \label{eq:MESNSheath}
+    \\
+    u_{i, \|} =& \sin\L(\frac{z}{L_z}\R)\cos^2\L(2+2\pi\frac{\rho}{L_\rho}\R)
+    \label{eq:MEUISheath}
+\end{align}
+%
+Notice that $u_{e,\|}$ is given by the sheath boundary condition, and that this function does not need to be manufactured.
+The result of the MES is given in \cref{tb:MESResults}.
+% FIXME: If cauchy is used, include 3-cauchyBC
 
 \subsection{Integration operators}
+%
+Finally the integration operators are verified.
+Note that we are not using these routines when solving the set of PDEs, but to calculate the total particle number, the kinetic energy etc.
+We now define the function
+%
+\begin{align*}
+    H(d,s,c,w) = \frac{1}{2}\L(\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]-\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]\R)
+\end{align*}
+%
+And use the following equations in the verification process
+%
+\begin{align}
+f =& \frac{H\L(\rho, 2,\frac{L_\rho}{2}, \frac{L_\rho}{4}\R)}{\defi{0}{L_\rho}{H\L(\rho, 2,\frac{L_\rho}{2}, \frac{L_\rho}{4}\R)}{\rho}}
+\label{eq:MESRhoInt}
+\\
+f =& \frac{H\L(\theta, 2,\pi, \frac{\pi}{2}\R)}{\defi{0}{2\pi}{H\L(\theta, 2,\pi, \frac{\pi}{2}\R)}{\theta}}
+\label{eq:MESThetaInt}
+\\
+f =& \frac{H\L(z, 0.07,\frac{L_z}{2}, \frac{L_z}{4}\R)}{\defi{0}{L_z}{H\L(z, 0.07,\frac{L_z}{2}, \frac{L_z}{4}\R)}{z}}
+\label{eq:MESZInt}
+\end{align}
+%
+The results for each direction is given in \cref{tb:MESResults}.
 
+\begin{landscape}
 \subsection{Summary of convergence rates obtained}
-
+\thispagestyle{empty}
+% FIXME: Lines missing in this table, | and one \hline...is it correctly formatted? Check in a blank document
 \begin{table}[h!]
 {\footnotesize \centerline{
 \colorme
-\begin{tabular}{cc|llllp{3cm}p{3cm}}
+\begin{tabular}{cccccccc}
 \hline\hline
-Operation \hfill&
-Direction \hfill&
-\scell{$L_\inf$}{order} \hfill&
-\scell{$L_2$}{order} \hfill&
-\scell{$L_\inf$ error}{$2^{11}$ points}\hfill&
-\scell{$L_2$ error}{$2^{11}$ points}\hfill&
-Equations \hfill&
-Comment\hfill
+$\L.\R.$ \quad Operation                              \quad $\L.\R.$&
+$\L.\R.$ \quad Direction                              \quad $\L.\R.$&
+$\L.\R.$ \quad \scell{$L_\inf$}{order}                \quad $\L.\R.$&
+$\L.\R.$ \quad \scell{$L_2$}{order}                   \quad $\L.\R.$&
+$\L.\R.$ \quad \scell{$L_\inf$ error}{$2^{11}$ points}\quad $\L.\R.$&
+$\L.\R.$ \quad \scell{$L_2$ error}{$2^{11}$ points}   \quad $\L.\R.$&
+$\L.\R.$ \quad \scell{Equations}{used}                \quad $\L.\R.$&
+$\L.\R.$ \quad Comment
 \\
 \hline
-$\texttt{DDX}  (f)$         & $\rho$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9} $&\Cref{eq:MESf1}&\\
-$\texttt{D2DX2}(f)$         & $\rho$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$&\Cref{eq:MESf1}&\\
-$\frac{\texttt{DDX}(f)}{J}$ & $\rho$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7} $&\Cref{eq:MESf1}&
-No order $2$nd order convergence. Errors dominating close to $\rho=0$.\\
-$\texttt{DDZ}(f)$ & $\theta$ &  $-1.00$ & $-0.54$ & $9.12\cdot10^{-12}$ & $1.26\cdot10^{-13}$ & \Cref{eq:MESf1}&
+\hline
+$\texttt{DDX}  (f)$         & $\rho$ & $2.00$ & $2.00$ & $1.99\cdot10^{-8}$ & $6.90\cdot10^{-9} $&\ref{eq:MESf1}&\\
+$\texttt{D2DX2}(f)$         & $\rho$ & $2.00$ & $2.00$ & $1.58\cdot10^{-9}$ & $5.07\cdot10^{-10}$&\ref{eq:MESf1}&\\
+$\frac{\texttt{DDX}(f)}{J}$ & $\rho$ & $1.00$ & $1.50$ & $3.16\cdot10^{-5}$ & $4.48\cdot10^{-7} $&\ref{eq:MESf1}&
+\scell{No order $2$nd order convergence.}{Errors dominating close to $\rho=0$.}\\
+$\texttt{DDZ}(f)$ & $\theta$ &  $-1.00$ & $-0.54$ & $9.12\cdot10^{-12}$ & $1.26\cdot10^{-13}$ & \ref{eq:MESf1}&
 Machine precision reached.\\
-$\texttt{D2DZ2}(f)$ & $\theta$ & $-1.99$ & $-1.57$ & $3.83\cdot10^{-9}$ & $6.65\cdot10^{-11}$ & \Cref{eq:MESf1}&
+$\texttt{D2DZ2}(f)$ & $\theta$ & $-1.99$ & $-1.57$ & $3.83\cdot10^{-9}$ & $6.65\cdot10^{-11}$ & \ref{eq:MESf1}&
 Machine precision reached.\\
-\scell{Naulin}{Solver} & $\rho$ & $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$& $n_\theta=2^{12}$\\
-\scell{Naulin}{Solver} & $\theta$ & $0.00$ & $0.00$ & $7.98\cdot10^{-9}$ & $4.13\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$ & $n_\rho=2^{12}$, errors in $\rho$ dominating\\
-$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\rho$ & $2.00$ & $2.00$ & $1.60\cdot10^{-7}$ & $2.43\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:arakawaUE} for $\phi$ & $n_\theta=2^{12}$\\
-$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\theta$ & $1.35$ & $1.46$ & $1.12\cdot10^{-8}$ & $8.41\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:arakawaUE} for $\phi$ & $n_\rho=2^{12}$, convergence found until $n_\theta=2^{9}$\\
+\scell{Naulin}{Solver} & $\rho$ & $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$ & \ref{eq:MESf1} for $n$ and \ref{eq:MESf2} for $\phi$& $n_\theta=2^{12}$\\
+\scell{Naulin}{Solver} & $\theta$ & $0.00$ & $0.00$ & $7.98\cdot10^{-9}$ & $4.13\cdot10^{-8}$ & \ref{eq:MESf1} for $n$ and \ref{eq:MESf2} for $\phi$ &
+\scell{$n_\rho=2^{12}$, errors from}{$\rho$ discretization dominating}\\
+$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\rho$ & $2.00$ & $2.00$ & $1.60\cdot10^{-7}$ & $2.43\cdot10^{-8}$ & \ref{eq:MESf1} for $n$ and \ref{eq:arakawaUE} for $\phi$ & $n_\theta=2^{12}$\\
+$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\theta$ & $1.35$ & $1.46$ & $1.12\cdot10^{-8}$ & $8.41\cdot10^{-8}$ & \ref{eq:MESf1} for $n$ and \ref{eq:arakawaUE} for $\phi$ &
+\scell{$n_\rho=2^{12}$}{Convergence found until $n_\theta=2^{9}$}\\
+\scell{$\phi$}{$z$-extrapolation} & $z$ & $3.47$ & $4.50$ & $5.60\cdot10^{-16}$ & $5.86\cdot10^{-18}$ & \ref{eq:MESf1} & Machine precision reached.\\
+\scell{$j_{\|}$}{sheath}          & $z$ & $3.98$ & $4.50$ & $2.38\cdot10^{-10}$ & $2.18\cdot10^{-12}$ & \scell{\ref{eq:MESPhiSheath} for $\phi$, \ref{eq:MESNSheath} for $n$}{and \ref{eq:MEUISheath} for $u_{i,\|}$}& \\
+$\inde{f}{V}$  & $\rho$   & $2.01$ & $-$ & $3.50\cdot10^{-9} $ & $-$ &\ref{eq:MESRhoInt}  &$n_\theta= n_z     =512$\\
+$\inde{f}{V}$  & $\theta$ & $2.21$ & $-$ & $2.03\cdot10^{-10}$ & $-$ &\ref{eq:MESThetaInt}&$n_\rho  = n_z     =512$\\
+$\inde{f}{V}$  & $z$      & $2.00$ & $-$ & $2.01\cdot10^{-8}$ & $-$ &\ref{eq:MESZInt}    &$n_\rho  = n_\theta=512$\\
 \hline\hline
 \end{tabular}
 }}
-\caption[]{\textit{Results of the convergence test}}
+\caption[]{\textit{Results of the convergence tests}}
 \protect\label{tb:MESResults}
 \end{table}
+\end{landscape}
