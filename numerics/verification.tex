@@ -218,7 +218,7 @@ However, it is not $\mathcal{C}^\infty$ in $\rho=0$, as the first derivative of 
 As a consequence it is found that for example \texttt{DDX(DDX(f))} diverges rather than converges when applying MES to \cref{eq:MESf1}%
 %
 \footnote{The ghost points are re-calculated after using the first operation on $f$.}
-\footnote{Note that convergence is found for \cref{eq:MESf1} when using \texttt{D2DX2(f)}, and that convergence for \texttt{DDX(DDX(f))} is found using functions which are of $\mathcal{C}^\infty$, but which are not symmetric.}
+\footnote{Note that convergence is found for \cref{eq:MESf1} when using \texttt{D2DX2(f)}, and that convergence for \texttt{DDX(DDX(f))} is found using functions which are of $\mathcal{C}^\infty$, but which are not symmetric.\label{foot:DDXDDX}}
 %
 \begin{figure}[t!]
     \centering
@@ -245,6 +245,7 @@ As a consequence it is found that for example \texttt{DDX(DDX(f))} diverges rath
 \end{figure}
 
 \subsubsection{Single operators}
+\label{sec:singleOp}
 %
 In order to check that the singularity is correctly implemented, we can check that \texttt{DDX(f)} is giving the expected order of convergence on \cref{eq:MESf1} as this is not symmetric.
 The error of the operation for $2^{11}$ points is shown in \cref{fig:errorsMES}.
@@ -257,7 +258,6 @@ We also see that although the derivatives in the $\theta$ direction seems not to
 This is because machine precision is quickly reached.
 That is, the loss of precision due to subtraction of two almost equal quantities becomes larger than the error from the discretization itself.
 The behaviour is depicted in \cref{fig:divDDZ}.
-
 %
 \begin{figure}[htb]
     \centering
@@ -271,7 +271,7 @@ The behaviour is depicted in \cref{fig:divDDZ}.
 We therefore consider the schemes up until this point for convergent.
 
 Finally, we will point out an important caveat.
-Several operators used in the CELMA code can be written as $\rho^{-n}\partial_i f$, and care must be taken as the division by $\rho$ can appear to break the convergence.
+Several operators used in the CELMA code can be written as $\rho^{-n}\partial_\rho f$, and care must be taken as the division by $\rho$ can appear to break the convergence.
 In the case of $\frac{\texttt{DDX}(f)}{\rho}$, the loss of expected convergence rate can be explained by looking at the finite difference stencil.
 We have that%
 %
@@ -295,10 +295,11 @@ Thus, in this point, we have that
 \end{align*}
 %
 Thus for the first inner point, the scheme is only $1$st order convergent in $\Delta$.
+As a function like $\rho$ is known to machine precision, this does not imply that the operator is incorreclty implemented, only that verfication of $\rho^{-n}\partial_\rho f$ throuhg MES is not suitable.
 
 \subsubsection{The Naulin Solver}
 %
-For the Naulin Solver we will use \cref{eq:MESf1} for $n$ and a cartesian Gaussian for $\phi$.
+For the Naulin Solver (described in \cref{sec:NaulinSolver}) we will use \cref{eq:MESf1} for $n$ and a cartesian Gaussian for $\phi$.
 Specifically, we use
 %
 \begin{align}
@@ -321,32 +322,55 @@ The results are given in \cref{tb:MESResults}.
 We note that the method seems to be non converging for when increasing the number of points in $\theta$.
 However, since we are using an spectral discretization in the $\theta$-direction, the error drops rapidly.
 As a result, the error arising from discretization in $\rho$ quickly becomes dominant even with high resultion in the $\rho$ direction.
+Hence, we conclude that the method is convergent.
 
-\subsection{Boundary operators}
+\subsubsection{Arakawa implementation of \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
+%
+We will now verify the implementation of the
+%
+\begin{align*}
+    \{\ve{u}_E^2, n\}
+    =
+    \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2, n\R\}
+    =
+    \L\{\L(\partial_{\rho} \phi\R)^2,n\} + \{\frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2, n\R\}
+    .
+\end{align*}
+%
+term, found in \cref{eq:ExBAdvImp}.
+As the Arakwa implementation of $\{\phi,\cdot\}$ was found convergent using MMS in \cite{Dudson2016}, and because the treatment of the singularity was found to be convergent in \cref{sec:singleOp}, we would here like to check that ghost points are correctly calculated after doing the $\partial^2_\rho \phi$ operation.
+Hence, we seek only to MES the term
+%
+\begin{align*}
+    \L\{\L(\partial_{\rho} \phi\R)^2,n\R\}.
+\end{align*}
+%
+As noted in \cref{foot:DDXDDX}, we should here find a different function for $\phi$ as the first derivative with respect to $\rho$ of \cref{eq:MESf1} has the problem that it is not single valued on the axis.
+Instead, we will use the function
+%
+\begin{align*}
+    \phi =& 10\L(6+\L[\frac{\rho}{L_\rho}\R]^3\R) \cos(2\theta)
+    \\&
+            \L(
+                   \cos\L[2\pi\frac{\rho}{L_\rho}\R] + \sin\L[2\pi\frac{\rho}{L_\rho}\R]
+                 + \cos\L[6\pi\frac{\rho}{L_\rho}\R] + \cos\L[4\pi\frac{\rho}{L_\rho}\R]
+             \R)
+    \\&
+                \frac{1}{2}\L(1-\tanh\L[\frac{1}{8}\rho\R]\R)
+                \numberthis
+            \label{eq:arakawaUE}
+\end{align*}
+%
+Note that since the Arakwa implementation does use fourier discretization, there is no problem that this function contains a sum of in $\theta$.
+Thus we do not get the advantages of the spectral convergence rate.
+However, the errors in the $\rho$ may dominate when successively making the grid spacing in $\theta$ smaller and vice versa.
+This is what happens when performing the MES test in the $\theta$ direction, as seen in \cref{tb:MESResults}.
+One could of course increased the resolution even more in $\rho$, but this would make the test significantly more computationally expensive.
+Inspection of the error plot shows that the error is not dominating in any perticular point, and we can therefore conclude that the implementation is convergent.
 
-\subsection{Arakawa implementation of \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
-% FIXME: Make work
-% FIXME: Write about the function
-functions here
-mention BC
-write implementation somewhere
-\begin{table}[h!]
-{\footnotesize \centerline{
-        \begin{tabular}{lllll}
-\hline\hline
-$L_\inf$ order & $L_2$ order &
-$L_\inf$ error ($2^{12}$ points) & $L_2$ error ($2^{12}$ points)\\
-\hline
-$2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
-\hline\hline
-\end{tabular}
-}}
-\caption[]{\textit{Convergence test of the Naulin Solver in the $\rho$ direction}}
-\protect\label{tb:naulinSolver}
-\end{table}
-%          ▸ Naulinsolver0Bndry/
+Also note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
 
-\subsection{Boundary conditions}
+\subsection{Boundary extrapolation}
 %          ▸ 1-yExtrapolation/
 %          ▸ 2-uEParSheath/
 %          ▸ 3-cauchyBC/
@@ -357,6 +381,7 @@ $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$\\
 
 \begin{table}[h!]
 {\footnotesize \centerline{
+\colorme
 \begin{tabular}{cc|llllp{3cm}p{3cm}}
 \hline\hline
 Operation \hfill&
@@ -379,6 +404,8 @@ $\texttt{D2DZ2}(f)$ & $\theta$ & $-1.99$ & $-1.57$ & $3.83\cdot10^{-9}$ & $6.65\
 Machine precision reached.\\
 \scell{Naulin}{Solver} & $\rho$ & $2.00$ & $2.00$ & $3.19\cdot10^{-7}$ & $1.65\cdot10^{-7}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$& $n_\theta=2^{12}$\\
 \scell{Naulin}{Solver} & $\theta$ & $0.00$ & $0.00$ & $7.98\cdot10^{-9}$ & $4.13\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:MESf2} for $\phi$ & $n_\rho=2^{12}$, errors in $\rho$ dominating\\
+$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\rho$ & $2.00$ & $2.00$ & $1.60\cdot10^{-7}$ & $2.43\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:arakawaUE} for $\phi$ & $n_\theta=2^{12}$\\
+$\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$ & $\theta$ & $1.35$ & $1.46$ & $1.12\cdot10^{-8}$ & $8.41\cdot10^{-8}$ & \Cref{eq:MESf1} for $n$ and \cref{eq:arakawaUE} for $\phi$ & $n_\rho=2^{12}$, convergence found until $n_\theta=2^{9}$\\
 \hline\hline
 \end{tabular}
 }}

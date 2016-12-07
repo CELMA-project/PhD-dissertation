@@ -38,7 +38,7 @@
 %Top og bottomtext
 \usepackage{fancyhdr}
 %For coloring text
-\usepackage[usenames,dvipsnames,svgnames,hyperref]{xcolor}
+\usepackage[usenames,dvipsnames,svgnames,hyperref,table]{xcolor}
 %Used when inserting a program code (ex. matlab, Fortran etc.)
 \usepackage{listings}
 %American Math Society additional packages
@@ -274,6 +274,8 @@ breaklines=false
 \newcommand{\wt}[1]{\widetilde{ #1}}
 % Special cell
 \newcommand{\scell}[2]{{\renewcommand{\arraystretch}{1.0}\begin{tabular}[c]{@{}c@{}}#1\\#2\end{tabular}}}
+% Colored cell
+\def\colorme{\rowcolors{2}{gray!20}{white}}
 %***********************************
 
 %Vector
