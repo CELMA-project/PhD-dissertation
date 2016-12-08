@@ -6,8 +6,8 @@ Instead we add some artificial viscosities, which is needed for numerical stabil
 If there are no viscosities in the system, there are also no mechanism (other than diffusion) which can remove the small scales from the system.
 These small scales can then build up and make the simulation crash%
 \footnote{
-    We will here use the word "crash" meaning that the simulation stops because of bad behaviour the numerics.
-    The simulation stops if a field reaches $\pm$\texttt{inf} or \texttt{nan} values (this can caue division by zero problems) or if the solver takes too small timesteps over a range of time because it cannot resolve unphysically large gradients.
+    We will here use the word "crash" meaning that the simulation stops because of bad behavior the numerics.
+    The simulation stops if a field reaches $\pm$\texttt{inf} or \texttt{nan} values (this can cause division by zero problems) or if the solver takes too small time steps over a range of time because it cannot resolve unphysically large gradients.
 }
 %
 .
@@ -37,28 +37,28 @@ For this reason, we add viscosities on the form
 %
 to all the evolved fields $f$.
 
-In addition, a hyperviscosity term is added in the azimuthal direction for the $\Om^D$ and $\Om$ equations.
+In addition, a hyper-viscous term is added in the azimuthal direction for the $\Om^D$ and $\Om$ equations.
 That is a term
 %
 \begin{align*}
     - D_{f, \theta, \text{art}}^H \partial_{\theta}^4 f.
 \end{align*}
 %
-The reason for this is that small scales grow up in the vorticity equations dispite the filtering.
-To see that this term acutally dampens higher modes, consider the example
+The reason for this is that small scales grow up in the vorticity equations despite the filtering.
+To see that this term actually dampens higher modes, consider the example
 %
 \begin{align*}
     \partial_t f = (-1)^{n+1}D \partial_x^{2n} f \qquad n\in\mathbb{N},
 \end{align*}
 %
 which we for simplicity assumes is periodical in $x$.
-For a certain wavenumber $k$, we now have (see \cref{app:deriv_of_FT} for details)
+For a certain wave number $k$, we now have (see \cref{app:deriv_of_FT} for details)
 %
 \begin{align*}
     \partial_t f_k = (-1)^{n+1} (ik)^{2n} D f_k,
 \end{align*}
 %
-where the $(-1)^{n+1}$ factor ensures that the time evolution of wavenumber $k$ is decreasing for every choice of $n$.
+where the $(-1)^{n+1}$ factor ensures that the time evolution of wave number $k$ is decreasing for every choice of $n$.
 The artificial viscosity coefficients used in this thesis is given in table \cref{tb:artVisc}.
 %
 \begin{table}[h!]
@@ -88,8 +88,8 @@ $\Om$       & $0.1$ & $2.4\cdot10^{-4}$ & $5.81\cdot10^{-6}$\\
 \protect\label{tb:artVisc}
 \end{table}
 %
-Higher parallel coefficients are used in the parallel direction as the background gradients in the parallel direction are much more gradual than the background gradients in the perpendicual gradients.
+Higher parallel coefficients are used in the parallel direction as the background gradients in the parallel direction are much more gradual than the background gradients in the perpendicular gradients.
 In the end, both $D_{f, \|, \text{art}} \partial_\|^2 f$ and $D_{f, \perp, \text{art}} \grad_\perp^2 f$ are small compared to the other terms.
 % FIXME: Would be nice to showing a plot showing that the artificial terms are small
 Notice that the artificial viscosities in $\Om^D$ and $\Om$ are smaller than for the other fields.
-This is because the vorticity is usually quite filamented, and large artificial viscosities will not only remove the small scales, but also alter the physical behaviour of the system.
+This is because the vorticity is usually quite filamented, and large artificial viscosities will not only remove the small scales, but also alter the physical behavior of the system.

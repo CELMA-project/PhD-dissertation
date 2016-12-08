@@ -2,7 +2,7 @@
 \label{sec:BCs}
 %
 Setting correct boundary conditions (BCs) when calculating PDEs of plasma quantities turns out to be a challenge.
-In the parallel dirction there will be formation of plasma sheaths between the plasma and the material which is due to the difference in mobility between the ion species and the electron species \cite{Stangeby2000book}.
+In the parallel direction there will be formation of plasma sheaths between the plasma and the material which is due to the difference in mobility between the ion species and the electron species \cite{Stangeby2000book}.
 This leads to a potential build-up on the material surface which affects the plasma upstream.
 
 Unfortunately the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
@@ -11,13 +11,13 @@ In other words, the fluid models are only valid up until the sheath entrance (SE
 One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma end, and where does the sheath start.
 
 There are mainly two challenges in setting the radial boundary conditions.
-Firstly, the plasma does not usually extent all the way to the chasis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
-Secondly, assuming that the plasma could extend all the way out to the chasis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma have no way not adhere to the surface as a neutral fluid would do.
+Firstly, the plasma does not usually extent all the way to the chassis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
+Secondly, assuming that the plasma could extend all the way out to the chassis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma have no way not adhere to the surface as a neutral fluid would do.
 
 The boundaries for the cylindrical plasma consist of four parts.
-Parallely, we have the SE at one end.
-We could in principle place a SE at the other parallel end as well, which would be ok if the plasma streamed in both direction from some point.
-Instead we have chosen to model the other parallel end as a stagnation point, i. e. a point where the velocities parallel are zero.
+In the parallel direction, we have the SE at one end.
+We could in principle place a SE at the other parallel end as well, which would be OK if the plasma streamed in both direction from some point.
+Instead we have chosen to model the other parallel end as a stagnation point, i.e. a point where the velocities parallel are zero.
 Such a point exists if the plasma is streaming in two opposite directions, and is encountered on for example open field lines  divertor plasmas.
 Radially we have the outer radial boundary condition, and an artificial inner condition which is treated in \cref{sec:innerCenter}.
 
@@ -39,7 +39,7 @@ Boundary conditions used in this thesis.
 The boundary conditions at the opposite site of the SE in the cylinder varies from experiment to experiment (as does also the source term in the distribution function itself).
 By using a stagnation point, the model does not fully reflect any experimental linear devices, but can help to shed light on some of the features found in real life experiments.
 The stagnation condition acts as a kind of mirror.
-To be more specific the velocities changes sign at this point, and hece must be exactly zero there.
+To be more specific the velocities changes sign at this point, and hence must be exactly zero there.
 The spinning of the plasma does not change from one side to the other across the mirror, and hence we get the following set of boundary conditions
 %
 \begin{align*}
@@ -86,9 +86,9 @@ Further, the steady state gives the following condition on the parallel electron
 \end{align*}
 %
 where $\phi_0$ is an arbitrary potential and $\Lambda=\ln\L(\sqrt{\frac{\mu}{2\pi}}\R)$.
-In this thesis, we set $\phi_0=\Lambda T_e/e$, so that $\phi=0$ for ampipolar flow %
+In this thesis, we set $\phi_0=\Lambda T_e/e$, so that $\phi=0$ for ambipolar flow%
 %
-\footnote{We do this as we have observed that the inversion algorithm for $\phi$ mentionded in \cref{app:lapInv} is more numerically stabilie}%
+\footnote{We do this as we have observed that the inversion algorithm for $\phi$ mentioned in \cref{app:lapInv} is more numerically stable}%
 %
 .
 Normalization gives
@@ -213,8 +213,8 @@ The latter has been chosen in the current implementation, with the polynomial gi
 %      have a non-slip BC on the wall
 As with $\phi$, the sheath boundary condition sets no restrain on the vorticity at the SE.
 However, as $\Om$ is a variable being solved in time, a boundary condition is needed in order to fully specify the system.
-In the current implementation $\L. \partial_\| \Om \R|_{L_z} = 0$ has been choosen.
-Note that this may not be a particularily good boundary condition as it physically means that there can be no parallel shear in the perpendicular spinning at the SE.
+In the current implementation $\L. \partial_\| \Om \R|_{L_z} = 0$ has been chosen.
+Note that this may not be a particularly good boundary condition as it physically means that there can be no parallel shear in the perpendicular spinning at the SE.
 
 \subsection{Outer radial boundary conditions}
 \label{sec:outerBC}
@@ -245,13 +245,13 @@ We therefore set
 %
 Note however that this can be too restrictive if coherent structures such as "blobs"
 % FIXME: Add blob reference, krashenenikov and grulke naulin
-are reaching the domian boundary.
+are reaching the domain boundary.
 
 \subsubsection{Velocity BCs at outer radius}
 % Not really physically explained
 % If we let u_|_ =\= 0 we have no physical explanation why this should be 0
 %
-The parallel velocities are not contrained by any forces at the radial edge, and can thus take any value.
+The parallel velocities are not constrained by any forces at the radial edge, and can thus take any value.
 In this thesis we set
 %
 \begin{align*}
@@ -263,7 +263,7 @@ although there in principle are no physical reason for why this should be.
 \subsubsection{Potential BC at outer radius}
 %
 There are no sheath where the magnetic field lines are perpendicular to the material.
-Thus, if we assume that the chassis is an ideal conductor, the potential there should be at the floating potential if we exlude finite Larmor radius (FLR) effects.
+Thus, if we assume that the chassis is an ideal conductor, the potential there should be at the floating potential if we exclude finite Larmor radius (FLR) effects.
 For that reason we have that
 %
 \begin{align*}
@@ -281,9 +281,8 @@ This would result in a small potential difference which would increase the poloi
 %       eventual solid body rotation in the center
 % NOTE: The boundary here is set from either the non-slip or the free-slip
 %       condition of v_theta
-% FIXME: There is a see blackboard photo: BC-rho-on-vort, which could say what this should be
 %
-As stated in the introduction of \cref{sec:BCs}, there exsists no analouge to the no-slip condition in plasmas.
+As stated in the introduction of \cref{sec:BCs}, there exists no analogue to the no-slip condition in plasmas.
 In other words, there is nothing which constrains the poloidal flow at the material surface.
 As a consequence, there will be nothing constraining the poloidal flow at the position where the plasma terminates (where neutrals are starting to dominate) radially.
 One could assume that

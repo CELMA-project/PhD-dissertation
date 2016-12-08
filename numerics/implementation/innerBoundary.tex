@@ -7,11 +7,11 @@ At the same time, as mentioned in \cref{sec:BCInnerRho}, there is a need of arti
 
 \subsection{Ghost point for the radial derivative}
 \label{sec:ghostRhoDeriv}
-We immediatley observe that having a boundary condition at the singularity is a bad idea due to the singularity.
+We immediately observe that having a boundary condition at the singularity is a bad idea due to the singularity.
 It is also a bad idea to use one sided FD schemes around this point, as this will prevent communication of information through the axis.
 
-One way to circumvent the problem is to put the innermost point in rho $\Delta \rho$ appart from each other, where $\Delta \rho$ is the grid spacing.
-I. e. the innermost points are both located $\frac{\Delta \rho}{2}$ from the axis, diametrically opposite of each other, as depicted on \cref{fig:innerRho}.
+One way to circumvent the problem is to put the innermost point in rho $\Delta \rho$ apart from each other, where $\Delta \rho$ is the grid spacing.
+I.e. the innermost points are both located $\frac{\Delta \rho}{2}$ from the axis, diametrically opposite of each other, as depicted on \cref{fig:innerRho}.
 %
 \begin{figure}[htb]
     \centering
@@ -68,6 +68,6 @@ This is depicted in \cref{fig:BCLaplace}, and was first used in
         \caption{An odd mode.}
     \end{subfigure}
         \caption{The point diametrically opposite for a mode located at radius $\rho$ has the same value as the point under consideration for an even mode, but the same value with a changed sign for even modes.
-        The red soid line connects points diametrically opposite of each other.}
+            The red solid line connects points diametrically opposite of each other.}
     \label{fig:BCLaplace}
 \end{figure}

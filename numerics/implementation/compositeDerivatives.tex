@@ -1,7 +1,7 @@
 \section{Composite derivatives}
 \label{sec:compDeriv}
 %
-In \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} and \cref{eq:celma_vort_boussinesq} there are some terms which are written as a combination of two or more FDs.
+In \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} and \cref{eq:celma_vort_boussinesq} there are some terms which are written as a combination of two or more FD schemes.
 These are
 %
 \begin{align*}
@@ -12,15 +12,15 @@ These are
     &\div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)&
 \end{align*}
 %
-These can either be calculated by applying two (or more) different FDs consecutively to a field $f$, or by making a new FD stencil specifically for the operator under consideration.
+These can either be calculated by applying two (or more) different FD schemes consecutively to a field $f$, or by making a new FD stencil specifically for the operator under consideration.
 
-Special care must be taken at the ghost points if one choose to apply two (or more) different FDs consecutively.
+Special care must be taken at the ghost points if one choose to apply two (or more) different FD schemes consecutively.
 To see this, we can call $g$ the result of calculating the FD of a field $f$.
-As we are using centred stencils (as described in
+As we are using centered stencils (as described in
 % FIXME: Add reference to the FD stencils used
 ), then the ghost points of $g$ is not calculated by the FD%
 %
-\footnote{There is by definition no way to apply a centred stencil to the last grid point.}%
+\footnote{There is by definition no way to apply a centered stencil to the last grid point.}%
 %
 \footnote{One could in principle use a one-sided stencil on the ghost points $f$ when calculating the FD of $f$, so that the ghost point of $g$ would be known.
 This is however not done here.}
@@ -110,7 +110,7 @@ We have that
     \label{eq:perpPerpDeriv}
 \end{align*}
 %
-As BOUT++ includes a numerical opertor for $\grad_\perp^2g$ (as mentioned in \cref{sec:perpLapl}), we could have used this operator for calculating $f\grad_\perp^2g$.
+As BOUT++ includes a numerical operator for $\grad_\perp^2g$ (as mentioned in \cref{sec:perpLapl}), we could have used this operator for calculating $f\grad_\perp^2g$.
 However, from \cref{app:coord}, we that
 %
 \begin{align*}
@@ -145,5 +145,5 @@ which is what is implemented for this operator in the CELMA code.
 
 \subsection{Parallel derivative of the divergence of the cross term}
 %
-As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivate.
+As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivative.
 We can use \cref{eq:extraPolUp} for calculation of the upper ghost point, and \cref{eq:extraPolDown}  for calculation of the lower ghost point.

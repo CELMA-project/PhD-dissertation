@@ -10,8 +10,7 @@ This is a special case of the equation
 which the BOUT++ framework has an own class of inverting for.
 
 In order to explain the numerical implementation, we must first look at how the Laplacian operator looks like Clebsch coordinates.
-Part of this appendix is also included in the \texttt{user\_manual} and \texttt{coordinates} manual of the BOUT++ version mentioned in
-% FIXME: Add either BOUT++ checksum, or refer to a place where it is
+Part of this appendix is also included in the \texttt{user\_manual} and \texttt{coordinates} manual of the BOUT++ version mentioned in \cref{chap:BOUT++}.
 
 We will in this chapter use the BOUT++ coordinates mentioned in \cref{foot:BOUT++coord} of \cref{app:coord}.
 
@@ -241,19 +240,19 @@ In addition, if the modes decouples%
 }
 %
 when Fourier transforming equation (\ref{eq:invert_expanded}), we can use a tridiagonal solver to solve the equation for each Fourier mode.
-In other words, if $n_x$, $n_y$ and $n_z$ are the number of points in each of the three directions, we need to invert a $n_x\times n_x$ matrix $n_z$ times for each of the $n_y$ $y$-planes, rahter than inverting a $n_x\cdot n_y\cdot n_z \times n_x\cdot n_y\cdot n_z$ matrix once.
+In other words, if $n_x$, $n_y$ and $n_z$ are the number of points in each of the three directions, we need to invert a $n_x\times n_x$ matrix $n_z$ times for each of the $n_y$ $y$-planes, rather than inverting a $n_x\cdot n_y\cdot n_z \times n_x\cdot n_y\cdot n_z$ matrix once.
 
-Taking the fourier transform of \cref{eq:invert_expanded} is equivalent with multiplying the left hand side and the right hand side with $\exp\L(-2\pi iz\xi\R)$, and integrate the periodic $z$-coordinate from $-\inf$ to $\inf$.
+Taking the Fourier transform of \cref{eq:invert_expanded} is equivalent with multiplying the left hand side and the right hand side with $\exp\L(-2\pi iz\xi\R)$, and integrate the periodic $z$-coordinate from $-\inf$ to $\inf$.
 The modes will only decouple if there are no product of functions depending on $z$
 %
 \footnote{%
-    If we define the fourier transform as
+    If we define the Fourier transform as
     $F(x,y,\xi) = \defi{-\infty}{\infty}{f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}$.
     One can show that (see \cite{Bracewell2000book} for details)
     $\defi{-\infty}{\infty}{a(x,y,z)f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}=A(x,y,\xi)*F(x,y,\xi)$,
     where $*$ denotes the convolution product.
     %FIXME: Consider better explanation
-    I. e. $A(x,y,\xi)*F(x,y,\xi)$ mixes the modes of $a$ and $f$ together.
+    I.e. $A(x,y,\xi)*F(x,y,\xi)$ mixes the modes of $a$ and $f$ together.
 }
 .
 Hence, we must require that $a$, $c$ and $d$ cannot be functions of $z$.
@@ -302,7 +301,7 @@ which gives
     \label{eq:FTLaplace}
 \end{align*}
 %
-The second order centred approximation of the first and second derivatives in $x$ reads
+The second order centered approximation of the first and second derivatives in $x$ reads
 %
 \begin{align*}
     &&\partial_x f \simeq \frac{-f_{n-1} + f_{n+1}}{2\text{d}x}&&
