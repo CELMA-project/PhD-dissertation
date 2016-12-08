@@ -1,130 +1,178 @@
-Rearranging equation (\ref{fluideq:mom}), and multiplying it with $\frac{q_\a}{m_\a}$ yields
+We will here address the electrostatic approximation.
+Note that in all cases, we assume that the magnetic field perturbation from the plasma is negligible as compared with the background magnetic field.
+The approximation states that $\partial_t \ve{B} \sim 0$, which through the Maxwell-Faraday equation states that $\curl\ve{E} \sim 0$.
+In general, we have that the $\ve{E}$ field can be expressed through the potentials
+%
+\begin{align}
+    \ve{E} = -\grad\phi - \partial_t \ve{A}
+    \label{eq:potentialE}
+\end{align}
+%
+(see for example \cite{Griffiths2013book,Fitzpatrick2008book}).
+The magnetic potetial carries with it a degree of freedom, and we are free to use the Coloumb gauge without loss of generality.
+That is
 %
 \begin{align*}
-    q_{\a} \partial_t (n_{\a} \ve{u}_{\a})
-    =&
-    - q_{\a} \ve{u}_{\a} \partial_t n_{\a}
-    - \frac{q_\a}{m_\a}\ve{u}_{\a}\cdot\nabla\ve{u}_{\a}
-    - \frac{q_\a}{m_\a}\div \te{\pi}_{\a}
-    - \frac{q_\a}{m_\a}\grad p_{\a}
-    + \frac{q_\a^2}{m_\a} n_\a\L(\ve{E}  + \ve{u_\a}\times\ve{B}\R)
-    \\ &
-    + \frac{q_\a}{m_\a}\ve{R}_{\b\to \a}
-    + \frac{q_\a}{m_\a}\ve{R}_{n\to \a}
-    - q_\a S_{\a,n}\ve{u}_{\a}
+\div\ve{A}=0.
 \end{align*}
 %
-Adding the equation for electrons and ions using quasi-neutrality yields
-%
-\begin{align*}
-    \partial_t \ve{J}
-    =&
-     \frac{\ve{J}}{n} \partial_t n
-     \\&
-    + \frac{e}{m_e}\ve{u}_{e}\cdot\nabla\ve{u}_{e}
-    - \frac{e}{m_i}\ve{u}_{i}\cdot\nabla\ve{u}_{i}
-     \\&
-    + \frac{e}{m_e}\div \te{\pi}_{e}
-    - \frac{e}{m_i}\div \te{\pi}_{i}
-     \\&
-    + \frac{e}{m_e}\grad p_{e}
-    - \frac{e}{m_i}\grad p_{i}
-     \\&
-     + \frac{e^2}{m_e} n\L(-\grad{\phi}-\partial_t \ve{A}+ \ve{u_e}\times\ve{B}\R)
-     + \frac{e^2}{m_i} n\L(-\grad{\phi}-\partial_t \ve{A}+ \ve{u_i}\times\ve{B}\R)
-    \\ &
-    - \frac{e}{m_e}\ve{R}_{i\to e}
-    + \frac{e}{m_i}\ve{R}_{e\to i}
-     \\&
-    - \frac{e}{m_e}\ve{R}_{n\to e}
-    + \frac{e}{m_i}\ve{R}_{n\to i}
-     \\&
-     + S \frac{\ve{J}}{n}
-     \numberthis
-     \label{eq:current_eq}
-\end{align*}
-%
-where $\curl\ve{A}=\ve{B}$.
-We then have that
+We note that \cref{eq:potentialE} fulfills Gauss' law and Maxwell-Faraday's law of induction, and that $\partial_t \ve{A}=0$ implies an electrostatic condition.
+With the Coloumb gauge, we have that Amp{\`e}re's circuit law reads
 %
 \begin{align*}
     \curl\curl\ve{A}=&\curl\ve{B}
     \note{Low frequency}
     \\
-    \grad^2\ve{A} - \grad(\div \ve{A})=&\mu_0\ve{J}
+    \grad^2\ve{A} - \grad(\div \ve{A})=&\mu_0\ve{j}
     \note{Coloumb gauge}
-    % NOTE: See Griffiths
     \\
-    \frac{\grad^2\ve{A}}{\mu_0}=&\ve{J}
-    \\
-    \ve{J} =& \frac{\div(\grad_\perp\ve{A}+\grad_\|\ve{A})}{\mu_0}
-    \note{Assume $k_\perp \ll k_\|$}
-    \\
-    \ve{J} \simeq& \frac{\grad^2_\perp\ve{A}}{\mu_0}
+    \frac{\grad^2\ve{A}}{\mu_0}=&\ve{j}
     \numberthis
     \label{eq:coloumbGauge}
 \end{align*}
 %
-Thus the LHS can be written
+in the low frequent case.
+Notice that $\grad^2\ve{A}=\ve{j}\mu_0$ is nothing but three Poisson equations, so that the solution can be written in terms of Green's functions (assuming the currents vanishes at infinity) as
+%
+\begin{align}
+    \ve{A} (\ve{r} ,t) =& \frac{\mu_{0}}{4\pi} \int_{V} \frac{\ve{j}(\ve {r}',t')}{|\ve {r} -\ve {r} '|}\,\d ^{3}\ve {r}',\\
+    \partial_t \ve{A} (\ve{r} ,t) =& \frac{\mu_{0}}{4\pi} \int_{V} \partial_t\L(\frac{\ve{j}(\ve {r}',t')}{|\ve {r} -\ve {r} '|}\R)\,\d ^{3}\ve {r}',
+    \numberthis
+    \label{eq:solA}
+\end{align}
+%
+where $\ve{r}$ is the general position vector, $\ve{r'}$ is the position of the current distribution and $t'=t-\frac{|\ve{r}-\ve{r}'|}{c}$ is the retarded time.
+We now see that $\partial_t \ve{A}$ is big whenever the time derivative of the current is big.
+
+\section{Small time derivatives of the perpendicular magnetic potential}
+%
+In the drift ordering, we have stated assumed that the evolution of the perpendicular ion and electron velocity are of the same order of magnitude, and small compared with $\om_{ci}$.
+Assuming also that the evolution of the density is also restricted by this time evolution%
+%
+\footnote{Note that if this was not the case, the fast evolution of $n$ would still couple to the evolution of $\ve{u}$ through the set of equations.}%
+%
+, the perpendicular current would also be restricted.
+This would lead to a small $\partial_t \ve{A}_\perp$, which then could be neglected in the perpendicular set of equation as the ordering would imply that $-\grad_\perp\phi$ would be of a higher order of magnitude.
+
+\section{Small time derivatives of the parallel magnetic potential}
+%
+Next, we will check if $\partial_t \ve{A}_\|$ is small by comparing it with the other terms of \cref{eq:parElNonNorm}%
+%
+\footnote{A similar approach is done in \cite{Schroder2003Phd}.}%
+%
+.
+Writing out the $E_\|$-term in \cref{eq:parElNonNorm} gives
 %
 \begin{align*}
-    \partial_t \ve{J} \simeq \partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}
+    \partial_t j_{\|}
+ =&
+ -\frac{1}{JB}\L\{\phi, j_{\|}\R\}
+   \\&
+ -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
+   \\&
+ - 0.51 \nu_{ei}j_\|
+   \\&
+   +\frac{e}{m_e} T_e \partial_\| n
+   + \frac{e^2}{m_e}n \L(-\partial_\| \phi - \partial_\| A_\|\R)
+ + en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+ - \frac{4e\eta_{e,0}}{3m_e} \partial_z^2 u_{e,\|}
+ \numberthis
+ \label{eq:curWithAPerp}
 \end{align*}
 %
-We can now use order of magnitude arguments to compare the size of the terms $\partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}$ and $\frac{e^2}{m_e}\partial_t \ve{A}$.
-If the latter is larger than the former, it will mean that the time change of the magnetic field $\ve{B}$ will be a major contributor to the time change of the current $\ve{J}$, and electromagnetic effects be important%
-%
-\footnote{
-    If the $\partial_t \ve{J}$ term was dominating (preferably by orders of magnitude), then there would be terms (or sum of terms) in \cref{eq:current_eq} which would be dominating the electromagnetic terms.
-    Conversely, if the electromagnetic term was dominating, then the electromagnetic term would be dominating the sum of the other terms (not necessarily larger than each individual term, as terms may approximately cancel).
-}.%
-%
-That is if
+From \cref{eq:coloumbGauge}, we get that
 %
 \begin{align*}
-    \partial_t \frac{\grad^2_\perp\ve{A}}{\mu_0}
-    < &
-    \frac{ne^2}{m_e}\partial_t \ve{A}
+    \frac{\grad^2\ve{A}}{\mu_0}=&\ve{j}
     \\
-    \rightarrow &
+    \ve{b}\cdot\frac{\grad^2\ve{A}}{\mu_0}=&\ve{b}\cdot\ve{j}
+    \note{Assuming $\partial_i\ve{b}=0$}
     \\
-    \frac{1}{\omega_{ci}} \frac{k_\perp^2\ve{A}}{\mu_0}
-    < &
-    \frac{ne^2}{m_e}\frac{1}{\omega_{ci}} \ve{A}
+    \frac{\grad^2 A_\|}{\mu_0}=&j_\|
+    \numberthis
+    \label{eq:parCurAsA}
+\end{align*}
+%
+Which means that the LHS of \cref{eq:curWithAPerp} can be written
+%
+\begin{align*}
+    \partial_t j_\|=& \partial_t\frac{\grad^2 A_\|}{\mu_0}
+\end{align*}
+%
+this means that we readily can compare $\partial_t A_\|$ with $\partial_t j_\|$ or $\nu_{ei} j_\|$ to check if the term is small, as these three terms can be expressed in terms of $A_\|$.
+Thus, the $\partial_t A_\|$ term can be neglected if
+%
+\begin{align*}
+    \partial_t \frac{\grad^2_\perp A_\|}{\mu_0}
+    \gg &
+    \frac{ne^2}{m_e}\partial_t A_\|
+\end{align*}
+%
+which using order of magnitude estimates gives
+%
+\begin{align*}
+    \frac{1}{\tau_{A_\|}} \frac{A_\|}{L_{A_\|}\mu_0}
+    \gg &
+    \frac{ne^2}{m_e}\frac{1}{\tau_{A_\|}} A_\|
     \\
-    \frac{k_\perp^2}{\mu_0}
-    < &
+    \frac{1}{L^2_{A_\|}\mu_0}
+    \gg &
     \frac{ne^2}{m_e}
     \\
-    k_\perp^2
-    < &
-    \frac{\mu_0ne^2}{m_e}
+    \frac{1}{L^2_{A_\|}}
+    \gg &
+    \frac{2}{2} \frac{m_i^2}{m_i^2}\frac{B^2}{B^2}\frac{T_e}{T_e}
+    \frac{e^2}{m_e}n\mu_0
     \\
-    k_\perp^2
-    < &
-    \frac{2m_i}{2m_i}\frac{B^2}{T_e}\frac{T_e}{B^2}\frac{\mu_0ne^2}{m_e}
+    \frac{1}{L^2_{A_\|}}
+    \gg &
+    \frac{1}{2}\frac{m_i}{m_e}\frac{m_i}{T_e}
+    \frac{e^2B^2}{m_i^2}
+    \frac{2n\mu_0T_e}{B^2}
     \\
-    k_\perp^2
-    < &
-    \frac{m_i}{2m_e}\frac{e^2B^2}{m_iT_e}\frac{2\mu_0nT_e}{B^2}
+    \frac{1}{L^2_{A_\|}}
+    \gg &
+    \frac{1}{2}\mu
+    \frac{\om^2_{ci}}{c_s^2}
+    \b
     \\
-    k_\perp^2
-    < &
-    \frac{m_i}{2m_e}\frac{1}{\rho_s^2}\b
+    \frac{\rho_s^2}{L^2_{A_\|}}
+    \gg &
+    \frac{1}{2}\mu
+    \b
+    \numberthis
+    \label{eq:firstNeglect}
 \end{align*}
 %
-where the plasma beta ($\b$) is the kinetic pressure over the magnetic pressure.
-As $ k_\perp^2\rho_s^2$ is typically in the order of unity for drift wave turbulence, we find that electromagnetic effects becomes important whenever
+where the plasma beta $\b=\frac{nT_e}{\frac{B^2}{2\mu_0}}$ can be interpreted as the electron kinetic pressure over the magnetic pressure.
+Also, the $\partial_t A_\|$ term can be neglected if
 %
 \begin{align*}
-    1
-    < &
-    \frac{m_i}{2m_e}\b
+    0.51\nu_{ei}j_\|
+    \gg &
+    \frac{ne^2}{m_e}\partial_t A_\|
+\end{align*}
+%
+By using orders of magnitude estimates and \cref{eq:parCurAsA}, we get
+%
+\begin{align*}
+    0.51\nu_{ei}\frac{\grad^2 A_\|}{\mu_0}
+    \gg &
+    \frac{ne^2}{m_e}\partial_t A_\|
     \\
-    \frac{2m_e}{m_i}
-    < &
+    0.51\nu_{ei}\frac{A_\|}{L_{A_\|}\mu_0}
+    \gg &
+    \frac{ne^2}{m_e}\frac{1}{\tau_{A_{\|}}} A_\|
+    \\
+    \frac{1}{L^2_{A_\|}}
+    \gg &
+    \frac{ne^2}{m_e}\frac{\mu_0}{0.51\nu_{ei}}\om_{A_{\|}}
+    \note{As \cref{eq:firstNeglect}}
+    \\
+    \frac{\rho_s^2}{L^2_{A_\|}}
+    \gg &
+    \frac{1}{2}\frac{\om_{A_{\|}}}{0.51\nu_{ei}}\mu
     \b
 \end{align*}
 %
-We observe that we get the identical condition if we choose to compare with $\frac{\ve{J}}{n}\partial_t n$ instead.
-%FIXME; Consider to compare with other terms as well
