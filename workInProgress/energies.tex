@@ -1,3 +1,13 @@
+We will in this appendix briefly comment on the energy of the system.
+One should note that the CELMA equations are probably not energy conserving, and we have argued that this may be of lesser importance as the system is driven by its sources and its sinks.
+An energy conserving system has the nice property that one could identify which parts of the equation which transfers energy.
+This can be done by multiplying the time evolving fields with various variables such that the resulting evolution would have the units of energy density.
+One could then integrate over the volume and see which terms which transers energy to each other.
+Another approach is to simply derive the set of equation from energy principles by using the variational principle of the Lagrangian of the system.
+
+In this thesis, however, we will only be using the kinetic and potential energy arising from the pressure.
+Thus saying something about the energy arising from the source etc. is outside the scope of this thesis.
+
 \section{Kinetic energy}
 For a single particle, we have
 %
@@ -45,27 +55,22 @@ This gives
     =& n_0T_{e,0}\rho_s^3 \tilde{E}_{\text{kin},\alpha}
 \end{align*}
 %
-% FIXME: Update with the last line in the plots and oxygen
-where we have used (V.4) in D'Haeseleer, and where $\alpha$ is the particle species.
-Where $\tilde{E}_{\text{kin},\alpha} = \frac{m_{\alpha}}{m_i}\iiint \tilde{n}\tilde{u}_\alpha^2 \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}$
+where we have used (V.4) in \cite{Dhaeseleer1991book}, and where $\alpha$ denotes the particle species.
+Where $\tilde{E}_{\text{kin},\alpha} = \frac{m_{\alpha}}{m_i}\iiint \tilde{n}\tilde{u}_\alpha^2 \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}$.
 
 \section{Potential energy}
 %
-A proper derivation can be done where one use the variational principle of the Lagrangian of the system to find the energy of the system.
-
-One can also derive the potential energy in a less formal way by looking at the transfer terms of the equations, and find which energy terms which are not the kinetic energy.
-If one neglects the small energy from the fields, one is left with.
-When this is done, one find that
-% FIXME: Add references to Wiesenberg paper with jmad
-% FIXME: multiply with log(n)
-% TODO: Quick review on jmad's master (mention Helmholtz)
+The potential energy from the pressure is given by%
+\footnote{In \cite{Wiesenberger2014} it is stated that the potential energy can be obtained from the Helmholtz free equation, and reads $E_{\text{pot}}=nT_e\log(n)$.
+    However, this depends on the partition function used, and one can show that for a more "standard" partition function $E_{\text{pot}}=nT_e\log(n)$ as shown in \cite{kittel1980book}.}%
 %
 \begin{align*}
-    E_{pot}
-    =& \int nT_e\log(n) \d V
+    E_{\text{pot}}
+    =& \int nT_e \d V
     \\
-    =& \iiint nT_e\log(n) J \d\rho \d\theta \d z
+    =& \iiint nT_e J \d\rho \d\theta \d z
     \\
-    =& n_0T_{e,0}\rho_s^3\iiint \wt{n}\wt{T}_e\log(n) \wt{J}
-    \d\wt{\rho} \d\theta \d \wt{z}
+    =& n_0T_{e,0}\rho_s^3\iiint \wt{n}\wt{T}_e \wt{J} \d\wt{\rho} \d\theta \d \wt{z}
+    \\
+    =& n_0T_{e,0}\rho_s^3\wt{E}_{\text{pot}}
 \end{align*}
