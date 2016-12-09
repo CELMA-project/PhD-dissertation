@@ -663,6 +663,6 @@ Using this, we find that
     \label{eq:piTensor}
 \end{align*}
 %
-% FIXME: Check that this is actually the order
-From our drift approximation, we found that the viscosity drift was of $\mathcal{O}(\e)$, and we therefore neglected it.
-We will however use the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in order to have some diffusion in the system for numerical stability.
+Although we found in \cref{app:DO} that the viscosity played a minor role in the perpendicular velocities (assuming that $\mu \e^2$ is small in the ion equation).
+We will, however retain the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in the derivations to see how this term propagates through the set of equations.
+It the end we will drop the terms and use artificial viscosity instead.
