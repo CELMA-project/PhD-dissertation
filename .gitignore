@@ -185,3 +185,4 @@ TSWLatexianTemp*
 
 # Thesis
 16_PhD_Loeiten.pdf
+*.latexmain
