@@ -1,19 +1,16 @@
 We will in this chapter modify the obtained equations by using the so called Boussinesq approximation.
 This approximation is also sometimes refered to as the local approximation.
 %FIXME: Is this true, and if yes, a reference should be there as well
-
-The name Boussinesq approximation is a bit of a misnomer, as this actually refers to a series of approximations in fluid mechanics where the small variation in density is one of them.
-%FIXME: Write about the actual Boussinesq approximation
+The name Boussinesq approximation is a bit of a misnomer, as this actually refers to a series of approximations in fluid mechanics where the small variation in density is one of them \cite{Kundu2010book}.
 
 The usage of this approximation in drift fluid equation is not always sound, as the criterion for the approximation is easily broken.
-However, one argument to use the approximation is that one can make a set of equations which conserves energy without getting into the problem of having the polarization drift advecting itself (this leads to an infinite loop).
+However, one argument to use the approximation is that one can make a set of equations which conserves energy without getting into the problem of having the polarization drift advecting itself (which leads to an infinite loop in the derivation).
 % FIXME: Does it? Review why this is again
 
 \section{The Boussinesq approximation in a slowly varying B-field}
 \label{sec:boussinesq}
 %
-The goal of this approximation is to let $n$ commute with the gradient in equation
-% FIXME: in equation ...
+The goal of this approximation is to let $n$ commute with the gradient in \cref{eq:complVort}.
 We start by splitting the density into a background profile $\overline{n}$ and the fluctuation $\delta_n$.
 That is, we have
 %
@@ -39,12 +36,12 @@ and we assume that $\overline{n} \gg \delta_n$.
 Orders of magnitude estimates now gives
 %
 \begin{align*}
-    &\grad \overline{n} \simeq \frac{\overline{n}}{L_n}&
+    &\grad \overline{n} \sim \frac{\overline{n}}{L_n}&
     %
     &\grad \delta_n
     =
     \grad_\perp \delta_n + \grad_\| \delta_n
-    \simeq \frac{\delta_n}{L_{\delta_n, \perp}} + \frac{\delta_n}{L_{\delta_n, \|}}
+    \sim \frac{\delta_n}{L_{\delta_n, \perp}} + \frac{\delta_n}{L_{\delta_n, \|}}
     \simeq \frac{\delta_n}{L_{\delta_n, \perp}}
     &
 \end{align*}
@@ -55,27 +52,29 @@ If we now normalize the densities with $n_0$ and the gradients with $\rho_s$, an
 %
 \begin{align*}
     \wt{\grad} \wt{\overline{n}}
-    \simeq& \frac{\frac{\overline{n}}{n_0}}{\frac{L_n}{\rho_s}}
+    \sim& \frac{\frac{\overline{n}}{n_0}}{\frac{L_n}{\rho_s}}
     = \frac{\overline{n}}{L_n}\frac{\rho_s}{n_0}
     \simeq \frac{\rho_s}{L_n}
     \note{$\frac{\overline{n}}{n_0} \simeq 1$}
 \end{align*}
 %
-By assuming that $\frac{\rho_s}{L_n}\ll1$ (meaning that the density gradient length scales are much larger than $\rho_s$), we find that
+By assuming that $\frac{\rho_s}{L_n}\ll1$%
+%
+\footnote{Note that for the perpendicular velocities in \cref{app:DO}, we assumed that $\frac{\rho_s}{L_{\ve{u}_\perp}}\sim\sqrt{\e}$} %
+%
+(meaning that the density gradient length scales are much larger than $\rho_s$), we find that
 %
 \begin{align*}
     \wt{\grad} \wt{\overline{n}} \ll 1
 \end{align*}
 %
-% FIXME: Consider to add how this relates to experimental findings. Could even
-%        compare them to computational!
-%        Just looking at plots, see that Ln > rho_s, but maybe not L_n >> rho_s
+% FIXME: Consider to add how this relates to experimental findings. Could even compare them to computational! Just looking at plots, see that Ln > rho_s, but maybe not L_n >> rho_s
 %
 Further on, we have that
 %
 \begin{align*}
     \wt{\grad} \wt{\delta_n}
-    \simeq& \frac{\frac{\delta_n}{n_0}}{\frac{L_{\delta_n}}{\rho_s}}
+    \sim& \frac{\frac{\delta_n}{n_0}}{\frac{L_{\delta_n}}{\rho_s}}
     = \frac{\delta_n}{L_{\delta_n, \perp}}\frac{\rho_s}{n_0}
 \end{align*}
 %
@@ -96,7 +95,7 @@ In other words, we have that
 %
 Using the assumptions, we find that
 %
-Inserting this in \cref{eq:start_of_boussinesq}, and by assuming that $\delta_n$ is of order $\e^1$ in the fluid ordering, we find that
+Inserting this in \cref{eq:start_of_boussinesq}, we find that
 %
 \begin{align*}
  \div\L( n \frac{1}{\om_{ci}}
@@ -122,6 +121,7 @@ Inserting this in \cref{eq:start_of_boussinesq}, and by assuming that $\delta_n$
   \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
+ \note{$\overline{n} \gg \delta_n$}
  \\
   %
  \simeq&
@@ -132,9 +132,7 @@ Inserting this in \cref{eq:start_of_boussinesq}, and by assuming that $\delta_n$
  \R)
 \end{align*}
 %
-where in the last line we have that $\overline{n} \gg \delta_n$, or more formally, we assume that $\delta_n$ is of formal order $1$, so that the multiplication of $\delta_n$ with $\frac{1}{\om_{ci}}$ becomes of formal order $2$, and is thus neglected.
-
-In the last assumptions, we assume a relatively flat background profiles, so that $n_0 \simeq \overline{n}$.
+In the last assumptions, we will assume a relatively flat background profiles, so that $n_0 \simeq \overline{n}$.
 This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation yields
 %
 \begin{align*}
@@ -175,19 +173,13 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
 %
 Let us now briefly comment on the approximations made
 %
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{enumerate}[noitemsep]
     \item $\overline{n} \ll \delta_n$ : This approximation can be broken as the
         amplitudes can be considerably large.
         % FIXME: Citation needed
-    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation holds for sharp
-        gradients in the background density. The density gradients are usually
-        larger than $\rho_s$, but not order of magnitudes larger.
+    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradients in the background density are sharp as compared to $\rho_s$, however it may be that it is not orders of magnitude larger.
         % FIXME: Citation needed
-    \item $\frac{\rho_s}{L_n}\ll1$ : For drift wave turbulence, we typically
-        have that $\frac{\rho_s}{L_n}\simeq1$
-        % FIXME: Citation needed
-    \item $\overline{n} \simeq n_0$ : This assumptions is maybe the hardest to
-        fulfill, as the gradients usually are non-vanishing.
+    \item $\overline{n} \simeq n_0$ : This assumptions is may be the hardest to fulfill, as the gradients usually are non-vanishing.
         % FIXME: Citation needed
 \end{enumerate}
 %
@@ -301,7 +293,7 @@ If we now collect the terms as we did in \cref{sec:CELMACollect}, we get
  \\
  %
  =&
- \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ \partial_\| j_\|
 \end{align*}
 %
 which after rearranging yields
@@ -327,18 +319,12 @@ which after rearranging yields
  \\
  %
  &
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \partial_\| j_\|
 \end{align*}
 %
 We note that as we have no time derivative of $n$, the term arising from the density source does not cancel as it did without this approximation.
 %
-% FIXME:
-% - Write a sentence or 2 about the time derivative of n disappears
-%       Boussinesq on
-%       ? OK to use Boussinesq only one place
-%       ? Parallel current terms
-%       ? Pedersen current
-%       ? If take Boussinesq there, why keep it on the other terms
+
 \section{Normalization}
 Finally, normalization yields
 %
@@ -365,7 +351,7 @@ Finally, normalization yields
  \\
  %
  &
- + \frac{1}{\rho_s}n_0c_s\partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \frac{1}{\rho_s}n_0c_s\partial_\| j_\|
  \\
  %
  %
@@ -392,7 +378,7 @@ Finally, normalization yields
  \\
  %
  &
- + \omega_{ci}n_0\partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \omega_{ci}n_0\partial_\| j_\|
  \\
  %
  %
@@ -417,19 +403,14 @@ Finally, normalization yields
  \\
  %
  &
- + \partial_\| \L(n [u_{i,\|} - u_{e,\|}]\R)
+ + \partial_\| j_\|
 \end{align*}
 
 \section{Modified vorticity equation}
 %
+We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$, and get
+%
 \begin{empheq}[box={\tcbhighmath}]{align*}
-    \frac{\grad_\perp^2 \phi}{B} =& \Om
-    \numberthis
-    \label{eq:celma_phi_boussinesq}
-    \\
-%
-%
-%
  \partial_t\Om
  %
  =&
