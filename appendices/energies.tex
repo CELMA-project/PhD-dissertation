@@ -1,0 +1,76 @@
+We will in this appendix briefly comment on the energy of the system.
+One should note that the CELMA equations are probably not energy conserving, and we have argued that this may be of lesser importance as the system is driven by its sources and its sinks.
+An energy conserving system has the nice property that one could identify which parts of the equation which transfers energy.
+This can be done by multiplying the time evolving fields with various variables such that the resulting evolution would have the units of energy density.
+One could then integrate over the volume and see which terms which transers energy to each other.
+Another approach is to simply derive the set of equation from energy principles by using the variational principle of the Lagrangian of the system.
+
+In this thesis, however, we will only be using the kinetic and potential energy arising from the pressure.
+Thus saying something about the energy arising from the source etc. is outside the scope of this thesis.
+
+\section{Kinetic energy}
+For a single particle, we have
+%
+\begin{align*}
+E_{\text{kin}} = \frac{1}{2}m\mathbf{v}^2,
+\end{align*}
+%
+which means that for a fluid, we have
+%
+\begin{align*}
+E_{\text{kin}}=\frac{1}{2}m\int n\mathbf{u}^2 \d V
+\end{align*}
+%
+Due to gyroviscous cancellation, we have that to first order, only the $E\times B$-drift is carrying particles.
+This gives
+%
+\begin{align*}
+    E_{\text{kin},\alpha}
+    =& \frac{1}{2}m_{\alpha}\int
+       n\mathbf{u}_E^2
+       + n\mathbf{u}_{\alpha,\parallel}^2 \d V
+     \\
+    =& \frac{1}{2}m_{\alpha}\int
+       n\left(\frac{-\nabla_\perp\phi
+              \times\mathbf{b}}{B}\right)^2
+       + n\mathbf{u}_{\alpha,\parallel}^2 \d V
+    \\
+    =& \frac{1}{2}m_{\alpha}\int
+       n\left(\left[\frac{-\nabla_\perp\phi}{B}\right]^2
+       + [\mathbf{u}_{\alpha,\parallel}]^2\right) \d V
+   \\
+    =& \frac{1}{2}m_{\alpha}\iiint
+       n\left(\left[\frac{-\nabla_\perp\phi}{B}\right]^2
+       + [\mathbf{u}_{\alpha,\parallel}]^2\right)
+       J \d\rho \d\theta \d z
+    \\
+    =& \frac{1}{2}m_i\frac{m_{\alpha}}{m_i}
+       n_0c_s^2\rho_s^3
+       \iiint
+       \tilde{n}\tilde{u}_\alpha^2
+       \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}
+    \\
+    =& m_in_0c_s^2\rho_s^3 \tilde{E}_{\text{kin},\alpha}
+    \\
+    =& n_0T_{e,0}\rho_s^3 \tilde{E}_{\text{kin},\alpha}
+\end{align*}
+%
+where we have used (V.4) in \cite{Dhaeseleer1991book}, and where $\alpha$ denotes the particle species.
+Where $\tilde{E}_{\text{kin},\alpha} = \frac{m_{\alpha}}{m_i}\iiint \tilde{n}\tilde{u}_\alpha^2 \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}$.
+
+\section{Potential energy}
+%
+The potential energy from the pressure is given by%
+\footnote{In \cite{Wiesenberger2014} it is stated that the potential energy can be obtained from the Helmholtz free equation, and reads $E_{\text{pot}}=nT_e\log(n)$.
+    However, this depends on the partition function used, and one can show that for a more "standard" partition function $E_{\text{pot}}=nT_e\log(n)$ as shown in \cite{kittel1980book}.}%
+%
+\begin{align*}
+    E_{\text{pot}}
+    =& \int nT_e \d V
+    \\
+    =& \iiint nT_e J \d\rho \d\theta \d z
+    \\
+    =& n_0T_{e,0}\rho_s^3\iiint \wt{n}\wt{T}_e \wt{J} \d\wt{\rho} \d\theta \d \wt{z}
+    \\
+    =& n_0T_{e,0}\rho_s^3\wt{E}_{\text{pot}}
+\end{align*}

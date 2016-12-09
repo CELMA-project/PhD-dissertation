@@ -107,12 +107,12 @@ We use this to calculate the components of the stress tensor.
 We get
 %
 % NOTE: Checked that agrees with Helander
-% NOTE: Cheked that inserted correct
+% NOTE: Checked that inserted correct
 \begin{align*}
     \pi^{xx}_{\a}
     =& -\frac{\eta_{\a,0}}{2}\L(W^{xx} + W^{yy}\R)
        -\frac{\eta_{\a,1}}{2}\L(W^{xx} - W^{yy}\R)
-       -\eta_3 W^{xy}
+       -\eta_{\a,3} W^{xy}
     \\
     =& -\frac{\eta_{\a,0}}{2}
             \frac{2}{3}\L(\partial_x u^{x}_{\a}
@@ -276,7 +276,7 @@ By taking the divergence of this, we find that
               - 2\partial_z u^{z}_{\a} \R)
        -      \eta_{\a,1}
              \L(\partial_x u^{x}_{\a} - \partial_y u^{y}_{\a} \R)
-       -\eta_3
+       -\eta_{\a,3}
        \L( \partial_x u^{y}_{\a} + \partial_y u^{x}_{\a} \R)\R]
        \R.\\
        &\L.\qquad
@@ -366,7 +366,7 @@ We then get
               - 2\partial_x\partial_z u^{z}_{\a} \R]
        -      \eta_{\a,1}
              \L[\partial_x^2 u^{x}_{\a} - \partial_x\partial_y u^{y}_{\a} \R]
-       -\eta_3
+       -\eta_{\a,3}
        \L[ \partial_x^2 u^{y}_{\a} + \partial_x\partial_y u^{x}_{\a} \R]
        \R.\\
        &\L.\qquad
@@ -504,17 +504,17 @@ We then get
 We have that
 %
 \begin{align*}
-    &\eta_{0,i}=0.96n_iT_i\sqrt{2}\nu_{ii} &
-    &\eta_{1,i}=\frac{3n_iT_i}{10\Om_{ci}^2 \sqrt{2}\nu_{ii}} &
-    &\eta_{2,i}=\frac{12n_iT_i}{10\Om_{ci}^2\sqrt{2}\nu_{ii}} &
-    &\eta_{3,i}=\frac{n_iT_i}{2\Om_{ci}} &
-    &\eta_{4,i}=\frac{n_iT_i}{\Om_{ci}} &
+    &\eta_{0,i}=\frac{0.96n_iT_i\sqrt{2}}{\nu_{ii}} &
+    &\eta_{1,i}=\frac{3n_iT_i\nu_{ii}}{10\om_{ci}^2 \sqrt{2}} &
+    &\eta_{2,i}=\frac{12n_iT_i\nu_{ii}}{10\om_{ci}^2\sqrt{2}} &
+    &\eta_{3,i}=\frac{n_iT_i}{2\om_{ci}} &
+    &\eta_{4,i}=\frac{n_iT_i}{\om_{ci}} &
     \\
-    &\eta_{0,e}=0.73n_eT_e\nu_{ei} &
-    &\eta_{1,e}=0.51\frac{n_eT_e}{\Om_{ce}^2\nu_{ei}} &
-    &\eta_{2,e}=2.04\frac{n_eT_e}{\Om_{ce}^2\nu_{ei}} &
-    &\eta_{3,e}=\frac{n_eT_e}{2\Om_{ce}} &
-    &\eta_{4,e}=\frac{n_eT_e}{\Om_{ce}} &
+    &\eta_{0,e}=\frac{0.73n_eT_e}{\nu_{ei}} &
+    &\eta_{1,e}=0.51\frac{n_eT_e\nu_{ei}}{\om_{ce}^2} &
+    &\eta_{2,e}=2.04\frac{n_eT_e\nu_{ei}}{\om_{ce}^2} &
+    &\eta_{3,e}=\frac{n_eT_e}{2\om_{ce}} &
+    &\eta_{4,e}=\frac{n_eT_e}{\om_{ce}} &
 \end{align*}
 %
 and from \cref{fig:etas} we see that $\eta_{\a,0} \gg \eta_{\a,j} \quad j \in \{1,2,3,4\}$ for the parameter range that we are interested in.

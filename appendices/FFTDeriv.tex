@@ -1,0 +1,66 @@
+By using the definition of the Fourier transformed, we have
+%
+\begin{align*}
+    F(x,y,\xi) = \defi{-\infty}{\infty}{f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}
+\end{align*}
+%
+this gives
+%
+\begin{align*}
+    &\defi{-\infty}{\infty}{\L(\partial_zf[x,y,z]\R)\exp\L(-2\pi iz\xi\R)}{z}\\
+%
+    =& \defi{-\infty}{\infty}{\partial_z\L(f[x,y,z]\exp\L[-2\pi iz\xi\R]\R)}{z}
+    - \defi{-\infty}{\infty}{f(x,y,z)\partial_z\exp\L(-2\pi iz\xi\R)}{z}\\
+%
+    =& \L(f[x,y,z]\exp\L[-2\pi iz\xi\R]\R)\bigg|_{-\infty}^{\infty} - \L(-2\pi
+    i\xi\R)\defi{-\infty}{\infty}{f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}\\
+%
+    =& 2\pi i\xi F(x,y,\xi) \numberthis
+%
+\label{eq:f_derivative}
+%
+\end{align*}
+%
+where we have used that $f(x,y,\pm\infty)=0$ in order to have a well defined
+Fourier transform. This means that
+%
+\begin{align*}
+    \partial_z^n F(x,y,\xi) = (2\pi i \xi)^n F(x,y,\xi)
+\end{align*}
+%
+In our case, we are dealing with periodic boundary conditions. Strictly
+speaking, the Fourier transform does not exist in such cases, but it is
+possible to define a Fourier transform in the limit which in the end lead to
+the Fourier series (see \cite{Bracewell2000book} for details).
+
+By discretising the spatial domain, it is no longer possible to represent the
+infinite amount of Fourier modes, but only $N+1$ number of modes, where $N$ is
+the number of points (this includes the modes with negative frequencies, and
+the zeroth offset mode). For the discrete Fourier transform, we have
+%
+\begin{align}
+    F(x,y)_{k} = \frac{1}{N}\sum_{Z=0}^{N-1}f(x,y)_{Z}\exp\L(\frac{-2\pi i k
+    Z}{N}\R)
+%
+\label{eq:DFT}
+%
+\end{align}
+%
+where $k$ is the mode number, $N$ is the number of points in $z$. If we call
+the sampling points of $z$ for $z_Z$, where $Z = 0, 1 \ldots N-1$, we have that
+$z_Z = Z \text{d}z$. As our domain goes from $[0, 2\pi[$, we have that (since
+        we have one less line segment than point) $\text{d}z (N-1) = L_z = 2\pi
+        - \text{d}z$, which gives $\text{d}z = \frac{2\pi}{N}$. Inserting this
+        is equation (\ref{eq:DFT}) yields
+%
+\begin{align*}
+    F(x,y)_{k} = \frac{1}{N}\sum_{Z=0}^{N-1}f(x,y)_{Z}\exp\L( - i k
+    Z\text{d}z\R) = \frac{1}{N}\sum_{Z=0}^{N-1}f(x,y)_{Z}\exp\L( - i k z_Z\R)
+\end{align*}
+%
+The discrete version of equation (\ref{eq:f_derivative}) thus gives
+%
+\begin{align*}
+    \partial_z^n F(x,y)_k = (i k)^n F(x,y)_k
+\end{align*}
+%

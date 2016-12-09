@@ -9,7 +9,7 @@ Also, resistivity and diffusion neglected (say that these are slow)
  \partial_t n
  =&
  -\frac{1}{J}\L\{\phi,n\R\}
- +\frac{0.51\nu_{ei}}{\mu} \grad_\perp^2 n
+ +\frac{\nu_{ei}}{\mu} \grad_\perp^2 n
  -\partial_\| \L(u_{e,\|}n\R)
 \\
 %
@@ -480,7 +480,7 @@ n_0\frac{\grad_\perp^2\phi}{B}
 %
 \partial_t \ln(n)
 =&
- +\frac{0.51\nu_{ei}}{\mu}
+ +\frac{\nu_{ei}}{\mu}
    \grad_\perp^2 \ln(n)
   %
 - \partial_\|u_{e,\|}
@@ -527,7 +527,7 @@ n_0\frac{\grad_\perp^2\phi}{B}
 %
 \partial_t \ln(n)
 =&
- \frac{0.51\nu_{ei}}{\mu}
+ \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 \ln(n)
   %
 - \partial_\|u_{e,\|}

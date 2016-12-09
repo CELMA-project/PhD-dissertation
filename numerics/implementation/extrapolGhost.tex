@@ -1,0 +1,19 @@
+\section{Extrapolation to the ghost point}
+\label{sec:extrapolGhost}
+%
+In the cases where no boundary is imposed (for the parallel derivative of $\phi$ mentioned in \cref{sec:BCs} and in the composite derivatives mentioned in \cref{sec:compDeriv}), the following extrapolation %
+%
+\footnote{
+Derived using a Newton polynomial (using the five points around the edge of the domain of \cref{fig:flatBC} (excluding the ghost point)), and evaluate it in the ghost point.
+}%
+is used for the ghost points
+%
+\begin{align}
+    f_{N+1} =& 4f_{N} - 6f_{N-1} + 4f_{N-2} - f_{N-3},
+    \label{eq:extraPolUp}
+    \\
+    f_{0} =& 4f_{1} - 6f_{2} + 4f_{3} - f_{4}
+    \label{eq:extraPolDown}
+\end{align}
+%
+where the indices the ones indicated at \cref{fig:flatBC}.

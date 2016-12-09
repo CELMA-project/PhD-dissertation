@@ -708,14 +708,19 @@ the $B$-field in our case is constant. This can be obtained if we let%
     BOUT++ uses the indices $\{x,y,z\}$ for $\{1,2,3\}$.
     Be aware that this can be a source of confusion as $y$ in BOUT++ coordinates maps to $z$ in cylindrical coordinates as shown below
     %
-    \begin{center}
+\begin{center}
+        \colorme
         \begin{tabular}{ccccc}
+            \hline\hline
             Generic &     & BOUT++ indices &     & Cylindrical coordinates\\
+            \hline
             $1$     &$\to$& $x$            &$\to$& $\rho$                 \\
             $2$     &$\to$& $y$            &$\to$& $z$                    \\
-            $3$     &$\to$& $z$            &$\to$& $\theta$
+            $3$     &$\to$& $z$            &$\to$& $\theta$               \\
+            \hline\hline
         \end{tabular}
-    \end{center}
+\end{center}
+    \label{foot:BOUT++coord}
 }%
 %
 \footnote{

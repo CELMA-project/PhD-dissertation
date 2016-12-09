@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper,oneside,openright]{report} % twosided
 \usepackage{styles/general}
 
-\title{\vspace{-8ex}Derivation of the CELMA equations\vspace{-1ex}}
+\title{\vspace{-8ex}Ph.D. thesis\vspace{-1ex}}
 \author{Michael L{\o}iten}
 \date{\vspace{-2ex}\today}
 
@@ -33,7 +33,6 @@
 
 % Shorcuts for this document
 \def\vt{\ve{\vartheta}}
-% References
 
 \begin{document}
 \maketitle
@@ -41,14 +40,14 @@
 % FIXME: Use simeq where approximations are used
 % FIXME: Convert to currents in modified vorticity
 % FIXME: Check that there is no mix between length of perturbation and background scale length
-% FIXME: Highligth difference bout++ and bout
+% NOTE: USE input rather than include!!!
 \part{Derivation of model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
 %
 \chapter{The drift fluid equations}
 \label{chap:drift-order}
-\input{derivation/driftOrder}
+\input{derivation/velocityOrder}
 
 \chapter{The model in a slowly varying B-field}
 \input{derivation/slowlyVaryingBField}
@@ -66,12 +65,21 @@
 \input{derivation/boussinesq}
 
 \part{Implementation and verification}
-\chapter{Implementation}
-\input{numerics/implementation}
-\chapter{Time solver}
-\input{numerics/timeSolver}
+\chapter{Implementation using the BOUT++ framework}
+\input{numerics/implementation/BOUT++}
+\input{numerics/implementation/spatial}
+\input{numerics/implementation/artificialViscosity}
+\input{numerics/implementation/timeSolver}
+\chapter{Additional implementations}
+\label{chap:additionalImplementation}
+\input{numerics/implementation/additionalImplementation}
+\input{numerics/implementation/compositeDerivatives}
+\input{numerics/implementation/extrapolGhost}
+\input{numerics/implementation/obtainPhi}
+\input{numerics/implementation/innerBoundary}
+\input{numerics/implementation/spectralFiltering}
 \chapter{Verification of the numerics}
-\label{app:verification}
+\label{chap:verification}
 \input{numerics/verification}
 
 \part{Results}
@@ -79,6 +87,17 @@
 
 \part{Appendices}
 \appendix
+\chapter{Drift ordering}
+\label{app:DO}
+\input{appendices/driftOrdering}
+
+\chapter{Collisions}
+\label{app:collisions}
+\input{appendices/collisions}
+
+\chapter{The viscosity tensor}
+\label{app:piTensor}
+\input{appendices/piTensor}
 
 \chapter{The electrostatic approximation}
 \label{app:elstat}
@@ -88,9 +107,9 @@
 \label{app:elMag}
 \input{appendices/elMag}
 
-\chapter{The viscosity tensor}
-\label{app:piTensor}
-\input{appendices/piTensor}
+\chapter{Energies}
+\label{app:energies}
+\input{appendices/energies}
 
 \chapter{The coordinate system}
 \label{app:coord}
@@ -103,23 +122,16 @@
 \chapter{Advection of \texorpdfstring{$\Om^D$}{OmegaD}}
 \label{app:vortDAdv}
 \input{appendices/modifiedVorticityAdvection}
+
 \chapter{Laplace inversion using FFT}
 \label{app:lapInv}
-% FIXME: Add laplInv
+\input{appendices/lapInv}
+
+\chapter{Derivatives of the fourier transform}
+\label{app:deriv_of_FT}
+\input{appendices/FFTDeriv}
 
 \part{Work in progress}
-
-\chapter{Energies}
-\label{app:energies}
-\input{workInProgress/energies}
-
-\chapter{Collisions}
-\label{app:collisions}
-\input{workInProgress/collisions}
-
-\chapter{Better drift order}
-\label{app:betterDO}
-\input{workInProgress/betterDriftOrdering}
 
 \chapter{Shortcomings}
 \label{app:shortcomings}
@@ -128,10 +140,6 @@
 \chapter{Parallel momentum equations}
 \label{app:parMom}
 \input{workInProgress/parallelMomentum}
-
-\chapter{Time solver}
-\label{app:timeSolver}
-\input{workInProgress/timeSolver}
 
 \chapter{Preconditioning}
 \label{app:precon}

@@ -182,6 +182,7 @@ TSWLatexianTemp*
 # vim
 *.swp
 *.swo
+*.latexmain
 
 # Thesis
 16_PhD_Loeiten.pdf

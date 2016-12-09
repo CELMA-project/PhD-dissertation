@@ -1,0 +1,1196 @@
+We will in this section look at big and small terms in the perpendicular momentum equation in \cref{eq:perp_mom_start}.
+The motivation for this is to make a drift ordering similar to what is done in \cite{Fitzpatrick2014book}, and from this get algebraic equations for each order of the perpendicular velocities.
+We will do so by looking at characteristic scales of the system.
+Before starting, we will have a brief look at the definition of the gradient length scales and of the quasi-neutrality of the system.
+
+\section{Gradient length scale}
+When doing order of magnitude estimates%
+\footnote{
+    Easy, approximate ways to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
+}%
+, and will therefore introduce the \emph{gradient length scale}.
+The gradient scale length serves as an estimate for the size of $\grad$.
+That is, it tells us over how large distances there are sharp gradients for a bounded, smooth function.
+For a field $f$, the gradient length scale $L_f$ is defined as%
+\footnote{
+    Note that the inverse gradient length scale is often denoted $k$ in the literature.
+    This make sense for for example plane wave perturbations, which happens to have $\frac{1}{L_f}=k$, where $k$ is the inverse wave number.
+    However, in order to avoid ambiguity, we will in this thesis use $L_f$ for the gradient scale length.
+}%
+%
+\begin{align}
+    \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)}
+    \label{eq:lenScale}
+\end{align}
+%
+i.e. short and sharp gradients in $f$ have a short $L_f$.
+We can similarly define the temporal scale as
+%
+\begin{align}
+    \om_f = \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}
+    \label{eq:timeScale}
+\end{align}
+%
+The definitions in \cref{eq:lenScale,eq:timeScale} are quite strict, and we will in this thesis use a more approximate estimate for the gradient length scale.
+Thus, when referring to gradient length scales in this thesis, we will mean "typical" values for the gradient scale lengths, so that
+%
+\begin{align*}
+    \grad \sim \frac{1}{L},
+\end{align*}
+%
+where $\sim$ denotes "of same order".
+
+\section{Quasi-neutrality}
+\label{sec:qn}
+To get the condition of whether the system is quasi-neutral or not, we can do an order of magnitude estimate comparison of $Zn_i$ and $Zn_i - n_e$.
+We find that
+%
+\begin{align}
+    \frac{Zn_i - n_e}{Zn_i} =
+    \frac{e(Zn_i - n_e)}{eZn_i}
+    =
+    \frac{\e_0\div\ve{E}}{eZn_i}
+    \sim
+    \frac{\e_0\L|E\R|}{\L|L_E\R|eZn_i}
+    \label{eq:quasiNeutral}
+\end{align}
+%
+We can find an approximate expression for $E$ through Faraday's induction law:
+%
+\begin{align*}
+    \curl\ve{E} =& -\partial_t B\\
+    \frac{|E|}{|L_E|} \sim& \frac{|B|}{\tau_B}\\
+    |E| \sim& \frac{|L_E||B|}{\tau_B}
+\end{align*}
+%
+Inserting this in \cref{eq:quasiNeutral} yields
+%
+\begin{align*}
+    \frac{Zn_i - n_e}{Zn_i}
+    \sim
+    \frac{\e_0 |L_E||B|}{|L_E| e Zn_i \tau_B}\frac{m_i Ze}{m_i Ze}
+    =
+    \frac{\om_{ci}\e_0}{Z e n_i\tau_B}\frac{m_i}{Z e}
+    =
+    \frac{\om_{ci}}{\tau_B\om_{pi}^2},
+\end{align*}
+%
+where $\om_{pi}$ denotes the ion plasma frequency%
+\footnote{This can be interpreted as something like the typical frequency the ions would oscillate with if the ions where perturbed in a completely quiescent plasma.}
+%
+.
+We will now assume that the fastest time scales which can occur in our system is much slower than the ion cyclotron frequency.
+If we therefore set $1/\tau_B\to\om_{ci}$, we get
+%
+\begin{align}
+    \frac{Zn_i - n_e}{Zn_i}
+    \simeq
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    =
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    \label{eq:quasiNCompare}
+\end{align}
+%
+which for our interest is a quantity much smaller than $1$.
+Equivalently, if we introduce the \emph{normalizing} ion sound speed%
+%
+\footnote{Although the real ion sound speed is given by $c_s=\sqrt{\frac{T_e+\gamma' T_i}{m_i}}\;\gamma'=\frac{N+2}{N}$ for $N$ degrees of freedom, we will in this thesis use the symbol $c_s$ for $\sqrt{\frac{T_e}{m_i}}$, as this term frequently pops up in the derivations.}
+%
+\begin{align*}
+    c_s = \sqrt{\frac{T_e}{m_i}},
+\end  {align*}
+%
+and the ion hybrid radius (the ion gyro radius at the electron temperature)
+%
+\begin{align*}
+   \rho_s=\frac{c_s}{\om_{ci}},
+\end  {align*}
+%
+\Cref{eq:quasiNCompare} can be stated as
+%
+\begin{align*}
+    \frac{Zn_i - n_e}{Zn_i}
+    \simeq
+    \frac{\om_{ci}^2}{\om_{pi}^2}
+    =
+    \frac{c_s^2\om_{ci}^2}{c_s^2\om_{pi}^2}
+    =
+    \frac{c_s^2}{\rho_s^2\om_{pi}^2}
+    =
+    \frac{\frac{T_e}{m_i}}{\rho_s^2\frac{n_iZ^2e^2}{m_i\e_0}}
+    =
+    \frac{\frac{T_e\e_0}{n_iZ^2e^2}}{\rho_s^2}
+    =
+    \frac{\lambda_D^2}{\rho_s^2},
+\end{align*}
+%
+where $\lambda_D$ is the Debye length, which tells at what radius an isolated charge is effectively electrically shielded by surrounding charged particles.
+
+In other words, the quasi-neutrality is just a statement of what scales we are looking at.
+Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the left hand side of
+%
+\begin{align*}
+    \frac{\div \ve{E}}{Zn_i} = \frac{e}{\e_0} \frac{Zn_i-n_e}{Zn_i}
+\end{align*}
+%
+is small (as $e$ and $\e_0$ is of the same order of magnitude).
+We therefore have
+%
+\begin{align*}
+    n\simeq Zn_i \simeq n_e
+\end{align*}
+
+\section{The inertia term}
+\label{sec:doInert}
+The left hand side of \cref{eq:perp_mom_start} reads
+%
+\begin{align*}
+&
+ \frac{1}{\om_{c\a}}
+ \L(
+ \partial_t \ve{u}_{\a,\perp}
+ + \L[\ve{u}_{\a,\perp}
+ + \ve{u}_{\a,\|}\R]\cdot\grad\ve{u}_{\a,\perp}
+ \R)
+\\
+ %
+ %
+ %
+ =&
+ \frac{1}{\om_{c\a}}
+ \L(
+ \partial_t \ve{u}_{\a,\perp}
+ + \L[\ve{u}_{\a,\perp}
+ + \ve{u}_{\a,\|}\R]\cdot\grad\ve{u}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ %
+ =&
+ \frac{1}{\om_{c\a}}
+ \L(
+ \partial_t \ve{u}_{\a,\perp}
+ + \ve{u}_{\a,\perp}\cdot\grad_\perp\ve{u}_{\a,\perp}
+ + \ve{u}_{\a,\|}\cdot\grad_\|\ve{u}_{\a,\perp}
+ \R)
+ \numberthis
+ \label{eq:do_inertia}
+\end{align*}
+%
+From this, we can withdraw a characteristic timescale of change of the perpendicular velocity, a characteristic gradient length scale and a characteristic perpendicular velocity.
+We will use the notation for a field $f$
+%
+\begin{align*}
+    f = f^c \wt{f}
+\end{align*}
+%
+where the superscript $f^c$ denotes the characteristic size of $f$ so that $\wt{f}$ is of $\mathcal{O}(1)$.
+If we now apply this on \cref{eq:do_inertia}, we get
+%
+\begin{align*}
+    &
+ \frac{1}{\om_{c\a}}
+ \L(
+ \om^c_{\a,\perp}u^c_{\a,\perp}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ + \frac{u_{\a,\perp}^{c}u_{\a,\perp}^{c}}{L_{\perp, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ + \frac{u^c_{\a,\perp}u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ %
+ =&
+ \frac{u^c_{\a,\perp}}{\om_{c\a}}
+ \L(
+ \om^c_{\a,\perp}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ + \frac{u^c_{\a,\perp}}{L_{\perp, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ + \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+\end{align*}
+%
+We now relate the velocities to $c_s$, so that
+%
+\begin{align*}
+    \lambda \defined \frac{u^c}{c^c_s}.
+\end{align*}
+%
+Further, by using the ion hybrid radius, we get
+%
+\begin{align*}
+    &
+ \lambda_{u_{\a,\perp}}
+ \frac{c^c_s}{\om_{c\a}}
+ \L(
+ \om^c_{\a,\perp}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\perp}}
+ \frac{ c^c_s }{L_{\perp, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\perp, u_{\a,\perp}}}
+ \frac{c^c_s}{L_{\|, u_{\a,\perp}}}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ %
+ =&
+ \lambda_{u_{\a,\perp}}
+ \frac{c^c_s}{\om_{c\a}}
+ \L(
+ \om^c_{\a,\perp}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\perp}}
+ \frac{ \rho^c_s }{L_{\perp, u_{\a,\perp}}}
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\|, u_{\a,\perp}}}
+ \frac{\rho^c_s}{L_{\perp, u_{\a,\perp}}}
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+\end{align*}
+%
+we will now assume that the scales for the ions and electrons are the same.
+This is, we are constraining the system in the following way
+%
+\begin{align*}
+    \lambda              &\sim \lambda_{u_{e,\perp}}  \sim \lambda_{u_{i,\perp}} \\
+    \om^c                &\sim \om^c_{e,\perp}        \sim \om^c_{i,\perp}       \\
+    L_{\perp, u_{\perp}} &\sim L_{\perp, u_{e,\perp}} \sim L_{\perp, u_{i,\perp}}\\
+    L_{\|, u_{\perp}}    &\sim L_{\|, u_{e,\perp}}    \sim L_{\|, u_{i,\perp}}
+\end{align*}
+%
+If we at the same time introduce
+%
+\begin{align*}
+    \frac{ \rho^c_s }{L_{\perp, u_{\perp}}} \defined \gamma
+\end{align*}
+%
+we get
+%
+\begin{align}
+ \lambda
+ \frac{c^c_s}{\om_{c\a}}
+ \L(
+ \om^c
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda
+ \gamma
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}}
+ \frac{L_{\perp, u_{\a,\perp}}}{L_{\|, u_{\a,\perp}}}
+ \gamma
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \label{eq:doLHSAfterFirstConstraint}
+\end{align}
+%
+In order for these terms to  be of the same order, we must have that
+%
+\begin{align*}
+ \om^c                    &\sim \lambda \gamma \om^c_{ci}  \sim \lambda_{u_{\a,\|}} \frac{L_{\perp}}{L_{\|, u_{\perp}}} \gamma \om^c_{ci}
+ \\
+ \frac{\om^c}{\om^c_{ci}} &\sim \lambda \gamma             \sim \lambda_{u_{\a,\|}} \frac{L_{\perp}}{L_{\|, u_{\perp}}} \gamma
+ \numberthis
+ \label{eq:firstOrdering}
+\end{align*}
+%
+If we assume low frequent turbulence, we must have that
+%
+\begin{align*}
+    \frac{\om^c}{\om^c_{ci}} \defined \e \ll 1
+\end{align*}
+%
+Comparing the two first terms in \cref{eq:firstOrdering} gives
+%
+\begin{align*}
+ \frac{\om^c}{\om^c_{ci}}
+ \sim&
+ \lambda
+ \gamma
+ \\
+ \e
+ \sim&
+ \lambda
+ \gamma
+\end{align*}
+%
+in order to have a balanced restriction between gradient scale lengths and velocities, we can set
+%
+\begin{align*}
+ \lambda
+ \sim&
+ \sqrt{\e}
+ \\
+ \gamma
+ \sim&
+ \sqrt{\e}
+\end{align*}
+%
+note that if we would have started our constraint by saying $\sqrt{\e}\ll 1$ instead, the non-linear terms would be negligible.
+
+Finally, we put the restriction on the parallel velocity and scale lengths.
+We now define
+%
+\begin{align*}
+\frac{L_{\perp}}{L_{\|, u_{\a,\perp}}}\defined \zeta
+\end{align*}
+%
+By assuming $u^c_{\a,\|}\sim c^c_s$, and that
+%
+\begin{align*}
+\zeta\sim \sqrt{\e},
+\end{align*}
+%
+we find that
+%
+\begin{align*}
+ \lambda_{u_{\a,\|}}
+ \frac{L_{\perp}}{L_{\|, u_{\a,\perp}}}
+ \gamma
+ =
+ \lambda_{u_{\a,\|}}
+ \zeta
+ \gamma
+ \sim
+ 1\sqrt{\e}^2
+ =
+ \e
+\end{align*}
+%
+This means that the left hand side of \cref{eq:perp_mom_start} can in an order of magnitude estimate be wirtten as (assuming that $\om_{c\a}\sim\om^c_{c\a}$
+%
+\begin{align*}
+ &
+ \lambda
+ \frac{m_i}{m_i}
+ \frac{c^c_s}{\om^c_{c\a}}
+ \L(
+ \om^c
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda
+ \gamma
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \lambda_{u_{\a,\|}} \frac{L_{\perp, u_{\a,\perp}}}{L_{\|, u_{\a,\perp}}}
+ \gamma
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ &=
+ \lambda
+ \frac{m_\a}{m_i}
+ \frac{c^c_s}{\om^c_{ci}}
+ \L(
+ \om^c
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \e
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \e
+ \om^c_{ci}
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ &=
+ \lambda
+ \frac{m_\a}{m_i}
+ c^c_s
+ \L(
+ \frac{\om^c}{\om_{ci}}
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \e
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \e
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ &=
+ \lambda
+ c^c_s
+ \frac{m_\a}{m_i}
+ \e
+ \L(
+ \partial_{\wt{t}} \wt{\ve{u}}_{\a,\perp}
+ +
+ \wt{\ve{u}}_{\a,\perp}\cdot\wt{\grad}_\perp\wt{\ve{u}}_{\a,\perp}
+ +
+ \wt{\ve{u}}_{\a,\|}\cdot\wt{\grad}_\|\wt{\ve{u}}_{\a,\perp}
+ \R)
+ \\
+ %
+ %
+ &=
+ \lambda c^c_s \frac{m_\a}{m_i}
+ \e
+ \wt{\d}_{t,\a}\wt{\ve{u}}_{\a,\perp}
+ \numberthis
+ \label{eq:doInertiaEps}
+\end{align*}
+%
+
+\section{Pressure, electric field and perpendicular velocities}
+\label{sec:pep}
+%
+We will now group the three next terms in \cref{eq:perp_mom_start}, and we will in the end see that these have the same order under the right assumptions.
+We have that
+%
+\begin{align*}
+- \frac{ \grad_\perp p_\a }{n_\a  q_\a B}
++ \frac{\ve{E}_\perp}{B}
++ \ve{u}_{\a,\perp}\times\ve{b}
+=&
+- \frac{n^c T^c_\a}{L_{\perp, p_\a}n^cq_\a B^c}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++ \ve{u}^c_{\a,\perp}
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\\
+%
+%
+=&
+- \frac{T^c_\a}{L_{\perp, p_\a}q_\a B^c}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\numberthis
+\label{eq:doTriple}
+\end{align*}
+%
+We will now constrain the system further by saying that
+%
+\begin{align*}
+L_{\perp} \sim& L_{\perp, p_\a} \sim L_{\perp, u_{\perp}}\\
+T^c       \sim& T^c_e           \sim T^c_i
+\end{align*}
+%
+This means that $c^c_s = \sqrt{\frac{T^c}{m_i}}$.
+Using this in \cref{eq:doTriple} gives
+%
+\begin{align*}
+-
+\frac{m_i}{m_i}
+\frac{T^c}{q_\a B^c}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+%
+%
+=&
+-
+(c^c_s)^2
+\frac{q_i}{q_\a}
+\frac{1}{\om^c_{ci}}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\\
+%
+%
+=&
+-
+c^c_s
+\frac{q_i}{q_\a}
+\frac{c^c_s}{\om^c_{ci}}
+\frac{1}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\\
+%
+%
+=&
+-
+c^c_s
+\frac{q_i}{q_\a}
+\frac{\rho^c_s}{L_{\perp}}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\\
+%
+%
+=&
+-
+c^c_s
+\frac{q_i}{q_\a}
+\gamma
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\numberthis
+\label{eq:doTripleToEps}
+\end{align*}
+%
+For these to be of the same order, we must have
+%
+\begin{align*}
+    \gamma c^c_s &\sim \frac{E_\perp^c}{B^c} \sim \lambda c^c_s \\
+    \gamma     &\sim \frac{E_\perp^c}{c^c_sB^c} \sim \lambda
+\end{align*}
+%
+this gives
+%
+\begin{align*}
+    \Xi \defined \frac{E_\perp^c}{c^c_sB^c} \sim \sqrt{\e}
+\end{align*}
+%
+Inserting this in \cref{eq:doTripleToEps} yields
+%
+\begin{align*}
+-
+c^c_s
+\frac{q_i}{q_\a}
+\gamma
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{c^c_s}{c^c_s}\frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda c^c_s
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+=&
+-
+c^c_s
+\L(
+\gamma
+\frac{q_i}{q_\a}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++ \frac{1}{c^c_s}\frac{E_\perp^c}{B^c}
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++\lambda
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\R)
+\\
+%
+%
+=&
+-
+c^c_s
+\sqrt{\e}
+\L(
+\frac{q_i}{q_\a}
+\frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}}
++
+\frac{\wt{\ve{E}}_\perp}{\wt{B}}
++
+\wt{\ve{u}}_{\a,\perp}\times\ve{b}
+\R)
+\end{align*}
+
+\section{Collisionalities and sources}
+%
+Next, we look at the collisionalities and sources of \cref{eq:perp_mom_start}.
+We would like these to be (at maximum) of the same order of magnitude as the inertia terms of \cref{sec:doInert}.
+Before we start, we will assume quasi-neutrality%
+\footnote{This is discussed further in \cref{sec:qn}}%
+%
+, i.e.
+%
+\begin{align*}
+    n\sim n_e \sim Zn_i
+\end{align*}
+%
+
+\subsection{Coulomb collisions}
+%
+For the electron-ion collisionalities, we find
+%
+\begin{align*}
+\frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_en_e\nu_{ei}\L(\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R) }{n_\a q_\a B}
+\\
+%
+%
+=&
+\frac{m_e\nu^c_{ei}\lambda c^c_sn^c}{q_\a n^cB^c}
+\frac{ \wt{n}_\a \wt{\nu}_{ei}\L(\wt{\ve{u}}_{e,\perp}-\wt{\ve{u}}_{i,\perp}\R) }{\wt{n}_\a \wt{B}}
+\\
+%
+%
+=&
+\lambda c^c_s
+\frac{m_iq_i}{m_iq_i}\frac{ m_e}{q_\a B^c} \nu^c_{ei}\frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+\\
+%
+%
+=&
+\lambda c^c_s
+\frac{q_i}{q_\a}
+\frac{m_e}{m_i}
+\frac{\nu^c_{ei}}{\om^c_{ci}}
+\frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+\\
+%
+%
+=&
+\lambda c^c_s
+\frac{q_i}{q_\a}
+\frac{1}{\mu}
+\frac{\nu^c_{ei}}{\om^c_{ci}}
+\frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+\numberthis
+\label{eq:doRes}
+\end{align*}
+%
+We will now set the ordering condition according to the ions.
+If the ion equation of \cref{eq:doRes} is to be at the same order as the ion equation of \cref{eq:doInertiaEps} we get the condition
+%
+\begin{align*}
+ \frac{1}{\mu}\frac{\nu^c_{ei}}{\om^c_{ci}}\lambda c^c_s \sim& \lambda c^c_s \e
+ \\
+ \xi\defined\frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}}           \sim& \e
+\end{align*}
+%
+Where we have used that the masses in \cref{eq:doInertiaEps} cancels, and as all the terms with tilde are of order $\mathcal{O}(1)$
+%
+\Cref{eq:doRes} can therefore be written as
+%
+\begin{align*}
+\frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
+\sim&
+\lambda c^c_s
+\frac{q_i}{q_\a}
+\xi
+\frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+\end{align*}
+
+\subsection{Neutral collisions}
+%
+For the neutral collisions, we find that
+%
+\begin{align*}
+\frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
+=&
+\frac{ m_\a n_\a \nu_{\a n} \ve{u}_{\a,\perp}}{n_\a q_\a B}
+\note{Quasi-neutrality}
+\\
+=&
+\frac{ m_\a n^c }{n^c q_\a B^c}\nu^c_{\a n} \lambda c^c_s
+\frac{\wt{n}_\a \wt{\nu}_{\a n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a  \wt{B}}
+\\
+=&
+\frac{m_iq_i}{m_iq_i}
+\frac{ m_\a }{ q_\a B^c}\nu^c_{\a n} \lambda c^c_s
+\frac{\wt{\ve{R}}_{n \to \a,\perp}  }{\wt{n}_\a  \wt{B}}
+\\
+=&
+\frac{q_i}{q_\a}
+\frac{m_\a}{m_i}
+\frac{\nu^c_{\a n}}{\om^c_{ci}} \lambda c^c_s
+\frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+\end{align*}
+%
+We will now try to relate $\nu^c_{e n}$ to $\nu^c_{i n}$.
+From \cref{app:collisions} we have that
+%
+\begin{align*}
+    &\nu_{en} \propto \frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_e}}&
+    &\nu_{in} \propto \frac{n_n a_0^2 \sqrt{T_i}}{\sqrt{m_i}}&
+\end{align*}
+%
+As we have that $T_e \sim T_i$, we get
+%
+\begin{align*}
+    \nu_{en} \propto& \frac{\sqrt{m_i}}{\sqrt{m_i}}\frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_e}}\\
+    \propto& \frac{\sqrt{m_i}}{\sqrt{m_e}}\frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_i}}\\
+    \sim   & \frac{\sqrt{m_i}}{\sqrt{m_e}}\nu_{in}
+\end{align*}
+%
+This gives
+%
+\begin{align*}
+    \frac{q_i}{q_\a}
+    \frac{m_\a}{m_i}
+    \frac{\sqrt{m_i}}{\sqrt{m_i}}
+    \frac{\nu^c_{\a n}}{\om^c_{ci}} \lambda c^c_s
+    \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+    \sim
+    \frac{q_i}{q_\a}
+    \frac{m_\a}{m_i}
+    \frac{\sqrt{m_i}}{\sqrt{m_\a}}
+    \frac{\nu^c_{i n}}{\om^c_{ci}} \lambda c^c_s
+    \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+    \\
+    %
+    =
+    \frac{q_i}{q_\a}
+    \frac{\sqrt{m_\a}}{\sqrt{m_i}}
+    \frac{\nu^c_{i n}}{\om^c_{ci}} \lambda c^c_s
+    \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+    \numberthis
+    \label{eq:doNeut}
+\end{align*}
+%
+Again, we can do an ordering condition according to the ions.
+The ion equation of \cref{eq:doNeut} is of the same order as the ion equation of \cref{eq:doInertiaEps} when
+%
+\begin{align*}
+    \lambda c^c_s \e \sim& \frac{\nu^c_{i n}}{\om^c_{ci}} \lambda c^c_s\\
+    \e             \sim& \frac{\nu^c_{i n}}{\om^c_{ci}} \defined \Theta
+\end{align*}
+%
+as the charges and masses of equation \cref{eq:doNeut} cancels for ions.
+%
+Thus, the order of magnitude estimate of the neutral collisions can be written
+%
+\begin{align*}
+\frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
+\sim
+    \lambda c^c_s\frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+\end{align*}
+
+\subsection{Source terms}
+%
+By using \cref{eq:kinSource}, the source term can be written
+%
+\begin{align*}
+\frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+=&
+\frac{|q_\a|}{e}
+\frac{m_i}{m_i}
+\frac{ S_{i,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+\\
+%
+%
+=&
+\frac{|q_\a|}{e}
+\frac{m_\a}{m_i}
+\frac{ S_{i,n}\ve{u}_{\a,\perp} }{n_\a \om^c_{ci}}
+\note{Quasi-neutrality}
+\\
+%
+%
+=&
+\frac{|q_\a|}{e}
+\frac{m_\a}{m_i}
+\frac{S^c_{i,n}c^c_s}{n^c \om^c_{ci}}
+\frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+\\
+%
+%
+=&
+\frac{|q_\a|}{e}
+\frac{m_\a}{m_i}
+\frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}
+\frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+\numberthis
+\label{eq:doSource}
+\end{align*}
+%
+The order of the ion equation of \cref{eq:doSource} would be of same the same order as \cref{eq:doInertiaEps} if
+%
+\begin{align*}
+    \lambda c^c_s \e \sim& \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
+    \e               \sim& \frac{1}{\lambda }\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
+\end{align*}
+%
+Hence, we have that the source terms give
+%
+\begin{align*}
+\frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+    \sim
+    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+\end{align*}
+%
+Notice the change from $m_i$ to $m_e$ due to the definition of $\sigma$.
+
+\section{Viscosities}
+%
+Finally, we deal with the viscosities in our drift ordering.
+If we assume constant viscosity coefficients $\eta_{\a,N}$, where $N\in\{1,2,3,4\}$, and that $\eta_{\a,0}$ is dominating (see \cref{app:piTensor}), we get%
+%
+\footnote{
+    Note that although we use drift ordering in \cref{app:piTensor}, the results should still be approximately valid as we already have constrained our system in a way so that the terms in \cref{sec:pep} are of leading order.
+}%
+%
+\begin{align}
+ \L(\div\te{\pi}_\a\R)_\perp \simeq
+ \frac{2}{3}\eta_{\a,0}
+ \L(
+  \ve{e}_x\partial_x\partial_\|u_{\a,\|}
+  +
+  \ve{e}_y\partial_y\partial_\|u_{\a,\|}
+ \R)
+\label{eq:doRefVisc}
+\end{align}
+%
+We will now assume that
+%
+\begin{align*}
+    \partial_x u_{\a,\|}\sim \partial_y u_{\a,\|} \sim \frac{1}{L_{\perp, u_{\a,\|}}}u^c_{\a,\|},
+\end{align*}
+%
+and also that
+%
+\begin{align*}
+    L_{\perp, u_{\a,\|}} \sim L_\perp
+    L_{\|   , u_{\a,\|}} \sim L_{\|, u_{\a,\perp}} \sim L_\|
+\end{align*}
+%
+This means that
+%
+\begin{align*}
+  \ve{e}_x\partial_x\partial_\|u_{\a,\|} +
+  \ve{e}_y\partial_y\partial_\|u_{\a,\|}
+  \sim&
+  \frac{c^c_s}{L_\perp L_{\|}}
+  \L(
+  \ve{e}_x\partial_{\wt{x}}\partial_{\wt{\|}}\wt{u}_{\a,\|} +
+  \ve{e}_y\partial_{\wt{y}}\partial_{\wt{\|}}\wt{u}_{\a,\|}
+  \R)
+  \\
+  %
+  %
+  =&
+  c^c_s
+  \frac{L_\perp}{L_\perp}
+  \frac{1}{L_\perp L_{\|}}
+  \L(
+  \ve{e}_x\partial_{\wt{x}}\partial_{\wt{\|}}\wt{u}_{\a,\|} +
+  \ve{e}_y\partial_{\wt{y}}\partial_{\wt{\|}}\wt{u}_{\a,\|}
+  \R)
+  \\
+  %
+  %
+  =&
+  \rho^c_s\om^c_{ci}
+  \frac{1}{L_\perp^2}
+  \zeta
+  \L(
+  \ve{e}_x\partial_{\wt{x}}\partial_{\wt{\|}}\wt{u}_{\a,\|} +
+  \ve{e}_y\partial_{\wt{y}}\partial_{\wt{\|}}\wt{u}_{\a,\|}
+  \R)
+  \\
+  %
+  %
+  =&
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \L(
+  \ve{e}_x\partial_{\wt{x}}\partial_{\wt{\|}}\wt{u}_{\a,\|} +
+  \ve{e}_y\partial_{\wt{y}}\partial_{\wt{\|}}\wt{u}_{\a,\|}
+  \R)
+  \numberthis
+  \label{eq:doViscDeriv}
+\end{align*}
+%
+If we insert \cref{eq:doViscDeriv} into \cref{eq:doRefVisc}, we obtain
+%
+\begin{align*}
+ \L(\div\te{\pi}_\a\R)_\perp \simeq&
+ \frac{2}{3}\eta_{\a,0}
+ \L(
+  \ve{e}_x\partial_x\partial_\|u_{\a,\|}
+  +
+  \ve{e}_y\partial_y\partial_\|u_{\a,\|}
+ \R)
+ \\
+ %
+ %
+ \sim&
+ \frac{2}{3}
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \eta^c_{\a,0}
+  \wt{\eta}_{\a,0}
+ \L(
+  \ve{e}_x\partial_{\wt{x}}\partial_{\wt{\|}}\wt{u}_{\a,\|} +
+  \ve{e}_y\partial_{\wt{y}}\partial_{\wt{\|}}\wt{u}_{\a,\|}
+ \R)
+ \\
+ %
+ %
+ =&
+ \frac{2}{3}
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \eta^c_{\a,0}
+ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp
+\end{align*}
+%
+From \cref{app:piTensor} we have that $\eta_{\a,0}=\frac{C_{\eta_{\a,0}}n_\a T_\a}{\nu_{\a i}}$, where $C_{\eta_{e,0}}=0.73$ and $C_{\eta_{i,0}}=0.96\sqrt{2}$.
+As we have assumed $T_e \sim T_i$, and since $\nu_{e i}\propto \frac{1}{\sqrt{m_e}}$ and $\nu_{\a i}\propto \frac{1}{\sqrt{m_i}}$ we have that $\nu_{\a i}\sim \frac{\sqrt{m_e}}{\sqrt{m_\a}}\nu_{ei}$
+This gives
+%
+\begin{align*}
+ \frac{2}{3}
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \eta^c_{\a,0}
+ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp
+ =&
+ \frac{2}{3}
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \frac{C_{\eta_{\a,0}} n^c T^c_\a}{\frac{\sqrt{m_e}}{\sqrt{m_\a}}\nu^c_{ei}}
+ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp
+ \\
+ %
+ %
+ =&
+ \frac{2}{3}
+ C_{\eta_{\a,0}}
+  \om^c_{ci}
+  \frac{1}{L_\perp}
+  \gamma
+  \zeta
+  \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+  \frac{n^c T^c_\a}{\nu^c_{ei}}
+ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp
+\end{align*}
+%
+Thus
+%
+\begin{align*}
+    \frac{\L(\div\te{\pi}_\a\R)_\perp}{n_\a q_\a B}
+    \sim&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     \om^c_{ci}
+     \frac{1}{L_\perp}
+     \gamma
+     \zeta
+     \frac{1}{n^c q_\a B^c}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \frac{n^c T^c_\a}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     \om^c_{ci}
+     \frac{1}{L_\perp}
+     \gamma
+     \zeta
+     \frac{m_i}{m_i}
+     \frac{q_i}{q_i}
+     \frac{1}{q_\a B^c}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \frac{m_e}{m_e}
+     \frac{T^c_\a}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     \om^c_{ci}
+     \frac{1}{L_\perp}
+     \gamma
+     \zeta
+     \frac{m_e}{m_i}
+     \frac{q_i}{q_\a}
+     \frac{1}{\om^c_{ci}}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \L(c^c_s\R)^2
+     \frac{1}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+    \L(c^c_s\R)^2
+     \frac{1}{L_\perp}
+     \gamma
+     \zeta
+     \frac{1}{\mu}
+     \frac{q_i}{q_\a}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \frac{1}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     c^c_s
+     \rho^c_s
+     \om^c_{ci}
+     \frac{q_i}{q_\a}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \frac{1}{L_\perp}
+     \gamma
+     \zeta
+     \frac{1}{\mu}
+     \frac{}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     c^c_s
+     \frac{q_i}{q_\a}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \frac{\rho^c_s}{L_\perp}
+     \gamma
+     \zeta
+     \frac{1}{\mu}
+     \frac{\om^c_{ci}}{\nu^c_{ei}}
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+     \\
+     %
+     %
+     =&
+    \frac{2}{3}
+    C_{\eta_{\a,0}}
+     c^c_s
+     \frac{q_i}{q_\a}
+     \frac{\sqrt{m_\a}}{\sqrt{m_e}}
+     \gamma^2
+     \zeta
+     \xi
+     \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+\end{align*}
+%
+
+\section{The order of the terms}
+%
+Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitulate the size of the non-dimensional terms
+%
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &\e      \defined \frac{\om^c}{\om^c_{ci}}                            \ll 1  &
+    &\xi     \defined \frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}}         \sim \e&
+    &\Theta  \defined \frac{\nu^c_{i n}}{\om^c_{ci}}                      \sim \e&
+    &\sigma  \defined \frac{1}{\lambda}\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \sim \e&
+    \\
+    &\lambda \defined \frac{u^c}{c^c_s}             \sim \sqrt{\e}&
+    &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }} \sim \sqrt{\e}&
+    &\zeta   \defined \frac{L_{\perp}}{L_{\|}}      \sim \sqrt{\e}&
+    &\Xi     \defined \frac{E_\perp^c}{c^c_sB^c}    \sim \sqrt{\e}&
+\end{empheq}
+%
+where we have assumed
+%
+\begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
+    &T^c_e                 \sim T^c_i                 &
+    &\om^c_{u_{e,\perp}}   \sim \om^c_{u_{i,\perp}}   &
+    &n_e                   \sim Zn_i                  &
+    &u_{e,\perp}           \sim u_{i,\perp}           &
+    \\
+    &L_{\perp,u_{e,\perp}} \sim L_{\perp,u_{i,\perp}} &
+    &L_{\perp,p_\a}        \sim L_{\perp,u_{\a,\perp}}&
+    &u_{e,\|}              \sim u_{i,\|}              &
+\end{empheq}
+%
+The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
+%
+\begin{align*}
+    \lambda c^c_s \frac{m_\a}{m_i} \e \wt{\d}_{t,\a}\wt{\ve{u}}_{\a,\perp}
+ =&
+ - c^c_s \sqrt{\e} \L( \frac{q_i}{q_\a} \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}} + \frac{\wt{\ve{E}}_\perp}{\wt{B}} + \wt{\ve{u}}_{\a,\perp}\times\ve{b} \R)
+ \\&
+ - \frac{2}{3} C_{\eta_{\a,0}} c^c_s \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_e}} \gamma^2 \zeta \xi \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+ \\&
+ + \lambda c^c_s \frac{q_i}{q_\a} \xi \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+ + \lambda c^c_s\frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+ - \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ \\
+ %
+ %
+ \frac{m_\a}{m_i} \e \wt{\d}_{t,\a}\wt{\ve{u}}_{\a,\perp}
+ =&
+ - \frac{\sqrt{\e}}{\lambda} \L( \frac{q_i}{q_\a} \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}} + \frac{\wt{\ve{E}}_\perp}{\wt{B}} + \wt{\ve{u}}_{\a,\perp}\times\ve{b} \R)
+ \\&
+ - \frac{2}{3} \frac{1}{\lambda} C_{\eta_{\a,0}} \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_e}} \gamma^2 \zeta \xi \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+ \\&
+ + \frac{q_i}{q_\a} \xi \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+ + \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+ - \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ \\
+ %
+ %
+ \frac{m_\a}{m_i} \e \wt{\d}_{t,\a}\wt{\ve{u}}_{\a,\perp}
+ =&
+ - \frac{\sqrt{\e}}{\sqrt{\e}} \L( \frac{q_i}{q_\a} \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}} + \frac{\wt{\ve{E}}_\perp}{\wt{B}} + \wt{\ve{u}}_{\a,\perp}\times\ve{b} \R)
+ \\&
+ - \frac{2}{3} \frac{\e^2 \sqrt{\e}}{\sqrt{\e}} C_{\eta_{\a,0}} \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_e}} \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+ \\&
+ +\e \frac{q_i}{q_\a} \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+ +\e \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}}  \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+ -\e \frac{|q_\a|}{e} \frac{m_\a}{m_i} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ \\
+ %
+ %
+ =&
+ - \L( \frac{q_i}{q_\a} \frac{ \wt{\grad}_\perp \wt{p}_\a }{\wt{n}_\a \wt{B}} + \frac{\wt{\ve{E}}_\perp}{\wt{B}} + \wt{\ve{u}}_{\a,\perp}\times\ve{b} \R)
+ \\&
+ - \e^2 \frac{2}{3} C_{\eta_{\a,0}} \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_e}} \frac{ \L(\wt{\grad}\cdot\wt{\te{\pi}}_\a\R)_\perp }{\wt{n}_\a \wt{B}}
+ \\&
+ \\&
+ + \e
+ \L(
+  \frac{q_i}{q_\a} \frac{\wt{\ve{R}}_{\beta \to \a,\perp} }{\wt{n}_\a \wt{B}}
+ + \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}}  \frac{\wt{\ve{R}}_{n \to \a,\perp} }{\wt{n}_\a  \wt{B}}
+ - \frac{|q_\a|}{e} \frac{m_\a}{m_i} \frac{ \wt{S}_{i,n}\wt{\ve{u}}_{\a,\perp} }{\wt{n}_\a}
+ \R)
+ \numberthis
+ \label{eq:DO}
+\end{align*}
+%
+Notice that the quantities in the tildes are of order $\mathcal{O}(1)$, and so that the only big or small terms appear in front of the terms in tilde.
+From this we can for example see that the electron inertia term is small compare to most other terms, and can probably be neglegted.
+We also note that altough the ion visocsity is small, it is questionable if it should be neglected.

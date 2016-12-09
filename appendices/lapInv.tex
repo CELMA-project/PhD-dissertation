@@ -1,0 +1,374 @@
+We would here like to explain how $\Om = \frac{\grad_\perp^2\phi}{B}$ can be sovled numerically using the fourier transform.
+
+This is a special case of the equation
+%
+\begin{align}
+    d&\nabla_\perp^2f + \frac{1}{c_1}\L(\nabla_\perp c_2\R)\cdot\nabla_\perp f + af = b,
+\label{eq:to_invert_tri}
+\end{align}
+%
+which the BOUT++ framework has an own class of inverting for.
+
+In order to explain the numerical implementation, we must first look at how the Laplacian operator looks like Clebsch coordinates.
+Part of this appendix is also included in the \texttt{user\_manual} and \texttt{coordinates} manual of the BOUT++ version mentioned in \cref{chap:BOUT++}.
+
+We will in this chapter use the BOUT++ coordinates mentioned in \cref{foot:BOUT++coord} of \cref{app:coord}.
+
+\section{The Laplacian}
+%
+The Laplacian operator is defined
+%
+\begin{align*}
+    \grad^2f \defined \div \grad f
+\end{align*}
+%
+In general we have (from equation (2.6.39) in D'Haeseleer \cite{Dhaeseleer1991book})
+%
+\begin{align}
+    \div \ve{A} = \frac{1}{J} \partial_i \L(JA^i\R)
+    \label{eq:divA}
+\end{align}
+%
+and that
+%
+\begin{align*}
+    A^i = \ve{A}\cdot \ve{e}^i
+\end{align*}
+%
+In our case $\ve{A} \to \grad$, so that
+%
+\begin{align*}
+    \grad^i = \L(\grad\R)\cdot \ve{e}^i = \ve{e}^i \cdot \L(\grad\R) = \ve{e}^i
+    \cdot \L(\ve{e}^j \partial_j\R) = g^{ij} \partial_j.
+\end{align*}
+%
+Thus
+%
+\begin{align*}
+    \grad^2 =& \frac{1}{J} \partial_i \L(J g^{ij} \partial_j\R)\\ =&
+    \frac{1}{J} g^{ij} J \partial_i \partial_j + \frac{1}{J} \partial_i \L(J
+    g^{ij} \R) \partial_j\\ =& g^{ij} \partial_i \partial_j + G^j \partial_j
+    \numberthis
+    \label{eq:compactLaplace}
+\end{align*}
+%
+where we have defined%
+%
+\footnote{Do \textbf{not} confuse $G^i$ with the \emph{Christoffel symbols of second kind} (also known as the \emph{connection coefficients}, which reads $\Gamma^i_{jk}=\ve{e}^i\cdot\partial_k \ve{e}_j$).}
+%
+\begin{align*}
+    G^j =& \frac{1}{J} \partial_i \L(J g^{ij} \R)\\ =& \frac{1}{J} \L(
+    \partial_1 \L[J g^{1j} \R] + \partial_2 \L[J g^{2j} \R] + \partial_3 \L[J
+    g^{3j} \R] \R)
+\end{align*}
+%
+By writing expanding the terms in \cref{eq:compactLaplace} yields
+%
+\begin{align*}
+    \grad^2 =& g^{ij} \partial_i \partial_j + G^j \partial_j\\
+%
+            =& \L(  g^{1j} \partial_1 \partial_j + g^{2j} \partial_2 \partial_j
+    + g^{3j} \partial_3 \partial_j\R) + \L(G^j \partial_j\R)\\
+%
+            =& \quad \, \L(  g^{11} \partial_1^2 + g^{21} \partial_2 \partial_1
+    + g^{31} \partial_3 \partial_1\R) + \L(G^1 \partial_1\R)\\ &+ \L(  g^{12}
+    \partial_1 \partial_2 + g^{22} \partial_2^2 + g^{32} \partial_3
+    \partial_2\R) + \L(G^2 \partial_2\R)\\ &+ \L(  g^{13} \partial_1 \partial_3
+    + g^{23} \partial_2 \partial_3 + g^{33} \partial_3^2\R) + \L(G^3
+    \partial_3\R)
+\end{align*}
+%
+We now use that the metric tensor is symmetric (by definition), so that $g^{ij}=g^{ji}$, and $g_{ij}=g_{ji}$.
+At the same time, we will use that the partial derivatives commutes for smooth functions $\partial_i\partial_j=\partial_j\partial_i$.
+This gives
+%
+\begin{align*}
+    \grad^2 =&\quad \, \L(g^{11} \partial_1^2 \R) + \L(G^1 \partial_1\R)\\ &+
+    \L(g^{22} \partial_2^2 \R) + \L(G^2 \partial_2\R)\\ &+ \L(g^{33}
+    \partial_3^2\R) + \L(G^3 \partial_3\R)\\ &+ 2\L( g^{12} \partial_1
+    \partial_2 + g^{13} \partial_1 \partial_3 + g^{23} \partial_2 \partial_3
+    \R)\\
+%
+           =&\quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J} \L[
+\partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} + \partial_3 \L\{J
+g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{12} \R\} + \partial_2 \L\{J g^{22} \R\} +
+    \partial_3 \L\{J g^{32} \R\} \R] \partial_2\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
+        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)
+\end{align*}
+
+\subsection{The parallel Laplacian}
+%
+From \cref{chap:drift-order}, we have that
+%
+\begin{align*}
+    \grad_\| \defined& \L(\ve{b} \cdot \grad\R) \ve{b}\ = \ve{b} \ve{b} \cdot \grad =
+    \frac{\ve{e}_2 \ve{e}_2}{g_{22}} \cdot \grad = \frac{\ve{e}_2
+    \ve{e}_2}{g_{22}} \cdot \ve{e}^i \partial_i = \frac{\ve{e}_2}{g_{22}}
+    \partial_2
+    \numberthis
+    \label{eq:parGrad}
+\end{align*}
+%
+such that
+%
+\begin{align*}
+    \grad_\|^i =& \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)\cdot \ve{e}^i =
+    \ve{e}^i \cdot \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)
+\end{align*}
+%
+By using \cref{eq:divA} on \cref{eq:parGrad}, we get
+%
+\begin{align*}
+    \grad_\|^2 =& \div\L(\ve{b} \ve{b} \cdot \grad\R)\\ =&
+    \div\L(\frac{\ve{e}_2}{g_{22}} \cdot \partial_2\R)\\ =& \frac{1}{J}
+    \partial_i \L( J\ve{e}^i \cdot \L[\frac{\ve{e}_2}{g_{22}} \partial_2\R]
+    \R)\\ =& \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R).
+\end{align*}
+
+
+\subsection{The perpendicular Laplacian}
+\label{sec:perpLapl}
+%
+We are now ready to expand the perpendicular Laplacian.
+From \cref{chap:drift-order} we have that
+%
+\begin{align*}
+    \grad_\perp^2 =& \grad^2 - \grad_\|^2\\
+    =& g^{ij} \partial_i \partial_j + G^j \partial_j -\frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)\\
+%
+            =& \quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J} \L[
+\partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} + \partial_3 \L\{J
+g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{12} \R\} + \partial_2 \L\{J g^{22} \R\} +
+    \partial_3 \L\{J g^{32} \R\} \R] \partial_2\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
+        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)\\ &-
+        \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)
+        \numberthis
+        \label{eq:perpLaplExpand}
+\end{align*}
+%
+The BOUT++ implementation of the inversion algorithm assumes small parallel gradients in the dependent variable, so that
+%
+\begin{align*}
+    \grad_\perp^2 \simeq& \quad \, \L(g^{11} \partial_1^2\R) + \L( \frac{1}{J}
+    \L[ \partial_1 \L\{J g^{11} \R\} + \partial_2 \L\{J g^{21} \R\} +
+    \partial_3 \L\{J g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{33}
+        \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
+        \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
+        \partial_3\R)\\ &+ 2\L(g^{13} \partial_1 \partial_3\R)\\
+%
+           =& \L(g^{11} \partial_1^2\R) + G^1\partial_1 + \L(g^{33}
+        \partial_3^2\R) + G^3 \partial_3 + 2\L(g^{13} \partial_1 \partial_3\R)
+        \numberthis
+        \label{eq:approxLapl}
+\end{align*}
+%
+However, this approximation is not needed when using a cylindrical coordinates, as only the diagonal terms in the metric tensor is non-zero, and because the $-\frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)$ term cancels with $g^{22} \partial_2^2$ in \cref{eq:perpLaplExpand}.
+
+\subsection{The perpendicular gradient}
+%
+Finally, the perpendicular gradient can be found from
+\begin{align*}
+    \grad_\perp =& \grad - \grad_\|
+\end{align*}
+%
+where
+%
+\begin{align*}
+    \grad =& \ve{e}^i \partial_i = \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^z \partial_3
+\end{align*}
+%
+By using \cref{eq:parGrad}, this gives
+%
+\begin{align*}
+    \grad_\perp =& \grad - \grad_\|\\
+%
+                =& \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^3
+    \partial_3 - \frac{\ve{e}_2}{g_{22}} \partial_2\\
+%
+                =& \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^3
+    \partial_3 - \frac{g_{2i}\ve{e}^i}{g_{22}} \partial_2\\
+%
+                =& \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^3
+    \partial_3 - \frac{g_{21}\ve{e}^1 +g_{22}\ve{e}^2 +g_{23}\ve{e}^3
+    }{g_{22}}\partial_2\\
+%
+                =& \ve{e}^1 \L(\partial_1 - \frac{g_{21}}{g_{22}}\partial_2\R)
+    +  \ve{e}^3 \L(\partial_3 - \frac{g_{23}}{g_{22}}\partial_2\R)
+\end{align*}
+%
+Again, the BOUT++ implementation of the inversion algorithm assumes small parallel gradients in the dependent variable, so that
+%
+\begin{align}
+    \grad_\perp \simeq& \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3
+    \label{eq:approxPerpGrad}
+\end{align}
+%
+And again, this approximation is not of concern when using cylindrical coordinates, as only the diagonal terms in the metric tensor is non-zero.
+
+\section{Numerical implementation}
+%
+% FIXME: In this section referring to BOUT++ coordinates, see section (coordinates)
+By inserting \cref{eq:approxLapl,eq:approxLapl} into \cref{eq:to_invert_tri}, we get
+%
+\begin{align*}
+    \, &d \L(    g^{11} \partial_1^2 + G^1 \partial_1 + g^{33} \partial_3^2 +
+    G^3 \partial_3 + 2g^{13} \partial_1 \partial_3 \R) f \\
+%
+    +& \frac{1}{c_1}\L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) c_2
+    \cdot \L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) f \\
+%
+    +& af = b
+    \numberthis
+\label{eq:invert_expanded}
+\end{align*}
+%
+Which we would like to solve for $f$.
+%
+As there are no parallel $y$-derivatives in equation (\ref{eq:invert_expanded}), the equation can be inverted for each $y$ plane.
+In addition, if the modes decouples%
+%
+\footnote{%
+    Meaning that \cref{eq:invert_expanded} can be solved for one mode at the time rather than for all modes at the same time.
+}
+%
+when Fourier transforming equation (\ref{eq:invert_expanded}), we can use a tridiagonal solver to solve the equation for each Fourier mode.
+In other words, if $n_x$, $n_y$ and $n_z$ are the number of points in each of the three directions, we need to invert a $n_x\times n_x$ matrix $n_z$ times for each of the $n_y$ $y$-planes, rather than inverting a $n_x\cdot n_y\cdot n_z \times n_x\cdot n_y\cdot n_z$ matrix once.
+
+Taking the Fourier transform of \cref{eq:invert_expanded} is equivalent with multiplying the left hand side and the right hand side with $\exp\L(-2\pi iz\xi\R)$, and integrate the periodic $z$-coordinate from $-\inf$ to $\inf$.
+The modes will only decouple if there are no product of functions depending on $z$
+%
+\footnote{%
+    If we define the Fourier transform as
+    $F(x,y,\xi) = \defi{-\infty}{\infty}{f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}$.
+    One can show that (see \cite{Bracewell2000book} for details)
+    $\defi{-\infty}{\infty}{a(x,y,z)f(x,y,z)\exp\L(-2\pi iz\xi\R)}{z}=A(x,y,\xi)*F(x,y,\xi)$,
+    where $*$ denotes the convolution product.
+    %FIXME: Consider better explanation
+    I.e. $A(x,y,\xi)*F(x,y,\xi)$ mixes the modes of $a$ and $f$ together.
+}
+.
+Hence, we must require that $a$, $c$ and $d$ cannot be functions of $z$.
+
+Because of this, the $\ve{e}^3 \partial_3 c$ term in equation (\ref{eq:invert_expanded}) is zero.
+In principle the modes would still decouple if the $\ve{e}^3 \partial_3 f$ part of equation (\ref{eq:invert_expanded}) was kept, but currently this part is also neglected in the implementation.
+Thus the BOUT++ implementation is solving equations on the form
+%
+\begin{align*}
+    \, &d(x,y) \L(    g^{11}(x,y) \partial_1^2 + G^1(x,y) \partial_1 +
+    g^{33}(x,y) \partial_3^2 + G^3(x,y) \partial_3 + 2g^{13}(x,y) \partial_1
+    \partial_3 \R) f(x,y,z) \\
+%
+    +& \frac{1}{c(x,y)}\L( \ve{e}^1 \partial_1 \R) c(x,y) \cdot \L( \ve{e}^1
+    \partial_1 \R) f(x,y,z) \\
+%
+   +& a(x,y)f(x,y,z) = b(x,y,z)
+   \numberthis
+   \label{eq:nonFTLaplace}
+\end{align*}
+%
+\subsection{The matrix to solve}
+%
+By using what was discussed in \cref{app:deriv_of_FT}, we see that the discrete Fourier transform of \cref{eq:nonFTLaplace} is
+%
+\begin{align*}
+    \, &d \L(    g^{11} \partial_1^2F_Z + G^1 \partial_1F_Z + g^{33} [i k]^2F_Z
+    + G^3 [i k]F_Z + 2g^{13} \partial_1[i k]F_Z \R) \\
+%
+    +& \frac{1}{c}\L( \ve{e}^1 \partial_1 \R) c \cdot \L( \ve{e}^1
+    \partial_1F_Z \R) \\
+%
+    +& aF_Z = B_Z
+\end{align*}
+%
+which gives
+%
+\begin{align*}
+    \, &d \L(    g^{11} \partial_1^2 + G^1 \partial_1 - k^2 g^{33} + i kG^3 + i
+    k2g^{13} \partial_1 \R)F_Z \\
+%
+    +& \frac{g^{11}}{c} \L( \partial_1 c \R) \partial_1F_Z \\
+%
+    +& aF_Z = B_Z
+    \numberthis
+    \label{eq:FTLaplace}
+\end{align*}
+%
+The second order centered approximation of the first and second derivatives in $x$ reads
+%
+\begin{align*}
+    &&\partial_x f \simeq \frac{-f_{n-1} + f_{n+1}}{2\text{d}x}&&
+    &&\partial_x^2 f \simeq \frac{f_{n-1} - f_{n} + f_{n+1}}{\text{d}x^2},&&
+\end{align*}
+%
+which inserted in \cref{eq:FTLaplace} yields
+%
+\begin{align*}
+    \, &d \L(    g^{11} \frac{F_{Z,n-1} - 2F_{Z,n} + F_{Z, n+1}}{\text{d}x^2} +
+    G^1 \frac{-F_{Z,n-1} + F_{Z,n+1}}{2\text{d}x} - k^2 g^{33}F_{Z,n} \R.\\
+    &\quad\L.  + i kG^3F_{Z,n} + i k2g^{13} \frac{-F_{Z,n-1} +
+F_{Z,n+1}}{2\text{d}x} \R) \\
+%
+    +& \frac{g^{11}}{c} \L( \frac{-c_{n-1} + c_{n+1}}{2\text{d}x} \R)
+\frac{-F_{Z,n-1} + F_{Z,n+1}}{2\text{d}x} \\
+%
+    +& aF_{Z,n} = B_{Z,n}
+    \numberthis
+    \label{eq:FTLaplaceFD}
+\end{align*}
+%
+If we now collect \cref{eq:FTLaplaceFD} point by point, we get
+%
+\begin{align*}
+    &\L( \frac{dg^{11}}{\text{d}x^2} - \frac{dG^1}{2\text{d}x} -
+    \frac{g^{11}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} - i\frac{d
+    k2g^{13}}{2\text{d}x} \R) F_{Z,n-1} \\
+    %
+    +&\L( - \frac{ dg^{11} }{\text{d}x^2} - dk^2 g^{33} + a + idkG^3 \R)
+    F_{Z,n} \\
+    %
+    +&\L( \frac{dg^{11}}{\text{d}x^2} + \frac{dG^1}{2\text{d}x} +
+    \frac{g^{11}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} +
+    i\frac{dk2g^{13}}{2\text{d}x} \R) F_{Z, n+1} \\
+%
+     =& B_{Z,n} \numberthis
+%
+\label{eq:discretized_laplace}
+%
+\end{align*}
+%
+We now introduce
+%
+\begin{align*}
+    &h_1 = \frac{dg^{11}}{\text{d}x^2}& &h_2 = dg^{33}& &h_3 =
+    \frac{2dg^{13}}{2\text{d}x}& && \\ &h_4 = \frac{dG^1 + g^{11}\frac{-h_{n-1}
+    + h_{n+1}}{2h_n\text{d}x}}{2\text{d}x}& &h_5 = dG^3& &&
+\end{align*}
+%
+and inserting this in equation (\ref{eq:discretized_laplace}) gives
+%
+\begin{align*}
+    &\L( h_1 - h_4 -ikh_3 \R) F_{Z,n-1} \\
+    %
+    +&\L( -2h_1 - k^2h_2 +ikh_5 + a \R) F_{Z,n} \\
+    %
+    +&\L( h_1 + h_4 + ikh_3 \R) F_{Z, n+1} \\
+%
+     =& B_{Z,n}
+\end{align*}
+%
+This can be formulated as the matrix equation
+%
+\begin{align*}
+    AF_Z=B_Z
+\end{align*}
+%
+where the matrix $A$ is tridiagonal. The boundary conditions are set by setting
+the first and last rows in $A$ and $B_Z$.

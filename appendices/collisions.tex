@@ -1,14 +1,10 @@
 % NOTE: The integrals here can be checked with symbolab.com
-% NOTE: Derivation does not directly compare wit
+% NOTE: Derivation does not directly compare with
 %       \nu_{\a\b} = n_\b\expt{\sigma_{\a\b} v}_\a
 %       as extra v^2 by considering drifting Maxwellians. Without this the
 %       nu_ei frequency becomes infinite
-% FIXME: Normal ei collision not mentioned in main text, do so
-% FIXME: Add definition of vth
-
-We will here follow the derivation of the electron-ion and the ion-ion collision frequency \cite{Goldston1995} in order to derive an estimate for the elastic electron-neutral and ion-neutral collision frequency.
-
-We do so by calculating the frictional force experienced by species $\a$ as it is drifting thorugh species $\b$ which are stationary.
+We will here derive an estimate for the elastic electron-neutral and ion-neutral collision frequency, in the same way as the electron-ion and the ion-ion collision frequency is derived in \cite{Goldston1995book}.
+In order to do so, we start by calculating the frictional force experienced by species $\a$ as it is drifting thorugh species $\b$ which are stationary.
 We have
 %
 \begin{align*}
@@ -192,10 +188,13 @@ where we here have defined the averaged collision frequency
 The subscript $_\text{stationary target}$ will be dropped from here on.
 
 \section{Electron collisions}
+\label{sec:nue}
 Using the cross section for electron ion collisions
 %
 \begin{align*}
-    \sigma_{ei} = \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4}
+    \sigma_{ei} = \frac{Z^2e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4}
+    &&
+    \ln\Lambda = \ln\L(\frac{12\pi n \lambda_D^3}{Z}\R)
 \end{align*}
 %
 yields
@@ -206,14 +205,14 @@ yields
     \frac{n_i4\pi}{3(2\pi)^{3/2}v_{th,e}^5}
     \int_0^\infty
     \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
-    \frac{e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4} v^5
+    \frac{Z^2e^4\ln\Lambda}{4\pi\e_0^2m_e^2v^4} v^5
     \d v
     \\
     %
     %
     =&
     \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
-    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    \frac{Z^2e^4\ln\Lambda}{\e_0^2m_e^2}
     \int_0^\infty
     \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
     v \d v
@@ -223,18 +222,18 @@ yields
     =&
     \frac{2}{2}
     \frac{n_i}{2^{1/2}6\pi^{3/2}v_{th,e}^5}
-    \frac{e^4\ln\Lambda}{\e_0^2m_e^2}
+    \frac{Z^2e^4\ln\Lambda}{\e_0^2m_e^2}
     v_{th,e}^2
     \\
     %
     %
     =&
-    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^2\L(\sqrt{\frac{T_e}{m_e}}\R)^3}
+    \frac{2^{1/2}n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^2\L(\sqrt{\frac{T_e}{m_e}}\R)^3}
     \\
     %
     %
     =&
-    \frac{2^{1/2}n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
+    \frac{2^{1/2}n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
 \end{align*}
 %
 Using the cross section for electron neutral collision
@@ -288,11 +287,12 @@ yields
 % NOTE: Corresponds roughly to what is reported in NRL plasma formulary in weakly ionized plasmas
 
 \section{Ion collisions}
+\label{sec:nui}
 %
 The analysis done above was valid when the target was stationary with respect to the colliding particles.
 This is a fairly good approximation when the stationary particles are much heavier than the colliding particles.
 Hence, the derivation of the average ion-ion collision frequency or the average ion-neutral collision frequency is strictly not valid.
-However, according to \cite{Goldston1995}, the analysis yields the correct result within factors of orders of unity.
+However, according to \cite{Goldston1995book}, the analysis yields the correct result within factors of orders of unity.
 
 One could do the analysis by going to the center of mass frame (which in the end gives an additional factor $2^{-1/2}$) and use relative velocities one find velocities
 %
@@ -300,7 +300,7 @@ One could do the analysis by going to the center of mass frame (which in the end
     \nu_{ii}
     %
     =&
-    \frac{n_ie^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
+    \frac{n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
 \end{align*}
 %
 As the mass of the neutral atom is approximately the same as the ion mass (as we are considering neutrals of the same species as the plasma), we get for the ion-neutral collision
@@ -310,28 +310,14 @@ As the mass of the neutral atom is approximately the same as the ion mass (as we
     =&
     \frac{8 n_n\pi^{1/2} a_0^2 \sqrt{T_i}}{3\sqrt{m_i}}
 \end{align*}
-%
 
+\section{Estimation of \texorpdfstring{$n_n$}{the neutral density} from \texorpdfstring{$p_n$}{the neutral pressure}}
 We can estimate the neutral density from the neutral gas pressure if we assume
 %
 \begin{align*}
     p_n = n_nT_{n}[\text{J}].
 \end{align*}
 %
-If we further assume that the neutrals are at room temperature, we have that Hydrogen dissociated by Franck-Condon process, which leaves the hydrogen with $2 \text{ eV}$ neutrals:
-See Stangeby
-%
-\begin{align*}
-    T_{n}[\text{K}] =& 293 \text{K}\\
-    T_{n}[\text{J}] =& T_{n}[\text{K}]k_b = 293\text{K}\cdot 1.38064852\cdot 10^{-23}
-    \text{J}\text{K}^{-1}\\
-    T_{n}[\text{J}] =& 4.0453001636\cdot 10^{-21}\text{J}
-\end{align*}
-%
-which means that
-%
-\begin{align*}
-    n_n = \frac{p_n}{4.0453001636\cdot 10^{-21}\text{J}}
-\end{align*}
-%
-% FIXME: Schroeder scans from 0.16 Pa to 0.66Pa with this calculation, she would have more neutrals than plasma particles...
+And that all the neutrals are dissociated by the Franck-Condon process, in such that they have an temperature on about half of the dissociation energy.
+That is, we assume the hydrogen with $T_n = 2 \text{ eV}$ \cite{Stangeby2000book,Janev1987book}.
+% NOTE: Room temperature is probably a bad approximation
