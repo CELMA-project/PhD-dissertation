@@ -398,11 +398,12 @@ The result of the MES is given in \cref{tb:MESResults}.
 %
 Finally the integration operators are verified.
 Note that we are not using these routines when solving the set of PDEs, but to calculate the total particle number, the kinetic energy etc.
-We now define the function
+We now define the hat function $H$, with continuous variable $d$, steepness $s$, centering $c$ and width $w$ as input parameters as
 %
-\begin{align*}
+\begin{align}
     H(d,s,c,w) = \frac{1}{2}\L(\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]-\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]\R)
-\end{align*}
+    \label{eq:hat}
+\end{align}
 %
 And use the following equations in the verification process
 %
