@@ -12,9 +12,9 @@
 \rhead{\rightmark}
 \cfoot{\thepage}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
-% \usepackage{draftwatermark}
-% \SetWatermarkLightness{0.7}
-% \SetWatermarkScale{4}
+\usepackage{draftwatermark}
+\SetWatermarkLightness{0.7}
+\SetWatermarkScale{4}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %===================================================
@@ -79,7 +79,7 @@
 \input{numerics/verification}
 
 \part{Results}
-% FIXME: Insert awesome results here
+\input{results/results}
 
 \part{Appendices}
 \appendix
@@ -129,29 +129,29 @@
 
 \chapter{Shortcomings}
 \label{app:shortcomings}
-\input{workInProgress/shortComings}
+\input{appendices/shortComings}
 
-\part{Work in progress}
-
-\chapter{Parallel momentum equations}
-\label{app:parMom}
-\input{workInProgress/parallelMomentum}
-
-\chapter{Preconditioning}
-\label{app:precon}
-\input{workInProgress/precondition}
-
-\chapter{Constraint}
-\input{workInProgress/constraint}
-
-\chapter{Linearization of variables}
-\label{app:linearized}
-\input{workInProgress/linearized}
-
-\chapter{Waves}
-\label{app:waves}
-\input{workInProgress/waves}
-
+%\part{Work in progress}
+%
+%\chapter{Parallel momentum equations}
+%\label{app:parMom}
+%\input{workInProgress/parallelMomentum}
+%
+%\chapter{Preconditioning}
+%\label{app:precon}
+%\input{workInProgress/precondition}
+%
+%\chapter{Constraint}
+%\input{workInProgress/constraint}
+%
+%\chapter{Linearization of variables}
+%\label{app:linearized}
+%\input{workInProgress/linearized}
+%
+%\chapter{Waves}
+%\label{app:waves}
+%\input{workInProgress/waves}
+%
 \part{Bibliography}
 %\markboth{Bibliography}{}
 \bibliographystyle{styles/prsty}
