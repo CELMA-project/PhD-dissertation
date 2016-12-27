@@ -8,61 +8,324 @@ Another approach is to simply derive the set of equation from energy principles 
 In this thesis, however, we will only be using the kinetic and potential energy arising from the pressure.
 Thus saying something about the energy arising from the source etc. is outside the scope of this thesis.
 
-\section{Kinetic energy}
-For a single particle, we have
+\section{The kinteic energy}
+%
+We will now define the energy density $\mathcal{E}_{\text{kin},\a}$.
+From this, we will see what part of the energy density which arises due to fluctuations, and which part which arisies from the mean.
+We can then integrate the energy densities over the volume to get the expressions for the energy.
+
+\subsection{The kinteic energy density}
+The energy density is defined as
 %
 \begin{align*}
-E_{\text{kin}} = \frac{1}{2}m\mathbf{v}^2,
+    \mathcal{E}_{\text{kin},\a} &= \frac{1}{2}m_an \ve{u}^2_\a
 \end{align*}
 %
-which means that for a fluid, we have
+if we now let $\expt{A}$ denote the poloidal average of $A$, defined in \cref{sec:polAvg}, and use the notation
 %
 \begin{align*}
-E_{\text{kin}}=\frac{1}{2}m\int n\mathbf{u}^2 \d V
+    \wt{A} = A - \expt{A}
 \end{align*}
+%
+so that $A = \expt{A} + \wt{A}$
+we get that
+%
+\begin{align*}
+     \mathcal{E}_{\text{kin},\a} =& \frac{1}{2}m_\a n\ve{u}_\a^2\\
+     %
+     =& \frac{1}{2}m_\a\L(\expt{n} + \wt{n}\R)
+            \L(\expt{\ve{u}}_\a + \wt{\ve{u}}_\a\R)^2\\
+     %
+     =& \frac{1}{2}m_\a\L(\expt{n} + \wt{n}\R)
+            \L(\expt{\ve{u}_\a}^2
+             + 2\wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+             + \wt{\ve{u}}_\a^2
+            \R)\\
+     %
+     =& \frac{1}{2}m_\a\L(\expt{n} \expt{\ve{u}_\a}^2
+             + 2 \expt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+             + \expt{n}\wt{\ve{u}}_\a^2
+             +
+             \wt{n} \expt{\ve{u}_\a}^2
+             + 2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+             + \wt{n}\wt{\ve{u}}_\a^2\R)
+        \numberthis
+        \label{eq:enDensExpanded}
+\end{align*}
+%
+We can now split this into an average and a fluctuation around the mean.
+We demand that this satisfies
+%
+\begin{align}
+    \mathcal{E}_{\text{kin},\a} &= \expt{\mathcal{E}_{\text{kin},\a}} + \wt{\mathcal{E}}_{\text{kin},\a}
+    \label{eq:eDensDefinition}
+    \\
+    \expt{\expt{\mathcal{E}_{\text{kin},\a}}} &= \expt{\mathcal{E}_{\text{kin},\a}}
+    \label{eq:avgOfAvg}
+    \\
+    \expt{\wt{\mathcal{E}}_{\text{kin},\a}} &= 0
+    \label{eq:zeroFluct}
+\end{align}
+%
+By noting that $\expt{a}$ in general is a constant with respect to the integration limit, we have that
+%
+\begin{align*}
+    \expt{\expt{a}\wt{b}} = \expt{a}\expt{\wt{b}} = \expt{a}\cdot0 = 0
+\end{align*}
+%
+This means that the terms in \cref{eq:enDensExpanded} with only one fluctuating factor belongs to $\wt{\mathcal{E}}_{\text{kin},\a}$ as it satisfies \cref{eq:zeroFluct}.
+However, we have that $\expt{\wt{a}\wt{b}}$ (the covariance of $a$ and $b$) in general is not equal to $0$.
+For example in the case where $a=b$, the product $\wt{a}\wt{a}$ can never be negative, so that $\expt{\wt{a}\wt{a}} = 0 \iff \wt{a}=0$.
+Hence, these terms contributes partly to the average and partly to the fluctuations.
+
+We can now write \cref{eq:enDensExpanded} as
+%
+\begin{align*}
+     \mathcal{E}_{\text{kin},\a} =
+        \frac{1}{2}m_\a\L(\R.&
+            \expt{n} \expt{\ve{u}_\a}^2
+             + 2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
+             + \wt{n} \expt{\ve{u}_\a}^2
+             \\
+             &
+             + \expt{n}\wt{\ve{u}}_\a^2
+             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             - \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             \\
+             &
+             + 2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             \\
+             &\L.
+             + \wt{n}\wt{\ve{u}}_\a^2
+             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
+             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
+             \R)
+\end{align*}
+%
+Rewriting yields
+%
+\begin{align*}
+     &\mathcal{E}_{\text{kin},\a} =
+     \\&
+        \frac{1}{2}m_\a\L(
+            \expt{n} \expt{\ve{u}_\a}^2
+             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
+        \R)
+             \\
+             &+
+        \frac{1}{2}m_\a\L(
+              2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
+             + \wt{n} \expt{\ve{u}_\a}^2
+             +
+             \L[\expt{n}\wt{\ve{u}}_\a^2
+                - \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             \R]
+             +
+             \L[2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+                - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             \R]
+             +
+             \L[
+               \wt{n}\wt{\ve{u}}_\a^2
+             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
+             \R]
+             \R)
+\end{align*}
+%
+We can now identify the first term as
+%
+\begin{align}
+     \expt{\mathcal{E}_{\text{kin},\a}} =
+        \frac{1}{2}m_\a\L(
+            \expt{n} \expt{\ve{u}_\a}^2
+             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
+        \R)
+    \label{eq:enDensAvg}
+\end{align}
+%
+and the second term as
+%
+\begin{align*}
+    \wt{\mathcal{E}}_{\text{kin},\a} =
+    \frac{1}{2}m_\a\L( \R.  &
+              2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
+             + \wt{n} \expt{\ve{u}_\a}^2
+             +
+             \\
+             &
+             \L.
+             \L[\expt{n}\wt{\ve{u}}_\a^2
+                - \expt{\expt{n}\wt{\ve{u}}_\a^2}
+             \R]
+             +
+             \L[2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
+                - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
+             \R]
+             +
+             \L[
+               \wt{n}\wt{\ve{u}}_\a^2
+             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
+             \R]
+             \R).
+     \numberthis
+    \label{eq:enDensFluct}
+\end{align*}
+%
+We observe that \cref{eq:enDensAvg} and \cref{eq:enDensFluct} satisfies \cref{eq:zeroFluct,eq:avgOfAvg,eq:eDensDefinition}.
+
+Next, we have that the energy is given as the energy density integrated over the volume.
+Thus
+%
+\begin{align*}
+    E_{\text{kin},\a}
+    = \inde{\mathcal{E}_{\text{kin},\a}}{V}
+    = \inde{\expt{\mathcal{E}_{\text{kin},\a}}}{V} + \inde{\wt{\mathcal{E}}_{\text{kin},\a}}{V}
+    = \expt{E_{\text{kin},\a}} + \wt{E}_{\text{kin},\a}
+\end{align*}
+%
+where
+%
+\begin{align*}
+    \expt{E_{\text{kin},\a}} =& \inde{\expt{\mathcal{E}_{\text{kin},\a}}}{V}\\
+    \wt{E}_{\text{kin},\a} =& \inde{\wt{\mathcal{E}}_{\text{kin},\a}}{V}.
+\end{align*}
+%
+In cylindrical coordinates, we have that
+%
+\begin{align*}
+    \inde{f}{V} = \iiint f J \d\rho \d\theta \d z
+\end{align*}
+%
+and note that
+%
+\begin{align*}
+    \inde{\expt{f}}{V}
+    =& \iiint \expt{f} J \d\rho \d\theta \d z\\
+    =& \iiint \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J \d\theta \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \int_0^{2\pi} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J \d\theta \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J\int_0^{2\pi}  \d\theta \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi}2\pi J \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \defi{0}{2\pi}{f}{\theta} J \d\rho \d z\\
+    =& \inde{f}{V}
+    \numberthis
+    \label{eq:intExptF}
+\end{align*}
+%
+and that
+%
+\begin{align*}
+    \inde{\wt{f}}{V}
+    =& \iiint \wt{f} J \d\rho \d\theta \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \int_0^{2\pi}\wt{f} \d\theta J \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\int_0^{2\pi} \wt{f} \d\theta}{2\pi}2\pi J \d\rho \d z\\
+    =& \int_0^{L_z} \int_0^{L_\rho} \expt{\wt{f}} 2\pi  J \d\rho \d z\\
+    =& 0
+    \numberthis
+    \label{eq:intAvgF}
+\end{align*}
+%
+In other words, we have that
+%
+\begin{align*}
+    \wt{E}_{\text{kin},\a} =& 0\\
+    \expt{E_{\text{kin},\a}} =& E_{\text{kin},\a}
+\end{align*}
+
+\subsection{The global kinteic energy}
 %
 Due to gyroviscous cancellation, we have that to first order, only the $E\times B$-drift is carrying particles.
 This gives
 %
 \begin{align*}
-    E_{\text{kin},\alpha}
-    =& \frac{1}{2}m_{\alpha}\int
+    E_{\text{kin},\a}
+    =& \frac{1}{2}m_{\a}\int
        n\mathbf{u}_E^2
-       + n\mathbf{u}_{\alpha,\parallel}^2 \d V
+       + n\mathbf{u}_{\a,\parallel}^2 \d V
      \\
-    =& \frac{1}{2}m_{\alpha}\int
+    =& \frac{1}{2}m_{\a}\int
        n\left(\frac{-\nabla_\perp\phi
               \times\mathbf{b}}{B}\right)^2
-       + n\mathbf{u}_{\alpha,\parallel}^2 \d V
+       + n\mathbf{u}_{\a,\parallel}^2 \d V
     \\
-    =& \frac{1}{2}m_{\alpha}\int
+    =& \frac{1}{2}m_{\a}\int
        n\left(\left[\frac{-\nabla_\perp\phi}{B}\right]^2
-       + [\mathbf{u}_{\alpha,\parallel}]^2\right) \d V
+       + [\mathbf{u}_{\a,\parallel}]^2\right) \d V
    \\
-    =& \frac{1}{2}m_{\alpha}\iiint
+    =& \frac{1}{2}m_{\a}\iiint
        n\left(\left[\frac{-\nabla_\perp\phi}{B}\right]^2
-       + [\mathbf{u}_{\alpha,\parallel}]^2\right)
+       + [\mathbf{u}_{\a,\parallel}]^2\right)
        J \d\rho \d\theta \d z
     \\
-    =& \frac{1}{2}m_i\frac{m_{\alpha}}{m_i}
+    =& \frac{1}{2}m_i\frac{m_{\a}}{m_i}
        n_0c_s^2\rho_s^3
        \iiint
-       \tilde{n}\tilde{u}_\alpha^2
+       \tilde{n}\tilde{u}_\a^2
        \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}
     \\
-    =& m_in_0c_s^2\rho_s^3 \tilde{E}_{\text{kin},\alpha}
+    =& m_in_0c_s^2\rho_s^3 \tilde{E}_{\text{kin},\a}
     \\
-    =& n_0T_{e,0}\rho_s^3 \tilde{E}_{\text{kin},\alpha}
+    =& n_0T_{e,0}\rho_s^3 \tilde{E}_{\text{kin},\a}
 \end{align*}
 %
-where we have used (V.4) in \cite{Dhaeseleer1991book}, and where $\alpha$ denotes the particle species.
-Where $\tilde{E}_{\text{kin},\alpha} = \frac{m_{\alpha}}{m_i}\iiint \tilde{n}\tilde{u}_\alpha^2 \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}$.
+where we have used (V.4) in \cite{Dhaeseleer1991book}, $\a$ denotes the particle species, and where $\tilde{E}_{\text{kin},\a} = \frac{m_{\a}}{m_i}\iiint \tilde{n}\tilde{u}_\a^2 \tilde{J} \d \wt{\rho} \d\theta \d \wt{z}$.
 
-\section{Potential energy}
 %
-The potential energy from the pressure is given by%
+\section{The potential energy}
+%
+The potential energy is given by the kinetic pressure $nT$
+%
 \footnote{In \cite{Wiesenberger2014} it is stated that the potential energy can be obtained from the Helmholtz free equation, and reads $E_{\text{pot}}=nT_e\log(n)$.
-    However, this depends on the partition function used, and one can show that for a more "standard" partition function $E_{\text{pot}}=nT_e\log(n)$ as shown in \cite{kittel1980book}.}%
+    However, this depends on the partition function used, and one can show that for a more "standard" partition function $E_{\text{pot}}=nT_e\log(n)$ as shown in \cite{Kittel1980book}.}%
+.
+As $T_i=0$, only the electrons will give rise to the potential energy.
+
+\subsection{The potential energy density}
+The potential energy density from the pressure is given by%
+%
+\begin{align*}
+    \mathcal{E}_{\text{pot}} =& nT_e
+\end{align*}
+%
+Since we use a constant $T_e$, we get that $T_e=\expt{T_e}$.
+Hence
+%
+\begin{align*}
+    &\wt{\mathcal{E}}_{\text{pot}} = \wt{n}T_e&
+    &\expt{\mathcal{E}_{\text{pot}}} = \expt{n}T_e&
+\end{align*}
+%
+and
+%
+\begin{align*}
+    E_{\text{pot}}
+    = \inde{\mathcal{E}_{\text{pot}}}{V}
+    = \inde{\expt{\mathcal{E}_{\text{pot}}}}{V} + \inde{\wt{\mathcal{E}}_{\text{pot}}}{V}
+    = \expt{E_{\text{pot}}} + \wt{E}_{\text{pot}}
+\end{align*}
+%
+where
+%
+\begin{align*}
+    \expt{E_{\text{pot}}} =& \inde{\expt{\mathcal{E}_{\text{pot}}}}{V}\\
+    \wt{E}_{\text{pot}} =& \inde{\wt{\mathcal{E}}_{\text{pot}}}{V}.
+\end{align*}
+%
+Due to \cref{eq:intExptF,eq:intAvgF}, we have that
+%
+\begin{align*}
+    \wt{E}_{\text{pot}} =& 0\\
+    \expt{E_{\text{pot}}} =& E_{\text{pot}}
+\end{align*}
+
+\subsection{The global potential energy}
+%
+The global potential energy is therefore given by
 %
 \begin{align*}
     E_{\text{pot}}
