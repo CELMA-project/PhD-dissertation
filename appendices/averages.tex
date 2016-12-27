@@ -1,0 +1,60 @@
+%
+We will here define the averages used in this thesis.
+%
+\section{The poloidal average}
+\label{sec:polAvg}
+%
+The poloidal average of $A$ is defined as
+%
+\begin{align*}
+    \expt{f}_\theta \defined
+        \frac{
+            \defi{0}{2\pi}{fJ}{\theta}
+        }{
+            \defi{0}{2\pi}{J}{\theta}
+        }
+    =
+        \frac{
+            J\defi{0}{2\pi}{A}{\theta}
+        }{
+            J\defi{0}{2\pi}{}{\theta}
+        }
+    =
+        \frac{\defi{0}{2\pi}{A}{\theta}}{2\pi}
+\end{align*}
+%
+where we have used that the definition of the differential arc length (equation (2.5.46) in \cite{Dhaeseleer1991book}).
+
+\section{The temporal average}
+%
+The temporal average of $A$ is defined as
+%
+\begin{align*}
+    \expt{A}_t \defined
+        \frac{
+            \defi{t_1}{t_2}{A}{t}
+        }{
+            \defi{t_1}{t_2}{}{t}
+        }
+    =
+        \frac{\defi{t_1}{t_2}{A}{t}}{t_2-t_1}
+\end{align*}
+%
+where we have used that the definition of the differential arc length (equation (2.5.46) in \cite{Dhaeseleer1991book}).
+
+\section{The weigthed velocity average}
+%
+The weigthed velocity average of $A$ is defined as
+%
+\begin{align*}
+    \expt{A}_{f_\a} \defined
+        \frac{
+            \defi{-\infty}{\infty}{Af_\a}{^3v}
+        }{
+            \defi{-\infty}{\infty}{f_\a}{^3v}
+        }
+    =
+        \frac{\defi{-\infty}{\infty}{Af_\a}{^3v}}{n_\a}
+\end{align*}
+
+% FIXME: Average in kinetic and average in collisions are the same

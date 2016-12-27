@@ -12,9 +12,9 @@
 \rhead{\rightmark}
 \cfoot{\thepage}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
-\usepackage{draftwatermark}
-\SetWatermarkLightness{0.7}
-\SetWatermarkScale{4}
+%\usepackage{draftwatermark}
+%\SetWatermarkLightness{0.7}
+%\SetWatermarkScale{4}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %===================================================
@@ -83,6 +83,10 @@
 
 \part{Appendices}
 \appendix
+\chapter{Averages}
+\label{app:averages}
+\input{appendices/averages}
+
 \chapter{Drift ordering}
 \label{app:DO}
 \input{appendices/driftOrdering}
