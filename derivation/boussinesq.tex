@@ -99,17 +99,17 @@ Inserting this in \cref{eq:start_of_boussinesq}, we find that
 %
 \begin{align*}
  \div\L( n \frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
  =&
  n\div\L(\frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
  \\&+
  \L(\frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
  \cdot\grad n
@@ -118,7 +118,7 @@ Inserting this in \cref{eq:start_of_boussinesq}, we find that
  \simeq&
  \L(\overline{n} + \delta_n\R)
  \div\L(\frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
  \note{$\overline{n} \gg \delta_n$}
@@ -127,7 +127,7 @@ Inserting this in \cref{eq:start_of_boussinesq}, we find that
  \simeq&
  \overline{n}\div\L(
   \frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
 \end{align*}
@@ -138,12 +138,12 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
 \begin{align*}
  \div\L( n
   \frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|})\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|})\cdot\nabla \R]
   \L[ - \frac{\grad_\perp \phi}{B} \R] \R)
  \simeq&
  n_0\div\L(
   \frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
  \R)
   \\
@@ -151,7 +151,7 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
   =&
  - n_0 \div\L(
     \frac{1}{\om_{ci}}
-     \d_t \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+     \d_t^E \L[ \frac{\grad_\perp \phi}{B} \R] \R)
  - n_0 \div\L(
     \frac{1}{\om_{ci}}
      \ve{u}_{i,\|}\cdot\nabla
@@ -162,7 +162,7 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
  =&
  - n_0 \div\L(
     \frac{1}{\om_{ci}}
-     \d_t \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+     \d_t^E \L[ \frac{\grad_\perp \phi}{B} \R] \R)
  - n_0 \div\L(
     \frac{1}{\om_{ci}}
      u_{i,\|}\partial_\|
@@ -199,7 +199,7 @@ Continuing from \cref{eq:boussinesq_vort} with the assumption that $\grad B = 0$
 \begin{align*}
     &- n_0 \div\L(
        \frac{1}{\om_{ci}}
-        \d_t \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+        \d_t^E \L[ \frac{\grad_\perp \phi}{B} \R] \R)
     - n_0 \div\L(
        \frac{1}{\om_{ci}}
         u_{i,\|}\partial_\|
@@ -207,7 +207,7 @@ Continuing from \cref{eq:boussinesq_vort} with the assumption that $\grad B = 0$
     \\
     =&
     - \frac{n_0}{\om_{ci}}
-    \L( \div\L[ \d_t \L( \frac{\grad_\perp \phi}{B} \R) \R]
+    \L( \div\L[ \d_t^E \L( \frac{\grad_\perp \phi}{B} \R) \R]
      + \div\L[ u_{i,\|}\partial_\| \L( \frac{\grad_\perp \phi}{B} \R) \R] \R)
      \\
      %
@@ -257,7 +257,7 @@ so that
 \begin{align*}
  \div\L( n
   \frac{1}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|})\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|})\cdot\nabla \R]
   \L[ - \frac{\grad_\perp \phi}{B} \R] \R)
   \simeq&
   - \frac{n_0}{\om_{ci}}\partial_t\Om

@@ -7,7 +7,7 @@ We will now rewrite the electron density equation (\cref{eq:dens_evol_gen}) usin
 This yields
 %
 \begin{align*}
-    \d_t n
+    \d_t^E n
     &=
     - n\mathcal{C}(\phi)
     + \frac{1}{e}\mathcal{C}(\phi)
@@ -49,7 +49,7 @@ $\rho_s=\frac{c_s}{\om_{ci}}=\sqrt{\frac{T_e}{m_i}}\frac{m_i}{eB}
 we find that
 %
 \begin{align}
-    \d_t n
+    \d_t^E n
     &=
   \frac{\rho_s^2\nu_{ei}}{\mu}
    \grad_\perp^2 n
@@ -169,7 +169,7 @@ The first term of \cref{eq:from_gyroviscous} yields
 \begin{align*}
  &
  \div\L( \frac{1}{\om_{ci}}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  \L[\frac{\grad_\perp \phi}{B}n\R] \R)
     \\
     %

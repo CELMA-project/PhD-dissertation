@@ -156,7 +156,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
 %
 \begin{align*}
  n_{0} \om_{ci}
- \d_t n
+ \d_t^E n
  &=
  \frac{\rho_s^2\om_{ci}n_0}{\rho_s^2}
  \frac{\nu_{ei}}{\mu} \grad_\perp^2 n
@@ -168,7 +168,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
 %
 %
  n_{0} \om_{ci}
- \d_t n
+ \d_t^E n
  &=
  \om_{ci}n_0 \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 n
@@ -179,7 +179,7 @@ By normalizing \cref{eq:non_norm_dens}, we get
  \\
 %
 %
- \d_t n
+\d_t^E n
  &=
  \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 n
@@ -191,7 +191,7 @@ we will divide through by $1/n$ to ensure the non-negativity of the density when
 This gives
 %
 \begin{align*}
-    \d_t \ln(n)
+    \d_t^E \ln(n)
  &=
  \frac{\nu_{ei}}{\mu} \frac{1}{n} \grad_\perp^2 n
  - \frac{1}{n} \partial_\|\L(n u_{e,\|}\R)
@@ -271,7 +271,7 @@ We now have that
 This yields
 %
 \begin{align*}
-    \d_t \ln(n)
+    \d_t^E \ln(n)
  &=
  \frac{\nu_{ei}}{\mu}
  \L(

@@ -490,10 +490,10 @@ Using what we found above, we can write \cref{eq:cont_eq} for electrons as
     + S_{e,n}
 \end{align*}
 %
-If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we find that
+If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, we find that
 %
 \begin{align}
-    \d_t n
+    \d_t^E n
     &=
     - n\mathcal{C}(\phi)
     + \frac{1}{e}\mathcal{C}(\phi)
@@ -624,7 +624,7 @@ This means that
  %
  =&
  - \div\L( \frac{n}{\om_{ci}}
-  \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \frac{\grad_\perp \phi}{B}
  \R)
  \numberthis
@@ -633,10 +633,10 @@ This means that
  %
  =&
  - \div\L( \frac{1}{\om_{ci}}\L[
- \L( \d_t + \ve{u}_{i,\|}\cdot\nabla \R)
+ \L( \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R)
  \L(\frac{\grad_\perp \phi}{B}n\R)
  -\frac{\grad_\perp \phi}{B}
- \L( \d_t + \ve{u}_{i,\|}\cdot\nabla \R)
+ \L( \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R)
  n
  \R]
  \R)
@@ -644,13 +644,13 @@ This means that
  %
  =&
  - \div\L( \frac{1}{\om_{ci}}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  \L[\frac{\grad_\perp \phi}{B}n\R]
  \R)
  +
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  n
  \R)
 \numberthis
@@ -686,7 +686,7 @@ The ion continuity equation to order $\e^0$ reads
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \\
- \L(\d_t + \ve{u}_{i,\|} \cdot \grad\R) n
+ \L(\d_t^E + \ve{u}_{i,\|} \cdot \grad\R) n
  &=
  S_{i, n}
  - \frac{1}{e}\mathcal{C}\L(p_i\R)
@@ -703,7 +703,7 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
  \\
  \simeq&
  - \div\L( \frac{1}{\om_{ci}}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  \L[\frac{\grad_\perp \phi}{B}n\R]
  \R)
  +
@@ -844,7 +844,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
   %
   &
  - \div\L( \frac{1}{\om_{ci}}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  \L[\frac{\grad_\perp \phi}{B}n\R] \R)
  \\&
  +
@@ -875,7 +875,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
   %
   &
  + \div\L( \frac{1}{\om_{ci}}
- \L[ \d_t + \ve{u}_{i,\|}\cdot\nabla \R]
+ \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  \L[\frac{\grad_\perp \phi}{B}n\R] \R)
  \\&
  -
