@@ -1,0 +1,127 @@
+\section{Stanard parameters for the runs}
+%
+In this thesis, we have chosen the following shape of the source
+%
+\begin{align*}
+    S = AH(\rho,s_{\text{profile}},c_{\text{profile}},w_{\text{profile}})
+\end{align*}
+%
+where $H$ is defined in \cref{eq:hat}, and $A$ is an amplitude chosen so that the maximum of the normalized $n$ is around $1$.
+Note that the source is uniform in along the parallel direction.
+A more probable scenario would probably be that the source would decrease along the parallel direction, until it is increased around the SE due to recycling from the wall.
+In any case, finding the proper shape of the source seems to be challenging, and is probably only accurate if detailed atomic physics is taken into account.
+Although interesting and relevant, such atomic processes is outside the scope of this thesis.
+If nothing else is mentioned, the standard input for the simulations done are given in \cref{tb:input}.
+%
+\begin{table}[h!]
+{\footnotesize \centerline{
+\colorme
+\begin{tabular}{c|ll}
+\hline\hline
+%
+Variable & Value & Units\\
+%
+\hline
+%
+$n_\rho$   & $32$  & \\
+$n_z$      & $66$  & \\
+$n_\theta$ & $256$ & \\
+%
+\hline
+%
+$L_\rho$  & $0.0$            & $\m$     \\
+$L_z$     & $2.80$           & $ \m$    \\
+$n_0$     & $1\cdot 10^{19}$ & $\m^{-3}$\\
+$T_{e,0}$ & $2.5$            & $\eV$    \\
+$B_0$     & $0.1$            & $\T$     \\
+$n_n$     & $0.0$            & $\m^{-3}$\\
+Gas       & Ar               &          \\
+\hline
+$s_{\text{profile}}$ & $5/L_\rho$ &\\
+$c_{\text{profile}}$ & $0$        &\\
+$w_{\text{profile}}$ & $L_\rho$   &\\
+\hline\hline
+\end{tabular}
+}}
+\caption[]{\textit{
+        Standard simulation options used in the CELMA code.
+    }}
+\protect\label{tb:input}
+\end{table}
+%
+Input parameters from the implementation is found in the tables in \cref{chap:implBOUT++,chap:additionalImplementation}.
+
+\section{Initialization of the runs}
+%
+From the following initial conditions of the normalized evolved quantities%
+%
+\footnote{$\Om$ is used rather than $\Om^D$ when simulating using the Boussinesq approximation}%
+%
+\begin{align*}
+    \ln(n)    =& 0\\
+    j_\|      =& 0\\
+    nu_{i,\|} =& \frac{z}{L_z}\\
+    \Om^D     =& 0
+\end{align*}
+%
+the simulations are performed in three following steps
+%
+\begin{enumerate}[noitemsep]
+    \item The simulation is allowed to evolve freely to a steady state condition (that is, when there is minimal difference between the timesteps) using only one point in $\theta$.
+        Usually this takes around $4000t\om_{ci}$.
+    \item The simulation is expanded to $n_\theta = 256$, and run for additional $100t\om_{ci}$ in order to ensure that it is still in a steady state.
+    \item White noise perturbation is added with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
+        \footnote{Different approaches has been used for the pertubation.
+            It should be noted that some of these gives a different route to the turbulent state (i.e. some perturbations dies out, while others have some intermediate non-linear steps before the linear growth rates), but gives (with very little difference) the same growth rates and the same statistical behavior of the saturated turbulence as the perturbation method stated.}%
+        %
+        , modes grow up and a saturated turbulence state is eventually reached (given that there are no "crashes" in the simulation).
+\end{enumerate}
+%
+All the simulations are run on the \texttt{jess} super computer located at DTU Ris{\o}e.
+At the time of writing the cluster consisted of $320$ half-width rack servers, HP Proliant sl230 Gen8 compute nodes with the following specifications
+%
+\begin{enumerate}[noitemsep]
+    \item Two Intel Xeon E5-2680v2 ten-core CPUs, 2.8 GHz
+    \item 64/128 GB Memory (8x8/8x16 GB) 1866 MHz
+    \item One 500 GB 6Gbps 15k SAS disk
+    \item Intel Gigabit Ethernet with two ports
+    \item QLogic IBA7322 dual-port QDR InfiniBand HCA
+    \item HP iLO v.4
+\end{enumerate}
+%
+For each simulation, $3$ nodes has been allocated using $48$ cores.
+This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of comutation time to communication time per core.
+
+\section{Parameter scans}
+% FIXME: Probably move this
+%
+We will in this thesis do a parameter scan in $B$.
+By looking at \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can see that that the normalization $B$ always can be chosen to be $1$.
+However, $B$ appears in the set of equations through $\om_{ci}$, which means that it effectly sets the time step (in real variables) through $\wt{t}=t\om_{ci}^{-1}$.
+This in turn affects the $\rho_s$ (as $\rho_s=\frac{c_s}{\om_{ci}}$), and thus the normalized domain size.
+
+\section{Resolution}
+%
+In order to avoid numerical under-resolvement, we choose to have a ratio $\frac{n_\rho}{\frac{L_\rho}{\rho_s}}>1$, preferrably at last $3$.
+As mentioned in
+%FIXME: Add reference where say can have much corser resolution in parallel direction
+the resolution in the parallel direction can be less due to the separation of scales.
+Note however, that we have a sheath boundary condition in the $z$-direction, which seems to limit the coarseness of the resolution.
+As mentioned in
+%FIXME: Add reference to where the coarseness parameter scan is done
+we should require that $\frac{n_z}{\frac{L_z}{\rho_s}}\gtrsim0.2$.
+We observe that
+%
+\begin{align*}
+    \frac{n_z}{\frac{L_z}{\rho_s}}
+    =& \frac{n_zc_s}{L_z \om_{ci}}
+    \\
+    =& \frac{n_z\sqrt{T_e}m_i}{\sqrt{m_i} L_z ZeB}
+    \\
+    =& \frac{n_z\sqrt{T_em_i}}{L_z ZeB}
+\end{align*}
+%
+We would like to have as low as possible $n_z$ in order to have low computational times.
+In addition, for a fixed machine, $L_z$ remains fixed.
+As a consequence, we see that an increase in $B$ gives poorer resolution, whereas an increase in the electron temperature or the ion mass gives a better resolution.
+On this argument, running simulations with singly ionized Ar gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ as compared with hydrogen.
