@@ -489,64 +489,109 @@ We notice how the ion mass in the electron pressure got normalized away.
 Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the parallel current can be done in the following way
 %
 \begin{align*}
- \om_{ci}en_0c_s\partial_t j_\|
+ \om_{ci}en_0c_s
+ \partial_t j_\|
  =&
- -\frac{e c_s \rho_s}{\rho_s T_{e,0}}\frac{T_{e,0}}{e}\frac{1}{\rho_s}en_0c_s \frac{1}{JB}\L\{\phi, j_{\|}\R\}
-   \\&
- -c_s\frac{1}{\rho_s}n_0c_s e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2c_s\frac{1}{\rho_s}n_0c_se u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51\om_{ci}en_0c_s \nu_{ei}j_\|
-   \\&
-   + \frac{m_i}{m_i}\frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0 T_e \partial_\| n
-   + \frac{m_i}{m_i}n_0\frac{1}{\rho_s}\frac{T_{e,0}}{e}\frac{e^2}{m_e}n E_\|
- + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- - m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s\frac{4e\eta_{e,0}}{3m_e} \partial_z^2 u_{e,\|}
+ e c_s \frac{c_s}{\rho_s}n_0
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - e n_0\rho_s c_s^2
+    n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - e n_0\rho_s c_s^2
+    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \frac{m_i}{m_i} \frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0
+    T_e\partial_\| n
+    + \frac{m_i}{m_i}n_0 \frac{1}{\rho_s}\frac{T_{e,0}}{e}\frac{e^2}{m_e}
+    n\ve{E}_\|
+    - 0.51 \om_{ci}en_0c_s
+    \nu_{ei} j_\|
+    \\ &
+    + n_0\om_{ci}c_s e
+    n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - m_in_0\rho_s c_s\frac{1}{\rho_s^2}c_s
+    \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \\
  %
-=&
- -c_s \frac{c_s}{\rho_s}en_0 \frac{1}{JB}\L\{\phi, j_{\|}\R\}
-   \\&
- -\frac{c_s}{\rho_s}n_0c_s e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2\frac{c_s}{\rho_s}n_0c_se u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51\om_{ci}en_0c_s \nu_{ei}j_\|
-   \\&
-   + \frac{m_i}{m_e}e\frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0 T_e \partial_\| n
-   + \frac{m_i}{m_e}n_0\frac{1}{\rho_s}e\frac{T_{e,0}}{m_i}n E_\|
- + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- - n_0\frac{c_s}{\rho_s}c_s\mu\frac{4e\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+ =&
+ \om_{ci}en_0c_s
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - e n_0\frac{c_s^2}{\rho_s}
+    n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - e n_0\frac{c_s^2}{\rho_s}
+    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu e \frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0
+    T_e\partial_\| n
+    + \mu n_0 \frac{1}{\rho_s}e\frac{T_{e,0}}{m_i}
+    n\ve{E}_\|
+    - 0.51 \om_{ci}en_0c_s
+    \nu_{ei} j_\|
+    \\ &
+    + \om_{ci}en_0c_s
+    n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu e n_0 \frac{c_s}{\rho_s}c_s
+     \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \\
  %
-=&
- -c_s \frac{c_s}{\rho_s}en_0 \frac{1}{JB}\L\{\phi, j_{\|}\R\}
-   \\&
- -\frac{c_s}{\rho_s}n_0c_s e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2\frac{c_s}{\rho_s}n_0c_se u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51\frac{c_s}{\rho_s}en_0c_s \nu_{ei}j_\|
-   \\&
-   + \mu e\frac{c_s^2}{\rho_s}n_0 T_e \partial_\| n
-   + \mu n_0\frac{c_s^2}{\rho_s}en E_\|
- + n_0\om_{ci}c_s en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- - n_0\om_{ci}c_se\mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+ =&
+ \om_{ci}en_0c_s
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - \om_{ci}en_0c_s
+    n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \om_{ci}en_0c_s
+    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu e \frac{c_s^2}{\rho_s}n_0
+    T_e\partial_\| n
+    + \mu e \frac{c_s^2}{\rho_s}n_0
+    n\ve{E}_\|
+    - 0.51 \om_{ci}en_0c_s
+    \nu_{ei} j_\|
+    \\ &
+    + \om_{ci}en_0c_s
+    n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu e n_0 \frac{c_s}{\rho_s}c_s
+     \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+ \\
+ %
+ =&
+ \om_{ci}en_0c_s
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - \om_{ci}en_0c_s
+    n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \om_{ci}en_0c_s
+    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu \om_{ci}en_0c_s
+    T_e\partial_\| n
+    + \mu \om_{ci}en_0c_s
+    n\ve{E}_\|
+    - 0.51 \om_{ci}en_0c_s
+    \nu_{ei} j_\|
+    \\ &
+    + \om_{ci}en_0c_s
+    n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu \om_{ci}en_0c_s
+     \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \\
  %
  \partial_t j_\|
 =&
- - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
- -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n
-   + \mu n E_\|
- + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- - \mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu T_e\partial_\| n
+    + \mu n\ve{E}_\|
+    - 0.51 \nu_{ei} j_\|
+    \\ &
+    + n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:curNormE}
 \end{align*}
@@ -557,16 +602,17 @@ This gives
 \begin{align*}
  \partial_t j_\|
  \simeq&
- - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
- -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n
-  - \mu n \partial_\|\phi
- + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
-   \\&
- - \mu\frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu T_e\partial_\| n
+    - \mu n\partial_\| \phi
+    - 0.51 \nu_{ei} j_\|
+    \\ &
+    + n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:curNormNoE}
 \end{align*}
