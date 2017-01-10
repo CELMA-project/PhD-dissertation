@@ -315,7 +315,6 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
  %
  + \frac{n_0c_se}{e\rho_s}
  \partial_\| j_\|
- \note{\cref{eq:gradperpGradperp}}
  \\
  %
  %
@@ -324,6 +323,7 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
   =&
   - \nu_{in} \L(\om_{ci}n_0n\Om
   + \om_{ci}n_0\frac{\grad_\perp \phi}{B} \cdot \grad_\perp n\R)
+ \note{\cref{eq:gradperpGradperp}}
   \\
   %
   &
@@ -401,19 +401,19 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
     \om_{ci}n_0c_s \partial_t\L( n u_{i,\|}\R)
  =&
  - c_s\frac{c_s}{\rho_s}n_0
- Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+  \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
  - \frac{c_s}{\rho_s}n_0c_s
     u_{i, \|}
     \L(
     n \partial_\| u_{i,\|}
-    + Z\partial_\|\L[n u_{e,\|} \R]
+    + \partial_\|\L[n u_{e,\|} \R]
     \R)   \\&
- - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0Z
+    - T_{e,0}\frac{1}{\rho_s}n_0
  \frac{Z}{m_i} T_e \partial_\| n
  + \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2
- Z\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - n_0\om_{ci}c_s
- n \nu_{i n}u_{i,\|}
+ n \L(\nu_{i n}u_{i,\|} + \frac{Z}{\mu} \nu_{e n}u_{e,\|}\R)
    \\&
    + m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s \frac{4Z}{3m_i}\L(
    \eta_{i,0} \partial_z^2 u_{i,\|}
@@ -423,12 +423,12 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  %
  =&
  - c_s\frac{c_s}{\rho_s}n_0
- Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+  \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
  - \frac{c_s}{\rho_s}n_0c_s
   u_{i, \|}
     \L(
     n \partial_\| u_{i,\|}
-    + Z\partial_\|\L[n u_{e,\|} \R]
+    + \partial_\|\L[n u_{e,\|} \R]
     \R)
    \\&
  - c_s^2\frac{1}{\rho_s}n_0
@@ -436,7 +436,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  + \om_{ci}c_sn_0
  \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - n_0\om_{ci}c_s
- n \nu_{i n}u_{i,\|}
+ n \L(\nu_{i n}u_{i,\|} + \frac{Z}{\mu} \nu_{e n}u_{e,\|}\R)
    \\&
    + n_0\frac{c_s}{\rho_s}c_s\frac{4Z}{3}\L(
    \eta_{i,0} \partial_z^2 u_{i,\|}
@@ -446,12 +446,12 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  %
  =&
  - c_s\om_{ci}n_0
- Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+  \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
  - \om_{ci}n_0c_s
   u_{i, \|}
     \L(
     n \partial_\| u_{i,\|}
-    + Z\partial_\|\L[n u_{e,\|} \R]
+    + \partial_\|\L[n u_{e,\|} \R]
     \R)
     \\&
  - c_s\om_{ci}n_0Z
@@ -459,7 +459,7 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  + \om_{ci}c_sn_0
  \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - n_0\om_{ci}c_s
- n \nu_{i n}u_{i,\|}
+ n \L(\nu_{i n}u_{i,\|} + \frac{Z}{\mu} \nu_{e n}u_{e,\|}\R)
    \\&
    + n_0\om_{ci}c_s\frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
  + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
@@ -467,16 +467,16 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  %
   \partial_t\L( n u_{i,\|}\R)
  =&
- - Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+ -  \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
  - u_{i, \|}
     \L(
     n \partial_\| u_{i,\|}
-    + Z\partial_\|\L[n u_{e,\|} \R]
+    + \partial_\|\L[n u_{e,\|} \R]
     \R)
    \\&
  - ZT_e \partial_\| n
  + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - n \nu_{i n}u_{i,\|}
+ - n \L(\nu_{i n}u_{i,\|} + \frac{Z}{\mu} \nu_{e n}u_{e,\|}\R)
    \\&
    + \frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
  + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
@@ -492,13 +492,13 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
  \om_{ci}en_0c_s
  \partial_t j_\|
  =&
- e c_s \frac{c_s}{\rho_s}n_0
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+ - e c_s \frac{c_s}{\rho_s}n_0
+    \ve{u}_E \cdot \nabla j_\|
     \\&
     - e n_0\rho_s c_s^2
     n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
     - e n_0\rho_s c_s^2
-    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \frac{m_i}{m_i} \frac{e}{m_e}T_{e,0}\frac{1}{\rho_s}n_0
     T_e\partial_\| n
@@ -514,13 +514,13 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
  \\
  %
  =&
- \om_{ci}en_0c_s
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+ - \om_{ci}en_0c_s
+ \ve{u}_E \cdot \nabla j_\|
     \\&
     - e n_0\frac{c_s^2}{\rho_s}
     n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
     - e n_0\frac{c_s^2}{\rho_s}
-    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \mu e \frac{T_{e,0}}{m_i}\frac{1}{\rho_s}n_0
     T_e\partial_\| n
@@ -536,13 +536,13 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
  \\
  %
  =&
- \om_{ci}en_0c_s
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+ - \om_{ci}en_0c_s
+    \ve{u}_E \cdot \nabla j_\|
     \\&
     - \om_{ci}en_0c_s
     n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
     - \om_{ci}en_0c_s
-    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \mu e \frac{c_s^2}{\rho_s}n_0
     T_e\partial_\| n
@@ -558,13 +558,13 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
  \\
  %
  =&
- \om_{ci}en_0c_s
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+ - \om_{ci}en_0c_s
+    \ve{u}_E \cdot \nabla j_\|
     \\&
     - \om_{ci}en_0c_s
     n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
     - \om_{ci}en_0c_s
-    \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \mu \om_{ci}en_0c_s
     T_e\partial_\| n
@@ -581,10 +581,10 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
  %
  \partial_t j_\|
 =&
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+- \ve{u}_E \cdot \nabla j_\|
     \\&
     - n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
-    - \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    - \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \mu T_e\partial_\| n
     + \mu n\ve{E}_\|
@@ -602,10 +602,10 @@ This gives
 \begin{align*}
  \partial_t j_\|
  \simeq&
-    \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+ - \ve{u}_E \cdot \nabla j_\|
     \\&
     - n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
-    - \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    - \frac{j_\|}{n}\partial_\|\L(n u_{e,\|} \R)
     \\&
     + \mu T_e\partial_\| n
     - \mu n\partial_\| \phi
