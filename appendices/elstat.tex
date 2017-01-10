@@ -47,7 +47,7 @@ We now see that $\partial_t \ve{A}$ is big whenever the time derivative of the c
 \section{Small time derivatives of the perpendicular magnetic potential}
 %
 In the drift ordering, we have stated assumed that the evolution of the perpendicular ion and electron velocity are of the same order of magnitude, and small compared with $\om_{ci}$.
-Assuming also that the evolution of the density is also restricted by this time evolution%
+Assuming that the evolution of the density is also restricted by this time evolution%
 %
 \footnote{Note that if this was not the case, the fast evolution of $n$ would still couple to the evolution of $\ve{u}$ through the set of equations.}%
 %
@@ -64,19 +64,19 @@ Next, we will check if $\partial_t \ve{A}_\|$ is small by comparing it with the 
 Writing out the $E_\|$-term in \cref{eq:parElNonNorm} gives
 %
 \begin{align*}
-    \partial_t j_{\|}
- =&
- -\frac{1}{JB}\L\{\phi, j_{\|}\R\}
-   \\&
- -e u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2e u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51 \nu_{ei}j_\|
-   \\&
-   +\frac{e}{m_e} T_e \partial_\| n
-   + \frac{e^2}{m_e}n \L(-\partial_\| \phi - \partial_\| A_\|\R)
- + en \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
- - \frac{4e\eta_{e,0}}{3m_e} \partial_z^2 u_{e,\|}
+    \partial_t j_\|
+    =&
+    e \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - en \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \frac{ne \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \frac{e}{m_e} T_e\partial_\| n
+    + \frac{e^2}{m_e}n\L(-\partial_\| \phi - \partial_t \ve{A}\R)
+    - 0.51\nu_{ei} j_\|
+    \\ &
+    + e n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:curWithAPerp}
 \end{align*}
