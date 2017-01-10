@@ -398,38 +398,68 @@ and
 Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
 %
 \begin{align*}
-    \om_{ci}n_0c_s\partial_t\L( n u_{i,\|}\R)
+    \om_{ci}n_0c_s \partial_t\L( n u_{i,\|}\R)
  =&
- -\frac{1}{\rho_s}\frac{ec_s\rho_s}{T_{e,0}}\frac{1}{\rho_s}\frac{T_{e,0}}{e}n_0c_s\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ - c_s\frac{c_s}{\rho_s}n_0
+ Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+ - \frac{c_s}{\rho_s}n_0c_s
+    u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)   \\&
+ - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0Z
+ \frac{Z}{m_i} T_e \partial_\| n
+ + \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2
+ Z\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ - n_0\om_{ci}c_s
+ n \nu_{i n}u_{i,\|}
    \\&
- + \om_{ci}c_s\frac{1}{\rho_s^2}n_0\rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - \frac{1}{m_i}T_{e,0}\frac{1}{\rho_s}n_0ZT_e \partial_\| n
- - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
-   \\&
-   + m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s\frac{4Z}{3m_i}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
+   + m_in_0\rho_sc_s\frac{1}{\rho_s^2}c_s \frac{4Z}{3m_i}\L(
+   \eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}
+ \R)
  \\
  %
  =&
- - c_s\frac{c_s}{\rho_s}n_0\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - \frac{c_s}{\rho_s}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ - c_s\frac{c_s}{\rho_s}n_0
+ Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+ - \frac{c_s}{\rho_s}n_0c_s
+  u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
    \\&
- + \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - c_s^2\frac{1}{\rho_s}n_0ZT_e \partial_\| n
- - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
+ - c_s^2\frac{1}{\rho_s}n_0
+ ZT_e \partial_\| n
+ + \om_{ci}c_sn_0
+ \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ - n_0\om_{ci}c_s
+ n \nu_{i n}u_{i,\|}
    \\&
-   + n_0\frac{c_s}{\rho_s}c_s\frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
+   + n_0\frac{c_s}{\rho_s}c_s\frac{4Z}{3}\L(
+   \eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}
+ \R)
  \\
  %
  =&
- - c_s\om_{ci}n_0\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - \om_{ci}n_0c_s u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
-   \\&
- + \om_{ci}c_sn_0\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - c_s\om_{ci}n_0ZT_e \partial_\| n
- - n_0\om_{ci}c_s n \nu_{i n}u_{i,\|}
+ - c_s\om_{ci}n_0
+ Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+ - \om_{ci}n_0c_s
+  u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+ - c_s\om_{ci}n_0Z
+ T_e \partial_\| n
+ + \om_{ci}c_sn_0
+ \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
+ - n_0\om_{ci}c_s
+ n \nu_{i n}u_{i,\|}
    \\&
    + n_0\om_{ci}c_s\frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
  + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
@@ -437,11 +467,15 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  %
   \partial_t\L( n u_{i,\|}\R)
  =&
- - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ - Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+ - u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
    \\&
- + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - ZT_e \partial_\| n
+ + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - n \nu_{i n}u_{i,\|}
    \\&
    + \frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
