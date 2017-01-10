@@ -94,7 +94,7 @@ The reason for this choice, as will soon be demonstrated, is that certain terms 
 We get
 %
 \begin{align}
- \partial_t n + \div (n [
+    \partial_t n_e + \div (n_e [
  \ve{u}_{e,d} + \ve{u}_E + \ve{u}_{e,p} + \ve{u}_{e,R}
  + \ve{u}_{e,\text{Ped}}
  + \ve{u}_{e,\nu}
@@ -109,17 +109,17 @@ We will now inspect the drifts in \cref{eq:el_cont} term by term.
 By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}\times\ve{B}$ term gives
 %
 \begin{align*}
-    \div \L(n \ve{u}_{E}\R)
+    \div \L(n_\a \ve{u}_{E}\R)
     &=
-    n \div \ve{u}_{E}
-    + \ve{u}_{E} \cdot \grad n
+    n_\a \div \ve{u}_{E}
+    + \ve{u}_{E} \cdot \grad n_\a
     \\
     &=
-    n \div \frac{-\grad_\perp \phi \times \ve{b}}{B}
-    + \ve{u}_{E} \cdot \grad n\\
+    n_\a \div \frac{-\grad_\perp \phi \times \ve{b}}{B}
+    + \ve{u}_{E} \cdot \grad n_\a
     &=
-    n \mathcal{C}(\phi)
-    + \ve{u}_{E} \cdot \grad n
+    n_\a \mathcal{C}(\phi)
+    + \ve{u}_{E} \cdot \grad n_\a
     \numberthis
     \label{eq:div_ExB}
 \end{align*}
@@ -127,9 +127,9 @@ By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}
 for the diamagnetic term in \cref{eq:el_cont} we find that
 %
 \begin{align*}
- \div\L( n \ve{u}_{e,d} \R) &=
- -\div\L( n
-   \frac{\grad_\perp p_e \times\ve{b}}{q_e n  B}
+    \div\L( n_e \ve{u}_{e,d} \R) &=
+    -\div\L( n_e
+    \frac{\grad_\perp p_e \times\ve{b}}{q_e n_e  B}
   \R)\\
   %
   &=
@@ -185,8 +185,8 @@ As this term is first order, and since $\frac{m_e}{m_i} \ll 1$, this term will b
 For the electron-ion resistivity term in \cref{eq:el_cont}, we find that
 %
 \begin{align*}
- \div\L( n \ve{u}_{e,R} \R) &=
- \div\L( n \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{nq_e B} \R)
+ \div\L( n_e \ve{u}_{e,R} \R) &=
+ \div\L( n_e \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{n_eq_e B} \R)
  \\
   %
   &=
@@ -260,14 +260,14 @@ This yields
       \L[
          \L(
             -
-            \frac{\grad_\perp p_e \times \ve{b}}{q_inB}
+            \frac{\grad_\perp p_e \times \ve{b}}{q_en_eB}
             -
             \frac{\grad_\perp \phi \times \ve{b}}{B}
           \R)
           -
          \L(
             -
-            \frac{\grad_\perp p_i \times \ve{b}}{q_enB}
+            \frac{\grad_\perp p_i \times \ve{b}}{q_in_iB}
             -
           \frac{\grad_\perp \phi \times \ve{b}}{B}
          \R)
@@ -289,13 +289,13 @@ This yields
 Inserting this into \cref{eq:div_nur} yields
 %
 \begin{align*}
-    \div(n\ve{u}_{e,R})
+    \div(n_e\ve{u}_{e,R})
   =&
   -\frac{1}{e}
  \div\L(
  -\frac{m_en_e\nu_{ei}}{B}
    \L[0.51\L(\ve{u}_{e,\|}-\ve{u}_{i,\|}\R) +
-      \L( - \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB} \R)
+   \L( - \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB} \R)
    \R]
    \times\ve{b}
  \R)
@@ -460,13 +460,13 @@ By using the same argument as given in \cref{sec:no_e_pol}, we see that this ter
 Using what we found above, we can write \cref{eq:cont_eq} for electrons as
 %
 \begin{align*}
-    \partial_t n + \div\L(n\ve{u}_e\R)
+    \partial_t n_e + \div\L(n_e\ve{u}_e\R)
     &= S_{e,n}
     \\
 %
-    \partial_t n
+    \partial_t n_e
     &=
-    - \div\L(n\L[ \ve{u}_E
+    - \div\L(n_e\L[ \ve{u}_E
     + \ve{u}_{e,D}
     + \ve{u}_{e,p}
     + \ve{u}_{e,R}
@@ -477,20 +477,20 @@ Using what we found above, we can write \cref{eq:cont_eq} for electrons as
     \\
 %
     &\simeq
-    - \div\L(n\L[\ve{u}_E + \ve{u}_{e,D} + \ve{u}_{e,R} + \ve{u}_{e,\|}\R]\R)
+    - \div\L(n_e\L[\ve{u}_E + \ve{u}_{e,D} + \ve{u}_{e,R} + \ve{u}_{e,\|}\R]\R)
     + S_{e,n}
     \\
 %
     &=
-    - \ve{u}_E\nabla\cdot n
-    - n\div\ve{u}_E
-    - \div\L(n \ve{u}_{e,D}\R)
-    - \div\L(n \ve{u}_{e,R}\R)
-    - \div\L(n \ve{u}_{e,\|}\R)
+    - \ve{u}_E\nabla\cdot n_e
+    - n_e\div\ve{u}_E
+    - \div\L(n_e \ve{u}_{e,D}\R)
+    - \div\L(n_e \ve{u}_{e,R}\R)
+    - \div\L(n_e \ve{u}_{e,\|}\R)
     + S_{e,n}
 \end{align*}
 %
-If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, we find that
+If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, and use that $n_e\sim n$, we find that
 %
 \begin{align}
     \d_t^E n

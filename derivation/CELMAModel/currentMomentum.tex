@@ -21,7 +21,6 @@ It further has the advantage that this sum is easy to simplify due to the differ
 
 
 
-% FIXME: Surgery in process
 Starting from \cref{eq:mom_crude}, we have that
 %
 \begin{align*}
@@ -84,11 +83,11 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
     - \L(\div \te{\pi}_\a\R)_\|
     - \partial_\| p_\a
-    - m_\a n \L(\ve{u}_\a \cdot \nabla\R) u_{\a,\|}
+    - m_\a n_\a \L(\ve{u}_\a \cdot \nabla\R) u_{\a,\|}
     - m_\a u_{\a,\|} \L( - \partial_t n_e + S_{e,n}\R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     + \ve{R}_{\b\to\a, \|}
     + \ve{R}_{n\to\a, \|}
     \note{\cref{eq:non_norm_dens}}
@@ -98,20 +97,20 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
     - \L(\div \te{\pi}_\a\R)_\|
     - \partial_\| p_\a
-    - m_\a n \L(\ve{u}_\a \cdot \nabla\R) u_{\a,\|}
+    - m_\a n_\a \L(\ve{u}_\a \cdot \nabla\R) u_{\a,\|}
     \\
     &
     - m_\a u_{\a,\|}
     \L(
-      \ve{u}_E\cdot \grad n
-    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
-    + \partial_\|\L[n u_{e,\|} \R]
+      \ve{u}_E\cdot \grad n_e
+    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
+    + \partial_\|\L[n_e u_{e,\|} \R]
     - S_{e,n}
     + S_{e,n}
     \R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     + \ve{R}_{\b\to\a, \|}
     + \ve{R}_{n\to\a, \|}
     \note{Only perpendicular $\ve{u}_E$ advection \cite{Smolyakov1998}}
@@ -121,18 +120,18 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
     - \L(\div \te{\pi}_\a\R)_\|
     - \partial_\| p_\a
-    - m_\a n \L(\ve{u}_E + \ve{u}_{\a, \|}\R)\cdot \nabla u_{\a,\|}
+    - m_\a n_\a \L(\ve{u}_E + \ve{u}_{\a, \|}\R)\cdot \nabla u_{\a,\|}
     \\
     &
     - m_\a u_{\a,\|}
     \L(
-      \ve{u}_E\cdot \grad n
-    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
-    + \partial_\|\L[n u_{e,\|} \R]
+      \ve{u}_E\cdot \grad n_e
+    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
+    + \partial_\|\L[n_e u_{e,\|} \R]
     \R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     + \ve{R}_{\b\to\a, \|}
     + \ve{R}_{n\to\a, \|}
     \note{\cref{eq:piTensor}}
@@ -142,19 +141,19 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
       \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
     - \partial_\| p_\a
-    - m_\a n \ve{u}_E \cdot \nabla u_{\a,\|}
-    - m_\a n \ve{u}_{\a, \|}\cdot \nabla u_{\a,\|}
+    - m_\a n_\a \ve{u}_E \cdot \nabla u_{\a,\|}
+    - m_\a n_\a \ve{u}_{\a, \|}\cdot \nabla u_{\a,\|}
     \\
     &
     - m_\a u_{\a,\|}
     \L(
-      \ve{u}_E\cdot \grad n
-    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
-    + \partial_\|\L[n u_{e,\|} \R]
+      \ve{u}_E\cdot \grad n_e
+    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
+    + \partial_\|\L[n_e u_{e,\|} \R]
     \R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     + \ve{R}_{\b\to\a, \|}
     + \ve{R}_{n\to\a, \|}
     \\
@@ -163,19 +162,19 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
       \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
     - \partial_\| p_\a
-    - m_\a n \ve{u}_E \cdot \nabla u_{\a,\|}
-    - m_\a n u_{\a, \|}\ve{b}\cdot \nabla u_{\a,\|}
+    - m_\a n_\a \ve{u}_E \cdot \nabla u_{\a,\|}
+    - m_\a n_\a u_{\a, \|}\ve{b}\cdot \nabla u_{\a,\|}
     \\
     &
     - m_\a u_{\a,\|}
     \L(
-      \ve{u}_E\cdot \grad n
-    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
-    + \partial_\|\L[n u_{e,\|} \R]
+      \ve{u}_E\cdot \grad n_e
+    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
+    + \partial_\|\L[n_e u_{e,\|} \R]
     \R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
    \pm 0.51m_en_e \nu_{ei}\L(u_{e,\|}-u_{i,\|}\R)
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     \note{$+$ for $\a=i$\\$-$ for $\a=e$}
@@ -185,263 +184,119 @@ Starting from \cref{eq:mom_crude}, we have that
     =&
       \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
     - \partial_\| p_\a
-    - m_\a n \ve{u}_E \cdot \nabla u_{\a,\|}
-    - m_\a n u_{\a, \|}\partial_\| u_{\a,\|}
+    - m_\a n_\a \ve{u}_E \cdot \nabla u_{\a,\|}
+    - m_\a n_\a u_{\a, \|}\partial_\| u_{\a,\|}
     \\
     &
     \note{\hspace{-1.2cm}$j_\| = e(Zn_iu_{i,\|}-n_eu_{e,\|})$\\\hspace{-0.8cm}$\simeq e(n_eu_{i,\|}-n_eu_{e,\|})$\\\hspace{-0.8cm}$ = en_e(u_{i,\|}-u_{e,\|})$}
     - m_\a u_{\a,\|}
     \L(
-      \ve{u}_E\cdot \grad n
-    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
-    + \partial_\|\L[n u_{e,\|} \R]
+      \ve{u}_E\cdot \grad n_e
+    - \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
+    + \partial_\|\L[n_e u_{e,\|} \R]
     \R)
     \\
     &
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     \mp 0.51m_e \nu_{ei}\frac{j_\|}{e}
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     \\
     %
     %
     =&
-    - m_\a n \ve{u}_E \cdot \nabla u_{\a,\|}
-    - m_\a u_{\a,\|} \ve{u}_E\cdot \grad n
-    - m_\a n u_{\a, \|}\partial_\| u_{\a,\|}
-    - m_\a u_{\a,\|} \partial_\|\L(n u_{e,\|} \R)
+    - m_\a n_\a \ve{u}_E \cdot \nabla u_{\a,\|}
+    - m_\a u_{\a,\|} \ve{u}_E\cdot \grad n_e
+    - m_\a n_\a u_{\a, \|}\partial_\| u_{\a,\|}
+    - m_\a u_{\a,\|} \partial_\|\L(n_e u_{e,\|} \R)
     \\
     &
     - \partial_\| p_\a
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     \\
     &
     \mp 0.51m_e \nu_{ei}\frac{j_\|}{e}
-    + m_\a u_{\a,\|} \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n
+    + m_\a u_{\a,\|} \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
     \\
     %
     %
+    m_\a \partial_t \L(n_\a u_{\a,\|} \R)
     =&
-    - m_\a \ve{u}_E \cdot \nabla\L( u_{\a,\|} n \R)
+    - m_\a \ve{u}_E \cdot \nabla\L( u_{\a,\|} n_e \R)
     - m_\a u_{\a, \|}
     \L(
-    n \partial_\| u_{\a,\|}
-    + \partial_\|\L[n u_{e,\|} \R]
+    n_\a \partial_\| u_{\a,\|}
+    + \partial_\|\L[n_e u_{e,\|} \R]
     \R)
     \\
     &
     - \partial_\| p_\a
-    + q_\a n\ve{E}_\|
+    + q_\a n_\a\ve{E}_\|
     \\
     &
     + \nu_{ei}
     \L(
     \mp 0.51m_e \frac{j_\|}{e}
-    + m_\a u_{\a,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    + m_\a u_{\a,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n_e
     \R)
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-    % FIXME
-%    \numberthis
-%    \label{eq:nonElstat}
+    \numberthis
+    \label{eq:nonElstat}
 \end{align*}
-
-HERE STARTS THE OLD DERIVATION
-\begin{align*}
-  m_\a n_\a\d_{t,\a} \ve{u}_{\a,\|}
- =&
- - \grad_\| p_\a
- +  n_\a q_\a\ve{E_\|}
- - \L(\div\te{\pi}_\a\R)_\|
- + \ve{R}_{\beta \to \a,\|}
- + \ve{R}_{n \to \a,\|}
- -m_\a S_{\a,n}\ve{u}_{\a,\|}
- \\
- %
- m_\a \L(\d_{t,\a}\L[ n_\a \ve{u}_{\a,\|}\R] - \ve{u}_{\a,\|}\d_{t,\a} n_\a  \R)
- =&
- - \grad_\| p_\a
- +  n_\a q_\a\ve{E_\|}
- - \L(\div\te{\pi}_\a\R)_\|
- + \ve{R}_{\beta \to \a,\|}
- + \ve{R}_{n \to \a,\|}
- -m_\a S_{\a,n}\ve{u}_{\a,\|}
- \\
- %
- m_\a \d_{t,\a}\L( n_\a \ve{u}_{\a,\|}\R)
- =&
-   m_\a \ve{u}_{\a,\|}\d_{t,\a} n_\a
- - \grad_\| p_\a
- +  n_\a q_\a\ve{E_\|}
- - \L(\div\te{\pi}_\a\R)_\|
-   \\&
- + \ve{R}_{\beta \to \a,\|}
- + \ve{R}_{n \to \a,\|}
- -m_\a S_{\a,n}\ve{u}_{\a,\|}
- \note{Quasi-neutrality and \cref{eq:non_norm_dens}}
- \\
- %
- =&
-  m_\a \ve{u}_{\a,\|}
-  \frac{|q_\a|}{e}
-  \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
-   - \div\L[n_e \ve{u}_{e,\|} \R] + S_{e,n}
-   \R)
-   \\&
- - \grad_\| p_\a
- +  n_\a q_\a\ve{E_\|}
- - \L(\div\te{\pi}_\a\R)_\|
-   \\&
- + \ve{R}_{\beta \to \a,\|}
- + \ve{R}_{n \to \a,\|}
- -m_\a S_{\a,n}\ve{u}_{\a,\|}
- \note{\hspace{-0.5cm}$S_{\a,n} = \frac{|q_\a|}{e}S_{e,n}$}
- \\
- %
- =&
-    m_\a\ve{u}_{\a,\|}
-  \frac{|q_\a|}{e}
-    \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
-   - \div\L[n_e \ve{u}_{e,\|} \R]
-   \R)
-   \\&
- - \grad_\| p_\a
- - \L(\div\te{\pi}_\a\R)_\|
- +  n_\a q_\a\ve{E_\|}
- + \ve{R}_{\beta \to \a,\|}
- + \ve{R}_{n \to \a,\|}
- \\
- %
- m_\a \partial_t\L( n_\a \ve{b}u_{\a,\|}\R)
- =&
- -m_\a\L(\ve{v}_{\a,\perp} + \ve{b}u_{\a,\|}\R)\cdot\grad\L( n_\a \ve{b}u_{\a,\|}\R)
- \note{Only $\ve{E}\times\ve{B}$ advection \cite{Smolyakov1998}}
-   \\&
- + m_\a\ve{b}u_{\a,\|}
-  \frac{|q_\a|}{e}
- \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
-   - \div\L[n_e \ve{b}u_{e,\|} \R]
-   \R)
-   \\&
- - \ve{b}\partial_\| p_\a
- - \L(\div\te{\pi}_\a\R)_\|
- +  n_\a q_\a\ve{b}E_\|
- + \ve{b}R_{\beta \to \a,\|}
- + \ve{b}R_{n \to \a,\|}
- \note{$\partial_i \ve{b} \simeq 0$\\
-     \cref{eq:piTensor}
-  }
- \\
- %
- m_\a \partial_t\L( n_\a u_{\a,\|}\R)
- =&
- -\frac{m_\a}{JB}\L\{\phi, n_\a u_{\a,\|}\R\}
- -m_\a u_{\a,\|}\partial_\|\L( n_\a u_{\a,\|}\R)
-   \\&
- + m_\a u_{\a,\|}
-  \frac{|q_\a|}{e}
- \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
-   - \partial_\|\L[n_e u_{e,\|} \R]
-   \R)
-   \\&
-   - \partial_\| p_\a
-   + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-   + n_\a q_\a E_\|
- + R_{\beta \to \a,\|}
- + R_{n \to \a,\|}
- \\
- %
- =&
- -\frac{m_\a}{JB}\L\{\phi, n_\a u_{\a,\|}\R\}
- -m_\a u_{\a,\|}\partial_\|\L( n_\a u_{\a,\|}+  \frac{|q_\a|}{e}  n_e u_{e,\|} \R)
- \note{$\frac{|q_\a|}{e}  n_e \simeq n_\a$}
-   \\&
- + m_\a u_{\a,\|}
- \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_\a
-   \R)
- \note{$+$ for $\a=i$\\ $-$ for $\a=e$}
-   \\&
-   - \partial_\| p_\a
-   + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-   + n_\a q_\a E_\|
-   \\&
-   \pm 0.51m_en_e \nu_{ei}\L(u_{e,\|}-u_{i,\|}\R)
- - m_\a n_\a \nu_{\a n}u_{\a,\|}
- \note{\hspace{-1.2cm}$j_\| = e(Zn_iu_{i,\|}-n_eu_{e,\|})$\\\hspace{-0.8cm}$\simeq e(n_eu_{i,\|}-n_eu_{e,\|})$\\\hspace{-0.8cm}$ = en_e(u_{i,\|}-u_{e,\|})$}
- \\
- %
- =&
- -\frac{m_\a}{JB}\L\{\phi, n_\a u_{\a,\|}\R\}
- -m_\a u_{\a,\|}\partial_\|\L( n_\a \L[u_{\a,\|}+  u_{e,\|}\R] \R)
-   \\&
- + m_\a u_{\a,\|}
- \L(
-   \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_\a
-   \R)
-   \\&
-   - \partial_\| p_\a
-   + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-   + n_\a q_\a E_\|
-   \\&
-   \mp 0.51m_e \nu_{ei}\frac{j_\|}{e}
- - m_\a n_\a \nu_{\a n}u_{\a,\|}
- \\
- %
- =&
- -\frac{m_\a}{JB}\L\{\phi, n_\a u_{\a,\|}\R\}
- -m_\a u_{\a,\|}\partial_\|\L( n_\a \L[ u_{\a,\|}+  u_{e,\|}\R] \R)
-   \\&
- + \nu_{ei}
- \L(
-   m_\a \rho_s^2\frac{u_{\a,\|}}{\mu} \grad_\perp^2 n_\a
-   \mp 0.51m_e \frac{j_\|}{e}
-   \R)
-   \\&
-   - \partial_\| p_\a
-   + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-   + n_\a q_\a E_\|
- - m_\a n_\a \nu_{\a n}u_{\a,\|}
- \numberthis
-  \label{eq:nonElstat}
-\end{align*}
-%
 % FIXME: Have E here, and not grad phi?
 % FIXME: Change all div b = 0 to div b simeq 0
 Notice that
 %
 \begin{enumerate}[noitemsep,nolistsep]
-    \item We have collected the parallel advection terms of the electron
-        density equation and of the parallel momentum density equation.
-    \item We have collected the resistivity terms arising from the electron
-        density equation and those arising from the parallel momentum density
-        equation
-    \item The source term in the parallel momentum density cancels with the
-        source from the electron continuity equation as $S_{e,n}=
-        \frac{|q_i|}{e} S_{i,n}$
+    \item We have collected the parallel advection terms of the electron density equation and of the parallel momentum density equation.
+    \item We have collected the resistivity terms arising from the electron density equation and those arising from the parallel momentum density equation
 \end{enumerate}
 %
 This means that the parallel momentum density for ions reads (using that $p_i=0$ as $T_i=0$)
 %
 \begin{align*}
- m_i \partial_t\L( n_i u_{i,\|}\R)
- =&
- -\frac{m_i}{JB}\L\{\phi, n_i u_{i,\|}\R\}
- -m_i u_{i,\|}\partial_\|\L( n_i \L[u_{i,\|}+ u_{e,\|} \R]\R)
-   \\&
- + \nu_{ei}\L(
-   m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n_i
-   - 0.51 m_e \frac{j_\|}{e}
-   \R)
-   \\&
-   + n_i Ze E_\|
- - m_i n_i \nu_{i n}u_{i,\|}
- + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    m_i \partial_t \L(n_i u_{i,\|} \R)
+    =&
+    - m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n_e \R)
+    - m_i u_{i, \|}
+    \L(
+    n_i \partial_\| u_{i,\|}
+    + \partial_\|\L[n_e u_{e,\|} \R]
+    \R)
+    + Ze n_i\ve{E}_\|
+    \\
+    &
+    + \nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n_e
+    \R)
+    - m_i n_i \nu_{i n}u_{i,\|}
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    \note{Quasi-neutrality}
+    \\
+    %
+    %
+    \frac{1}{Z}m_i \partial_t \L(n u_{i,\|} \R)
+    =&
+    - m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + e n\ve{E}_\|
+    \\
+    &
+    + \nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
  \numberthis
  \label{eq:ionMomDens}
 \end{align*}
@@ -449,20 +304,52 @@ This means that the parallel momentum density for ions reads (using that $p_i=0$
 and that the momentum density for electrons reads
 %
 \begin{align*}
- m_e \partial_t\L( n_e u_{e,\|}\R)
- =&
- -\frac{m_e}{JB}\L\{\phi, n_e u_{e,\|}\R\}
- -2m_e u_{e,\|}\partial_\|\L( n_e  u_{e,\|} \R)
-   \\&
- +  \nu_{ei}\L(
-   m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n_e
-   + 0.51m_e \frac{j_\|}{e}
-   \R)
-   \\&
-   - \partial_\| p_e
-   - n_e e E_\|
- - m_e n_e \nu_{e n}u_{e,\|}
- + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    m_e \partial_t \L(n_e u_{e,\|} \R)
+    =&
+    - m_e \ve{u}_E \cdot \nabla\L( u_{e,\|} n_e \R)
+    - m_e u_{e, \|}
+    \L(
+    n_e \partial_\| u_{e,\|}
+    + \partial_\|\L[n_e u_{e,\|} \R]
+    \R)
+    \\
+    &
+    - \partial_\| p_e
+    + q_e n_e\ve{E}_\|
+    \\
+    &
+    + \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n_e
+    \R)
+    - m_e n_e \nu_{e n}u_{e,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \note{Quasi-neutrality}
+    \\
+    %
+    %
+    m_e \partial_t \L(n u_{e,\|} \R)
+    =&
+    - m_e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    - m_e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\
+    &
+    - \partial_\| p_e
+    - e n\ve{E}_\|
+    \\
+    &
+    + \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - m_e n \nu_{e n}u_{e,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:elMomDens}
 \end{align*}
@@ -474,110 +361,355 @@ We can obtain the total momentum density of the plasma by adding \cref{eq:ionMom
 We obtain
 %
 \begin{align*}
-    m_i \partial_t\L( n_i u_{i,\|}\R)
- + m_e \partial_t\L( n_e u_{e,\|}\R)
- =&
- -\frac{m_i}{JB}\L\{\phi, n_i u_{i,\|}\R\}
- -\frac{m_e}{JB}\L\{\phi, n_e u_{e,\|}\R\}
-   \\&
- -m_i u_{i,\|}\partial_\|\L( n_i \L[u_{i,\|}+ u_{e,\|} \R]\R)
- -2m_e u_{e,\|}\partial_\|\L( n_e  u_{e,\|} \R)
-   \\&
- + \nu_{ei}\L(
-   m_i \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n_i
-   - 0.51 m_e \frac{j_\|}{e}
-   \R)
-   \\&
- + \nu_{ei}\L(
-   m_e \rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n_e
-   + 0.51 m_e \frac{j_\|}{e}
-   \R)
-   \\&
-   - \partial_\| p_e
-   + n_i Z e E_\|
-   - n_e e E_\|
- - m_i n_i \nu_{i n}u_{i,\|}
- - m_e n_e \nu_{e n}u_{e,\|}
-   \\&
- + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
- + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
- \note{$m_i \gg m_e$\\$n \simeq n_e \simeq Zn_i$}
- \\
- %
- m_i \partial_t\L( n_i u_{i,\|}\R)
- =&
- -\frac{m_i}{JB}\L\{\phi, n_i u_{i,\|}\R\}
- -m_i u_{i,\|}\partial_\|\L( n_i \L[u_{i,\|}+ u_{e,\|} \R]\R)
- -2m_e u_{e,\|}\partial_\|\L( n_e  u_{e,\|} \R)
-   \\&
- + \nu_{ei}\L(
-    m_i  \rho_s^2\frac{u_{i,\|}}{\mu} \grad_\perp^2 n_i
-   +m_e Z\rho_s^2\frac{u_{e,\|}}{\mu} \grad_\perp^2 n_i
-   - 0.51 m_e \frac{j_\|}{e}
-   + 0.51 m_e \frac{j_\|}{e}
-   \R)
-   \\&
-   - \partial_\| p_e
- - m_i n_i \nu_{i n}u_{i,\|}
-   \\&
- + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
- + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
- \note{Assume that $u_{e,\|}$ is approximately of same order as $u_{i,\|}$}
- \\
- %
- =&
- -\frac{m_i}{JB}\L\{\phi, n_i u_{i,\|}\R\}
- -m_i u_{i,\|}\partial_\|\L( n_i \L[u_{i,\|}+ u_{e,\|} \R]\R)
-   \\&
- + m_i \rho_s^2\nu_{ei}
-   \frac{u_{i,\|}}{\mu} \grad_\perp^2 n_i
-   - \partial_\| p_e
- - m_i n_i \nu_{i n}u_{i,\|}
-   \\&
- + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
- + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
- \note{Constant $T_e$}
- \\
- %
- \partial_t\L( n_i u_{i,\|}\R)
- =&
- -\frac{1}{JB}\L\{\phi, n_i u_{i,\|}\R\}
- - u_{i,\|}\partial_\|\L( n_i \L[u_{i,\|}+ u_{e,\|} \R]\R)
-   \\&
- + \rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n_i
- - \frac{1}{m_i}T_e \partial_\| n_e
- - n_i \nu_{i n}u_{i,\|}
-   \\&
- + \frac{4}{3m_i}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
- \note{\hspace{-1cm}Multiply with $Z$\\
-       \hspace{-1cm}$n\simeq n_e \simeq Zn_i$
- }
- \\
- %
- \partial_t\L( n u_{i,\|}\R)
- =&
- -\frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
-   \\&
- + \rho_s^2\nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
- - \frac{Z}{m_i}T_e \partial_\| n
- - n \nu_{i n}u_{i,\|}
-   \\&
- + \frac{4Z}{3m_i}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
- \numberthis
- \label{eq:parMomDensNonNorm}
+    \frac{1}{Z}m_i \partial_t \L(n u_{i,\|} \R)
+    + m_e \partial_t \L(n u_{e,\|} \R)
+    =&
+    - m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - m_e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    \\&
+    - m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    - m_e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    - \partial_\| p_e
+    + e n\ve{E}_\|
+    - e n\ve{E}_\|
+    \\
+    &
+    + \nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    + \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    \\&
+    - \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    - m_e n \nu_{e n}u_{e,\|}
+    \\&
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \\
+    %
+    %
+    =&
+    - m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - m_e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    \\&
+    - m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    - m_e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    - \partial_\| p_e
+    + \nu_{ei}
+    \L(
+      m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    \\&
+    - \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    - m_e n \nu_{e n}u_{e,\|}
+    \\&
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \note{
+         $m_i \gg m_e$\\
+         Assume that $u_{e,\|}$ and its gradients is approximately of same order as $u_{i,\|}$ and its gradients
+    }
+    \\
+    %
+    %
+    \frac{1}{Z}m_i \partial_t \L(n u_{i,\|} \R)
+    =&
+    - m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    - \partial_\| p_e
+    + \nu_{ei} m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    - \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    \\&
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \note{Constant $T_e$}
+    \\
+    %
+    %
+    \partial_t \L(n u_{i,\|} \R)
+    =&
+    - \frac{Z}{m_i} m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - \frac{Z}{m_i} m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    - \frac{Z}{m_i} T_e \partial_\| n
+    + \frac{Z}{m_i} \nu_{ei} m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    - \frac{Z}{m_i} \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    \\&
+    + \frac{Z4}{m_i3}
+    \L(\eta_{i,0} \partial_z^2 u_{i,\|}
+    + \eta_{e,0} \partial_z^2 u_{e,\|} \R)
+    \\
+    %
+    %
+    \partial_t \L(n u_{i,\|} \R)
+    =&
+    - Z \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    -  u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    - \frac{Z}{m_i} T_e \partial_\| n
+    + Z \nu_{ei} u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    - n \nu_{i n}u_{i,\|}
+    \\&
+    + \frac{Z4}{m_i3}
+    \L(\eta_{i,0} \partial_z^2 u_{i,\|}
+    + \eta_{e,0} \partial_z^2 u_{e,\|} \R)
 \end{align*}
 %
 
 \subsection{Parallel current equation}
 %
 We can obtain the equation for the time evolution of the parallel current by multiplying \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of \cref{eq:elMomDens}.
-By using $n\simeq n_e \simeq Zn_i$, we get
+Multiplication of \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ yields
 %
 % FIXME: Proper drift ordering could shed light on how the density evolution
 % is to enter the equations, see photo jmad
+%
+\begin{align*}
+    \frac{q_i}{m_i}\frac{1}{Z}m_i \partial_t \L(n u_{i,\|} \R)
+    =&
+    - \frac{q_i}{m_i}m_i \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - \frac{q_i}{m_i}m_i u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + \frac{q_i}{m_i}e n\ve{E}_\|
+    \\
+    &
+    + \frac{q_i}{m_i}\nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - \frac{q_i}{m_i}\frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
+    + \frac{q_i}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    \\
+    %
+    %
+    e \partial_t \L(n u_{i,\|} \R)
+    =&
+    - Ze \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    - Ze u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + \frac{Ze^2}{m_i} n\ve{E}_\|
+    \\
+    &
+    + \frac{Ze}{m_i}\nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - e n \nu_{i n}u_{i,\|}
+    + \frac{Ze}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    \numberthis
+    \label{eq:qmMultI}
+\end{align*}
+%
+whereas multiplication of \cref{eq:elMomDens} with $\frac{q_e}{m_e}$ yields
+%
+\begin{align*}
+    \frac{q_e}{m_e}
+    m_e \partial_t \L(n u_{e,\|} \R)
+    =&
+    - \frac{q_e}{m_e} m_e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    - \frac{q_e}{m_e} m_e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\
+    &
+    - \frac{q_e}{m_e} \partial_\| p_e
+    - \frac{q_e}{m_e} e n\ve{E}_\|
+    \\
+    &
+    + \frac{q_e}{m_e} \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - \frac{q_e}{m_e} m_e n \nu_{e n}u_{e,\|}
+    + \frac{q_e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \\
+    %
+    %
+    -e \partial_t \L(n u_{e,\|} \R)
+    =&
+      e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    + e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\
+    &
+    + \frac{e}{m_e} \partial_\| p_e
+    + \frac{e^2}{m_e} n\ve{E}_\|
+    \\
+    &
+    - \frac{e}{m_e} \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    + e n \nu_{e n}u_{e,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \numberthis
+    \label{eq:qmMultE}
+\end{align*}
+%
+Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
+%
+\begin{align*}
+    e \partial_t \L(n u_{i,\|} \R)
+    -e \partial_t \L(n u_{e,\|} \R)
+    =&
+    - Ze \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
+    +  e \ve{u}_E \cdot \nabla\L( u_{e,\|} n \R)
+    \\&
+    - Ze u_{i, \|}
+    \L(
+    \frac{1}{Z}n \partial_\| u_{i,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    + \frac{e}{m_e} \partial_\| p_e
+    + \frac{Ze^2}{m_i} n\ve{E}_\|
+    + \frac{e^2}{m_e} n\ve{E}_\|
+    \\ &
+    + \frac{Ze}{m_i}\nu_{ei}
+    \L(
+    - 0.51m_e \frac{j_\|}{e}
+    + m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    - \frac{e}{m_e} \nu_{ei}
+    \L(
+     0.51m_e \frac{j_\|}{e}
+    + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
+    \R)
+    \\ &
+    - e n \nu_{i n}u_{i,\|}
+    + e n \nu_{e n}u_{e,\|}
+    + \frac{Ze}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \\
+    %
+    %
+    \partial_t j_\|
+    =&
+    e \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - e u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    + \frac{e}{m_e} \partial_\| p_e
+    + ne^2\ve{E}_\|\L( \frac{Z}{m_i} + \frac{1}{m_e} \R)
+    \\ &
+    + \nu_{ei}
+    \L(
+    - 0.51j_\|\L[\frac{Z}{\mu} + 1 \R]
+    + e \frac{\rho_s^2}{\mu} \grad_\perp^2 n\L[Z u_{i,\|} - u_{e,\|} \R]
+    \R)
+    \\ &
+    + e n \L(-\nu_{i n}u_{i,\|} + \nu_{e n}u_{e,\|}\R)
+    + \frac{Ze}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    \note{$\frac{1}{m_e}\gg\frac{1}{m_i}$}
+    \\
+    %
+    %
+    =&
+    e \ve{u}_E \cdot \nabla\L( n\L[u_{e,\|} - Z u_{i,\|} \R] \R)
+    \\&
+    - e u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
+    + e u_{e, \|}
+    \L(
+    n \partial_\| u_{e,\|}
+    + \partial_\|\L[n u_{e,\|} \R]
+    \R)
+    \\&
+    + \frac{e}{m_e} \partial_\| p_e
+    + \frac{1}{m_e}ne^2\ve{E}_\|
+    \\ &
+    + \nu_{ei}
+    \L(
+    - 0.51j_\|
+    + e \frac{\rho_s^2}{\mu} \grad_\perp^2 n\L[Z u_{i,\|} - u_{e,\|} \R]
+    \R)
+    \\ &
+    + e n \L(-\nu_{i n}u_{i,\|} + \nu_{e n}u_{e,\|}\R)
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+%
+OLD DERIVATION START
 %
 \begin{align*}
  e \partial_t\L( n u_{i,\|}\R)
@@ -715,3 +847,5 @@ By using $n\simeq n_e \simeq Zn_i$, we get
  \numberthis
  \label{eq:parElNonNorm}
 \end{align*}
+%
+OLD DERIVATION STOP
