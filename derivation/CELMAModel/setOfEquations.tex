@@ -44,12 +44,19 @@ As mentioned in \cref{chap:additionalImplementation}, the actual viscosities has
 %
   \partial_t\L( n u_{i,\|}\R)
  =&
- - \frac{1}{JB}\L\{\phi, n u_{i,\|}\R\}
- - u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
+ - \frac{Z}{JB} \{\phi, u_{i,\|} n \}
+ - u_{i, \|}
+    \L(
+    n \partial_\| u_{i,\|}
+    + Z\partial_\|\L[n u_{e,\|} \R]
+    \R)
    \\&
- + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - ZT_e \partial_\| n
+ + \nu_{ei} \frac{u_{i,\|}}{\mu} \grad_\perp^2 n
  - n \nu_{i n}u_{i,\|}
+   \\&
+   + \frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
  \numberthis
  \label{eq:celma_mom_dens}
  \\
@@ -58,14 +65,17 @@ As mentioned in \cref{chap:additionalImplementation}, the actual viscosities has
 %
  \partial_t j_\|
  =&
- - \frac{1}{JB}\L\{\phi, j_{\|}\R\}
- -   u_{i,\|}\partial_\|\L( n \L[u_{i,\|}+ u_{e,\|} \R]\R)
- + 2 u_{e,\|}\partial_\|\L( n  u_{e,\|} \R)
-   \\&
- - 0.51 \nu_{ei}j_\|
-   + \mu T_e \partial_\| n
-  - \mu n \partial_\|\phi
- + n \L(\nu_{e n}u_{e,\|} - \nu_{i n}u_{i,\|} \R)
+    \frac{1}{JB} \{ \phi, n\L[u_{e,\|} - Z u_{i,\|} \R] \}
+    \\&
+    - n \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
+    - \frac{n \L(Z u_{i, \|} - u_{e, \|} \R)}{n}\partial_\|\L(n u_{e,\|} \R)
+    \\&
+    + \mu T_e\partial_\| n
+    - \mu n\partial_\| \phi
+    - 0.51 \nu_{ei} j_\|
+    \\ &
+    + n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
+    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
  \numberthis
  \label{eq:celma_j_par}
  \\
