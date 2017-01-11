@@ -132,13 +132,13 @@ For a field line geometry where the field lines are perpendicular to the end-pla
     \L.\grad_\|\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0
     \note{Continuity equation}
     \\
-    \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}&= 0\\
-    \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}
+    \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z} + S_{i,n}&= 0\\
+    \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z} + S_{i,n}
     \numberthis
     \label{eq:nBC}
 \end{align*}
 %
-In other words, it says that the only change in the density at the SE can come from perpendicular outflux.
+In other words, it says that the only change in the density (appart from the source) jjjjjjjjjjjjjjjjjat the SE can come from perpendicular outflux.
 Another way to look at it is to consider
 %
 \begin{align*}
@@ -158,10 +158,10 @@ If we follow the derivation of \cref{eq:nBC} and use the ion continuity equation
 %
 \begin{align*}
     \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}
-    -\L.n \partial_\| u_{i.\|}\R|_{L_z}
+    -\L.n \partial_\| u_{i.\|}\R|_{L_z} + S_{i,n}
     &= 0\\
     \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}-
-    \L.n \partial_\| u_{i.\|}\R|_{L_z}
+    \L.n \partial_\| u_{i.\|}\R|_{L_z} + S_{i,n}
 \end{align*}
 %
 which means that the flux through the SE is no longer fixed.
