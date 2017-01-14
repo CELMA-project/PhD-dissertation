@@ -187,8 +187,49 @@ where we here have defined the averaged collision frequency
 %
 The subscript $_\text{stationary target}$ will be dropped from here on.
 
+For a $\sigma_{\a\b}$ constant in $v$, the integral reads
+%
+\begin{align*}
+    \nu_{\a\b, \text{ Constant } \sigma}
+    %
+    =&
+    \frac{n_\b4\pi}{3(2\pi)^{3/2}v_{th,\a}^5}
+    \sigma_{\a\b, \text{ Constant}}
+    \int_0^\infty
+    \exp\L(-\frac{\ve{v}^2}{2v_{th,\a}^2}\R)
+    v^5
+    \d v
+    \\
+    %
+    %
+    &=
+    \frac{n_\b4\pi}{3(2\pi)^{3/2}v_{th,\a}^5}
+    \sigma_{\a\b, \text{ Constant}}
+    8 v_{th,\a}^6
+    \\
+    %
+    %
+    &=
+    \frac{8\sqrt{2}}{3}
+    \frac{n_\b }{\sqrt{\pi}}
+    v_{th,\a}
+    \sigma_{\a\b, \text{ Constant}}
+    \\
+    %
+    %
+    &=
+    \frac{8\sqrt{2}}{3}
+    \frac{n_\b }{\sqrt{\pi}}
+    \sqrt{ \frac{T_\a}{m_\a}}
+    \sigma_{\a\b, \text{ Constant}}
+    \numberthis
+    \label{eq:constSigma}
+\end{align*}
+%
+
 \section{Electron collisions}
 \label{sec:nue}
+\subsection{Electron ion collision}
 Using the cross section for electron ion collisions
 %
 \begin{align*}
@@ -236,59 +277,55 @@ yields
     \frac{2^{1/2}n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_e^{1/2}T_e^{3/2}}
 \end{align*}
 %
-Using the cross section for electron neutral collision
+
+\subsection{Electron hydrogen collision}
+A rough estimate for the hydrogen collision cross section can be obtained from the Bohr radius, and reads
 %
 \begin{align*}
-    \sigma_{en} = \pi a_0^2
+    \sigma_{en_\text{H}} = \pi a_0^2
 \end{align*}
 %
-yields
+inserting this in \cref{eq:constSigma} yields
 %
 \begin{align*}
-    \nu_{en}
+    \nu_{en_\text{H}}
     =&
-    \frac{n_n4\pi}{3(2\pi)^{3/2}v_{th,e}^5}
-    \int_0^\infty
-    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
-    \pi a_0^2 v^5
-    \d v
-    \\
-    %
-    %
-    =&
-    \frac{n_n4\pi^2 a_0^2 }{3(2\pi)^{3/2}v_{th,e}^5}
-    \int_0^\infty
-    \exp\L(-\frac{\ve{v}^2}{2v_{th,e}^2}\R)
-    v^5
-    \d v
-    \\
-    %
-    %
-    =&
-    \frac{n_n4\pi^2 a_0^2 }{3(2\pi)^{3/2}v_{th,e}^5} 8v_{th,e}^6
-    \\
-    %
-    %
-    =&
-    \frac{2}{2}
-    \frac{32 n_n\pi^2 a_0^2 v_{th,e}}{3(2\pi)^{3/2}}
-    \\
-    %
-    %
-    =&
-    \frac{2^{1/2}8 n_n\pi^{1/2} a_0^2 v_{th,e}}{3}
-    \\
-    %
-    %
-    =&
-    \frac{(2\pi)^{1/2}8 n_n a_0^2 \sqrt{T_e}}{3\sqrt{m_e}}
+    \frac{8\sqrt{2}}{3}
+    \frac{n_{n_\text{H}} }{\sqrt{\pi}}
+    \sqrt{ \frac{T_\a}{m_\a}}
+    \pi a_0^2
+    =
+    \frac{8\sqrt{2}}{3}
+    \sqrt{\pi} n_{n_\text{H}}  a_0^2
+    \sqrt{ \frac{T_\a}{m_\a}}
 \end{align*}
 %
 % NOTE: Corresponds roughly to what is reported in NRL plasma formulary in weakly ionized plasmas
 
+\subsection{Electron argon collisions}
+%
+A formula for the electron argon cross section is given in \cite{Hayashi1981}.
+The cross section can be integrated numerically, as done in \cite{Schroder2003Phd}.
+A sixth order polynomial which fits the integrated data in the range $0.1 - 10 \eV$ reads%
+%
+\footnote{Data from \cite{Schroder2003Phd} has been read using \cite{Ankit2016Web} to obtain these values.}
+%
+\begin{align*}
+    \nu_{en_\text{Ar}}[\s^{-1}]
+    =&
+    \frac{n_{\text{Ar}}[\m^{-3}]}{2.5\cdot10^{19}[\m^{-3}]}
+    \\
+    &
+    (
+    \quad 33640.349990\cdot T_e[\eV]^0 -33174.059200\cdot T_e[\eV]^1\\
+&+642273.100111\cdot T_e[\eV]^2 -188328.743082\cdot T_e[\eV]^3\\
+&+25742.288823\cdot T_e[\eV]^4 -1784.118597\cdot T_e[\eV]^5 +50.336945\cdot T_e[\eV]^6)
+\end{align*}
+
 \section{Ion collisions}
 \label{sec:nui}
 %
+\subsection{Ion-ion collisions}
 The analysis done above was valid when the target was stationary with respect to the colliding particles.
 This is a fairly good approximation when the stationary particles are much heavier than the colliding particles.
 Hence, the derivation of the average ion-ion collision frequency or the average ion-neutral collision frequency is strictly not valid.
@@ -303,21 +340,42 @@ One could do the analysis by going to the center of mass frame (which in the end
     \frac{n_iZ^2e^4\ln\Lambda}{12\pi^{3/2}e_0^2m_i^{1/2}T_i^{3/2}}
 \end{align*}
 %
+
+\subsection{Ion-hydrogen collisions}
 As the mass of the neutral atom is approximately the same as the ion mass (as we are considering neutrals of the same species as the plasma), we get for the ion-neutral collision
 %
 \begin{align*}
-    \nu_{in}
+    \nu_{in_\text{H}}
     =&
-    \frac{8 n_n\pi^{1/2} a_0^2 \sqrt{T_i}}{3\sqrt{m_i}}
+    \frac{8}{3} \sqrt{\pi}
+    n_{n_\text{H}} a_0^2
+    \frac{\sqrt{T_i}}{\sqrt{m_H}}
 \end{align*}
 
-\section{Estimation of \texorpdfstring{$n_n$}{the neutral density} from \texorpdfstring{$p_n$}{the neutral pressure}}
-We can estimate the neutral density from the neutral gas pressure if we assume
+\subsection{Ion-argon collisions}
+%
+Although several atomic processes are involved when an Argon ion collides with an Argon atom in the ground state, most can be neglected under temperatures under $100 \eV$.
+The charge exchange reaction and the elastic collisions dominated, and are approximately equally big \cite{Lieberman2005}.
+The following formula for the cross section is given in \cite{Anders1990} for the charge exchange reaction $\text{Ar}+\text{Ar}^+ \to\text{Ar}^+ +\text{Ar}$ at low energies
 %
 \begin{align*}
-    p_n = n_nT_{n}[\text{J}].
+    \sigma_{ce}[\m^2] = 4.8\cdot10^{-19}[\m^2]\L(1+0.14\ln\L[\frac{1[\eV]}{T_i[\eV]}\R]\R)^2
 \end{align*}
 %
-And that all the neutrals are dissociated by the Franck-Condon process, in such that they have an temperature on about half of the dissociation energy.
-That is, we assume the hydrogen with $T_n = 2 \text{ eV}$ \cite{Stangeby2000book,Janev1987book}.
-% NOTE: Room temperature is probably a bad approximation
+so that
+%
+\begin{align*}
+    \sigma_{in_\text{Ar}}[\m^2] \simeq 9.6\cdot10^{-19}[\m^2]\L(1+0.14\ln\L[\frac{1[\eV]}{T_i[\eV]}\R]\R)^2
+\end{align*}
+%
+Inserting this into \cref{eq:constSigma} gives us
+%
+\begin{align*}
+    \nu_{in_\text{Ar}}
+    %
+    \simeq&
+    \frac{8\sqrt{2}}{3}
+    \frac{n_\b }{\sqrt{\pi}}
+    \sqrt{ \frac{T_\a}{m_\a}}
+    9.6\cdot10^{-19}[\m^2]\L(1+0.14\ln\L[\frac{1[\eV]}{T_i[\eV]}\R]\R)^2
+\end{align*}
