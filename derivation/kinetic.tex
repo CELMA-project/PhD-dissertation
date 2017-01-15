@@ -1,8 +1,13 @@
-We will here derive the fluid equations used in the rest of this thesis from the Fokker-Planck equation.
-We will follow the approach of \cite{Helander2002book}, but we will he include an inelastic source (meaning that the source term adds or subtracts to the distribution function).
+We will here derive the fluid equations used in the rest of this thesis from the Fokker-Planck%
+\footnote{
 This equation can again be derived from the Klimontovich equation (see for example \cite{Klimontovich1983book}.
+}
+%
+ equation by following the approach of \cite{Helander2002book}.
+In addition we will include an inelastic source.
+This source will either add or subtract particles to the distribution function depending on its sign.
 
-We are here looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ in at point $\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space over time $t$ of species $\a$.
+We are looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ of species $\a$, in at point $\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space at time $t$.
 The particles obeys the conservation equation
 %
 \begin{align*}
@@ -57,7 +62,7 @@ In other words, we will let $\gamma \in \{e, i, n\}$ (denoting electrons, ions a
     C_\a = C_{\a\b}(f_\a,f_\b) + C_{\a n}(f_\a,f_n)
 \end{align*}
 %
-where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Further on, the collision operator has the following properties
+where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Furthermore, the collision operator has the following properties
 %
 \begin{align*}
     &\inde{C_{\a\g}}{^3v} = 0&
@@ -82,14 +87,17 @@ The resulting Fokker-Planck equation reads
 \end{empheq}
 
 \section{Moments of Fokker-Planck}
+To follow the distribution functions in a 6-dimensional phase-space as a function of time is quite a daunting taks.
+Instead, we will follow some averages of the distribution function.
+This comes at the price of losing kinetic information in the system, like for example Landau damping.
 We will use the notation
 %
 \begin{align*}
-    \expt{A}_f \defined \frac{1}{n_\a}\inde{Af_\a}{^3v}
+    \expt{A}_{f} \defined \frac{1}{n_\a}\inde{Af_\a}{^3v},
 \end{align*}
 %
-to denote a weighted velocity average (a moment) of the Fokker-Planck equation.
-We now define
+where $\expt{1}_f=n_a$ is the density, to denote a weighted velocity average (a moment) of the Fokker-Planck equation.
+From this, we define
 %
 \begin{align*}
     \expt{\ve{v}_\a}_f        \defined& \; \ve{u}_a      \\
@@ -110,12 +118,14 @@ Thus, we define
     \te{\pi}_\a \defined& \; \te{P}_\a - \te{I}p_\a\\
 \end{align*}
 %
-where $\te{I}$ is the identity tensor, and use that
+where $\te{I}$ is the identity tensor.
+Finally we have that
 %
 \begin{align*}
-    \inde{m_\a\ve{v} C_{\a\g}(f)}{^3v} =& \ve{R}_{\g\to\a}
+    \inde{m_\a\ve{v} C_{\a\g}(f)}{^3v} =& \ve{R}_{\g\to\a},
 \end{align*}
 %
+where $\ve{R}_{\g\to\a}$ is the friction force on $\a$ given by $\g$.
 
 \subsection{Zeroth moment}
 We will now work through the zeroth moment term by term by applying $\expt{n_\a \;\cdot\;}_f=n_\a\expt{\;\cdot\;}_f$ on \cref{eq:fp}.
@@ -129,7 +139,7 @@ We have that
 %
 %
     &=
-    \partial_t n_\a
+    \partial_t n_\a,
 \end{align*}
 %
 that
@@ -139,7 +149,7 @@ that
     &=
     n_\a
     \div\expt{ \ve{v}}_f
-    \note{$\ve{x}$ and $\ve{v}$ are independent coordinates}
+    \note{$\ve{x}$ and $\ve{v}$ are independent coordinates.}
     \\
 %
 %
@@ -148,8 +158,14 @@ that
     \expt{\nabla\cdot\ve{v}}_f
     \\
     &=
+    \frac{n_\a}{n_\a}
     \nabla\cdot\L(n_\a\ve{u}_\a\R)
     \note{$\nabla$ commutes with the integral}
+%
+%
+    \\
+    &=
+    \nabla\cdot\L(n_\a\ve{u}_\a\R)
 \end{align*}
 %
 and
@@ -215,14 +231,14 @@ the source term gives
 \end{align*}
 %
 We will now assume that the plasma consists of only one type of ions, in only one ionizational and exitational state.
-Extension to this would require on distribution function for each set of atom at a specific ionizational and exitational state.
+Extension to this would require a distribution function for each set of atom at a specific ionizational and exitational state.
 We will further assume that the creation of electrons and ions to this state happens instantaneous (that is, no intermediate ioniziations or exitations takes place).
 If we take secondly ionized helium as an example, this would mean that one ion, and two electrons would be created instantaneously.
 More generally, $N_i$ ions and $ZN_i$ electron will be created for the charge number $Z$.
 In other words, we would have that
 %
 \begin{align}
-S_{n,e}=\frac{S_{n,i}}{Z}=S_n
+S_{n,e}=\frac{S_{n,i}}{Z}\defined S_n
 \label{eq:kinSource}
 \end{align}
 %
@@ -250,7 +266,7 @@ We have that
 %
 %
     &=
-    \partial_t \L(m_\a n_\a \ve{u}_\a\R)
+    \partial_t \L(m_\a n_\a \ve{u}_\a\R),
 \end{align*}
 %
 that
@@ -558,7 +574,7 @@ The second term of \cref{eq:mom_crude} can now be written as
     + m_\a \div \L( n_\a \ve{u}_\a \R) \ve{u}_\a
 \end{align*}
 %
-Thus, \cref{eq:mom_crude} can be written like
+Thus, \cref{eq:mom_crude} can be written
 %
 \begin{align*}
     &\quad
@@ -649,7 +665,7 @@ By neglecting collision with neutral species, we have found that the two first m
 where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to \a}$ denotes the force acting on species $\a$ by $\g$, i.e. the resistivity.
 Both the resistivity and the viscosity tensor depend on the temperature.
 
-We could go on with our derivation, and included the third moment, namely the energy equation, which can be used to solve the temperature.
+We could go on with our derivation and include the third moment, namely the energy equation, which can be used to solve the temperature.
 The energy equation will depend on a quantity belonging to the next moment, namely the heat flux $Q$, due to the $\ve{v}\cdot\nabla f_\a$ term in \cref{eq:fp}.
 The heat flux equation would again depend on a quantity belonging to the next order, and so on.
 
@@ -661,8 +677,7 @@ This gives an analytical expressions for $\ve{R}_{\b\to\a}$ (see \cref{app:colli
 
 We will in this thesis close the system in a much simpler way.
 If we assume that the electrons are isothermal, it can be described by a constant temperature, and hence there is no need for an equation to solve for $T_e$.
-We will further assume that the ions are cold.
-That is that $T_i$ is isothermal with a constant temperature equal $0$.
+We will further assume that the ions are cold ($T_i$ is isothermal with a constant temperature equal $0$).
 In this thesis we would like to study systems with the drift fluid approach (see \cref{chap:drift-order} for details), and we will therefore assume that the velocity component perpendicular to the magnetic field is much less than the ion sound speed.
 This is in direct contradiction to our assumption of an isothermal system, which requires that the fluid velocity is much larger than the ion sound speed, so that any difference in temperature is quickly smoothed out.
 Despite of this, we choose to use the assumption as it gives a much simpler system to solve and analyze.

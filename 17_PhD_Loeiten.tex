@@ -34,11 +34,12 @@
 % Shorcuts for this document
 \def\vt{\ve{\vartheta}}
 
+\interfootnotelinepenalty=10000
 \begin{document}
 \maketitle
 %
 % NOTE: USE input rather than include!!!
-\part{Derivation of model}
+\part{Derivation of the CELMA model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
 %
@@ -59,6 +60,8 @@
 
 \chapter{The Boussinesq approximation}
 \input{derivation/boussinesq}
+\chapter{Summary}
+\input{derivation/summary}
 
 \part{Implementation and verification}
 \chapter{Implementation using the BOUT++ framework}
@@ -80,6 +83,7 @@
 \input{numerics/verification}
 
 \part{Results}
+\label{part:results}
 \input{results/results}
 \chapter{Simulation set up}
 \input{results/setUp}

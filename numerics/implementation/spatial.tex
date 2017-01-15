@@ -34,7 +34,7 @@ The following term has been implemented with the first order upwinding scheme
     \item $2u_{e,\|}\partial_\|(nu_{e,\|})$
 \end{itemize}
 %
-notice that whereas the upwinding makes the system more stable, it does so by introducing heavy damping on the system through diffusion introduced by the discretization \cite{Leveque2007book}.
+note that whereas the upwinding makes the system more stable, it does so by introducing heavy damping on the system through diffusion introduced by the discretization \cite{Leveque2007book}.
 For this reason, upwinding is \textbf{NOT} used on the $u_{i,\|}\partial_\|\Om$ term when using the Boussinesq approximation as this may introduce spurious vorticity from the numerics.
 
 \section{Boundary conditions}
@@ -59,7 +59,7 @@ For implementation of artificial boundary conditions, see \cref{sec:extrapolGhos
 For the Dirichlet boundary condition, the following \nth{4} order extrapolation %
 %
 \footnote{
-Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)), and evaluate it in the ghost point.
+    Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)), evaluated it in the ghost point.
 }%
 is used
 %
@@ -78,7 +78,7 @@ is used
 For the Neumann boundary condition a \nth{4} order extrapolation %
 %
 \footnote{
-Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, and solve for it for the ghost point.
+    Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, and solved for the ghost point.
 % See D4DX4/BW2ndOrderNeumann4thOrder
 }%
 %

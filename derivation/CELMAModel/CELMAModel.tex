@@ -6,6 +6,10 @@ The resulting model will from here be referred to as the CELMA model, standing f
 }%
 .
 
+We will end up with a coupled set of four PDEs, which solves the density, the sum of the parallel momentum densities, the current and the modified vorticity in time (plus a boundary equation which gives the potential at the given timestep).
+In other words, we have managed to considerably reduce the original system containing of eigth coupled PDEs.
+The final set of equation is found in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}.
+
 \section{The density equation}
 %
 We will now rewrite the electron density equation (\cref{eq:dens_evol_gen}) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
@@ -199,16 +203,20 @@ The first term of \cref{eq:from_gyroviscous} yields
     \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
     + \frac{1}{\om_{ci}} \div\L(
     u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R)
+    \numberthis
+    \label{eq:polIntermediate}
 \end{align*}
 %
-We now define
+We now define the modified vorticity as
 %
-\begin{align*}
+\begin{align}
     \Om^D \defined
-    \div \L(n \frac{\grad_\perp \phi}{B} \R)
-\end{align*}
+    \div \L(n \frac{\grad_\perp \phi}{B} \R).
+    \label{eq:omDDef}
+\end{align}
 %
-which gives
+This is a central variable, as this is the variable we will evolve in time
+Inserting \cref{eq:omDDef} into \cref{eq:polIntermediate} gives
 %
 \begin{align*}
     \frac{1}{\om_{ci}}\partial_t\Om^D
