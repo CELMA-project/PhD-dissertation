@@ -1,4 +1,4 @@
-\section{Stanard parameters for the runs}
+\section{Standard parameters for the runs}
 %
 In this thesis, we have chosen the following shape of the source
 %
@@ -51,7 +51,8 @@ $w_{\text{profile}}$ & $L_\rho$   &\\
 %
 Input parameters from the implementation is found in the tables in \cref{chap:implBOUT++,chap:additionalImplementation}.
 
-\section{Initialization of the runs}
+\section{Running the simulations}
+\label{sec:initRun}
 %
 From the following initial conditions of the normalized evolved quantities%
 %
@@ -67,14 +68,14 @@ From the following initial conditions of the normalized evolved quantities%
 the simulations are performed in three following steps
 %
 \begin{enumerate}[noitemsep]
-    \item The simulation is allowed to evolve freely to a steady state condition (that is, when there is minimal difference between the timesteps) using only one point in $\theta$.
+    \item The simulation is allowed to evolve freely to a steady state condition (that is, when there is a minimal difference between the time steps) using only one point in $\theta$.
         Usually this takes around $4000t\om_{ci}$.
-    \item The simulation is expanded to $n_\theta = 256$, and run for additional $100t\om_{ci}$ in order to ensure that it is still in a steady state.
-    \item White noise perturbation is added with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
-        \footnote{Different approaches has been used for the pertubation.
+    \item The simulation is expanded to $n_\theta = 256$, and run for additional $50t\om_{ci}$ in order to ensure that the system is still in a steady state.
+    \item A perturbation in the form of white noise with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
+        \footnote{Different approaches has been used for the perturbation.
             It should be noted that some of these gives a different route to the turbulent state (i.e. some perturbations dies out, while others have some intermediate non-linear steps before the linear growth rates), but gives (with very little difference) the same growth rates and the same statistical behavior of the saturated turbulence as the perturbation method stated.}%
         %
-        , modes grow up and a saturated turbulence state is eventually reached (given that there are no "crashes" in the simulation).
+    \item If the system is unstable to small perturbations, and if there are no "crashes" in the simulation, a saturated turbulence state is eventually reached.
 \end{enumerate}
 %
 All the simulations are run on the \texttt{jess} super computer located at DTU Ris{\o}e.
@@ -90,25 +91,26 @@ At the time of writing the cluster consisted of $320$ half-width rack servers, H
 \end{enumerate}
 %
 For each simulation, $3$ nodes has been allocated using $48$ cores.
-This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of comutation time to communication time per core.
+This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of simulation time to communication time per core.
 
 \section{Parameter scans}
-% FIXME: Probably move this
+FIXME: Move me
+
 %
 We will in this thesis do a parameter scan in $B$.
-By looking at \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can see that that the normalization $B$ always can be chosen to be $1$.
-However, $B$ appears in the set of equations through $\om_{ci}$, which means that it effectly sets the time step (in real variables) through $\wt{t}=t\om_{ci}^{-1}$.
+By looking at \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can see that that the normalization $B$ can always be chosen to be $1$.
+However, $B$ appears in the set of equations through $\om_{ci}$, which means that it effectively sets the time step (in real variables) through $\breve{t}=t\om_{ci}^{-1}$.
 This in turn affects the $\rho_s$ (as $\rho_s=\frac{c_s}{\om_{ci}}$), and thus the normalized domain size.
 
 \section{Resolution}
 %
-In order to avoid numerical under-resolvement, we choose to have a ratio $\frac{n_\rho}{\frac{L_\rho}{\rho_s}}>1$, preferrably at last $3$.
-As mentioned in
-%FIXME: Add reference where say can have much corser resolution in parallel direction
+In order to have a properly resolved grid, we choose to have a ratio at least $\frac{n_\rho}{\frac{L_\rho}{\rho_s}}>1$, but preferably above  $3$.
+As mentioned in (FIXME)
+% FIXME: Add reference where say can have much coarser resolution in parallel direction
 the resolution in the parallel direction can be less due to the separation of scales.
 Note however, that we have a sheath boundary condition in the $z$-direction, which seems to limit the coarseness of the resolution.
-As mentioned in
-%FIXME: Add reference to where the coarseness parameter scan is done
+As mentioned in (FIXME)
+% FIXME: Add reference to where the coarseness parameter scan is done
 we should require that $\frac{n_z}{\frac{L_z}{\rho_s}}\gtrsim0.2$.
 We observe that
 %

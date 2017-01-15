@@ -187,3 +187,4 @@ TSWLatexianTemp*
 # Thesis
 17_PhD_Loeiten.pdf
 *.latexmain
+*delme*
