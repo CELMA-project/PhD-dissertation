@@ -1,5 +1,5 @@
 Up until know we have derived the drift-fluid equation from the kinetic equation using the drift fluid approximation.
-We would now insert the fluid drifts in the fluid equation without making assumption of the topology of the $\ve{B}$ field.
+We would now insert the fluid drifts in the fluid equation without making assumption of the topology of the $\ve{B}$ field, only that is varies slowly spatially and in time.
 We will, on the other hand make the assumption that the plasma itself consists of only one type of atomic element which is fully ionized.
 %
 
@@ -11,7 +11,7 @@ Assuming we are working in a field aligned Clebsch coordinate system (see \cref{
 \begin{align*}
 \grad_\perp f \times \ve{b}= - \ve{b} \times \grad_\perp f
 = - \ve{b} \times (\grad - \grad_\|) f
-= - \ve{b} \times (\grad - \ve{b}\ve{b}\cdot\grad) f = -\grad f \times \ve{b}
+= - \ve{b} \times (\grad - \ve{b}\ve{b}\cdot\grad) f = \grad f \times \ve{b}
 \end{align*}
 %
 as a vector crossed with a parallel vector yields $0$.
@@ -426,7 +426,7 @@ We see that this term can be neglected using the same arguments as in section \c
 \subsection{Electron viscosity}
 %
 From \cref{eq:DO} we see that the electron viscosity is of order $\mathcal{O}(\e^2)$.
-As this is of one order lower than what we would like to resolve, we neglect this contribution from \cref{eq:el_cont}.
+As this is of one order higher than what we would like to resolve, we neglect the $\ve{u}_{e,\nu}$ contribution from \cref{eq:el_cont}.
 
 \subsection{Electron source drift}
 \label{sec:no_e_source}
@@ -506,6 +506,10 @@ If we now introduce the notation $\d_t = \partial_t + \ve{u}_E\cdot\nabla$, we f
 
 \section{Current conservation and vorticity}
 %
+\Cref{eq:dens_evol_gen} gives the equation to solve the density in time.
+Similarily, we could made an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation for each perpendicular direction.
+However, as we will see later, all the information we need for evolving $\ve{u}_{\a,\perp}$ in time are contained in the parallel part of the vorticity equation ($(\curl \ve{v}_E)\cdot \ve{b}$).
+This equation can be derived from the current conservation, which we present in this section.
 If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, and add them, we get by applying quasi-neutrality that
 %
 \begin{align*}
@@ -576,7 +580,7 @@ We will now inspect \cref{eq:current_drifts} term by term.
 
 \subsection{First order perpendicular terms}
 %
-The $\ve{E}\times\ve{B}$ drift for the two species cancels as it is equal for both species.
+The $\ve{E}\times\ve{B}$ drifts for the two species cancel as they are equal for both species.
 The diamagnetic terms yields
 %
 \begin{align*}
@@ -587,13 +591,13 @@ The diamagnetic terms yields
  \\
  %
  &=
-  -\frac{1}{e}\L[\mathcal{C}(p_e) + \mathcal{C}(p_i)\R]
+ -\frac{1}{e}\L[\mathcal{C}(p_e) + \mathcal{C}\L(\frac{p_i}{Z}\R)\R]
   \note{$\mathcal{C}(f) + \mathcal{C}(g) = \mathcal{C}(f+g)$\\
   }
  \\
  %
  &=
-  -\frac{1}{e}\L[\mathcal{C}\L(p_e+p_i\R)\R]
+  -\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
 \end{align*}
 
 \subsection{Polarization and viscosity}
@@ -670,7 +674,7 @@ The ion continuity equation to order $\e^0$ reads
  \note{\cref{eq:div_ExB,eq:div_n_ued} for ions}
  \\
  \partial_t n
- + \frac{1}{e}\mathcal{C}(p_i)
+ + \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
  + n \mathcal{C}(\phi)
  + \ve{u}_E \cdot \grad n
  + n \div \ve{u}_{i,\|}
@@ -682,14 +686,14 @@ The ion continuity equation to order $\e^0$ reads
  + \ve{u}_{i,\|} \cdot \grad n
  &=
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(p_i\R)
+ - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \\
  \L(\d_t + \ve{u}_{i,\|} \cdot \grad\R) n
  &=
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(p_i\R)
+ - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \numberthis
@@ -711,7 +715,7 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
  \frac{\grad_\perp \phi}{B}
  \L[
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(p_i\R)
+ - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \R]
@@ -832,7 +836,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
 %
 %
 =&
-  -\frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
+-\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
   \\
   &
   - n \div\L(\frac{\nu_{in}}{\om_{ci}}
@@ -850,7 +854,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
  +
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{i, n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
  \\
 %
@@ -863,7 +867,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
 %
 \frac{1}{e}\div \ve{j}_\|
 =&
-  \frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
+\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
   \\
   &
   +  n \div\L(\frac{\nu_{in}}{\om_{ci}}
@@ -881,7 +885,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
  -
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{i, n} - \frac{1}{e}\mathcal{C}(p_i) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
   \\
 %
@@ -893,3 +897,8 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
   \label{eq:full_vort_eq}
 \end{align*}
 %
+So far we have balanced the divergence of the parallel currents with the divergence of the perpendicular currents (using the drifts).
+From this we have obtained a time derivative from the ion polarization drift (the third term in \cref{eq:full_vort_eq}).
+In the next chapter, we will see how the ion polarization term turns into the time derivative of the parallel vorticity of the $\ve{E}\times\ve{B}$-drift under the assumption of a homogeneous $B$-field.
+The homogeneous $B$-field will simplify our work of extracting the vorticity.
+Therefore, we end our derivations in a slowly varying $B$-field here.
