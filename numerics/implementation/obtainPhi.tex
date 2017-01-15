@@ -30,7 +30,7 @@ Instead, one must reformulate the boundary condition in a way such that it becom
 The equation of the ghost point can then be substituted into the equations for the first/last inner point (the point just before the boundary) and thus effectively eliminating the ghost point from the set of equations.
 
 To exemplify, consider a second order Dirichlet boundary condition with the boundary half between grid points for the equation $\partial_x^2 f = b$, where $f_{-1}$ denotes the value at the ghost point, $f_{\text{BC}}$ denotes the value at the boundary and $f_{1}$ denotes the value at the first inner ghost point.
-The boundary condition can now be written $\frac{f_{-1}+f_{1}}{2}=f_{\text{BC}}$, and the equation for the first inner point could be written $\frac{f_{-1}+2f{1}+f_{2}}{(\Delta x)^2}=b_1$.
+The boundary condition can now be written $\frac{f_{-1}+f_{1}}{2}=f_{\text{BC}}$, and the equation for the first inner point could be written $\frac{f_{-1}+2f_1+f_{2}}{(\Delta x)^2}=b_1$.
 This would lead to the equation system
 %
 \begin{align*}
@@ -67,9 +67,9 @@ The symmetric way to implement this would be to write $f_{-1}=2f_{\text{BC}}-f_{
 This gives
 %
 \begin{align*}
-    \frac{f_{-1}+2f{1}+f_{2}}{(\Delta x)^2}&=b_1\\
-    \frac{2f_{\text{BC}}-f_{1}+2f{1}+f_{2}}{(\Delta x)^2}&=b_1\\
-    \frac{f{1}+f_{2}}{(\Delta x)^2}&=b_1 - \frac{2f_{\text{BC}}}{(\Delta x)^2}
+    \frac{f_{-1}+2f_{1}+f_{2}}{(\Delta x)^2}&=b_1\\
+    \frac{2f_{\text{BC}}-f_{1}+2f_{1}+f_{2}}{(\Delta x)^2}&=b_1\\
+    \frac{f_{1}+f_{2}}{(\Delta x)^2}&=b_1 - \frac{2f_{\text{BC}}}{(\Delta x)^2}
 \end{align*}
 %
 This would give

@@ -10,7 +10,7 @@ At the same time, as mentioned in \cref{sec:BCInnerRho}, there is a need of arti
 We immediately observe that having a boundary condition at the singularity is a bad idea due to the singularity.
 It is also a bad idea to use one sided FD schemes around this point, as this will prevent communication of information through the axis.
 
-One way to circumvent the problem is to put the innermost point in rho $\Delta \rho$ apart from each other, where $\Delta \rho$ is the grid spacing.
+One way to circumvent the problem is to put the innermost point in $\rho$, $\Delta \rho$ apart from each other, where $\Delta \rho$ is the grid spacing.
 I.e. the innermost points are both located $\frac{\Delta \rho}{2}$ from the axis, diametrically opposite of each other, as depicted on \cref{fig:innerRho}.
 %
 \begin{figure}[htb]
@@ -18,7 +18,7 @@ I.e. the innermost points are both located $\frac{\Delta \rho}{2}$ from the axis
     \includegraphics[width=0.5\textwidth]{fig/innerGhost}
     \caption{\textit{
 The solid lines black lines represent the coordinate curves of a mesh with $4$ points in the $\rho$ direction (excluding the outermost ghost point depicted with a dashed black line), and $8$ points in the $\theta$-direction.
-The green solid circles represents the inner grid points at $\theta=\theta_i$, with the corresponding ghost points at $\theta=\theta_i + \pi$ depicted in green dashed circles.
+The green solid circles represent the inner grid points at $\theta=\theta_i$, with the corresponding ghost points at $\theta=\theta_i + \pi$ depicted as green dashed circles.
     }}
     \label{fig:innerRho}
 \end{figure}
@@ -52,7 +52,7 @@ Hence, the ghost point for the inner $\rho$ value is set to the same as the valu
 
 If the mode is odd, the mode under consideration would have value of the point diametrically opposite of the innermost point, but with a changed sign.
 Thus, the ghost point for the inner $\rho$ value is set to the negative of the value at the innermost $\rho$.
-This is depicted in \cref{fig:BCLaplace}, and was first used in
+This is depicted in \cref{fig:BCLaplace}, and was first used in \cite{Naulin2008}.
 %
 \begin{figure}[h!]
     \centering

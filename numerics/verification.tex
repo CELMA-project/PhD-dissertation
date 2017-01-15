@@ -129,7 +129,7 @@ Hence, one can use the approach of method of exact solutions (MES) to verify the
 Although it is simpler to perform MES than MMS, there are certain points one should be aware of.
 Especially since we are dealing with a periodic domain with a singularity in the center.
 Let us now call the function we are operating on with a discretized operator $D$ for $f(\rho,\theta,z)$.
-Hence, the source $S$ is given by $D[f(\rho,\theta,z)]=S$, where $S$.
+Hence, the source $S$ is given by $D[f(\rho,\theta,z)]=S$.
 If we are to take derivatives in the $\rho$ direction, we must take care that
 %
 \vspace{0.5cm}
@@ -376,7 +376,7 @@ Also note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\
 The verification of extrapolation to the outer ghost points in $\rho$ was verified in \cref{sec:derOp}.
 What remains is to verify the parallel extrapolation of the ghost points for $\phi$, and to verify the sheath boundary condition for $j_{\|}$.
 Notice that the polynomials in \cref{sec:extrapolGhost} are of fourth order.
-This is to avoid propagation of one point errors when the ghost point is re-inserted in the FDA.
+This is to avoid propagation of one point errors when the ghost point is re-inserted in the finite difference approximation (FDA).
 For the sheath boundary condition, the following functions are used
 %
 \begin{align}
