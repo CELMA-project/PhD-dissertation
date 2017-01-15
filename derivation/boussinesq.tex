@@ -93,9 +93,7 @@ In other words, we have that
     \grad(fn) \simeq n\grad f
 \end{align*}
 %
-Using the assumptions, we find that
-%
-Inserting this in \cref{eq:start_of_boussinesq}, we find that
+Using the assumptions, we find that inserting this in \cref{eq:start_of_boussinesq} yields
 %
 \begin{align*}
  \div\L( n \frac{1}{\om_{ci}}
@@ -179,7 +177,7 @@ Let us now briefly comment on the approximations made
         % FIXME: Citation needed
     \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradients in the background density are sharp as compared to $\rho_s$, however it may be that it is not orders of magnitude larger.
         % FIXME: Citation needed
-    \item $\overline{n} \simeq n_0$ : This assumptions is may be the hardest to fulfill, as the gradients usually are non-vanishing.
+    \item $\overline{n} \simeq n_0$ : This assumption is maybe the hardest to fulfill, as the gradients usually are non-vanishing.
         % FIXME: Citation needed
 \end{enumerate}
 %
@@ -194,7 +192,7 @@ A more rigorous study could be to investigate the set of equations from a energy
 \section{The Boussinesq approximation in the CELMA model}
 %
 We will now see how the set of equations in the CELMA model is affected by the Boussinesq approximation.
-Continuing from \cref{eq:boussinesq_vort} with the assumption that $\grad B = 0$ yields
+Continuing from \cref{eq:boussinesq_vort} (using the assumption that $\grad B = 0$) yields
 %
 \begin{align*}
     &- n_0 \div\L(
@@ -406,7 +404,7 @@ Finally, normalization yields
  + \partial_\| j_\|
 \end{align*}
 
-\section{Modified vorticity equation}
+\section{The vorticity equation}
 %
 We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$, and get
 %
@@ -440,3 +438,5 @@ We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$,
   \numberthis
   \label{eq:celma_vort_boussinesq}
 \end{empheq}
+%
+To see how good or bad this approximation is (at least in our system), we will compare it with results not using this approximation in \cref{part:results}.

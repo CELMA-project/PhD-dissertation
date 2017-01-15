@@ -8,7 +8,7 @@ This leads to a potential build-up on the material surface which affects the pla
 Unfortunately the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
 This is mainly due to the fact that there will be more ions than electrons in this area and the assumption quasi-neutrality breaks down.
 In other words, the fluid models are only valid up until the sheath entrance (SE), and a proper description in this area can only be accounted for with kinetic codes, solving for example the Fokker-Planck equation.
-One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma end, and where does the sheath start.
+One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma ends, and where the sheath begins.
 
 There are mainly two challenges in setting the radial boundary conditions.
 Firstly, the plasma does not usually extent all the way to the chassis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
@@ -196,7 +196,7 @@ The potential in our equations are not being evolved in time directly, but is ca
 This inversion takes into account the outer radial boundary condition in $\phi$.
 This outer radial boundary condition can be set from the material properties of the wall.
 On the other hand, we do not have any physical material constraint at the SE.
-The only thing we impose it that $\phi$ on the plate very close to the SE is set to an arbitrary constant.
+The only thing we impose is that $\phi$ on the plate very close to the SE is set to an arbitrary constant.
  It is not clear how this is reflected at the SE in a non-steady state plasma.
 
 However, parallel derivatives of the potential is being taken in our set of equations.
@@ -240,7 +240,7 @@ As the density profile is approximately Gaussian, the profile will be relative f
 We therefore set
 %
 \begin{align*}
-    \partial_\| n \bigg|_{L_\rho} = 0
+    \partial_\rho n \bigg|_{L_\rho} = 0
 \end{align*}
 %
 Note however that this can be too restrictive if coherent structures such as "blobs"
@@ -255,7 +255,7 @@ The parallel velocities are not constrained by any forces at the radial edge, an
 In this thesis we set
 %
 \begin{align*}
-    \partial_\| u_{e,\|} \bigg|_{L_\rho} = \partial_\| u_{i,\|} \bigg|_{L_\rho} = 0
+    \partial_\rho u_{e,\|} \bigg|_{L_\rho} = \partial_\rho u_{i,\|} \bigg|_{L_\rho} = 0
 \end{align*}
 %
 although there in principle are no physical reason for why this should be.
@@ -273,7 +273,7 @@ For that reason we have that
 As the ion Larmor radius is larger than the electron Larmor radius, more ions than electron would be lost radially initially if FLR effect were included.
 This would result in a small potential difference which would increase the poloidal $\ve{E}\times\ve{B}$ drift.
 
-\subsubsection{Vorticity velocity BC at outer radius}
+\subsubsection{Vorticity BC at outer radius}
 %
 % NOTE: Tried
 %       1. Om = 0

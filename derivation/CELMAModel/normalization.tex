@@ -1,6 +1,10 @@
 \section{Normalization}
 \label{sec:norm}
-We will now normalize using the ``standard'' gyro-Bohm normalization%
+We will in this section normalize the set of equations derived in this chapter.
+The motivation for doing so is to write the equations in a unit-less manner, so that the evolved variables can be compared to each other in a more meaningful way.
+It will also simplify the system of equations by removing factors with units appearing in front of terms, possibly turning them into non-dimensional units which characterizes the system.
+
+Here we will now normalize using the "standard" gyro-Bohm normalization%
 %
 \footnote{Also known as: Bohm normalization}.%
 %
@@ -72,11 +76,11 @@ and that
 = n_0\frac{\Om^D}{\om_{ci}}.
 \end{align*}
 %
-Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and note that since the particle source $S$ has the units of density per second, it makes sense to normalize it with $n_0$ and $\om_{ci}$.
+Furthermore, we normalize all time and frequency variables with $\om_{ci}$, and note that since the particle source $S$ has the units of density per second, we must normalize it with $n_0$ and $\om_{ci}$ to make it consistent with the continuity equation.
 
 Finally, the normalization constant for the dynamic viscosities $\eta_{\a,n}$ can easily be found by looking at the dimensions of the RHS of \cref{eq:nonElstat} and the corresponding $\eta_{\a,n}$.
 We have that the normalization constants corresponding to $m_\a \partial_t(nu_{\a,\|})$ must be $m_\a\om_{ci}n_0c_s$ as we have normalized the time with $\om_{ci}$.
-As $\partial_z^2 u_{\a,\|}$ must have to normalization constant $c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with $m_i\rho_s n_0c_s$.
+As $\partial_z^2 u_{\a,\|}$ has the normalization constant $c_s/\rho_s^2=\om_{ci}/\rho_s$, then $\eta_{\a,n}$ can be normalized with $m_i\rho_s n_0c_s$.
 We see that this normalization constant has the proper units of mass per meter seconds (or equivalently pascal seconds).
 
 As a side note, we note that
@@ -151,7 +155,7 @@ which means that
 
 We will now normalize the equations derived above, and we will from here on drop the tilde to simplify the writing.
 
-\subsection{Normalization of \texorpdfstring{$n$}{the density}}
+\subsection{Normalization of the density equation}
 By normalizing \cref{eq:non_norm_dens}, we get
 %
 \begin{align*}
@@ -286,7 +290,7 @@ This yields
  \label{eq:norm_ln_n}
 \end{align*}
 
-\subsection{Normalization of \texorpdfstring{$\Omega^D$}{the modified vorticity}}
+\subsection{Normalization of the modified vorticity equation}
 %
 Next, normalization of \cref{eq:non_norm_vort_2} yields
 %
@@ -393,7 +397,7 @@ and
 \end{align*}
 %
 
-\subsection{Normalization of \texorpdfstring{$nu_{i,\|}$}{the parallel momentum density}}
+\subsection{Normalization of the parallel momentum density equation}
 %
 Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
 %
@@ -448,9 +452,9 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
 \end{align*}
 %
-We notice how the ion mass in the electron pressure got normalized away.
+We notice how the ion mass in the electron pressure got turned into a $1/\mu$ upon normalization.
 
-\subsection{Normalization of \texorpdfstring{$j_{\|}$}{the parallel current}}
+\subsection{Normalization of the parallel current equation}
 %
 Finally, by using $\ve{E}=\frac{\wt{E}T_e}{e\rho_s}$, normalization of the parallel current can be done in the following way
 %

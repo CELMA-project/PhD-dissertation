@@ -4,7 +4,7 @@
 In order to solve the system of equations, we need to determine $u_{\a,\|}$.
 This could be done by solving for the ion momentum equation and for the electron momentum equation.
 However, as we are calculating $\frac{1}{e}\partial_\|\L(ne\L[u_{i,\|} - u_{e,\|}\R]\R)$ in \cref{eq:complVort}, we require that this term is of high precision.
-This because the vorticity is a first order term, and the numerical loss of precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
+This is because the vorticity is a first order term, and the numerical loss of precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
 As a result, the numerical error may pollute the calculated order of the modified vorticity.
 
 Therefore, we will instead evolve the parallel current equation (which normalized equals $n\L(u_{i,\|} - u_{e,\|}\R)$).
@@ -481,3 +481,9 @@ By using $n\simeq n_e \simeq Zn_i$, we get
  \numberthis
  \label{eq:parElNonNorm}
 \end{align*}
+%
+We have now successfully derived all the equations we needed in order to evolve our system in time.
+We have used the continuity equation and the drifts in order to derive an equations evolving the electron density in time.
+Due to quasi-neutrality this also describes how the ion density evolves in time.
+Both the parallel momentum density equation and the parallel current has been derived from the momentum density equation for electrons and ions.
+Before plugging these equations into a code which solves them for time, we will normalize them.

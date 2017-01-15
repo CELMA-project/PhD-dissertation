@@ -1,11 +1,9 @@
 \section{The set of equations}
 \label{sec:SOE}
 % FIXME: Write a note about why j is chosen conservative
-By using what we found in \cref{sec:ExBadv,sec:art_visc}, the full set of equations reads%
-%
-\footnote{
-As mentioned in \cref{chap:additionalImplementation}, the actual viscosities has been replaced by artificial viscosities (for simplicity not shown in \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}).
-}
+As we will dicuss further in \cref{chap:additionalImplementation}, we will replace the actual viscosities with artificial viscosities.
+
+If we (only for simplicity) does not write out the viscosities, the set of equations read
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
     \Om^D =& \div\L(n\frac{\grad_\perp\phi}{B}\R)
