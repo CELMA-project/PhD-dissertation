@@ -2,6 +2,15 @@
 %
 The steady state is achieved as described in \cref{sec:initRun}.
 We will in this section discuss the resulting profiles.
+% FIXME: Add this somewhere:
+%        Changes in profiles when increasing B:
+%        Parallel:
+%        - Bump in current close to sheath goes up
+%        - Vort initially neg an monotonically growing, now bumped above 0
+%           + Does not conicide with node in fluctuations
+%        - n increases <-- confinement? Naah....most is lost in the parallel direction anyways
+%        Perpendicular:
+%        - Profile steepening
 
 \subsection{Parallel profiles}
 
@@ -25,11 +34,7 @@ In between these two extremes, the parallel extent of the source determines the 
 That is: The parallel shape of the density is determined by the parallel extent of the source, and not so much by the shape of the source itself.
 
 As mentioned above, also the boundary condition at the sheath entrance is critical for the parallel shape of the plasma.
-If the boundary condition on the density was changed to for example the Cauchy boundary condition (described in
-% FIXME: Add ref
-(FIXME)
-)
-the shape of the steady state profile would be much steeper close to the sheath entrance.
+If the boundary condition on the density was changed to for example the Cauchy boundary condition (described in \cref{sec:BCatSE}) the shape of the steady state profile would be much steeper close to the sheath entrance.
 Such steep gradients usually gives rise to numerical instabilities if the spatial resolution in this area is not increased.
 
 We observe that the potential profile in \cref{fig:parProfs} follows the density profile quite well.
@@ -46,13 +51,13 @@ The ions are further fixed to the ion sound velocity at the sheath entrance, whe
 If more electrons than ions were to escape, a potential difference would build up attracting more ions and pushing away more electrons.
 %
 % Why is it not ambipolar?
-
+%
 Any difference in the parallel velocities would lead to parallel currents.
 The divergence of current must be constant as a consequence of charge conservation.
-Any parallel derivatives in the parallel current not balancing the other terms in (FIXME)
-would lead to an acceleration of the plasma spinning.
-
+Any parallel derivatives in the parallel current not balancing the other terms in \cref{eq:celma_vortD_evolution} would lead to an acceleration of the plasma spinning.
 Therefore, the radial vorticity profile comes as a direct consequence of the parallel derivative of the current in that point.
+Due to this, one should take care that the see-sawing in the parallel current profile is kept to a minimum.
+The see-saw pattern seen in \cref{fig:parProfs} is the maximum allowed see-sawing in this thesis, and arises from poor parallel resolution, as mentioned in \ref{sec:resolution}.
 
 \subsection{Radial profiles}
 %
@@ -159,13 +164,13 @@ A summary of how the growth rates and rotations scales with the magnetic field $
 % FIXME: Consider: Does this need to be this wide?
 \begin{figure}[htb]
     \centering
-    \begin{subfigure}[h]{1.00\textwidth}
+    \begin{subfigure}[h]{0.48\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0}
         \label{fig:grB}
     \end{subfigure}%
     \\
-    \begin{subfigure}[h]{1.00\textwidth}
+    \begin{subfigure}[h]{0.48\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0ModeNr}
         \label{fig:grBModeNr}
@@ -233,7 +238,7 @@ On the transition from the linear phase to the turbulent phase a energy overshot
 
 As a consequence the eddies evolve at a faster phase at the transition as compared with the saturated turbulent state where eddies evolve at a slower rate.
 In the saturated state the energy stays closer to the temporal mean, shown in \cref{fig:energyTrace008}.
-It is also important to observe that the fluctuations can be big enough to push the plasma off center as observed in \cref{fig:evolution}.
+It is also important to observe that the fluctuations can be big enough to push the plasma off center as observed in \cref{fig:turbEv}.
 %
 \begin{figure}[htbp]
     \centering
@@ -253,7 +258,7 @@ It is also important to observe that the fluctuations can be big enough to push 
     \end{subfigure}
     \caption{Evolution of the plasma in the staurated turbulence phase.
         Here shown for $B=0.08\T$}
-    \label{fig:evolution}
+    \label{fig:turbEv}
 \end{figure}
 %
 In the saturated turbulence state, the fluctuations are no longer in an ordered pattern as they were in the linear phase.
