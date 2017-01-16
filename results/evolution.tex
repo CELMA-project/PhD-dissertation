@@ -75,17 +75,15 @@ The values here differs from the density profile because of the zero gradient en
 %
 After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
 It has not been observed that the system reaches the linear phase unless perturbed.
-This could in principle happen if the noise at machine level assembles in just the right way such that it forms an linearly unstable mode.
-Depending on the simulation parameters, the poloidal modes will be damped to zero and the system will return to the steady state, or they will increase in amplitude.
-As the perturbations are small, the dynamics in this linear phase come purely from the linear part of the set of equations.
-In other words mode coupling between different modes are negligible.
+This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.
+Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
+As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
+In other words mode, coupling between different modes are negligible.
 Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters), as indicated in \cref{fig:modeRotation}.
-
-If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
+In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
+A clockwise rotation is indicated in \cref{fig:modeRotation}.
 %
 % FIXME; Could add arrow indicating direction of rotation
-%
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[h]{1.00\textwidth}
@@ -108,9 +106,76 @@ If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta
     \caption{Rotation of modes}
     \label{fig:modeRotation}
 \end{figure}
+\newpage
 %
-Which poloidal mode which will dominate is dependent on $B$.
-This is depicted in \cref{fig:dominatingMode}.
+If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
+
+To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
+From linear stability theory (FIXME)
+% FIXME: Add references
+, the position of the most unstable mode for drift waves coincides with the position of largest gradient.
+As the abscissa is logarithmic, exponential grow will appear as straight lines.
+%
+% FIXME: Make the ticks bigger
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/stable}
+        \label{fig:fourierStable}
+        \caption{For $B=0.02\T$ the system is stable against perturbation}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[h]{0.48\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/unstable}
+        \label{fig:fourierUnstable}
+        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
+    \end{subfigure}
+    \caption{Time trace of the absolute values of the Fourier modes.}
+    \label{fig:fourierDens}
+\end{figure}
+%
+The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
+%
+\begin{align*}
+    \Re[\om_n(t)] =
+    \frac{
+        \frac{\Im[\text{FT}(n[t_1])]}{\Re[\text{FT}(n[t_1])]} -
+        \frac{\Im[\text{FT}(n[t_0])]}{\Re[\text{FT}(n[t_0])]}
+    }{\Delta t}
+\end{align*}
+%
+where $\text{FT}$ denotes the Fourier transformed.
+The final angular velocity is the average of the individual angular velocities of the linear phase, where the start and the end of the linear phase has been determined by visual inspection, where we have used the definitions
+%
+\begin{enumerate}
+    \item The start of the linear phase is defined as the time where the initial perturbation has vanished and where the modes start to show a more or less exponential growth.
+    \item The end of the linear phase is defined as the time where any mode, which up to that point in time has been flat or damped, suddenly shows an exponential growth.
+\end{enumerate}
+%
+A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:gr}.
+%
+% FIXME: Consider: Does this need to be this wide?
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0}
+        \label{fig:grB}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0ModeNr}
+        \label{fig:grBModeNr}
+    \end{subfigure}
+    \caption{$B$-dependency on the growth rates and angular velocities.}
+    \label{fig:gr}
+\end{figure}
+%
+As indicated in \cref{fig:gr}, which poloidal mode dominates is dependent on $B$.
+This is depicted in \cref{fig:dominatingMode}, where one also can observe that the parallel node moves downward with decreasing $B$.
 %
 \begin{figure}[htbp]
     \centering
@@ -138,72 +203,9 @@ This is depicted in \cref{fig:dominatingMode}.
     \label{fig:dominatingMode}
 \end{figure}
 %
-One can also note that the parallel node moves downward with decreasing $B$.
-
-A more quantitative way to look at the linear phase is to plot the Fourier modes at the position of the most unstable growth.
-From linear stability theory (FIXME)
-% FIXME: Add references
-, the position of the most unstable mode for drift waves coincides with the position of largest gradient.
-The modes are depicted in \cref{fig:fourierDens}.
-As the abscissa is logarithmic, exponential grow will appear as straight lines.
-%
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[h]{0.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/stable}
-        \label{fig:fourierStable}
-        \caption{For $B=0.02\T$ the system is stable against perturbation}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}[h]{0.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/unstable}
-        \label{fig:fourierUnstable}
-        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
-    \end{subfigure}
-    \caption{Time trace of the absolute values of the Fourier modes.}
-    \label{fig:fourierDens}
-\end{figure}
-%
-The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
-%
-\begin{align*}
-    \Re[\om_n(t)] =
-    \frac{
-        \frac{\Im[\text{FT}(n[t_1])]}{\Re[\text{FT}(n[t_1])]} -
-        \frac{\Im[\text{FT}(n[t_0])]}{\Re[\text{FT}(n[t_0])]}
-    }{\Delta t}
-\end{align*}
-%
-where $\text{FT}$ denotes the Fourier transformed.
-The final angular velocity is the average of the individual angular velocities of the linear phase, where the start and the end of the linear phase has been determined by visual inspection.
-The start has been defined as the time where the initial perturbation has vanished, and where the modes start to show a more or less exponential growth.
-The end is defined as the time where any mode, which up to that point in time has been flat or damped suddenly shows an exponential growth.
-\Cref{fig:gr} depicts the $B$ dependencies on the growth rates.
-%
-\begin{figure}[htb]
-    \centering
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0}
-        \label{fig:grB}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-    \end{subfigure}
-    \caption{$B$-dependency on the growth rates and angular velocities.}
-    \label{fig:gr}
-\end{figure}
-%
 % FIXME: Explain why compare is different?
 
 FIXME: Compare gr with analytic gr.
-
-FIXME: Figures are scattered all over.
 
 \section{The turbulence phase}
 %
@@ -231,32 +233,27 @@ On the transition from the linear phase to the turbulent phase a energy overshot
 
 As a consequence the eddies evolve at a faster phase at the transition as compared with the saturated turbulent state where eddies evolve at a slower rate.
 In the saturated state the energy stays closer to the temporal mean, shown in \cref{fig:energyTrace008}.
-It is also important to observe that the fluctuations can be big enough to push the plasma off center as observed in \cref{fig:offcenter}.
+It is also important to observe that the fluctuations can be big enough to push the plasma off center as observed in \cref{fig:evolution}.
 %
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[h]{1.00\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/2DTurbulence/steadyStateN}
-        \caption{The plasma at the steady state.}
-        \label{fig:2Dsteady}
+        \includegraphics[width=1.0\textwidth]{fig/results/evolution/n-perpPar-2D-0}
     \end{subfigure}%
     \\
     \begin{subfigure}[h]{1.00\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/2DTurbulence/violentBurst}
-        \caption{A violent burst is observed at the energy overshoot.}
-        \label{fig:violentBurst}
+        \includegraphics[width=1.0\textwidth]{fig/results/evolution/n-perpPar-2D-1}
     \end{subfigure}
     \\
     \begin{subfigure}[h]{1.00\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/2DTurbulence/offCenter}
-        \caption{Example of the plasma bulk being off axis}
-        \label{fig:offcenter}
+        \includegraphics[width=1.0\textwidth]{fig/results/evolution/n-perpPar-2D-2}
     \end{subfigure}
-    \caption{Turbulent eddies are observed in the saturated turbulence state.
-    Here shown for $B=0.1\T$}
+    \caption{Evolution of the plasma in the staurated turbulence phase.
+        Here shown for $B=0.08\T$}
+    \label{fig:evolution}
 \end{figure}
 %
 In the saturated turbulence state, the fluctuations are no longer in an ordered pattern as they were in the linear phase.
