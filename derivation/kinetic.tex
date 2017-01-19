@@ -1,68 +1,67 @@
 We will here derive the fluid equations used in the rest of this thesis from the Fokker-Planck%
 \footnote{
-This equation can again be derived from the Klimontovich equation (see for example \cite{Klimontovich1983book}.
+    This equation can again be derived from the Klimontovich equation (see for example \cite{Klimontovich1983book}).
 }
 %
  equation by following the approach of \cite{Helander2002book}.
 In addition we will include an inelastic source.
 This source will either add or subtract particles to the distribution function depending on its sign.
 
-We are looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ of species $\a$, in at point $\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space at time $t$.
-The particles obeys the conservation equation
+We are looking at a distribution function $f_\a(\ve{r},\ve{v},t)$ of species $\a$, at point $\ve{z}(t)=(\ve{r}(t),\ve{v}(t))$ in the phase-space at time $t$.
+The particles obey the conservation equation
 %
 \begin{align*}
-    \partial_t f_\a + \partial_{\ve{z}} \L(\L[\d_t \ve{z}\R]f_\a\R) =& S'_\a
+    \partial_t f_\a + \partial_{\ve{z}} \L(\L[\d_t \ve{z}\R]f_\a\R) =& S'_\a,
 \end{align*}
 %
-Where $S$ is a source in the distribution function for species $\a$.
-We will here use a source which fulfills the following
+where $S'_\alpha$ is a source in the distribution function for species $\a$.
+We will here use a source which fulfills the following:
 %
 \begin{align*}
     &\inde{S'_{\a}}{^3v} = S_{n,\a}&
-    &\text{Particles are created}&
+    &\text{Particles are created.}&
     \\
     &\inde{m_\a \ve{v} S'_\a}{^3v} = 0&
-    &\text{They are created with zero bulk velocity}&
+    &\text{They are created with zero bulk velocity.}&
     \\
     &\inde{\frac{m_\a \ve{v}^2}{2} S'_\a}{^3v} = S_{E,\a}&
-    &\text{They have a finite energy when created}&
+    &\text{They have a finite energy when created.}&
 \end{align*}
 %
 Using that
 %
 \begin{align*}
     \d_t \ve{r}     =& \ve{v}\\
-    \d_t \ve{v}     =& \frac{q_\a}{m_\a}\L(\ve{E}'+\ve{v}\times\ve{B}\R)\\
-    \partial_{\ve{v}} \L(\ve{E}'+\ve{v}\times\ve{B}'\R) =& 0
+    \d_t \ve{v}     =& \frac{q_\a}{m_\a}\L(\ve{E}'+\ve{v}\times\ve{B}'\R)\\
+    \partial_{\ve{v}} \L(\ve{E}'+\ve{v}\times\ve{B}'\R) =& 0,
 \end{align*}
 %
-Where $\ve{E}'$ and $\ve{B}'$ are the total fields.
-We get
+where $\ve{E}'$ and $\ve{B}'$ are the total fields, we get
 %
 \begin{align*}
       \partial_t f_\a
     + \ve{v}\cdot\nabla f_\a
     + \frac{q_\a}{m_\a}
       \L(\ve{E}'+\ve{v}\times\ve{B}'\R)\cdot\partial_{\ve{v}}f_\a
-    =& S_\a
+    =& S_\a.
 \end{align*}
 
 \section{Fokker-Planck equation}
 We now introduce $\ve{E}$ and $\ve{B}$, which are the fields averaged over several Debye lengths.
-To incorporate the microscopic fluctuations of the fields, we are introducing the collision operator
+To incorporate the microscopic fluctuations of the fields, we introduce the collision operator
 %
 \begin{align*}
     C_\a = \sum_\g C_{\a\g}(f_\a,f_\g)
 \end{align*}
 %
-In the scope of this thesis, we will consider only elastic collisions between fully ionized, cold ions, electrons and cold neutrals (which only acts as a static background).
+In the scope of this thesis, we will consider only elastic collisions between fully ionized, cold ions, electrons and cold neutrals (which only act as a static background).
 In other words, we will let $\gamma \in \{e, i, n\}$ (denoting electrons, ions and neutrals), so that
 %
 \begin{align*}
     C_\a = C_{\a\b}(f_\a,f_\b) + C_{\a n}(f_\a,f_n)
 \end{align*}
 %
-where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Furthermore, the collision operator has the following properties
+where $\a,\b \in \{e, i\}$ and $\a\neq \b$. Furthermore, the collision operator has the following properties:
 %
 \begin{align*}
     &\inde{C_{\a\g}}{^3v} = 0&
@@ -82,7 +81,7 @@ The resulting Fokker-Planck equation reads
       \partial_t f_\a
     + \ve{v}\cdot\nabla f_\a
     + \frac{q_\a}{m_\a}\L(\ve{E}+\ve{v}\times\ve{B}\R)\cdot\partial_{\ve{v}}f_\a
-    =& S_\a + C_\a
+    =& S_\a + C_\a.
     \label{eq:fp}
 \end{empheq}
 
@@ -100,17 +99,17 @@ where $\expt{1}_f=n_a$ is the density, to denote a weighted velocity average (a 
 From this, we define
 %
 \begin{align*}
-    \expt{\ve{v}_\a}_f        \defined& \; \ve{u}_a      \\
-    \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_f \defined&\; \te{\Pi}_\a
+    \expt{\ve{v}_\a}_f        \defined& \; \ve{u}_a,      \\
+    \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_f \defined&\; \te{\Pi}_\a.
 \end{align*}
 %
-We call the difference in the velocity of a single particle with respect to the macroscopic fluid velocity $\ve{w}$, so that
+We call the difference between the velocity of a single particle and the macroscopic fluid velocity $\ve{w}$, so that
 %
 \begin{align*}
-    \ve{w}_\a = \ve{v} - \ve{u}_\a
+    \ve{w}_\a = \ve{v} - \ve{u}_\a.
 \end{align*}
 %
-Thus, we define
+Thus, we define the scalar pressure $p_\a$, the pressure tensor $\te{P}_\a$ and the stress tensor $\te{\pi}_\a$ as
 %
 \begin{align*}
     \frac{n_\a m_\a\expt{w_\a^2}_f}{3} \defined& \; p_\a = n_\a T_\a\\
@@ -119,10 +118,10 @@ Thus, we define
 \end{align*}
 %
 where $\te{I}$ is the identity tensor.
-Finally we have that
+Finally we define
 %
 \begin{align*}
-    \inde{m_\a\ve{v} C_{\a\g}(f)}{^3v} =& \ve{R}_{\g\to\a},
+    \inde{m_\a\ve{v} C_{\a\g}(f)}{^3v} \defined& \ve{R}_{\g\to\a},
 \end{align*}
 %
 where $\ve{R}_{\g\to\a}$ is the friction force on $\a$ given by $\g$.
@@ -179,19 +178,19 @@ and
 %
     =&
     \frac{q_\a}{m_\a}\inde{\partial_{\ve{v}} \cdot\L(\ve{E}f_\a\R)}{^3v}
-    \note{Guass divergence theorem}
+    \note{Gauss divergence theorem}
     \\
 %
     =&
     \frac{q_\a}{m_\a}\defi{\partial_{\Om}}{}{\ve{E}f_\a}{S}
-    \note{$f_\a\bigg|_{\pm \infty} =0 $ }
     \\
 %
     =&
-    0
+    0,
+    \note{$f_\a\bigg|_{\pm \infty} =0 $ }
 \end{align*}
 %
-further that
+and further that
 %
 \begin{align*}
     \expt{n_\a\frac{q_\a}{m_\a}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_f
@@ -230,11 +229,11 @@ the source term gives
     \inde{S'_{\a}}{^3v} = S_{n,\a}
 \end{align*}
 %
-We will now assume that the plasma consists of only one type of ions, in only one ionizational and exitational state.
-Extension to this would require a distribution function for each set of atom at a specific ionizational and exitational state.
-We will further assume that the creation of electrons and ions to this state happens instantaneous (that is, no intermediate ioniziations or exitations takes place).
-If we take secondly ionized helium as an example, this would mean that one ion, and two electrons would be created instantaneously.
-More generally, $N_i$ ions and $ZN_i$ electron will be created for the charge number $Z$.
+We will now assume that the plasma consists of only one type of ions, in only one ionizational and excitational state.
+Extension to this would require a distribution function for each set of atom at a specific ionizational and excitational state.
+We will further assume that the creation of electrons and ions to this state happens instantaneously (that is, no intermediate ioniziations or excitations takes place).
+If we take fully ionized helium as an example, this would mean that one ion, and two electrons would be created instantaneously.
+More generally, $N_i$ ions and $ZN_i$ electrons will be created for the charge number $Z$.
 In other words, we would have that
 %
 \begin{align}
@@ -245,13 +244,13 @@ S_{n,e}=\frac{S_{n,i}}{Z}\defined S_n
 Finally the collision term gives
 %
 \begin{align*}
-    \inde{C_{\a\b}}{^3v} = 0
+    \inde{C_{\a\b}}{^3v} = 0.
 \end{align*}
 %
 Thus our continuity equation becomes
 %
 \begin{align}
-    \partial_t n_\a + \div\L(n_\a u_\a\R) = S_{n,\a} \label{kin:cont}
+    \partial_t n_\a + \div\L(n_\a \ve{u}_\a\R) = S_{n,\a} \label{kin:cont}.
 \end{align}
 
 \subsection{First moment}
@@ -384,10 +383,10 @@ further that
     -
     q_\a
     n_\a
-    \ve{u_\a}\times\ve{B}
+    \ve{u_\a}\times\ve{B}.
 \end{align*}
 %
-as we assume that the particles will be generated without any momentum, we have that
+As we assume that the particles will be generated without any momentum, we have that
 %
 \begin{align*}
     \inde{m_a\ve{v}S'_{\a}}{^3v} = 0
@@ -404,9 +403,10 @@ and finally, we use the following collision operator
     =
     \ve{R}_{\b\to\a}
     +
-    \ve{R}_{n\to\a}
+    \ve{R}_{n\to\a},
 \end{align*}
 %
+where the subscript $n$ in $\ve{R}$ denotes neutrals.
 Thus our momentum equation can now be written as
 %
 \begin{align}
@@ -542,7 +542,7 @@ The second term can be expanded further by observing that
 \end{align*}
 %
 The pressure tensor $\te{P}_\a$ would have been isotropic if the particles would be free to move in all directions.
-However, charged particles gyrates whenever moving with a vector component perpendicular to the magnetic field.
+However, charged particles gyrate whenever moving with a vector component perpendicular to the magnetic field.
 Thus, the pressure along the magnetic field line is different from the pressure perpendicular to it.
 Nevertheless, we can observe from the definitions that the tensors must be symmetric.
 
@@ -571,7 +571,7 @@ The second term of \cref{eq:mom_crude} can now be written as
     \div \te{\pi}_\a
     + \grad p_\a
     + m_\a n_\a \ve{u}_\a \cdot \nabla \ve{u}_\a
-    + m_\a \div \L( n_\a \ve{u}_\a \R) \ve{u}_\a
+    + m_\a \div \L( n_\a \ve{u}_\a \R) \ve{u}_\a.
 \end{align*}
 %
 Thus, \cref{eq:mom_crude} can be written
@@ -619,12 +619,12 @@ Thus, \cref{eq:mom_crude} can be written
     + q_\a n_\a\L(\ve{E}  + \ve{u_\a}\times\ve{B}\R)
     + \ve{R}_{\b\to\a}
     + \ve{R}_{n\to\a}
-    - S_{\a,n}m_\a\ve{u}_\a
+    - S_{\a,n}m_\a\ve{u}_\a.
     \numberthis
     \label{kin:mom_wo_full_deriv}
 \end{align*}
 %
-If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert this into \cref{kin:mom_wo_full_deriv} we get
+If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert this into \cref{kin:mom_wo_full_deriv}, we get
 %
 \begin{align*}
     n_\a m_\a \d_{t,\a} \ve{u}_{\a}
@@ -641,7 +641,7 @@ If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert
 
 \section{Set of equations}
 %
-By neglecting collision with neutral species, we have found that the two first moments of the Fokker-Planck equations (\cref{kin:cont,kin:mom}) can be written like
+We have found that the two first moments of the Fokker-Planck equations (\cref{kin:cont,kin:mom}) can be written like
 %
 \begin{empheq}[box=\tcbhighmath]{align}
     \partial_t n_\a + \div\L(n_\a \ve{u}_\a\R) =& S_{n,\a}
@@ -665,7 +665,7 @@ By neglecting collision with neutral species, we have found that the two first m
 where $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and $\ve{R}_{\g \to \a}$ denotes the force acting on species $\a$ by $\g$, i.e. the resistivity.
 Both the resistivity and the viscosity tensor depend on the temperature.
 
-We could go on with our derivation and include the third moment, namely the energy equation, which can be used to solve the temperature.
+We could go on with our derivation and include the second moment, namely the energy equation, which can be used to solve the temperature.
 The energy equation will depend on a quantity belonging to the next moment, namely the heat flux $Q$, due to the $\ve{v}\cdot\nabla f_\a$ term in \cref{eq:fp}.
 The heat flux equation would again depend on a quantity belonging to the next order, and so on.
 
@@ -676,7 +676,7 @@ The closure procedure uses that the mean free path is much larger than the ion L
 This gives an analytical expressions for $\ve{R}_{\b\to\a}$ (see \cref{app:collisions}) and the components of $\te{\pi}_\a$ (see \cref{app:piTensor}), and the set of equations (including the energy equations) are known as the Braginskii equations.
 
 We will in this thesis close the system in a much simpler way.
-If we assume that the electrons are isothermal, it can be described by a constant temperature, and hence there is no need for an equation to solve for $T_e$.
+If we assume that the electrons are isothermal, they can be described by a constant temperature, and hence there is no need for an equation to solve for $T_e$.
 We will further assume that the ions are cold ($T_i$ is isothermal with a constant temperature equal $0$).
 In this thesis we would like to study systems with the drift fluid approach (see \cref{chap:drift-order} for details), and we will therefore assume that the velocity component perpendicular to the magnetic field is much less than the ion sound speed.
 This is in direct contradiction to our assumption of an isothermal system, which requires that the fluid velocity is much larger than the ion sound speed, so that any difference in temperature is quickly smoothed out.
