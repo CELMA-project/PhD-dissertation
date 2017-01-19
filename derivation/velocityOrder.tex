@@ -1,11 +1,11 @@
 The non-linear, coupled set of equation (\ref{fluideq:cont}) and (\ref{fluideq:mom}) consists of one continuity equation per species and one momentum equation per direction per species.
 With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs) in a three-dimensional space.
-Resolving all the details in these equations are computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
+Resolving all the details in these equations is computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
 % FIXME: Not necessarily true in our case where we have sheaths
 
 The computational demand can be lessened by exploiting the difference in the parallel and the perpendicular dynamics.
 Due of the gyration of the particles, the dynamics parallel to the magnetic field are much faster than the dynamics perpendicular to the magnetic field.
-As a result the gradients perpendicular to the magnetic field tends to be much larger than the gradients parallel to the magnetic field.
+As a result the gradients perpendicular to the magnetic field tend to be much larger than the gradients parallel to the magnetic field.
 We can exploit this by using a courser grid in the parallel direction as compared to the perpendicular direction.
 By these two arguments, we have a good motivation to split our equations into perpendicular and parallel parts.
 
@@ -96,17 +96,17 @@ $\a$.%
 %
 
 In general, an arbitrary vector $\ve{a}$ can be written $\ve{a} = \ve{a}\cdot\te{I}$, where $\te{I}$ is the identity tensor of rank $2$.
-We introduce the rank-2 tensor $\ve{b}\ve{b}$, which is the outer product with the unity vectors along $\ve{B}$.
+We introduce the rank-2 tensor $\ve{b}\ve{b}$, which is the outer product of twice the unity vector along $\ve{B}$.
 Thus
 %
 \begin{align}
  \ve{a} = \ve{a}\cdot\L(\te{I}+\ve{b}\ve{b}-\ve{b}\ve{b}\R)
         = \underbrace{\ve{a}\cdot\L(\te{I}-\ve{b}\ve{b}\R)}_{\ve{a}_{\perp}}
-          + \underbrace{\L(\ve{a}\cdot\ve{b}\R)\ve{b}}_{\ve{a}_{\|}}
+          + \underbrace{\L(\ve{a}\cdot\ve{b}\R)\ve{b}}_{\ve{a}_{\|}}.
         \label{eq:perp_par}
 \end{align}
 %
-In other words, we can find the parallel component (with respect to the magnetic field) by taking the dot product with $\ve{b}$ and use the result to scale $\ve{b}$.
+In other words, we can find the parallel component (with respect to the magnetic field) by taking the dot product with $\ve{b}$ and use the result to find the magnitude along $\ve{b}$.
 We further observe that
 %
 \begin{align*}
@@ -132,7 +132,7 @@ We further observe that
     -
     \ve{b}\ve{b}
     \R)
-    \cdot\ve{a}
+    \cdot\ve{a}.
 \end{align*}
 %
 Generally we have
@@ -207,10 +207,10 @@ and that
  \note{$\nabla_\| \defined \ve{b}\ve{b}\cdot \nabla$}
  \\
  %
-  &= \grad_\|\ve{a}
+  &= \grad_\|\ve{a}.
 \end{align*}
 %
-For further references, we also define all the gradient operators in this thesis here
+For further references, we also define all the gradient operators in this thesis here:
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     &\partial_\| \defined \ve{b}\cdot \nabla&
@@ -363,7 +363,7 @@ We can now solve \cref{eq:uOrderStart} for $\ve{u}_{\a,\perp}$ by using perturba
 To do this, we first assume that
 %
 \begin{align}
-    \ve{u}_{\a,\perp} = \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp} + \e^2\ve{u}_{\a,2,\perp} + \ldots
+    \ve{u}_{\a,\perp} = \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp} + \e^2\ve{u}_{\a,2,\perp} + \ldots,
     \label{eq:uOrderConcept}
 \end{align}
 %
@@ -385,7 +385,7 @@ We will in this thesis only be interested in an accuracy in the order of $\mathc
 Therefore, we truncate \cref{eq:uOrderConcept} after the first order an get that
 %
 \begin{align}
-    \ve{u}_{\a,\perp} \simeq \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp}
+    \ve{u}_{\a,\perp} \simeq \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp}.
     \label{eq:uOrder}
 \end{align}
 %
@@ -414,12 +414,12 @@ If we insert \cref{eq:uOrder} into \cref{eq:uOrderStart}, we get
  - \frac{ \L(\div\te{\pi}_\a\R)_\perp }{n_\a  q_\a B}
  + \frac{ \ve{R}_{\beta \to \a,\perp} }{n_\a q_\a B}
  + \frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
- - \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
+ - \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}.
  }^{\e^1}
 \end{align*}
 %
-As $\d_{t,\a}$ is a function of $\ve{u}_{\a,\perp}$, and should be accounted for in the ordering.
-If we introduce the notation $\d_{t,\a}^n$, where $n$ denotes the order we have that
+As $\d_{t,\a}$ is a function of $\ve{u}_{\a,\perp}$, it should be accounted for in the ordering.
+If we introduce the notation $\d_{t,\a}^n$, where a subscript $^n$ denotes the order, we have that
 %
 \begin{align*}
  \d_{t,\a}^0 \ve{u}_{\a,\perp} &= 0
@@ -478,9 +478,9 @@ This gives the following set of equations
 
 \section{Zeroth order perpendicular terms}
 %
-We will now solve \cref{eq:uFirst} for $\ve{u}_{\a,0,\perp}$.
+We will now solve \cref{eq:uZero} for $\ve{u}_{\a,0,\perp}$.
 In general, we have that $-\ve{b}\times\L(\ve{b}\times\ve{a}\R) = \ve{a} - \ve{a}_\|=\ve{a}_\perp$.
-Thus, in order to isolate $\ve{u}_{\a,0,\perp}$ from \cref{eq:uFirst}, we can cross the equation with $\ve{b}$.
+Thus, in order to isolate $\ve{u}_{\a,0,\perp}$ from \cref{eq:uZero}, we can cross the equation with $\ve{b}$.
 This gives
 %
 \begin{align*}
@@ -505,13 +505,13 @@ This gives
  \ve{u}_{\a,0,\perp}
  &=
  - \frac{\grad_\perp p_\a\times\ve{b}}{n_\a  q_\a B}
- + \frac{\ve{E}_\perp\times\ve{b}}{B}
+ + \frac{\ve{E}_\perp\times\ve{b}}{B}.
  \numberthis
  \label{eq:u_0_balance}
 \end{align*}
 %
 We will here simply assume that the electrostatic approach holds.
-\Cref{app:elstat} discuss briefly when this approach is justifiable.
+\Cref{app:elstat} discusses briefly when this approach is justifiable.
 This means that $\ve{E} = -\grad\phi$, so $\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$.
 Thus can we rewrite \cref{eq:u_0_balance} as
 %
@@ -537,7 +537,10 @@ Thus can we rewrite \cref{eq:u_0_balance} as
  \label{eq:u_0}
  \numberthis
 \end{empheq}
-
+%
+Normally, one call $u_{\a,d}$ for the diamagnetic drift.
+It is important to notice that this drift is opposite for electrons and ions, and will therefore cause a charge separation.
+This is contrary to $\ve{u}_E$, called the $\ve{E}\time\ve{B}$-drift, which causes the same drift direction irrespective of charge.
 \section{First order perpendicular terms}
 %
 Once $\ve{u}_{\a,0,\perp}$ is known, the algebraic equation for $\ve{u}_{\a,1,\perp}$ can be found by crossing \cref{eq:uFirst} with $\ve{b}$.
@@ -566,7 +569,7 @@ Generally we have
  \ve{u}_{\a}\cdot\L(\nabla\L[\ve{a}\times\ve{b}\R]\R)
  \\
  %
- &= \d_{t,\a} \L(\ve{a} \times\ve{b} \R)
+ &= \d_{t,\a} \L(\ve{a} \times\ve{b} \R).
 \end{align*}
 %
 This gives
@@ -613,7 +616,7 @@ This gives
   &-
   \frac{\L(\div\te{\pi}_\a\R)_\perp\times\ve{b}}{n_\a  q_\a B}
   -
-  \frac{ S_{\a,n}\ve{u}_{\a,0,\perp} }{n_\a \om_{c\a}}\times\ve{b}
+  \frac{ S_{\a,n}\ve{u}_{\a,0,\perp} }{n_\a \om_{c\a}}\times\ve{b}.
  \label{eq:u_1_u_0}
  \numberthis
 \end{align*}
@@ -684,7 +687,7 @@ By substituting \cref{eq:u_0} in \cref{eq:u_1_u_0}, we obtain
   \L(
   \frac{\grad_\perp p_\a}{n_\a  q_\a B}
   + \frac{\grad_\perp \phi}{B}
-  \R)
+  \R).
 \end{align*}
 %
 Hence
@@ -727,4 +730,5 @@ Hence
   \numberthis
 \end{empheq}
 %
-We note that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.
+For further reference, we call $\ve{u}_{\a,p}$ the polarization drift, $\ve{u}_{\a,R}$ the resistive drift, $\ve{u}_{\a,\text{Ped}}$ the Pedersen drift, $\ve{u}_{\a,\nu}$ the viscous drift and $\ve{u}_{\a,S}$ the source drift.
+Finally, we note that all the first order drift causes charge separation, and that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.
