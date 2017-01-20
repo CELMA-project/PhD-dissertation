@@ -164,13 +164,13 @@ A summary of how the growth rates and rotations scales with the magnetic field $
 % FIXME: Consider: Does this need to be this wide?
 \begin{figure}[htb]
     \centering
-    \begin{subfigure}[h]{0.48\textwidth}
+    \begin{subfigure}[h]{1.00\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0}
         \label{fig:grB}
     \end{subfigure}%
     \\
-    \begin{subfigure}[h]{0.48\textwidth}
+    \begin{subfigure}[h]{1.00\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0ModeNr}
         \label{fig:grBModeNr}
@@ -209,8 +209,103 @@ This is depicted in \cref{fig:dominatingMode}, where one also can observe that t
 \end{figure}
 %
 % FIXME: Explain why compare is different?
+\FloatBarrier
 
-FIXME: Compare gr with analytic gr.
+\subsection{Comparison of growth rates with analytical result}
+%
+We will here compare the growth rates obtained from the numerical simulation with an analytic expression for the dispersion relation.
+Analytical expression for the dispersion relation in cylinder geomety is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
+
+Some important differences in the dispersion relations when using the slab approximation for a cylinder geometry \cite{Ellis1980}.
+This includes discrepancies in the trends for the critical $B$-field needed for the onset of instability, and the trend of how the instability scales with mode numbers.
+These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geomety, and how the wavelength changes due to the curvature of the circle.
+From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
+
+The analytic expression used here is derived for $T_i=0$ in \cite{Pecseli2016book}, and reads
+
+FIXME: Brief explaination of derivation, few words
+
+%
+\begin{align}
+    \om^2+i\sigma_\|\L(\om\L[1+b\R]-\om^*\R) = 0,
+    \label{eq:analyticDisp}
+\end{align}
+%
+where $\om$ is the complex frequency.
+Further $\om^*$ $\sigma_\|$ describes the conductivity in the system, $b$
+These are defined as
+%
+\begin{align*}
+    \om^* \defined& k_y u_{De} =
+    -\L(k_y \frac{T_e}{eB}\frac{\grad n(x)\times \ve{b}}{n(x)}\R)\ve{e}_y
+    =
+    k_y \frac{T_e}{eB}\frac{\partial_x n(x)}{n(x)}
+    \note{Left handed coordinate system}
+    \\
+    %
+    %
+    \sigma_\| \defined& \L(\frac{k_z}{k_y}\R)^2 \frac{\om_{ce}}{\nu_{ei}}\om_{ci}\\
+    b \defined& (k_y \rho_s)^2&
+\end{align*}
+%
+where $k_y$ is the wavenumber in the $y$-direction, which translated to cylindrical coordinates gives
+%
+\begin{align*}
+    k_y \simeq k_\theta
+    = \frac{2\pi}{\lambda_\theta}
+    = \frac{2\pi}{\frac{2\pi \rho}{m_\theta}}
+    = \frac{m_\theta}{\rho}
+\end{align*}
+%
+The analytic growth rates are indicated in \cref{fig:grAnalytic}
+%
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesAnalyticB0}
+        \label{fig:grAnalyticB}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
+        \label{fig:grAnalyticBModeNr}
+    \end{subfigure}
+    \caption{Growth rates and angular velocity obtained from \cref{eq:analyticDisp}.}
+    \label{fig:grAnalytic}
+\end{figure}
+%
+% FIXME: Write drift waves
+FIXME:
+write how can conclude that this is coming from drift waves.
+Going in el diamag dir,
+lowest order no instability
+phase difference fluct in phi and n gives rise to this
+qualitatively agreement of obtained from numerics and here
+
+FIXME: Move figures and describe
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.00\textwidth]{fig/results/totalFlux/flux0008}
+    \caption{Integrated flux for $B=0.08\T$}
+    \label{fig:flux0008}
+\end{figure}
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.00\textwidth]{fig/results/compareBouss/flux0008B}
+    \caption{Integrated flux for $B=0.08\T$ using the Boussinesq approximation.}
+    \label{fig:fluxB0008}
+\end{figure}
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.00\textwidth]{fig/results/totalFlux/flux0006}
+    \caption{Integrated flux for $B=0.06\T$}
+    \label{fig:flux0006}
+\end{figure}
 
 \section{The turbulence phase}
 %
