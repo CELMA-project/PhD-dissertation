@@ -63,7 +63,7 @@ Therefore, we can write
  &= \frac{1}{B}\grad f\cdot\L[\curl\ve{b}\R]  +
     \L[\grad\frac{1}{B}\R] \cdot \L( \ve{b} \times \grad f\R)\\
  %
- &\defined \mathcal{C}(f)
+ &\defined \mathcal{C}(f),
  \label{eq:curv_op}
  \numberthis
 \end{align*}
@@ -82,7 +82,7 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
  + \ve{u}_{\a,\text{Ped}}
  + \ve{u}_{\a,\nu}
  + \ve{u}_{\a,S} + \ve{u}_{\a,\|}
- ]) &= S_{n, \a}
+ ]) &= S_{n, \a}.
  \numberthis
  \label{eq:cont_eq}
 \end{align*}
@@ -99,7 +99,7 @@ We get
  + \ve{u}_{e,\text{Ped}}
  + \ve{u}_{e,\nu}
  + \ve{u}_{e,S} + \ve{u}_{e,\|}
- ]) &= S_{n, e}
+ ]) &= S_{n, e}.
  \label{eq:el_cont}
 \end{align}
 %
@@ -119,12 +119,12 @@ By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}
     + \ve{u}_{E} \cdot \grad n_\a
     &=
     n_\a \mathcal{C}(\phi)
-    + \ve{u}_{E} \cdot \grad n_\a
+    + \ve{u}_{E} \cdot \grad n_\a.
     \numberthis
     \label{eq:div_ExB}
 \end{align*}
 %
-for the diamagnetic term in \cref{eq:el_cont} we find that
+For the diamagnetic term in \cref{eq:el_cont} we find that
 %
 \begin{align*}
     \div\L( n_e \ve{u}_{e,d} \R) &=
@@ -137,13 +137,13 @@ for the diamagnetic term in \cref{eq:el_cont} we find that
    \frac{\grad_\perp p_e \times\ve{b}}{B}
   \R)\\
   &=
-  -\frac{1}{e}\mathcal{C}(p_e)
+  -\frac{1}{e}\mathcal{C}(p_e).
  \numberthis
  \label{eq:div_n_ued}
 \end{align*}
 %
-in other words, we find that $n \div \ve{u}_{\a,d}$ cancels $\ve{u}_{\a,d} \cdot \grad n$ in the absence of magnetic field inhomogeneities.
-This cancellation is referred to as \emph{diamagnetic cancellation} in the literature.
+In other words, we find that $n \div \ve{u}_{\a,d}$ cancels $\ve{u}_{\a,d} \cdot \grad n$ in the absence of magnetic field inhomogeneities.
+This cancellation is referred to as \emph{diamagnetic cancellation} in the literature \cite{Garcia2005b}.
 
 \subsection{Electron polarization}
 \label{sec:no_e_pol}
@@ -175,7 +175,7 @@ As we are interested in low frequency dynamics $\om^c\ll\om_{\text{ci}}$, we can
     \frac{1}{\om_{ci}}\frac{m_e}{m_i}\d^1_{e,t}\L(
       - \frac{\grad_\perp p_e}{n_e  q_e B}
       - \frac{\grad_\perp \phi}{B}
-      \R)
+      \R).
 \end{align*}
 %
 As this term is first order, and since $\frac{m_e}{m_i} \ll 1$, this term will be much smaller than for example $\ve{u}_E$ (which in addition is of order $\e$ larger), and can therefore be neglected in \cref{eq:el_cont}.
@@ -191,7 +191,7 @@ For the electron-ion resistivity term in \cref{eq:el_cont}, we find that
   %
   &=
   -\frac{1}{e}
-  \div\L( \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{B} \R)
+  \div\L( \frac{\ve{R}_{i \to e,\perp}\times \ve{b}}{B} \R).
  \numberthis
  \label{eq:div_nur}
   %
@@ -202,7 +202,7 @@ From equation (2.6) in \cite{Braginskii1965}, we have that
 \begin{align*}
     \ve{R}_{i \to e}
     =
-    \ve{R}_{u} + \ve{R}_{T}
+    \ve{R}_{u} + \ve{R}_{T},
 \end{align*}
 %
 where
@@ -220,7 +220,7 @@ and
     \ve{R}_{T}
     =
     -0.71n_e\grad T_e -
-    \frac{3}{2}\frac{n_e}{\om_e\tau_e}\ve{b}\times\grad T_e
+    \frac{3}{2}\frac{n_e}{\om_e\tau_e}\ve{b}\times\grad T_e,
 \end{align*}
 %
 where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ (given analytically in \cref{sec:nue}) assuming constant $T_e$, we get that
@@ -229,7 +229,7 @@ where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$
     \ve{R}_{i \to e}
     = \ve{R}_{u}
    &= -m_en_e\nu_{ei}\L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
-      \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R)
+      \L[\ve{u}_{e,\perp}-\ve{u}_{i,\perp}\R]\R).
    \label{eq:res_term_full}
 \end{align}
 %
@@ -283,7 +283,7 @@ This yields
             -
             \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB}
       \R]
-   \R)
+   \R).
 \end{align*}
 %
 Inserting this into \cref{eq:div_nur} yields
@@ -343,7 +343,7 @@ Inserting this into \cref{eq:div_nur} yields
  %
   =&
   -\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
- \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
+ \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R).
 \end{align*}
 %
 We see that we could have neglected this term as well on the basis of the mass ratio.
@@ -363,10 +363,10 @@ To address the Pedersen drift, we start by assuming that
         \L[\ve{u}_{\a,\|}-\ve{u}_{n,\|} \R]
         +
         \L[\ve{u}_{\a,\perp}-\ve{u}_{n,\perp} \R]
-        \R)
+        \R),
 \end{align*}
 %
-where $\nu_{\a n}$ is given analytically in \cref{sec:nue,sec:nui}
+where $\nu_{\a n}$ is given analytically in \cref{sec:nue,sec:nui}.
 As we here want to model the neutrals as a static background, we get that
 %
 \begin{align*}
@@ -376,7 +376,7 @@ As we here want to model the neutrals as a static background, we get that
         \ve{u}_{\a,\|}
         +
         \ve{u}_{\a,\perp}
-        \R)
+        \R).
 \end{align*}
 %
 Again, since $\ve{u}_{\a,R}$ is already a first order drift, we substitute only the zeroth order drifts into the perpendicular velocities.
@@ -386,7 +386,7 @@ We get that
     \ve{R}_{n\to\a} =
     - m_\a n_\a \nu_{\a n}\L( \ve{u}_{\a,\|}
     - \frac{\grad_\perp p_\a \times \ve{b}}{q_\a n_\a B}
-    - \frac{\grad_\perp \phi \times \ve{b}}{B} \R)
+    - \frac{\grad_\perp \phi \times \ve{b}}{B} \R).
     \label{eq:neut_res}
 \end{align}
 %
@@ -403,7 +403,7 @@ Inserting \cref{eq:neut_res} into the Pedersen drift of \cref{eq:first_order}, a
     =&
     - \frac{\nu_{\a n} }{\om_{c\a}}
     \L(\frac{\grad_\perp p_\a}{q_\a n_\a B}
-    + \frac{\grad_\perp \phi}{B} \R)
+    + \frac{\grad_\perp \phi}{B} \R).
 \end{align*}
 %
 For the electron Pedersen drift, we find that
@@ -418,7 +418,7 @@ For the electron Pedersen drift, we find that
     =&
     \frac{m_e}{m_i}\frac{\nu_{e n} }{\om_{ci}}
     \L(\frac{\grad_\perp p_e}{q_e n_\a B}
-    + \frac{\grad_\perp \phi}{B} \R)
+    + \frac{\grad_\perp \phi}{B} \R).
 \end{align*}
 %
 We see that this term can be neglected using the same arguments as in section \cref{sec:no_e_pol}.
@@ -453,7 +453,7 @@ By using the same argument as given in \cref{sec:no_e_pol}, we see that this ter
    -
   \frac{\grad_\perp p_e}{n_e e B}
   + \frac{\grad_\perp \phi}{B}
-  \R)
+  \R).
 \end{align*}
 
 \subsection{Resulting electron continuity equation}
@@ -488,7 +488,7 @@ Using what we found above, we can write \cref{eq:cont_eq} for electrons as
     - \div\L(n_e \ve{u}_{e,D}\R)
     - \div\L(n_e \ve{u}_{e,R}\R)
     - \div\L(n_e \ve{u}_{e,\|}\R)
-    + S_{e,n}
+    + S_{e,n}.
 \end{align*}
 %
 If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, and use that $n_e\sim n$, we find that
@@ -501,7 +501,7 @@ If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, an
     +\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
     \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
     - \div\L(n \ve{u}_{e,\|}\R)
-    + S_{e,n}
+    + S_{e,n}.
     \label{eq:dens_evol_gen}
 \end{align}
 
@@ -534,7 +534,7 @@ If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, an
     \\
     %
     \div (en \ve{u}_i - en \ve{u}_e) =&
-    e\L(ZS_{i,n} - S_{e,n}\R)
+    e\L(ZS_{i,n} - S_{e,n}\R).
 \end{align*}
 %
 If we use \cref{eq:kinSource} together with $\ve{j} = \sum_{\a}q_\a n_\a\ve{u}_\a$, we get that
@@ -549,14 +549,14 @@ If we use \cref{eq:kinSource} together with $\ve{j} = \sum_{\a}q_\a n_\a\ve{u}_\
     \div \L( \ve{j}_\perp + \ve{j}_\|\R)=& 0
     \\
     %
-    \div \ve{j}_\perp =& -\div \ve{j}_\|
+    \div \ve{j}_\perp =& -\div \ve{j}_\|.
 \end{align*}
 %
 This gives
 %
 \begin{align*}
     \div \L( n [\ve{u}_{i,\perp} - \ve{u}_{e,\perp}] \R) =&
-    -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
+    -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R).
 \end{align*}
 %
 As explained in \cref{sec:no_e_pol}, the electron polarization drift, the electron drift and the electron source drift can be neglected.
@@ -573,7 +573,7 @@ This gives
   +\ve{u}_{i,\nu}
   +\ve{u}_{i,S}
   ] \R) =&
-  -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
+  -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R).
   \label{eq:current_drifts}
 \end{align}
 %
@@ -598,7 +598,7 @@ The diamagnetic terms yields
  \\
  %
  &=
-  -\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
+  -\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R].
 \end{align*}
 
 \subsection{Polarization and viscosity}
@@ -657,7 +657,7 @@ This means that
  \frac{\grad_\perp \phi}{B}
  \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
  n
- \R)
+ \R).
 \numberthis
 \label{eq:from_gyroviscous_n_not_subs}
 \end{align*}
@@ -696,7 +696,7 @@ The ion continuity equation to order $\e^0$ reads
  S_{i, n}
  - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
  - n \mathcal{C}(\phi)
- - n \div \ve{u}_{i,\|}
+ - n \div \ve{u}_{i,\|}.
  \numberthis
  \label{eq:i_cont}
 \end{align*}
@@ -720,7 +720,7 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \R]
- \R)
+ \R).
 \numberthis
 \label{eq:from_gyroviscous}
 \end{align*}
@@ -755,7 +755,7 @@ The resistivity drifts for the two species cancels as
  \frac{1}{e}\frac{\ve{R}_{e \to i,\perp}\times \ve{b}}{B}
  \\
   %
- &= 0
+ &= 0.
 \end{align*}
 %
 
@@ -796,14 +796,14 @@ The contribution from the Pedersen drift yields
         \R]
         \R)
         \cdot\grad
-        n
+        n.
     \numberthis
     \label{eq:div_ped}
 \end{align*}
 
 \subsection{The source term}
 %
-Finally we find that the divergence of the source drift multiplied with density gives
+Finally, we find that the divergence of the source drift multiplied with density gives
 %
 \begin{align*}
     \div\L(n\ve{u}_{\a,S}\R)
@@ -816,12 +816,12 @@ Finally we find that the divergence of the source drift multiplied with density 
         \frac{\grad_\perp p_\a}{n_\a q_\a B}
         + \frac{\grad_\perp \phi}{B}
       \R]
-    \R)
+    \R).
 \end{align*}
 
 \subsection{Summing terms}
 %
-By summing the different contribution, \cref{eq:current_drifts} can be now written as
+By summing the different contributions, \cref{eq:current_drifts} can be now written as
 %
 \begin{align*}
   -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
@@ -893,7 +893,7 @@ By summing the different contribution, \cref{eq:current_drifts} can be now writt
   &
     + \div \L( \frac{ S_{i,n}}{\om_{ci}}
       \L[ \frac{\grad_\perp p_i}{n_i q_i B} + \frac{\grad_\perp \phi}{B} \R]
-    \R)
+    \R).
   \numberthis
   \label{eq:full_vort_eq}
 \end{align*}
