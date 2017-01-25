@@ -7,6 +7,13 @@ Scripts which plots the inner ghost set up.
 import matplotlib.pyplot as plt
 import numpy as np
 
+font = {"family":"serif", "serif": ["computer modern roman"]}
+titleSize = 25
+size = 30
+plt.rc("font", size = size)
+plt.rc("axes", titlesize = titleSize)
+plt.rc("font", **font)
+plt.rc("text", usetex=True)
 
 def plotInnerGhost(nx        =  4   ,\
                    dx        =  1   ,\
@@ -113,7 +120,7 @@ def plotInnerGhost(nx        =  4   ,\
         xStart = rho[i]*np.cos(endTheta)
         yStart = rho[i]*np.sin(endTheta)
         ghostMarkerCircle = plt.Circle((xStart, yStart,), radius,\
-                         color=color, lw=lwM, ls="--", fill=False,\
+                color=color, lw=lwM, ls=":", fill=False,\
                          zorder=zorder)
         ax.add_artist(ghostMarkerCircle)
 
@@ -121,7 +128,7 @@ def plotInnerGhost(nx        =  4   ,\
     if annotate:
         # NOTE: Text on saved file may differ from plt.show()
         size  = 70
-        place = rho[-1]*0.85
+        place = rho[-1]*0.90
         ax.annotate(r"$\theta_i$",
                  xy=(place, place), xycoords='data',
                  xytext=(place, place), textcoords='data',
