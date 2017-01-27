@@ -13,9 +13,6 @@ We will in this section discuss the resulting profiles.
 %        - Profile steepening
 
 \subsection{Parallel profiles}
-
-FIXME: Consider to remove ln(n), vortD, nui from the profiles.
-
 %
 \begin{figure}[htb]
     \centering
@@ -114,26 +111,21 @@ A clockwise rotation is indicated in \cref{fig:modeRotation}.
 \newpage
 %
 If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
-
 To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
-From linear stability theory (FIXME)
-% FIXME: Add references
-, the position of the most unstable mode for drift waves coincides with the position of largest gradient.
-As the abscissa is logarithmic, exponential grow will appear as straight lines.
 %
-% FIXME: Make the ticks bigger
 \begin{figure}[h!]
     \centering
-    \begin{subfigure}[h]{0.48\textwidth}
+    \begin{subfigure}[h]{1\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/stable}
+        \includegraphics{fig/results/fourierModes/stable}
         \label{fig:fourierStable}
         \caption{For $B=0.02\T$ the system is stable against perturbation}
     \end{subfigure}%
-    \hfill
-    \begin{subfigure}[h]{0.48\textwidth}
+    \\
+    \vspace*{0.5cm}
+    \begin{subfigure}[h]{1\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/fourierModes/unstable}
+        \includegraphics{fig/results/fourierModes/unstable}
         \label{fig:fourierUnstable}
         \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
     \end{subfigure}
@@ -141,6 +133,10 @@ As the abscissa is logarithmic, exponential grow will appear as straight lines.
     \label{fig:fourierDens}
 \end{figure}
 %
+From linear stability theory (FIXME)
+% FIXME: Add references
+, the position of the most unstable mode for drift waves coincides with the position of largest gradient.
+As the abscissa is logarithmic, exponential grow will appear as straight lines.
 The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
 %
 \begin{align*}
