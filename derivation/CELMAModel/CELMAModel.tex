@@ -32,7 +32,6 @@ Helicon devices operationable during the writing of this thesis includes VINETA 
 %
 Although we restrict our scope to helicon devices, machines like the LAPD \cite{Gekelman1991,Gekelman2016} are also possible to model with CELMA by proper adjusting of $S_n$.
 
-
 \section{The density equation}
 %
 We will now rewrite the electron density equation (\cref{eq:dens_evol_gen}) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
@@ -72,7 +71,7 @@ This yields
   \frac{m_iT_e\nu_{ei}}{B^2e^2}
    \grad_\perp^2 n
    - \partial_\| \L(n u_{e,\|}\R)
-   + S_n
+   + S_n.
 \end{align*}
 %
 Using that
@@ -86,19 +85,22 @@ we find that
   \frac{\rho_s^2\nu_{ei}}{\mu}
    \grad_\perp^2 n
    - \partial_\|\L(n u_{e,\|} \R)
-   + S_n
+   + S_n.
     \label{eq:non_norm_dens}
 \end{align}
 
 \section{The vorticity equation}
 %
-We will now define the vorticity
+We will in the section derive an equation which can be used to find the evolution of the vorticity.
+Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve{u}$.
+Thus, $\Om$ tells us something about the rotation of the fluid field.
+In this thesis, a slightly different definition will be used:
 %
 \begin{align*}
-    \frac{\grad^2_\perp \phi}{B} \defined \Om
+    \frac{\grad^2_\perp \phi}{B} \defined \Om.
 \end{align*}
 %
-This is in principle not the full vorticity, but rather the parallel part of the advective vorticity, which has is analogue to what we find in fluid mechanics
+Note that this is only the parallel part of the rotation of the advective vorticity:
 %
 \begin{align*}
     \L(\curl \ve{u}_E\R)\cdot\ve{b}
@@ -149,28 +151,40 @@ This is in principle not the full vorticity, but rather the parallel part of the
                \\
 %
     &=
-    \frac{1}{B}\L(\grad_\perp^2\phi \R)
+    \frac{1}{B}\L(\grad_\perp^2\phi \R),
 \end{align*}
 %
-Where we in the last line have used that
+where we in the last line have used that
 $
 \grad^2_\perp = \grad^2 - \grad_\|^2 = \grad^2 -
                    \div \L[ \ve{b} \ve{b}\cdot\grad \R]
-$
+                   $.
 %
-We will in light of this, using the current magnetic field topology, investigate the left hand side of \cref{eq:full_vort_eq} term by term.
+Such a term would pop up (amongst other terms) if we took the divergence of the polarization drift defined in \cref{eq:first_order}.
+However, we will derive the voriticity equation from the conservation of charge (see \cref{eq:current_drifts}), where we already have a term on the form $\div(n\ve{u}_{i,p})$.
+As such, it makes sense to define the density modified voriticity $\Om^D$ (or simply just "the modified voriticity") as
+%
+\begin{align}
+    \Om^D \defined
+    \div \L(n \frac{\grad_\perp \phi}{B} \R).
+    \label{eq:omDDef}
+\end{align}
+%
+In the end, we will evolve $\Om^D$ in time unless we use the Boussinesq approximation (see \cref{chap:boussinesq}).
+When the Boussinesq approximation is invoked, we will instead evolve $\Om$.
+In order to derive two equations, we will start by investigating the left hand side of \cref{eq:full_vort_eq} term by term.
 
 \subsection{The diamagnetic contribution}
 %
 \begin{align*}
-    \frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R]
+    \frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R].
 \end{align*}
 %
 disappears as $\mathcal{C}(f)$ vanishes for a straight magnetic field.
 
 \subsection{The neutral contribution}
 %
-The two next terms, origin from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
+The two next terms, which originate from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
 We get
 %
 \begin{align*}
@@ -189,7 +203,7 @@ We get
 %
 %
   = &
- \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R)
+ \frac{\nu_{in}}{\om_{ci}} \L(n\Om + \frac{\grad_\perp \phi}{B} \cdot \grad n\R).
 \end{align*}
 %
 
@@ -226,27 +240,15 @@ The first term of \cref{eq:from_gyroviscous} yields
     \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
     + \frac{1}{\om_{ci}} \div\L(
     u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R)
-    \numberthis
-    \label{eq:polIntermediate}
-\end{align*}
-%
-We now define the modified vorticity as
-%
-\begin{align}
-    \Om^D \defined
-    \div \L(n \frac{\grad_\perp \phi}{B} \R).
-    \label{eq:omDDef}
-\end{align}
-%
-This is a central variable, as this is the variable we will evolve in time
-Inserting \cref{eq:omDDef} into \cref{eq:polIntermediate} gives
-%
-\begin{align*}
+    \note{\\ \cref{eq:omDDef}}
+    \\
+    %
+    =&
     \frac{1}{\om_{ci}}\partial_t\Om^D
     + \frac{1}{\om_{ci}} \div\L(
     \ve{u}_E\cdot\nabla \L[\frac{\grad_\perp \phi}{B}n \R]\R)
     + \frac{1}{\om_{ci}} \div\L(
-    u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R)
+    u_{i,\|}\partial_\|\L[\frac{\grad_\perp \phi}{B}n\R]\R).
 \end{align*}
 %
 As we have no curvature, the second term of \cref{eq:from_gyroviscous} gives
@@ -280,10 +282,9 @@ As we have no curvature, the second term of \cref{eq:from_gyroviscous} gives
  S_{i,n} \R)
  + \frac{1}{\om_{ci}} \div\L(
  \frac{\grad_\perp \phi}{B}
- n \partial_\| u_{i,\|} \R)
+ n \partial_\| u_{i,\|} \R).
 \end{align*}
-% TODO: Delete me if not included in thesis
-%       Boussinesq part
+%
 This means that the polarization contribution from \cref{eq:full_vort_eq} can be written as
 %
 \begin{align*}
@@ -297,13 +298,13 @@ This means that the polarization contribution from \cref{eq:full_vort_eq} can be
     -&
     \frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i, n} \R)
  + \frac{1}{\om_{ci}}
- \div\L( \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|} \R)
+ \div\L( \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|} \R).
 \end{align*}
 
 \subsection{The source contribution}
 %
 Further on, the contribution from the source can be rewritten.
-Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in \cref{eq:full_vort_eq} to be
+Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in \cref{eq:full_vort_eq} to
 %
 \begin{align*}
     \div \L( \frac{ S_{i,n}}{\om_{ci}}
@@ -316,13 +317,13 @@ Under the assumption of cold ions ($T_i = 0$), we can simplify the source term i
 %
 %
     =&
-    \frac{1}{\om_{ci}} \div \L( S_{i,n} \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)
+    \frac{1}{\om_{ci}} \div \L( S_{i,n} \L[ \frac{ \grad_\perp \phi }{ B } \R] \R).
 \end{align*}
 %
 
 \subsection{The parallel contribution}
 %
-Next, the RHS of \cref{eq:full_vort_eq} reads
+Finally, the RHS of \cref{eq:full_vort_eq} reads
 %
 \begin{align*}
     \frac{1}{e}
@@ -336,7 +337,7 @@ Next, the RHS of \cref{eq:full_vort_eq} reads
     \ve{b}\cdot\nabla j_{\|}
     =
     \frac{1}{e}
-    \partial_\| j_{\|}
+    \partial_\| j_{\|}.
 \end{align*}
 %
 
@@ -368,7 +369,7 @@ From the calculations above, \cref{eq:full_vort_eq} can be rewritten to
  \\
  %
  =&
- \frac{1}{e} \partial_\| j_\|
+ \frac{1}{e} \partial_\| j_\|.
 \end{align*}
 %
 Rearranging yields
@@ -392,7 +393,7 @@ Rearranging yields
  &
  %
  +
- \frac{1}{e} \partial_\| j_\|
+ \frac{1}{e} \partial_\| j_\|.
  \numberthis
  \label{eq:non_norm_vort_1}
 \end{align*}
@@ -433,7 +434,7 @@ This yields
  &
  %
  +
- \frac{1}{e} \partial_\| j_\|
+ \frac{1}{e} \partial_\| j_\|.
  \numberthis
  \label{eq:non_norm_vort_2}
 \end{align*}
@@ -461,13 +462,13 @@ Next, we see from \cref{app:vortDAdv} that
   \frac{1}{B\rho}\{\phi, \Om^D\}
   +
   \frac{1}{\om_{ci}}
-  \frac{1}{2\rho}\{\ve{u}_E^2, n\}
+  \frac{1}{2\rho}\{\ve{u}_E^2, n\}.
 \end{align*}
 %
 A similar expression is expected to be found for other geometries as well, at least as long as the $B$ field is constant.
 When this is not the case, terms arising from $\grad \frac{1}{B}$ are expected.
 
-\subsection{The complete vorticity equation}
+\subsection{The complete modified vorticity equation}
 %
 The evolution of the modified vorticity can now be written as
 %
@@ -494,7 +495,7 @@ The evolution of the modified vorticity can now be written as
  &
  %
  +
- \frac{1}{e} \partial_\| j_\|
+ \frac{1}{e} \partial_\| j_\|.
  \numberthis
  \label{eq:complVort}
 \end{align*}

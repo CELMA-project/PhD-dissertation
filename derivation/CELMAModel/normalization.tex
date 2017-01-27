@@ -29,7 +29,7 @@ In the electrostatic approximation this means that $\|\grad_\perp \phi\|/\|\ve{B
 \begin{align*}
     \frac{\breve{\grad}_\perp \breve{\phi}}{\breve{B}} =
     \frac{\frac{\grad_\perp \phi}{B}}{c_s} =
-    \frac{\grad_\perp \phi}{c_sB}
+    \frac{\grad_\perp \phi}{c_sB}.
 \end{align*}
 %
 We can see that this is true by looking at the normalization of the individual quantities.
@@ -55,7 +55,7 @@ Due to the spatial normalization, we must have that $\grad = \breve{\grad}/\rho_
     \\
     %
     =&
-    \frac{\breve{\grad}_\perp \breve{\phi}}{\breve{B}}
+    \frac{\breve{\grad}_\perp \breve{\phi}}{\breve{B}}.
 \end{align*}
 %
 From this we get that
@@ -64,7 +64,7 @@ From this we get that
  \breve{\Om} = \breve{\grad}\cdot\frac{\breve{\grad}_\perp \breve{\phi}}{\breve{B}}
  = \rho_s\div\frac{\frac{\grad_\perp \phi}{B}}{c_s}
 = \rho_s\frac{\Om}{c_s}
- = \frac{\Om}{\om_{ci}}
+= \frac{\Om}{\om_{ci}},
 \end{align*}
 %
 and that
@@ -109,7 +109,7 @@ To summarize, we have the normalization
     &\breve{\eta}_{\a,n} = \frac{\eta}{m_i\rho_s n_0c_s}&
     &\breve{\nabla}      = \rho_s \nabla&
     &\breve{\partial}_t  = \frac{1}{\om_{ci}}\partial_t &
-    &\breve{\d}_{t,\a}   = \frac{1}{\om_{ci}}\d_{t,\a}
+    &\breve{\d}_{t,\a}   = \frac{1}{\om_{ci}}\d_{t,\a},
 \end{empheq}
 %
 or equivalently
@@ -134,7 +134,7 @@ or equivalently
     &\eta       = \breve{\eta}_{\a,n}m_i\rho_s n_0c_s&
     &\nabla     = \frac{1}{\rho_s} \breve{\nabla}&
     &\partial_t = \om_{ci}\breve{\partial}_t&
-    &\d_{t,\a}  = \om_{ci}\breve{\d}_{t,\a}
+    &\d_{t,\a}  = \om_{ci}\breve{\d}_{t,\a},
 \end{empheq}
 %
 which means that
@@ -144,15 +144,9 @@ which means that
     &\partial_t   = \om_{ci}\breve{\partial}_t&
     &\d_{t,\a}    = \breve{\partial_t}\om_{ci} +
     \frac{c_s (\breve{\ve{u}}_\a)\cdot \breve{\grad}}{\rho_s}
-    = \om_{ci}\breve{\d}_{t,\a}&
+    = \om_{ci}\breve{\d}_{t,\a}.&
 \end{empheq}
 %
-% FIXME: Write somewhere that when doing a field scan, we can choose B0 = B,
-%        such that Bbreve = 1, doing a scan in B will then only affect
-%        quantities related to B0, like omci and rhos
-
-% FIXME: Add energy
-
 We will now normalize the equations derived above, and we will from here on drop the breve to simplify the writing.
 
 \subsection{Normalization of the density equation}
@@ -188,10 +182,10 @@ By normalizing \cref{eq:non_norm_dens}, we get
  \frac{\nu_{ei}}{\mu}
    \grad_\perp^2 n
    - \partial_\|\L(n u_{e,\|}\R)
- + S_n
+ + S_n.
 \end{align*}
 %
-we will divide through by $1/n$ to ensure the non-negativity of the density when solving the equations numerically.
+We will divide through by $1/n$ to ensure the non-negativity of the density when solving the equations numerically.
 This gives
 %
 \begin{align*}
@@ -248,7 +242,7 @@ This gives
  - \partial_\| u_{e,\|}
  - u_{e,\|} \partial_\| \ln(n)
  +
- \frac{S_n}{n}
+ \frac{S_n}{n}.
 \end{align*}
 %
 We now have that
@@ -267,7 +261,7 @@ We now have that
     =& \grad_\perp f \cdot \grad_\perp g
     + \L(\ve{b}\cdot\grad_\perp f \R)\L(\ve{b}\cdot\grad g\R)
     \\
-    =& \grad_\perp f \cdot \grad_\perp g
+    =& \grad_\perp f \cdot \grad_\perp g.
     \numberthis
     \label{eq:gradperpGradperp}
 \end{align*}
@@ -285,7 +279,7 @@ This yields
  - \partial_\| u_{e,\|}
  - u_{e,\|} \partial_\| \ln(n)
  +
- \frac{S_n}{n}
+ \frac{S_n}{n}.
  \numberthis
  \label{eq:norm_ln_n}
 \end{align*}
@@ -384,7 +378,7 @@ Next, normalization of \cref{eq:non_norm_vort_2} yields
  \\
  &
  %
- + \partial_\| j_\|
+ + \partial_\| j_\|,
  \numberthis
  \label{eq:normalized_non_boussinesq}
 \end{align*}
@@ -393,7 +387,7 @@ and
 %
 \begin{align*}
     \om_{ci}n_0\Om^D &= \frac{n_0 c_s}{\rho_s}\div\L(n\frac{\grad_\perp\phi}{B}\R)\\
-    \Om^D &= \div\L(n\frac{\grad_\perp\phi}{B}\R)
+    \Om^D &= \div\L(n\frac{\grad_\perp\phi}{B}\R).
 \end{align*}
 %
 
@@ -483,10 +477,10 @@ Further, we normalize \cref{eq:parMomDensNonNorm} in the following way
  - n \L(\nu_{i n}u_{i,\|} + \frac{Z}{\mu} \nu_{e n}u_{e,\|}\R)
    \\&
    + \frac{4Z}{3}\L(\eta_{i,0} \partial_z^2 u_{i,\|}
- + \eta_{e,0}\partial_z^2 u_{e,\|}\R)
+ + \eta_{e,0}\partial_z^2 u_{e,\|}\R).
 \end{align*}
 %
-We notice how the ion mass in the electron pressure got turned into a $1/\mu$ upon normalization.
+We notice how the ion mass in front of the electron pressure got transformed into a $1/\mu$ upon normalization.
 
 \subsection{Normalization of the parallel current equation}
 %
@@ -595,7 +589,7 @@ Finally, by using $\ve{E}=\frac{\breve{E}T_e}{e\rho_s}$, normalization of the pa
     - 0.51 \nu_{ei} j_\|
     \\ &
     + n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
-    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
  \numberthis
  \label{eq:curNormE}
 \end{align*}
@@ -616,7 +610,7 @@ This gives
     - 0.51 \nu_{ei} j_\|
     \\ &
     + n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
-    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    - \mu \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
  \numberthis
  \label{eq:curNormNoE}
 \end{align*}
