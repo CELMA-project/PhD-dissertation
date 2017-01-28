@@ -73,24 +73,16 @@ Despite having almost Boltzmann distribution electrons in the parallel direction
 Close to $L_\rho$ the radial potential profile is affected more by the fixation potential to $0$ at $L_\rho$.
 The values here differs from the density profile because of the zero gradient enforcement on $n$ at $L_\rho$.
 
-\section{The linear phase}
 %
-After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
-It has not been observed that the system reaches the linear phase unless perturbed.
-This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.
-Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
-As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
-In other words mode, coupling between different modes are negligible.
-Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
-A clockwise rotation is indicated in \cref{fig:modeRotation}.
-%
-% FIXME; Could add arrow indicating direction of rotation
+{
+\clearpage
+\thispagestyle{empty}
 \begin{figure}[htbp]
+    \vspace*{-1cm}
     \centering
     \begin{subfigure}[h]{1.00\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/rotModes/n-perpPol-2D-fluct-0}
+        \includegraphics[width=1.0\textwidth]{fig/results/rotModes/n-perpPol-2D-fluct-0_rot}
         \label{fig:rot1}
     \end{subfigure}%
     \\
@@ -105,16 +97,23 @@ A clockwise rotation is indicated in \cref{fig:modeRotation}.
         \includegraphics[width=1.0\textwidth]{fig/results/rotModes/n-perpPol-2D-fluct-2}
         \label{fig:rot3}
     \end{subfigure}
-    \caption{Rotation of modes}
+    \caption{Rotation of the modes.
+        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
+    }
     \label{fig:modeRotation}
 \end{figure}
-\newpage
+\clearpage
+}
 %
-If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
-To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
+
+\section{The linear phase}
 %
-\begin{figure}[h!]
-    \centering
+After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
+It has not been observed that the system reaches the linear phase unless perturbed.
+This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.
+%
+\begin{wrapfigure}{l}{0.70\textwidth}
+    \hspace*{-3cm}
     \begin{subfigure}[h]{1\textwidth}
         \centering
         \includegraphics{fig/results/fourierModes/stable}
@@ -122,6 +121,7 @@ To visualize the growth, we have plotted the absolute value the Fourier modes at
         \caption{For $B=0.02\T$ the system is stable against perturbation}
     \end{subfigure}%
     \\
+    \hspace*{-3cm}
     \vspace*{0.5cm}
     \begin{subfigure}[h]{1\textwidth}
         \centering
@@ -131,8 +131,37 @@ To visualize the growth, we have plotted the absolute value the Fourier modes at
     \end{subfigure}
     \caption{Time trace of the absolute values of the Fourier modes.}
     \label{fig:fourierDens}
-\end{figure}
+\end{wrapfigure}
 %
+
+Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
+As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
+In other words mode, coupling between different modes are negligible.
+Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
+In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
+
+A clockwise rotation is indicated in \cref{fig:modeRotation}.
+%
+\begin{wrapfigure}{r}{0.55\textwidth}
+    \centering
+    \begin{subfigure}[h]{0.50\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0}
+        \label{fig:grB}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{0.50\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
+        \label{fig:grBModeNr}
+    \end{subfigure}
+    \caption{$B$-dependency on the growth rates and angular velocities.}
+    \label{fig:gr}
+\end{wrapfigure}
+%
+If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
+To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
+
 From linear stability theory (FIXME)
 % FIXME: Add references
 , the position of the most unstable mode for drift waves coincides with the position of largest gradient.
@@ -156,25 +185,6 @@ The final angular velocity is the average of the individual angular velocities o
 \end{enumerate}
 %
 A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:gr}.
-%
-% FIXME: Consider: Does this need to be this wide?
-\begin{figure}[htb]
-    \centering
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0}
-        \label{fig:grB}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-    \end{subfigure}
-    \caption{$B$-dependency on the growth rates and angular velocities.}
-    \label{fig:gr}
-\end{figure}
-%
 As indicated in \cref{fig:gr}, which poloidal mode dominates is dependent on $B$.
 This is depicted in \cref{fig:dominatingMode}, where one also can observe that the parallel node moves downward with decreasing $B$.
 %
@@ -349,7 +359,7 @@ It is also important to observe that the fluctuations can be big enough to push 
         \centering
         \includegraphics[width=1.0\textwidth]{fig/results/evolution/n-perpPar-2D-2}
     \end{subfigure}
-    \caption{Evolution of the plasma in the staurated turbulence phase.
+    \caption{Evolution of the plasma in the saturated turbulence phase.
         Here shown for $B=0.08\T$}
     \label{fig:turbEv}
 \end{figure}
