@@ -320,30 +320,55 @@ Inserting this into \cref{eq:div_nur} yields
    \R]
  \R)
  \note{$-\ve{b}\times\ve{b}\times\ve{a}=\ve{a}_\perp$}
- \\
- %
+ \numberthis
+ \label{eq:collIntermediate}
+\end{align*}
+%
+We will from this point on assume that all collision frequencies are constant.
+As seen from \cref{app:collisions} when assuming quasi-neutrality:
+%
+\begin{align*}
+ \nu_{ei}\propto
+ \frac{n}{T_e^{3/2}}\ln\Lambda \propto
+ \frac{n}{T_e^{3/2}}\ln\L(n \L[\frac{T_e}{n}\R]^{3/2}\R)
+\end{align*}
+%
+as we assume constant electron temperature, we get
+%
+\begin{align*}
+ \partial_i \nu_{ei}\propto
+ \partial_i n\ln\L(n^{-1/2}\R)\propto
+ - \frac{1}{2}\L(\partial_i n\R)\L(\ln\L[n\R]+1\R)
+ \appropto \frac{1}{2}\L(\partial_i n\R)\ln\L(n\R).
+\end{align*}
+%
+As the logarithm of $n$ is slowly varying for high $n$, we see that the approximation is good as long as the gradients in $n$ are small.
+Using this in \cref{eq:collIntermediate} gives
+%
+\begin{align*}
+    \div(n_e\ve{u}_{e,R})
   =&
   -\frac{m_e\nu_{ei}}{e^2}
  \div\L(
  \frac{n_e}{B}
- \frac{\grad_\perp \L(p_e + p_i\R)}{nB}
+ \frac{\grad_\perp \L[p_e + p_i\R]}{nB}
  \R)
  \note{Quasi-neutrality}
  \\
  %
   =&
   -\frac{m_e\nu_{ei}}{e^2}
- \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
+ \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R)
  \\
  %
   =&
   -\frac{m_i}{m_i}\frac{m_e\nu_{ei}}{e^2}
- \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
+ \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R)
  \\
  %
   =&
   -\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
- \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R).
+ \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R).
 \end{align*}
 %
 We see that we could have neglected this term as well on the basis of the mass ratio.
@@ -499,7 +524,7 @@ If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, an
     - n\mathcal{C}(\phi)
     + \frac{1}{e}\mathcal{C}(\phi)
     +\frac{1}{\mu}\frac{m_i\nu_{ei}}{e^2}
-    \div\L( \frac{\grad_\perp \L(p_e + p_i\R)}{B^2} \R)
+    \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R)
     - \div\L(n \ve{u}_{e,\|}\R)
     + S_{e,n}.
     \label{eq:dens_evol_gen}
