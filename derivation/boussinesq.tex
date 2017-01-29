@@ -1,6 +1,5 @@
 We will in this chapter modify the obtained equations by using the so called Boussinesq approximation.
 This approximation is also sometimes refered to as the local approximation.
-%FIXME: Is this true, and if yes, a reference should be there as well
 The name Boussinesq approximation is a bit of a misnomer, as this actually refers to a series of approximations in fluid mechanics where the small variation in density is one of them \cite{Kundu2010book}.
 
 The usage of this approximation in drift fluid equation is not always sound, as the criterion for the approximation is easily broken.
@@ -15,25 +14,12 @@ We start by splitting the density into a background profile $\overline{n}$ and t
 That is, we have
 %
 \begin{align*}
-    n = \overline{n} + \delta_n
+    n = \overline{n} + \delta_n,
 \end{align*}
 %
-% NOTE: When is it OK to work with complex plane waves
-%       1. When summing and subtracting linear waves
-%       2. When it is part of a plane wave solution
-%       3. When the equations are Fourier transformed
-%       When is it not OK to work with complex plane waves
-%       1. When we are manipulating a non-linear expression (as Fourier modes
-%          couple). That is: When the amplitude is not small
-%
-% NOTE: d/dx exp(ikx) = d/dx (cos(kx) + i sin(kx)) = k(sin(kx) - i cos(kx))
-%
-% NOTE: I cannot find any good reason to assume plane waves here. Seems like it
-%       slightly complicates things a bit with the only gain that we get
-%       something like k_perp
 and we assume that $\overline{n} \gg \delta_n$.
 %
-Orders of magnitude estimates now gives
+Order of magnitude estimates now give
 %
 \begin{align*}
     &\grad \overline{n} \sim \frac{\overline{n}}{L_n}&
@@ -42,7 +28,7 @@ Orders of magnitude estimates now gives
     =
     \grad_\perp \delta_n + \grad_\| \delta_n
     \sim \frac{\delta_n}{L_{\delta_n, \perp}} + \frac{\delta_n}{L_{\delta_n, \|}}
-    \simeq \frac{\delta_n}{L_{\delta_n, \perp}}
+    \simeq \frac{\delta_n}{L_{\delta_n, \perp}},
     &
 \end{align*}
 %
@@ -54,7 +40,7 @@ If we now normalize the densities with $n_0$ and the gradients with $\rho_s$, an
     \breve{\grad} \breve{\overline{n}}
     \sim& \frac{\frac{\overline{n}}{n_0}}{\frac{L_n}{\rho_s}}
     = \frac{\overline{n}}{L_n}\frac{\rho_s}{n_0}
-    \simeq \frac{\rho_s}{L_n}
+    \simeq \frac{\rho_s}{L_n}.
     \note{$\frac{\overline{n}}{n_0} \simeq 1$}
 \end{align*}
 %
@@ -65,7 +51,7 @@ By assuming that $\frac{\rho_s}{L_n}\ll1$%
 (meaning that the density gradient length scales are much larger than $\rho_s$), we find that
 %
 \begin{align*}
-    \breve{\grad} \breve{\overline{n}} \ll 1
+    \breve{\grad} \breve{\overline{n}} \ll 1.
 \end{align*}
 %
 % FIXME: Consider to add how this relates to experimental findings. Could even compare them to computational! Just looking at plots, see that Ln > rho_s, but maybe not L_n >> rho_s
@@ -75,7 +61,7 @@ Further on, we have that
 \begin{align*}
     \breve{\grad} \breve{\delta_n}
     \sim& \frac{\frac{\delta_n}{n_0}}{\frac{L_{\delta_n}}{\rho_s}}
-    = \frac{\delta_n}{L_{\delta_n, \perp}}\frac{\rho_s}{n_0}
+    = \frac{\delta_n}{L_{\delta_n, \perp}}\frac{\rho_s}{n_0}.
 \end{align*}
 %
 From our assumption about small perturbations, we know that $\frac{\delta_n}{n_0}\ll 1$.
@@ -83,14 +69,13 @@ If we assume that $\frac{\rho_s}{L_{\delta_n, \perp}} \not\gg 1$.
 Then
 %
 \begin{align*}
-    \breve{\grad} \breve{\delta_n}
-    \ll 1
+    \breve{\grad} \breve{\delta_n} \ll 1.
 \end{align*}
 %
 In other words, we have that
 %
 \begin{align*}
-    \grad(fn) \simeq n\grad f
+    \grad(fn) \simeq n\grad f.
 \end{align*}
 %
 Using the assumptions, we find that inserting this in \cref{eq:start_of_boussinesq} yields
@@ -127,7 +112,7 @@ Using the assumptions, we find that inserting this in \cref{eq:start_of_boussine
   \frac{1}{\om_{ci}}
   \L[ \d_t^E + \ve{u}_{i,\|}\cdot\nabla \R]
   \L[ \frac{\grad_\perp \phi}{B} \R]
- \R)
+ \R).
 \end{align*}
 %
 In the last assumptions, we will assume a relatively flat background profiles, so that $n_0 \simeq \overline{n}$.
@@ -164,7 +149,7 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
  - n_0 \div\L(
     \frac{1}{\om_{ci}}
      u_{i,\|}\partial_\|
- \L[ \frac{\grad_\perp \phi}{B} \R] \R)
+ \L[ \frac{\grad_\perp \phi}{B} \R] \R).
 \numberthis
 \label{eq:boussinesq_vort}
 \end{align*}
@@ -175,18 +160,18 @@ Let us now briefly comment on the approximations made
     \item $\overline{n} \ll \delta_n$ : This approximation can be broken as the
         amplitudes can be considerably large.
         % FIXME: Citation needed
-    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradients in the background density are sharp as compared to $\rho_s$, however it may be that it is not orders of magnitude larger.
+    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradients in the background density are sharp as compared to $\rho_s$, but it may be that it is not orders of magnitude larger.
         % FIXME: Citation needed
     \item $\overline{n} \simeq n_0$ : This assumption is maybe the hardest to fulfill, as the gradients usually are non-vanishing.
         % FIXME: Citation needed
 \end{enumerate}
 %
 We see that although the assumptions can be met, it is not necessarily true.
-As this approximation is done quite frequently in the literature
+As this approximation is done quite frequently in the literature,
 % FIXME: Citation needed
 it is of interest to compare results with and without this approximation.
 
-In the scope of this thesis, we only do the approximation here, and keeps gradients of $n$ elsewhere.
+In the scope of this thesis, we only do the approximation here and keep gradients of $n$ elsewhere.
 A more rigorous study could be to investigate the set of equations from a energy conservation point of view, and from that find out what $n$'s in the set of equations which should be transformed to $n_0$.
 
 \section{The Boussinesq approximation in the CELMA model}
@@ -240,14 +225,14 @@ Continuing from \cref{eq:boussinesq_vort} (using the assumption that $\grad B = 
      \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
      + u_{i,\|}\partial_\|\Om
      + \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
-     \R)
+     \R).
 \end{align*}
 %
 Following the derivation in \cref{app:vortDAdv} (but this time without $n$) we see that in cylinder geometry
 %
 \begin{align*}
     \div \L[\ve{u}_E\cdot\grad \frac{\grad_\perp \phi}{B} \R]
-    = \frac{1}{B\rho}\{\phi, \Om\}
+    = \frac{1}{B\rho}\{\phi, \Om\},
 \end{align*}
 %
 so that
@@ -264,7 +249,7 @@ so that
   \frac{1}{B\rho}\{\phi, \Om\}
   + u_{i,\|}\partial_\|\Om
   + \frac{\grad_\perp\L( \partial_\|\phi\R)}{B}\cdot\grad u_{i,\|}
-  \R)
+  \R).
 \end{align*}
 %
 If we now collect the terms as we did in \cref{sec:CELMACollect}, we get
@@ -291,7 +276,7 @@ If we now collect the terms as we did in \cref{sec:CELMACollect}, we get
  \\
  %
  =&
- \partial_\| j_\|
+ \partial_\| j_\|,
 \end{align*}
 %
 which after rearranging yields
@@ -317,7 +302,7 @@ which after rearranging yields
  \\
  %
  &
- + \partial_\| j_\|
+ + \partial_\| j_\|.
 \end{align*}
 %
 We note that as we have no time derivative of $n$, the term arising from the density source does not cancel as it did without this approximation.
@@ -401,7 +386,7 @@ Finally, normalization yields
  \\
  %
  &
- + \partial_\| j_\|
+ + \partial_\| j_\|.
 \end{align*}
 
 \section{The vorticity equation}
@@ -434,7 +419,7 @@ We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$,
   %
   &
   + D_{\Om, \|, \text{art}}    \partial_{\|}^2 \Om
-  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om
+  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om.
   \numberthis
   \label{eq:celma_vort_boussinesq}
 \end{empheq}

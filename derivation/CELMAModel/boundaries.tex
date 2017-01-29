@@ -5,32 +5,35 @@ Setting correct boundary conditions (BCs) when calculating PDEs of plasma quanti
 In the parallel direction there will be formation of plasma sheaths between the plasma and the material which is due to the difference in mobility between the ion species and the electron species \cite{Stangeby2000book}.
 This leads to a potential build-up on the material surface which affects the plasma upstream.
 
-Unfortunately the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
+Unfortunately, the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
 This is mainly due to the fact that there will be more ions than electrons in this area and the assumption quasi-neutrality breaks down.
 In other words, the fluid models are only valid up until the sheath entrance (SE), and a proper description in this area can only be accounted for with kinetic codes, solving for example the Fokker-Planck equation.
 One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma ends, and where the sheath begins.
 
 There are mainly two challenges in setting the radial boundary conditions.
 Firstly, the plasma does not usually extent all the way to the chassis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
-Secondly, assuming that the plasma could extend all the way out to the chassis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma have no way not adhere to the surface as a neutral fluid would do.
+Secondly, assuming that the plasma could extend all the way out to the chassis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma has no way not adhere to the surface as a neutral fluid would do.
 
 The boundaries for the cylindrical plasma consist of four parts.
 In the parallel direction, we have the SE at one end.
-We could in principle place a SE at the other parallel end as well, which would be OK if the plasma streamed in both direction from some point.
-Instead we have chosen to model the other parallel end as a stagnation point, i.e. a point where the velocities parallel are zero.
-Such a point exists if the plasma is streaming in two opposite directions, and is encountered on for example open field lines  divertor plasmas.
+We could in principle place a SE at the other parallel end as well, which would be appropriate if the plasma streamed in both direction from some point.
+Instead we have chosen to model the other parallel end as a stagnation point, i.e. a point where the parallel velocities are zero.
+Such a point exists if the plasma is streaming in two opposite directions and is encountered on for example open field lines in divertor plasmas.
 Radially we have the outer radial boundary condition, and an artificial inner condition which is treated in \cref{sec:innerCenter}.
 
 The boundary conditions will be set on $n$, $u_{i,\|}$, $u_{e,\|}$ and $\Om$.
-From these the boundary conditions for $j_\|$, $nu_{i,\|}$ and $\Om^D$ can be calculated in a straight forward manner.
+From these the boundary conditions for $j_\|$, $nu_{i,\|}$ and $\Om^D$ can be calculated in a straightforward manner.
 A summary of the boundary conditions used in this thesis is found in \cref{fig:BCs}.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics[width=1.0\textwidth]{fig/BCs}
-    \caption{\textit{
-Boundary conditions used in this thesis.
-    }}
+    \caption{
+        Boundary conditions used in this thesis.\\
+        The left circle represents the start of the domain where the stagnation BCs are used (i.e. the cylinder seen from the stagnation point towards the SE).\\
+        The rectangle represents the largest radius in the domain, where the radial boundary conditions are applied (i.e. the cylinder seen from above).\\
+        The rigth circle represents the end of the domain where the SE BCs are used.\\
+    }
     \label{fig:BCs}
 \end{figure}
 
@@ -52,7 +55,7 @@ The spinning of the plasma does not change from one side to the other across the
 
 \subsection{Boundary conditions at the SE}
 \label{sec:BCatSE}
-% NOTE: Consider to add calculation of sheath velocities
+%
 Following the calculations of Choudora and Bohm (see for example \cite{Stangeby2000book}), it is common practice to define the sheath entrance to be the place where ion velocity reaches the ion sound speed (that is where $u_{i,\|}=c_s$), and we will adopt this practice in this thesis.
 Considering a quiescent plasma, one can calculate the equilibrium profiles which the plasma obtains in contact with materials, and use this to set the boundaries for $u_{i, \|}$ and $u_{e, \|}$ at the SE.
 This is then used to calculate the boundary condition
@@ -101,16 +104,7 @@ Normalization gives
 
 \subsubsection{Density BC at the SE}
 %
-% NOTE: Tried
-%   1. From steady state electron continuity
-%      This means that n cannot change at the boundary
-%   2. Neumann = 0
-%      Could be that this it has a gradient
-%      Problem that Neumann both at the SE and non-SE site
-% NOTE: Idea
-%   1. Could try robin BC at non-SE site
-%
-Although the "standard" calculation for the sheath gives us conditions for setting the velocities in steady state, non such conditions exists for the density.
+Although the "standard" calculation for the sheath gives us conditions for setting the velocities in steady state, no such conditions exists for the density.
 Instead, one would have to rely on other arguments.
 In \cite{Loizu2012a}, Loizu et al.  presents a boundary condition for the density in a field line geometry, where the field lines are allowed to be tilted with respect to the end-plate.
 For a field line geometry where the field lines are perpendicular to the end-plate (which is the case in this thesis), the boundary condition reduces to
@@ -187,16 +181,11 @@ In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} = 0$ boundary condi
 
 \subsubsection{Potential BC at the SE}
 %
-% NOTE: Tried
-%   1. Fixed value
-%      Bad idea, as difference in parallel velocities are not regulated by the
-%      potential
-%   2. Neumann 0
-%      Bad idea as this may make an artificial constraint on the system
-The potential in our equations are not being evolved in time directly, but is calculated by inverting either $\Om$ or $\Om^D$ for each drift plane (that is for each perpendicular plane).
-This inversion takes into account the outer radial boundary condition in $\phi$, where the outer radial boundary condition can be set from the material properties of the wall.
+The potential in our equations is not being evolved in time directly, but is calculated by inverting either $\Om$ or $\Om^D$ for each drift plane (that is for each perpendicular plane).
+This inversion takes into account the outer radial boundary condition in $\phi$.
+This outer radial boundary condition can be set from the material properties of the wall.
 On the other hand, we do not have any physical material constraint at the SE.
-The only thing we impose is that $\phi$ on the plate very close to the SE is set to an arbitrary constant.
+We impose only that $\phi$ on the plate very close to the SE is set to an arbitrary constant.
 It is not clear how this is reflected at the SE in a non-steady state plasma.
 
 However, parallel derivatives of the potential is being taken in our set of equations.
@@ -207,14 +196,8 @@ Finally, it should be noted that although a fluid description cannot properly as
 As shown in \cite{ChakrabortyThakur2013}, the change from a conductive to an isolating end plate changes whether the current density loop is closing inside or outside of the plasma. As $\div \ve{j}$ must be zero, the location of the closing affects the polarization drift, which is responsable for the generation of for  zonal flows \cite{Diamond1991}.
 
 \subsubsection{Vorticity BC at the SE}
-% NOTE: Tried
-%   1. Neumann = 0
-%      Could be that this it has a gradient
-%      Problem that Neumann both at the SE and non-SE site
-% IDEA:
-%   1. Should be 0, as the wall is slowing down? Maybe not as not necessarily
-%      have a non-slip BC on the wall
-As with $\phi$, the sheath boundary condition sets no restrain on the vorticity at the SE.
+%
+As with $\phi$, the sheath boundary condition sets no constraint on the vorticity at the SE.
 However, as $\Om$ is a variable being solved in time, a boundary condition is needed in order to fully specify the system.
 In the current implementation $\L. \partial_\| \Om \R|_{L_z} = 0$ has been chosen.
 Note that this may not be a particularly good boundary condition as it physically means that there can be no parallel shear in the perpendicular spinning at the SE.
@@ -224,7 +207,7 @@ Note that this may not be a particularly good boundary condition as it physicall
 %
 The radial boundary conditions can in principle determine the results of the experiments entirely.
 This have been seen in experiments on for example the Mirabelle machine \cite{Schroder2001}.
-However, to correctly asset the physics, one would have to take into account the neutral interaction and the material properties of the wall.
+However, to correctly asses the physics, one would have to take into account the neutral interaction and the material properties of the wall.
 We will therefore in this thesis focus on a much simplified approximation of the radial boundary conditions.
 In fact we will let the radial boundary condition be approximately where the neutrals are dominating, and thus dampening out the plasma dynamics.
 
@@ -236,25 +219,23 @@ As the density will go toward $0$ as we are approaching the wall, we could set
 \end{align*}
 %
 where $C$ is a small constant.
-Setting this too small, however can give rise to numerical problems due to loss of precision.
+Setting this too small, however, can give rise to numerical problems due to loss of precision.
 
 In this thesis, another approach has been used.
-As the density profile is approximately Gaussian, the profile will be relative flat towards the radial edge.
+As the density profile is approximately Gaussian, the profile will be relatively flat towards the radial edge.
 We therefore set
 %
 \begin{align*}
     \partial_\rho n \bigg|_{L_\rho} = 0
 \end{align*}
 %
-Note however that this can be too restrictive if coherent structures such as "blobs"
-% FIXME: Add blob reference, krashenenikov and grulke naulin
-are reaching the domain boundary.
+Note, however, that this can be too restrictive if large coherent structures reaches the domain boundary.
 
 \subsubsection{Velocity BCs at outer radius}
 % Not really physically explained
 % If we let u_|_ =\= 0 we have no physical explanation why this should be 0
 %
-The parallel velocities are not constrained by any forces at the radial edge, and can thus take any value.
+The parallel velocities are not constrained by any forces at the radial edge and can thus take any value.
 In this thesis we set
 %
 \begin{align*}
@@ -277,13 +258,7 @@ As the ion Larmor radius is larger than the electron Larmor radius, more ions th
 This would result in a small potential difference which would increase the poloidal $\ve{E}\times\ve{B}$ drift.
 
 \subsubsection{Vorticity BC at outer radius}
-%
-% NOTE: Tried
-%       1. Om = 0
-%       This will give rise to a boundary layer which will try to oppose the
-%       eventual solid body rotation in the center
-% NOTE: The boundary here is set from either the non-slip or the free-slip
-%       condition of v_theta
+% NOTE: The boundary here is set from either the non-slip or the free-slip condition of v_theta
 %
 As stated in the introduction of \cref{sec:BCs}, there exists no analogue to the no-slip condition in plasmas.
 In other words, there is nothing which constrains the poloidal flow at the material surface.
@@ -300,5 +275,5 @@ which is set in this thesis, although no physical explanation for this is given.
 \label{sec:BCInnerRho}
 %
 Physically, there are no boundary condition around the central axis of a cylinder.
-However, we need some artificial boundary conditions around this area as our domains covers $\rho \in \; ]0, L_\rho[$ (where $L_\rho$ is the radius of the system) and we are using a finite difference (FD) scheme to calculate radial derivatives.
+However, we need some artificial boundary conditions around this area as our domain covers $\rho \in \; ]0, L_\rho[$ (where $L_\rho$ is the radius of the system) and we are using a finite difference (FD) scheme to calculate radial derivatives.
 As this is not related to the physics of the problem, the discussion is given in \cref{sec:innerCenter}.

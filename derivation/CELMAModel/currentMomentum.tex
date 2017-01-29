@@ -1,18 +1,19 @@
 \section{Parallel current and momentum density}
-% FIXME: Check drift order
-% FIXME: Consider to show bad behavior when parallel is used
+%
 In order to solve the system of equations, we need to determine $u_{\a,\|}$.
-This could be done by solving for the ion momentum equation and for the electron momentum equation.
+This could be done by solving the ion momentum equation and the electron momentum equation in time.
 However, as we are calculating $\frac{1}{e}\partial_\|\L(ne\L[u_{i,\|} - u_{e,\|}\R]\R)$ in \cref{eq:complVort}, we require that this term is of high precision.
-This is because the vorticity is a first order term, and the numerical loss of precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
+This is because the vorticity is a first order term, and loss of numerical precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
 As a result, the numerical error may pollute the calculated order of the modified vorticity.
 
-Therefore, we will instead evolve the parallel current equation (which normalized equals $n\L(u_{i,\|} - u_{e,\|}\R)$).
-We also choose to evolve the sum of the parallel density momentum equations, which after some simplifications leads to evolving the density times the parallel ion velocity in time.
-This has the advantage that the variation of the $nu_{i,\|}$ field is less than the variation in the $u_{i,\|}$, which is an advantage when solving numerically as the difference in magnitude of the largest and smallest eigenvalues is less.
-It further has the advantage that this sum is easy to simplify due to the difference in mass.
+Therefore, we will instead evolve the parallel current equation in time.
+We also choose to evolve the sum of the parallel density momentum equations in time.
+As will be shown, this is to high accuracy the same as evolving density times the parallel ion velocity in time.
+The variation of the $nu_{i,\|}$ field is smaller than the variation in the $u_{i,\|}$ as the sheath boundary condition (to be treated in \label{sec:BCs}) will will accelerate the ions to the ion acoustic speed, and thus create a lower density around the sheath as compared with the rest of the paralell domain.
+A smaller variation in the domain has the advantage that the difference in magnitude of the largest and smallest eigenvalues decreases, which is benifitial for the stiffness of the system \cite{Leveque2007book}.
 
-Starting from \cref{eq:mom_crude}, we have that
+To derive the current equation and parallel density momentum equation, we will start from \cref{eq:mom_crude}.
+We have that
 %
 \begin{align*}
     \partial_t \L(n_\a m_\a \ve{u}_{\a} \R)
@@ -66,14 +67,14 @@ Starting from \cref{eq:mom_crude}, we have that
     &
     + q_\a n_\a\ve{E}_\|
     + \ve{R}_{\b\to\a, \|}
-    + \ve{R}_{n\to\a, \|}
+    + \ve{R}_{n\to\a, \|}.
     \numberthis
     \label{eq:momDensIntermediate}
 \end{align*}
 %
-We observe that $\div \L( n_\a \ve{u}_\a \R)$ is a part of the continuity equation.
+We observe that $\div \L( n_\a \ve{u}_\a \R)$ is a part of the continuity equation, and we will exploit this.
 From quasi-neutrality, we have that $\partial_t Zn_i \simeq \partial_t n_e \simeq \partial_t n$.
-At the same time we have from ionization tha $ZS_{i,n} = S_{e,n} $.
+At the same time, since the created charge is zero, we that $ZS_{i,n} = S_{e,n} $.
 This must mean that $Z\div(n_i \ve{u}_i) \simeq \div(n_e \ve{u}_e)$, which leads us to the conclusion that $\frac{|q_\a|}{e}\div(n_\a \ve{u}_\a) \simeq \div(n_e \ve{u}_e)$.
 Inserting this into \cref{eq:momDensIntermediate} yields
 %
@@ -254,17 +255,16 @@ Inserting this into \cref{eq:momDensIntermediate} yields
     + m_\a u_{\a,\|} \frac{e}{|q_\a|}\frac{\rho_s^2}{\mu} \grad_\perp^2 n_e
     \R)
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
-    + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
+    + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}.
     \numberthis
     \label{eq:nonElstat}
 \end{align*}
-% FIXME: Have E here, and not grad phi?
-% FIXME: Change all div b = 0 to div b simeq 0
+%
 Notice that
 %
 \begin{enumerate}[noitemsep,nolistsep]
     \item We have collected the parallel advection terms of the electron density equation and of the parallel momentum density equation.
-    \item We have collected the resistivity terms arising from the electron density equation and those arising from the parallel momentum density equation
+    \item We have collected the resistivity terms arising from the electron density equation and those arising from the parallel momentum density equation.
 \end{enumerate}
 %
 This means that the parallel momentum density for ions reads (using that $p_i=0$ as $T_i=0$)
@@ -311,7 +311,7 @@ This means that the parallel momentum density for ions reads (using that $p_i=0$
     + \frac{1}{Z}m_i u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
     \R)
     - \frac{1}{Z}m_i n \nu_{i n}u_{i,\|}
-    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|},
  \numberthis
  \label{eq:ionMomDens}
 \end{align*}
@@ -364,7 +364,7 @@ and that the momentum density for electrons reads
     + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
     \R)
     - m_e n \nu_{e n}u_{e,\|}
-    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
  \numberthis
  \label{eq:elMomDens}
 \end{align*}
@@ -508,7 +508,7 @@ We obtain
     \\&
     + \frac{Z4}{m_i3}
     \L(\eta_{i,0} \partial_z^2 u_{i,\|}
-    + \eta_{e,0} \partial_z^2 u_{e,\|} \R)
+    + \eta_{e,0} \partial_z^2 u_{e,\|} \R).
     \numberthis
     \label{eq:parMomDensNonNorm}
 \end{align*}
@@ -518,9 +518,6 @@ We obtain
 %
 We can obtain the equation for the time evolution of the parallel current by multiplying \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ and add it with the $\frac{q_e}{m_e}$ multiplication of \cref{eq:elMomDens}.
 Multiplication of \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ yields
-%
-% FIXME: Proper drift ordering could shed light on how the density evolution
-% is to enter the equations, see photo jmad
 %
 \begin{align*}
     \frac{q_i}{m_i}\frac{1}{Z}m_i \partial_t \L(n u_{i,\|} \R)
@@ -562,7 +559,7 @@ Multiplication of \cref{eq:ionMomDens} with $\frac{q_i}{m_i}$ yields
     + \frac{m_i}{Z} u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
     \R)
     - e n \nu_{i n}u_{i,\|}
-    + \frac{Ze}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
+    + \frac{Ze}{m_i}\frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}.
     \numberthis
     \label{eq:qmMultI}
 \end{align*}
@@ -615,7 +612,7 @@ whereas multiplication of \cref{eq:elMomDens} with $\frac{q_e}{m_e}$ yields
     + m_e u_{e,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
     \R)
     + e n \nu_{e n}u_{e,\|}
-    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
     \numberthis
     \label{eq:qmMultE}
 \end{align*}
@@ -801,7 +798,7 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
     - 0.51\nu_{ei} j_\|
     \\ &
     + e n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
-    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
     \numberthis
     \label{eq:parElNonNorm}
 \end{align*}
