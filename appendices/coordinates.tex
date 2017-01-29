@@ -739,23 +739,20 @@ We now have that $\ve{B}_{\text{Cylinder}}=B_0J\ve{B}_{\text{Clebsch}}$, where $
 \begin{align*}
     B_{\text{Cylinder}}\defined &
     \sqrt{B_0J\ve{B}_{\text{Clebsch}}\cdot B_0J\ve{B}_{\text{Clebsch}}}
-    = \sqrt{B_0\ve{e}_\theta\cdot B_0\ve{e}_\theta}
-    = B_0\sqrt{g_{\theta\theta}}
+    = \sqrt{B_0\ve{e}_z\cdot B_0\ve{e}_z}
+    = B_0\sqrt{g_{zz}}
     = B_0
 \end{align*}
 %
 and
 %
 \begin{align*}
-    \ve{B}_{\text{Cylinder}}=&B_{\text{Cylinder}}\ve{b}_{\text{Cylinder}}\\
-    \ve{b}_{\text{Cylinder}}
-    =&\frac{\ve{B}_{\text{Cylinder}}}{B_{\text{Cylinder}}}
-    =\frac{B_0J\ve{B}_{\text{Clebsch}}}{B_0}
-    =\frac{B_0JJ^{-1}\ve{e}_\theta}{B_0}
-    =\ve{e}_\theta
+    \ve{B}_{\text{Cylinder}}=&B_{\text{Cylinder}}\ve{b}_{\text{Clebsch}}
 \end{align*}
 %
-In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system, in the sense that the basis vectors and the Jacobian are the same, but that they are not the same as \cref{eq:clebschB} is not fulfilled for the pure cylindrical coordinate system.
+In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system in the sense that the basis vectors and the Jacobian are the same.
+However, \cref{eq:clebschB} is not fulfilled for the pure cylindrical coordinate system.
 Care must therefore be taken when using BOUT++ operators which explicitly uses ${B}_{\text{Clebsch}}$.
 In the scope of this thesis, it means that care must be taken whenever using the Poisson bracket, as explained in \cref{app:poisson}.
-To clarify the notation: $\ve{B}$, $B$ and $\ve{b}$ is referring to $\ve{B}_{\text{Clebsch}}$, $B_{\text{Clebsch}}$ and $\ve{b}_{\text{Clebsch}}$ prior to \cref{chap:CELMA} and $\ve{B}_{\text{Cylinder}}$, $B_{\text{Cylinder}}$ and $\ve{b}_{\text{Cylinder}}$ after \cref{chap:CELMA}.
+
+To clarify the notation: $\ve{B}$ and $B$ unspecified prior to \cref{chap:CELMA}, and referring to $\ve{B}_{\text{Cylinder}}$ and $B_{\text{Cylinder}}$ after and including \cref{chap:CELMA}.

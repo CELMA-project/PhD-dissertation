@@ -69,10 +69,56 @@ Under electrostatic conditions, we have that $\ve{u}_{E, \text{with Clebsch B}} 
            \R)
            \phi
            \numberthis
-           \label{app:ExB}
+           \label{poi:ExB}
 \end{align*}
 %
-The electrostatic $\ve{E}\times \ve{B}$ advection operator thus becomes
+We note that \cref{poi:ExB} is derived for a system where we are using $B_\text{Clebsch}$.
+Translating this into a cylindrical coordinate system using $B_\text{Cylindrical}$ gives
+%
+\begin{align*}
+    \ve{u}_{E, \text{with constant B}} =&
+    -\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Cylinder}}
+    \\
+    %
+= &
+    -\frac{B_\text{Clebsch}}{B_\text{Clebsch}}\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Cylinder}}
+    \\
+%
+= &
+    -\frac{B_\text{Clebsch}}{B_\text{Cylinder}}\frac{\nabla\phi\times\ve{b}_\text{Clebsch}}{B_\text{Clebsch}}
+    \\
+%
+= &
+    \frac{\sqrt{g_{zz}}}{JB_\text{Cylinder}}
+    \ve{u}_{E, \text{with Clebsch B}}
+    \\
+%
+= &
+    \frac{1}{JB_\text{Cylinder}}
+         \frac{1}{g_{zz}}
+           \L(
+           - g_{z z}\ve{e}_\theta\partial_\rho
+           + g_{z\theta}\ve{e}_ z\partial_\rho
+           + g_{z\rho}\ve{e}_\theta\partial_z
+           - g_{z\theta}\ve{e}_\rho\partial_z
+           - g_{z\rho}\ve{e}_ z\partial_\theta
+           + g_{z z}\ve{e}_\rho\partial_\theta
+           \R)
+           \phi
+    \\
+%
+= &
+    \frac{1}{JB_\text{Cylinder}}
+           \L(
+           - \ve{e}_\theta\partial_\rho
+           + \ve{e}_\rho\partial_\theta
+           \R)
+           \phi
+    \numberthis
+    \label{poi:cylExB}
+\end{align*}
+%
+Continuing from \cref{poi:ExB}, we see that in general coordinates the electrostatic $\ve{E}\times \ve{B}$ advection operator becomes
 %
 \begin{align*}
     \ve{u}_{E, \text{with Clebsch B}}\cdot\nabla
@@ -89,6 +135,8 @@ The electrostatic $\ve{E}\times \ve{B}$ advection operator thus becomes
            + g_{22}\ve{e}_1\partial_3
            \R)
            \phi
+           \\
+           &
        \cdot\L(\ve{e}^1\partial_1 + \ve{e}^2\partial_2 + \ve{e}^3\partial_3\R)\\
     %
     %
@@ -149,14 +197,12 @@ In a orthogonal system, all the off diagonal elements are zero, so
     \label{poi:defClebsh}
 \end{align}
 %
-We note that \cref{poi:defClebsh} is derived for a system where we are using $B_\text{Clebsch}$.
-However, as stated in \cref{sec:clebschAlign}, the $B$-field in our case is constant (the one which is referred to as $B_\text{Cylindrical}$).
-Thus
+As \cref{poi:defClebsh} is derived with $B_\text{Clebsch}$, we get that
 %
 \begin{align*}
     \ve{u}_{E, \text{with const B}}\cdot\nabla
-    =& \frac{B_{\text{Clebsch}}}{B_{\text{Cylindrical}}}\ve{u}_{E, \text{with Clebsh B}}\cdot\nabla\\
-    =& \frac{\sqrt{g_{\theta\theta}}}{JB_{\text{Cylindrical}}}
+    =& \frac{B_{\text{Clebsch}}}{B_{\text{Cylindrical}}}\ve{u}_{E, \text{with Clebsch B}}\cdot\nabla\\
+    =& \frac{\sqrt{g_{zz}}}{JB_{\text{Cylindrical}}}
     (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)\\
     =& \frac{1}{JB}
     (\partial_\theta\phi\partial_\rho - \partial_\rho\phi\partial_\theta)
