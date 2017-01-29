@@ -111,9 +111,73 @@ The values here differs from the density profile because of the zero gradient en
 After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
 It has not been observed that the system reaches the linear phase unless perturbed.
 This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.
+Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
+As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
+In other words mode, coupling between different modes are negligible.
+Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
+In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
+
+\Cref{fig:modeRotation} indicates how the perturbations are both rotating and growing at the same time.
+
+YOU ARE HERE: RESTRUCTURE THE TEXT
+
+
+The poloidal plane is at the $\rho$ corresponding to the largest density gradient.
+
+
+
+We will now compare the direction of rotation of the perturbations with direction of rotation of the zeroth order drifts.
+In \cref{fig:modeRotation} the magnetic field is pointing into the paper.
+Further, the gradient in both $\phi$ and $n$ is point towards the center (i.e. towards negative $\rho$).
+From \cref{poi:cylExB} have that
 %
-\begin{wrapfigure}{l}{0.70\textwidth}
-    \hspace*{-3cm}
+\begin{align*}
+    u_{E,\theta} =& \ve{u}_{E}\cdot\hat{\ve{e}}_\theta
+    %
+    =
+     \frac{1}{JB}
+           \L(
+           - \ve{e}_\theta\partial_\rho
+           + \ve{e}_\rho\partial_\theta
+           \R)
+           \phi
+    \cdot
+    \frac{\ve{e}_\theta}{\rho}
+    %
+    =
+     - \frac{1}{J\rho B} g_{\theta\theta} \partial_\rho \phi
+    %
+    =
+     - \frac{\rho^2}{\rho^2 B} \partial_\rho \phi
+    %
+    =
+     - \frac{1}{B} \partial_\rho \phi,
+\end{align*}
+%
+so the $\ve{u}_E$-drift is moving in the counter-clockwise direction%
+\footnote{
+Note that the signs comes as a consequence of working in a left handed system.
+This means that $\theta$ is increasing in the counter-clockwise direction.
+}
+%
+.
+Substituting $\grad\phi$ with $\frac{T_e\grad n}{q_en}$ in \cref{poi:cylExB} gives the electron diamagnetic drift.
+We find that
+%
+\begin{align*}
+ u_{d,e,\theta}= \frac{T_e}{eB} \frac{\partial_\rho}{n}.
+\end{align*}
+%
+That is, the diamagnetic drift is moving in the clockwise direction, opposite of the $\ve{E}\times\ve{B}$-drift direction.
+In other words, the perturbations are moving in the electron diamagnetic direction.
+This is one of the characteristic features of drift waves \cite{Jassby1972}.
+
+
+If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
+To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
+%
+\begin{figure}[h!]
+    \centering
     \begin{subfigure}[h]{1\textwidth}
         \centering
         \includegraphics{fig/results/fourierModes/stable}
@@ -121,8 +185,6 @@ This could in principle happen if the noise at machine level assembles in just t
         \caption{For $B=0.02\T$ the system is stable against perturbation}
     \end{subfigure}%
     \\
-    \hspace*{-3cm}
-    \vspace*{0.5cm}
     \begin{subfigure}[h]{1\textwidth}
         \centering
         \includegraphics{fig/results/fourierModes/unstable}
@@ -131,36 +193,8 @@ This could in principle happen if the noise at machine level assembles in just t
     \end{subfigure}
     \caption{Time trace of the absolute values of the Fourier modes.}
     \label{fig:fourierDens}
-\end{wrapfigure}
+\end{figure}
 %
-
-Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
-As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
-In other words mode, coupling between different modes are negligible.
-Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
-
-A clockwise rotation is indicated in \cref{fig:modeRotation}.
-%
-\begin{wrapfigure}{r}{0.55\textwidth}
-    \centering
-    \begin{subfigure}[h]{0.50\textwidth}
-        \centering
-        \includegraphics{fig/results/growthRates/growthRatesB0}
-        \label{fig:grB}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{0.50\textwidth}
-        \centering
-        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-    \end{subfigure}
-    \caption{$B$-dependency on the growth rates and angular velocities.}
-    \label{fig:gr}
-\end{wrapfigure}
-%
-If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
-To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
 
 From linear stability theory (FIXME)
 % FIXME: Add references
@@ -184,8 +218,24 @@ The final angular velocity is the average of the individual angular velocities o
     \item The end of the linear phase is defined as the time where any mode, which up to that point in time has been flat or damped, suddenly shows an exponential growth.
 \end{enumerate}
 %
-A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:gr}.
-As indicated in \cref{fig:gr}, which poloidal mode dominates is dependent on $B$.
+A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:grB,fig:grBModeNr}.
+%
+\begin{wrapfigure}{r}{0.55\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0}
+        \caption{$B$-dependency on the growth rates and angular velocities.}
+        \label{fig:grB}
+\end{wrapfigure}
+%
+%
+\begin{wrapfigure}{r}{0.55\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
+        \label{fig:grBModeNr}
+        \caption{Mode number-dependency on the growth rates and angular velocities.}
+\end{wrapfigure}
+%
+As indicated in \cref{fig:grB,fig:grBModeNr}, which poloidal mode dominates is dependent on $B$.
 This is depicted in \cref{fig:dominatingMode}, where one also can observe that the parallel node moves downward with decreasing $B$.
 %
 {
@@ -296,30 +346,6 @@ qualitatively agreement of obtained from numerics and here
 % FIXME
 \clearpage
 
-\section{Fluxes}
-FIXME: Move figures and describe
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=1.00\textwidth]{fig/results/totalFlux/flux0008}
-    \caption{Integrated flux for $B=0.08\T$}
-    \label{fig:flux0008}
-\end{figure}
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=1.00\textwidth]{fig/results/compareBouss/flux0008B}
-    \caption{Integrated flux for $B=0.08\T$ using the Boussinesq approximation.}
-    \label{fig:fluxB0008}
-\end{figure}
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=1.00\textwidth]{fig/results/totalFlux/flux0006}
-    \caption{Integrated flux for $B=0.06\T$}
-    \label{fig:flux0006}
-\end{figure}
-
 \section{The turbulence phase}
 %
 At a certain point the linear modes becomes large enough for non-linear effects to affect the dynamics of the system.
@@ -379,3 +405,19 @@ In the saturated turbulence state, the fluctuations are no longer in an ordered 
     \label{fig:2DFluct}
 \end{figure}
 %
+\subsection{Fluxes}
+FIXME: Move figures and describe
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/totalFlux/flux0008}
+    \caption{Integrated flux for $B=0.08\T$}
+    \label{fig:flux0008}
+\end{figure}
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/totalFlux/flux0006}
+    \caption{Integrated flux for $B=0.06\T$}
+    \label{fig:flux0006}
+\end{figure}
