@@ -89,18 +89,12 @@ The resulting Fokker-Planck equation reads
 To follow the distribution functions in a 6-dimensional phase-space as a function of time is quite a daunting taks.
 Instead, we will follow some averages of the distribution function.
 This comes at the price of losing kinetic information in the system, like for example Landau damping.
-We will use the notation
-%
-\begin{align*}
-    \expt{A}_{f} \defined \frac{1}{n_\a}\inde{Af_\a}{^3v},
-\end{align*}
-%
-where $\expt{1}_f=n_a$ is the density, to denote a weighted velocity average (a moment) of the Fokker-Planck equation.
+We will use \cref{app:distAvg} to denote a weighted velocity average (a moment) of the Fokker-Planck equation, and note that $\expt{1}_{f_a}=n_a$ is the density of species $\a$.
 From this, we define
 %
 \begin{align*}
-    \expt{\ve{v}_\a}_f        \defined& \; \ve{u}_a,      \\
-    \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_f \defined&\; \te{\Pi}_\a.
+    \expt{\ve{v}_\a}_{f_a}        \defined& \; \ve{u}_a,      \\
+    \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_{f_a} \defined&\; \te{\Pi}_\a.
 \end{align*}
 %
 We call the difference between the velocity of a single particle and the macroscopic fluid velocity $\ve{w}$, so that
@@ -112,8 +106,8 @@ We call the difference between the velocity of a single particle and the macrosc
 Thus, we define the scalar pressure $p_\a$, the pressure tensor $\te{P}_\a$ and the stress tensor $\te{\pi}_\a$ as
 %
 \begin{align*}
-    \frac{n_\a m_\a\expt{w_\a^2}_f}{3} \defined& \; p_\a = n_\a T_\a\\
-    n_\a m_\a\expt{\ve{w}_{\a}\ve{w}_{\a}}_f \defined& \; \te{P}_\a\\
+    \frac{n_\a m_\a\expt{w_\a^2}_{f_a}}{3} \defined& \; p_\a = n_\a T_\a\\
+    n_\a m_\a\expt{\ve{w}_{\a}\ve{w}_{\a}}_{f_a} \defined& \; \te{P}_\a\\
     \te{\pi}_\a \defined& \; \te{P}_\a - \te{I}p_\a\\
 \end{align*}
 %
@@ -127,13 +121,13 @@ Finally we define
 where $\ve{R}_{\g\to\a}$ is the friction force on $\a$ given by $\g$.
 
 \subsection{Zeroth moment}
-We will now work through the zeroth moment term by term by applying $\expt{n_\a \;\cdot\;}_f=n_\a\expt{\;\cdot\;}_f$ on \cref{eq:fp}.
+We will now work through the zeroth moment term by term by applying $\expt{n_\a \;\cdot\;}_{f_a}=n_\a\expt{\;\cdot\;}_{f_a}$ on \cref{eq:fp}.
 We have that
 %
 \begin{align*}
-    \expt{\partial_t n_\a}_f
+    \expt{\partial_t n_\a}_{f_a}
     &=
-    \partial_t n_\a \expt{1}_f
+    \partial_t n_\a \expt{1}_{f_a}
     \\
 %
 %
@@ -144,35 +138,38 @@ We have that
 that
 %
 \begin{align*}
-    \expt{n_\a\ve{v}\cdot\nabla}_f
+    \expt{n_\a\ve{v}\cdot\nabla}_{f_a}
     &=
-    n_\a
-    \div\expt{ \ve{v}}_f
+    \expt{n_\a\div\ve{v}}_{f_a}
     \note{$\ve{x}$ and $\ve{v}$ are independent coordinates.}
     \\
 %
-%
     &=
-    n_\a
-    \expt{\nabla\cdot\ve{v}}_f
+    \inde{\div\ve{v}f_a}{^3v}
     \\
-    &=
-    \frac{n_\a}{n_\a}
-    \nabla\cdot\L(n_\a\ve{u}_\a\R)
-    \note{$\nabla$ commutes with the integral}
 %
+    &=
+    \div\inde{\ve{v}f_a}{^3v}
 %
     \\
     &=
-    \nabla\cdot\L(n_\a\ve{u}_\a\R)
+    \div\expt{n_\a\ve{v}}_{f_a}
+%
+    \\
+    &=
+    \div\L(n_\a\expt{\ve{v}}_{f_a}\R)
+%
+    \\
+    &=
+    \div\L(n_\a\ve{u}_\a\R)
 \end{align*}
 %
 and
 %
 \begin{align*}
-    \expt{n_\a\frac{q_\a}{m_\a}\ve{E}\cdot\partial_{\ve{v}}}_f
+    \expt{n_\a\frac{q_\a}{m_\a}\ve{E}\cdot\partial_{\ve{v}}}_{f_a}
     =&
-    n_\a\frac{q_\a}{m_\a}\expt{\partial_{\ve{v}} \cdot\ve{E}}_f
+    n_\a\frac{q_\a}{m_\a}\expt{\partial_{\ve{v}} \cdot\ve{E}}_{f_a}
     \note{$\ve{E}$ independent of $\ve{v}$}
     \\
 %
@@ -193,9 +190,9 @@ and
 and further that
 %
 \begin{align*}
-    \expt{n_\a\frac{q_\a}{m_\a}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_f
+    \expt{n_\a\frac{q_\a}{m_\a}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_{f_a}
     =&
-    n_\a\frac{q_\a}{m_\a}\expt{\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_f
+    n_\a\frac{q_\a}{m_\a}\expt{\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_{f_a}
     \\
 %
 %
@@ -258,13 +255,13 @@ Thus our continuity equation becomes
 \end{align}
 
 \subsection{First moment}
-We will now work through the first moment term by term by applying $\expt{m_\a n_\a \ve{v} \;\cdot\;}_f=m_\a n_\a\expt{ \ve{v} \;\cdot\;}_f$ on \cref{eq:fp}.
+We will now work through the first moment term by term by applying $\expt{m_\a n_\a \ve{v} \;\cdot\;}_{f_a}=m_\a n_\a\expt{ \ve{v} \;\cdot\;}_{f_a}$ on \cref{eq:fp}.
 We have that
 %
 \begin{align*}
-    \expt{\partial_t m_\a n_\a \ve{v}}_f
+    \expt{\partial_t m_\a n_\a \ve{v}}_{f_a}
     &=
-    \partial_t m_\a n_\a \expt{\ve{v}}_f
+    \partial_t m_\a n_\a \expt{\ve{v}}_{f_a}
     \\
 %
 %
@@ -275,9 +272,9 @@ We have that
 that
 %
 \begin{align*}
-    \expt{m_\a n_\a\ve{v}\ve{v}\cdot\nabla}_f
+    \expt{m_\a n_\a\ve{v}\ve{v}\cdot\nabla}_{f_a}
     &=
-    \div\expt{m_\a n_\a\ve{v}\ve{v}}_f
+    \div\expt{m_\a n_\a\ve{v}\ve{v}}_{f_a}
     \note{$\ve{x}$ and $\ve{v}$ are independent coordinates}
     \\
 %
@@ -289,22 +286,22 @@ that
 and
 %
 \begin{align*}
-    \expt{n_\a \ve{v} q_\a \ve{E}\cdot\partial_{\ve{v}}}_f
+    \expt{n_\a \ve{v} q_\a \ve{E}\cdot\partial_{\ve{v}}}_{f_a}
     =&
-    n_\a q_\a \expt{ \ve{v}  \ve{E}\cdot\partial_{\ve{v}}}_f
+    n_\a q_\a \expt{ \ve{v}  \ve{E}\cdot\partial_{\ve{v}}}_{f_a}
     \note{$\ve{E}$ independent of $\ve{v}$}
     \\
 %
     =&
-    n_\a q_\a \expt{ \ve{v} \partial_{\ve{v}} \cdot \ve{E}}_f
+    n_\a q_\a \expt{ \ve{v} \partial_{\ve{v}} \cdot \ve{E}}_{f_a}
     \\
 %
     =&
     n_\a q_\a
     \L(
-    \expt{ \partial_{\ve{v}} \cdot \L[\ve{v} \ve{E}\R]}_f
+    \expt{ \partial_{\ve{v}} \cdot \L[\ve{v} \ve{E}\R]}_{f_a}
     -
-    \expt{ \ve{E} \partial_{\ve{v}} \cdot \ve{v}}_f
+    \expt{ \ve{E} \partial_{\ve{v}} \cdot \ve{v}}_{f_a}
     \R)
     \\
 %
@@ -314,7 +311,7 @@ and
     \frac{1}{n_\a}
     \inde{ \partial_{\ve{v}} \cdot \L[\ve{v} \ve{E} f_\a \R]}{^3v}
     -
-    \ve{E}\expt{1}_f
+    \ve{E}\expt{1}_{f_a}
     \R)
     \\
 %
@@ -337,9 +334,9 @@ and
 further that
 %
 \begin{align*}
-    \expt{n_\a q_\a \ve{v}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_f
+    \expt{n_\a q_\a \ve{v}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_{f_a}
     =&
-    n_\a q_\a \expt{\ve{v}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_f
+    n_\a q_\a \expt{\ve{v}\ve{v}\times\ve{B}\cdot\partial_{\ve{v}}}_{f_a}
     \\
 %
 %
@@ -439,13 +436,13 @@ The second term can be expanded further by observing that
 \begin{align*}
     \te{\Pi}_\a
     =&
-    \expt{m_\a n_\a \ve{v}\ve{v}}_f
+    \expt{m_\a n_\a \ve{v}\ve{v}}_{f_a}
     \\
 %
 %
      =&
     m_\a n_\a
-    \expt{\ve{v}\ve{v}}_f
+    \expt{\ve{v}\ve{v}}_{f_a}
     \\
 %
 %
@@ -462,7 +459,7 @@ The second term can be expanded further by observing that
         +
         \ve{u}_\a
     \R)
-        }_f
+        }_{f_a}
     \\
 %
 %
@@ -480,7 +477,7 @@ The second term can be expanded further by observing that
         +
         \ve{u}_\a
         \ve{u}_\a
-        }_f
+        }_{f_a}
     \\
 %
 %
@@ -490,23 +487,23 @@ The second term can be expanded further by observing that
     \expt{
         \ve{w}_\a
         \ve{w}_\a
-        }_f
+        }_{f_a}
         +
         \ve{u}_\a
     \expt{
         \ve{w}_\a
-        }_f
+        }_{f_a}
         +
     \expt{
         \ve{w}_\a
-        }_f
+        }_{f_a}
         \ve{u}_\a
         +
         \ve{u}_\a
         \ve{u}_\a
     \expt{
         1
-        }_f
+        }_{f_a}
     \R)
     \note{$\ve{w}_\a$ fluctuates around mean, so averages to $0$}
     \\
@@ -518,7 +515,7 @@ The second term can be expanded further by observing that
     \expt{
         \ve{w}_\a
         \ve{w}_\a
-        }_f
+        }_{f_a}
         +
         \ve{u}_\a
         \ve{u}_\a
@@ -625,10 +622,10 @@ Thus, \cref{eq:mom_crude} can be written
     + \ve{R}_{n\to\a}
     - S_{\a,n}m_\a\ve{u}_\a.
     \numberthis
-    \label{kin:mom_wo_full_deriv}
+    \label{kin:mom_wo_{f_a}ull_deriv}
 \end{align*}
 %
-If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert this into \cref{kin:mom_wo_full_deriv}, we get
+If we now introduce $\d_{t,\a} = \partial_t + \ve{u}_{\a}\cdot\nabla$ and insert this into \cref{kin:mom_wo_{f_a}ull_deriv}, we get
 %
 \begin{align*}
     n_\a m_\a \d_{t,\a} \ve{u}_{\a}
