@@ -232,6 +232,7 @@ The derivation in \cite{Pecseli2016book} is done by considering a magnetized pla
 The electron and ion momentum equations are linearized together with the electron and ion continuity equations.
 No background electric field is assumed.
 Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, where $A \in \{n, u_e, \phi\}$.
+One can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a the perturbation to move along $y$ as the inverse wavelength $k_y$ stays constant.
 After solving the system algebraically, one arrives at the equation
 %
 \begin{align}
@@ -320,6 +321,8 @@ Here, the value of $\partial_\rho n/n$ is taken from the steady state from the s
 $k_z$ is set to $\pi/L_z$, as  $\lambda_z \simeq 2L_z$, which can be observed in \cref{fig:modeRotation,fig:dominatingMode}.
 In our simulation, this wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
 Note that this wave length is not necessarily unrealistic, and that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
+Finally, in order to correct for $\partial_\rho\phi$ which is absent in the analytical derivation (i.e. with no poloidal $\ve{E}\times\ve{B}$-drift), but present in the simulation, $u_{E,\theta}/\rho_{\max|\partial_\rho n/n|}$ has been added to $\Re(\om)$ in order to correct for this.
+
 %
 \begin{figure}[htb]
     \centering
@@ -366,6 +369,7 @@ The same trend is observered for the angular frequency in \cref{fig:grAnalytic},
 % \clearpage
 }
 %
+
 The same information as given in \cref{fig:grAnalytic} is presented in a different way in \cref{fig:grAnalyticBModeNr}.
 %
 \begin{figure}[htb]
@@ -376,11 +380,11 @@ The same information as given in \cref{fig:grAnalytic} is presented in a differe
    \label{fig:grAnalyticBModeNr}
 \end{figure}
 %
-From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are monotonically increasing with increasing $B_0$, apart from $m_\theta=1$.
+From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are monotonically increasing with increasing $B_0$ (with an exception of $m_\theta=1$).
 We can also observe that the angular frequency increases with increasing $B_0$.
 This migth come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
 This is true also for \cref{eq:analyticDisp} in the limit of large $\sigma_\|/\om^*$ and small $b$, as pointed out in \cite{Pecseli2016book}.
-However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this is not true for our case, where $\Re(\om)\propto B$ is observed.
+However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this limit is not valid in our case, and $\Re(\om)\propto B$ is observed instead.
 %
 \begin{table}[h!]
 {\footnotesize \centerline{
@@ -427,30 +431,9 @@ $u_{E,\theta}$ & $50-125$\\
 \end{table}
 
 
-FIXME:
-FIXME: Corrected for uE in foo bar
-
-
-
-DO NOT DELETE YET
-If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
-
-
-
-We will here compare the growth rates obtained from the numerical simulation with an analytic expression for the dispersion relation.
-
-
-
-FIXME:
-write how can conclude that this is coming from drift waves.
-Going in el diamag dir,
-lowest order no instability
-phase difference fluct in phi and n gives rise to this
-qualitatively agreement of obtained from numerics and here
-
-
-
 \subsection{Phase shift}
+Shows that density lags potential.
+FIXME: To be completed.
 
 \subsection{Dispersion relation from the simulations}
 
