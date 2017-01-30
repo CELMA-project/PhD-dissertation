@@ -14,15 +14,16 @@ We will in this section discuss the resulting profiles.
 
 \subsection{Parallel profiles}
 %
+The resulting parallel profile for the steady state is shown in \cref{fig:parProfs}.
+The profile is mainly determined by the source and the boundary condition at the sheath entrance.
+%
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{fig/results/1DProfiles/B010Par}
+    \includegraphics{fig/results/1DProfiles/B010Par}
     \caption{Parallel profiles in the steady state for $B=0.1\T$}
     \label{fig:parProfs}
 \end{figure}
 %
-The resulting parallel profile for the steady state is shown in \cref{fig:parProfs}.
-The profile is mainly determined by the source and the boundary condition at the sheath entrance.
 
 When changing the source amplitude changes the values of the profiles, but not so much the shape.
 There exists a lower threshold on the source amplitude where lower values than the threshold empties the plasma from the domain, such that no density profile is allowed to build up.
@@ -58,14 +59,15 @@ The see-saw pattern seen in \cref{fig:parProfs} is the maximum allowed see-sawin
 
 \subsection{Radial profiles}
 %
+The radial profiles are shown in \cref{fig:radProfs}.
+%
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{fig/results/1DProfiles/B010Rad}
+    \includegraphics{fig/results/1DProfiles/B010Rad}
     \caption{Radial profiles in steady state for $B=0.1\T$}
     \label{fig:radProfs}
 \end{figure}
 %
-The radial profiles are shown in \cref{fig:radProfs}.
 As for the parallel direction, the shape of the radial density profile is determined mainly by the source and the radial boundary conditions.
 The radial extent of the source plays a larger role in determining the radial density profile than the shape of the source.
 
@@ -73,58 +75,35 @@ Despite having almost Boltzmann distribution electrons in the parallel direction
 Close to $L_\rho$ the radial potential profile is affected more by the fixation potential to $0$ at $L_\rho$.
 The values here differs from the density profile because of the zero gradient enforcement on $n$ at $L_\rho$.
 
-%
-{
-\clearpage
-\thispagestyle{empty}
-\begin{figure}[htbp]
-    \vspace*{-1cm}
-    \centering
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-0_rot}
-        \label{fig:rot1}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-1}
-        \label{fig:rot2}
-    \end{subfigure}
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-2}
-        \label{fig:rot3}
-    \end{subfigure}
-    \caption{Rotation of the modes.
-        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
-    }
-    \label{fig:modeRotation}
-\end{figure}
-\clearpage
-}
-%
-
 \section{The linear phase}
 %
+We will here investigate the linear behavior of our system.
+In the end we will conclude that the behavior coincides with what is found from simplified linear theory of the system.
+
 After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
-It has not been observed that the system reaches the linear phase unless perturbed.
-This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.
+It has not been observed that the system reaches the linear phase unless perturbed%
+\footnote{This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.}%
+%
+.
 Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
 As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
 In other words mode, coupling between different modes are negligible.
 Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-In any case, the modes are rotating either clockwise or counter clockwise (depending on the mode number and the simulation parameters).
+As our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficently big.
+The mix of linear and non-linear growth will eventually reach a saturated turbulence treated, which will be treated in \cref{sec:satTurb}.
+We will define the linear state as:
+%
+\begin{enumerate}
+    \item Starting once the initial perturbation has vanished and where the modes start to show a more or less exponential growth or decay.
+    \item Ending at the time where any mode, which up to that point in time has been flat or damped, suddenly shows an exponential growth.
+\end{enumerate}
+%
 
-\Cref{fig:modeRotation} indicates how the perturbations are both rotating and growing at the same time.
-
-YOU ARE HERE: RESTRUCTURE THE TEXT
-
-
-The poloidal plane is at the $\rho$ corresponding to the largest density gradient.
-
-
+\subsection{The linear growth}
+%
+In addition to the growth explained above, the modes are rotating in the linear phase.
+This is indicated in \cref{fig:modeRotation}, where an clockwise rotation is observed.
+For further reference, one should note that the black dashed circles on the perpendicular part of the plot indicates the position of the maximum gradient of the density in the steady state, which is also the fixed $\rho$ in the poloidal part of the plot.
 
 We will now compare the direction of rotation of the perturbations with direction of rotation of the zeroth order drifts.
 In \cref{fig:modeRotation} the magnetic field is pointing into the paper.
@@ -169,78 +148,195 @@ We find that
 \end{align*}
 %
 That is, the diamagnetic drift is moving in the clockwise direction, opposite of the $\ve{E}\times\ve{B}$-drift direction.
-In other words, the perturbations are moving in the electron diamagnetic direction.
+In absolute numbers, the $\ve{E}\times\ve{B}$-drift is approximately one order smaller than the diamagnetic drift at the position of maximum density gradient for our parameters.
+Hence, the perturbations are moving in the electron diamagnetic direction.
 This is one of the characteristic features of drift waves \cite{Jassby1972}.
+To verify if the linear phase can be identified as drift waves, we will proceed with a quick review of linear drift waves.
 
-
-If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
-To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
-%
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[h]{1\textwidth}
-        \centering
-        \includegraphics{fig/results/fourierModes/stable}
-        \label{fig:fourierStable}
-        \caption{For $B=0.02\T$ the system is stable against perturbation}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1\textwidth}
-        \centering
-        \includegraphics{fig/results/fourierModes/unstable}
-        \label{fig:fourierUnstable}
-        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
-    \end{subfigure}
-    \caption{Time trace of the absolute values of the Fourier modes.}
-    \label{fig:fourierDens}
-\end{figure}
-%
-
-From linear stability theory (FIXME)
-% FIXME: Add references
-, the position of the most unstable mode for drift waves coincides with the position of largest gradient.
-As the abscissa is logarithmic, exponential grow will appear as straight lines.
-The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
-%
-\begin{align*}
-    \Re[\om_n(t)] =
-    \frac{
-        \frac{\Im[\text{FT}(n[t_1])]}{\Re[\text{FT}(n[t_1])]} -
-        \frac{\Im[\text{FT}(n[t_0])]}{\Re[\text{FT}(n[t_0])]}
-    }{\Delta t}
-\end{align*}
-%
-where $\text{FT}$ denotes the Fourier transformed.
-The final angular velocity is the average of the individual angular velocities of the linear phase, where the start and the end of the linear phase has been determined by visual inspection, where we have used the definitions
-%
-\begin{enumerate}
-    \item The start of the linear phase is defined as the time where the initial perturbation has vanished and where the modes start to show a more or less exponential growth.
-    \item The end of the linear phase is defined as the time where any mode, which up to that point in time has been flat or damped, suddenly shows an exponential growth.
-\end{enumerate}
-%
-A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:grB,fig:grBModeNr}.
-%
-\begin{wrapfigure}{r}{0.55\textwidth}
-        \centering
-        \includegraphics{fig/results/growthRates/growthRatesB0}
-        \caption{$B$-dependency on the growth rates and angular velocities.}
-        \label{fig:grB}
-\end{wrapfigure}
-%
-%
-\begin{wrapfigure}{r}{0.55\textwidth}
-        \centering
-        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-        \caption{Mode number-dependency on the growth rates and angular velocities.}
-\end{wrapfigure}
-%
-As indicated in \cref{fig:grB,fig:grBModeNr}, which poloidal mode dominates is dependent on $B$.
-This is depicted in \cref{fig:dominatingMode}, where one also can observe that the parallel node moves downward with decreasing $B$.
 %
 {
-\clearpage
-\thispagestyle{empty}
+% FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
+% \clearpage
+% \thispagestyle{empty}
+\begin{figure}[htbp]
+    \vspace*{-1cm}
+    \centering
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-0_rot}
+        \label{fig:rot1}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-1}
+        \label{fig:rot2}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-2}
+        \label{fig:rot3}
+    \end{subfigure}
+    \caption{Rotation of the modes.
+        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
+    }
+    \label{fig:modeRotation}
+\end{figure}
+% \clearpage
+}
+%
+
+\subsection{Simplified linear drift wave theory}
+%
+Conceptually, a drift wave is a wave which travels in the electron diamagnetic direction, and arises due to the mass difference between electrons and ions.
+If one introduce a density (or pressure) perturbation in a homogeneous, magnetized plasma in a slab, the  electrons will stream out of the perturbation along the magnetic field lines at a much faster rate than ions due to their higher mobility.
+This gives rise to a $\ve{E}$-field perturbation pointing in the direction of the electrons.
+The $\ve{E}$-field gives in turn rise to a $\ve{E}\times\ve{B}$-drift perpendicular to the magnetic field.
+This process is depicted in \cref{fig:DW}.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/driftwave}
+    \caption{
+        Sketch of a drift wave in a slab.
+        The $\ve{E}\times\ve{B}$ arrows indicates the position of the maximum $\ve{E}\times\ve{B}$-drift.
+        Taken from \cite{Stroth2011book}.
+    }
+    \label{fig:DW}
+\end{figure}
+%
+The drift waves has its counterpart in fluid dynamics as Rossby waves, where the $\ve{E}\times\ve{B}$ drift equivalence comes from the Coriolis force \cite{Shepherd1987}.
+
+A phase shift is necessary in order to get an instability.
+This can be seen from \cref{fig:DW} if one shifts the ion and electron clouds upwards or downwards so that the $\ve{E}\times\ve{B}$ arrows are shifted with respect to the density perturbations.
+For a mathematical illustration of this, see for example \cite{Garcia2001a}.
+A phase shift arises if the parallel motion of electrons arising from pressure gradients is delayed.
+Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resitivity.
+
+To obtain a simple analytic expression of the drift waves, we will recite the most important points given in the derivation in \cite{Pecseli2016book}.
+We are here not concerned with neutral interaction.
+For an analytic expression where the neutral elasitc collision dominates, see \cite{Ellis1980}.
+
+The derivation in \cite{Pecseli2016book} is done by considering a magnetized plasma in Cartesian with the assumptions of:
+%
+\begin{itemize}[noitemsep]
+    \item Cold ions.
+    \item Isothermal electrons.
+    \item Electrostatic conditions.
+    \item No electron iniertia.
+    \item Quasi-neutrality.
+    \item $n$ has only a gradient along $x$, where $B$ is in the direction of $z$.
+\end{itemize}
+%
+The electron and ion momentum equations are linearized together with the electron and ion continuity equations.
+No background electric field is assumed.
+Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, where $A \in \{n, u_e, \phi\}$.
+After solving the system algebraically, one arrives at the equation
+%
+\begin{align}
+    \partial_x^2 \phi(x) +
+    \frac{\partial_x n_0(x)}{n_0(x)}\partial_x \phi(x)+
+    \L(k_y^2 +
+    \frac{\om_{ci}}{\om}\frac{\partial_x n_0(x)}{n_0(x)}k_y -
+    \frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\frac{\om_{ci}^2}{c_s^2}
+    \R)\phi(x)
+    =0,
+    \label{eq:fullDisp}
+\end{align}
+%
+where $\om^*$ is the diamagnetic frequency, $\sigma_\|$ describes the conductivity in the system and $b$ measures the extent of the perturbation compared to $\rho_s$.
+These quantities are defined as
+%
+\begin{align*}
+    \om^* \defined& k_y u_{De} =
+    -\L(k_y \frac{T_e}{eB}\frac{\grad n(x)\times \ve{b}}{n(x)}\R)\ve{e}_y
+    =
+    k_y \frac{T_e}{eB}\frac{\partial_x n(x)}{n(x)}
+    \note{Left handed coordinate system}
+    \\
+    %
+    %
+    \sigma_\| \defined& \L(\frac{k_z}{k_y}\R)^2 \frac{\om_{ce}}{\nu_{ei}}\om_{ci}\\
+    b \defined& (k_y \rho_s)^2&
+\end{align*}
+%
+\Cref{eq:fullDisp} can be solved as a second order boundary value problem by properly defining the boundary conditions.
+However, an analytical solution is sougth, so the approximation $\partial_x^2 \phi(x)\simeq\partial \phi(x)\simeq0$ is used.
+This is essentially is a statement that the perturbations are infinite long in the $x$-direction.
+The final analytic dispersion relation now reads
+%
+\begin{align}
+    \om^2+i\sigma_\|\L(\om\L[1+b\R]-\om^*\R) = 0,
+    \label{eq:analyticDisp}
+\end{align}
+%
+which has the following solution for the maximum growth rate
+%
+\begin{align*}
+    \Im(\om) =& - \frac{b \sigma}{2}
+    \\&
+    - \frac{\sqrt{\sigma}}{2}
+    \L(16 [\om^{*}]^{2} + \sigma^{2} \L[b^{2} + 2 b + 1\R]^{2}\R)^{1/4}
+    \\&\quad
+    \sin\L(\frac{1}{2} \atan2\L[4 \om^{*},- \sigma \L(b^{2} + 2 b + 1\R) \R] \R)
+    \\&
+    - \frac{\sigma}{2}
+    \numberthis
+    \label{eq:grIm}
+    \\
+    %
+    \Re(\om) =& - \frac{\sqrt{\sigma}}{2}
+    \L(16 [\om^{*}]^{2} + \sigma^{2} \L[b^{2} + 2 b + 1\R]^{2}\R)^{1/4}
+    \cos\L(\frac{1}{2} \atan2\L[4 \om^{*},- \sigma \L(b^{2} + 2 b + 1\R) \R] \R)
+\end{align*}
+%
+We not that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
+Analytical expression for the dispersion relation in cylinder geomety is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
+As we would like to compare the analytic growth rates with what is found from the simulations, we will use \cref{eq:analyticDisp} in slab coordinates as a comparison.
+In slab coordinates we let
+%
+\begin{align*}
+    &x \to \rho&
+    &y \to \rho\theta.
+\end{align*}
+%
+The wavenumber in the $y$-direction, can in cylindrical coordinates be approximated as
+%
+\begin{align*}
+    k_y \simeq k_\theta
+    = \frac{2\pi}{\lambda_\theta}
+    = \frac{2\pi}{\frac{2\pi \rho}{m_\theta}}
+    = \frac{m_\theta}{\rho}.
+\end{align*}
+%
+Some important differences in the dispersion relations when using the slab approximation for a cylinder geometry is given in \cite{Ellis1980}.
+This includes discrepancies in the trends for the critical $B$-field needed for the onset of instability, and the trend of how the instability scales with mode numbers.
+These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geomety, and how the wavelength changes due to the curvature of the circle.
+From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
+
+A visualization of the dispersion in slab geometry is given in \cref{eq:analyticDisp}.
+Here, the value of $\partial_\rho n/n$ is taken from the steady state from the simulations.
+$k_z$ is set to $\pi/L_z$, as  $\lambda_z \simeq 2L_z$, which can be observed in \cref{fig:modeRotation,fig:dominatingMode}.
+In our simulation, this wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
+Note that this wave length is not necessarily unrealistic, and that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
+    \caption{Growth rates and angular velocity as a function of $B_0$.
+        Obtained from \cref{eq:analyticDisp}.}
+    \label{fig:grAnalytic}
+\end{figure}
+%
+In \cref{fig:grAnalytic} we can observe that the mode of maximum of the growth rates is increasing with increasing $B$.
+This is also shown in \cref{fig:dominatingMode}, where one can also observe that the parallel node moves downward with decreasing $B$.
+The same trend is observered for the angular frequency in \cref{fig:grAnalytic}, but here the maximum is shifted to one mode number lower as compared to the growth rates.
+%
+{
+% FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
+% \clearpage
+% \thispagestyle{empty}
 \begin{figure}[htbp]
     \vspace*{-1cm}
     \centering
@@ -267,86 +363,160 @@ This is depicted in \cref{fig:dominatingMode}, where one also can observe that t
     \caption{Dominant mode depends on $B$}
     \label{fig:dominatingMode}
 \end{figure}
-\clearpage
+% \clearpage
 }
 %
-
-\subsection{Comparison of growth rates with analytical result}
+The same information as given in \cref{fig:grAnalytic} is presented in a different way in \cref{fig:grAnalyticBModeNr}.
 %
-\begin{wrapfigure}{r}{0.55\textwidth}
-    \centering
-    \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
-    \label{fig:grAnalytic}
-    \caption{Growth rates and angular velocity as a function of $B_0$.
-        Obtained from \cref{eq:analyticDisp}.}
-\end{wrapfigure}
-%
-We will here compare the growth rates obtained from the numerical simulation with an analytic expression for the dispersion relation.
-Analytical expression for the dispersion relation in cylinder geomety is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
-
-Some important differences in the dispersion relations when using the slab approximation for a cylinder geometry \cite{Ellis1980}.
-This includes discrepancies in the trends for the critical $B$-field needed for the onset of instability, and the trend of how the instability scales with mode numbers.
-These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geomety, and how the wavelength changes due to the curvature of the circle.
-From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
-
-The analytic expression used here is derived for $T_i=0$ in \cite{Pecseli2016book}, and reads
-
-FIXME: Brief explaination of derivation, few words
-
-Notice that the approximation $\phi''(x)\simeq\phi'(x)\simeq0$ essentially is a statement that the perturbations are infinite long in the $x$-direction.
-
-%
-\begin{align}
-    \om^2+i\sigma_\|\L(\om\L[1+b\R]-\om^*\R) = 0,
-    \label{eq:analyticDisp}
-\end{align}
-%
-where $\om$ is the complex frequency.
-Further $\om^*$ $\sigma_\|$ describes the conductivity in the system, $b$
-These are defined as
-%
-\begin{align*}
-    \om^* \defined& k_y u_{De} =
-    -\L(k_y \frac{T_e}{eB}\frac{\grad n(x)\times \ve{b}}{n(x)}\R)\ve{e}_y
-    =
-    k_y \frac{T_e}{eB}\frac{\partial_x n(x)}{n(x)}
-    \note{Left handed coordinate system}
-    \\
-    %
-    %
-    \sigma_\| \defined& \L(\frac{k_z}{k_y}\R)^2 \frac{\om_{ce}}{\nu_{ei}}\om_{ci}\\
-    b \defined& (k_y \rho_s)^2&
-\end{align*}
-%
-where $k_y$ is the wavenumber in the $y$-direction, which translated to cylindrical coordinates gives
-%
-\begin{align*}
-    k_y \simeq k_\theta
-    = \frac{2\pi}{\lambda_\theta}
-    = \frac{2\pi}{\frac{2\pi \rho}{m_\theta}}
-    = \frac{m_\theta}{\rho}
-\end{align*}
-%
-The analytic growth rates are indicated in \cref{fig:grAnalytic}
-%
-\begin{wrapfigure}{l}{0.65\textwidth}
+\begin{figure}[htb]
+   \centering
    \includegraphics{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
-   \label{fig:grAnalyticBModeNr}
     \caption{Growth rates and angular velocity as a function of mode number.
         Obtained from \cref{eq:analyticDisp}.}
-\end{wrapfigure}
+   \label{fig:grAnalyticBModeNr}
+\end{figure}
 %
-% FIXME: Write drift waves
+From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are monotonically increasing with increasing $B_0$, apart from $m_\theta=1$.
+We can also observe that the angular frequency increases with increasing $B_0$.
+This migth come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
+This is true also for \cref{eq:analyticDisp} in the limit of large $\sigma_\|/\om^*$ and small $b$, as pointed out in \cite{Pecseli2016book}.
+However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this is not true for our case, where $\Re(\om)\propto B$ is observed.
+%
+\begin{table}[h!]
+{\footnotesize \centerline{
+\colorme
+\begin{tabular}{c|cc}
+\hline\hline
+%
+% NOTE: Lazy formatting here
+Variable & Values for $m_\theta = 4$ & $B_0$-dependency \\
+ & in the range $B_0=0.1\to0.02\T$&  \\
+%
+\hline
+%
+$\om^*$     & $\sim -1\cdot 10^5\s^{-1}$  & $1/B$\\
+$b$         & $1\to27$  & $1/B^2$\\
+$\sigma_\|$ & $6000\to275\s^{-1}$  & $B^2$\\
+%
+\hline\hline
+\end{tabular}
+}}
+\caption{Values for $\om^*$, $b$ and $\sigma_\|$ for $B_0=0.1\to0.02\T$ and $m_\theta=4$.}
+\label{tb:typicalLinValsB}
+\end{table}
+%
+\begin{table}[h!]
+{\footnotesize \centerline{
+\colorme
+\begin{tabular}{c|c}
+\hline\hline
+%
+Variable & Values in the range $B_0=0.1\to0.02\T$ \\
+%
+\hline
+%
+$\rho_{\max|\partial_\rho n/n|}$ & $\simeq 0.037\m$\\
+$\partial_\rho n/n$ & $-38 \to - 9\m^{-1}$\\
+$u_{E,\theta}$ & $50-125$\\
+%
+\hline\hline
+\end{tabular}
+}}
+\caption{Typical values for $B_0=0.1\to0.02\T$.}
+\label{tb:typicalLinVals}
+\end{table}
+
+
+FIXME:
+FIXME: Corrected for uE in foo bar
+
+
+
+DO NOT DELETE YET
+If one assumes that the perturbations are on the from $A\exp\L(i[k_\theta \theta - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, one can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a counter-clockwise rotation of the perturbation (given that $\theta$ grows in the counter-clockwise direction) as the inverse wavelength $k_\theta$ stays constant.
+
+
+
+We will here compare the growth rates obtained from the numerical simulation with an analytic expression for the dispersion relation.
+
+
+
 FIXME:
 write how can conclude that this is coming from drift waves.
 Going in el diamag dir,
 lowest order no instability
 phase difference fluct in phi and n gives rise to this
 qualitatively agreement of obtained from numerics and here
-% FIXME
-\clearpage
+
+
+
+\subsection{Phase shift}
+
+\subsection{Dispersion relation from the simulations}
+
+To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
+
+As the abscissa is logarithmic, exponential grow will appear as straight lines.
+%
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[h]{1\textwidth}
+        \centering
+        \includegraphics{fig/results/fourierModes/stable}
+        \label{fig:fourierStable}
+        \caption{For $B=0.02\T$ the system is stable against perturbation}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{1\textwidth}
+        \centering
+        \includegraphics{fig/results/fourierModes/unstable}
+        \label{fig:fourierUnstable}
+        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
+    \end{subfigure}
+    \caption{Time trace of the absolute values of the Fourier modes.}
+    \label{fig:fourierDens}
+\end{figure}
+%
+The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
+%
+\begin{align*}
+    \Re[\om_n(t)] =
+    \frac{
+        \atan2\L(\Im[\text{FT}(n[t_1])], \Re[\text{FT}(n[t_1])]\R) -
+        \atan2\L(\Im[\text{FT}(n[t_0])], \Re[\text{FT}(n[t_0])]\R)
+    }{\Delta t}
+\end{align*}
+%
+where $\text{FT}$ denotes the Fourier transformed.
+The final angular velocity is the average of the individual angular velocities of the linear phase, where the start and the end of the linear phase has been determined by visual inspection, where we have used the definitions
+
+A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:grB,fig:grBModeNr}.
+%
+\begin{wrapfigure}{r}{0.55\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0}
+        \caption{$B$-dependency on the growth rates and angular velocities.}
+        \label{fig:grB}
+\end{wrapfigure}
+%
+%
+\begin{wrapfigure}{r}{0.55\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
+        \label{fig:grBModeNr}
+        \caption{Mode number-dependency on the growth rates and angular velocities.}
+\end{wrapfigure}
+%
+
+
+LEAVE THIS IN OBTAINING DISPERSION
+
+As indicated in \cref{fig:grB,fig:grBModeNr}, which poloidal mode dominates is dependent on $B$.
+
+
 
 \section{The turbulence phase}
+\label{sec:satTurb}
 %
 At a certain point the linear modes becomes large enough for non-linear effects to affect the dynamics of the system.
 Through the non-linearities in the equation, mode-mode coupling occurs, leading to a cascading of enstrophy (global integrated vorticity) and energy.
