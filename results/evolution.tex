@@ -188,6 +188,7 @@ To verify if the linear phase can be identified as drift waves, we will proceed 
 %
 
 \subsection{Simplified linear drift wave theory}
+\label{sec:simpleLin}
 %
 Conceptually, a drift wave is a wave which travels in the electron diamagnetic direction, and arises due to the mass difference between electrons and ions.
 If one introduce a density (or pressure) perturbation in a homogeneous, magnetized plasma in a slab, the  electrons will stream out of the perturbation along the magnetic field lines at a much faster rate than ions due to their higher mobility.
@@ -210,7 +211,7 @@ The drift waves has its counterpart in fluid dynamics as Rossby waves, where the
 
 A phase shift is necessary in order to get an instability.
 This can be seen from \cref{fig:DW} if one shifts the ion and electron clouds upwards or downwards so that the $\ve{E}\times\ve{B}$ arrows are shifted with respect to the density perturbations.
-For a mathematical illustration of this, see for example \cite{Garcia2001a}.
+For a mathematical demonstration of this, see for example \cite{Garcia2001a}.
 A phase shift arises if the parallel motion of electrons arising from pressure gradients is delayed.
 Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resitivity.
 
@@ -272,7 +273,7 @@ The final analytic dispersion relation now reads
     \label{eq:analyticDisp}
 \end{align}
 %
-which has the following solution for the maximum growth rate
+where the following solution gives the maximum growth rate
 %
 \begin{align*}
     \Im(\om) =& - \frac{b \sigma}{2}
@@ -292,7 +293,7 @@ which has the following solution for the maximum growth rate
     \cos\L(\frac{1}{2} \atan2\L[4 \om^{*},- \sigma \L(b^{2} + 2 b + 1\R) \R] \R)
 \end{align*}
 %
-We not that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
+We note that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
 Analytical expression for the dispersion relation in cylinder geomety is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
 As we would like to compare the analytic growth rates with what is found from the simulations, we will use \cref{eq:analyticDisp} in slab coordinates as a comparison.
 In slab coordinates we let
@@ -316,22 +317,25 @@ This includes discrepancies in the trends for the critical $B$-field needed for 
 These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geomety, and how the wavelength changes due to the curvature of the circle.
 From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
 
+\subsection{Analytical dispersion relation}
+\label{sec:analDisp}
+%
 A visualization of the dispersion in slab geometry is given in \cref{eq:analyticDisp}.
 Here, the value of $\partial_\rho n/n$ is taken from the steady state from the simulations.
 $k_z$ is set to $\pi/L_z$, as  $\lambda_z \simeq 2L_z$, which can be observed in \cref{fig:modeRotation,fig:dominatingMode}.
 In our simulation, this wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
 Note that this wave length is not necessarily unrealistic, and that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
 Finally, in order to correct for $\partial_\rho\phi$ which is absent in the analytical derivation (i.e. with no poloidal $\ve{E}\times\ve{B}$-drift), but present in the simulation, $u_{E,\theta}/\rho_{\max|\partial_\rho n/n|}$ has been added to $\Re(\om)$ in order to correct for this.
-
 %
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
-    \caption{Growth rates and angular velocity as a function of $B_0$.
+    \caption{Growth rates and angular velocity as a function of mode number.
         Obtained from \cref{eq:analyticDisp}.}
     \label{fig:grAnalytic}
 \end{figure}
 %
+
 In \cref{fig:grAnalytic} we can observe that the mode of maximum of the growth rates is increasing with increasing $B$.
 This is also shown in \cref{fig:dominatingMode}, where one can also observe that the parallel node moves downward with decreasing $B$.
 The same trend is observered for the angular frequency in \cref{fig:grAnalytic}, but here the maximum is shifted to one mode number lower as compared to the growth rates.
@@ -375,7 +379,7 @@ The same information as given in \cref{fig:grAnalytic} is presented in a differe
 \begin{figure}[htb]
    \centering
    \includegraphics{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
-    \caption{Growth rates and angular velocity as a function of mode number.
+    \caption{Growth rates and angular velocity as a function of $B_0$.
         Obtained from \cref{eq:analyticDisp}.}
    \label{fig:grAnalyticBModeNr}
 \end{figure}
@@ -430,73 +434,136 @@ $u_{E,\theta}$ & $50-125$\\
 \label{tb:typicalLinVals}
 \end{table}
 
-
-\subsection{Phase shift}
-Shows that density lags potential.
-FIXME: To be completed.
-
 \subsection{Dispersion relation from the simulations}
-
-To visualize the growth, we have plotted the absolute value the Fourier modes at the position of the most unstable growth in \cref{fig:fourierDens}.
-
-As the abscissa is logarithmic, exponential grow will appear as straight lines.
 %
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[h]{1\textwidth}
-        \centering
-        \includegraphics{fig/results/fourierModes/stable}
-        \label{fig:fourierStable}
-        \caption{For $B=0.02\T$ the system is stable against perturbation}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1\textwidth}
-        \centering
-        \includegraphics{fig/results/fourierModes/unstable}
-        \label{fig:fourierUnstable}
-        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$}
-    \end{subfigure}
-    \caption{Time trace of the absolute values of the Fourier modes.}
-    \label{fig:fourierDens}
-\end{figure}
-%
-The slope of the absolute values of the Fourier modes gives us the growth rate, whereas the angular velocity can be found from
+A dispersion relation like the one found in \cref{sec:analDisp} can also be obtained from the numerical simulations.
+From the individual time traces of the fourier transformed modes of for example $n$, the growth rates can be extracted from the slope of the logarithm of the absolute value of the Fourier modes in the linear phase.
+The angular frequency can be found from
 %
 \begin{align*}
     \Re[\om_n(t)] =
+    \frac{1}{T}\sum_{i=0}^{T-1}
     \frac{
-        \atan2\L(\Im[\text{FT}(n[t_1])], \Re[\text{FT}(n[t_1])]\R) -
-        \atan2\L(\Im[\text{FT}(n[t_0])], \Re[\text{FT}(n[t_0])]\R)
-    }{\Delta t}
+        \atan2\L(\Im[\text{FT}(n[t_{i+1}])], \Re[\text{FT}(n[t_{i+1}])]\R) -
+        \atan2\L(\Im[\text{FT}(n[t_{i}])], \Re[\text{FT}(n[t_{i}])]\R)
+    }{\Delta t},
 \end{align*}
 %
-where $\text{FT}$ denotes the Fourier transformed.
-The final angular velocity is the average of the individual angular velocities of the linear phase, where the start and the end of the linear phase has been determined by visual inspection, where we have used the definitions
+where $T$ denotes the total number of time samples in the linear phase, and $i=0$ denotes the first time point in the linear phase.
 
-A summary of how the growth rates and rotations scales with the magnetic field $B$ is given in \cref{fig:grB,fig:grBModeNr}.
+The time trace of the $7$ first modes is depicted in \cref{fig:fourierUnstable}.
 %
-\begin{wrapfigure}{r}{0.55\textwidth}
+\begin{figure}[h!]
+    \centering
+    \includegraphics{fig/results/fourierModes/unstable}
+    \label{fig:fourierUnstable}
+    \caption{Growth rate leading to saturated turbulence for $B=0.1\T$.}
+\end{figure}
+%
+As the ordinate in \cref{fig:fourierDens} is logarithmic, exponential grow will appear as straight lines.
+One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02\T$ shows a decaying behavior in \cref{fig:fourierStable}.
+%
+\begin{figure}[h!]
+    \centering
+    \includegraphics{fig/results/fourierModes/stable}
+    \label{fig:fourierStable}
+    \caption{For $B=0.02\T$ the system is stable against perturbation.}
+\end{figure}
+%
+This can be explained by the viscosities, which is present in our model, but not accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
+The dispersion obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deivation.
+%
+\begin{figure}[htb]
         \centering
         \includegraphics{fig/results/growthRates/growthRatesB0}
-        \caption{$B$-dependency on the growth rates and angular velocities.}
+        \caption{Mode number-dependency on the growth rates and angular velocities.
+            Obtained from the simulations.}
         \label{fig:grB}
-\end{wrapfigure}
+\end{figure}
 %
+Both the trend and the values in \cref{fig:grB} matches approximately what was found in \cref{fig:grAnalytic}.
+The maximum growth rate is shifted to one higher mode number for all $B$-field amplitudes in the growth rates found in the simulations.
+For lower values of $B_0$ the growth rates found in the simulation is less than what was found in the analytical expression, which means that the growth rates for all mode number is negative for $B_0=0.02\T$.
+Likewise, the angular frequency is shifted upwards for lower values of $B$.
+Again $B_0=0.02\T$ shows an extreme behavior as it is rotating in the ion diamagnetic direction, opposite to the rotation of all the other $B$-fields.
+The mode number with the maximum negative rotation stays the same in both the analytic case and the simulation case.
+
+\Cref{fig:grB} can also be visualized in a different way.
+In \cref{fig:grBModeNr} the $B$-field value is on the abscissa instead of the mode number.
 %
-\begin{wrapfigure}{r}{0.55\textwidth}
+\begin{figure}[htb]
         \centering
         \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
         \label{fig:grBModeNr}
-        \caption{Mode number-dependency on the growth rates and angular velocities.}
-\end{wrapfigure}
+        \caption{$B$-dependency on the growth rates and angular velocities.
+            Obtained from the simulations.}
+\end{figure}
 %
+One can from \cref{fig:grBModeNr,fig:grAnalyticBModeNr} observe that the agreement between growth rate found in the simulation and growth rate found from the analytical expression is better for higher values of $B_0$.
+It can also be observed that the angular frequency matches better for higher mode numbers, which is expected since the analytical expression was obtained from a slab geomety.
+
+\subsection{Phase shift}
+%
+As explained in \ref{sec:simpleLin}, the instability requires a certain phase shift between $\phi$ and $n$ in order for the instability to occur.
+Here, we will investigate how the phase shift varies with the $B$-field.
+There are several ways to extract the phase shift from the signal.
+The simplest way to do so is to extract one mode of the time signal Fourier transformed in time, and get the phase shift from finding the angle bewteen the imaginary and real part for both $\phi$ and $n$.
+However, as shown in \cref{fig:grB,fig:grBModeNr} the standard-deivation of the frequency can be quite high, which means that the frequency can change a lot during the linear phase.
+The Hilbert transform could be used for finding the instantaneous phase-shift, but we will instead use a cross correlation technique which gives us the average time delay of the signals.
+
+In the cross correlation the signals are first shifted with a time shift $\tau$ with respect to each other.
+Excess parts of the signal will be padded with $0$s in order for the signals to have the same length.
+The shifted signals are then multiplied and integrated over the time domain.
+The average time delay of the signals will therefore be the $\tau$ where the integral is the largest.
+The phase shift $\varphi$ of a given frequency $f$ can then be found by $\varphi = f\tau$.
+Summarized, the phase shift will be found by
+%
+\begin{align*}
+    \varphi = f \arg\max([n-\expt{n}_t] \star [\phi-\expt{\phi}_t])
+\end{align*}
+%
+where $(a\star b)(\tau ) \defined \defi{-\infty }{\infty}{a^{*}(t) b(t+\tau )}{t}$ denotes the cross correlation, and $a^*(t)$ denotes the complex conjugated.
+Finally $f$ is chosen to be the dominating frequency in the spectrum.
+Note that the time average has been subtracted from the signals in order for the zero padding in order to make sense.
+
+As shown in \cite{Pecseli2016book},
+%
+\begin{align}
+    \varphi = \atan2\L(
+    \Im\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R],
+    \Re\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
+    \R)
+\end{align}
+%
+for \cref{eq:analyticDisp}.
+The phase shifts from the simulations are shown in \cref{fig:phaseShift} togehter with the pahse shifts found in \cref{eq:analyticDisp}.
+%
+\begin{figure}
+    \includegraphics{fig/results/energyTrace/energyTraceB008}
+    \caption{Phase shift as a function of $B$.}
+    \label{fig:phaseShift}
+\end{figure}
 
 
-LEAVE THIS IN OBTAINING DISPERSION
+\subsection{Conclusion of the findings in the linear phase}
+%
+We will now summarize our findings in the linear phase and draw some conclusions from this.
+In order to distinguish the drift wave instability from for example the Kelvin Helmoltz instability (which shares many of the same characteristics with the drift wave instability), the points in the following list must be fulfilled \cite{Jassby1972,Hendel1968}:
+%
+\begin{enumerate}[noitemsep]
+    \item $\wt{n}/n$ peaks approximately at the position of the absolute maximum of the density.
+    \item The perturbation has a finite parallel extention, typically in the order of the machine length.
+    \item The perturbations are propagating in the electron diamagnetic drift direction.
+    \item The density leads the potential.
+\end{enumerate}
+%
+From \cref{fig:modeRotation,fig:dominatingMode} we can observe that point 1 is fulfilled.
+These figures also indicate that point 2 is fulfilled.
+Point 3 is fulfilled, with exveption for $B_0=0.02\T$, as shown in \cref{fig:modeRotation,fig:grB,fig:grBModeNr}.
+Finally, one can observe that point 4 is observed in FIXME
 
-As indicated in \cref{fig:grB,fig:grBModeNr}, which poloidal mode dominates is dependent on $B$.
-
-
+From this we conclude that the instability under investigation most probably is a drift wave instability.
+The same conclusion has been reached for in VINETA in \cite{Schroder2005}.
 
 \section{The turbulence phase}
 \label{sec:satTurb}
