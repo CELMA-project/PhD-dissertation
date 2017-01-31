@@ -506,48 +506,56 @@ It can also be observed that the angular frequency matches better for higher mod
 %
 As explained in \ref{sec:simpleLin}, the instability requires a certain phase shift between $\phi$ and $n$ in order for the instability to occur.
 Here, we will investigate how the phase shift varies with the $B$-field.
-There are several ways to extract the phase shift from the signal.
-The simplest way to do so is to extract one mode of the time signal Fourier transformed in time, and get the phase shift from finding the angle bewteen the imaginary and real part for both $\phi$ and $n$.
-However, as shown in \cref{fig:grB,fig:grBModeNr} the standard-deivation of the frequency can be quite high, which means that the frequency can change a lot during the linear phase.
-The Hilbert transform could be used for finding the instantaneous phase-shift, but we will instead use a cross correlation technique which gives us the average time delay of the signals.
-
-In the cross correlation the signals are first shifted with a time shift $\tau$ with respect to each other.
-Excess parts of the signal will be padded with $0$s in order for the signals to have the same length.
-The shifted signals are then multiplied and integrated over the time domain.
-The average time delay of the signals will therefore be the $\tau$ where the integral is the largest.
-The phase shift $\varphi$ of a given frequency $f$ can then be found by $\varphi = f\tau$.
-Summarized, the phase shift will be found by
-%
-\begin{align*}
-    \varphi = f \arg\max([n-\expt{n}_t] \star [\phi-\expt{\phi}_t])
-\end{align*}
-%
-where $(a\star b)(\tau ) \defined \defi{-\infty }{\infty}{a^{*}(t) b(t+\tau )}{t}$ denotes the cross correlation, and $a^*(t)$ denotes the complex conjugated.
-Finally $f$ is chosen to be the dominating frequency in the spectrum.
-Note that the time average has been subtracted from the signals in order for the zero padding in order to make sense.
 
 As shown in \cite{Pecseli2016book},
 %
 \begin{align}
-    \varphi = \atan2\L(
+    \Psi = \atan2\L(
     \Im\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R],
     \Re\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
     \R)
+    \label{eq:analPhase}
 \end{align}
 %
-for \cref{eq:analyticDisp}.
-The phase shifts from the simulations are shown in \cref{fig:phaseShift} togehter with the pahse shifts found in \cref{eq:analyticDisp}.
+gives us the phase shift between $n$ and $\phi$ for \cref{eq:analyticDisp}.
+
+We would also like to find the phase-shift between $n$ and $\phi$ in the simulations.
+The simplest way to do so is to extract one mode of the time signal Fourier transformed in time, and get the phase shift from finding the angle bewteen the imaginary and real part for both $\phi$ and $n$.
+However, as shown in \cref{fig:grB,fig:grBModeNr} the standard-deivation of the frequency can be quite high, which means that the frequency can change a lot during the linear phase.
+The Hilbert transform could be used for finding the instantaneous phase-shift, but we will instead use a cross spectral density technique to give us the average phase-shift of the signals.
+
+The cross spectral density can be found by first finding the cross correlation of the signals.
+In the cross correlation the signals are first shifted with a time shift $\tau$ with respect to each other.
+Excess parts of the signal will be padded with $0$s in order for the signals to have the same length.
+The shifted signals are then multiplied and integrated over the time domain.
+The cross correlation is then given by
+%
+\begin{align*}
+    R_{n\phi}(\tau) = (n-\expt{n}_t) \star (\phi-\expt{\phi}_t),
+\end{align*}
+%
+where $(a \star b)(\tau) \defined \defi{-\infty }{\infty}{a^{*}(t) b(t+\tau )}{t}$ denotes the cross correlation, and $a^*(t)$ denotes the complex conjugated.
+Note that the time average has been subtracted from the signals in order for the zero padding in order to make sense.
+The average time delay of the signals will therefore be the $\tau$ where the integral is the largest.
+In order to extract the phase-shift, we can Fourier transform $R_{n\phi}$ in order to get the cross spectrum density $S_{n\phi}$ .
+As $S_{n\phi}$ is complex it can be written
+%
+\begin{align*}
+    S_{n\phi}(f) = \mathcal{F}[R_{n\phi}(\tau)] = \L|S_{n\phi}(f)\R|\exp\L(i\Psi(f)\R),
+\end{align*}
+%
+where $\mathcal{F}[R_{n\phi}(\tau)]$ denotes the Fourier transformed, and $\Psi$ is the phase angle between $n$ and $\phi$.
+The dominating averaged phase shift will therefore be the $\Psi$ corresponding to the largest $\L|S_{n\phi}(f)\R|$, and can as usual be found by $\Psi = \atan2(\Im[S_{n\phi}], \Re[S_{n\phi}])$.
+
+In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
+This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).
+The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the pahse shifts found in \cref{eq:analyticDisp}.
 %
 \begin{figure}
     \includegraphics{fig/results/energyTrace/energyTraceB008}
     \caption{Phase shift as a function of $B$.}
     \label{fig:phaseShift}
 \end{figure}
-%
-NOTE: Fourier transform the signal to get cross power spectra S*exp(phi)
-NOTE: Psi is used rather than varphi
-Cite millers book
-\cite{Miller2004book}
 
 \subsection{Conclusion of the findings in the linear phase}
 %
