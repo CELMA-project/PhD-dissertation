@@ -391,7 +391,9 @@ Finally, normalization yields
 
 \section{The vorticity equation}
 %
-We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$, and get
+We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$, and get%
+\footnote{As in \cref{sec:SOE} the artificial viscosities are not shown here, but they are used in the simulations.}
+%
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
  \partial_t\Om
@@ -415,11 +417,6 @@ We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$,
  %
  &
  + \partial_\| j_\|
-  \\
-  %
-  &
-  + D_{\Om, \|, \text{art}}    \partial_{\|}^2 \Om
-  + D_{\Om, \perp, \text{art}} \grad_\perp^2 \Om.
   \numberthis
   \label{eq:celma_vort_boussinesq}
 \end{empheq}
