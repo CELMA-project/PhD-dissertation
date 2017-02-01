@@ -7,7 +7,7 @@ We will in this section discuss the resulting profiles.
 %        Parallel:
 %        - Bump in current close to sheath goes up
 %        - Vort initially neg an monotonically growing, now bumped above 0
-%           + Does not conicide with node in fluctuations
+%           + Does not coincide with node in fluctuations
 %        - n increases <-- confinement? Naah....most is lost in the parallel direction anyways
 %        Perpendicular:
 %        - Profile steepening
@@ -89,7 +89,7 @@ Depending on the simulation parameters, the poloidal modes will be damped to zer
 As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
 In other words mode, coupling between different modes are negligible.
 Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-As our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficently big.
+As our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficiently big.
 The mix of linear and non-linear growth will eventually reach a saturated turbulence treated, which will be treated in \cref{sec:satTurb}.
 We will define the linear state as:
 %
@@ -213,11 +213,11 @@ A phase shift is necessary in order to get an instability.
 This can be seen from \cref{fig:DW} if one shifts the ion and electron clouds upwards or downwards so that the $\ve{E}\times\ve{B}$ arrows are shifted with respect to the density perturbations.
 For a mathematical demonstration of this, see for example \cite{Garcia2001a}.
 A phase shift arises if the parallel motion of electrons arising from pressure gradients is delayed.
-Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resitivity.
+Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resistivity.
 
 To obtain a simple analytic expression of the drift waves, we will recite the most important points given in the derivation in \cite{Pecseli2016book}.
 We are here not concerned with neutral interaction.
-For an analytic expression where the neutral elasitc collision dominates, see \cite{Ellis1980}.
+For an analytic expression where the neutral elastic collision dominates, see \cite{Ellis1980}.
 
 The derivation in \cite{Pecseli2016book} is done by considering a magnetized plasma in Cartesian with the assumptions of:
 %
@@ -225,7 +225,7 @@ The derivation in \cite{Pecseli2016book} is done by considering a magnetized pla
     \item Cold ions.
     \item Isothermal electrons.
     \item Electrostatic conditions.
-    \item No electron iniertia.
+    \item No electron inertia.
     \item Quasi-neutrality.
     \item $n$ has only a gradient along $x$, where $B$ is in the direction of $z$.
 \end{itemize}
@@ -233,7 +233,7 @@ The derivation in \cite{Pecseli2016book} is done by considering a magnetized pla
 The electron and ion momentum equations are linearized together with the electron and ion continuity equations.
 No background electric field is assumed.
 Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, where $A \in \{n, u_e, \phi\}$.
-One can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes a the perturbation to move along $y$ as the inverse wavelength $k_y$ stays constant.
+One can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes the perturbation to move along $y$ as the inverse wavelength $k_y$ stays constant.
 After solving the system algebraically, one arrives at the equation
 %
 \begin{align}
@@ -264,7 +264,7 @@ These quantities are defined as
 \end{align*}
 %
 \Cref{eq:fullDisp} can be solved as a second order boundary value problem by properly defining the boundary conditions.
-However, an analytical solution is sougth, so the approximation $\partial_x^2 \phi(x)\simeq\partial \phi(x)\simeq0$ is used.
+However, an analytical solution is sought, so the approximation $\partial_x^2 \phi(x)\simeq\partial \phi(x)\simeq0$ is used.
 This is essentially is a statement that the perturbations are infinite long in the $x$-direction.
 The final analytic dispersion relation now reads
 %
@@ -294,7 +294,7 @@ where the following solution gives the maximum growth rate
 \end{align*}
 %
 We note that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
-Analytical expression for the dispersion relation in cylinder geomety is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
+Analytical expression for the dispersion relation in cylinder geometry is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
 As we would like to compare the analytic growth rates with what is found from the simulations, we will use \cref{eq:analyticDisp} in slab coordinates as a comparison.
 In slab coordinates we let
 %
@@ -314,7 +314,7 @@ The wavenumber in the $y$-direction, can in cylindrical coordinates be approxima
 %
 Some important differences in the dispersion relations when using the slab approximation for a cylinder geometry is given in \cite{Ellis1980}.
 This includes discrepancies in the trends for the critical $B$-field needed for the onset of instability, and the trend of how the instability scales with mode numbers.
-These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geomety, and how the wavelength changes due to the curvature of the circle.
+These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geometry, and how the wavelength changes due to the curvature of the circle.
 From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
 
 \subsection{Analytical dispersion relation}
@@ -338,7 +338,7 @@ Finally, in order to correct for $\partial_\rho\phi$ which is absent in the anal
 
 In \cref{fig:grAnalytic} we can observe that the mode of maximum of the growth rates is increasing with increasing $B$.
 This is also shown in \cref{fig:dominatingMode}, where one can also observe that the parallel node moves downward with decreasing $B$.
-The same trend is observered for the angular frequency in \cref{fig:grAnalytic}, but here the maximum is shifted to one mode number lower as compared to the growth rates.
+The same trend is observed for the angular frequency in \cref{fig:grAnalytic}, but here the maximum is shifted to one mode number lower as compared to the growth rates.
 %
 {
 % FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
@@ -386,7 +386,7 @@ The same information as given in \cref{fig:grAnalytic} is presented in a differe
 %
 From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are monotonically increasing with increasing $B_0$ (with an exception of $m_\theta=1$).
 We can also observe that the angular frequency increases with increasing $B_0$.
-This migth come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
+This might come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
 This is true also for \cref{eq:analyticDisp} in the limit of large $\sigma_\|/\om^*$ and small $b$, as pointed out in \cite{Pecseli2016book}.
 However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this limit is not valid in our case, and $\Re(\om)\propto B$ is observed instead.
 %
@@ -437,7 +437,7 @@ $u_{E,\theta}$ & $50-125$\\
 \subsection{Dispersion relation from the simulations}
 %
 A dispersion relation like the one found in \cref{sec:analDisp} can also be obtained from the numerical simulations.
-From the individual time traces of the fourier transformed modes of for example $n$, the growth rates can be extracted from the slope of the logarithm of the absolute value of the Fourier modes in the linear phase.
+From the individual time traces of the Fourier transformed modes of for example $n$, the growth rates can be extracted from the slope of the logarithm of the absolute value of the Fourier modes in the linear phase.
 The angular frequency can be found from
 %
 \begin{align*}
@@ -471,7 +471,7 @@ One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02
 \end{figure}
 %
 This can be explained by the viscosities, which is present in our model, but not accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
-The dispersion obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deivation.
+The dispersion obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
 %
 \begin{figure}[htb]
         \centering
@@ -500,7 +500,7 @@ In \cref{fig:grBModeNr} the $B$-field value is on the abscissa instead of the mo
 \end{figure}
 %
 One can from \cref{fig:grBModeNr,fig:grAnalyticBModeNr} observe that the agreement between growth rate found in the simulation and growth rate found from the analytical expression is better for higher values of $B_0$.
-It can also be observed that the angular frequency matches better for higher mode numbers, which is expected since the analytical expression was obtained from a slab geomety.
+It can also be observed that the angular frequency matches better for higher mode numbers, which is expected since the analytical expression was obtained from a slab geometry.
 
 \subsection{Phase shift}
 %
@@ -520,8 +520,8 @@ As shown in \cite{Pecseli2016book},
 gives us the phase shift between $n$ and $\phi$ for \cref{eq:analyticDisp}.
 
 We would also like to find the phase-shift between $n$ and $\phi$ in the simulations.
-The simplest way to do so is to extract one mode of the time signal Fourier transformed in time, and get the phase shift from finding the angle bewteen the imaginary and real part for both $\phi$ and $n$.
-However, as shown in \cref{fig:grB,fig:grBModeNr} the standard-deivation of the frequency can be quite high, which means that the frequency can change a lot during the linear phase.
+The simplest way to do so is to extract one mode of the time signal Fourier transformed in time, and get the phase shift from finding the angle between the imaginary and real part for both $\phi$ and $n$.
+However, as shown in \cref{fig:grB,fig:grBModeNr} the standard-deviation of the frequency can be quite high, which means that the frequency can change a lot during the linear phase.
 The Hilbert transform could be used for finding the instantaneous phase-shift, but we will instead use a cross spectral density technique to give us the average phase-shift of the signals.
 
 The cross spectral density can be found by first finding the cross correlation of the signals.
@@ -537,6 +537,7 @@ The cross correlation is then given by
 where $(a \star b)(\tau) \defined \defi{-\infty }{\infty}{a^{*}(t) b(t+\tau )}{t}$ denotes the cross correlation, and $a^*(t)$ denotes the complex conjugated.
 Note that the time average has been subtracted from the signals in order for the zero padding in order to make sense.
 The average time delay of the signals will therefore be the $\tau$ where the integral is the largest.
+As noted in \cite{Huld1988}, a positive $R_{n\phi}$ corresponds to a positive particle flux.
 In order to extract the phase-shift, we can Fourier transform $R_{n\phi}$ in order to get the cross spectrum density $S_{n\phi}$ .
 As $S_{n\phi}$ is complex it can be written
 %
@@ -549,31 +550,36 @@ The dominating averaged phase shift will therefore be the $\Psi$ corresponding t
 
 In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
 This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).
-The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the pahse shifts found in \cref{eq:analyticDisp}.
+The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the phase shifts found in \cref{eq:analyticDisp}.
 %
 \begin{figure}
-    \includegraphics{fig/results/energyTrace/energyTraceB008}
-    \caption{Phase shift as a function of $B$.}
+    \includegraphics{fig/results/growthRates/phaseShift}
+    \caption{
+        Phase shift as a function of $B$.
+        The different modes are calculated from \cref{eq:analPhase}, whereas the "Simulation" is the phase shift extracted from the simulations.
+    }
     \label{fig:phaseShift}
 \end{figure}
+%
+We note that a positive $\Psi$ is equivalent to a growth of the instability \cite{Garcia2001a}, and a negative $\Psi$ corresponds to a damping of the modes.
+Apart from $B=0.02\T$ which were damped for all modes in the simulations, but had a small growth in the analytic expression, there are qualitatively good match between the phase shifts in \cref{fig:phaseShift}.
 
 \subsection{Conclusion of the findings in the linear phase}
 %
 We will now summarize our findings in the linear phase and draw some conclusions from this.
-In order to distinguish the drift wave instability from for example the Kelvin Helmoltz instability (which shares many of the same characteristics with the drift wave instability), the points in the following list must be fulfilled \cite{Jassby1972,Hendel1968}:
+In order to distinguish the drift wave instability from for example the Kelvin Helmholtz instability (which shares many of the same characteristics with the drift wave instability), the points in the following list must be fulfilled \cite{Jassby1972,Hendel1968}:
 %
 \begin{enumerate}[noitemsep]
     \item $\wt{n}/n$ peaks approximately at the position of the absolute maximum of the density.
-    \item The perturbation has a finite parallel extention, typically in the order of the machine length.
+    \item The perturbation has a finite parallel extension, typically in the order of the machine length.
     \item The perturbations are propagating in the electron diamagnetic drift direction.
     \item The density leads the potential.
 \end{enumerate}
 %
 From \cref{fig:modeRotation,fig:dominatingMode} we can observe that point 1 is fulfilled.
 These figures also indicate that point 2 is fulfilled.
-Point 3 is fulfilled, with exveption for $B_0=0.02\T$, as shown in \cref{fig:modeRotation,fig:grB,fig:grBModeNr}.
-Finally, one can observe that point 4 is observed in FIXME
-
+Point 3 is fulfilled, with exception for $B_0=0.02\T$, as shown in \cref{fig:modeRotation,fig:grB,fig:grBModeNr}.
+Finally, one can observe that point 4 is observed in \cref{fig:phaseShift}.
 
 From this we conclude that the instability under investigation most probably is a drift wave instability.
 The same conclusion has been reached for in VINETA in \cite{Schroder2005}.
