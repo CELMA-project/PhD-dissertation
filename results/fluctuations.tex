@@ -1,29 +1,34 @@
 \section{Characteristics of the fluctuations}
-As seen in \cref{fig:2DFluct} the fluctuations can be quite strong, something which has also been observed experimentally in for example \cite{Burin2005}.
-This is something which need to be considere when modelling the plasma.
-Models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007} are doing a split between background and fluctuations.
 %
-\begin{wrapfigure}{l}{0.50\textwidth}
+We will in this chapter characterize the fluctuations.
+One can observe from \cref{fig:2DFluct} the fluctuations can be quite strong, something which has also been observed experimentally in for example \cite{Burin2005}.
+To get a better feeling of how strong the fluctuations are, we can compare the steady state profiles with the turbulent profiles.
+\Cref{fig:posOfFluct01} gives such a comparison.
+%
+\begin{figure}[h!]
     \begin{center}
-    \includegraphics[width=0.48\textwidth]{fig/results/posOfFluct/posOfFluctB008}
+        \includegraphics{fig/results/posOfFluct/posOfFluctB01}
     \end{center}
-    \caption{Flattening of the profiles together with the position of the fluctuations for $B=0.08\T$.
+    \caption{Flattening of the profiles together with the position of the fluctuations for $B=0.1\T$.
+        The subscripted $_\text{Steady state}$ denotes steady state variables, whereas variables without subscript denotes quantities in the saturated turbulence phase.
+        A poloidal and temporal average (containing the whole time series) have been done in order to get a good avergaged picture of the turbulent profile.
         The shaded area represents the standard deviation.
     }
-    \label{fig:posOfFluct008}
-\end{wrapfigure}
+    \label{fig:posOfFluct01}
+\end{figure}
 %
+As apparent from the figure, the amplitude of the fluctuations are the largest around the maximum gradient.
+We also note that the background profiles are flattened by the turbulence.
+This is an important feature which need to be considered when modelling the plasma.
+
+Models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007} are splitting the fluctuations from the background (a so-called Reynolds decomposition), and are evolving only the fluctuation in time.
 In such models, the free energy in the background gradients are driving the fluctuations, and the feedback of the fluctuation on the background profiles are neglected.
 This is good approximation if the fluctuations are small.
-Nontheless, if the fluctuations are large, the background gradients are altered, and is the drive for the fluctuations.
-Models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA does not do this separation, and one is able to investigate how the fluctuations affect the background.
-The comparison can be done by comparing the steady state profiles with the turbulent profiles, as shown in \cref{fig:posOfFluct008}.
-Here, a poloidal and temporal average (containing the whole time series) have been done in order to get a good avergaged picture of the turbulent profile.
-As apparent from figure \cref{fig:posOfFluct008} the background profiles are flattened by the turbulence.
+On the other hand, if the fluctuations are large as in \cref{fig:posOfFluct01}, the background gradients are altered, and so is the drive for the fluctuations.
+A global approach as taken in models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA is therefore needed.
+With such a global approach, the change in the driving force for the turbulence is accounted for, and it enables one to investigate the backreaction to the background from the fluctuations.
 
-FIXME: Consider to include the type of fluctuation present.
-Mention Jassby position of fluctuations.
-NOTE: INSERT LINEAR THEORY AND LOCATION OF FLUCTUATIONS
+
 %
 \begin{figure}[htb]
     \centering
