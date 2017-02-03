@@ -37,8 +37,8 @@
 \interfootnotelinepenalty=10000
 % Keep floats to their sections
 \usepackage[section]{placeins}
-% Float only pages has to fill at least 90%
-\renewcommand{\floatpagefraction}{.9}
+% Float only pages has to fill at least 99%
+\renewcommand{\floatpagefraction}{.99}
 
 \begin{document}
 \maketitle
@@ -100,8 +100,8 @@
 \chapter{The turblent phase}
 \label{chap:satTurb}
 \input{results/turbulence}
-\chapter{Characteristics of the fluctuations}
 \input{results/fluctuations}
+\input{results/fluxes}
 \chapter{Zonal flows}
 \input{results/zonalFlows}
 \chapter{Comparison with the boussinesq approximation}
