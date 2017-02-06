@@ -1,7 +1,7 @@
-\section{Characteristics of the fluctuations}
-%
 We will in this chapter characterize the fluctuations.
-One can observe from \cref{fig:2DFluct} the fluctuations can be quite strong, something which has also been observed experimentally in for example \cite{Burin2005}.
+
+As seen in \cref{fig:2DFluct}, the fluctuations can be quite strong.
+This is something which has also been observed experimentally in for example \cite{Burin2005}.
 To get a better feeling of how strong the fluctuations are, we can compare the steady state profiles with the turbulent profiles.
 \Cref{fig:posOfFluct01} gives such a comparison.
 %
@@ -17,47 +17,38 @@ To get a better feeling of how strong the fluctuations are, we can compare the s
     \label{fig:posOfFluct01}
 \end{figure}
 %
-As apparent from the figure, the amplitude of the fluctuations are the largest around the maximum gradient.
-We also note that the background profiles are flattened by the turbulence.
+Other than noting that the amplitude of the fluctuations are the largest around the maximum gradient, we observe the background profiles gets flattened by the turbulence.
 This is an important feature which need to be considered when modelling the plasma.
 
-Models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007} are splitting the fluctuations from the background (a so-called Reynolds decomposition), and are evolving only the fluctuation in time.
+In models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007}, the fluctuations are separated from the mean (a so-called Reynolds decomposition).
+The model only evolves the fluctuation in time, whilst keeping the mean fixed as a static background.
 In such models, the free energy in the background gradients are driving the fluctuations, and the feedback of the fluctuation on the background profiles are neglected.
-This is good approximation if the fluctuations are small.
-On the other hand, if the fluctuations are large as in \cref{fig:posOfFluct01}, the background gradients are altered, and so is the drive for the fluctuations.
-A global approach as taken in models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA is therefore needed.
+Such a approximation is good if the fluctuations are small.
+On the other hand, if the fluctuations are large as in \cref{fig:posOfFluct01}, the background gradients are altered, and thus the drive for the fluctuations.
+
+A global approach which doesn't uses the Reynolds decomposition is therefore needed.
 With such a global approach, the change in the driving force for the turbulence is accounted for, and it enables one to investigate the backreaction to the background from the fluctuations.
+Models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA are using such a global approach.
 
-
+Further investigation of the turbulence can be done by investigating the fluctuations at a fixed point.
+This is done in \cref{fig:combinedPlots008}, where the tim trace, the probability density function (PDF) and power spectra density (PSD) is shown at $3$ different radial positions.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics[width=1.0\textwidth]{fig/results/combinedPlots/008T}
     \caption{Characteristics of the time traces of the fluctuations at three radial positions.
-        The top row shows data probed close to the edge of the plasma,
+        The top row shows data probed close to the axis of the cylinder,
         the middle row shows data probed at position of the highest density gradient,
-        and the bottom shows data probed close to the axis of the cylinder.
+        and the bottom shows data probed close to the edge of the plasma.
     }
     \label{fig:combinedPlots008}
 \end{figure}
 %
-%
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \begin{center}
-        \includegraphics[width=0.48\textwidth]{fig/results/skewKurt/008T}
-    \end{center}
-    \caption{Radial variations of the skewness and excess kurtosis (the kurtosis $-3$).}
-    \label{fig:skewKurt008}
-\end{wrapfigure}
-%
-Further investigation of the turbulence can be done using the time traces at a fixed point.
-This is done in \cref{fig:combinedPlots008}.
-
 Again, we can observe that the fluctuations are large in amplitude, and increasingly intermittent for higher radius.
 The power spectra density (PSD) shows that several frequencies are present simultaneously, and that the system is more turbulent at the edge.
 This behavior is captured by the probability density functions (PDF), which measures the chance to encounter a value within an infinitesimal range, if a value at a random time is withdrawn from the time trace.
 Consequentially, if all values are equally probable, the PDF will have a Gaussian shape.
-Deviations from the Gaussian shape is usually measured by the statistical moments skewness%
+Deviations from the Gaussian shape is usually measured by the statistical moments skewness $S$%
 %
 \footnote{
     The skewness is a measure of the mass of the distribution.
@@ -65,7 +56,7 @@ Deviations from the Gaussian shape is usually measured by the statistical moment
     For a pure Gaussian the skewness is 0.
 }
 %
-and kurtosis
+and kurtosis $K$
 %
 \footnote{
     The kurtosis is a measure of extreme events present in the distribution.
@@ -74,10 +65,32 @@ and kurtosis
     If the kurtosis is greater than 3 (leptokurtic) there are more extreme outliners, and the tails approaches zero slower than a Gaussian.
 }
 %
+defined as
+%
+\begin{align*}
+    &S=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^3\R]&
+    &K=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^4\R],
+\end{align*}
+%
+where $E$ denotes the expectiation value operator, $\mu_X$ the mean of $X$, and $\sigma_X$ the standard devitaion%
+\footnote{We are assuming that the tail of the distribution are approaching fast enough to $0$ in order for the moments to be defined.}
 .
 Figure \cref{fig:skewKurt008} highlights how this varies with the radius.
-One can see that close to the center, it is more probable to encounter a large negative fluctuation than a positive fluctuation.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/skewKurt/008T}
+    \caption{Radial variations of the skewness and excess kurtosis (the kurtosis $-3$).}
+    \label{fig:skewKurt008}
+\end{figure}
+%
+
+One can see that close to the center, it is more probable to encounter a negative fluctuation than a positive fluctuation.
 Then, for higher radii, large positive fluctuations becomes more and more frequent.
 From the excess kurtosis, we can see that extreme events are less likely than in a Gaussian random process, whereas extreme events are almost twice as likely in the edge as in a Gaussian random process.
 
-Finally it can be noted that the radial turbulent transport is mainly positive and even more intermittent than the fluctuations in density alone.
+We will proceed by investigating two of our observations further.
+First, from our phenomenological discussion in \cref{sec:simpleLin} (which is shown mathematically in for example in \cite{Garcia2001a}), a large positive fluctuations in the density is not enough to give a positive flux.
+The flux is obly obtained when there is a phase shift between the density and the potential.
+Therefore, we would like to investigate the turbulent flux particle in the next section.
+After that, we will investigate the intermittency of the signal, and search for blobs and holes.
