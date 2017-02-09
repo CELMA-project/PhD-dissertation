@@ -93,15 +93,6 @@ At the time of writing the cluster consisted of $320$ half-width rack servers, H
 For each simulation, $3$ nodes has been allocated using $48$ cores.
 This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of simulation time to communication time per core.
 
-\section{Parameter scans}
-FIXME: Move me
-
-%
-We will in this thesis do a parameter scan in $B$.
-By looking at \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can see that that the normalization $B$ can always be chosen to be $1$.
-However, $B$ appears in the set of equations through $\om_{ci}$, which means that it effectively sets the time step (in real variables) through $\breve{t}=t\om_{ci}^{-1}$.
-This in turn affects the $\rho_s$ (as $\rho_s=\frac{c_s}{\om_{ci}}$), and thus the normalized domain size.
-
 \section{Resolution}
 \label{sec:resolution}
 %
