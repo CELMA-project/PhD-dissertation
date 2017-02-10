@@ -1,7 +1,7 @@
 \section{Blobs and holes}
 %
-The aim of this chapter is to characterize the itermittent structures observed in the time traces in \cref{fig:combinedPlots008} by using a conditional averaging (CA) technique.
-It turns out that the intermittent structures shares characteristics with what has been described as blobs in the litterature.
+The aim of this chapter is to characterize the intermittent structures observed in the time traces in \cref{fig:combinedPlots008} by using a conditional averaging (CA) technique.
+It turns out that the intermittent structures shares characteristics with what has been described as blobs in the literature.
 We will here use the definition of a blob given in the review paper by D'Ippolito et. al. \cite{DIppolito2011}.
 In this definition, a blob is a structure which satisfies the following properties:
 %
@@ -21,17 +21,17 @@ It has it roots in fluid dynamics \cite{Kovasznay1970}, with the first applicati
 %
 \begin{algorithm}
 \begin{enumerate}[noitemsep,nolistsep]
-    \item Record a signal in a signle point over time.
-    \item Set a treshold condition.
-    \item When the signal reaches the condition, record a sub-signal $\tau$ timeunits before and $\tau$ time units after.
+    \item Record a signal in a single point over time.
+    \item Set a threshold condition.
+    \item When the signal reaches the condition, record a sub-signal $\tau$ time units before and $\tau$ time units after.
         The recorded sub-signal will be one of the samples in the conditional averaging.
     \item Take the average of all the samples, i.e. the recorded sub-samples.
 \end{enumerate}
 \end{algorithm}
 %
-Here, we will set the treshold condition on the radial flux.
+Here, we will set the threshold condition on the radial flux.
 Alternatively, we could have set a condition on the perturbation in $n$ itself.
-This would have the disatvantage of including samples of perturbation which arises from poloidal rotation of a sligthly elongated plasma.
+This would have the disadvantage of including samples of perturbation which arises from poloidal rotation of a slightly elongated plasma.
 In the end we are interested in structures which "has a dominant convective $\ve{E}\times\ve{B}$ velocity component" from point $3$ in the definition above.
 
 \subsection{The averaged structures}
@@ -48,7 +48,7 @@ The time trace of the radial flux, together with three different conditions are 
     \label{fig:blobFluxTT}
 \end{figure}
 %
-Is apparent that the trigger signal is highly intermittent, as seen from the PDF in \cref{fig:blobFluxPDF}, which shows a skewness of aprroximately $3$, and an exess kurtosis of around $16.5$.
+Is apparent that the trigger signal is highly intermittent, as seen from the PDF in \cref{fig:blobFluxPDF}, which shows a skewness of approximately $3$, and an excess kurtosis of around $16.5$.
 %
 \begin{figure}[htb]
     \begin{center}
@@ -61,7 +61,7 @@ Is apparent that the trigger signal is highly intermittent, as seen from the PDF
 \end{figure}
 %
 Figure \cref{fig:blobDensPDF} shows the PDF for the density signal at the same position.
-We can obsere that it is not as intermittent with a skewness around $1$ and an excess kurtosis of about $1.5$.
+We can observe that it is not as intermittent with a skewness around $1$ and an excess kurtosis of about $1.5$.
 %
 \begin{figure}[htb]
     \begin{center}
@@ -75,7 +75,7 @@ We can obsere that it is not as intermittent with a skewness around $1$ and an e
 \end{figure}
 %
 
-From \cref{fig:blobFluxTT}, we chose $\tau$ to be $4$ times the time of the maximum pulse duration (where the signal is above the treshold) of the flux.
+From \cref{fig:blobFluxTT}, we chose $\tau$ to be $4$ times the time of the maximum pulse duration (where the signal is above the threshold) of the flux.
 We now have both the time where the condition is met and the time window set by $\tau$, and we can in principle use this to sample of any quantity in any spatial points.
 In other words, we can use these time to conditionally sample the density $n$.
 Before doing so, we note that we are dealing with two types of events, both giving a positive radial flux.
@@ -100,7 +100,7 @@ The time trace of the CA structures are shown together in \cref{fig:blobAndHole2
 \end{figure}
 %
 Note that the amplitude of the blobs and the holes are relatively insensitive to the choice of the condition.
-This would not be the case in a truly random signal (i.e. gaussian white noise), where lower amplitude events would decrease the CA amplitude for lower conditions.
+This would not be the case in a truly random signal (i.e. Gaussian white noise), where lower amplitude events would decrease the CA amplitude for lower conditions.
 
 Instead of sample the density at the same point as the condition is set, we can sample the whole perpendicular plane for the density fluctuations.
 The result is shown in \cref{fig:perpBlob008}.
@@ -124,7 +124,7 @@ The result is shown in \cref{fig:perpBlob008}.
 \end{figure}
 %
 Although we are setting the condition at the flux at $\theta = 0$, we can see that the blob start to form around $\theta = 3/2 \pi$ in $\tau=-4.347\mu \s$.
-This structure is then transported radially outwards, and starts to get sheared as soon as it reahes the region with high $\Om$ as indicated in \cref{fig:radProfs}.
+This structure is then transported radially outwards, and starts to get sheared as soon as it reaches the region with high $\Om$ as indicated in \cref{fig:radProfs}.
 
 
 
@@ -139,8 +139,8 @@ Although we have few events
 %
 , we would briefly indicate the trend of the waiting times and pulse width distribution.
 A similar exercise is done in for example \cite{Hornung2011}, where it is found that the average temporal width of the pulse is a fraction of the period of a characteristic drift-wave, the peak of the waiting time PDF occurs approximately around one drift-wave period and the waiting time is much longer than a drift-wave period.
-The waiting thime and pulse widths in our case is shown in \cref{fig:tempStatBlob}.
-As expected, the waiting time goes down the value of the triggering signal as more events are included in the sampling, and beacuse the events will appear broader.
+The waiting time and pulse widths in our case is shown in \cref{fig:tempStatBlob}.
+As expected, the waiting time goes down the value of the triggering signal as more events are included in the sampling, and because the events will appear broader.
 Because of this, also the pulse width goes up for decreasing value of the triggering signal.
 %
 \begin{figure}[h!]
