@@ -11,42 +11,64 @@ Note that the source is uniform in along the parallel direction.
 A more probable scenario would probably be that the source would decrease along the parallel direction, until it is increased around the SE due to recycling from the wall.
 In any case, finding the proper shape of the source seems to be challenging, and is probably only accurate if detailed atomic physics is taken into account.
 Although interesting and relevant, such atomic processes is outside the scope of this thesis.
-If nothing else is mentioned, the standard input for the simulations done are given in \cref{tb:input}.
+If nothing else is mentioned, the standard input for the simulations done are given in \cref{tb:grid,tb:input,tb:source}.
 %
-\begin{table}[h!]
-{\footnotesize \centerline{
-\colorme
-\begin{tabular}{c|ll}
-\hline\hline
-%
-Variable & Value & Units\\
-%
-\hline
-%
-$n_\rho$   & $32$  & \\
-$n_z$      & $66$  & \\
-$n_\theta$ & $256$ & \\
-%
-\hline
-%
-$L_\rho$  & $0.0$            & $\m$     \\
-$L_z$     & $2.80$           & $ \m$    \\
-$n_0$     & $1\cdot 10^{19}$ & $\m^{-3}$\\
-$T_{e,0}$ & $2.5$            & $\eV$    \\
-$B_0$     & $0.1$            & $\T$     \\
-$n_n$     & $0.0$            & $\m^{-3}$\\
-Gas       & Ar               &          \\
-\hline
-$s_{\text{profile}}$ & $5/L_\rho$ &\\
-$c_{\text{profile}}$ & $0$        &\\
-$w_{\text{profile}}$ & $L_\rho$   &\\
-\hline\hline
-\end{tabular}
-}}
-\caption[]{\textit{
-        Standard simulation options used in the CELMA code.
-    }}
-\protect\label{tb:input}
+
+\begin{table}[!htb]
+    \begin{minipage}{.3\linewidth}
+      \caption{Grid size used for the simulations.}
+      \centering
+        \colorme
+        \begin{tabular}{c|ll}
+        \hline\hline
+        %
+        Variable & Value \\
+        %
+        \hline
+        %
+        $n_\rho$   & $32$  \\
+        $n_z$      & $66$  \\
+        $n_\theta$ & $256$ \\
+        \hline\hline
+        \end{tabular}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{.3\linewidth}
+      \centering
+        \caption{Standard parameters used in the simulations.}
+            \colorme
+            \begin{tabular}{c|ll}
+            \hline\hline
+            %
+            Variable & Value & Units\\
+            %
+            $L_\rho$  & $0.0$            & $\m$     \\
+            $L_z$     & $2.80$           & $ \m$    \\
+            $n_0$     & $1\cdot 10^{19}$ & $\m^{-3}$\\
+            $T_{e,0}$ & $2.5$            & $\eV$    \\
+            $B_0$     & $0.1$            & $\T$     \\
+            $n_n$     & $0.0$            & $\m^{-3}$\\
+            Gas       & Ar               &          \\
+            \hline\hline
+            \end{tabular}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.3\linewidth}
+      \centering
+        \caption{Source parameters used in the simulations.}
+            \colorme
+            \begin{tabular}{c|ll}
+            \hline\hline
+            %
+            Variable & Value \\
+            %
+            \hline
+            $s_{\text{profile}}$ & $5/L_\rho$\\
+            $c_{\text{profile}}$ & $0$       \\
+            $w_{\text{profile}}$ & $L_\rho$  \\
+            \hline\hline
+            \end{tabular}
+    \end{minipage}
 \end{table}
 %
 Input parameters from the implementation is found in the tables in \cref{chap:implBOUT++,chap:additionalImplementation}.
@@ -78,19 +100,22 @@ the simulations are performed in three following steps
     \item If the system is unstable to small perturbations, and if there are no "crashes" in the simulation, a saturated turbulence state is eventually reached.
 \end{enumerate}
 %
-All the simulations are run on the \texttt{jess} super computer located at DTU Ris{\o}e.
-At the time of writing the cluster consisted of $320$ half-width rack servers, HP Proliant sl230 Gen8 compute nodes with the following specifications
+All the simulations presented here are run on the \texttt{A1} (Broadwell) partition of the \texttt{Marconi} super cluster located at CINECA at Casalecchio di Reno (Bologna).
+At the time of writing the cluster operated with the following specifications \cite{Marconi2016Web}
 %
 \begin{enumerate}[noitemsep]
-    \item Two Intel Xeon E5-2680v2 ten-core CPUs, 2.8 GHz
-    \item 64/128 GB Memory (8x8/8x16 GB) 1866 MHz
-    \item One 500 GB 6Gbps 15k SAS disk
-    \item Intel Gigabit Ethernet with two ports
-    \item QLogic IBA7322 dual-port QDR InfiniBand HCA
-    \item HP iLO v.4
+    \item Model: Lenovo NeXtScale
+    \item Architecture: Intel OmniPath Cluster
+    \item Nodes: $1512$
+    \item Processors: $2\times18$-cores Intel Xeon E$5-2697$ v$4$ (Broadwell) at $2.30$ GHz
+    \item Cores: $36$ cores/node, $54432$ cores in total
+    \item RAM: $128$ GB/node, $3.5$ GB/core
+    \item Internal Network: Intel OmniPath Architecture $2$:$1$
+    \item Disk Space: $17$PB (raw) of local storage
+    \item Peak Performance: $2$ PFlop/s
 \end{enumerate}
 %
-For each simulation, $3$ nodes has been allocated using $48$ cores.
+For each simulation, $2$ nodes has been allocated using $48$ cores.
 This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of simulation time to communication time per core.
 
 \section{Resolution}
@@ -100,14 +125,14 @@ This has been found to give a good speed-up (as compared to use one node) with a
 %        if because catastrophic cancellation, a higher mu would make it worse
 %        in fact a higher mu helps as better resolution
 %        Hypervisc will only alevate problem if visc coeff is in the order of the fields
-In order to have a properly resolved grid, we choose to have a ratio at least $\frac{n_\rho}{\frac{L_\rho}{\rho_s}}>1$, but preferably above  $3$.
+In order to have a properly resolved grid, we choose to have a ratio at least $\frac{n_\rho}{L_\rho/\rho_s}>1$, but preferably above $3$.
 As mentioned in (FIXME)
 % FIXME: Add reference where say can have much coarser resolution in parallel direction
 the resolution in the parallel direction can be less due to the separation of scales.
 Note however, that we have a sheath boundary condition in the $z$-direction, which seems to limit the coarseness of the resolution.
 As mentioned in (FIXME)
 % FIXME: Add reference to where the coarseness parameter scan is done
-we should require that $\frac{n_z}{\frac{L_z}{\rho_s}}\gtrsim0.2$.
+we should require that $\frac{n_z}{L_z/\rho_s}\gtrsim0.2$.
 We observe that
 %
 \begin{align*}
