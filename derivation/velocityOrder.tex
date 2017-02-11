@@ -13,8 +13,16 @@ Another way to lessen the demand is through the so called drift ordering of the 
  To derive the equations with the drift order approximation, we start out by decomposing the equations in parallel and perpendicular parts.
 
 \section{Decomposition}
-We start the derivation by rearranging equation (\ref{fluideq:mom}) in
-the following way
+We will here decompose equation (\ref{fluideq:mom}) into a part which is parallel to the magnetic field, and on which is perpendicular to the magnetic field.
+The unit vector parallel to the magnetic field is defined as
+%
+\begin{align}
+    \ve{b} \defined \ve{B}/B,
+    \label{eq:parMagField}
+\end{align}
+%
+where $B=\|\ve{B}\|$.
+By using \cref{eq:parMagField}, we can rearrange equation (\ref{fluideq:mom}) in the following way
 %
 \begin{align*}
  n_\a m_\a \d_{t,\a} \ve{u}_{\a} &=
@@ -54,8 +62,7 @@ the following way
  S_{\a,n}m_\a\ve{u}_\a
  }{n_\a q_\a B}
  %
- \note{$\ve{b} \defined \ve{B}/B$, where
-             $B=\|\ve{B}\|$}\\
+ \\
  %
  %
  \frac{1}{\om_{c\a}}\d_{t,\a} \ve{u}_{\a}
@@ -332,8 +339,7 @@ The goal of the drift ordering is to split \cref{eq:perp_mom_start} in different
 From \cref{eq:DO} in \cref{app:DO}, we have that \cref{eq:perp_mom_start} can be written in orders of $\e$ as%
 %
 \footnote{
-Note that we write the viscosity part as order $\mathcal{O}(\e)$, as we for ions assume that $\mu\e^2$ at least is not bigger than $\e$.
-In other words we assume that this term cannot be larger than $\e$.
+Note that we write the viscosity part as order $\mathcal{O}(\e)$, as we for ions assume that $\mu\e^2$ cannot be larger than $\e$.
 }%
 %
 \begin{align*}
@@ -366,7 +372,7 @@ To do this, we first assume that
     \label{eq:uOrderConcept}
 \end{align}
 %
-so that
+where
 %
 \begin{align*}
     \e^0\ve{u}_{\a,0,\perp} \gg \e^1\ve{u}_{\a,1,\perp} \gg \e^2\ve{u}_{\a,2,\perp} \gg \ldots,

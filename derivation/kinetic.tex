@@ -36,7 +36,7 @@ Using that
     \partial_{\ve{v}} \L(\ve{E}'+\ve{v}\times\ve{B}'\R) =& 0,
 \end{align*}
 %
-where $\ve{E}'$ and $\ve{B}'$ are the total fields, we get
+where $\ve{E}'$ and $\ve{B}'$ are the total (microscopic) fields, we get
 %
 \begin{align*}
       \partial_t f_\a
@@ -81,7 +81,7 @@ The resulting Fokker-Planck equation reads
       \partial_t f_\a
     + \ve{v}\cdot\nabla f_\a
     + \frac{q_\a}{m_\a}\L(\ve{E}+\ve{v}\times\ve{B}\R)\cdot\partial_{\ve{v}}f_\a
-    =& S_\a + C_\a.
+    = S_\a + C_\a.
     \label{eq:fp}
 \end{empheq}
 
@@ -93,8 +93,8 @@ We will use \cref{app:distAvg} to denote a weighted velocity average (a moment) 
 From this, we define
 %
 \begin{align*}
-    \expt{\ve{v}_\a}_{f_a}        \defined& \; \ve{u}_a,      \\
-    \expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_{f_a} \defined&\; \te{\Pi}_\a.
+    &\expt{\ve{v}_\a}_{f_a} \defined \; \ve{u}_a&  &\text{Macroscopic fluid velocity for }\a,&\\
+    &\expt{m_\a n_\a \ve{v}_\a\ve{v}_\a}_{f_a} \defined\; \te{\Pi}_\a&  &\text{Momentum flux for }\a.&
 \end{align*}
 %
 We call the difference between the velocity of a single particle and the macroscopic fluid velocity $\ve{w}$, so that
@@ -103,7 +103,7 @@ We call the difference between the velocity of a single particle and the macrosc
     \ve{w}_\a = \ve{v} - \ve{u}_\a.
 \end{align*}
 %
-Thus, we define the scalar pressure $p_\a$, the pressure tensor $\te{P}_\a$ and the stress tensor $\te{\pi}_\a$ as
+From this, we define the scalar pressure $p_\a$, the pressure tensor $\te{P}_\a$ and the stress tensor $\te{\pi}_\a$ as
 %
 \begin{align*}
     \frac{n_\a m_\a\expt{w_\a^2}_{f_a}}{3} \defined& \; p_\a = n_\a T_\a\\
@@ -227,7 +227,7 @@ the source term gives
 \end{align*}
 %
 We will now assume that the plasma consists of only one type of ions, in only one ionizational and excitational state.
-Extension to this would require a distribution function for each set of atom at a specific ionizational and excitational state.
+Extension to this would require a distribution function for each type of atom for each ionizational and excitational state.
 We will further assume that the creation of electrons and ions to this state happens instantaneously (that is, no intermediate ioniziations or excitations takes place).
 If we take fully ionized helium as an example, this would mean that one ion, and two electrons would be created instantaneously.
 More generally, $N_i$ ions and $ZN_i$ electrons will be created for the charge number $Z$.
@@ -542,7 +542,7 @@ The second term can be expanded further by observing that
         \ve{u}_\a
 \end{align*}
 %
-The pressure tensor $\te{P}_\a$ would have been isotropic if the particles would be free to move in all directions.
+The pressure tensor $\te{P}_\a$ would be isotropic if the particles were free to move in all directions.
 However, charged particles gyrate whenever moving with a vector component perpendicular to the magnetic field.
 Thus, the pressure along the magnetic field line is different from the pressure perpendicular to it.
 Nevertheless, we can observe from the definitions that the tensors must be symmetric.
@@ -553,7 +553,7 @@ The stress tensor is assumed to be small compared to the other terms, and can be
     \te{\pi} = \te{\pi}^S + \te{\pi}^C + \te{\pi}^G
 \end{align*}
 %
-where $\te{\pi}^S$ is the viscosity which comes as a consequence of similar species velocity shear, $\te{\pi}^C$ comes from velocity compression along the magnetic field and $\te{\pi}^G$ is attributed by finite Larmor radius (FLR) effects.
+where $\te{\pi}^S$ is the viscosity which comes as a consequence of similar species velocity shear, $\te{\pi}^C$ comes from velocity compression along the magnetic field and $\te{\pi}^G$ is attributed to finite Larmor radius (FLR) effects \cite{Helander2002book}.
 
 The second term of \cref{eq:mom_crude} can now be written as
 %
@@ -679,7 +679,7 @@ This gives an analytical expressions for $\ve{R}_{\b\to\a}$ (see \cref{app:colli
 We will in this thesis close the system in a much simpler way.
 If we assume that the electrons are isothermal, they can be described by a constant temperature, and hence there is no need for an equation to solve for $T_e$.
 We will further assume that the ions are cold ($T_i$ is isothermal with a constant temperature equal $0$).
-In this thesis we would like to study systems with the drift fluid approach (see \cref{chap:drift-order} for details), and we will therefore assume that the velocity component perpendicular to the magnetic field is much less than the ion sound speed.
+In this thesis we would like to study systems with the drift fluid approach (see \cref{chap:drift-order} for details), and we will therefore assume that the velocity component perpendicular to the magnetic field is much lower than the ion sound speed.
 This is in direct contradiction to our assumption of an isothermal system, which requires that the fluid velocity is much larger than the ion sound speed, so that any difference in temperature is quickly smoothed out.
 Despite of this, we choose to use the assumption as it gives a much simpler system to solve and analyze.
 Improvements to this crude approximation is therefore subject to future work.
