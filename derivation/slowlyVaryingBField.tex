@@ -1,11 +1,11 @@
-Up until know we have derived the drift-fluid equation from the kinetic equation using the drift fluid approximation.
-We would now insert the fluid drifts in the fluid equation without making assumption of the topology of the $\ve{B}$ field, only that is varies slowly spatially and in time.
-We will, on the other hand make the assumption that the plasma itself consists of only one type of atomic element which is fully ionized.
+In the previous chapter, we derived the drift-fluid equation from the kinetic equation using the drift fluid approximation.
+We will now insert the fluid drifts in the fluid equation without making assumption on the topology of the $\ve{B}$ field, only that is varies slowly spatially and in time.
+We will, on the other hand, make the assumption that the plasma itself consists of only one type of atomic element.
 %
 
 \section{The curvature operator}
 %
-To simplify further calculations, we will introduce the curvature operator.
+To simplify the calculations, we will introduce the curvature operator.
 Assuming we are working in a field aligned Clebsch coordinate system (see \cref{app:coord}), where $\ve{b}$ is parallel to one of the basis vectors, we have that
 %
 \begin{align*}
@@ -14,7 +14,7 @@ Assuming we are working in a field aligned Clebsch coordinate system (see \cref{
 = - \ve{b} \times (\grad - \ve{b}\ve{b}\cdot\grad) f = \grad f \times \ve{b}
 \end{align*}
 %
-as a vector crossed with a parallel vector yields $0$.
+as the crossed product of two parallel vector yields $0$.
 Therefore, we can write
 %
 \begin{align*}
@@ -154,25 +154,25 @@ As we are interested in low frequency dynamics $\om^c\ll\om_{\text{ci}}$, we can
 \begin{align*}
     \ve{u}_{e,p}
     &=
-      \frac{1}{\om_{ce}}\d^1_{e,t}\L(
+      \frac{1}{\om_{ce}}\d^1_{t,e}\L(
       - \frac{\grad_\perp p_e}{n_e  q_e B}
       - \frac{\grad_\perp \phi}{B}
       \R)\\
 %
     &=
-      \frac{m_e}{q_eB}\d^1_{e,t}\L(
+      \frac{m_e}{q_eB}\d^1_{t,e}\L(
       - \frac{\grad_\perp p_e}{n_e  q_e B}
       - \frac{\grad_\perp \phi}{B}
       \R)\\
 %
     &=
-      \frac{m_i}{q_eB}\frac{m_e}{m_i}\d^1_{e,t}\L(
+      \frac{m_i}{q_eB}\frac{m_e}{m_i}\d^1_{t,e}\L(
       - \frac{\grad_\perp p_e}{n_e  q_e B}
       - \frac{\grad_\perp \phi}{B}
       \R)\\
 %
     &=
-    \frac{1}{\om_{ci}}\frac{m_e}{m_i}\d^1_{e,t}\L(
+    \frac{1}{\om_{ci}}\frac{m_e}{m_i}\d^1_{t,e}\L(
       - \frac{\grad_\perp p_e}{n_e  q_e B}
       - \frac{\grad_\perp \phi}{B}
       \R).
@@ -456,7 +456,7 @@ As this is of one order higher than what we would like to resolve, we neglect th
 \subsection{Electron source drift}
 \label{sec:no_e_source}
 %
-By using the same argument as given in \cref{sec:no_e_pol}, we see that this term can also be neglected as we from the source drift of \cref{eq:first_order} have
+By using the same argument as given in \cref{sec:no_e_pol}, we see that this term can also be neglected since the source drift term of \cref{eq:first_order} becomes
 %
 \begin{align*}
     \ve{u}_{e,S}
