@@ -1,8 +1,8 @@
-We will in this chapter modify the obtained equations by using the so called Boussinesq approximation.
+We will in this chapter modify the obtained equations by using the so-called Boussinesq approximation.
 This approximation is also sometimes referred to as the local approximation.
 The name Boussinesq approximation is a bit of a misnomer, as this actually refers to a series of approximations in fluid mechanics where the small variation in density is one of them \cite{Kundu2010book}.
 
-The usage of this approximation in drift fluid equation is not always sound, as the criterion for the approximation is easily broken.
+The usage of this approximation in drift fluid equations is not always sound, as the criterion for the approximation is easily broken.
 However, one argument to use the approximation is that one can make a set of equations which conserves energy without getting into the problem of having the polarization drift advecting itself (which leads to an infinite loop in the derivation).
 % FIXME: Does it? Review why this is again
 
@@ -115,7 +115,7 @@ Using the assumptions, we find that inserting this in \cref{eq:start_of_boussine
  \R).
 \end{align*}
 %
-In the last assumptions, we will assume a relatively flat background profiles, so that $n_0 \simeq \overline{n}$.
+Finally, we will assume a relatively flat density background profile, so that $n_0 \simeq \overline{n}$.
 This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation yields
 %
 \begin{align*}
@@ -157,10 +157,10 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
 Let us now briefly comment on the approximations made
 %
 \begin{enumerate}[noitemsep]
-    \item $\overline{n} \ll \delta_n$ : This approximation can be broken as the
-        amplitudes can be considerably large.
+    \item $\overline{n} \gg \delta_n$ : This approximation can be broken as the perturbation amplitudes can be considerably large.
         % FIXME: Citation needed
-    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradients in the background density are sharp as compared to $\rho_s$, but it may be that it is not orders of magnitude larger.
+    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradient scale length in the background density are long as compared to $\rho_s$.
+        However, they are not necessarily orders of magnitude larger.
         % FIXME: Citation needed
     \item $\overline{n} \simeq n_0$ : This assumption is maybe the hardest to fulfill, as the gradients usually are non-vanishing.
         % FIXME: Citation needed
@@ -172,7 +172,7 @@ As this approximation is done quite frequently in the literature,
 it is of interest to compare results with and without this approximation.
 
 In the scope of this thesis, we only do the approximation here and keep gradients of $n$ elsewhere.
-A more rigorous study could be to investigate the set of equations from a energy conservation point of view, and from that find out what $n$'s in the set of equations which should be transformed to $n_0$.
+A more rigorous study could be to investigate the set of equations from an energy conservation point of view, and from that find out what $n$'s in the set of equations which should be transformed to $n_0$.
 
 \section{The Boussinesq approximation in the CELMA model}
 %

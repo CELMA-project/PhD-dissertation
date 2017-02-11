@@ -6,13 +6,13 @@ In the parallel direction there will be formation of plasma sheaths between the 
 This leads to a potential build-up on the material surface which affects the plasma upstream.
 
 Unfortunately, the fluid description of the plasma breaks down at the sheath as mentioned in \cite{Loizu2012a}.
-This is mainly due to the fact that there will be more ions than electrons in this area and the assumption quasi-neutrality breaks down.
+This is mainly due to the fact that there will be more ions than electrons in this area and the quasi-neutrality assumption breaks down.
 In other words, the fluid models are only valid up until the sheath entrance (SE), and a proper description in this area can only be accounted for with kinetic codes, solving for example the Fokker-Planck equation.
-One should notice though that in reality it is hard, and maybe even impossible to tell where the bulk plasma ends, and where the sheath begins.
+One should notice though that in reality it is hard, and maybe even impossible, to tell where the bulk plasma ends and where the sheath begins.
 
 There are mainly two challenges in setting the radial boundary conditions.
 Firstly, the plasma does not usually extent all the way to the chassis of the machine, but is gradually terminated as the temperature drops and neutral dynamics takes over towards the edge.
-Secondly, assuming that the plasma could extend all the way out to the chassis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma has no way not adhere to the surface as a neutral fluid would do.
+Secondly, assuming that the plasma could extend all the way out to the chassis, the non-slip condition encountered in neutral fluid dynamics \cite{Kundu2010book} is not necessarily valid as the plasma has no way to adhere to the surface as a neutral fluid would do.
 
 The boundaries for the cylindrical plasma consist of four parts.
 In the parallel direction, we have the SE at one end.
@@ -56,7 +56,7 @@ The spinning of the plasma does not change from one side to the other across the
 \subsection{Boundary conditions at the SE}
 \label{sec:BCatSE}
 %
-Following the calculations of Choudora and Bohm (see for example \cite{Stangeby2000book}), it is common practice to define the sheath entrance to be the place where ion velocity reaches the ion sound speed (that is where $u_{i,\|}=c_s$), and we will adopt this practice in this thesis.
+Following the calculations of Choudora and Bohm (see for example \cite{Stangeby2000book}), it is common practice to define the sheath entrance to be the place where the ion velocity reaches the ion sound speed (that is where $u_{i,\|}=c_s$), and we will adopt this practice in this thesis.
 Considering a quiescent plasma, one can calculate the equilibrium profiles which the plasma obtains in contact with materials, and use this to set the boundaries for $u_{i, \|}$ and $u_{e, \|}$ at the SE.
 This is then used to calculate the boundary condition
 %
@@ -65,7 +65,7 @@ This is then used to calculate the boundary condition
 \end{align*}
 %
 where $L_z$ is the position of the SE.
-One should note though, that even these boundary conditions are valid only in steady state.
+One should note though, that these boundary conditions are valid only in steady state.
 
 \subsubsection{Ion velocity at the SE}
 For the ion velocity, we have from steady state calculations defined the sheath entrance to be the point where
@@ -106,16 +106,16 @@ Normalization gives
 %
 Although the "standard" calculation for the sheath gives us conditions for setting the velocities in steady state, no such conditions exists for the density.
 Instead, one would have to rely on other arguments.
-In \cite{Loizu2012a}, Loizu et al.  presents a boundary condition for the density in a field line geometry, where the field lines are allowed to be tilted with respect to the end-plate.
+In \cite{Loizu2012a}, Loizu et al. present a boundary condition for the density in a field line geometry, where the field lines are allowed to be tilted with respect to the end-plate.
 For a field line geometry where the field lines are perpendicular to the end-plate (which is the case in this thesis), the boundary condition reduces to
 %
 \begin{align*}
-    \L. \partial_\| n \R|_{L_z}&= -\L.\frac{n}{c_s}\partial_\| u_{i.\|}\R|_{L_z}\\
-    \note{$\L. u_{i.\|}\R|_{L_z} = c_s$}
-    \L.u_{i.\|} \partial_\| n \R|_{L_z}&= -\L.n \partial_\| u_{i.\|}\R|_{L_z}\\
-    \L.u_{i.\|} \partial_\| n \R|_{L_z}+\L.n \partial_\| u_{i.\|}\R|_{L_z}&= 0\\
-    \L.\partial_\|\L(u_{i.\|}  n \R)\R|_{L_z}&= 0\\
-    \L.\ve{b}\cdot\grad\L(u_{i.\|}  n \R)\R|_{L_z}&= 0
+    \L. \partial_\| n \R|_{L_z}&= -\L.\frac{n}{c_s}\partial_\| u_{i,\|}\R|_{L_z}\\
+    \note{$\L. u_{i,\|}\R|_{L_z} = c_s$}
+    \L.u_{i,\|} \partial_\| n \R|_{L_z}&= -\L.n \partial_\| u_{i,\|}\R|_{L_z}\\
+    \L.u_{i,\|} \partial_\| n \R|_{L_z}+\L.n \partial_\| u_{i,\|}\R|_{L_z}&= 0\\
+    \L.\partial_\|\L(u_{i,\|}  n \R)\R|_{L_z}&= 0\\
+    \L.\ve{b}\cdot\grad\L(u_{i,\|}  n \R)\R|_{L_z}&= 0
     \note{$\partial_i \ve{b} = 0$}
     \\
     \L.\div\L(\ve{b}u_{i,\|}  n \R)\R|_{L_z}&= 0\\
@@ -137,8 +137,8 @@ In other words, it says that the only change in the density (apart from the sour
 Another way to look at it is to consider
 %
 \begin{align*}
-    \L.\L[\inde{\partial_\|\L(u_{i.\|}  n \R)}{z}\R]\R|_{L_z}&= 0\\
-    \L.u_{i.\|}  n \R|_{L_z}&= C
+    \L.\L[\inde{\partial_\|\L(u_{i,\|}  n \R)}{z}\R]\R|_{L_z}&= 0\\
+    \L.u_{i,\|}  n \R|_{L_z}&= C
 \end{align*}
 %
 which means that the flux through the SE is constant in time, which may be a too big constraint on the system.
@@ -153,10 +153,10 @@ If we follow the derivation of \cref{eq:nBC} and use the ion continuity equation
 %
 \begin{align*}
     \L.- \partial_tn \R|_{L_z}- \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}
-    -\L.n \partial_\| u_{i.\|}\R|_{L_z} + S_{i,n}
+    -\L.n \partial_\| u_{i,\|}\R|_{L_z} + S_{i,n}
     &= 0\\
     \L.\partial_tn \R|_{L_z}&=  - \L.\grad_\perp\cdot\L(\ve{u}_{i} n \R)\R|_{L_z}-
-    \L.n \partial_\| u_{i.\|}\R|_{L_z} + S_{i,n}
+    \L.n \partial_\| u_{i,\|}\R|_{L_z} + S_{i,n}
 \end{align*}
 %
 which means that the flux through the SE is no longer fixed.
@@ -171,7 +171,7 @@ The derivatives of $n$ at the last physical point before the SE can then be calc
 %
 \footnote{A ghost point is a point not belonging to the physical domain, but a helper point which makes it possible to use a centered scheme when evaluating a grid point closest to the physical boundary of the domain.}
 %
-and use this is an \emph{artificial boundary condition} \cite{Leveque2007book}.
+and use this as an \emph{artificial boundary condition} \cite{Leveque2007book}.
 
 A final possibility is to let the derived equation for the evolution of the density be valid at the boundary.
 

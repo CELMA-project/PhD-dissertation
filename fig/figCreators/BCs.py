@@ -39,9 +39,9 @@ def plotBCs(showPlot  = False,\
     fig, (stagAx, radiAx, sheathAx) = plt.subplots(ncols=3,
             figsize=(18,12))
 
-    stagAx  .set_title(r"Boundary conditions for\\nthe stagnation point ($z=0$)")
-    radiAx  .set_title(r"Boundary conditions for\\nthe outer radius ($\rho = L_\rho$)")
-    sheathAx.set_title(r"Boundary conditions for\\nthe sheath entrance ($z=L_z$)")
+    stagAx  .set_title(r"Boundary conditions for\\the stagnation point ($z=0$)")
+    radiAx  .set_title(r"Boundary conditions for\\the outer radius ($\rho = L_\rho$)")
+    sheathAx.set_title(r"Boundary conditions for\\the sheath entrance ($z=L_z$)")
     stagAx  .set_axis_off()
     radiAx  .set_axis_off()
     sheathAx.set_axis_off()

@@ -8,8 +8,8 @@ The resulting model will from here be referred to as the CELMA model, an abbrevi
 .
 
 We will end up with a coupled set of four PDEs, which solves the density, the sum of the parallel momentum densities, the current and the modified vorticity in time (plus a boundary equation which gives the potential at the given time step).
-In other words, we have managed to considerably reduce the original system containing of eight coupled PDEs.
-The final set of equation is found in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}.
+In other words, we have managed to considerably reduce the original system consisting eight coupled PDEs.
+The final set of equations is found in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}.
 
 The aim is to model something similar to what is observed in linear plasma devices.
 Several types of linear machines exists, all with different purposes.
@@ -92,7 +92,7 @@ we find that
 \section{The vorticity equation}
 %
 We will in the section derive an equation which can be used to find the evolution of the vorticity.
-Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve{u}$.
+Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve{u}$ \cite{Kundu2010book}.
 Thus, $\Om$ tells us something about the rotation of the fluid field.
 In this thesis, a slightly different definition will be used:
 %
@@ -184,7 +184,7 @@ disappears as $\mathcal{C}(f)$ vanishes for a straight magnetic field.
 
 \subsection{The neutral contribution}
 %
-The two next terms, which originate from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
+The next two terms, which originate from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
 We get
 %
 \begin{align*}
