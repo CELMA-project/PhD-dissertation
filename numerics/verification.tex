@@ -1,5 +1,5 @@
 In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure that the assumptions in our models are sound.
-As important is it to check that the machinery handeling the numerical calculation is correctly implemented.
+As important is it to check that the machinery handling the numerical calculation is correctly implemented.
 This can be done by code verification.
 
 Quoting \cite{Dudson2016}
@@ -13,12 +13,12 @@ This testing is dealt with in the subsequent validation process.
 
 Thus, a code can be verified numerically, but still fail to match the desired features of a real life experiment.
 In other words, it would have passed the verification, but failed the validation.
-If the code has succuessfully passed a validation test, but fails a verification test, the success of the validation is questionable.
+If the code has successfully passed a validation test, but fails a verification test, the success of the validation is questionable.
 The success of the validation in this case could have been a mere coincident.
 
 The verification process is thoroughly discussed in \cite{Oberkampf2010book} and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
-Note that the verification process can be time consuming, and can be regarded as an artform in itself.
-Luckly, a major part of the implemntation has already been verified in the BOUT++ framework using MMS in \cite{Dudson2016}.
+Note that the verification process can be time consuming, and can be regarded as an art form in itself.
+Luckily, a major part of the implementation has already been verified in the BOUT++ framework using MMS in \cite{Dudson2016}.
 
 After a quick introduction of the concept of truncation errors, the MMS process will be briefly presented in \cref{sec:MMS} before verification of additional implementations in the CELMA code is given in \cref{sec:MES}.
 

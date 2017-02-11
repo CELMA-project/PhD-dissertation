@@ -1,24 +1,24 @@
 We will now use the above derived equation in a homogeneous magnetic field, assuming cold ions and constant electron temperature in a cylindrical geometry.
 
-The resulting model will from here be referred to as the CELMA model, an abbrevation of \textbf{C}onsistent \textbf{E}quations in a \textbf{L}inear \textbf{MA}chine%
+The resulting model will from here be referred to as the CELMA model, an abbreviation of \textbf{C}onsistent \textbf{E}quations in a \textbf{L}inear \textbf{MA}chine%
 \footnote{
     This should not be confused with PELMA, \textbf{P}erfect \textbf{E}quations in a \textbf{L}inear \textbf{MA}chine.
-    As we have seen, there is an inconsistent approximation to use a constant temperature whilst $\frac{u^c}{c^c_s}\simeq\sqrt{\e}$, but this approximation is consitently implemented.
+    As we have seen, there is an inconsistent approximation to use a constant temperature whilst $\frac{u^c}{c^c_s}\simeq\sqrt{\e}$, but this approximation is consistently implemented.
 }%
 .
 
-We will end up with a coupled set of four PDEs, which solves the density, the sum of the parallel momentum densities, the current and the modified vorticity in time (plus a boundary equation which gives the potential at the given timestep).
-In other words, we have managed to considerably reduce the original system containing of eigth coupled PDEs.
+We will end up with a coupled set of four PDEs, which solves the density, the sum of the parallel momentum densities, the current and the modified vorticity in time (plus a boundary equation which gives the potential at the given time step).
+In other words, we have managed to considerably reduce the original system containing of eight coupled PDEs.
 The final set of equation is found in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}.
 
 The aim is to model something similar to what is observed in linear plasma devices.
-Several types of linear machines exsists, all with different purposes.
+Several types of linear machines exists, all with different purposes.
 For example has the Q-machines have been used for the study quiescent alkali plasmas \cite{Nielsen1996} and machines like Magnum-PSI \cite{Rapp2010} are mainly used for the study plasma-wall interactions.
 Here, we would restrict our attention to mainly helicon type plasmas, where a helicon wave are responsible for the plasma creation \cite{Boswell1984,Shamrai1996}.
 No momentum is added to the plasma in this creation process.
 The plasma creation process will in this thesis therefore just be approximated by the source variable $S_n$, which we keep constant in time.
 
-Helicon devices operationable during the writing of this thesis includes VINETA \cite{Schroder2005}%
+Helicon devices operational during the writing of this thesis includes VINETA \cite{Schroder2005}%
 \footnote{Now VINETA II \cite{Bohlin2014}, mainly used for magnetic reconnection studies.}%
 %
 (depicted in \cref{fig:VINETA}), PANTA (previously LMD-U) \cite{Oldenburger2012} and CSDX \cite{Tynan2004a}.

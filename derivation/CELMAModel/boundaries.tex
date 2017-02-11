@@ -32,7 +32,7 @@ A summary of the boundary conditions used in this thesis is found in \cref{fig:B
         Boundary conditions used in this thesis.\\
         The left circle represents the start of the domain where the stagnation BCs are used (i.e. the cylinder seen from the stagnation point towards the SE).\\
         The rectangle represents the largest radius in the domain, where the radial boundary conditions are applied (i.e. the cylinder seen from above).\\
-        The rigth circle represents the end of the domain where the SE BCs are used.\\
+        The right circle represents the end of the domain where the SE BCs are used.\\
     }
     \label{fig:BCs}
 \end{figure}
@@ -133,7 +133,7 @@ For a field line geometry where the field lines are perpendicular to the end-pla
     \label{eq:nBC}
 \end{align*}
 %
-In other words, it says that the only change in the density (appart from the source) at the SE can come from perpendicular outflux.
+In other words, it says that the only change in the density (apart from the source) at the SE can come from perpendicular outflux.
 Another way to look at it is to consider
 %
 \begin{align*}
@@ -160,7 +160,7 @@ If we follow the derivation of \cref{eq:nBC} and use the ion continuity equation
 \end{align*}
 %
 which means that the flux through the SE is no longer fixed.
-One should note though that this boundary condition will try to enforce a zero gradient on $n$ at the SE, which migth be unphysical.
+One should note though that this boundary condition will try to enforce a zero gradient on $n$ at the SE, which might be unphysical.
 Also one should note that if one has a Neumann condition in both ends of the machine, the PDE is formally ill-posed, and the solutions found are unique only up to some constant.
 When numerically solving the system the solution found will be specified by the initial condition.
 Although it is important to be aware of, it is not believed to change the physical behavior of the system as the dynamics are driven by its source and its sinks.
@@ -175,7 +175,7 @@ and use this is an \emph{artificial boundary condition} \cite{Leveque2007book}.
 
 A final possibility is to let the derived equation for the evolution of the density be valid at the boundary.
 
-In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} = 0$ boundary condition has been choosen.
+In the scope of this thesis the $\L. \partial_\| n \R|_{L_z} = 0$ boundary condition has been chosen.
 % FIXME: Remove the comment below if Cauchy is not considered
 % In the scope of this thesis the differences between $\L. \partial_\| n \R|_{L_z} = 0$ and the Cauchy BC has been investigated.
 
@@ -193,7 +193,7 @@ In order to calculate the parallel derivative of $\phi$ in the last point before
 The latter has been chosen in the current implementation, with the polynomial given in \cref{sec:extrapolGhost}.
 
 Finally, it should be noted that although a fluid description cannot properly asset the conditions in the sheath, the sheath (especially the resistivity in the sheath) is important for the behavior of the plasma \cite{Oldenburger2012,Yamada2014}.
-As shown in \cite{ChakrabortyThakur2013}, the change from a conductive to an isolating end plate changes whether the current density loop is closing inside or outside of the plasma. As $\div \ve{j}$ must be zero, the location of the closing affects the polarization drift, which is responsable for the generation of for  zonal flows \cite{Diamond1991}.
+As shown in \cite{ChakrabortyThakur2013}, the change from a conductive to an isolating end plate changes whether the current density loop is closing inside or outside of the plasma. As $\div \ve{j}$ must be zero, the location of the closing affects the polarization drift, which is responsible for the generation of for  zonal flows \cite{Diamond1991}.
 
 \subsubsection{Vorticity BC at the SE}
 %
