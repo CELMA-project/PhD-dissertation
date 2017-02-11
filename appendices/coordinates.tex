@@ -12,7 +12,7 @@ The coordinates in a cylindrical geometry are written\\
 \begin{align*}
     \rho=& \sqrt{x^2+y^2}\\
     \theta=&\atan\L(\frac{y}{x}\R)\\
-    z=& z
+    z=& z.
 \end{align*}
 \end{minipage}
 
@@ -23,7 +23,7 @@ We have that
 %
 \begin{align*}
     &\ve{e}_i = \partial_i&
-    &\ve{e}^i = \d u_i&
+    &\ve{e}^i = \d u_i,&
 \end{align*}
 %
 where $u_i$ is the set of the coordinate curves
@@ -37,10 +37,10 @@ We have
     =
     \parti{f}{\rho} \parti{\rho}{x_i}
     + \parti{f}{\theta} \parti{\theta}{x_i}
-    + \parti{f}{z} \parti{z}{x_i}
+    + \parti{f}{z} \parti{z}{x_i}.
 \end{align*}
 %
-as the line $f$ is arbitrary, we have
+As the line $f$ is arbitrary, we have
 %
 \begin{align*}
     \ve{e}_i
@@ -56,7 +56,7 @@ as the line $f$ is arbitrary, we have
     %
     \parti{\rho}{x_i} \ve{e}_{\rho}
     + \parti{\theta}{x_i} \ve{e}_{\theta}
-    + \parti{z}{x_i} \ve{e}_{z}
+    + \parti{z}{x_i} \ve{e}_{z},
     %
 \end{align*}
 %
@@ -79,11 +79,11 @@ We have
     %
     \parti{u_i}{x}\ve{e}^x
     + \parti{u_i}{y}\ve{e}^y
-    + \parti{u_i}{z}\ve{e}^z
+    + \parti{u_i}{z}\ve{e}^z.
     %
 \end{align*}
 %
-At this point we note that there are no difference between co and contravariant basis vectors in a Cartesian coordinate system.
+At this point we note that there is no difference between co and contravariant basis vectors in a Cartesian coordinate system.
 
 In the following, we are going to make use of the following relations
 \\
@@ -181,7 +181,7 @@ In the following, we are going to make use of the following relations
     %
     \partial_\theta z
     =&
-    0
+    0.
 \end{align*}
 \end{minipage}\\
 %
@@ -219,7 +219,7 @@ This means that a basis vector written in a Cartesian basis can be written with 
     + \parti{z}{z} \ve{e}_{z}
     %
     =
-    \ve{e}_z
+    \ve{e}_z.
 \end{align*}
 %
 For the back transformation we have
@@ -256,7 +256,7 @@ For the back transformation we have
     + \parti{z}{z} \ve{e}_{z}
     %
     =
-    \ve{e}_z
+    \ve{e}_z.
 \end{align*}
 %
 Further, a basis vector written in a Cartesian basis can be written with a contravariant basis vector using cylindrical coordinates as
@@ -293,7 +293,7 @@ Further, a basis vector written in a Cartesian basis can be written with a contr
     + \parti{z}{z} \ve{e}^{z}
     %
     =
-    \ve{e}^z
+    \ve{e}^z.
 \end{align*}
 %
 The covariant metric tensor $g^{ij}=\ve{e}^i\cdot\ve{e}^j$ and the contravariant metric tensor $g_{ij}=\ve{e}_i\cdot\ve{e}_j$ can now be computed.
@@ -382,10 +382,10 @@ For the contravariant components, we get
     %
     g^{z z}
     =&
-    \ve{e}^z \cdot \ve{e}^z =1
+    \ve{e}^z \cdot \ve{e}^z =1.
 \end{align*}
 %
-And for the covariant components, we get
+For the covariant components, we get
 %
 \begin{align*}
     g_{\rho\rho}
@@ -467,13 +467,13 @@ And for the covariant components, we get
     \\
     %
     g_{z z} =&
-    \ve{e}_z \cdot \ve{e}_z =1
+    \ve{e}_z \cdot \ve{e}_z =1.
 \end{align*}
 %
-The Jacobian
+Further, we have that the Jacobian $J$ is given by
 %
 \begin{align*}
-    J=\sqrt{\det(g_{ij})}=\rho
+    J=\sqrt{\det(g_{ij})}=\rho.
 \end{align*}
 %
 Finally, we calculate the derivatives of the contravariant basis vectors.
@@ -537,7 +537,7 @@ The other basis vectors gives
         + \frac{1}{\rho} \cos\theta \ve{e}^y \R)
     &=&
     \rho
-    \ve{e}^\theta
+    \ve{e}^\theta.
 \end{align*}
 %
 
@@ -672,7 +672,7 @@ The derivatives of the contravariant basis vectors.
 \section{Alignment with the Clebsch formalism}
 \label{sec:clebschAlign}
 %
-As most of the numerical differentiation operators in BOUT++ is only valid for a coordinate system written on the Clebsch form (at least at the time of writing), it makes sense to align our coordinates with the Clebsch coordinates.
+As most of the numerical differentiation operators in BOUT++ are only valid for a coordinate system written on the Clebsch form (at least at the time of writing), it makes sense to align our coordinates with the Clebsch coordinates.
 Note as whereas the Clebsch coordinate system gives
 %
 \begin{align*}
@@ -689,7 +689,7 @@ so that
     B_{\text{Clebsch}}\defined & \sqrt{\ve{B}_{\text{Clebsch}}\cdot\ve{B}_{\text{Clebsch}}}
     = \sqrt{J^{-1}\ve{e}_2\cdot J^{-1}\ve{e}_2}
     = \sqrt{J^{-2}g_{22}}
-    = J^{-1}\sqrt{g_{22}}
+    = J^{-1}\sqrt{g_{22}},
 \end{align*}
 %
 and
@@ -699,10 +699,11 @@ and
     \ve{b}_{\text{Clebsch}}
     =&\frac{\ve{B}_{\text{Clebsch}}}{B_{\text{Clebsch}}}
     =\frac{J^{-1}\ve{e}_2}{J^{-1}\sqrt{g_{22}}}
-    =\frac{\ve{e}_2}{\sqrt{g_{22}}},
+    =\frac{\ve{e}_2}{\sqrt{g_{22}}}.
 \end{align*}
 %
-the $B$-field in our case is constant. This can be obtained if we let%
+The $B$-field in our case is constant.
+This can be obtained if we let%
 %
 \footnote{
     BOUT++ uses the indices $\{x,y,z\}$ for $\{1,2,3\}$.
@@ -731,7 +732,7 @@ the $B$-field in our case is constant. This can be obtained if we let%
 \begin{align*}
     1 &\to \rho\\
     2 &\to z\\
-    3 &\to \theta
+    3 &\to \theta.
 \end{align*}
 %
 We now have that $\ve{B}_{\text{Cylinder}}=B_0J\ve{B}_{\text{Clebsch}}$, where $B_0$ is a constant value, which means that
@@ -747,7 +748,7 @@ We now have that $\ve{B}_{\text{Cylinder}}=B_0J\ve{B}_{\text{Clebsch}}$, where $
 and
 %
 \begin{align*}
-    \ve{B}_{\text{Cylinder}}=&B_{\text{Cylinder}}\ve{b}_{\text{Clebsch}}
+    \ve{B}_{\text{Cylinder}}=&B_{\text{Cylinder}}\ve{b}_{\text{Clebsch}}.
 \end{align*}
 %
 In other words, we see that the cylindrical coordinate system overlaps with the Clebsch coordinate system in the sense that the basis vectors and the Jacobian are the same.
@@ -755,4 +756,4 @@ However, \cref{eq:clebschB} is not fulfilled for the pure cylindrical coordinate
 Care must therefore be taken when using BOUT++ operators which explicitly uses ${B}_{\text{Clebsch}}$.
 In the scope of this thesis, it means that care must be taken whenever using the Poisson bracket, as explained in \cref{app:poisson}.
 
-To clarify the notation: $\ve{B}$ and $B$ unspecified prior to \cref{chap:CELMA}, and referring to $\ve{B}_{\text{Cylinder}}$ and $B_{\text{Cylinder}}$ after and including \cref{chap:CELMA}.
+To clarify the notation: $\ve{B}$ and $B$ are unspecified prior to \cref{chap:CELMA} and referring to $\ve{B}_{\text{Cylinder}}$ and $B_{\text{Cylinder}}$ after and including \cref{chap:CELMA}.

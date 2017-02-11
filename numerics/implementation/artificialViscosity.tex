@@ -2,8 +2,9 @@
 \label{sec:art_visc}
 %
 As mentioned in \cref{sec:SOE}, we have neglected the viscosities (as we assume that these are small).
-Instead we add some artificial viscosities, which is needed for numerical stability.
-If there are no viscosities in the system, there are also no mechanism (other than diffusion) which can remove the small scales from the system.
+Instead we add some artificial viscosities, which is needed for numerical stability (in addition to those added through the upwinding schemes).
+If there are no viscosities in the system, there is no mechanism (other than diffusion) which can remove the small scales from the system.
+Scales which are smaller than what can be resolved by the grid will lead to problems like aliasing.
 These small scales can then build up and make the simulation crash%
 \footnote{
     We will here use the word "crash" meaning that the simulation stops because of bad behavior the numerics.
@@ -30,7 +31,7 @@ For this reason, we add viscosities on the form
     %
     &=
     D_{f, \|, \text{art}} \partial_\|^2 f
-    + D_{f, \perp, \text{art}} \grad_\perp^2 f
+    + D_{f, \perp, \text{art}} \grad_\perp^2 f,
     \numberthis
     \label{eq:art_vort}
 \end{align*}
@@ -59,7 +60,7 @@ For a certain wave number $k$, we now have (see \cref{app:deriv_of_FT} for detai
 \end{align*}
 %
 where the $(-1)^{n+1}$ factor ensures that the time evolution of wave number $k$ is decreasing for every choice of $n$.
-The artificial viscosity coefficients used in this thesis is given in table \cref{tb:artVisc}.
+The artificial viscosity coefficients used in this thesis are given in table \cref{tb:artVisc}.
 %
 \begin{table}[h!]
 {\footnotesize \centerline{
@@ -88,7 +89,7 @@ $\Om$       & $0.1$ & $2.4\cdot10^{-4}$ & $5.81\cdot10^{-6}$\\
 \protect\label{tb:artVisc}
 \end{table}
 %
-Higher parallel coefficients are used in the parallel direction as the background gradients in the parallel direction are much more gradual than the background gradients in the perpendicular gradients.
+Higher coefficients are used in the parallel direction as the background gradients in the parallel direction are much more gradual than the background gradients in the perpendicular gradients.
 In the end, both $D_{f, \|, \text{art}} \partial_\|^2 f$ and $D_{f, \perp, \text{art}} \grad_\perp^2 f$ are small compared to the other terms.
 % FIXME: Would be nice to showing a plot showing that the artificial terms are small
 Notice that the artificial viscosities in $\Om^D$ and $\Om$ are smaller than for the other fields.

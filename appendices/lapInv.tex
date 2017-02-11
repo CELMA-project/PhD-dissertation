@@ -1,4 +1,4 @@
-We would here like to explain how $\Om = \frac{\grad_\perp^2\phi}{B}$ can be sovled numerically using the fourier transform.
+We will here explain how $\Om = \frac{\grad_\perp^2\phi}{B}$ can be solved numerically using the Fourier transform.
 
 This is a special case of the equation
 %
@@ -19,20 +19,20 @@ We will in this chapter use the BOUT++ coordinates mentioned in \cref{foot:BOUT+
 The Laplacian operator is defined
 %
 \begin{align*}
-    \grad^2f \defined \div \grad f
+    \grad^2f \defined \div \grad f.
 \end{align*}
 %
 In general we have (from equation (2.6.39) in D'Haeseleer \cite{Dhaeseleer1991book})
 %
 \begin{align}
-    \div \ve{A} = \frac{1}{J} \partial_i \L(JA^i\R)
+    \div \ve{A} = \frac{1}{J} \partial_i \L(JA^i\R),
     \label{eq:divA}
 \end{align}
 %
 and that
 %
 \begin{align*}
-    A^i = \ve{A}\cdot \ve{e}^i
+    A^i = \ve{A}\cdot \ve{e}^i.
 \end{align*}
 %
 In our case $\ve{A} \to \grad$, so that
@@ -47,7 +47,7 @@ Thus
 \begin{align*}
     \grad^2 =& \frac{1}{J} \partial_i \L(J g^{ij} \partial_j\R)\\ =&
     \frac{1}{J} g^{ij} J \partial_i \partial_j + \frac{1}{J} \partial_i \L(J
-    g^{ij} \R) \partial_j\\ =& g^{ij} \partial_i \partial_j + G^j \partial_j
+    g^{ij} \R) \partial_j\\ =& g^{ij} \partial_i \partial_j + G^j \partial_j,
     \numberthis
     \label{eq:compactLaplace}
 \end{align*}
@@ -59,10 +59,10 @@ where we have defined%
 \begin{align*}
     G^j =& \frac{1}{J} \partial_i \L(J g^{ij} \R)\\ =& \frac{1}{J} \L(
     \partial_1 \L[J g^{1j} \R] + \partial_2 \L[J g^{2j} \R] + \partial_3 \L[J
-    g^{3j} \R] \R)
+    g^{3j} \R] \R).
 \end{align*}
 %
-By writing expanding the terms in \cref{eq:compactLaplace} yields
+By expanding the terms in \cref{eq:compactLaplace} yields
 %
 \begin{align*}
     \grad^2 =& g^{ij} \partial_i \partial_j + G^j \partial_j\\
@@ -75,7 +75,7 @@ By writing expanding the terms in \cref{eq:compactLaplace} yields
     \partial_1 \partial_2 + g^{22} \partial_2^2 + g^{32} \partial_3
     \partial_2\R) + \L(G^2 \partial_2\R)\\ &+ \L(  g^{13} \partial_1 \partial_3
     + g^{23} \partial_2 \partial_3 + g^{33} \partial_3^2\R) + \L(G^3
-    \partial_3\R)
+    \partial_3\R).
 \end{align*}
 %
 We now use that the metric tensor is symmetric (by definition), so that $g^{ij}=g^{ji}$, and $g_{ij}=g_{ji}$.
@@ -97,7 +97,7 @@ g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
         \partial_3^2\R) + \L( \frac{1}{J} \L[ \partial_1 \L\{J g^{13} \R\} +
         \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
         \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
-        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)
+        \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R).
 \end{align*}
 
 \subsection{The parallel Laplacian}
@@ -117,7 +117,7 @@ such that
 %
 \begin{align*}
     \grad_\|^i =& \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)\cdot \ve{e}^i =
-    \ve{e}^i \cdot \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R)
+    \ve{e}^i \cdot \L(\frac{\ve{e}_2}{g_{22}} \partial_2\R).
 \end{align*}
 %
 By using \cref{eq:divA} on \cref{eq:parGrad}, we get
@@ -149,7 +149,7 @@ g^{31} \R\} \R] \partial_1\R)\\ &+ \L(g^{22} \partial_2^2\R) + \L( \frac{1}{J}
         \partial_2 \L\{J g^{23} \R\} + \partial_3 \L\{J g^{33} \R\} \R]
         \partial_3\R)\\ &+ 2\L( g^{12} \partial_1 \partial_2 + g^{13}
         \partial_1 \partial_3 + g^{23} \partial_2 \partial_3 \R)\\ &-
-        \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R)
+        \frac{1}{J} \partial_2 \L(\frac{J}{g_{22}} \partial_2\R).
         \numberthis
         \label{eq:perpLaplExpand}
 \end{align*}
@@ -165,7 +165,7 @@ The BOUT++ implementation of the inversion algorithm assumes small parallel grad
         \partial_3\R)\\ &+ 2\L(g^{13} \partial_1 \partial_3\R)\\
 %
            =& \L(g^{11} \partial_1^2\R) + G^1\partial_1 + \L(g^{33}
-        \partial_3^2\R) + G^3 \partial_3 + 2\L(g^{13} \partial_1 \partial_3\R)
+        \partial_3^2\R) + G^3 \partial_3 + 2\L(g^{13} \partial_1 \partial_3\R).
         \numberthis
         \label{eq:approxLapl}
 \end{align*}
@@ -176,13 +176,13 @@ However, this approximation is not needed when using a cylindrical coordinates, 
 %
 Finally, the perpendicular gradient can be found from
 \begin{align*}
-    \grad_\perp =& \grad - \grad_\|
+    \grad_\perp =& \grad - \grad_\|,
 \end{align*}
 %
 where
 %
 \begin{align*}
-    \grad =& \ve{e}^i \partial_i = \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^z \partial_3
+    \grad =& \ve{e}^i \partial_i = \ve{e}^1 \partial_1 + \ve{e}^2 \partial_2 + \ve{e}^z \partial_3.
 \end{align*}
 %
 By using \cref{eq:parGrad}, this gives
@@ -201,17 +201,17 @@ By using \cref{eq:parGrad}, this gives
     }{g_{22}}\partial_2\\
 %
                 =& \ve{e}^1 \L(\partial_1 - \frac{g_{21}}{g_{22}}\partial_2\R)
-    +  \ve{e}^3 \L(\partial_3 - \frac{g_{23}}{g_{22}}\partial_2\R)
+    +  \ve{e}^3 \L(\partial_3 - \frac{g_{23}}{g_{22}}\partial_2\R).
 \end{align*}
 %
-Again, the BOUT++ implementation of the inversion algorithm assumes small parallel gradients in the dependent variable, so that
+The BOUT++ implementation of the inversion algorithm assumes small parallel gradients in the dependent variable, so that
 %
 \begin{align}
-    \grad_\perp \simeq& \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3
+    \grad_\perp \simeq& \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3.
     \label{eq:approxPerpGrad}
 \end{align}
 %
-And again, this approximation is not of concern when using cylindrical coordinates, as only the diagonal terms in the metric tensor is non-zero.
+As mentioned, this approximation is not of concern when using cylindrical coordinates, as only the diagonal terms in the metric tensor is non-zero.
 
 \section{Numerical implementation}
 %
@@ -225,12 +225,12 @@ By inserting \cref{eq:approxLapl,eq:approxLapl} into \cref{eq:to_invert_tri}, we
     +& \frac{1}{c_1}\L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) c_2
     \cdot \L( \ve{e}^1 \partial_1 +  \ve{e}^3 \partial_3 \R) f \\
 %
-    +& af = b
++& af = b
     \numberthis
 \label{eq:invert_expanded}
 \end{align*}
 %
-Which we would like to solve for $f$.
+which we would like to solve for $f$.
 %
 As there are no parallel $y$-derivatives in equation (\ref{eq:invert_expanded}), the equation can be inverted for each $y$ plane.
 In addition, if the modes decouples%
@@ -242,8 +242,8 @@ In addition, if the modes decouples%
 when Fourier transforming equation (\ref{eq:invert_expanded}), we can use a tridiagonal solver to solve the equation for each Fourier mode.
 In other words, if $n_x$, $n_y$ and $n_z$ are the number of points in each of the three directions, we need to invert a $n_x\times n_x$ matrix $n_z$ times for each of the $n_y$ $y$-planes, rather than inverting a $n_x\cdot n_y\cdot n_z \times n_x\cdot n_y\cdot n_z$ matrix once.
 
-Taking the Fourier transform of \cref{eq:invert_expanded} is equivalent with multiplying the left hand side and the right hand side with $\exp\L(-2\pi iz\xi\R)$, and integrate the periodic $z$-coordinate from $-\inf$ to $\inf$.
-The modes will only decouple if there are no product of functions depending on $z$
+Taking the Fourier transform of \cref{eq:invert_expanded} is equivalent with multiplying the left hand side and the right hand side with $\exp\L(-2\pi iz\xi\R)$ and integrating the periodic $z$-coordinate from $-\inf$ to $\inf$.
+The modes will only decouple if there are no products of functions depending on $z$
 %
 \footnote{%
     If we define the Fourier transform as
@@ -258,7 +258,7 @@ Hence, we must require that $a$, $c$ and $d$ cannot be functions of $z$.
 
 Because of this, the $\ve{e}^3 \partial_3 c$ term in equation (\ref{eq:invert_expanded}) is zero.
 In principle the modes would still decouple if the $\ve{e}^3 \partial_3 f$ part of equation (\ref{eq:invert_expanded}) was kept, but currently this part is also neglected in the implementation.
-Thus the BOUT++ implementation is solving equations on the form
+Thus the BOUT++ implementation solves equations on the form
 %
 \begin{align*}
     \, &d(x,y) \L(    g^{11}(x,y) \partial_1^2 + G^1(x,y) \partial_1 +
@@ -268,7 +268,7 @@ Thus the BOUT++ implementation is solving equations on the form
     +& \frac{1}{c(x,y)}\L( \ve{e}^1 \partial_1 \R) c(x,y) \cdot \L( \ve{e}^1
     \partial_1 \R) f(x,y,z) \\
 %
-   +& a(x,y)f(x,y,z) = b(x,y,z)
+   +& a(x,y)f(x,y,z) = b(x,y,z).
    \numberthis
    \label{eq:nonFTLaplace}
 \end{align*}
@@ -284,7 +284,7 @@ By using what was discussed in \cref{app:deriv_of_FT}, we see that the discrete 
     +& \frac{1}{c}\L( \ve{e}^1 \partial_1 \R) c \cdot \L( \ve{e}^1
     \partial_1F_Z \R) \\
 %
-    +& aF_Z = B_Z
++& aF_Z = B_Z,
 \end{align*}
 %
 which gives
@@ -295,12 +295,12 @@ which gives
 %
     +& \frac{g^{11}}{c} \L( \partial_1 c \R) \partial_1F_Z \\
 %
-    +& aF_Z = B_Z
+    +& aF_Z = B_Z.
     \numberthis
     \label{eq:FTLaplace}
 \end{align*}
 %
-The second order centered approximation of the first and second derivatives in $x$ reads
+The second order centered approximation of the first and second derivatives in $x$ read
 %
 \begin{align*}
     &&\partial_x f \simeq \frac{-f_{n-1} + f_{n+1}}{2\text{d}x}&&
@@ -318,7 +318,7 @@ F_{Z,n+1}}{2\text{d}x} \R) \\
     +& \frac{g^{11}}{c} \L( \frac{-c_{n-1} + c_{n+1}}{2\text{d}x} \R)
 \frac{-F_{Z,n-1} + F_{Z,n+1}}{2\text{d}x} \\
 %
-    +& aF_{Z,n} = B_{Z,n}
+    +& aF_{Z,n} = B_{Z,n}.
     \numberthis
     \label{eq:FTLaplaceFD}
 \end{align*}
@@ -337,8 +337,8 @@ If we now collect \cref{eq:FTLaplaceFD} point by point, we get
     \frac{g^{11}}{c_{n}} \frac{-c_{n-1} + c_{n+1}}{4\text{d}x^2} +
     i\frac{dk2g^{13}}{2\text{d}x} \R) F_{Z, n+1} \\
 %
-     =& B_{Z,n} \numberthis
-%
+     =& B_{Z,n}.
+     \numberthis
 \label{eq:discretized_laplace}
 %
 \end{align*}
@@ -348,10 +348,10 @@ We now introduce
 \begin{align*}
     &h_1 = \frac{dg^{11}}{\text{d}x^2}& &h_2 = dg^{33}& &h_3 =
     \frac{2dg^{13}}{2\text{d}x}& && \\ &h_4 = \frac{dG^1 + g^{11}\frac{-h_{n-1}
-    + h_{n+1}}{2h_n\text{d}x}}{2\text{d}x}& &h_5 = dG^3& &&
+    + h_{n+1}}{2h_n\text{d}x}}{2\text{d}x}& &h_5 = dG^3.& &&
 \end{align*}
 %
-and inserting this in equation (\ref{eq:discretized_laplace}) gives
+Inserting this in equation (\ref{eq:discretized_laplace}) gives
 %
 \begin{align*}
     &\L( h_1 - h_4 -ikh_3 \R) F_{Z,n-1} \\
@@ -360,13 +360,13 @@ and inserting this in equation (\ref{eq:discretized_laplace}) gives
     %
     +&\L( h_1 + h_4 + ikh_3 \R) F_{Z, n+1} \\
 %
-     =& B_{Z,n}
+     =& B_{Z,n}.
 \end{align*}
 %
 This can be formulated as the matrix equation
 %
 \begin{align*}
-    AF_Z=B_Z
+    AF_Z=B_Z,
 \end{align*}
 %
 where the matrix $A$ is tridiagonal. The boundary conditions are set by setting

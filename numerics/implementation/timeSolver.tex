@@ -15,14 +15,14 @@ That is, $\ve{f}$ is the tuple of the time dependent variables, and contains $\l
 Hence, we would like to solve
 %
 \begin{align}
-    \parti{\ve{f}(t)}{t} = F(\ve{f})
+    \parti{\ve{f}(t)}{t} = F(\ve{f}),
     \label{eq:MOL}
 \end{align}
 %
 for $\ve{f}$, where $F(\cdot)$ denotes the nonlinear operator which contains discretized differential operators in the spatial dimension.
 
 \Cref{eq:MOL} can be stepped forward in time by using an appropriate time solver, like Runge-Kutta or a Linear Multistep Method (LMM).
-Due to it's good stability properties \cite{Leveque2007book} an implicit LMM has been chosen%
+Due to its good stability properties \cite{Leveque2007book} an implicit LMM has been chosen%
 \footnote{
     Unless other is explicitly stated, \texttt{cvode}'s variable step size Backward Differentiation Formula (BDF) of variable order (1-5) has been chosen.
     This includes the STAbility Limit Detection (STALD) algorithm, which detect linear stability regions, and chooses the step-size thereby.
@@ -44,7 +44,7 @@ By using a generic LMM to \cref{eq:MOL}, we get
     \frac{\b_r}{\a_r}F(\ve{f}(t_{n+r}), t_{n+r})
     =&
     \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
-    - \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j})
+    - \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j}).
     \numberthis
     \label{eq:LMM}
 \end{align*}
@@ -62,7 +62,7 @@ By defining $\frac{\b_r}{\a_r}\defined\gamma$, we have
     =
     G(\ve{f}(t_{n+r}))
     =&
-    0
+    0.
 \end{align*}
 %
 Which we would like to solve for $\ve{f}(t_{n+r})$.
@@ -72,7 +72,7 @@ I.e. we do a multivariate Taylor expansion of $G(\ve{f}(t_{n+r}))$ around an app
 \begin{align*}
     G(\ve{f}(t_{n+r})) \simeq
     G(\ve{f}_{l}(t_{n+r})) + \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)
-    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R)
+    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R),
 \end{align*}
 %
 as $ G(\ve{f}(t_{n+r})) = 0$, we get
@@ -80,10 +80,10 @@ as $ G(\ve{f}(t_{n+r})) = 0$, we get
 \begin{align*}
     0 \simeq
     G(\ve{f}_{l}(t_{n+r})) + \L(\parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}\R)
-    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R)
+    \L(\ve{f}(t_{n+r}) - \ve{f}_{l}(t_{n+r})\R).
 \end{align*}
 %
-the solution $\ve{f}(t_{n+r})$ to this problem can then serve as the next iteration, so that
+The solution $\ve{f}(t_{n+r})$ to this problem can then serve as the next iteration, so that
 %
 \begin{align*}
     \ve{f}_0(t_{n+r}) =& \ve{f}(t_{n+r-1})\\
@@ -99,11 +99,11 @@ The iterations can be rewritten to
     \parti{ G(\ve{f}_{l}(t_{n+r})) }{\ve{f}_{l}(t_{n+r})}
     \L( \ve{f}_{l+1}(t_{n+r}) - \ve{f}_l(t_{n+r}) \R)
     =&
-    -G(\ve{f}_{l}(t_{n+r}))
+    -G(\ve{f}_{l}(t_{n+r})),
     \label{eq:newtonIt}
 \end{align}
 %
-Where
+where
 %
 \begin{align*}
     \parti{ G(\ve{f}(t_{n+r})) }{\ve{f}(t_{n+r})}
@@ -121,7 +121,7 @@ Where
     - \gamma\parti{F(\ve{f}(t_{n+r}), t_{n+r})}{\ve{f}(t_{n+r})}
     \\
     =&
-    \mathbb{I} - \gamma\mathbb{J}
+    \mathbb{I} - \gamma\mathbb{J}.
     \numberthis
     \label{eq:AInNewton}
 \end{align*}
@@ -132,13 +132,13 @@ By inserting \cref{eq:AInNewton} in \cref{eq:newtonIt}, we get
     \L( \mathbb{I} - \gamma\mathbb{J}\R)
     \L( \ve{f}_{l+1}(t_{n+r}) - \ve{f}_l(t_{n+r}) \R)
     =&
-    -G(\ve{f}_{l}(t_{n+r}))
+    -G(\ve{f}_{l}(t_{n+r})).
 \end{align*}
 %
 which can be recast to
 %
 \begin{align}
-    A \ve{x} =& \ve{b}
+    A \ve{x} =& \ve{b}.
     \label{eq:newtonInverse}
 \end{align}
 %

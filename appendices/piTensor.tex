@@ -1,11 +1,11 @@
 We will here make an estimate of the viscosities in the system.
 We should note that this estimate is rather crude.
-Following \cite{Helander2002book}, (which again is based on \cite{Braginskii1965}), we see that in a Cartesian coordinate system have that the rate of strain tensor is given by
+Following \cite{Helander2002book}, (which again is based on \cite{Braginskii1965}), we see that in a Cartesian coordinate system the rate of strain tensor is given by
 %
 \begin{align*}
     W^{ij}_{\a} \defined \partial_j u^{i}_{\a}
                      + \partial_i u^{j}_{\a}
-                     - \frac{2}{3} \delta_i^j \div \ve{u}_{\a}
+                     - \frac{2}{3} \delta_i^j \div \ve{u}_{\a},
 \end{align*}
 %
 which gives
@@ -99,7 +99,7 @@ W^{xz}
 %
 W^{yz}
 =&
-\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}
+\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}.
 %
 \end{align*}
 %
@@ -218,7 +218,7 @@ We get
     =& -\eta_{\a,2}
     \L(\partial_y u^{z}_{\a} + \partial_z u^{y}_{\a}\R)
     + \eta_{\a,4}
-    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R)
+    \L(\partial_x u^{z}_{\a} + \partial_z u^{x}_{\a}\R).
 \end{align*}
 %
 By taking the divergence of this, we find that
@@ -347,11 +347,11 @@ By taking the divergence of this, we find that
            +\partial_y u^{y}_{\a}
         \R]
         \R)\R]
-    \R)
+    \R).
 \end{align*}
 %
-Up until this point, we have not made any further assumptions of the $\te{\pi}$ tensor, that hasn't already been made in \cite{Braginskii1965}.
-Here however, we simplify the expression (on the cost of accuracy), and say that we assume that the viscosities are constants (note that we already did such an approximation when calculating the particle flux originating from the resistivity drift when we derived $\partial_t \ln(n)$).
+Up until this point, we have not made any assumptions of the $\te{\pi}$ tensor, that has not already been made in \cite{Braginskii1965}.
+Here, however, we simplify the expression (on the cost of accuracy), and say that we assume that the viscosities are constants (note that we already did such an approximation when calculating the particle flux originating from the resistivity drift when we derived $\partial_t \ln(n)$).
 We then get
 %
 \begin{align*}
@@ -498,7 +498,7 @@ We then get
        &\L.\qquad
     + \eta_{\a,4}
     \L[\partial_y\partial_z u^{x}_{\a}- \partial_x\partial_z u^{y}_{\a}\R]
-    \R)
+    \R).
 \end{align*}
 %
 We have that
@@ -514,7 +514,7 @@ We have that
     &\eta_{1,e}=0.51\frac{n_eT_e\nu_{ei}}{\om_{ce}^2} &
     &\eta_{2,e}=2.04\frac{n_eT_e\nu_{ei}}{\om_{ce}^2} &
     &\eta_{3,e}=\frac{n_eT_e}{2\om_{ce}} &
-    &\eta_{4,e}=\frac{n_eT_e}{\om_{ce}} &
+    &\eta_{4,e}=\frac{n_eT_e}{\om_{ce}}, &
 \end{align*}
 %
 and from \cref{fig:etas} we see that $\eta_{\a,0} \gg \eta_{\a,j} \quad j \in \{1,2,3,4\}$ for the parameter range that we are interested in.
@@ -526,26 +526,26 @@ This would yield
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/etaINScan}
+        \includegraphics{fig/etaINScan}
         \caption{The normalized ion viscosities as a function of $n$}
     \end{subfigure}%
     \hfill
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/etaENScan}
+        \includegraphics{fig/etaENScan}
         \caption{The normalized ion viscosities as a function of $n$}
     \end{subfigure}
     \\
     \hfill
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/etaITScan}
+        \includegraphics{fig/etaITScan}
         \caption{The normalized ion viscosities as a function of $T_e$}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{fig/etaETScan}
+        \includegraphics{fig/etaETScan}
         \caption{The normalized ion viscosities as a function of $T_e$}
     \end{subfigure}
     \caption{$\eta$ scans. The solid lines are taken at $B=1\text{ T}$, the
@@ -584,7 +584,7 @@ This would yield
            +\partial_z\partial_y u^{y}_{\a}
         \R)
         \R]
-    \R)
+    \R).
 \end{align*}
 %
 Using that to first order, only the $\ve{E}\times\ve{B}$ drift advects particles perpendiculary.
@@ -610,10 +610,10 @@ In Clebsch coordinates, we have that $\ve{u}_{E}$ is given by \cref{poi:ExB}, wh
     \qquad
     u_{E}^{y} = -\frac{1}{B} \partial_x \phi
     \qquad
-    u_{E}^{z} = 0
+    u_{E}^{z} = 0.
 \end{align*}
 %
-We note that we are again operting with a left handed coordinate system.
+We note that we are again operating with a left handed coordinate system.
 Using this, we find that
 %
 \begin{align*}
@@ -658,11 +658,11 @@ Using this, we find that
     \ve{e}_y \frac{2\eta_{\a,0}}{3} \partial_y\partial_z u^{z}_{\a}
     -
     \ve{e}_z
-    \frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}
+    \frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}.
     \numberthis
     \label{eq:piTensor}
 \end{align*}
 %
 Although we found in \cref{app:DO} that the viscosity played a minor role in the perpendicular velocities (assuming that $\mu \e^2$ is small in the ion equation).
-We will, however retain the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in the derivations to see how this term propagates through the set of equations.
+We will, however, retain the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in the derivations to see how this term propagates through the set of equations.
 It the end we will drop the terms and use artificial viscosity instead.

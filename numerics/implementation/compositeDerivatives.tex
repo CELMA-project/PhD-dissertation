@@ -9,16 +9,14 @@ These are
     &\{\ve{u}_E^2,n\},&
     &\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)&
     &\text{and}&
-    &\div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R)&
+    &\div \L( S_n \L[ \frac{ \grad_\perp \phi }{ B } \R] \R).&
 \end{align*}
 %
 These can either be calculated by applying two (or more) different FD schemes consecutively to a field $f$, or by making a new FD stencil specifically for the operator under consideration.
 
-Special care must be taken at the ghost points if one choose to apply two (or more) different FD schemes consecutively.
+Special care must be taken at the ghost points if one chooses to apply two (or more) different FD schemes consecutively.
 To see this, we can call $g$ the result of calculating the FD of a field $f$.
-As we are using centered stencils (as described in
-% FIXME: Add reference to the FD stencils used
-), then the ghost points of $g$ is not calculated by the FD%
+As we are using centered stencils (as described in \cref{sec:spat}), then the ghost points of $g$ is not calculated by the FD%
 %
 \footnote{There is by definition no way to apply a centered stencil to the last grid point.}%
 %
@@ -63,21 +61,20 @@ We observe that in cylindrical coordinates, we have
     %
     &= \L(\frac{1}{B}\R)^2
     \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2
-        , n\R\}
+        , n\R\}.
         \numberthis
         \label{eq:ExBAdvImp}
 \end{align*}
 %
 Here, we must take care when we treat the ghost points.
-No ghost points is needed in the $\theta$ direction, as this direction is periodic.
+No ghost points are needed in the $\theta$ direction, as this direction is periodic.
 Thus, for $\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
 
 For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
 For the inner ghost point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
 For the outer ghost point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost point.
 
-This way of discretizing is second order accurate, as indicated in MES
-%FIXME: Refer to table or so in MES
+This way of discretizing is second order accurate, as indicated in \cref{tb:MESResults}.
 
 
 \subsection{\texorpdfstring{$\div(g\grad_\perp f)$}{Divergence of g times the perpendicular gradient of f} terms}
@@ -105,13 +102,13 @@ We have that
     +
     g^{\theta\rho} \partial_\theta f  \partial_\rho g
     +
-    g^{\theta\theta} \partial_\theta f \partial_\theta g
+    g^{\theta\theta} \partial_\theta f \partial_\theta g.
     \numberthis
     \label{eq:perpPerpDeriv}
 \end{align*}
 %
 As BOUT++ includes a numerical operator for $\grad_\perp^2g$ (as mentioned in \cref{sec:perpLapl}), we could have used this operator for calculating $f\grad_\perp^2g$.
-However, from \cref{app:coord}, we that
+However, from \cref{app:coord}, we get that
 %
 \begin{align*}
   G^\rho =& \frac{1}{J}\\
@@ -136,7 +133,7 @@ Thus \cref{eq:perpPerpDeriv} can be rewritten to
     + f \frac{1}{\rho^2}\partial^2_\theta g
     + f\frac{1}{\rho}\partial_\rho g
     +  \partial_\rho f \partial_\rho g
-    +  \frac{1}{\rho^2} \partial_\theta f \partial_\theta g
+    +  \frac{1}{\rho^2} \partial_\theta f \partial_\theta g,
 \end{align*}
 %
 %FIXME: Has this been MESed?

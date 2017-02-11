@@ -1,4 +1,4 @@
-In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure ourselves that the assumption in our models are sound.
+In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure that the assumptions in our models are sound.
 As important is it to check that the machinery handeling the numerical calculation is correctly implemented.
 This can be done by code verification.
 
@@ -12,11 +12,11 @@ This testing is dealt with in the subsequent validation process.
 }
 
 Thus, a code can be verified numerically, but still fail to match the desired features of a real life experiment.
-In other words, it would have passed the verification failed the validation.
+In other words, it would have passed the verification, but failed the validation.
 If the code has succuessfully passed a validation test, but fails a verification test, the success of the validation is questionable.
 The success of the validation in this case could have been a mere coincident.
 
-The verification process is throughly discussed in \cite{Oberkampf2010book}, and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
+The verification process is thoroughly discussed in \cite{Oberkampf2010book} and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
 Note that the verification process can be time consuming, and can be regarded as an artform in itself.
 Luckly, a major part of the implemntation has already been verified in the BOUT++ framework using MMS in \cite{Dudson2016}.
 
@@ -90,12 +90,12 @@ If convergence is found for these special cases, the code is not generally verif
 There could still be implementation mistakes (not discoverable in the limiting cases) which could have dire consequences when a more general solution is sought numerically.
 One way to get around the problem is to manufacture a solution.
 
-Assume that we have a set of nonlinear spatio-temporal PDEs we would like to solve for.
-Let us call the variables evolved in time for $\ve{f}=\{\ve{u}_e, \ve{u}_i, n, \Om^D, T_e, \ldots\}$.
+Assume that we have a set of nonlinear spatio-temporal PDEs we would like to solve.
+Let us call the variables evolved in time $\ve{f}=\{\ve{u}_e, \ve{u}_i, n, \Om^D, T_e, \ldots\}$.
 If there are no mixed spatial and temporal variables, we can write the set of nonlinear PDEs as
 %
 \begin{align}
-  \parti{\ve{f}}{t} = F(\ve{f}) \RA \parti{\ve{f}}{t} - F(\ve{f}) = \ve{0}
+    \parti{\ve{f}}{t} = F(\ve{f}) \RA \parti{\ve{f}}{t} - F(\ve{f}) = \ve{0},
   \label{ver:setOfPDE}
 \end{align}
 %
@@ -104,7 +104,7 @@ As stated above, we do not know a priori which $\ve{f}$ which satisfies \cref{ve
 Therefore we manufacture a set of functions $\ve{f}_M$ which does not satisfy \cref{ver:setOfPDE}, but rather
 %
 \begin{align*}
-    \parti{\ve{f}_M}{t} - F(\ve{f}_M) = \ve{S}
+    \parti{\ve{f}_M}{t} - F(\ve{f}_M) = \ve{S}.
 \end{align*}
 %
 Note that $\ve{f}_M$ is an exact analytical solution of $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$.
@@ -112,7 +112,7 @@ We can therefore solve numerically $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$ for 
 %
 \begin{align*}
     \L\|\ve{e}\R\|_{L_n} =
-    \L\|\ve{f}_{M} - \ve{f}_{\text{numeric}}\R\|_{L_n}
+    \L\|\ve{f}_{M} - \ve{f}_{\text{numeric}}\R\|_{L_n}.
 \end{align*}
 %
 One can now test if the global error show the expected order of convergence.
@@ -121,8 +121,7 @@ Note that $\ve{f}_M$ and the coefficients in the various terms in the PDEs does 
 \section{Method of Exact Solution}
 \label{sec:MES}
 %
-
-Since there are implementations in this thesis which is not covered by the BOUT++ framework (see \cref{chap:additionalImplementation} for details), these implementation should be verified as well.
+Since there are implementations in this thesis which are not covered by the BOUT++ framework (see \cref{chap:additionalImplementation} for details), these implementation should be verified as well.
 All of these implementations are either differentiation operators, extrapolations or integration operators where an exact analytic solution can be found.
 Hence, one can use the approach of method of exact solutions (MES) to verify these operations, and there will be no need for manufacturing a solution.
 
@@ -286,7 +285,7 @@ Found by Taylor expanding $f$ around $x_0$, evaluating it in $x+\Delta$ and subt
 \end{align*}
 %
 where $\Delta$ denotes the grid spacing as shown in \cref{fig:flatBC}.
-As the boundaries lays half between the grid points, $\L.\rho\R|_{\text{Index}=1}=\frac{\Delta}{2}$
+As the boundaries lay half between the grid points, $\L.\rho\R|_{\text{Index}=1}=\frac{\Delta}{2}$.
 Thus, in this point, we have that
 %
 \begin{align*}
@@ -340,7 +339,7 @@ We will now verify the implementation of the
 %
 term, found in \cref{eq:ExBAdvImp}.
 As the Arakawa implementation of $\{\phi,\cdot\}$ was found convergent using MMS in \cite{Dudson2016}, and because the treatment of the singularity was found to be convergent in \cref{sec:singleOp}, we would here like to check that ghost points are correctly calculated after doing the $\partial^2_\rho \phi$ operation.
-Hence, we seek only to MES the term
+Hence, we seek to MES the term
 %
 \begin{align*}
     \L\{\L(\partial_{\rho} \phi\R)^2,n\R\}.
@@ -366,7 +365,7 @@ Note that since the Arakawa implementation does use Fourier discretization, ther
 Thus we do not get the advantages of the spectral convergence rate.
 However, the errors in the $\rho$ may dominate when successively making the grid spacing in $\theta$ smaller and vice versa.
 This is what happens when performing the MES test in the $\theta$ direction, as seen in \cref{tb:MESResults}.
-One could of course increased the resolution even more in $\rho$, but this would make the test significantly more computationally expensive.
+One could of course increase the resolution even more in $\rho$, but this would make the test significantly more computationally expensive.
 Inspection of the error plot shows that the error is not dominating in any particular point, and we can therefore conclude that the implementation is convergent.
 
 Also note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
@@ -390,7 +389,7 @@ For the sheath boundary condition, the following functions are used
     \label{eq:MEUISheath}
 \end{align}
 %
-Notice that $u_{e,\|}$ is given by the sheath boundary condition, and that this function does not need to be manufactured.
+Notice that $u_{e,\|}$ is given by the sheath boundary condition and that this function does not need to be manufactured.
 The result of the MES is given in \cref{tb:MESResults}.
 % FIXME: If cauchy is used, include 3-cauchyBC
 
@@ -462,7 +461,7 @@ $\inde{f}{V}$  & $z$      & $2.00$ & $-$ & $2.01\cdot10^{-8}$ & $-$ &\ref{eq:MES
 \hline\hline
 \end{tabular}
 }}
-\caption[]{\textit{Results of the convergence tests}}
-\protect\label{tb:MESResults}
+\caption[]{Results of the convergence tests}
+\label{tb:MESResults}
 \end{table}
 \end{landscape}

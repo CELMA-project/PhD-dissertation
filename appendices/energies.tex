@@ -1,8 +1,8 @@
 We will in this appendix briefly comment on the energy of the system.
 One should note that the CELMA equations are probably not energy conserving, and we have argued that this may be of lesser importance as the system is driven by its sources and its sinks.
-An energy conserving system has the nice property that one could identify which parts of the equation which transfers energy.
+An energy conserving system has the nice property that one could identify which parts of the equation transfers energy.
 This can be done by multiplying the time evolving fields with various variables such that the resulting evolution would have the units of energy density.
-One could then integrate over the volume and see which terms which transers energy to each other.
+One could then integrate over the volume and see which terms transfers energy to each other.
 Another approach is to simply derive the set of equation from energy principles by using the variational principle of the Lagrangian of the system.
 
 In this thesis, however, we will only be using the kinetic and potential energy arising from the pressure.
@@ -18,17 +18,17 @@ We can then integrate the energy densities over the volume to get the expression
 The energy density is defined as
 %
 \begin{align*}
-    \mathcal{E}_{\text{kin},\a} &= \frac{1}{2}m_an \ve{u}^2_\a
+    \mathcal{E}_{\text{kin},\a} &= \frac{1}{2}m_an \ve{u}^2_\a.
 \end{align*}
 %
-if we now let $\expt{A}$ denote the poloidal average of $A$, defined in \cref{sec:polAvg}, and use the notation
+If we now let $\expt{A}$ denote the poloidal average of $A$, defined in \cref{sec:polAvg}, and use the notation
 %
 \begin{align*}
-    \wt{A} = A - \expt{A}
+    \wt{A} = A - \expt{A},
 \end{align*}
 %
-so that $A = \expt{A} + \wt{A}$
-we get that
+so that $A = \expt{A} + \wt{A}$.
+We get that
 %
 \begin{align*}
      \mathcal{E}_{\text{kin},\a} =& \frac{1}{2}m_\a n\ve{u}_\a^2\\
@@ -48,7 +48,7 @@ we get that
              +
              \wt{n} \expt{\ve{u}_\a}^2
              + 2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-             + \wt{n}\wt{\ve{u}}_\a^2\R)
+             + \wt{n}\wt{\ve{u}}_\a^2\R).
         \numberthis
         \label{eq:enDensExpanded}
 \end{align*}
@@ -63,14 +63,14 @@ We demand that this satisfies
     \expt{\expt{\mathcal{E}_{\text{kin},\a}}} &= \expt{\mathcal{E}_{\text{kin},\a}}
     \label{eq:avgOfAvg}
     \\
-    \expt{\wt{\mathcal{E}}_{\text{kin},\a}} &= 0
+    \expt{\wt{\mathcal{E}}_{\text{kin},\a}} &= 0.
     \label{eq:zeroFluct}
 \end{align}
 %
 By noting that $\expt{a}$ in general is a constant with respect to the integration limit, we have that
 %
 \begin{align*}
-    \expt{\expt{a}\wt{b}} = \expt{a}\expt{\wt{b}} = \expt{a}\cdot0 = 0
+    \expt{\expt{a}\wt{b}} = \expt{a}\expt{\wt{b}} = \expt{a}\cdot0 = 0.
 \end{align*}
 %
 This means that the terms in \cref{eq:enDensExpanded} with only one fluctuating factor belongs to $\wt{\mathcal{E}}_{\text{kin},\a}$ as it satisfies \cref{eq:zeroFluct}.
@@ -101,7 +101,7 @@ We can now write \cref{eq:enDensExpanded} as
              + \wt{n}\wt{\ve{u}}_\a^2
              + \expt{\wt{n}\wt{\ve{u}}_\a^2}
              - \expt{\wt{n}\wt{\ve{u}}_\a^2}
-             \R)
+             \R).
 \end{align*}
 %
 Rewriting yields
@@ -133,7 +133,7 @@ Rewriting yields
                \wt{n}\wt{\ve{u}}_\a^2
              - \expt{\wt{n}\wt{\ve{u}}_\a^2}
              \R]
-             \R)
+             \R).
 \end{align*}
 %
 We can now identify the first term as
@@ -186,7 +186,7 @@ Thus
     E_{\text{kin},\a}
     = \inde{\mathcal{E}_{\text{kin},\a}}{V}
     = \inde{\expt{\mathcal{E}_{\text{kin},\a}}}{V} + \inde{\wt{\mathcal{E}}_{\text{kin},\a}}{V}
-    = \expt{E_{\text{kin},\a}} + \wt{E}_{\text{kin},\a}
+    = \expt{E_{\text{kin},\a}} + \wt{E}_{\text{kin},\a},
 \end{align*}
 %
 where
@@ -199,10 +199,10 @@ where
 In cylindrical coordinates, we have that
 %
 \begin{align*}
-    \inde{f}{V} = \iiint f J \d\rho \d\theta \d z
+    \inde{f}{V} = \iiint f J \d\rho \d\theta \d z,
 \end{align*}
 %
-and note that
+that
 %
 \begin{align*}
     \inde{\expt{f}}{V}
@@ -212,7 +212,7 @@ and note that
     =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J\int_0^{2\pi}  \d\theta \d\rho \d z\\
     =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi}2\pi J \d\rho \d z\\
     =& \int_0^{L_z} \int_0^{L_\rho} \defi{0}{2\pi}{f}{\theta} J \d\rho \d z\\
-    =& \inde{f}{V}
+    =& \inde{f}{V},
     \numberthis
     \label{eq:intExptF}
 \end{align*}
@@ -225,7 +225,7 @@ and that
     =& \int_0^{L_z} \int_0^{L_\rho} \int_0^{2\pi}\wt{f} \d\theta J \d\rho \d z\\
     =& \int_0^{L_z} \int_0^{L_\rho} \frac{\int_0^{2\pi} \wt{f} \d\theta}{2\pi}2\pi J \d\rho \d z\\
     =& \int_0^{L_z} \int_0^{L_\rho} \expt{\wt{f}} 2\pi  J \d\rho \d z\\
-    =& 0
+    =& 0.
     \numberthis
     \label{eq:intAvgF}
 \end{align*}
@@ -234,12 +234,12 @@ In other words, we have that
 %
 \begin{align*}
     \wt{E}_{\text{kin},\a} =& 0\\
-    \expt{E_{\text{kin},\a}} =& E_{\text{kin},\a}
+    \expt{E_{\text{kin},\a}} =& E_{\text{kin},\a}.
 \end{align*}
 
 \subsection{The global kinteic energy}
 %
-Due to gyroviscous cancellation, we have that to first order, only the $E\times B$-drift is carrying particles.
+Due to gyroviscous cancellation, we have that, to first order, only the $E\times B$-drift carries particles.
 This gives
 %
 \begin{align*}
@@ -270,7 +270,7 @@ This gives
     \\
     =& m_in_0c_s^2\rho_s^3 \breve{E}_{\text{kin},\a}
     \\
-    =& n_0T_{e,0}\rho_s^3 \breve{E}_{\text{kin},\a}
+    =& n_0T_{e,0}\rho_s^3 \breve{E}_{\text{kin},\a},
 \end{align*}
 %
 where we have used (V.4) in \cite{Dhaeseleer1991book}, $\a$ denotes the particle species, and where $\breve{E}_{\text{kin},\a} = \frac{m_{\a}}{m_i}\iiint \breve{n}\breve{u}_\a^2 \breve{J} \d \breve{\rho} \d\theta \d \breve{z}$.
@@ -289,7 +289,7 @@ As $T_i=0$, only the electrons will give rise to the potential energy.
 The potential energy density from the pressure is given by%
 %
 \begin{align*}
-    \mathcal{E}_{\text{pot}} =& nT_e
+    \mathcal{E}_{\text{pot}} =& nT_e.
 \end{align*}
 %
 Since we use a constant $T_e$, we get that $T_e=\expt{T_e}$.
@@ -306,7 +306,7 @@ and
     E_{\text{pot}}
     = \inde{\mathcal{E}_{\text{pot}}}{V}
     = \inde{\expt{\mathcal{E}_{\text{pot}}}}{V} + \inde{\wt{\mathcal{E}}_{\text{pot}}}{V}
-    = \expt{E_{\text{pot}}} + \wt{E}_{\text{pot}}
+    = \expt{E_{\text{pot}}} + \wt{E}_{\text{pot}},
 \end{align*}
 %
 where
@@ -320,7 +320,7 @@ Due to \cref{eq:intExptF,eq:intAvgF}, we have that
 %
 \begin{align*}
     \wt{E}_{\text{pot}} =& 0\\
-    \expt{E_{\text{pot}}} =& E_{\text{pot}}
+    \expt{E_{\text{pot}}} =& E_{\text{pot}}.
 \end{align*}
 
 \subsection{The global potential energy}
@@ -335,5 +335,5 @@ The global potential energy is therefore given by
     \\
     =& n_0T_{e,0}\rho_s^3\iiint \breve{n}\breve{T}_e \breve{J} \d\breve{\rho} \d\theta \d \breve{z}
     \\
-    =& n_0T_{e,0}\rho_s^3\breve{E}_{\text{pot}}
+    =& n_0T_{e,0}\rho_s^3\breve{E}_{\text{pot}}.
 \end{align*}

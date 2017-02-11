@@ -4,12 +4,12 @@ The approximation states that $\partial_t \ve{B} \sim 0$, which through the Maxw
 In general, we have that the $\ve{E}$ field can be expressed through the potentials
 %
 \begin{align}
-    \ve{E} = -\grad\phi - \partial_t \ve{A}
+    \ve{E} = -\grad\phi - \partial_t \ve{A},
     \label{eq:potentialE}
 \end{align}
 %
 (see for example \cite{Griffiths2013book,Fitzpatrick2008book}).
-The magnetic potetial carries with it a degree of freedom, and we are free to use the Coloumb gauge without loss of generality.
+The magnetic potential carries with it a degree of freedom, and we are free to use the Coloumb gauge without loss of generality.
 That is
 %
 \begin{align*}
@@ -31,8 +31,8 @@ With the Coloumb gauge, we have that Amp{\`e}re's circuit law reads
     \label{eq:coloumbGauge}
 \end{align*}
 %
-in the low frequent case.
-Notice that $\grad^2\ve{A}=\ve{j}\mu_0$ is nothing but three Poisson equations, so that the solution can be written in terms of Green's functions (assuming the currents vanishes at infinity) as
+in the low frequency case.
+Notice that $\grad^2\ve{A}=\ve{j}\mu_0$ is nothing but three Poisson equations, so that the solution can be written in terms of Green's functions (assuming that the currents vanishes at infinity) as
 %
 \begin{align}
     \ve{A} (\ve{r} ,t) =& \frac{\mu_{0}}{4\pi} \int_{V} \frac{\ve{j}(\ve {r}',t')}{|\ve {r} -\ve {r} '|}\,\d ^{3}\ve {r}',\\
@@ -42,17 +42,17 @@ Notice that $\grad^2\ve{A}=\ve{j}\mu_0$ is nothing but three Poisson equations, 
 \end{align}
 %
 where $\ve{r}$ is the general position vector, $\ve{r'}$ is the position of the current distribution and $t'=t-\frac{|\ve{r}-\ve{r}'|}{c}$ is the retarded time.
-We now see that $\partial_t \ve{A}$ is big whenever the time derivative of the current is big.
+We now see that $\partial_t \ve{A}$ is large whenever the time derivative of the current is large.
 
 \section{Small time derivatives of the perpendicular magnetic potential}
 %
-In the drift ordering, we have stated assumed that the evolution of the perpendicular ion and electron velocity are of the same order of magnitude, and small compared with $\om_{ci}$.
+In the drift ordering, we have assumed that the evolution of the perpendicular ion and electron velocity are of the same order of magnitude and small compared with $\om_{ci}$.
 Assuming that the evolution of the density is also restricted by this time evolution%
 %
 \footnote{Note that if this was not the case, the fast evolution of $n$ would still couple to the evolution of $\ve{u}$ through the set of equations.}%
 %
 , the perpendicular current would also be restricted.
-This would lead to a small $\partial_t \ve{A}_\perp$, which then could be neglected in the perpendicular set of equation as the ordering would imply that $-\grad_\perp\phi$ would be of a higher order of magnitude.
+This would lead to a small $\partial_t \ve{A}_\perp$, which then could be neglected in the perpendicular set of equations as the ordering would imply that $-\grad_\perp\phi$ would be of a higher order of magnitude.
 
 \section{Small time derivatives of the parallel magnetic potential}
 %
@@ -76,7 +76,7 @@ Writing out the $E_\|$-term in \cref{eq:parElNonNorm} gives
     - 0.51\nu_{ei} j_\|
     \\ &
     + e n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
-    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
+    - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
  \numberthis
  \label{eq:curWithAPerp}
 \end{align*}
@@ -89,24 +89,24 @@ From \cref{eq:coloumbGauge}, we get that
     \ve{b}\cdot\frac{\grad^2\ve{A}}{\mu_0}=&\ve{b}\cdot\ve{j}
     \note{Assuming $\partial_i\ve{b}=0$}
     \\
-    \frac{\grad^2 A_\|}{\mu_0}=&j_\|
+    \frac{\grad^2 A_\|}{\mu_0}=&j_\|,
     \numberthis
     \label{eq:parCurAsA}
 \end{align*}
 %
-Which means that the left hand side of \cref{eq:curWithAPerp} can be written
+which means that the left hand side of \cref{eq:curWithAPerp} can be written
 %
 \begin{align*}
-    \partial_t j_\|=& \partial_t\frac{\grad^2 A_\|}{\mu_0}
+    \partial_t j_\|=& \partial_t\frac{\grad^2 A_\|}{\mu_0}.
 \end{align*}
 %
-this means that we readily can compare $\partial_t A_\|$ with $\partial_t j_\|$ or $\nu_{ei} j_\|$ to check if the term is small, as these three terms can be expressed in terms of $A_\|$.
+We can now readily can compare $\partial_t A_\|$ with $\partial_t j_\|$ or $\nu_{ei} j_\|$ to check if the term is small, as these three terms can be expressed in terms of $A_\|$.
 Thus, the $\partial_t A_\|$ term can be neglected if
 %
 \begin{align*}
     \partial_t \frac{\grad^2_\perp A_\|}{\mu_0}
     \gg &
-    \frac{ne^2}{m_e}\partial_t A_\|
+    \frac{ne^2}{m_e}\partial_t A_\|,
 \end{align*}
 %
 which using order of magnitude estimates gives
@@ -140,7 +140,7 @@ which using order of magnitude estimates gives
     \frac{\rho_s^2}{L^2_{A_\|}}
     \gg &
     \frac{1}{2}\mu
-    \b
+    \b,
     \numberthis
     \label{eq:firstNeglect}
 \end{align*}
@@ -151,7 +151,7 @@ Also, the $\partial_t A_\|$ term can be neglected if
 \begin{align*}
     0.51\nu_{ei}j_\|
     \gg &
-    \frac{ne^2}{m_e}\partial_t A_\|
+    \frac{ne^2}{m_e}\partial_t A_\|.
 \end{align*}
 %
 By using orders of magnitude estimates and \cref{eq:parCurAsA}, we get
@@ -173,7 +173,7 @@ By using orders of magnitude estimates and \cref{eq:parCurAsA}, we get
     \frac{\rho_s^2}{L^2_{A_\|}}
     \gg &
     \frac{1}{2}\frac{\om_{A_{\|}}}{0.51\nu_{ei}}\mu
-    \b
+    \b.
 \end{align*}
 %
 Note that even though $\partial_t A_\|$ is small, it may improve numerical stability to include it.

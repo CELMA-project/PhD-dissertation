@@ -1,10 +1,10 @@
 We will in this section look at big and small terms in the perpendicular momentum equation in \cref{eq:perp_mom_start}.
-The motivation for this is to make a drift ordering similar to what is done in \cite{Fitzpatrick2014book}, and from this get algebraic equations for each order of the perpendicular velocities.
+The motivation for this is to make a drift ordering similar to what is done in \cite{Fitzpatrick2014book} and from this get algebraic equations for each order of the perpendicular velocities.
 We will do so by looking at characteristic scales of the system.
 Before starting, we will have a brief look at the definition of the gradient length scales and of the quasi-neutrality of the system.
 
 \section{Gradient length scale}
-When doing order of magnitude estimates%
+We will here do order of magnitude estimates%
 \footnote{
     Easy, approximate ways to estimate some numbers within the same orders of magnitudes as we would have reached by doing a more correct and rigorous study.
 }%
@@ -19,7 +19,7 @@ For a field $f$, the gradient length scale $L_f$ is defined as%
 }%
 %
 \begin{align}
-    \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)}
+    \frac{1}{L_f} \defined \frac{\|\max\{\operatorname{abs}(\grad f)\}\|}{\operatorname{abs}\L(f\bigg|_{\|\max\{\operatorname{abs}(\grad f)\}\|}\R)},
     \label{eq:lenScale}
 \end{align}
 %
@@ -27,7 +27,7 @@ i.e. short and sharp gradients in $f$ have a short $L_f$.
 We can similarly define the temporal scale as
 %
 \begin{align}
-    \om_f = \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}
+    \om_f = \frac{1}{\tau_f} \defined \frac{\max\{\operatorname{abs}(\partial_t f)\}}{\operatorname{abs}\L(f\bigg|_{\max\{\operatorname{abs}(\partial_t f)\}}\R)}.
     \label{eq:timeScale}
 \end{align}
 %
@@ -51,7 +51,7 @@ We find that
     =
     \frac{\e_0\div\ve{E}}{eZn_i}
     \sim
-    \frac{\e_0\L|E\R|}{\L|L_E\R|eZn_i}
+    \frac{\e_0\L|E\R|}{\L|L_E\R|eZn_i}.
     \label{eq:quasiNeutral}
 \end{align}
 %
@@ -60,7 +60,7 @@ We can find an approximate expression for $E$ through Faraday's induction law:
 \begin{align*}
     \curl\ve{E} =& -\partial_t B\\
     \frac{|E|}{|L_E|} \sim& \frac{|B|}{\tau_B}\\
-    |E| \sim& \frac{|L_E||B|}{\tau_B}
+    |E| \sim& \frac{|L_E||B|}{\tau_B}.
 \end{align*}
 %
 Inserting this in \cref{eq:quasiNeutral} yields
@@ -87,7 +87,7 @@ If we therefore set $1/\tau_B\to\om_{ci}$, we get
     \simeq
     \frac{\om_{ci}^2}{\om_{pi}^2}
     =
-    \frac{\om_{ci}^2}{\om_{pi}^2}
+    \frac{\om_{ci}^2}{\om_{pi}^2},
     \label{eq:quasiNCompare}
 \end{align}
 %
@@ -104,7 +104,7 @@ Equivalently, if we introduce the \emph{normalizing} ion sound speed%
 and the ion hybrid radius (the ion gyro radius at the electron temperature)
 %
 \begin{align*}
-   \rho_s=\frac{c_s}{\om_{ci}},
+    \rho_s=\frac{c_s}{\om_{ci}}.
 \end  {align*}
 %
 \Cref{eq:quasiNCompare} can be stated as
@@ -125,7 +125,7 @@ and the ion hybrid radius (the ion gyro radius at the electron temperature)
     \frac{\lambda_D^2}{\rho_s^2},
 \end{align*}
 %
-where $\lambda_D$ is the Debye length, which tells at what radius an isolated charge is effectively electrically shielded by surrounding charged particles.
+where $\lambda_D$ is the Debye length, which tells at what distance an isolated charge is effectively electrically shielded by surrounding charged particles.
 
 In other words, the quasi-neutrality is just a statement of what scales we are looking at.
 Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the left hand side of
@@ -138,7 +138,7 @@ is small (as $e$ and $\e_0$ is of the same order of magnitude).
 We therefore have
 %
 \begin{align*}
-    n\simeq Zn_i \simeq n_e
+    n\simeq Zn_i \simeq n_e.
 \end{align*}
 
 \section{The inertia term}
@@ -174,16 +174,16 @@ The left hand side of \cref{eq:perp_mom_start} reads
  \partial_t \ve{u}_{\a,\perp}
  + \ve{u}_{\a,\perp}\cdot\grad_\perp\ve{u}_{\a,\perp}
  + \ve{u}_{\a,\|}\cdot\grad_\|\ve{u}_{\a,\perp}
- \R)
+ \R).
  \numberthis
  \label{eq:do_inertia}
 \end{align*}
 %
-From this, we can withdraw a characteristic timescale of change of the perpendicular velocity, a characteristic gradient length scale and a characteristic perpendicular velocity.
+From this, we can extract a characteristic timescale of change of the perpendicular velocity, a characteristic gradient length scale and a characteristic perpendicular velocity.
 We will use the notation for a field $f$
 %
 \begin{align*}
-    f = f^c \breve{f}
+    f = f^c \breve{f},
 \end{align*}
 %
 where the superscript $f^c$ denotes the characteristic size of $f$ so that $\breve{f}$ is of $\mathcal{O}(1)$.
@@ -213,7 +213,7 @@ If we now apply this on \cref{eq:do_inertia}, we get
  \breve{\ve{u}}_{\a,\perp}\cdot\breve{\grad}_\perp\breve{\ve{u}}_{\a,\perp}
  + \frac{u^c_{\a,\|}}{L_{\|, u_{\a,\perp}}}
  \breve{\ve{u}}_{\a,\|}\cdot\breve{\grad}_\|\breve{\ve{u}}_{\a,\perp}
- \R)
+ \R).
 \end{align*}
 %
 We now relate the velocities to $c_s$, so that
@@ -262,23 +262,23 @@ Further, by using the ion hybrid radius, we get
  \frac{\rho^c_s}{L_{\perp, u_{\a,\perp}}}
  \om^c_{ci}
  \breve{\ve{u}}_{\a,\|}\cdot\breve{\grad}_\|\breve{\ve{u}}_{\a,\perp}
- \R)
+ \R).
 \end{align*}
 %
-we will now assume that the scales for the ions and electrons are the same.
+We will now assume that the scales for the ions and electrons are the same.
 This is, we are constraining the system in the following way
 %
 \begin{align*}
     \lambda              &\sim \lambda_{u_{e,\perp}}  \sim \lambda_{u_{i,\perp}} \\
     \om^c                &\sim \om^c_{e,\perp}        \sim \om^c_{i,\perp}       \\
     L_{\perp, u_{\perp}} &\sim L_{\perp, u_{e,\perp}} \sim L_{\perp, u_{i,\perp}}\\
-    L_{\|, u_{\perp}}    &\sim L_{\|, u_{e,\perp}}    \sim L_{\|, u_{i,\perp}}
+    L_{\|, u_{\perp}}    &\sim L_{\|, u_{e,\perp}}    \sim L_{\|, u_{i,\perp}}.
 \end{align*}
 %
 If we at the same time introduce
 %
 \begin{align*}
-    \frac{ \rho^c_s }{L_{\perp, u_{\perp}}} \defined \gamma
+    \frac{ \rho^c_s }{L_{\perp, u_{\perp}}} \defined \gamma,
 \end{align*}
 %
 we get
@@ -300,7 +300,7 @@ we get
  \gamma
  \om^c_{ci}
  \breve{\ve{u}}_{\a,\|}\cdot\breve{\grad}_\|\breve{\ve{u}}_{\a,\perp}
- \R)
+ \R).
  \label{eq:doLHSAfterFirstConstraint}
 \end{align}
 %
@@ -309,15 +309,15 @@ In order for these terms to  be of the same order, we must have that
 \begin{align*}
  \om^c                    &\sim \lambda \gamma \om^c_{ci}  \sim \lambda_{u_{\a,\|}} \frac{L_{\perp}}{L_{\|, u_{\perp}}} \gamma \om^c_{ci}
  \\
- \frac{\om^c}{\om^c_{ci}} &\sim \lambda \gamma             \sim \lambda_{u_{\a,\|}} \frac{L_{\perp}}{L_{\|, u_{\perp}}} \gamma
+ \frac{\om^c}{\om^c_{ci}} &\sim \lambda \gamma             \sim \lambda_{u_{\a,\|}} \frac{L_{\perp}}{L_{\|, u_{\perp}}} \gamma.
  \numberthis
  \label{eq:firstOrdering}
 \end{align*}
 %
-If we assume low frequent turbulence, we must have that
+If we assume low frequency turbulence, we must have that
 %
 \begin{align*}
-    \frac{\om^c}{\om^c_{ci}} \defined \e \ll 1
+    \frac{\om^c}{\om^c_{ci}} \defined \e \ll 1.
 \end{align*}
 %
 Comparing the two first terms in \cref{eq:firstOrdering} gives
@@ -334,7 +334,8 @@ Comparing the two first terms in \cref{eq:firstOrdering} gives
  \gamma
 \end{align*}
 %
-in order to have a balanced restriction between gradient scale lengths and velocities, we can set
+in order to have a balanced restriction between gradient scale lengths and velocities.
+We can set
 %
 \begin{align*}
  \lambda
@@ -343,16 +344,16 @@ in order to have a balanced restriction between gradient scale lengths and veloc
  \\
  \gamma
  \sim&
- \sqrt{\e}
+ \sqrt{\e}.
 \end{align*}
 %
-note that if we would have started our constraint by saying $\sqrt{\e}\ll 1$ instead, the non-linear terms would be negligible.
+Note that if we would have started our constraint by saying $\sqrt{\e}\ll 1$ instead, the non-linear terms would be negligible.
 
 Finally, we put the restriction on the parallel velocity and scale lengths.
 We now define
 %
 \begin{align*}
-\frac{L_{\perp}}{L_{\|, u_{\a,\perp}}}\defined \zeta
+\frac{L_{\perp}}{L_{\|, u_{\a,\perp}}}\defined \zeta.
 \end{align*}
 %
 By assuming $u^c_{\a,\|}\sim c^c_s$, and that
@@ -374,10 +375,10 @@ we find that
  \sim
  1\sqrt{\e}^2
  =
- \e
+ \e.
 \end{align*}
 %
-This means that the left hand side of \cref{eq:perp_mom_start} can in an order of magnitude estimate be wirtten as (assuming that $\om_{c\a}\sim\om^c_{c\a}$
+This means that the left hand side of \cref{eq:perp_mom_start} can in an order of magnitude estimate be written as (assuming that $\om_{c\a}\sim\om^c_{c\a}$
 %
 \begin{align*}
  &
@@ -455,7 +456,7 @@ This means that the left hand side of \cref{eq:perp_mom_start} can in an order o
  &=
  \lambda c^c_s \frac{m_\a}{m_i}
  \e
- \breve{\d}_{t,\a}\breve{\ve{u}}_{\a,\perp}
+ \breve{\d}_{t,\a}\breve{\ve{u}}_{\a,\perp}.
  \numberthis
  \label{eq:doInertiaEps}
 \end{align*}
@@ -487,7 +488,7 @@ We have that
 + \frac{E_\perp^c}{B^c}
 \frac{\breve{\ve{E}}_\perp}{\breve{B}}
 +\lambda c^c_s
-\breve{\ve{u}}_{\a,\perp}\times\ve{b}
+\breve{\ve{u}}_{\a,\perp}\times\ve{b}.
 \numberthis
 \label{eq:doTriple}
 \end{align*}
@@ -496,7 +497,7 @@ We will now constrain the system further by saying that
 %
 \begin{align*}
 L_{\perp} \sim& L_{\perp, p_\a} \sim L_{\perp, u_{\perp}}\\
-T^c       \sim& T^c_e           \sim T^c_i
+T^c       \sim& T^c_e           \sim T^c_i.
 \end{align*}
 %
 This means that $c^c_s = \sqrt{\frac{T^c}{m_i}}$.
@@ -564,7 +565,7 @@ c^c_s
 + \frac{E_\perp^c}{B^c}
 \frac{\breve{\ve{E}}_\perp}{\breve{B}}
 +\lambda c^c_s
-\breve{\ve{u}}_{\a,\perp}\times\ve{b}
+\breve{\ve{u}}_{\a,\perp}\times\ve{b}.
 \numberthis
 \label{eq:doTripleToEps}
 \end{align*}
@@ -573,13 +574,13 @@ For these to be of the same order, we must have
 %
 \begin{align*}
     \gamma c^c_s &\sim \frac{E_\perp^c}{B^c} \sim \lambda c^c_s \\
-    \gamma     &\sim \frac{E_\perp^c}{c^c_sB^c} \sim \lambda
+    \gamma     &\sim \frac{E_\perp^c}{c^c_sB^c} \sim \lambda.
 \end{align*}
 %
-this gives
+This gives
 %
 \begin{align*}
-    \Xi \defined \frac{E_\perp^c}{c^c_sB^c} \sim \sqrt{\e}
+    \Xi \defined \frac{E_\perp^c}{c^c_sB^c} \sim \sqrt{\e}.
 \end{align*}
 %
 Inserting this in \cref{eq:doTripleToEps} yields
@@ -620,20 +621,20 @@ c^c_s
 \frac{\breve{\ve{E}}_\perp}{\breve{B}}
 +
 \breve{\ve{u}}_{\a,\perp}\times\ve{b}
-\R)
+\R).
 \end{align*}
 
 \section{Collisionalities and sources}
 %
 Next, we look at the collisionalities and sources of \cref{eq:perp_mom_start}.
-We would like these to be (at maximum) of the same order of magnitude as the inertia terms of \cref{sec:doInert}.
+We would like these to be (at most) of the same order of magnitude as the inertia terms of \cref{sec:doInert}.
 Before we start, we will assume quasi-neutrality%
 \footnote{This is discussed further in \cref{sec:qn}}%
 %
 , i.e.
 %
 \begin{align*}
-    n\sim n_e \sim Zn_i
+    n\sim n_e \sim Zn_i.
 \end{align*}
 %
 
@@ -674,7 +675,7 @@ For the electron-ion collisionalities, we find
 \frac{q_i}{q_\a}
 \frac{1}{\mu}
 \frac{\nu^c_{ei}}{\om^c_{ci}}
-\frac{\breve{\ve{R}}_{\beta \to \a,\perp} }{\breve{n}_\a \breve{B}}
+\frac{\breve{\ve{R}}_{\beta \to \a,\perp} }{\breve{n}_\a \breve{B}}.
 \numberthis
 \label{eq:doRes}
 \end{align*}
@@ -685,10 +686,10 @@ If the ion equation of \cref{eq:doRes} is to be at the same order as the ion equ
 \begin{align*}
  \frac{1}{\mu}\frac{\nu^c_{ei}}{\om^c_{ci}}\lambda c^c_s \sim& \lambda c^c_s \e
  \\
- \xi\defined\frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}}           \sim& \e
+ \xi\defined\frac{1}{\mu} \frac{\nu^c_{ei}}{\om^c_{ci}}           \sim& \e,
 \end{align*}
 %
-Where we have used that the masses in \cref{eq:doInertiaEps} cancels, and as all the terms with breve are of order $\mathcal{O}(1)$
+where we have used that the masses in \cref{eq:doInertiaEps} cancels, and as all the terms with breve are of order $\mathcal{O}(1)$
 %
 \Cref{eq:doRes} can therefore be written as
 %
@@ -698,7 +699,7 @@ Where we have used that the masses in \cref{eq:doInertiaEps} cancels, and as all
 \lambda c^c_s
 \frac{q_i}{q_\a}
 \xi
-\frac{\breve{\ve{R}}_{\beta \to \a,\perp} }{\breve{n}_\a \breve{B}}
+\frac{\breve{\ve{R}}_{\beta \to \a,\perp} }{\breve{n}_\a \breve{B}}.
 \end{align*}
 
 \subsection{Neutral collisions}
@@ -724,7 +725,7 @@ For the neutral collisions, we find that
 \frac{q_i}{q_\a}
 \frac{m_\a}{m_i}
 \frac{\nu^c_{\a n}}{\om^c_{ci}} \lambda c^c_s
-\frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}
+\frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}.
 \end{align*}
 %
 We will now try to relate $\nu^c_{e n}$ to $\nu^c_{i n}$.
@@ -732,7 +733,7 @@ From \cref{app:collisions} we have that
 %
 \begin{align*}
     &\nu_{en} \propto \frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_e}}&
-    &\nu_{in} \propto \frac{n_n a_0^2 \sqrt{T_i}}{\sqrt{m_i}}&
+    &\nu_{in} \propto \frac{n_n a_0^2 \sqrt{T_i}}{\sqrt{m_i}}.&
 \end{align*}
 %
 As we have that $T_e \sim T_i$, we get
@@ -740,7 +741,7 @@ As we have that $T_e \sim T_i$, we get
 \begin{align*}
     \nu_{en} \propto& \frac{\sqrt{m_i}}{\sqrt{m_i}}\frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_e}}\\
     \propto& \frac{\sqrt{m_i}}{\sqrt{m_e}}\frac{n_n a_0^2 \sqrt{T_e}}{\sqrt{m_i}}\\
-    \sim   & \frac{\sqrt{m_i}}{\sqrt{m_e}}\nu_{in}
+    \sim   & \frac{\sqrt{m_i}}{\sqrt{m_e}}\nu_{in}.
 \end{align*}
 %
 This gives
@@ -763,7 +764,7 @@ This gives
     \frac{q_i}{q_\a}
     \frac{\sqrt{m_\a}}{\sqrt{m_i}}
     \frac{\nu^c_{i n}}{\om^c_{ci}} \lambda c^c_s
-    \frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}
+    \frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}.
     \numberthis
     \label{eq:doNeut}
 \end{align*}
@@ -773,7 +774,7 @@ The ion equation of \cref{eq:doNeut} is of the same order as the ion equation of
 %
 \begin{align*}
     \lambda c^c_s \e \sim& \frac{\nu^c_{i n}}{\om^c_{ci}} \lambda c^c_s\\
-    \e             \sim& \frac{\nu^c_{i n}}{\om^c_{ci}} \defined \Theta
+    \e             \sim& \frac{\nu^c_{i n}}{\om^c_{ci}} \defined \Theta,
 \end{align*}
 %
 as the charges and masses of equation \cref{eq:doNeut} cancels for ions.
@@ -783,7 +784,7 @@ Thus, the order of magnitude estimate of the neutral collisions can be written
 \begin{align*}
 \frac{ \ve{R}_{n \to \a,\perp} }{n_\a q_\a B}
 \sim
-    \lambda c^c_s\frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}
+    \lambda c^c_s\frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}} \Theta \frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}.
 \end{align*}
 
 \subsection{Source terms}
@@ -819,7 +820,7 @@ By using \cref{eq:kinSource}, the source term can be written
 \frac{|q_\a|}{e}
 \frac{m_\a}{m_i}
 \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}
-\frac{ \breve{S}_{i,n}\breve{\ve{u}}_{\a,\perp} }{\breve{n}_\a}
+\frac{ \breve{S}_{i,n}\breve{\ve{u}}_{\a,\perp} }{\breve{n}_\a}.
 \numberthis
 \label{eq:doSource}
 \end{align*}
@@ -828,7 +829,7 @@ The order of the ion equation of \cref{eq:doSource} would be of same the same or
 %
 \begin{align*}
     \lambda c^c_s \e \sim& \frac{\nu^c_{S_{i,n}}c^c_s}{\om^c_{ci}}\\
-    \e               \sim& \frac{1}{\lambda }\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma
+    \e               \sim& \frac{1}{\lambda }\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \defined \sigma.
 \end{align*}
 %
 Hence, we have that the source terms give
@@ -836,7 +837,7 @@ Hence, we have that the source terms give
 \begin{align*}
 \frac{ S_{\a,n}\ve{u}_{\a,\perp} }{n_\a \om_{c\a}}
     \sim
-    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \breve{S}_{i,n}\breve{\ve{u}}_{\a,\perp} }{\breve{n}_\a}
+    \lambda c^c_s \frac{|q_\a|}{e} \frac{m_\a}{m_i} \sigma \frac{ \breve{S}_{i,n}\breve{\ve{u}}_{\a,\perp} }{\breve{n}_\a}.
 \end{align*}
 %
 Notice the change from $m_i$ to $m_e$ due to the definition of $\sigma$.
@@ -857,7 +858,7 @@ If we assume constant viscosity coefficients $\eta_{\a,N}$, where $N\in\{1,2,3,4
   \ve{e}_x\partial_x\partial_\|u_{\a,\|}
   +
   \ve{e}_y\partial_y\partial_\|u_{\a,\|}
- \R)
+ \R).
 \label{eq:doRefVisc}
 \end{align}
 %
@@ -871,7 +872,7 @@ and also that
 %
 \begin{align*}
     L_{\perp, u_{\a,\|}} \sim L_\perp
-    L_{\|   , u_{\a,\|}} \sim L_{\|, u_{\a,\perp}} \sim L_\|
+    L_{\|   , u_{\a,\|}} \sim L_{\|, u_{\a,\perp}} \sim L_\|.
 \end{align*}
 %
 This means that
@@ -918,7 +919,7 @@ This means that
   \L(
   \ve{e}_x\partial_{\breve{x}}\partial_{\breve{\|}}\breve{u}_{\a,\|} +
   \ve{e}_y\partial_{\breve{y}}\partial_{\breve{\|}}\breve{u}_{\a,\|}
-  \R)
+  \R).
   \numberthis
   \label{eq:doViscDeriv}
 \end{align*}
@@ -958,11 +959,11 @@ If we insert \cref{eq:doViscDeriv} into \cref{eq:doRefVisc}, we obtain
   \gamma
   \zeta
   \eta^c_{\a,0}
- \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp
+ \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp.
 \end{align*}
 %
 From \cref{app:piTensor} we have that $\eta_{\a,0}=\frac{C_{\eta_{\a,0}}n_\a T_\a}{\nu_{\a i}}$, where $C_{\eta_{e,0}}=0.73$ and $C_{\eta_{i,0}}=0.96\sqrt{2}$.
-As we have assumed $T_e \sim T_i$, and since $\nu_{e i}\propto \frac{1}{\sqrt{m_e}}$ and $\nu_{\a i}\propto \frac{1}{\sqrt{m_i}}$ we have that $\nu_{\a i}\sim \frac{\sqrt{m_e}}{\sqrt{m_\a}}\nu_{ei}$
+As we have assumed $T_e \sim T_i$, and since $\nu_{e i}\propto \frac{1}{\sqrt{m_e}}$ and $\nu_{\a i}\propto \frac{1}{\sqrt{m_i}}$ we have that $\nu_{\a i}\sim \frac{\sqrt{m_e}}{\sqrt{m_\a}}\nu_{ei}$.
 This gives
 %
 \begin{align*}
@@ -993,7 +994,7 @@ This gives
   \zeta
   \frac{\sqrt{m_\a}}{\sqrt{m_e}}
   \frac{n^c T^c_\a}{\nu^c_{ei}}
- \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp
+ \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp.
 \end{align*}
 %
 Thus
@@ -1104,11 +1105,11 @@ Thus
      \gamma^2
      \zeta
      \xi
-     \frac{ \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp }{\breve{n}_\a \breve{B}}
+     \frac{ \L(\breve{\grad}\cdot\breve{\te{\pi}}_\a\R)_\perp }{\breve{n}_\a \breve{B}}.
 \end{align*}
 %
 
-\section{The order of the terms}
+\section{The ordering of the terms}
 %
 Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitulate the size of the non-dimensional terms
 %
@@ -1121,7 +1122,7 @@ Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitula
     &\lambda \defined \frac{u^c}{c^c_s}             \sim \sqrt{\e}&
     &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }} \sim \sqrt{\e}&
     &\zeta   \defined \frac{L_{\perp}}{L_{\|}}      \sim \sqrt{\e}&
-    &\Xi     \defined \frac{E_\perp^c}{c^c_sB^c}    \sim \sqrt{\e}&
+    &\Xi     \defined \frac{E_\perp^c}{c^c_sB^c}    \sim \sqrt{\e},&
 \end{empheq}
 %
 where we have assumed
@@ -1134,7 +1135,7 @@ where we have assumed
     \\
     &L_{\perp,u_{e,\perp}} \sim L_{\perp,u_{i,\perp}} &
     &L_{\perp,p_\a}        \sim L_{\perp,u_{\a,\perp}}&
-    &u_{e,\|}              \sim u_{i,\|}              &
+    &u_{e,\|}              \sim u_{i,\|}              ,&
 \end{empheq}
 %
 The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
@@ -1187,11 +1188,11 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
   \frac{q_i}{q_\a} \frac{\breve{\ve{R}}_{\beta \to \a,\perp} }{\breve{n}_\a \breve{B}}
  + \frac{q_i}{q_\a} \frac{\sqrt{m_\a}}{\sqrt{m_i}}  \frac{\breve{\ve{R}}_{n \to \a,\perp} }{\breve{n}_\a  \breve{B}}
  - \frac{|q_\a|}{e} \frac{m_\a}{m_i} \frac{ \breve{S}_{i,n}\breve{\ve{u}}_{\a,\perp} }{\breve{n}_\a}
- \R)
+ \R).
  \numberthis
  \label{eq:DO}
 \end{align*}
 %
-Notice that the quantities in the breves are of order $\mathcal{O}(1)$, and so that the only big or small terms appear in front of the terms in breve.
-From this we can for example see that the electron inertia term is small compare to most other terms, and can probably be neglegted.
+Notice that the quantities in the breves are of order $\mathcal{O}(1)$, and so that the only large or small terms appear in front of the terms in breve.
+From this we can for example see that the electron inertia term is small compared to most other terms and can probably be neglegted.
 We also note that altough the ion visocsity is small, it is questionable if it should be neglected.

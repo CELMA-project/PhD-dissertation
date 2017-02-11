@@ -1,7 +1,7 @@
 \section{Spectral filtering}
 %
 In order to ensure that no aliasing will occur and create a numerical instability like the one mentioned in \cite{Phillips1959}, we must use a spectral filter in the periodic direction.
-Although sufficiently high viscosities or diffusion can prevent aliasing (such that all the higher modes are damped out), they typically also damp on modes which we would like to include in our simulation.
+Although sufficiently high viscosities or diffusion can prevent aliasing (such that all the higher modes are damped out), they typically also damp modes which we would like to include in our simulation.
 One way to get around this is to use spectral filters.
 
 \subsection{Orszag's 2/3 rule}
@@ -16,7 +16,7 @@ If we call $M$ the highest mode we can have which would not give aliasing, we mu
     M + M - N &< -M\\
     2M - N &< -M\\
     3M &<  N\\
-    M &< \frac{N}{3}
+    M &< \frac{N}{3}.
 \end{align*}
 %
 In order words, modes with mode number less than $N/3$ does not contribute to aliasing.
@@ -45,7 +45,7 @@ However, the smallest wavelength which does not give aliasing is given by the $2
     \lambda_\min = \frac{C_{L_\rho}}{\frac{2}{3}\frac{n_\theta}{2}} = \frac{3C_{L_\rho}}{n_\theta}.
 \end{align*}
 %
-By rearranging \cref{eq:wavelen}, we find that the max allowed mode number for the circumference $C$ at radius $\rho$ is
+By rearranging \cref{eq:wavelen}, we find that the largest allowed mode number for the circumference $C$ at radius $\rho$ is
 %
 \begin{align*}
     m_\max = \L\lfloor \frac{C}{\lambda_\min}\R\rfloor,

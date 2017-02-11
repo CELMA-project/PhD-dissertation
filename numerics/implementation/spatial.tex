@@ -1,7 +1,8 @@
 \section{Spatial discretization}
+\label{sec:spat}
 %
-BOUT++ comes with a built in set of spatial discretization operators.
-The operators used in the CELMA code is given in \cref{tb:spatop}.
+BOUT++ comes with a built-in set of spatial discretization operators.
+The operators used in the CELMA code are given in \cref{tb:spatop}.
 %
 \begin{table}[h!]
 {\footnotesize \centerline{
@@ -24,17 +25,19 @@ z  & Centered second order & Centered second order & First order upwinding\\
 \protect\label{tb:spatop}
 \end{table}
 %
-The standard centered finite difference stencils has been used (see \cite{Leveque2007book} for details).
-The fast Fourier transform is implemented using the \texttt{fftw}-package \cite{FFTW05}.
-The following term has been implemented with the first order upwinding scheme
+The standard centered finite difference stencils have been used (see \cite{Leveque2007book} for details).
+Further, the fast Fourier transform is implemented using the \texttt{fftw}-package \cite{FFTW05}.
+Finally, the first order upwinding scheme is used for the following operators:
 %
-\begin{itemize}[noitemsep,nolistsep]
-    \item $-u_{e,\|}\partial_\|\ln(n)$
-    \item $-u_{i,\|}\partial_\|(n[u_{i,\|}+u_{e,\|}])$
-    \item $2u_{e,\|}\partial_\|(nu_{e,\|})$
+\begin{itemize}[noitemsep]
+    \item[$\bullet$] $u_{e,\|}\partial_\|\ln(n)$
+    \item[$\bullet$] $nu_{e,\|}\partial_\| u_{i,\|}$
+    \item[$\bullet$] $nu_{i,\|}\partial_\| u_{e,\|}$
+    \item[$\bullet$] $\frac{j_{\|}}{n}\partial_\| u_{e,\|}$
+    \item[$\bullet$] $u_{i,\|}\partial_\| \L(nu_{e,\|}\R)$
 \end{itemize}
 %
-note that whereas the upwinding makes the system more stable, it does so by introducing heavy damping on the system through diffusion introduced by the discretization \cite{Leveque2007book}.
+Note that whereas the upwinding makes the system more stable, it does so by introducing damping on the system through artificial numerical diffusion introduced by the discretization \cite{Leveque2007book}.
 For this reason, upwinding is \textbf{NOT} used on the $u_{i,\|}\partial_\|\Om$ term when using the Boussinesq approximation as this may introduce spurious vorticity from the numerics.
 
 \section{Boundary conditions}
@@ -72,10 +75,10 @@ is used
       f_{N} =& \frac{16}{5}f_{\text{Last boundary}}
               - 3          f_{N}
               +            f_{N-1}
-              - \frac{1}{5}f_{N-2}
+              - \frac{1}{5}f_{N-2}.
 \end{align*}
 %
-For the Neumann boundary condition a \nth{4} order extrapolation %
+For the Neumann boundary condition, a \nth{4} order extrapolation %
 %
 \footnote{
     Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, and solved for the ghost point.
@@ -101,7 +104,7 @@ is used, reading
                 +  9f_{N-1}
                 -  5f_{N-2}
                 +   f_{N-3}
-               }{22}
+               }{22}.
 \end{align*}
 %
 Finally, as the $\theta$ direction is periodical, the ghost points are simply
@@ -109,5 +112,5 @@ Finally, as the $\theta$ direction is periodical, the ghost points are simply
 \begin{align*}
     f_{N+1} =& f_{1}
     \\
-    f_{0} =& f_{N}
+    f_{0} =& f_{N}.
 \end{align*}
