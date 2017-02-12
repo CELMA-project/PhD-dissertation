@@ -1,9 +1,22 @@
 \documentclass[12pt,a4paper,oneside,openright]{report} % twosided
 \usepackage{styles/general}
 
-\title{\vspace{-8ex}Ph.D. thesis\vspace{-1ex}}
-\author{Michael L{\o}iten}
-\date{\vspace{-2ex}\today}
+\newcommand{\authorName}{Michael L{\o}iten}
+\newcommand{\thesisTitle}{Global modelling of strongly magnetized plasma\\in a linear machine}
+\newcommand{\thesisDate}{March $6^{\text{th}}$ 2017}
+
+
+\title{\thesisTitle}
+\author{\authorName}
+\date{\thesisDate}
+
+% Metadata
+\hypersetup{
+    pdftitle={\thesisTitle},
+    pdfauthor={\authorName},
+    pdfsubject={\authorName - PhD thesis},
+    pdfkeywords={Plasma, Modelling, CELMA, Turbulence, PhD, \authorName}
+}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -12,9 +25,9 @@
 \rhead{\rightmark}
 \cfoot{\thepage}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
-%\usepackage{draftwatermark}
-%\SetWatermarkLightness{0.7}
-%\SetWatermarkScale{4}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 \def\marconiLink{https://wiki.u-gov.it/confluence/display/SCAIUS/UG3.1\%3A+MARCONI+UserGuide}
 \def\marconiText{https://wiki.u-gov.it/confluence/display/\\SCAIUS/UG3.1\%3A+MARCONI+UserGuide}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -43,9 +56,33 @@
 \renewcommand{\floatpagefraction}{.99}
 
 \begin{document}
-\maketitle
 %
-% NOTE: USE input rather than include!!!
+\cleardoublepage
+\clearpage
+
+\pagenumbering{roman}
+\addcontentsline{toc}{section}{Titlepage}
+\input{intro/titlepage}
+
+\cleardoublepage
+\clearpage
+\phantomsection % Needed to set the correct toc numbering
+\input{intro/abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\cleardoublepage
+\clearpage
+
+\phantomsection % Needed to set the correct toc numbering
+\setcounter{page}{3}
+\addcontentsline{toc}{section}{Table of contents}
+\tableofcontents
+
+\cleardoublepage
+\clearpage
+
+\pagenumbering{arabic}
+
 \part{Derivation of the CELMA model}
 \chapter{The kinetic equation}
 \input{derivation/kinetic}
@@ -171,27 +208,27 @@ FIXME: Zonal flow chapter needs editing
 \label{app:shortcomings}
 \input{appendices/shortComings}
 
-% %\part{Work in progress}
-% %
-% %\chapter{Parallel momentum equations}
-% %\label{app:parMom}
-% %\input{workInProgress/parallelMomentum}
-% %
-% %\chapter{Preconditioning}
-% %\label{app:precon}
-% %\input{workInProgress/precondition}
-% %
-% %\chapter{Constraint}
-% %\input{workInProgress/constraint}
-% %
-% %\chapter{Linearization of variables}
-% %\label{app:linearized}
-% %\input{workInProgress/linearized}
-% %
-% %\chapter{Waves}
-% %\label{app:waves}
-% %\input{workInProgress/waves}
-%
+%% %\part{Work in progress}
+%% %
+%% %\chapter{Parallel momentum equations}
+%% %\label{app:parMom}
+%% %\input{workInProgress/parallelMomentum}
+%% %
+%% %\chapter{Preconditioning}
+%% %\label{app:precon}
+%% %\input{workInProgress/precondition}
+%% %
+%% %\chapter{Constraint}
+%% %\input{workInProgress/constraint}
+%% %
+%% %\chapter{Linearization of variables}
+%% %\label{app:linearized}
+%% %\input{workInProgress/linearized}
+%% %
+%% %\chapter{Waves}
+%% %\label{app:waves}
+%% %\input{workInProgress/waves}
+%%
 \part{Bibliography}
 %\markboth{Bibliography}{}
 \bibliographystyle{ieeetr}
