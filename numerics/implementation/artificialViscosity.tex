@@ -3,13 +3,13 @@
 %
 As mentioned in \cref{sec:SOE}, we have neglected the viscosities (as we assume that these are small).
 Instead we add some artificial viscosities, which is needed for numerical stability (in addition to those added through the upwinding schemes).
-If there are no viscosities in the system, there is no mechanism (other than diffusion) which can remove the small scales from the system.
+If there are no viscosities in the system, there is no mechanism (other than diffusion) which can remove the small scales (structures with a short gradient scale length) from the system.
 Scales which are smaller than what can be resolved by the grid will lead to problems like aliasing.
 These small scales can then build up and make the simulation crash%
 \footnote{
     We will here use the word "crash" meaning that the simulation stops because of bad behavior the numerics.
     The simulation stops if a field reaches $\pm$\texttt{inf} or \texttt{nan} values (this can cause division by zero problems) or if the solver takes too small time steps over a range of time because it cannot resolve unphysically large gradients.
-}
+}%
 %
 .
 
@@ -81,14 +81,16 @@ $\Om$       & $0.1$ & $2.4\cdot10^{-4}$ & $5.81\cdot10^{-6}$\\
 \hline\hline
 \end{tabular}
 }}
-\caption[]{\textit{
+\caption[]{
         Artificial viscosities used in the CELMA code.
         Artificial viscosities to $\Om^D$ is only added for the case where the Boussinesq approximation is \textbf{NOT} used.
         Artificial viscosities to $\Om$ is only added for the case where the Boussinesq approximation is used.
-    }}
-\protect\label{tb:artVisc}
+    }
+    \label{tb:artVisc}
 \end{table}
 %
+
+\noindent
 Higher coefficients are used in the parallel direction as the background gradients in the parallel direction are much more gradual than the background gradients in the perpendicular gradients.
 In the end, both $D_{f, \|, \text{art}} \partial_\|^2 f$ and $D_{f, \perp, \text{art}} \grad_\perp^2 f$ are small compared to the other terms.
 % FIXME: Would be nice to showing a plot showing that the artificial terms are small

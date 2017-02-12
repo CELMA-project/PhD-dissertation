@@ -25,6 +25,8 @@ z  & Centered second order & Centered second order & First order upwinding\\
 \protect\label{tb:spatop}
 \end{table}
 %
+
+\noindent
 The standard centered finite difference stencils have been used (see \cite{Leveque2007book} for details).
 Further, the fast Fourier transform is implemented using the \texttt{fftw}-package \cite{FFTW05}.
 Finally, the first order upwinding scheme is used for the following operators:
@@ -42,28 +44,30 @@ For this reason, upwinding is \textbf{NOT} used on the $u_{i,\|}\partial_\|\Om$ 
 
 \section{Boundary conditions}
 %
-The boundaries are positioned half between grid points, as depicted in \cref{fig:flatBC}.
+The boundaries are positioned halfway between grid points, as depicted in \cref{fig:flatBC}.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics[width=1.0\textwidth]{fig/flatGrid}
     \caption{\textit{
-            The boundaries are positioned half between grid points.
+            The boundaries are positioned halfway between grid points.
             $\Delta$ denotes the grid spacing between two grid points.
         }}
     \label{fig:flatBC}
 \end{figure}
 %
-When a boundary condition is given, a value at the position of the boundary (as shown in \cref{fig:flatBC}) is given.
-As there is no grid point at the boundary, the value is extrapolated to the ghost point $\frac{\Delta}{2}$.
+
+\noindent
+When specifying a boundary condition, the value is specified at the position of the boundary (the dashed horizontal lines in \cref{fig:flatBC}).
+As there is no grid point at the boundary, the value is extrapolated to the ghost point which is placed a distance $\Delta/2$ away from the boundary.
 We will here specify how these extrapolations are done within the BOUT++ framework.
 For implementation of artificial boundary conditions, see \cref{sec:extrapolGhost}.
 
-For the Dirichlet boundary condition, the following \nth{4} order extrapolation %
+For the Dirichlet boundary condition, the following \nth{4} order extrapolation%
 %
 \footnote{
-    Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)), evaluated it in the ghost point.
-}%
+    Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)), evaluated in the ghost point.
+} %
 is used
 %
 \begin{align*}
@@ -78,12 +82,12 @@ is used
               - \frac{1}{5}f_{N-2}.
 \end{align*}
 %
-For the Neumann boundary condition, a \nth{4} order extrapolation %
+For the Neumann boundary condition, a \nth{4} order extrapolation%
 %
 \footnote{
-    Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, and solved for the ghost point.
+    Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, solved for the ghost point.
 % See D4DX4/BW2ndOrderNeumann4thOrder
-}%
+} %
 %
 is used, reading
 %
