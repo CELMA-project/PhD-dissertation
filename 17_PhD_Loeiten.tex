@@ -30,6 +30,7 @@
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 \def\marconiLink{https://wiki.u-gov.it/confluence/display/SCAIUS/UG3.1\%3A+MARCONI+UserGuide}
 \def\marconiText{https://wiki.u-gov.it/confluence/display/\\SCAIUS/UG3.1\%3A+MARCONI+UserGuide}
+\def\balibar{http://news.bbc.co.uk/2/hi/science/nature/8103557.stm}
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %===================================================
@@ -83,8 +84,21 @@
 
 \pagenumbering{arabic}
 
+\chapter{Introduction}
+\input{intro/introduction}
+
+% FIXME
+\part{Bibliography}
+\bibliographystyle{ieeetr}
+\bibliography{bib/library,bib/nonArticles}
+\addcontentsline{toc}{chapter}{Bibliography}
+\end{document}
+% FIXME
+
 \part{Derivation of the CELMA model}
+\label{part:CELMA}
 \chapter{The kinetic equation}
+\label{chap:kin}
 \input{derivation/kinetic}
 
 \chapter{The drift fluid equations}
@@ -92,6 +106,7 @@
 \input{derivation/velocityOrder}
 
 \chapter{The model in a slowly varying B-field}
+\label{chap:slowB}
 \input{derivation/slowlyVaryingBField}
 
 \chapter{The CELMA model}
@@ -109,6 +124,7 @@
 \input{derivation/summary}
 
 \part{Implementation and verification}
+\label{part:impl}
 \chapter{Implementation using the BOUT++ framework}
 \label{chap:implBOUT++}
 \input{numerics/implementation/BOUT++}
@@ -131,8 +147,10 @@
 \label{part:results}
 \input{results/results}
 \chapter{Simulation set up}
+\label{chap:setup}
 \input{results/setUp}
 \chapter{The steady state}
+\label{chap:ss}
 \input{results/steady}
 \chapter{The linear phase}
 \label{chap:linear}
@@ -141,20 +159,30 @@
 \label{chap:satTurb}
 \input{results/turbulence}
 \chapter{Characteristics of the turbulent fluctuations}
+\label{chap:charTurb}
 \input{results/fluctuations}
 \input{results/fluxes}
 \input{results/blobs}
 \chapter{Zonal flows}
+\label{chap:zonal}
 FIXME: Zonal flow chapter needs editing
 \input{results/zonalFlows}
 \chapter{B-field scan}
+\label{chap:BFScan}
 \input{results/bScan}
 \chapter{Comparison with the Boussinesq approximation}
+\label{chap:compBouss}
 \input{results/boussinesq}
 \chapter{Neutral scan}
+\label{chap:neutScan}
 \input{results/neutralScan}
 
+\part{Conclusion and outlook}
+\label{part:concl}
+\input{conclusion/conclusion}
+
 \part{Appendices}
+\label{part:app}
 \appendix
 \chapter{Averages}
 \label{app:averages}
@@ -230,7 +258,6 @@ FIXME: Zonal flow chapter needs editing
 %% %\input{workInProgress/waves}
 %%
 \part{Bibliography}
-%\markboth{Bibliography}{}
 \bibliographystyle{ieeetr}
 \bibliography{bib/library,bib/nonArticles}
 \addcontentsline{toc}{chapter}{Bibliography}
