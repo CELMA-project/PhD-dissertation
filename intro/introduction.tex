@@ -1,11 +1,14 @@
+%
+We will start the introduction by giving a motivation to the work done in this thesis by putting the thesis in a larger context, and is meant for an audience with only basic knowledge of physics.
+At the end of the chapter, an outline of the structure of the thesis will be given.
+
 \section{Motivation}
 %
-We will start the introduction by giving a motivation to the work done in this thesis, and try to put it in a larger context.
-The ultimate goal is to provide clean energy%
+The ultimate motivation of this thesis is set by providing clean energy%
 \footnote{Words like "energy consumption" will here be referring to conversion of energy in a low entropy state to the same amount of energy in a higher entropy state.
 }
 %
-to a growing population with a elevated standard of living compared to just $100$ years ago.
+to a growing population with an increasing standard of living.
 One projection of the increased energy demand is given in \cref{fig:energyDemand}.
 %
 \begin{figure}[htb]
@@ -48,8 +51,15 @@ The need of $\text{Li}$ could theoretically be replaced by tritium breeding from
 %
 
 However, this is a much harder reaction to achieve, as it requires subtatinally higher temperatures.
-The potential benefits and sustainability of fusion energy is given in \cref{fig:potFusion}.
+
+Man made themonuclear fusion delivering energy on the grid has yet to be achieved.
+It is still unclear whether or not man made themonuclear fusion can be produced in technological and scientifically feasable way.
+The ITER \cite{ITERWeb} project, which has a first plasma operation currently planned in $2025$, is meant to give a better answer to this question by yielding a tenfold energy output compared to the energy input.
+The goal of ITER is not to supply the grid with energy.
+This is planned to be done by the prototype fusion reactor DEMO, which is still in the planning phase, and is meant to answer questions about economically viability.
+Scientifical and economical feasability aside, the potential benefits and sustainability of fusion energy is great, as illustrated in \cref{fig:potFusion}.
 %
+% FIXME: This figure is screaming: Do something!!! Present me in a different way!
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[h]{1.00\textwidth}
@@ -88,91 +98,114 @@ The potential benefits and sustainability of fusion energy is given in \cref{fig
 \end{figure}
 %
 
-\noindent
-The problem of magnetical fusion can be boiled down to the following quote by Sebastien Balibar \cite{Balibar2009Web}:
+Many of the challenges fusion is facing can be summarized with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
 %
 \begin{quote}
     Fusion is like trying to put the Sun in a box - but we don't know how to make the box.
 \end{quote}
 %
-Although a fairly good idea of what the "box" should look like has emerged the last decades, there are still challenges waiting to be solved.
-The "box" which until now has proven most successful is the tokamak, depicted in \cref{fig:tokamak}
+As the plasma in a working reactor will be held at temperatures at several $10 \keV$ (which translates to several $100$ million Kelvin), conventional materials can not be used as a "box".
+Instead, as the plasma will be in an ionized state, the plasma can be kept in place using a strong magetic field, as each individual particle of species $\a$ is subjected to the Lorentz force
+%
+\begin{align*}
+    \ve{F}_\a = q_\a \L(\ve{E} + \ve{v}_\a\times\ve{B}\R),
+\end{align*}
+%
+and will therefore (at least to first order) move freely parallel to the magnetic field, but be locked to a magnetic field in the perpendicular direction.
+Thus, the "box" which until now has proven most successful%
+\footnote{Alternative concepts such as the "stellarator" and the "spherical tokamak" are areas of active research, and could turn out to serve as better options for the "box" in the future.}
+%
+, and which ITER will be based on, is the tokamak, depicted in \cref{fig:tokamak}.
 %
 \begin{figure}[htb]
     \begin{center}
         \includegraphics{fig/intro/tokamak}
     \end{center}
-    \caption{Simplified schematics of the tokamak. From \cite{nuttall2008}}
+    \caption{Simplified schematics of the tokamak from \cite{nuttall2008}.
+        A more detailed view of the ITER tokamak can be found in \cite{ITERWeb}.}
     \label{fig:tokamak}
 \end{figure}
 
-\noindent
+In the tokamak a twisted, closed magnetic field in a toroidal configuration is used to keep the plasma in place.
+Close to the toroidal axis the magnetic field closes itself
+%
+\footnote{Possibly after an infinite number of toroidal revolutions.}
+%
+without intersecting with the materials of the tokamak, spanning a magnetic surface.
+These field lines are referred to as "closed" field lines.
+Moving radially outwards from the toroidal axis the magnetic field is no longer closing only on itself, but rather through a material surface.
+These field lines are referred to as "open" field lines.
+In order to remove impurity production and plasma recycling away from the main plasma, the open field lines are diverted away from the main plasma to divertor plates%
+%
+\footnote{Diverting the plasma has a lot of other benefits as described in detail in \cite{Stangeby2000book,Stacey2012book}.}%
+%
+.
+Thus when moving radially, the plasma is transitioning from the \emph{plasma edge}, through the position of the \emph{Last Closed Field Surface} LCFS to the region of open field lines called the \emph{Scrape-Off Layer} (SOL).
+Since the plasma particle motion is constrained in the radial direction through gyration, large pressure gradients develops around the LCFS.
+Instabilities in the edge region can develop from these gradients, both on the macroscopic (machine size) scale in form of ELMs \cite{Zohm1996}, but also on the microscopic scale (usually in the order of $\mm - \cm$) such as interchange instabilites \cite{Scott2005b} and drift-waves \cite{Tynan2009}.
+These microscopic instabilites develops into turbulence, and this turbulence is believed to be the cause of the increased transport levels
+%
+\footnote{In the so called H-mode this turbulent transport can be supressed down to the neoclassical levels by a strong shear flow \cite{Burrell1997}.}%
+%
+which exceeds those predicted by \emph{classical} transport from colliding particles, and those predicted by neoclassical theory (which includes transport effect arising from the magnetic field geometry) \cite{Wootton1990}.
 
+Although advances has been done in the last decades, the turbulent processes in the edge and SOL is still not fully understood.
+There are for example a lot of open questions related to coherent structures called \emph{blobs} which emerges from the turbulence \cite{DIppolito2011}.
+In other words, the "box" is "leaking", and we would like a better understanding of how and why it is leaking.
+The success of ITER achieving a high energy gain would be bleak if it turns out that part of the divertor got melted due to unforseen turbulent events.
 
+The turbulent proceses in the edge and SOL of a tokamak is hard to analyze, as several physical processes can be active at once.
+If one can get a good overview of the individual physical processes first, studying the full system will become easier.
+An additional challenge is to measure the processes around the LCFS in a tokamak due the high temperature and due to the difficulties to properly resolve the spatial and temporal scales with few measuring points.
+Both these obstacles can be overcomed by analyzing processes similar to those found in around the LCFS in a linear machine.
+In such a machine, the interchange instability can be eliminated if the machine operates with a straight magnetic field.
+The temperatures is also lower in a linear machine, which makes plasma measurements easier.
+Hence, they are beneficial for benchmarking numerical codes.
+Linear machines can usually be operated so that the plasma is freely streaming towards a material surface, which is similar to the situation found in the SOL where the plasma is diverted to the divertor plates with help of the magnetic fields.
 
-YOU ARE HERE
-tokamaks
+This brings us to the aim of this thesis:
+To numerically simulate some of the processes taking place in a linear machine in order to gain insight in non-curvature driven instabilites.
+Linear machines in themselves are interesting for fusion research and is besides turbulent studies used for material testing \cite{Rapp2010}, studies of \emph{magnetic reconnection} with \emph{X-points} \cite{Bohlin2014} and studies of \emph{plasma detachment} \cite{Ohno2017} to mention some.
+We will however limit the scope of this thesis to include only turbulent processes in a straight magnetic field.
 
-
-
-Problems with plasmas in the scrape-off layer
-How is the energy distributed between the divertor tiles and the first wall
-
-
-ITER achieve a high Q, the success will be lessened if the divertor tiles melt or the first wall is destroyed.
-
-
-
-Therefore: A linear machine is good:
-Easier to understand as there is no curvature drive
-The simplemost system which is still encapturing the detail we are interested in
-
-Easier to diagnose
-Benchmarking of codes
-Are they fusion relevant?
-Material testing (not considered here)
-Detachment studies (also not considered here)
-Studies of non-curvature instabilities (actually considered here)
-Can be similar to the SOL in fusion machines
-Instabilities like drift-waves can be analgous to temperature
-gradient modes found in fusion machines
-
-If we would like to find the time a whit ball takes to fall.
+Next, let us also state how accurate we would like to be when investigating the plasma.
+One could say that one want the investigation to be $100 \%$ accurate, and include all known physic in the investigation, following the quantum mechanical wavefunction of each particle as a function of time.
+Although tempting, it is easy to show that such a task is not feasable with the current computer technologies.
+Imagine just to assign a number to each particle in a $1\m^3$ box with a particle density of $10^{18} \m^{-3}$ particles%
+\footnote{These are approximately the particle numbers we will work with in this thesis.}%
+%
+using $4$ bytes.
+This would require $4$ exabytes of storage.
+Therefore, we seek to simplif the system while still retaining the important details.
+The task is comparable to investigate the time it takes a white ball takes to fall.
 Does it matter that the ball is white?
 One could imagine that there are some reflection properties of the white ball which alters the fall-time.
 However, such an effect would most likely be negligible.
 The fact that the ball is white would be far more relevant if we would like to find the cooling time of the ball.
-Thus, we have to ask the question: What kind of glasses are we using when investigating the physical phenomenon.
 
-Hasegawa-Mima and Hasegawa-Wakatani only following fluctuations
+Therefore, instead of following every single particle, we will make some averages on the system which gives us a fluid like description of the plasma.
+We will further simplify the system by investigating which terms in our model which is small compared to the rest of the terms.
+This gives us a model which we be can used to investigate physics happning at a slower scale than the frequency the ions gyrates around the magnetic field line (which in our linear machine is a couple of hundred $\kHz$), and spatial scale around the ion gyration radius taken at the electron temperature (which in our case is around a $\cm$).
+Notice that we by doing so have excluded physical processes like propagation of electromagnetic waves through the plasma.
+Although out of scope of our investigation, such a process is important when for example looking at heating of the plasma using electromagnetic waves.
+We will in our model use a global approach, meaning that we will model the entire plasma, rather than the traditional approach where only fluctuations are investigated.
 
-Fluctuations can be big, so should finer model
-CYTO is another model which takes this global approach when simulating a linear device.
+As such, this thesis does not answer ultimate questions such as:
+"How can the plasma be operated in order to make man made fusion energy be economically viable."
+Rather, this thesis makes a very humble contribution needed to answer such questions.
+More presicely, this thesis aims to aswer the following questions:
+%
+\begin{itemize}[noitemsep]
+    \item What model is suitable for modeling the low frequency turbulence observed in a linear machine?
+    \item What numerical approaches can be used for solving our model?
+    \item How is the plasma evolving in a linear machine?
+    \item To what extent does the approximation know as the Boussinesq-approximation, which is often done, alter the solution?
+    \item Can coherent structures as blobs and holes be found from our model?
+% FIXME: Check that this is fulfilled
+    \item Are zonal flows found in our model?
+    \item Does our model capture the features reported in the literature?
+\end{itemize}
 
-
-
-
-
-
-
-
-
-
-Top down approach
-Better predictability together with a better understanding of the underlying physical process.
-
-As such, this thesis does not answer the ultimate question
-how can the plasma be operated in order to make man made fusion energy be economically viable
-daunting task.
-
-Instead, questions related to the ultimate question is touched.
-More presicely, this thesis tries to aswer the following questions.
-Questions answered
-To what extent does the Boussinesq approximation alters the solution of a model without the Boussinesq approximation.
-(Does our model capture the features reported in the literature?)
-Can coherent structures as blobs and holes be found from our model
-Are zonal flows found in our model?
-What numerical approaches can be used in order to model the scrape-off layer
 
 
 \section{Thesis structure}
