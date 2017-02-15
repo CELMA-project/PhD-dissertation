@@ -15,7 +15,7 @@
     pdftitle={\thesisTitle},
     pdfauthor={\authorName},
     pdfsubject={\authorName - PhD thesis},
-    pdfkeywords={Plasma, Modelling, CELMA, Turbulence, PhD, \authorName}
+    pdfkeywords={Cylindrical plasma, Drift-fluid equations, Numerical modelling, Drift-waves, Plasma turbulence, Sheath boundary condition, CELMA, BOUT++, , PhD, \authorName}
 }
 
 \pagestyle{fancy}
@@ -73,9 +73,16 @@
 
 \cleardoublepage
 \clearpage
+\phantomsection % Needed to set the correct toc numbering
+\input{intro/acknowledgements}
+\setcounter{page}{4}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+\cleardoublepage
+\clearpage
 
 \phantomsection % Needed to set the correct toc numbering
-\setcounter{page}{3}
+\setcounter{page}{5}
 \addcontentsline{toc}{section}{Table of contents}
 \tableofcontents
 
@@ -83,6 +90,19 @@
 \clearpage
 
 \pagenumbering{arabic}
+
+
+
+% FIXME
+\part{Conclusion and outlook}
+\label{part:concl}
+\input{conclusion/conclusion}
+\part{Bibliography}
+\bibliographystyle{ieeetr}
+\bibliography{bib/library,bib/nonArticles}
+\addcontentsline{toc}{chapter}{Bibliography}
+\end{document}
+% FIXME
 
 \chapter{Introduction}
 \input{intro/introduction}
