@@ -57,46 +57,24 @@ It is still unclear whether or not man made themonuclear fusion can be produced 
 The ITER \cite{ITERWeb} project, which has a first plasma operation currently planned in $2025$, is meant to give a better answer to this question by yielding a tenfold energy output compared to the energy input.
 The goal of ITER is not to supply the grid with energy.
 This is planned to be done by the prototype fusion reactor DEMO, which is still in the planning phase, and is meant to answer questions about economically viability.
-Scientifical and economical feasability aside, the potential benefits and sustainability of fusion energy is great, as illustrated in \cref{fig:potFusion}.
+Scientifical and economical feasability aside, the potential benefits and sustainability of fusion energy is great.
+To illustrate this let's look at some very approximated numbers, only to get an idea of what ballpark we are in.
+We can assume that on average a UK citicen uses $195 \text{\;kWh}$ per day%
+\footnote{As a comparison to this, MacKay makes an optimistic estimate that UK could yield $180 \text{\;kWh}$ per person per day from current day techonology renewables in \cite{Mackay2009book}}%
 %
-% FIXME: This figure is screaming: Do something!!! Present me in a different way!
-\begin{figure}[htbp]
-    \centering
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/intro/energyConsumption}
-        \caption{A "back-of-the-envelope-calculation" of the average energy consumption in the UK ,$125 \text{kWh/day/person}$, (top) together with an idealized potential for renewable energy in the UK (bottom).}
-    \label{fig:energyConsumption}
-    \end{subfigure}%
-    \vfill
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/intro/lithium}
-        \caption{
-        Sustainability of the D-T fusion process.
-        Mined lithium could yield $10 \text{kWh/day/person}$ for $10^{3}$ years.
-        Seawater lithium could yield $105 \text{kWh/day/person}$ for around $10^{6}$ years.
-        Based on the calculations in \cite{ongena2012,Eckhartt1995}.
-        Note: Different scale than \cref{fig:energyConsumption}.
-        }
-
-        \label{fig:lithium}
-    \end{subfigure}
-    \vfill
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/intro/DDFusion}
-        \caption{
-        Theoretical sustainability of the D-D process.
-        The stacks from \cref{fig:energyConsumption} is shown for comparison.
-        }
-        \label{fig:DDFusion}
-    \end{subfigure}
-    \caption{Potential benefits and sustainability of fusion energy.
-    Taken from \cite{Mackay2009book}}
+\cite{Mackay2009book}.
+If we now assume a population $12$ billion people \cite{Melorose2015}, and that the average consumption per person is $195 \text{\;kWh}$ per day, we can make a crude estimate on how long the fusion resources will last.
+The estimate is show in \cref{fig:potFusion}.
+%
+\begin{figure}[htb]
+    \begin{center}
+        \includegraphics{fig/intro/fusionSustain}
+    \end{center}
+    \caption{Estimated years one could power the world on fusion with a population of $12$ billion people using in average $195 \text{\;kWh}$ per day.
+        It is assumd that all available $\text{Li}$ is used for fusion based on the $\text{D}-\text{T}$ reaction, and that all available $\text{D}$ is used for the for fusion based on the $\text{D}-\text{D}$ reaction.
+        With the approximated numbers obtained from \cite{Melorose2015,Mackay2009book,ongena2012,Eckhartt1995}.}
     \label{fig:potFusion}
 \end{figure}
-%
 
 Many of the challenges fusion is facing can be summarized with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
 %
