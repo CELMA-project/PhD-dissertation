@@ -32,11 +32,11 @@ Further, the fast Fourier transform is implemented using the \texttt{fftw}-packa
 Finally, the first order upwinding scheme is used for the following operators:
 %
 \begin{itemize}[noitemsep]
-    \item[$\bullet$] $u_{e,\|}\partial_\|\ln(n)$
-    \item[$\bullet$] $nu_{e,\|}\partial_\| u_{i,\|}$
-    \item[$\bullet$] $nu_{i,\|}\partial_\| u_{e,\|}$
-    \item[$\bullet$] $\frac{j_{\|}}{n}\partial_\| u_{e,\|}$
-    \item[$\bullet$] $u_{i,\|}\partial_\| \L(nu_{e,\|}\R)$
+    \item $u_{e,\|}\partial_\|\ln(n)$
+    \item $nu_{e,\|}\partial_\| u_{i,\|}$
+    \item $nu_{i,\|}\partial_\| u_{e,\|}$
+    \item $\frac{j_{\|}}{n}\partial_\| u_{e,\|}$
+    \item $u_{i,\|}\partial_\| \L(nu_{e,\|}\R)$
 \end{itemize}
 %
 Note that whereas the upwinding makes the system more stable, it does so by introducing damping on the system through artificial numerical diffusion introduced by the discretization \cite{Leveque2007book}.
