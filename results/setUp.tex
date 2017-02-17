@@ -124,30 +124,85 @@ This has been found to give a good speed-up (as compared to use one node) with a
 \section{Resolution}
 \label{sec:resolution}
 %
-% FIXME: Say something that this comes from  mu DDY(phi-lnn),
-%        if because catastrophic cancellation, a higher mu would make it worse
-%        in fact a higher mu helps as better resolution
-%        Hypervisc will only alevate problem if visc coeff is in the order of the fields
-In order to have a properly resolved grid, we choose to have a ratio at least $\frac{n_\rho}{L_\rho/\rho_s}>1$, but preferably above $3$.
-As mentioned in (FIXME)
-% FIXME: Add reference where say can have much coarser resolution in parallel direction
-the resolution in the parallel direction can be less due to the separation of scales.
-Note however, that we have a sheath boundary condition in the $z$-direction, which seems to limit the coarseness of the resolution.
-As mentioned in (FIXME)
-% FIXME: Add reference to where the coarseness parameter scan is done
-we should require that $\frac{n_z}{L_z/\rho_s}\gtrsim0.2$.
-We observe that
+In order to have a properly resolved grid, we need to properly resolve the gradient length scales.
+To save computational time, a small number of grid points is preferable.
+If we assume that the maximum gradient length scale from the model is around $\rho_s$, we should have $\frac{n_\rho}{L_\rho/\rho_s}>1$.
+However, we have in this work found that $\frac{n_\rho}{L_\rho/\rho_s}\approx1$ can give simulation crashes, so a radial resolution of $\frac{n_\rho}{L_\rho/\rho_s}\approx3$ is aimed.
+The same argument goes for the poloidal direction, where $L_\theta=2\pi L_\rho$.
+
+As mentioned in \cref{chap:drift-order} the resolution in the parallel direction can be less since longer gradient scale lengths are found in the parallel direction as a consequence of the separation of scales.
+The sheath sets the gradient scale length in the parallel direction, as will be explained in \cref{sec:parProf}.
+Despite that the gradient scale sets a lower constraint on $n_z$, a see-sawing pattern is observed in simulations with a flow towards an end-plate for low $n_z$.
+This problem has been observed in other plasma fluid codes dealing with sheath boundaries, but has to the authors best knowledge not been published.
+For the work presented here, the problem is encountered for $j_\|$ as is illustrated in \cref{fig:see-saw}%
+\footnote{It should be noted that running the simulations with odd number of points show similar behavior to what is presented in \cref{fig:see-saw}.}%
+%
+.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/jParRipple006}
+    \caption{See-saw oscillations for $B=0.06\T$ in the steady-state using $16, 24, 32, 42, 50$ and $66$ grid points in the parallel direction.
+        $f$ is defined in \cref{eq:defF}
+    }
+    \label{fig:see-saw}
+\end{figure}
+%
+
+\noindent
+To get a better understanding of this behavior, the different terms in \cref{eq:celma_j_par} in the steady-state has been plotted in \cref{fig:jParBalance}.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/jParBalanceNy66}
+    \caption{The different terms making up \cref{eq:celma_j_par} in the steady-state for $n_z=66$ for $B=0.06$.
+    }
+    \label{fig:jParBalance}
+\end{figure}
+%
+It is clear that the steady state is dominated by a balance between the Boltzmann response of the electrons and resistive terms.
+This is also seen for lower $n_z$, albeit with stronger oscillations in the Boltzmann response and the resistive term for decreasing $n_z$.
+As the resistive term is $\propto j_\|$ it cannot be the cause of the observed see-sawing.
+Thus we can conclude that the see-sawing behavior comes from the difference between the logarithm of the density and the potential.
+
+One could imagine that the see-sawing came from catastrophic cancellation between $\ln(n)$ and $\phi$.
+If this was the case, the see-sawing would be even worse for an increased mass ratio $\mu$.
+In fact, the opposite behavior is observed.
+Running the simulations with $\text{H}$ gives more see-sawing than $\text{Ar}$.
+The explanation can be found by looking at the fraction $f$ defined by
+%
+\begin{align}
+    f \defined \frac{n_z}{L_z/\rho_s},
+    \label{fig:defF}
+\end{align}
+%
+which describes the resolution in terms of $\rho_s$.
+We can now observe that
 %
 \begin{align*}
-    \frac{n_z}{\frac{L_z}{\rho_s}}
-    =& \frac{n_zc_s}{L_z \om_{ci}}
-    \\
-    =& \frac{n_z\sqrt{T_e}m_i}{\sqrt{m_i} L_z ZeB}
-    \\
-    =& \frac{n_z\sqrt{T_em_i}}{L_z ZeB}
+  f = \frac{n_zc_s}{L_z \om_{ci}}
+    = \frac{n_z\sqrt{T_e}m_i}{\sqrt{m_i} L_z ZeB}
+    = \frac{n_z\sqrt{T_em_i}}{L_z ZeB},
 \end{align*}
 %
-We would like to have as low as possible $n_z$ in order to have low computational times.
-In addition, for a fixed machine, $L_z$ remains fixed.
-As a consequence, we see that an increase in $B$ gives poorer resolution, whereas an increase in the electron temperature or the ion mass gives a better resolution.
-On this argument, running simulations with singly ionized Ar gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ as compared with hydrogen.
+i. e. it is proportional with $m_i$.
+On this argument, running simulations with singly ionized $\text{Ar}$ gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ as compared with $\text{H}$.
+That increased oscillations has been observed with simulations done with increasing $B$ and $L_z$ strengthens the hypothesis as $f\propto 1/BL_z$.
+
+To keep the oscillations at a minimum, we require $f > 0.2$ in the simulations performed here, which sets a lower bound on $n_z$
+Ideally, we would like to reduce the number of parallel points to speed up the simulations.
+Therefore some alternative strategies to lower the grid-size oscillation is discussed in the following.
+
+Increased artificial viscosity will alleviate the problem.
+Unfortunately, it is found that the artificial viscosity coefficients needed for a smooth $j_\|$ makes the artificial viscosity term dominate, such that the steady state is defined by a balance between the Boltzmann terms, the resistive term and the artificial terms.
+The same holds true if the artificial viscous terms are changed with hyperviscous terms of order $4$ (i.e. with $\partial_z^4$ terms).
+
+To reformulate the problem into a finite volume problem seems to be a good idea as fluxes through the cell centers are conserved.
+However, the same grid-size oscillation problem has been found in finite volume models \cite{Dudson2017Private}.
+
+Finally, a split-scheme could lessen the problem.
+Since the discretization of $n\mu\partial_z\L(\ln(n)-\phi\R)$ is done with a centered FD scheme, odd and even grid points will be decoupled.
+That is, $\partial_z\L(\ln(n)-\phi\R)$ for odd grid points will only depend on the even points and vice versa.
+For advective terms references \cite{Honein2004,Pirozzoli2011} suggest a skew-symmetric split in the form $\div\L(a\ve{u}\R) = \frac{1}{2}\L[\div\L(a\ve{u}\R) + a\div\ve{u} + \ve{u}\cdot\grad a\R]$ where all the right hand terms are discretized using centred difference schemes to get rid of the decoupling.
+Although arising from a divergence term, rewriting $n\mu\partial_z\L(\ln(n)-\phi\R)$ to $\partial_z\L(n\mu\L[\ln(n)-\phi\R]\R)-\L(\ln(n)-\phi\R)\partial_z\L(n\mu\R)$ may help for the grid-size oscillations.
+This has, however, not been tried in the work presented in this thesis.
