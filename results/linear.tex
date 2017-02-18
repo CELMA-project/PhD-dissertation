@@ -29,7 +29,7 @@ For further reference, one should note that the black dashed circles on the perp
 
 We will now compare the direction of rotation of the perturbations with direction of rotation of the zeroth order drifts.
 In \cref{fig:modeRotation} the magnetic field is pointing into the paper.
-Further, the gradient in both $\phi$ and $n$ is point towards the center (i.e. towards negative $\rho$).
+Further, the gradient in both $\phi$ and $n$ is pointing towards the center (i.e. towards negative $\rho$).
 From \cref{poi:cylExB} have that
 %
 \begin{align*}
@@ -66,7 +66,7 @@ Substituting $\grad\phi$ with $\frac{T_e\grad n}{q_en}$ in \cref{poi:cylExB} giv
 We find that
 %
 \begin{align*}
- u_{d,e,\theta}= \frac{T_e}{eB} \frac{\partial_\rho}{n}.
+    u_{d,e,\theta}= \frac{T_e}{eB} \frac{\partial_\rho n}{n}.
 \end{align*}
 %
 That is, the diamagnetic drift is moving in the clockwise direction, opposite of the $\ve{E}\times\ve{B}$-drift direction.
@@ -142,7 +142,7 @@ For a review of drift-waves, the reader is referred to \cite{Horton1999}
 We are here not concerned with neutral interaction.
 For an analytic expression where the neutral elastic collision dominates, see \cite{Ellis1980}.
 
-The derivation in \cite{Pecseli2016book} is done by considering a magnetized plasma in Cartesian with the assumptions of:
+The derivation in \cite{Pecseli2016book} is done by considering a magnetized plasma in Cartesian coordinates with the assumptions of:
 %
 \begin{itemize}[noitemsep]
     \item Cold ions.
@@ -187,7 +187,7 @@ These quantities are defined as
 \end{align*}
 %
 \Cref{eq:fullDisp} can be solved as a second order boundary value problem by properly defining the boundary conditions.
-However, an analytical solution is sought, so the approximation $\partial_x^2 \phi(x)\simeq\partial \phi(x)\simeq0$ is used.
+However, an analytical solution is sought, so the approximation $\partial_x^2 \phi(x)\simeq\partial_x \phi(x)\simeq0$ is used.
 This is essentially is a statement that the perturbations are infinite long in the $x$-direction.
 The final analytic dispersion relation now reads
 %
@@ -204,7 +204,7 @@ where the following solution gives the maximum growth rate
     - \frac{\sqrt{\sigma}}{2}
     \L(16 [\om^{*}]^{2} + \sigma^{2} \L[b^{2} + 2 b + 1\R]^{2}\R)^{1/4}
     \\&\quad
-    \sin\L(\frac{1}{2} \atan2\L[4 \om^{*},- \sigma \L(b^{2} + 2 b + 1\R) \R] \R)
+    \sin\L(\frac{1}{2} \operatorname{Arg}\L[- \sigma \L(b^{2} + 2 b + 1\R) + 4i \om^{*} \R] \R)
     \\&
     - \frac{\sigma}{2}
     \numberthis
@@ -213,9 +213,10 @@ where the following solution gives the maximum growth rate
     %
     \Re(\om) =& - \frac{\sqrt{\sigma}}{2}
     \L(16 [\om^{*}]^{2} + \sigma^{2} \L[b^{2} + 2 b + 1\R]^{2}\R)^{1/4}
-    \cos\L(\frac{1}{2} \atan2\L[4 \om^{*},- \sigma \L(b^{2} + 2 b + 1\R) \R] \R)
+    \cos\L(\frac{1}{2} \operatorname{Arg}\L[- \sigma \L(b^{2} + 2 b + 1\R) +4i \om^{*}\R] \R),
 \end{align*}
 %
+where $\operatorname{Arg}$ is the complex argument function.
 We note that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
 Analytical expression for the dispersion relation in cylinder geometry is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
 As we would like to compare the analytic growth rates with what is found from the simulations, we will use \cref{eq:analyticDisp} in slab coordinates as a comparison.
@@ -243,12 +244,7 @@ From this, we see that the slab approximation becomes better for higher mode num
 \section{Analytical dispersion relation}
 \label{sec:analDisp}
 %
-A visualization of the dispersion in slab geometry is given in \cref{eq:analyticDisp}.
-Here, the value of $\partial_\rho n/n$ is taken from the steady state from the simulations.
-$k_z$ is set to $\pi/L_z$, as  $\lambda_z \simeq 2L_z$, which can be observed in \cref{fig:modeRotation,fig:dominatingMode}.
-In our simulation, this wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
-Note that this wave length is not necessarily unrealistic, and that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
-Finally, in order to correct for $\partial_\rho\phi$ which is absent in the analytical derivation (i.e. with no poloidal $\ve{E}\times\ve{B}$-drift), but present in the simulation, $u_{E,\theta}/\rho_{\max|\partial_\rho n/n|}$ has been added to $\Re(\om)$ in order to correct for this.
+A visualization of the dispersion in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:grAnalytic}.
 %
 \begin{figure}[htb]
     \centering
@@ -258,10 +254,24 @@ Finally, in order to correct for $\partial_\rho\phi$ which is absent in the anal
     \label{fig:grAnalytic}
 \end{figure}
 %
+In the calculations we have taken $\partial_\rho n/n$ from the steady-state.
+We have also corrected for the poloidal $\ve{E}\times\ve{B}$-drift by adding $\frac{u_{E,\theta}}{\rho_{\text{ at }\max|\partial_\rho n/n|}}$ to $\Re(\om)$%
+\footnote{
+    In the analytical derivation $\partial_\rho \phi$ is assumed to be $0$ in order to simplify the derivations.
+    Thus, a correction is needed as this term is non-zero in the simulations.
+}
+%
+.
 
-In \cref{fig:grAnalytic} we can observe that the mode of maximum of the growth rates is increasing with increasing $B$.
-This is also shown in \cref{fig:dominatingMode}, where one can also observe that the parallel node moves downward with decreasing $B$.
-The same trend is observed for the angular frequency in \cref{fig:grAnalytic}, but here the maximum is shifted to one mode number lower as compared to the growth rates.
+Finally, a value for $k_z$ is needed in order to calculate \cref{eq:analyticDisp}.
+By inspecting the perturbations of the simulations, we find that $\lambda_z \simeq 2L_z$ (see for example \cref{fig:modeRotation,fig:dominatingMode}).
+This gives $k_z\simeq\pi/L_z$, which is used in the calculations.
+This wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
+Note that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
+
+In \cref{fig:grAnalytic} we can observe that the mode with the maximum growth rate increases with increasing $B$.
+This is also found in the simulations (see \cref{fig:dominatingMode}).
+For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number with minimum angular frequency is the mode number of maximum growth rate minus $1$.
 %
 {
 % FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
@@ -311,7 +321,7 @@ From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are 
 We can also observe that the angular frequency increases with increasing $B_0$.
 This might come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
 This is true also for \cref{eq:analyticDisp} in the limit of large $\sigma_\|/\om^*$ and small $b$, as pointed out in \cite{Pecseli2016book}.
-However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this limit is not valid in our case, and $\Re(\om)\propto B$ is observed instead.
+However, as shown in \cref{tb:typicalLinValsB,tb:typicalLinVals} this limit is not valid in our case, where $\Re(\om)$ is increasing with $B$.
 %
 \begin{table}[h!]
 {\footnotesize \centerline{
@@ -367,8 +377,8 @@ The angular frequency can be found from
     \Re[\om_n(t)] =
     \frac{1}{T}\sum_{i=0}^{T-1}
     \frac{
-        \atan2\L(\Im[\text{FT}(n[t_{i+1}])], \Re[\text{FT}(n[t_{i+1}])]\R) -
-        \atan2\L(\Im[\text{FT}(n[t_{i}])], \Re[\text{FT}(n[t_{i}])]\R)
+        \operatorname{Arg}\L(\text{FT}(n[t_{i+1}])\R) -
+        \operatorname{Arg}\L(\text{FT}(n[t_{i}])  \R)
     }{\Delta t},
 \end{align*}
 %
@@ -433,9 +443,9 @@ Here, we will investigate how the phase shift varies with the $B$-field.
 As shown in \cite{Pecseli2016book},
 %
 \begin{align}
-    \Psi = \atan2\L(
-    \Im\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R],
+    \Psi = \operatorname{Arg}\L(
     \Re\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
+    +i\Im\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
     \R)
     \label{eq:analPhase}
 \end{align}
@@ -469,7 +479,7 @@ As $S_{n\phi}$ is complex it can be written
 \end{align*}
 %
 where $\mathcal{F}[R_{n\phi}(\tau)]$ denotes the Fourier transformed, and $\Psi$ is the phase angle between $n$ and $\phi$.
-The dominating averaged phase shift will therefore be the $\Psi$ corresponding to the largest $\L|S_{n\phi}(f)\R|$, and can as usual be found by $\Psi = \atan2(\Im[S_{n\phi}], \Re[S_{n\phi}])$.
+The dominating averaged phase shift will therefore be the $\Psi$ corresponding to the largest $\L|S_{n\phi}(f)\R|$, and can as usual be found by $\Psi = \operatorname{Arg}(\Re[S_{n\phi}]+i\Im[S_{n\phi}])$.
 
 In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
 This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).

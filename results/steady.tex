@@ -30,12 +30,18 @@ If the boundary condition on the density is changed to for example Cauchy bounda
 Gradients that steep usually gives rise to numerical instabilities, unless the spatial resolution in this area is increased.
 
 We observe that the potential profile in \cref{fig:parProfs} follows the density profile quite well.
-This is expected because:
+This relation is called the Boltzmann relation%
+\footnote{The Boltzmann relation actually reads $n \simeq C\exp\L(\frac{e\phi}{T_e}\R)$ for a integration constant $C$.
+    Since $1 > \phi\frac{e}{T_e}$ we get the approximate relation $n \simeq C\L(1+\frac{e\phi}{T_e}\R)$ from the Taylor expansion, so $n\propto\phi$.
+}
+%
+and is expected because:
 %
 \begin{enumerate}[noitemsep]
         \item The pressure is balancing the electric field to the first order, as seen in the ordering described in \ref{app:DO}.
         \item We do not restrict the potential by any parallel boundary condition.
 \end{enumerate}
+%
 
 Next, the parallel velocity profiles are mainly arising from the parallel boundary condition.
 Both the ions and electrons are fixed to a zero velocity at the boundary opposite to the sheath.
@@ -68,7 +74,7 @@ The radial profiles are shown in \cref{fig:radProfs}.
 As for the parallel direction, the shape of the radial density profile is determined mainly by the source and the radial boundary conditions.
 The radial extent of the source plays a larger role in determining the radial density profile as compared with the shape of the source.
 
-Despite having almost Boltzmann distributed electrons in the parallel direction at each radial point close to the axis, the Boltzmann distribution not apply in the radial direction.
+Despite having almost Boltzmann distributed electrons in the parallel direction at each radial point close to the axis, the Boltzmann relation does not apply in the radial direction.
 This is because the plasma is confined in the parallel direction by the strong magnetic field.
 Close to $L_\rho$ the radial potential profile is affected more by the fixation potential to $0$ at $L_\rho$.
 Thus, the values here differs from the density profile because of the zero gradient enforcement on $n$ at $L_\rho$.
