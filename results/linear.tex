@@ -241,10 +241,10 @@ This includes discrepancies in the trends for the critical $B$-field needed for 
 These discrepancies arises from how $\rho$ enters the differential operators in cylindrical geometry, and how the wavelength changes due to the curvature of the circle.
 From this, we see that the slab approximation becomes better for higher mode numbers $m_\theta$, as short wave lengths "sees" the curvature less than for long wave lengths.
 
-\section{Analytical dispersion relation}
+\section{Analytical growth rates and angular frequencies}
 \label{sec:analDisp}
 %
-A visualization of the dispersion in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:grAnalytic}.
+A visualization of the growth rates and angular frequencies in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:grAnalytic}.
 %
 \begin{figure}[htb]
     \centering
@@ -356,7 +356,7 @@ Variable & Values in the range $B_0=0.1\to0.02\T$ \\
 %
 \hline
 %
-$\rho_{\max|\partial_\rho n/n|}$ & $\simeq 0.037\m$\\
+$\rho_{\text{ at }\max|\partial_\rho n/n|}$ & $\simeq 0.037\m$\\
 $\partial_\rho n/n$ & $-38 \to - 9\m^{-1}$\\
 $u_{E,\theta}$ & $50-125$\\
 %
@@ -367,9 +367,9 @@ $u_{E,\theta}$ & $50-125$\\
 \label{tb:typicalLinVals}
 \end{table}
 
-\section{Dispersion relation from the simulations}
+\section{Growth rates and angular frequencies from the simulations}
 %
-A dispersion relation like the one found in \cref{sec:analDisp} can also be obtained from the numerical simulations.
+Growth rates and angular frequencies like those found in \cref{sec:analDisp} can also be obtained from the numerical simulations.
 From the individual time traces of the Fourier transformed modes of for example $n$, the growth rates can be extracted from the slope of the logarithm of the absolute value of the Fourier modes in the linear phase.
 The angular frequency can be found from
 %
@@ -389,8 +389,8 @@ The time trace of the $7$ first modes is depicted in \cref{fig:fourierUnstable}.
 \begin{figure}[h!]
     \centering
     \includegraphics{fig/results/fourierModes/unstable}
-    \label{fig:fourierUnstable}
     \caption{Growth rate leading to saturated turbulence for $B=0.1\T$.}
+    \label{fig:fourierUnstable}
 \end{figure}
 %
 As the ordinate in \cref{fig:fourierUnstable} is logarithmic, exponential grow will appear as straight lines.
@@ -403,8 +403,8 @@ One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02
     \caption{For $B=0.02\T$ the system is stable against perturbation.}
 \end{figure}
 %
-This can be explained by the viscosities, which is present in our model, but not accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
-The dispersion obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
+This can be explained by the viscosities, which is present in our model, but not been accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
+The growth rates and angular frequencies obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
 %
 \begin{figure}[htb]
         \centering
@@ -440,7 +440,7 @@ It can also be observed that the angular frequency matches better for higher mod
 As explained in \ref{sec:simpleLin}, the instability requires a certain phase shift between $\phi$ and $n$ in order for the instability to occur.
 Here, we will investigate how the phase shift varies with the $B$-field.
 
-As shown in \cite{Pecseli2016book},
+As shown from the linear analysis in \cite{Pecseli2016book},
 %
 \begin{align}
     \Psi = \operatorname{Arg}\L(
@@ -500,7 +500,7 @@ Apart from $B=0.02\T$ which were damped for all modes in the simulations, but ha
 \section{Conclusion of the findings in the linear phase}
 %
 We will now summarize our findings in the linear phase and draw some conclusions from this.
-In order to distinguish the drift wave instability from for example the Kelvin Helmholtz instability (which shares many of the same characteristics with the drift wave instability), the points in the following list must be fulfilled \cite{Jassby1972,Hendel1968}:
+In order to distinguish the drift wave instability from for example the Kelvin Helmholtz instability (which shares many of the same characteristics with the drift wave instability in terms of the dispersion relation), the points in the following list must be fulfilled \cite{Jassby1972,Hendel1968}:
 %
 \begin{enumerate}[noitemsep]
     \item $\wt{n}/n$ peaks approximately at the position of the absolute maximum of the density.

@@ -1,11 +1,12 @@
 \section{Fluxes}
 \label{sec:fluxes}
 %
-In order to investigate the turbulent particle flux, we first note that the density flux in a single point tells us little about the particle flux out of the system.
-Potentially a positive flux the specified point could be outbalanced by a negative outflux in another point.
-We will therefore integrate the perpendicular density flux over a surface $\mathcal{S}$, which gives us the particle flux with units (particles) $s^{-1}$.
-It would seem that letting $\mathcal{S}$ be the simulation domain would make sense.
-However, as we have enforce $\phi=0$ at $\rho=L_\rho$, $u_{E,\rho}=0$ as $\partial_\theta \phi=0$ (see \cref{poi:cylExB}).
+The density flux (particles $\m^{-2}\s^{-1}$) in one point, such as the ones presented in \cref{fig:combinedPlots008}, tells us little about the total flux of particles out of the system.
+For example can a positive outflux in the point under consideration could be outbalanced by a negative outflux in another point.
+
+We will therefore integrate the density flux over a surface $\mathcal{S}$, which gives us the particle flux (particles per seconds).
+Na{\"i}vely, one could think that using the simulation domain as $\mathcal{S}$ would make sense.
+However, as we have enforced $\phi=0$ at $\rho=L_\rho$, $u_{E,\rho}=0$ as $\partial_\theta \phi=0$ (see \cref{poi:cylExB}).
 As a side note, we note that very little plasma cannot escape the simulation domain radially as $\phi=0$, and because the Neumann condition on the density at the outer radius gives a diffusion of $\partial_\rho^2 n \simeq 0$.
 Hence almost all the plasma escapes in the parallel direction.
 
@@ -25,7 +26,5 @@ From that point in time the radial flux comes burst-wise throughout the simulati
 
 Although the particles are not escaping the domain in the perpendicular direction, the total perpendicular particle flux (i.e. the particle flux integrated over time) through $\mathcal{S}$
 is approximately $10\%$ of the parallel flux out of the domain.
-
-Finally, we mention that we are not solving $u_{i,\|}$ and $u_{e,\|}$ in time, but rather $j_{\|}$ and $nu_{i,\|}$.
-Despite of this, we can see that there almost as many ions as electrons are lost in the parallel direction (up to $99\%$).
-Physically, this means that the plasma is charging up very little over time, and the that quasi-neutrality holds.
+We can also observe that there almost as many ions as electrons are lost in the parallel direction ($99\%$).
+Physically, this means that the plasma is charging up very little over time, and that the quasi-neutrality assumtion is not broken.

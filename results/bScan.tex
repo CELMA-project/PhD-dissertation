@@ -1,14 +1,22 @@
 %
 We will here investigate how our results scales with $B$.
-The comparison of the profiles in the steady state will be given together with the results from the saturated turbulent phase.
-The comparison of the linear phase is already given in \cref{chap:linear}.
+In \cref{chap:linear} we saw how the linear growth rates depends on $B$, and we would to further investigate the $B$-dependency of the system by comparing the profiles in the steady state for various $B$ and by comparing the results from the saturated turbulent phase.
 
-Notice that only $B_0 = 0.06\T \to 0.1\T$ reaches the steady state as $B_0 = 0.02$ is stable against the perturbation and $B_0 = 0.04$ has a very slow growth rate.
+This is motivated by the experimental findings in linear machines, where one has observed a gradual onset of the turbulence with more and more modes interacting with an increasing $B$-field \cite{Klinger1997,Klinger1997a,Burin2005}.
+The onset in form of singular modes has not been observed in the simulations.
+Instead, a threshold $B_0$ is found for the onset of turbulence (see \cref{fig:grB}).
+Therefore, only $B_0 = 0.06\T \to 0.1\T$ reaches the saturated turbulent state in the simulations.
+The simulations with $B_0 = 0.02\T$ is stable against the perturbation, and the simulations with $B_0 = 0.04\T$ has a very slow growth rate%
+\footnote{It is expected that $B_0=0.04\T$ eventually will reach the saturated turbulent state as the growth rate is positive.
+    However, as the maximum growth rate of $B_0=0.04\T$ is about one tenth of the maximum growth rate of $B_0=0.06\T$, the simulations would be need to be run approximately ten times longer in order to reach the saturated turbulent state.
+}
+%
+.
+This is in qualitative agreement with what is observed in \cite{Burin2005}.
 
-Notice that $B_0$ does not appear directly in the normalized equations.
-By looking at \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, we can see that that the normalization $B$ can always be chosen to be $1$.
+Finally, note that the normalizing $B$ in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} can always be chosen to be $1$.
 However, $B$ appears in the set of equations through $\om_{ci}$, which means that it effectively sets the time step (in real variables) through $\breve{t}=t\om_{ci}^{-1}$.
-This in turn affects the $\rho_s$ (as $\rho_s=\frac{c_s}{\om_{ci}}$), and thus the normalized domain size.
+This in turn affects the $\rho_s$ (as $\rho_s=c_s/\om_{ci}$), and thus the normalized domain size.
 
 \section{The steady state profiles}
 \label{sec:BScanSS}
@@ -43,7 +51,7 @@ This has the consequence that the vorticity gets higher for increasing $B$.
 From this, we will give an explanation for the observed increase in $n$ for increasing $B$ here.
 As mentioned in \cref{sec:fluxes}, almost no plasma can leave the domain in the perpendicular direction due to the boundary condition $\L.\phi\R|_{L_\rho}=0$ and shallow parallel second derivatives.
 Hence, we must mechanisms in which the plasma can leave the domain in the parallel direction.
-We note that the in the parallel momentum equation, the right hand sides equals to first order $-T_i \grad_\| n + q_\a \grad_\| \phi$.
+We note that the in the parallel momentum equation, the right hand sides equals to first order $-T_i \grad_\| n + n_\a q_\a \grad_\| \phi$.
 As the parallel gradients increases for increasing $B$ field, the pressure cannot account for the increased parallel outflux.
 On the other hand, the potential term can account for at least part of the increased parallel outflux.
 As the sign of this term depends on the species types, there will be less difference in this term for lower values of $B$, and since the system seeks a steady state the ions will slow the electron flux less.

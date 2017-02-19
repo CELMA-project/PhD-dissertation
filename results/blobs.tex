@@ -13,6 +13,9 @@ In this definition, a blob is a structure which satisfies the following properti
     \end{enumerate}
 \end{quote}
 %
+Usually, the blobs observed in tokamaks are driven by magnetic field inhomogenities through the so-called grad-$B$ drift.
+This drift is causing a polarization, and the polarization are driving the blobs outwards through the $\ve{E}\times\ve{B}$ drift.
+The blobs in tokamaks are therefore self-propelled, and does not depend on local gradients of the plasma \cite{Krasheninnikov2008}.
 
 \subsection{The conditionally averaging technique}
 %
@@ -42,7 +45,7 @@ The time trace of the radial flux, together with three different conditions are 
         \includegraphics{fig/results/blobs/blobFluxTimeTrace_B0_008Tweak}
     \end{center}
     \caption{
-        Time trace of the flux.
+        Time trace of the flux for $B=0.08\T$.
         The trigger conditions for $2\sigma$, $3\sigma$ and $4\sigma$ is indicated on the figure, and the number of events found are indicated in the legend.
     }
     \label{fig:blobFluxTT}
@@ -55,20 +58,20 @@ Is apparent that the trigger signal is highly intermittent, as seen from the PDF
         \includegraphics{fig/results/blobs/blobFluxPDF_B0_008Tweak}
     \end{center}
     \caption{
-        The PDF of the radial flux from \cref{fig:blobFluxTT}, where $S$ indicates the skewness and $K$ the excess kurtosis.
+        The PDF of the radial flux from \cref{fig:blobFluxTT} ($B=0.08\T$), where $S$ indicates the skewness and $K$ the excess kurtosis.
     }
     \label{fig:blobFluxPDF}
 \end{figure}
 %
-Figure \cref{fig:blobDensPDF} shows the PDF for the density signal at the same position.
-We can observe that it is not as intermittent with a skewness around $1$ and an excess kurtosis of about $1.5$.
+\Cref{fig:blobDensPDF} shows the PDF for the density signal at the same position.
+We can observe that the density signal with its skewness around $1$ and an excess kurtosis of about $1.5$ is not as intermittent as the radial flux.
 %
 \begin{figure}[htb]
     \begin{center}
         \includegraphics{fig/results/blobs/blobDensPDF_B0_008Tweak}
     \end{center}
     \caption{
-        The PDF of the density, measured in the same point as \cref{fig:blobFluxPDF}.
+        The PDF of the density, measured in the same point as \cref{fig:blobFluxPDF} ($B=0.08\T$).
         $S$ indicates the skewness and $K$ the excess kurtosis.
     }
     \label{fig:blobDensPDF}

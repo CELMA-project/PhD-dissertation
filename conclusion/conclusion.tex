@@ -93,3 +93,7 @@ As long as the metric is orthogonal, the Naulin Solver can still be used to inve
 The parallel sheath boundary condition would need to be changed if the magnetic field enters the sheath entrance with an angle.
 Effects of magnetic shear and curvature can be studied.
 For the BOUT++ operators, changement of the metric can easily be done by either changing the metric tensor, or by using the Flux Coordinate Indepentent scheme for the parallel direction.
+
+From a numerical point of view, the code has a potential to be speed-up with means not investigated in the work done here.
+A different configuration of the adaptive step-size controller of the time solver may be speed up the simulations.
+Preconditioning of the system is also desirable as even a very approximate preconditioner is expected to speed-up the simulations.
