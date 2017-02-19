@@ -1,5 +1,5 @@
 The steady state is achieved as described in \cref{sec:initRun}.
-We will in this section discuss the shape of the resulting profiles, and the physics behind their shapes.
+We will in this section discuss the shape of the resulting profiles, and the physics leading to these.
 
 \section{Parallel profiles}
 \label{sec:parProf}
@@ -16,14 +16,15 @@ The resulting parallel profiles for the steady state are shown in \cref{fig:parP
 %
 It is found that the shape of these profiles are mainly determined by the source and the boundary condition at the sheath entrance.
 
-If we change the source amplitude, the values of the profiles changes, but the shape remain relatively constant.
+If we change the source amplitude, the values of the profiles changes, but the shape remains relatively constant.
 There exists a threshold on the source amplitude for the filling of the plasma cylinder.
-For source amplitudes under this threshold it is observed that the cylinder is "emptied" for plasma.
+For source amplitudes under this threshold the cylinder is "emptied" for plasma.
 That is: The density remains low for all time steps, and no density profile builds up.
 There also exists an upper limit on the source amplitude.
-Above this threshold, the radial density profiles are not developing, and the plasma is emptied only in the parallel direction.
-In between these two extremes, the parallel extent of the source determines the filling.
-That is: The parallel shape of the density is determined by the parallel extent of the source, and not so much by the shape of the source itself.
+Above this threshold, the radial density profiles are not developing, and the radial profiles remains flat.
+These thresholds are determined by the balance between number of particles created (the volume integrated source) and the particle outflow of the domain (the density flux integrated over the domain surface).
+Inbetween these two extremes, the parallel extent of the source determines the filling.
+That is: The parallel shape of the density is determined by the parallel extent of the source, and not so much by the shape of the source itself (i.e. if it is shaped as a sinusoid or if it is flat).
 
 As mentioned above, also the boundary condition at the sheath entrance is critical for the parallel shape of the plasma profiles.
 If the boundary condition on the density is changed to for example Cauchy boundary condition (described in \cref{sec:BCatSE}), it is observed that the shape of the steady state profiles becomes much steeper close to the sheath entrance.

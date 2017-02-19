@@ -91,6 +91,48 @@
 
 \pagenumbering{arabic}
 
+% FIXME
+\part{Numerical simulations}
+\label{part:results}
+\chapter{Simulation set up}
+\label{chap:setup}
+\input{results/setUp}
+\chapter{The steady state}
+\label{chap:ss}
+\input{results/steady}
+\chapter{The linear phase}
+\label{chap:linear}
+\input{results/linear}
+\chapter{The turblent phase}
+\label{chap:satTurb}
+\input{results/turbulence}
+\chapter{Characteristics of the turbulent fluctuations}
+\label{chap:charTurb}
+\input{results/fluctuations}
+\input{results/fluxes}
+\input{results/blobs}
+\chapter{Zonal flows}
+\label{chap:zonal}
+FIXME: Zonal flow chapter needs editing
+\input{results/zonalFlows}
+\chapter{B-field scan}
+\label{chap:BFScan}
+\input{results/bScan}
+\chapter{Comparison with the Boussinesq approximation}
+\label{chap:compBouss}
+\input{results/boussinesq}
+\chapter{Neutral scan}
+\label{chap:neutScan}
+\input{results/neutralScan}
+
+\part{Bibliography}
+\bibliographystyle{ieeetr}
+\bibliography{bib/library,bib/nonArticles}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\end{document}
+% FIXME
+
 \chapter{Introduction}
 \label{chap:intro}
 \input{intro/introduction}

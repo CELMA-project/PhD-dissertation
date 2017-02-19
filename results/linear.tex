@@ -2,14 +2,14 @@
 We will here investigate the linear behavior of our system.
 In the end we will conclude that the behavior coincides with what is found from simplified linear theory of the system.
 
-After perturbing the system as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
-It has not been observed that the system reaches the linear phase unless perturbed%
-\footnote{This could in principle happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.}%
+After perturbing the system%
+\footnote{It has not been observed that the system reaches the linear phase unless perturbed.
+    This could in theory happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.}
 %
-.
+as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
 Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
 As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
-In other words mode, coupling between different modes are negligible.
+In other words mode coupling between different modes are negligible.
 Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
 As our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficiently big.
 The mix of linear and non-linear growth will eventually reach a saturated turbulence treated, which will be treated in \cref{chap:satTurb}.
@@ -113,7 +113,7 @@ To verify if the linear phase can be identified as drift waves, we will proceed 
 \label{sec:simpleLin}
 %
 Conceptually, a drift wave is a wave which travels in the electron diamagnetic direction, and arises due to the mass difference between electrons and ions.
-If one introduce a density (or pressure) perturbation in a homogeneous, magnetized plasma in a slab, the  electrons will stream out of the perturbation along the magnetic field lines at a much faster rate than ions due to their higher mobility.
+If one introduces a density (or pressure) perturbation in a homogeneous, magnetized plasma in a slab, the  electrons will stream out of the perturbation along the magnetic field lines at a much faster rate than ions due to their higher mobility.
 This gives rise to a $\ve{E}$-field perturbation pointing in the direction of the electrons.
 The $\ve{E}$-field gives in turn rise to a $\ve{E}\times\ve{B}$-drift perpendicular to the magnetic field.
 This process is depicted in \cref{fig:DW}.
@@ -123,7 +123,7 @@ This process is depicted in \cref{fig:DW}.
     \includegraphics{fig/driftwave}
     \caption{
         Sketch of a drift wave in a slab.
-        The $\ve{E}\times\ve{B}$ arrows indicates the position of the maximum $\ve{E}\times\ve{B}$-drift.
+        The arrows labelled with $\ve{E}\times\ve{B}$ indicate the position of the maximum $\ve{E}\times\ve{B}$-drift.
         Taken from \cite{Stroth2011book}.
     }
     \label{fig:DW}
@@ -155,7 +155,7 @@ The derivation in \cite{Pecseli2016book} is done by considering a magnetized pla
 %
 The electron and ion momentum equations are linearized together with the electron and ion continuity equations.
 No background electric field is assumed.
-Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \L(i\Im[\om] + \Re[\om]\R) t]\R)$, where $A \in \{n, u_e, \phi\}$.
+Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \om t]\R)$, where $A \in \{n, u_e, \phi\}$, the wavenumbers $k$ are real, and the angular frequency $\om$ is complex.
 One can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes the perturbation to move along $y$ as the inverse wavelength $k_y$ stays constant.
 After solving the system algebraically, one arrives at the equation
 %
