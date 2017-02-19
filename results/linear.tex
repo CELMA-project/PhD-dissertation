@@ -157,7 +157,7 @@ The electron and ion momentum equations are linearized together with the electro
 No background electric field is assumed.
 Perturbation of $n$, $u_e$ and $\phi$ are assumed to be on the form $A\exp\L(i[k_x x + k_y y - \om t]\R)$, where $A \in \{n, u_e, \phi\}$, the wavenumbers $k$ are real, and the angular frequency $\om$ is complex.
 One can assure oneself that positive $\Im(\om)$ causes exponential growth for increasing $t$, and a positive $\Re(\om)$ causes the perturbation to move along $y$ as the inverse wavelength $k_y$ stays constant.
-After solving the system algebraically, one arrives at the equation
+After simplifying the system algebraically, one arrives at the equation
 %
 \begin{align}
     \partial_x^2 \phi(x) +
@@ -192,11 +192,11 @@ This is essentially is a statement that the perturbations are infinite long in t
 The final analytic dispersion relation now reads
 %
 \begin{align}
-    \om^2+i\sigma_\|\L(\om\L[1+b\R]-\om^*\R) = 0,
+    \om^2+i\sigma_\|\L(\om\L[1+b\R]-\om^*\R) = 0.
     \label{eq:analyticDisp}
 \end{align}
 %
-where the following solution gives the maximum growth rate
+\Cref{eq:analyticDisp} gives two solutions, where the solutions with the greatest growth rates can be written
 %
 \begin{align*}
     \Im(\om) =& - \frac{b \sigma}{2}
@@ -217,7 +217,7 @@ where the following solution gives the maximum growth rate
 \end{align*}
 %
 where $\operatorname{Arg}$ is the complex argument function.
-We note that the maximum growth (the highest positive $\Im(\om)$) in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
+We note that the maximum growth in \cref{eq:grIm} is obtained where $\om^{*}$ has a maximum, which corresponds to the position of the minimum in $\partial_x n/n$.
 Analytical expression for the dispersion relation in cylinder geometry is not easy obtainable as a Fourier decomposition in the radial direction will not make sense due to the lack of periodicity in $\rho$. Despite this, analytic expression can still be obtainable by decomposition into Bessel functions, as done in a similar system in \cite{Rasmussen2006a}.
 As we would like to compare the analytic growth rates with what is found from the simulations, we will use \cref{eq:analyticDisp} in slab coordinates as a comparison.
 In slab coordinates we let
@@ -269,7 +269,7 @@ This gives $k_z\simeq\pi/L_z$, which is used in the calculations.
 This wavelength is a consequence of the Neumann boundary condition on the density in both ends of the cylinder.
 Note that $k_z$ may be much larger than the machine length as explained in \cite{Chen1965}.
 
-In \cref{fig:grAnalytic} we can observe that the mode with the maximum growth rate increases with increasing $B$.
+In \cref{fig:grAnalytic} we can observe that the modes with maximum growth increase with increasing $B$.
 This is also found in the simulations (see \cref{fig:dominatingMode}).
 For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number with minimum angular frequency is the mode number of maximum growth rate minus $1$.
 %
@@ -443,10 +443,7 @@ Here, we will investigate how the phase shift varies with the $B$-field.
 As shown from the linear analysis in \cite{Pecseli2016book},
 %
 \begin{align}
-    \Psi = \operatorname{Arg}\L(
-    \Re\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
-    +i\Im\L[\frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|}\R]
-    \R)
+    \Psi = \operatorname{Arg}\L( \frac{\om^*+ib\sigma_\|}{\om+ib\sigma_\|} \R)
     \label{eq:analPhase}
 \end{align}
 %
@@ -514,5 +511,5 @@ These figures also indicate that point 2 is fulfilled.
 Point 3 is fulfilled, with exception for $B_0=0.02\T$, as shown in \cref{fig:modeRotation,fig:grB,fig:grBModeNr}.
 Finally, one can observe that point 4 is observed in \cref{fig:phaseShift}.
 
-From this we conclude that the instability under investigation most probably is a drift wave instability.
+From this we conclude that the instability under investigation is the drift wave instability.
 The same conclusion has been reached for in VINETA in \cite{Schroder2005}.

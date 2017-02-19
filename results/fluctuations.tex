@@ -1,10 +1,9 @@
 We will in this chapter characterize the fluctuations.
 
-As seen in \cref{fig:2DFluct}, the fluctuations can be quite strong.
-% FIXME: Quantify how strong!
-This is something which has also been observed experimentally in for example \cite{Burin2005}.
-To get a better feeling of how strong the fluctuations are, we can compare the steady state profiles with the turbulent profiles.
-The two topmost plots in \cref{fig:posOfFluct01} gives such a comparison.
+Fluctuation levels around $20\%$ of $n_0$ are normal in the saturated turbulence state (see \cref{fig:2DFluct}).
+Strong fluctuation levels has also been observed experimentally (see for example reference \cite{Burin2005}).
+The strong fluctuation levels gives rise to a flattening of the radial profiles.
+This is depicted in the two top-most plots in \cref{fig:posOfFluct01}, where the radial density profile in the steady state is compared with the poloidally and time averaged radial profiles in the turbulent state.
 %
 \begin{figure}[h!]
     \begin{center}
@@ -18,8 +17,8 @@ The two topmost plots in \cref{fig:posOfFluct01} gives such a comparison.
     \label{fig:posOfFluct01}
 \end{figure}
 %
-Other than noting that the amplitude of the fluctuations are the largest around the maximum gradient, we observe that the radial background profiles gets flattened by the turbulence.
-This is an important feature which need to be considered when modeling the plasma.
+In the two bottom-most plots we can see that the largest fluctuations are found around the maximum gradient.
+The flattening of the profiles is an important feature which need to be considered when modeling the plasma.
 
 In models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007}, the fluctuations are separated from the mean (a so-called Reynolds decomposition).
 The model only evolves the fluctuation in time, whilst keeping the mean fixed as a static background.
@@ -49,7 +48,7 @@ Again, we can observe that the fluctuations are large in amplitude, and increasi
 The power spectra density (PSD) shows that several frequencies are present simultaneously, and that the system is more turbulent at the edge (this is further emphasized in \cref{fig:skewKurt008}).
 This behavior is captured by the probability density functions (PDF), which measures the chance to encounter a value within an infinitesimal range, if a value at a random time is withdrawn from the time trace.
 If the fluctuations are normal distributed, the PDF will have a Gaussian shape.
-Deviations from the Gaussian shape is usually measured by the statistical moments skewness $S$%
+Deviations from the Gaussian shape is usually measured by the statistical moments skewness%
 %
 \footnote{
     The skewness is a measure of the mass of the distribution.
@@ -57,7 +56,7 @@ Deviations from the Gaussian shape is usually measured by the statistical moment
     For a pure Gaussian the skewness is 0.
 }
 %
-and kurtosis $K$
+$S$ and kurtosis%
 %
 \footnote{
     The kurtosis is a measure of extreme events present in the distribution.
@@ -66,7 +65,7 @@ and kurtosis $K$
     If the kurtosis is greater than 3 (leptokurtic) there are more extreme outliners, and the tails approaches zero slower than a Gaussian.
 }
 %
-defined as
+$K$ defined as
 %
 \begin{align*}
     &S=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^3\R]&
@@ -74,9 +73,9 @@ defined as
 \end{align*}
 %
 where $E$ denotes the expectation value operator, $\mu_X$ the mean of $X$, and $\sigma_X$ the standard deviation%
-\footnote{We are assuming that the tail of the distribution are approaching fast enough to $0$ in order for the moments to be defined.}
+\footnote{We are assuming that the tail of the distribution are approaching fast enough to $0$ in order for the moments to be defined.}%
 .
-Figure \cref{fig:skewKurt008} highlights how this varies with the radius.
+\Cref{fig:skewKurt008} highlights how this varies with the radius.
 %
 \begin{figure}[htb]
     \centering
@@ -87,11 +86,12 @@ Figure \cref{fig:skewKurt008} highlights how this varies with the radius.
 %
 
 One can see that close to the center, it is more probable to encounter a negative fluctuation than a positive fluctuation.
-Then, for higher radii, large positive fluctuations becomes more and more frequent.
+Then, for higher radii, large positive fluctuations become more and more frequent.
 From the excess kurtosis, we can see that extreme events are less likely than in a Gaussian random process, whereas extreme events are almost twice as likely in the edge as in a Gaussian random process.
+% FIXME: vona would like a the JET Xu reference here
 
 We will proceed by investigating two of our observations further.
-First, from our phenomenological discussion in \cref{sec:simpleLin} (which is shown mathematically in for example in \cite{Garcia2001a}), a large positive fluctuations in the density is not enough to give a positive flux.
+First, from our phenomenological discussion in \cref{sec:simpleLin}, a large positive fluctuation in the density is not enough to give a positive flux (shown mathematically in \cite{Garcia2001a}).
 A flux is only obtained when there is a phase shift between the density and the potential.
 Therefore, we would like to investigate the turbulent flux particle in the next section.
 After that, we will investigate the intermittency of the signal, and search for blobs and holes.
