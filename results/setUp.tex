@@ -12,7 +12,7 @@ Note that the plasma radius is much less than the radius of the cylinder chassis
 These parameters can be tranlated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
 We will use $T_{e,0} = 2.5\eV$, the mass of singly ionized Argon as $m_i$, and let $B_0$ vary between $0.02$ and $0.1 \T$.
 This sets the ion sound speed to $c_s \approx 2.46\; \text{km s}^{-1}$.
-The ions cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, i.e. $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
+Fruther, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
 Consequently, as we print the output to the files after every $t\om_{ci}$ %
 \footnote{Note that the internal timestep from the adaptive time solver is usually much smaller.}%
 %
@@ -69,7 +69,7 @@ The numbers are summarized in \cref{tb:input,tb:inputVar}.
 \section{Initial conditions and source specification}
 \label{sec:initRun}
 %
-The coupled set of PDE's in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} forms a  initial-boundary value problem.
+The coupled set of PDE's in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} forms an initial-boundary value problem.
 The boundary conditions of this problem was given in \cref{sec:BCs}, but we have yet to define the initial conditions.
 
 In the work presented here, we will use the following initial conditions of the normalized evolved quantities%
@@ -116,13 +116,13 @@ The arguments of $H$ are summarized in \cref{tb:source}, and $S$ is depicted in 
 
 One could argue that the source should be increased close to the SE due to recycling at the end plate,
 The proper shape of the source can only be properly be accounted for if atomic physics and eventual electromagnetic waves generating the plasma is taken into account.
-Therefore a flat parallel profile chosen for simplicity.
+Therefore, a flat parallel profile chosen for simplicity.
 
 \section{Resolution}
 \label{sec:resolution}
 %
 In order to have a properly resolved grid, we need to properly resolve the gradient length scales.
-From the point of computational time, a small number of grid points is preferable.
+From the point of computational time, few grid points is preferable.
 If we assume that the maximum gradient length scale from the model is around $\rho_s$, we should have $\frac{n_\rho}{L_\rho/\rho_s}>1$.
 However, we have in this work found that $\frac{n_\rho}{L_\rho/\rho_s}\approx1$ can give simulation crashes, so a radial resolution of $\frac{n_\rho}{L_\rho/\rho_s}\approx3$ is aimed.
 The same argument goes for the poloidal direction, where $L_\theta=2\pi L_\rho$.
@@ -130,7 +130,7 @@ The same argument goes for the poloidal direction, where $L_\theta=2\pi L_\rho$.
 As mentioned in \cref{chap:drift-order} the resolution in the parallel direction can be less since longer gradient scale lengths are found in the parallel direction as a consequence of the separation of scales.
 The sheath sets the gradient scale length in the parallel direction, as will be explained in \cref{sec:parProf}.
 Despite that the gradient scale sets a lower constraint on $n_z$, a see-sawing pattern is observed in simulations with a flow towards an end-plate for low $n_z$.
-This problem has been observed in other plasma fluid codes dealing with sheath boundaries, but has to the authors best knowledge not been published.
+This problem has been observed in other plasma fluid codes dealing with sheath boundaries, but has to this author's best knowledge not been published.
 For the work presented here, the problem is encountered for $j_\|$ as is illustrated in \cref{fig:see-saw}%
 \footnote{It should be noted that running the simulations with odd number of points show similar behavior to what is presented in \cref{fig:see-saw}.}%
 %
@@ -160,8 +160,8 @@ To get a better understanding of this behavior, the different terms in \cref{eq:
 %
 It is clear that the steady state is dominated by a balance between the Boltzmann response of the electrons and resistive terms.
 This is also seen for lower $n_z$, albeit with stronger oscillations in the Boltzmann response and the resistive term for decreasing $n_z$.
-As the resistive term is $\propto j_\|$ it cannot be the cause of the observed see-sawing.
-Thus we can conclude that the see-sawing behavior comes from the difference between the logarithm of the density and the potential.
+The resistive term is $\propto j_\|$, and can therefore not be the cause of the observed see-sawing.
+Thus, we can conclude that the see-sawing behavior comes from the difference between the logarithm of the density and the potential.
 
 One could imagine that the see-sawing came from catastrophic cancellation between $\ln(n)$ and $\phi$.
 If this was the case, the see-sawing would be even worse for an increased mass ratio $\mu$.
@@ -183,13 +183,13 @@ We can now observe that
     = \frac{n_z\sqrt{T_em_i}}{L_z ZeB},
 \end{align*}
 %
-i. e. it is proportional with $m_i$.
+i.e. it is proportional with $m_i$.
 On this argument, running simulations with singly ionized $\text{Ar}$ gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ as compared with $\text{H}$.
 That increased oscillations has been observed with simulations done with increasing $B$ and $L_z$ strengthens the hypothesis as $f\propto 1/BL_z$.
 
 To keep the oscillations at a minimum, we require $f > 0.2$ in the simulations performed here, which sets a lower bound on $n_z$
 Ideally, we would like to reduce the number of parallel points to speed up the simulations.
-Therefore some alternative strategies to lower the grid-size oscillation is discussed in the following.
+Therefore, some alternative strategies to lower the grid-size oscillation is discussed in the following.
 
 Increased artificial viscosity will alleviate the problem.
 Unfortunately, it is found that the artificial viscosity coefficients needed for a smooth $j_\|$ makes the artificial viscosity term dominate, such that the steady state is defined by a balance between the Boltzmann terms, the resistive term and the artificial terms.
@@ -252,7 +252,7 @@ Secondly, the simulation is expanded to $n_\theta = 256$, and runned for additio
 
 Thirdly a white noise perturbation with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
 \footnote{Different approaches has been used for the perturbation.
-    It should be noted that some of these gives a different route to the turbulent state (i.e. some perturbations dies out, while others have some intermediate non-linear steps before the linear growth rates), but gives (with very little difference) the same growth rates and the same statistical behavior of the saturated turbulence as the perturbation method stated.}
+    It should be noted that some of these gives a different route to the turbulent state (i.e. some of the perturbations dies out, while others have some intermediate non-linear steps before the linear growth rates), but gives (with very little difference) the same growth rates and the same statistical behavior of the saturated turbulence as the perturbation method stated.}
 %
 as this term is driving the non-linear advections through $\phi$.
 

@@ -8,7 +8,7 @@ We will therefore integrate the density flux over a surface $\mathcal{S}$, which
 Na{\"i}vely, one could think that using the simulation domain as $\mathcal{S}$ would make sense.
 However, as we have enforced $\phi=0$ at $\rho=L_\rho$, $u_{E,\rho}=0$ as $\partial_\theta \phi=0$ (see \cref{poi:cylExB}).
 As a side note, we note that very little plasma cannot escape the simulation domain radially as $\phi=0$, and because the Neumann condition on the density at the outer radius gives a diffusion of $\partial_\rho^2 n \simeq 0$.
-Hence almost all the plasma escapes in the parallel direction.
+Hence, almost all the plasma escapes in the parallel direction.
 
 As we would like to investigate the radial turbulent particle flux, we therefore set the radius of $\mathcal{S}$ to be away from the region where $\phi=0$ enforcement starts, but still outside the main part of the particle source.
 The result is shown in \cref{fig:flux0008}, and gives a comparison to the parallel density flux out of the simulation domain.
@@ -21,7 +21,7 @@ The result is shown in \cref{fig:flux0008}, and gives a comparison to the parall
 \end{figure}
 %
 In the linear phase after $0.02\s$, the radial flux is almost zero due to the small amplitudes of the fluctuations in potential and density.
-An overshoot just like the one seen in \cref{fig:energyTrace008} follows the linear phase.
+An overshoot in the energy, just like the one seen in \cref{fig:energyTrace008}, follows the linear phase.
 From that point in time the radial flux comes burst-wise throughout the simulation.
 
 Although the particles are not escaping the domain in the perpendicular direction, the total perpendicular particle flux (i.e. the particle flux integrated over time) through $\mathcal{S}$

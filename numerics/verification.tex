@@ -1,5 +1,5 @@
 In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure that the assumptions in our models are sound.
-As important is it to check that the machinery handling the numerical calculation is correctly implemented.
+It is of equal importantce to check that the machinery handling the numerical calculation is correctly implemented.
 This can be done by code verification.
 
 Quoting \cite{Dudson2016}
@@ -17,7 +17,7 @@ If the code has successfully passed a validation test, but fails a verification 
 The success of the validation in this case could have been a mere coincident.
 
 The verification process is thoroughly discussed in \cite{Oberkampf2010book} and more condensed for the method of manufactured solution (MMS) in \cite{Salari}.
-Note that the verification process can be time consuming, and can be regarded as an art form in itself.
+Note that the verification process can be time-consuming, and can be regarded as an art form in itself.
 Luckily, a major part of the implementation has already been verified in the BOUT++ framework using MMS in \cite{Dudson2016}.
 
 After a quick introduction of the concept of truncation errors, the MMS process will be briefly presented in \cref{sec:MMS} before verification of additional implementations in the CELMA code is given in \cref{sec:MES}.
@@ -101,7 +101,7 @@ If there are no mixed spatial and temporal variables, we can write the set of no
 %
 where $F(\cdot)$ is a nonlinear operator which contains the discretized spatial differential operators.
 As stated above, we do not know a priori which $\ve{f}$ which satisfies \cref{ver:setOfPDE}.
-Therefore we manufacture a set of functions $\ve{f}_M$ which does not satisfy \cref{ver:setOfPDE}, but rather
+Therefore, we manufacture a set of functions $\ve{f}_M$ which does not satisfy \cref{ver:setOfPDE}, but rather
 %
 \begin{align*}
     \parti{\ve{f}_M}{t} - F(\ve{f}_M) = \ve{S}.
@@ -121,7 +121,7 @@ Note that $\ve{f}_M$ and the coefficients in the various terms in the PDEs does 
 \section{Method of Exact Solution}
 \label{sec:MES}
 %
-Since there are implementations in this thesis which are not covered by the BOUT++ framework (see \cref{chap:additionalImplementation} for details), these implementation should be verified as well.
+Since there are implementations in this thesis which are not covered by the BOUT++ framework (see \cref{chap:additionalImplementation} for details), these implementations should be verified as well.
 All of these implementations are either differentiation operators, extrapolations or integration operators where an exact analytic solution can be found.
 Hence, one can use the approach of method of exact solutions (MES) to verify these operations, and there will be no need for manufacturing a solution.
 
@@ -320,7 +320,7 @@ for $n$%
 .
 The results are given in \cref{tb:MESResults}.
 We note that the method seems to be non converging for when increasing the number of points in $\theta$.
-However, since we are using an spectral discretization in the $\theta$-direction, the error drops rapidly.
+However, since we are using a spectral discretization in the $\theta$-direction, the error drops rapidly.
 As a result, the error arising from discretization in $\rho$ quickly becomes dominant even with high resolution in the $\rho$ direction.
 Hence, we conclude that the method is convergent.
 
@@ -362,13 +362,13 @@ Instead, we will use the function
 \end{align*}
 %
 Note that since the Arakawa implementation does use Fourier discretization, there is no problem that this function contains a sum of in $\theta$.
-Thus we do not get the advantages of the spectral convergence rate.
+Thus, we do not get the advantages of the spectral convergence rate.
 However, the errors in the $\rho$ may dominate when successively making the grid spacing in $\theta$ smaller and vice versa.
 This is what happens when performing the MES test in the $\theta$ direction, as seen in \cref{tb:MESResults}.
 One could of course increase the resolution even more in $\rho$, but this would make the test significantly more computationally expensive.
 Inspection of the error plot shows that the error is not dominating in any particular point, and we can therefore conclude that the implementation is convergent.
 
-Also note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
+Finally, note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
 
 \subsection{Extrapolation to ghost points}
 %

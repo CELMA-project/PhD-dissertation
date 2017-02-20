@@ -14,7 +14,7 @@ Assuming we are working in a field aligned Clebsch coordinate system (see \cref{
 = - \ve{b} \times (\grad - \ve{b}\ve{b}\cdot\grad) f = \grad f \times \ve{b}
 \end{align*}
 %
-as the crossed product of two parallel vector yields $0$.
+as the crossed product of two parallel vectors yields $0$.
 Therefore, we can write
 %
 \begin{align*}
@@ -373,7 +373,7 @@ Using this in \cref{eq:collIntermediate} gives
 %
 We see that we could have neglected this term as well on the basis of the mass ratio.
 However, we choose to keep this term as we see that it will contribute to perpendicular dissipation of $n$ through the divergence of the gradient of the pressures.
-This dissipation can help removing accumulation of small wave numbers which results from discretization of the grid.
+This dissipation can help to remove accumulation of small wave numbers which results from discretization of the grid.
 
 \subsection{The Pedersen drift}
 %
@@ -533,7 +533,7 @@ If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, an
 \section{Current conservation and vorticity}
 %
 \Cref{eq:dens_evol_gen} gives the equation to solve the density in time.
-Similarly, we could made an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation for each perpendicular direction.
+Similarly, we could make an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation for each perpendicular direction.
 However, as we will see later, all the information we need for evolving $\ve{u}_{\a,\perp}$ in time are contained in the parallel part of the vorticity equation ($(\curl \ve{v}_E)\cdot \ve{b}$).
 This equation can be derived from the current conservation, which we present in this section.
 If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, and add them, we get by applying quasi-neutrality that

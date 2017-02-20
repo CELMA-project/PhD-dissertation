@@ -20,7 +20,7 @@ As we are using centered stencils (as described in \cref{sec:spat}), then the gh
 %
 \footnote{There is by definition no way to apply a centered stencil to the last grid point.}%
 %
-\footnote{One could in principle use a one-sided stencil on the ghost points $f$ when calculating the FD of $f$, so that the ghost point of $g$ would be known.
+\footnote{One could instead use a one-sided stencil on the ghost points $f$ when calculating the FD of $f$, so that the ghost point of $g$ would be known.
 This is however not done here.}
 %
 .
@@ -121,7 +121,7 @@ However, from \cref{app:coord}, we get that
 \end{align*}
 %
 in cylindrical coordinates.
-Thus \cref{eq:perpPerpDeriv} can be rewritten to
+Thus, \cref{eq:perpPerpDeriv} can be rewritten to
 %
 \begin{align*}
     &f\L(g^{\rho\rho} \partial_\rho \partial_\rho + g^{\theta\theta} \partial_\theta \partial_\theta + G^\rho \partial_\rho \R)g

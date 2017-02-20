@@ -17,12 +17,12 @@ Secondly, assuming that the plasma could extend all the way out to the chassis, 
 The boundaries for the cylindrical plasma consist of four parts.
 In the parallel direction, we have the SE at one end.
 We could in principle place a SE at the other parallel end as well, which would be appropriate if the plasma streamed in both direction from some point.
-Instead we have chosen to model the other parallel end as a stagnation point, i.e. a point where the parallel velocities are zero.
+Instead, we have chosen to model the other parallel end as a stagnation point, i.e. a point where the parallel velocities are zero.
 Such a point exists if the plasma is streaming in two opposite directions and is encountered on for example open field lines in divertor plasmas.
 Radially we have the outer radial boundary condition, and an artificial inner condition which is treated in \cref{sec:innerCenter}.
 
 The boundary conditions will be set on $n$, $u_{i,\|}$, $u_{e,\|}$ and $\Om$.
-From these the boundary conditions for $j_\|$, $nu_{i,\|}$ and $\Om^D$ can be calculated in a straightforward manner.
+From these the boundary conditions, calculation of the boundary conditions of $j_\|$, $nu_{i,\|}$ and $\Om^D$ is straightforward.
 A summary of the boundary conditions used in this thesis is found in \cref{fig:BCs}.
 %
 \begin{figure}[htb]
@@ -40,7 +40,7 @@ A summary of the boundary conditions used in this thesis is found in \cref{fig:B
 \subsection{Boundary conditions at the stagnation point}
 % FIXME: Add references
 The boundary conditions at the opposite site of the SE in the cylinder varies from experiment to experiment (as does also the source term in the distribution function itself).
-By using a stagnation point, the model does not fully reflect any experimental linear devices, but can help to shed light on some of the features found in real life experiments.
+By using a stagnation point, the model does not fully reflect any experimental linear devices, but can help to shed light on features found in real life experiments.
 The stagnation condition acts as a kind of mirror.
 To be more specific the velocities changes sign at this point, and hence must be exactly zero there.
 The spinning of the plasma does not change from one side to the other across the mirror, and hence we get the following set of boundary conditions
@@ -160,9 +160,9 @@ If we follow the derivation of \cref{eq:nBC} and use the ion continuity equation
 \end{align*}
 %
 which means that the flux through the SE is no longer fixed.
-One should note though that this boundary condition will try to enforce a zero gradient on $n$ at the SE, which might be unphysical.
-Also one should note that if one has a Neumann condition in both ends of the machine, the PDE is formally ill-posed, and the solutions found are unique only up to some constant.
-When numerically solving the system the solution found will be specified by the initial condition.
+One should note that this boundary condition will try to enforce a zero gradient on $n$ at the SE, which might be unphysical.
+Also, one should note that if one has a Neumann condition in both ends of the machine, the PDE is formally ill-posed, and the solutions found are unique only up to some constant.
+For such a system, the solution found will be specified by the initial condition.
 Although it is important to be aware of, it is not believed to change the physical behavior of the system as the dynamics are driven by its source and its sinks.
 
 A third approach, which does not have the same problem, is to let the density be completely free at the sheath entrance and instead fix the value and the gradient at the stagnation point (where the velocities are $0$) using a Cauchy boundary condition (not to be confused with a Robin or "mixed" boundary condition).
@@ -209,7 +209,7 @@ The radial boundary conditions can in principle determine the results of the exp
 This have been seen in experiments on for example the Mirabelle machine \cite{Schroder2001}.
 However, to correctly assess the physics, one would have to take into account the neutral interaction and the material properties of the wall.
 We will therefore in this thesis focus on a much simplified approximation of the radial boundary conditions.
-In fact we will let the radial boundary condition be approximately where the neutrals are dominating, and thus dampening out the plasma dynamics.
+In fact, we will let the radial boundary condition be approximately where the neutrals are dominating, and thus dampening out the plasma dynamics.
 
 \subsubsection{Density BC at outer radius}
 As the density will go toward $0$ as we are approaching the wall, we could set

@@ -4,7 +4,7 @@ Resolving all the details in these equations is computationally heavy, and we wi
 
 The computational demand can be lessened by exploiting the difference in the parallel and the perpendicular dynamics.
 Due of the gyration of the particles, the dynamics parallel to the magnetic field are much faster than the dynamics perpendicular to the magnetic field.
-As a result the gradients perpendicular to the magnetic field tend to be much larger than the gradients parallel to the magnetic field.
+As a consequence, the gradients perpendicular to the magnetic field tend to be much larger than the gradients parallel to the magnetic field.
 We can exploit this by using a courser grid in the parallel direction as compared to the perpendicular direction.
 By these two arguments, we have a good motivation to split our equations into perpendicular and parallel parts.
 
@@ -103,7 +103,7 @@ $\a$.%
 
 In general, an arbitrary vector $\ve{a}$ can be written $\ve{a} = \ve{a}\cdot\te{I}$, where $\te{I}$ is the identity tensor of rank $2$.
 We introduce the rank-2 tensor $\ve{b}\ve{b}$, which is the outer product of twice the unity vector along $\ve{B}$.
-Thus
+Thus,
 %
 \begin{align}
  \ve{a} = \ve{a}\cdot\L(\te{I}+\ve{b}\ve{b}-\ve{b}\ve{b}\R)
@@ -383,11 +383,11 @@ since $\e\ll1$.
 The basic idea is to split equation \cref{eq:uOrderStart} into one equation for each order (i.e. equation $n$ would only contain of $\mathcal{O}(\e^n)$ terms).
 In this way, the solution to the $\mathcal{O}(\e^0)$ equation will be an approximate solution to the system.
 The first order correction would be given by the solution of the $\mathcal{O}(\e^1)$ equation, which will depend on the $\mathcal{O}(\e^0)$ solution due to the non-linearities in $\ve{u}_{\a,\perp}$.
-The second order correction will given by the solution of the $\mathcal{O}(\e^2)$ equation, which depends on the  $\mathcal{O}(\e^1)$ solution, and so on.
+The second order correction will be given by the solution of the $\mathcal{O}(\e^2)$ equation, which depends on the  $\mathcal{O}(\e^1)$ solution, and so on.
 We note that this is the same strategy as was used for system closure by Chapman, Enskog and Braginskii as stated in \cite{Brush1972book,Chapman1970book,Braginskii1965}.
 
 We will in this thesis only be interested in an accuracy in the order of $\mathcal{O}(\e^1)$.
-Therefore, we truncate \cref{eq:uOrderConcept} after the first order an get that
+Therefore, we truncate \cref{eq:uOrderConcept} after the first order and get that
 %
 \begin{align}
     \ve{u}_{\a,\perp} \simeq \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp}.

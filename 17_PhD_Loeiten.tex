@@ -2,7 +2,7 @@
 \usepackage{styles/general}
 
 \newcommand{\authorName}{Michael L{\o}iten}
-\newcommand{\thesisTitle}{Global modelling of strongly magnetized plasma\\in a linear machine}
+\newcommand{\thesisTitle}{Global numerical modeling of magnetized plasma in a linear device}
 \newcommand{\thesisDate}{March $6^{\text{th}}$ 2017}
 
 
@@ -15,7 +15,7 @@
     pdftitle={\thesisTitle},
     pdfauthor={\authorName},
     pdfsubject={\authorName - PhD thesis},
-    pdfkeywords={Cylindrical plasma, Drift-fluid equations, Numerical modelling, Drift-waves, Plasma turbulence, Sheath boundary condition, CELMA, BOUT++, , PhD, \authorName}
+    pdfkeywords={Cylindrical plasma, Drift-fluid equations, Numerical modeling, Drift-waves, Plasma turbulence, Sheath boundary condition, CELMA, BOUT++, PhD, \authorName}
 }
 
 \pagestyle{fancy}
@@ -47,7 +47,7 @@
 \renewcommand{\arraystretch}{1.5}
 
 
-% Shorcuts for this document
+% Shortcuts for this document
 \def\vt{\ve{\vartheta}}
 
 \interfootnotelinepenalty=10000
@@ -62,7 +62,7 @@
 \clearpage
 
 \pagenumbering{roman}
-\addcontentsline{toc}{section}{Titlepage}
+\addcontentsline{toc}{section}{Title page}
 \input{intro/titlepage}
 
 \cleardoublepage
@@ -90,48 +90,6 @@
 \clearpage
 
 \pagenumbering{arabic}
-
-% FIXME
-\part{Numerical simulations}
-\label{part:results}
-\chapter{Simulation set up}
-\label{chap:setup}
-\input{results/setUp}
-\chapter{The steady state}
-\label{chap:ss}
-\input{results/steady}
-\chapter{The linear phase}
-\label{chap:linear}
-\input{results/linear}
-\chapter{The turblent phase}
-\label{chap:satTurb}
-\input{results/turbulence}
-\chapter{Characteristics of the turbulent fluctuations}
-\label{chap:charTurb}
-\input{results/fluctuations}
-\input{results/fluxes}
-\input{results/blobs}
-\chapter{Zonal flows}
-\label{chap:zonal}
-FIXME: Zonal flow chapter needs editing
-\input{results/zonalFlows}
-\chapter{B-field scan}
-\label{chap:BFScan}
-\input{results/bScan}
-\chapter{Comparison with the Boussinesq approximation}
-\label{chap:compBouss}
-\input{results/boussinesq}
-\chapter{Neutral scan}
-\label{chap:neutScan}
-\input{results/neutralScan}
-
-\part{Bibliography}
-\bibliographystyle{ieeetr}
-\bibliography{bib/library,bib/nonArticles}
-\addcontentsline{toc}{chapter}{Bibliography}
-
-\end{document}
-% FIXME
 
 \chapter{Introduction}
 \label{chap:intro}
@@ -196,7 +154,7 @@ FIXME: Zonal flow chapter needs editing
 \chapter{The linear phase}
 \label{chap:linear}
 \input{results/linear}
-\chapter{The turblent phase}
+\chapter{The turbulent phase}
 \label{chap:satTurb}
 \input{results/turbulence}
 \chapter{Characteristics of the turbulent fluctuations}
