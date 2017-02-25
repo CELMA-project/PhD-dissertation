@@ -246,12 +246,23 @@ From this, we see that the slab approximation becomes better for higher mode num
 %
 A visualization of the growth rates and angular frequencies in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:grAnalytic}.
 %
-\begin{figure}[htb]
+\begin{figure}[htbp]
     \centering
-    \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
-    \caption{Growth rates and angular frequency as a function of mode number.
-        Obtained from \cref{eq:analyticDisp}.}
-    \label{fig:grAnalytic}
+    \begin{subfigure}[h]{0.45\textwidth}
+       \centering
+       \includegraphics{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
+       \caption{Growth rates and angular frequencies as a function of $B_0$}
+       \label{fig:grAnalyticBModeNr}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.45\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
+        \caption{Growth rates and angular frequencies as a function of mode numbers.}
+        \label{fig:grAnalytic}
+    \end{subfigure}%
+    \caption{Growth rates and angular frequencies as a function of obtained from \cref{eq:analyticDisp}.}
+    \label{fig:analGR}
 \end{figure}
 %
 In the calculations we have taken $\partial_\rho n/n$ from the steady-state.
@@ -307,16 +318,7 @@ For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number 
 }
 %
 
-The same information as given in \cref{fig:grAnalytic} is presented in a different way in \cref{fig:grAnalyticBModeNr}.
-%
-\begin{figure}[htb]
-   \centering
-   \includegraphics{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
-    \caption{Growth rates and angular frequency as a function of $B_0$.
-        Obtained from \cref{eq:analyticDisp}.}
-   \label{fig:grAnalyticBModeNr}
-\end{figure}
-%
+\Cref{fig:grAnalytic} gives an alternative representation of \cref{fig:grAnalyticBModeNr}.
 From \cref{fig:grAnalyticBModeNr} we see that the growth rates of all modes are monotonically increasing with increasing $B_0$ (with an exception of $m_\theta=1$).
 We can also observe that the angular frequency increases with increasing $B_0$.
 This might come as a surprise, as simpler models for the drift wave predicts that $\Re(\om)\propto \om^* \propto 1/B$.
@@ -386,32 +388,50 @@ where $T$ denotes the total number of time samples in the linear phase, and $i=0
 
 The time trace of the $7$ first modes is depicted in \cref{fig:fourierUnstable}.
 %
-\begin{figure}[h!]
+\begin{figure}[htbp]
     \centering
-    \includegraphics{fig/results/fourierModes/unstable}
-    \caption{Growth rate leading to saturated turbulence for $B=0.1\T$.}
-    \label{fig:fourierUnstable}
+    \begin{subfigure}[h]{0.45\textwidth}
+        \hspace*{-1cm}
+        \centering
+        \includegraphics{fig/results/fourierModes/unstable}
+        \caption{Growth rate leading to saturated turbulence for $B=0.1\T$.}
+        \label{fig:fourierUnstable}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.45\textwidth}
+        \hspace*{-1cm}
+        \centering
+        \includegraphics{fig/results/fourierModes/stable}
+        \label{fig:fourierStable}
+        \caption{For $B=0.02\T$ the system is stable against perturbation.}
+    \end{subfigure}%
+    \caption{Time traces of the absolute value of the Fourier transform of the denisty in the periodic direction.}
+    \label{fig:absFTn}
 \end{figure}
 %
 As the ordinate in \cref{fig:fourierUnstable} is logarithmic, exponential grow will appear as straight lines.
 One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02\T$ shows a decaying behavior in \cref{fig:fourierStable}.
 %
-\begin{figure}[h!]
-    \centering
-    \includegraphics{fig/results/fourierModes/stable}
-    \label{fig:fourierStable}
-    \caption{For $B=0.02\T$ the system is stable against perturbation.}
-\end{figure}
-%
 This can be explained by the viscosities, which is present in our model, but not been accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
 The growth rates and angular frequencies obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
 %
-\begin{figure}[htb]
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[h]{0.45\textwidth}
+        \centering
+        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
+        \label{fig:grBModeNr}
+        \caption{$B$-dependency on the growth rates and angular frequencies.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[h]{0.45\textwidth}
         \centering
         \includegraphics{fig/results/growthRates/growthRatesB0}
-        \caption{Mode number-dependency on the growth rates and angular frequencies.
-            Obtained from the simulations.}
+        \caption{Mode number-dependency on the growth rates and angular frequencies.}
         \label{fig:grB}
+    \end{subfigure}%
+    \caption{Growth rates and angular frequencies obtained from the simulations.}
+    \label{fig:obtainedGR}
 \end{figure}
 %
 Both the trend and the values in \cref{fig:grB} matches approximately what was found in \cref{fig:grAnalytic}.
@@ -423,15 +443,6 @@ The mode number with the maximum negative rotation stays the same in both the an
 
 \Cref{fig:grB} can also be visualized in a different way.
 In \cref{fig:grBModeNr} the $B$-field value is on the abscissa instead of the mode number.
-%
-\begin{figure}[htb]
-        \centering
-        \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-        \caption{$B$-dependency on the growth rates and angular frequencies.
-            Obtained from the simulations.}
-\end{figure}
-%
 One can from \cref{fig:grBModeNr,fig:grAnalyticBModeNr} observe that the agreement between growth rate found in the simulation and growth rate found from the analytical expression is better for higher values of $B_0$.
 It can also be observed that the angular frequency matches better for higher mode numbers, which is expected since the analytical expression was obtained from a slab geometry.
 
