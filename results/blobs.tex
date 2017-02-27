@@ -128,15 +128,11 @@ However, even if the both the PDF of the density fluctuations and the PDF of the
 
 In order to tell if our structures are a consequence of Gaussian random noise, we must therefore look at the PDF of the density signal.
 The PDF of the density is shown in \cref{fig:blobDensPDF}.
-With its skewness around $1$ and an excess kurtosis of about $1.5$ is not as intermittent as the radial flux, but nor is it a Gaussian random process.
+With its skewness around $1$ and an excess kurtosis of about $1.5$ is not as intermittent as the radial flux, nor is it a Gaussian random process.
 %
 
-
-Different than probe
-YOU ARE HERE
-tell about the RK shear instability which gives the structures, and tell why this is different from "normal" blobs
-
 Instead of sample the density at the same point as the condition is set, we can sample the whole perpendicular plane for the density fluctuations.
+Such a sample can also be made in experiments (under the assumtions that the experiments are reproducible) by fixing one probe for the triggering signal, and sweep another probe through the perpendicular plane, as done in for example \cite{Nielsen1996}.
 The result is shown in \cref{fig:perpBlob008}.
 %
 \begin{figure}[h!]
@@ -160,13 +156,39 @@ The result is shown in \cref{fig:perpBlob008}.
 \label{fig:perpBlob008}
 \end{figure}
 %
-Although we are setting the condition at the flux at $\theta = 0$, we can see that the blob start to form around $\theta = 3/2 \pi$ in $\tau=-4.347\mu \s$.
-This structure is then transported radially outwards, and starts to get sheared as soon as it reaches the region with high $\Om$ as indicated in \cref{fig:radProfs}.
+Although we are setting the condition at the flux at $\theta = 0$, we can see that the blob start to form around $\theta = 3/2 \pi$ at $\tau=-4.347\mu \s$.
+The structure gets an associated potential dipole structure, which transports the structure radially outwards through the $\ve{E}\times\ve{B}$-drift.
+As the time evolves, the structure is also transported in the ion diamagnetic direction by the background flow set up by the background vorticity as shown in \cref{fig:radProfs}.
+As the structure is transported radially outwards, it enters region with increasing background poloidal shear.
+This elongates the structure as seen at $\tau=2.147\mu \s$.
+After the shearing of the structure only background noise of the density and potential remains at $\tau \geq4.347\mu \s$.
+
+One can now pose the question:
+"What mechanism is creating the associated potential dipole structure of the monopole density structure?".
+Obviously we have set the sampling condition on the radial flux, so the dipole structure may not be surprising.
+However, in blobs seen in tokamaks, the polarization of charge can be explained through the curvature and $\grad B$-drift.
+If we let $\ve{v}_\a$ denote the particle velocity for species $\a$, these drifts are given by%
+\footnote{For the equivalent drift in the fluid picture, see \cite{Garcia2003}.}
+%
+\begin{align}
+    \ve{v}_{\mathcal{C},\a} + \ve{v}_{\grad B,\a} = \frac{m v_{\a,\perp^2}}{2q_\a B^2}\ve{b}\times\grad B + \frac{m v_{\a,\|^2}}{q_\a B}\curl\ve{b},
+    \label{eq:chargeSep}
+\end{align}
+%
+where the charge separation comes about as $q_\a$ has opposite sign for electrons and ions.
+As the $B$ field is homogeneous in our case, the drifts in \cref{eq:chargeSep} cannot be the cause of the charge separation.
+Another possible candidate for the charge separation is the neutral wind, which gives rise to a charge separation through a differences in the neutral temperatures \cite{Krasheninnikov2003}.
+However, as the plasma in the simulations presented in this chapter is fully ionized (i.e. no neutrals), we can rule out the neutral wind as a candidate for the charge separation.
+
+A possible candidate for the charge separation is the Kelvin-Helmoltz instability \cite{Horton1987,Pecseli2012book}.
+In a slab geometry, one can show that the linearized set of equations for this instability gives an eigenfunction for potential which consist of an alternating chain of positive and negative perturbations.
+This chain is slightly staggered in the radial direction, almost giving a dipole structure.
+It is therefore plausible that a positive and negative perturbation could approach each other by a turbulent perturbation, which would give rise to a potential dipole structure.
+Such radially propagating structures has been observed in for example \cite{Nielsen1996}.
 
 \subsection{Waiting times and pulse width distribution}
 %
-Although we have few events
-%
+Although we have few events%
 \footnote{
     More events can be made by running the simulations for longer time.
     The only limit is relatively long simulation times together with large data files.
