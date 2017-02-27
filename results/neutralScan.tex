@@ -23,6 +23,8 @@ The physical justification for this is questionable as we assume that ions are s
 However, if all the ions are misaligned with respect to the neutrals, no collision will take place.
 In any case, we usually have $\nu_{in}\ll\nu_{en}$ \cite{Schroder2003Phd}, which means that the $\nu_{in}$ term in \cref{eq:celma_vortD_evolution} is negligible.
 
+\section{The steady state}
+
 Starting with the parallel profiles shown in \cref{fig:nnScanPar}, we can note that the profiles remains constant until $d=1\%$.
 %
 \begin{figure}[htb]
@@ -40,6 +42,7 @@ As explained in \cref{chap:ss}, there is a tigth connection between $\phi$, $j_\
 If one of them changes, the rest follows.
 We recall that $\phi$ is not evolved in time like $n$, but is entirly determined by the \emph{radial} profile of $\Om^D$ in each parallel point.
 Therefore, we will explain the change in the parallel profiles by explaining the radial profiles.
+
 The radial profiles are shown in \cref{fig:nnScanRad}.
 %
 \begin{figure}[htb]
@@ -49,22 +52,24 @@ The radial profiles are shown in \cref{fig:nnScanRad}.
     \label{fig:nnScanRad}
 \end{figure}
 %
-In terms of the density, there is a minimal change in the profiles as the ionization degree is changed.
+In terms of the density, there is a minimal change in the profile as the ionization degree is changed.
 The potential, on the other hand, has flipped, and is negative for all the radii until the boundary condition, which is set at $0$.
-This can be explained from $\Om$ which also has flipped.
-In order to to explain this, we must look at the balancing terms of the vorticity.
-This is shown in \cref{nnScanVortDRad}.
+This can be explained from the $\Om$-profile which for $d=1\%$ takes higher values for increasing $\rho$, which is opposite of the other ionization degrees.
+To explain this behavior, we must look at the balancing terms of the modified vorticity, which is shown in \cref{fig:nnScanVortDRad}.
 %
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics{fig/results/neutral/vortDBalanceNnCompareRad}
-    \caption{The radial steady state balance for the modified vorticity for $d=100\%$ and $d=1\%$.}
+    \caption{The radial steady state balance for the modified vorticity for $d=100\%$ and $d=1\%$.
+        The green, unlabeled line denotes the artificial vorticity.
+    }
     \label{fig:nnScanVortDRad}
 \end{figure}
 %
 In the fully ionized plasma the time change of the modified vorticity is kept to zero as the parallel derivate of the current is balancing the parallel derivative of the ion velocity multiplied modified vorticity.
-This is also true for the $d=1\%$ case, but with the difference that both balancing terms crosses zero.
-One can understand this by looking at the balancing terms for the parallel current, which is displayed in \cref{fig:nnScanJParRad}.
+This same terms accounts for the balance in the $d=1\%$ case.
+However, in the $d=1\%$ case, the profiles crosses zero and behaves opposite for high $\rho$ than what is observed for the $d=100\%$ case.
+As $\Om^D$ does not contain any $\nu_{en}$ terms, we will explain this behavior by looking into the balancing terms for the parallel current, displayed in \cref{fig:nnScanJParRad}.
 %
 \begin{figure}[htb]
     \centering
@@ -73,114 +78,42 @@ One can understand this by looking at the balancing terms for the parallel curre
     \label{fig:nnScanJParRad}
 \end{figure}
 %
-In the
+In the $d=100\%$ case the Boltzmann term is balanced by the electron-ion resisitivity.
+On the other hand, in the $d=1\%$ the electron-neutral term is dominating the electron-ion resisitivity term by one order magnitude.
+As a consequence the resulting $j_\|$ profile must change.
+Since the $j_\|$ profile changes, the $\Om^D$ balance changes, and the $\phi$ profile changes.
+As $\phi$ changes, the Boltzmann term changes, which again changes the $j_\|$.
+From this feed-back loop the vorticity profile chages in the radial direction.
 
-
-
-
-
-
-
-
-
-YOU ARE HERE!
-
-
-
-
-
-
-
-
-
-In the steady state $\Om^D$ is maintained by a balance between $\partial_\|\div\L(u_{i,\|}n\frac{\grad_\perp}{B}\R)$.
-Flip is changed as $j_\|$ changes.
-$j_\|$ changes as the $\nu_{en}$ dominates.
-
-Consequence $u_{e,\|}$, $j_\|$, $\Om$ and $\phi$ changes.
-
-Compare current profiles -> see
-=> compare vorticity
-
-as neutral collision is dominating the jpar profile is changing
-this means that the spin acceleration changes
-so final vorticity profile is changed
-As vorticity is changed, the potential is changed.
-This has a feed-back effect on the current as lnn-phi acts as an balancing term in the steady state.
-This change happens in every plane perpendicular to the magnetic field.
-Returning to the parallel shape, we can investigate how the neutral collision term in jPar changes in the paralle direction
-Term is propotional to ue, which increases with increasing z
-
-
-Maybe also compare the parallel profiles
-
-THIS IS NOT NEUTRAL BUT GOES TO STEADY STATE....OR MAYBE IT GOES TO SHEAR POLOIDAL FLOW?
-Sharp gradient in $\Om$ because $j_\|$ sets up a boundary layer.
-$j_\|$ froms a boundary layer as $\mu n \partial_\|\L(T_e\ln[n]-\phi\R)$ diverges due to difference in boundary conditions between $\phi$ and $n$.
-
-
-
-
-
-
-
-
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics{fig/results/neutral/jParBalanceNnComparePar}
-    \caption{FIXME.}
-    \label{fig:nnScanJParPar}
-\end{figure}
-%
+We can now return to the initial question on why the parallel profiles changes.
+Recall that the parallel potential profile is determined by the perpendicular vorticity plane.
+The radial modified vorticity profiles are shown in \cref{fig:nnScanVortDPar}.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/neutral/vortDBalanceNnComparePar}
-    \caption{FIXME.}
+    \caption{Parallel profiles of the modified vorticity balance.}
     \label{fig:nnScanVortDPar}
 \end{figure}
 %
+We observe that although the profiles differs in value, the shapes of the balance remains the same.
+This explains why the shape of the vorticity profiles in \cref{fig:nnScanPar} remains the same, only with differing in values.
+The parallel change of the radial profiles is just modified by the parallel current profiles, which is shown in \cref{fig:nnScanJParPar}.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/neutral/jParBalanceNnComparePar}
+    \caption{Parallel profile of the parallel current.}
+    \label{fig:nnScanJParPar}
+\end{figure}
+%
+This determines the strength of the parallel current which is balancing the perpendicular vorticity.
+As the perpendicular balance is changed, the parallel potential profile is changed.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Position of fluctuation only maintained until last
-
-Variation in fluxes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section{The linear phase}
+%
+We find the growth rates in the same manner as described in \cref{sec:grDesc}.
+The result is presented in \cref{fig:grNnModeNr,fig:grNn}.
 %
 \begin{figure}[htbp]
     \centering
@@ -199,17 +132,32 @@ Variation in fluxes
     \end{subfigure}%
 \end{figure}
 %
+We observe that the general trend is that the growth rate decreases for decreasing ionization degree.
+For higher mode numbers the rotation increases with decreasing $d$, whereas the converse is true for the low mode numbers.
 
+The max growth rate is found around $m_\theta=2-3$.
+As in the case with a fully ionized plasma, the decaying modes are rotating in the ion diamagnetic direction.
+Of the growing modes, we can observe that there is less rotation for higher modes, with eexception of the first mode, which is unstable for all the ionization levels with exception of $d=80\%$.
+Finally, we note that $d=1\%$ is only sligthly ustable.
+
+This low ionization level is also the only which does not reach a saturated steady state, but rather saturates in a situation where the modes are rotating whitout growing.
+This is depicted in \cref{fig:FFTnn1pct}.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/neutral/FFTnn1pct}
-    \caption{FIXME.}
+    \caption{Time trace of the absolute amplitude of the Fourier transformed density for $d=1\%$.}
     \label{fig:FFTnn1pct}
 \end{figure}
 %
 
 
+\section{The saturated turbulence state}
+%
+As $d=1\%$ is not reaching a saturated steady state it will not be considered here.
+The time trace of the parallel energy becomes more intermittent for decreasing ionization.
+However, there are only minor changes in the radial direction.
+The position of the fluctuations stays the same for all $d$, as shown in \cref{fig:nnScanPosOfFluct}.
 %
 \begin{figure}[htb]
     \centering
@@ -218,7 +166,10 @@ Variation in fluxes
     \label{fig:nnScanPosOfFluct}
 \end{figure}
 %
-
+The skewness and kurtosis shows no general trend when changing $d$.
+For the regions of low poloidal shear the skewness and kurtosis of $d=20\%$ and $d=40\%$ have approximately the same values for the skewness and the kurtosis.
+Both the skewness and kurtosis increases in this region for $d=60\%$, before it approximately falls to the levels of $d=20\%$ for the $d=80\%$ case.
+In the region of strong shear the intermittency increases for $d=20\%$, whereas it decreases for $d=80\%$.
 %
 \begin{figure}[htb]
     \centering
@@ -228,15 +179,8 @@ Variation in fluxes
 \end{figure}
 %
 
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics{fig/results/neutral/nnScanBlobCount}
-    \caption{The blob count as a function of $d$ for a triggering signal of $3\sigma$ on the radial flux.}
-    \label{fig:nnScanBlobCount}
-\end{figure}
-%
-
+By looking at the flux in \cref{fig:flux0008}, we can observe an increase in both the parallel and perpendicular flux for lower ionization degrees.
+For the perpendicular case, this means that the radial turbulent transport is increasing.
 %
 \begin{figure}[htb]
     \centering
@@ -246,5 +190,15 @@ Variation in fluxes
         The point of measurement is the same as in \cref{fig:flux0008}.
     }
     \label{fig:nnScanTotalFlux}
+\end{figure}
+%
+
+Finally, the average blob count presented in \cref{fig:nnScanBlobCount} reveals that the number of coherent structures increases with decreasing ionization level until $d=20\%$, where the blob and hole count is decreasing.
+%
+\begin{figure}[htb]
+    \centering
+    \includegraphics{fig/results/neutral/nnScanBlobCount}
+    \caption{The blob count as a function of $d$ for a triggering signal of $3\sigma$ on the radial flux.}
+    \label{fig:nnScanBlobCount}
 \end{figure}
 %
