@@ -1,0 +1,25 @@
+\section{Shortcomings}
+\label{app:shortcomings}
+%
+Finally, we would like to comment on the shorcomings in this thesis which we are aware of.
+We would like to be as open as possible about the shortcomings of this thesis, so that the reader will be aware that alteration of the shortcomings may affect the obtained results.
+We will differensiate between two types of shortcomings:
+Major and minor.
+The major shortcomings addresses issues which are believed to have severe impacts on the results, whereas the minor issues are believed to have a lesser impact.
+
+\subsection{Major}
+\begin{itemize}[noitemsep,nolistsep]
+    \item The plasma is assumed to be isothermal.
+        This assumption would be good if the heat flux were enough to equilibrate the temperature everywhere in the plasma for the time under consideration.
+        However, the heat fluxes are not big enough, and temperature gradients have been found experimentally \cite{Schroder2003Phd}.
+    \item Not all of the boundary conditions are physically justified.
+        As mentioned in \cref{sec:BCs}, the boundary conditions opposite to the sheath are justified assuming that this point serves as a stagnation point for the plasma.
+        At the SE, the BC on $u_{i,\|}$ and $u_{e,\|}$ are justified in the steady state, and are appropriate in the steady state as well if the potential change at the SE changes faster than the parallel fluid dynamics.
+        However, the rest of the boundary conditions are not physically justified.
+\end{itemize}
+
+\subsection{Minor}
+\begin{itemize}[noitemsep,nolistsep]
+    \item We have changed the true viscosity in the system with artificial viscosity.
+        This is done as it has been observed that the computation time becomes much longer when using the true viscosity.
+\end{itemize}
