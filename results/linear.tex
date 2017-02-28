@@ -1,19 +1,19 @@
 %
-We will here investigate the linear behavior of our system.
-In the end we will conclude that the behavior coincides with what is found from simplified linear theory of the system.
+The linear behavior of our system will here be investigated.
+In the end, we will conclude that the behavior coincides with what is found from simplified drift wave theory.
 
 After perturbing the system%
 \footnote{It has not been observed that the system reaches the linear phase unless perturbed.
-    This could in theory happen if the noise at machine level assembles in just the right way such that it forms a linearly unstable mode.}
+    This could in theory happen if the noise at machine level assembles in just the right way so that it forms an unstable mode.}
 %
-as described in \cref{sec:initRun}, most of the noise vanishes and poloidal modes start to appear.
-Depending on the simulation parameters, the poloidal modes will be damped to zero so that the system will return to the steady state, or they will grow and increase in amplitude.
+as described in \cref{sec:initRun}, the perturbation noise vanishes, and poloidal modes start to appear.
+The modes will either grow or be damped in the linear phase, depending on the simultion parameters.
 As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
 In other words mode coupling between different modes are negligible.
-Thus, if we were dealing with a purely linear system the growth of the modes would continue forever.
-As our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficiently big.
-The mix of linear and non-linear growth will eventually reach a saturated turbulence treated, which will be treated in \cref{chap:satTurb}.
-We will define the linear state as:
+If the system was purely linear, the growth of the modes would continue forever.
+However, our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficiently big.
+The mix of linear and non-linear growth will eventually reach a saturated turbulence phase, which will be treated in \cref{chap:satTurb}.
+We will here define the linear state as:
 %
 \begin{enumerate}[noitemsep]
     \item Starting once the initial perturbation has vanished and where the modes start to show a more or less exponential growth or decay.
@@ -75,40 +75,6 @@ Hence, the perturbations are moving in the electron diamagnetic direction.
 This is one of the characteristic features of drift waves \cite{Jassby1972}.
 To verify if the linear phase can be identified as drift waves, we will proceed with a quick review of linear drift waves.
 
-%
-{
-% FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
-% \clearpage
-% \thispagestyle{empty}
-\begin{figure}[htbp]
-    \vspace*{-1cm}
-    \centering
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-0_rot}
-        \label{fig:rot1}
-    \end{subfigure}%
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-1}
-        \label{fig:rot2}
-    \end{subfigure}
-    \\
-    \begin{subfigure}[h]{1.00\textwidth}
-        \centering
-        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-2}
-        \label{fig:rot3}
-    \end{subfigure}
-    \caption{Rotation of the modes.
-        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
-    }
-    \label{fig:modeRotation}
-\end{figure}
-% \clearpage
-}
-%
-
 \section{Simplified linear drift wave theory}
 \label{sec:simpleLin}
 %
@@ -134,6 +100,40 @@ The drift waves has its counterpart in fluid dynamics as Rossby waves, where the
 A phase shift is necessary in order to get an instability.
 This can be seen from \cref{fig:DW} if one shifts the ion and electron clouds upwards or downwards so that the $\ve{E}\times\ve{B}$ arrows are shifted with respect to the density perturbations.
 For a mathematical demonstration of this, see for example \cite{Garcia2001a}.
+
+%
+{
+\clearpage
+\thispagestyle{empty}
+\begin{figure}[htbp]
+    \vspace*{-1cm}
+    \centering
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-0_rot}
+        \label{fig:rot1}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-1}
+        \label{fig:rot2}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[h]{1.00\textwidth}
+        \centering
+        \includegraphics{fig/results/rotModes/n-perpPol-2D-fluct-2}
+        \label{fig:rot3}
+    \end{subfigure}
+    \caption{Rotation of the modes.
+        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
+    }
+    \label{fig:modeRotation}
+\end{figure}
+\clearpage
+}
+%
+
 A phase shift arises if the parallel motion of electrons arising from pressure gradients is delayed.
 Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resistivity.
 
@@ -285,9 +285,8 @@ This is also found in the simulations (see \cref{fig:dominatingMode}).
 For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number with minimum angular frequency is the mode number of maximum growth rate minus $1$.
 %
 {
-% FIXME: Move this figure and uncomment clearpage and thispage empty when document is done
-% \clearpage
-% \thispagestyle{empty}
+\clearpage
+\thispagestyle{empty}
 \begin{figure}[htbp]
     \vspace*{-1cm}
     \centering
@@ -314,7 +313,7 @@ For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number 
     \caption{Dominant mode depends on $B$}
     \label{fig:dominatingMode}
 \end{figure}
-% \clearpage
+\clearpage
 }
 %
 
@@ -403,17 +402,22 @@ The time trace of the $7$ first modes is depicted in \cref{fig:fourierUnstable}.
         \hspace*{-1cm}
         \centering
         \includegraphics{fig/results/fourierModes/stable}
-        \label{fig:fourierStable}
         \caption{For $B=0.02\T$ the system is stable against perturbation.}
+        \label{fig:fourierStable}
     \end{subfigure}%
     \caption{Time traces of the absolute value of the Fourier transform of the denisty in the periodic direction.}
     \label{fig:absFTn}
 \end{figure}
 %
 As the ordinate in \cref{fig:fourierUnstable} is logarithmic, exponential grow will appear as straight lines.
-One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02\T$ shows a decaying behavior in \cref{fig:fourierStable}.
-%
+One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02\T$ shows a decaying behavior%
+\footnote{Altough the time trace of \cref{fig:fourierStable} shows a more complex behavior than just growing or just decayin, we conclude that the mode is stable against perturbations, as they remain small for all times, and that every "attempt" of growth is followed by a raprid decay.
+    The growth is obseved if the mode stops rotating, when it starts rotating again, a decay of the mode is observed.
+    When the growth of the system is "flat" in \cref{fig:fourierStable}, only noise is visible.
+}%
+in \cref{fig:fourierStable}.
 This can be explained by the viscosities, which is present in our model, but not been accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
+
 The growth rates and angular frequencies obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
 %
 \begin{figure}[htbp]
@@ -490,11 +494,8 @@ As $S_{n\phi}$ is complex it can be written
 where $\mathcal{F}[R_{n\phi}(\tau)]$ denotes the Fourier transformed, and $\Psi$ is the phase angle between $n$ and $\phi$.
 The dominating averaged phase shift will therefore be the $\Psi$ corresponding to the largest $\L|S_{n\phi}(f)\R|$, and can as usual be found by $\Psi = \operatorname{Arg}(\Re[S_{n\phi}]+i\Im[S_{n\phi}])$.
 
-In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
-This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).
-The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the phase shifts found in \cref{eq:analyticDisp}.
 %
-\begin{figure}
+\begin{figure}[htb]
     \includegraphics{fig/results/growthRates/phaseShift}
     \caption{
         Phase shift as a function of $B$.
@@ -503,6 +504,9 @@ The phase shifts from the simulations are shown in \cref{fig:phaseShift} togethe
     \label{fig:phaseShift}
 \end{figure}
 %
+In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
+This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).
+The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the phase shifts found in \cref{eq:analyticDisp}.
 We note that a positive $\Psi$ is equivalent to a growth of the instability \cite{Garcia2001a}, and a negative $\Psi$ corresponds to a damping of the modes.
 Apart from $B=0.02\T$ which were damped for all modes in the simulations, but had a small growth in the analytic expression, there are qualitatively good match between the phase shifts in \cref{fig:phaseShift}.
 

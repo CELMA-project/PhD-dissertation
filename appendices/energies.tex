@@ -1,246 +1,23 @@
 We will in this appendix briefly comment on the energy of the system.
-One should note that the CELMA equations are probably not energy conserving, and we have argued that this may be of lesser importance as the system is driven by its sources and its sinks.
-An energy conserving system has the nice property that one could identify which parts of the equation transfers energy.
-This can be done by multiplying the time evolving fields with various variables such that the resulting evolution would have the units of energy density.
-One could then integrate over the volume and see which terms transfers energy to each other.
-Another approach is to simply derive the set of equation from energy principles by using the variational principle of the Lagrangian of the system.
-
-In this thesis, however, we will only be using the kinetic and potential energy arising from the pressure.
-Thus saying something about the energy arising from the source etc. is outside the scope of this thesis.
+We will here only focus on the kinetic and potential energy, and will ignore the energies entring and leaving the system through the source and the bounaries.
+The potential energy will here be taken as the energy from the pressure, as it is "bound" to the system, but could do work if for example the volume changed.
+One should note that the kinetic and potential energy of the system can be found in a stringent way of one derive the set of equations using the variational principle of the Lagrangian of the system.
 
 \section{The kinteic energy}
 %
-We will now define the energy density $\mathcal{E}_{\text{kin},\a}$.
-From this, we will see what part of the energy density which arises due to fluctuations, and which part which arise from the mean.
-We can then integrate the energy densities over the volume to get the expressions for the energy.
-
-\subsection{The kinteic energy density}
-The energy density is defined as
+The kinetic energy density is defined as
 %
 \begin{align*}
     \mathcal{E}_{\text{kin},\a} &= \frac{1}{2}m_an \ve{u}^2_\a.
 \end{align*}
 %
-If we now let $\expt{A}$ denote the poloidal average of $A$, defined in \cref{sec:polAvg}, and use the notation
+Due to gyroviscous cancellation, we have (to first order) that only the $E\times B$-drift carries particles, so
 %
 \begin{align*}
-    \wt{A} = A - \expt{A},
+    \mathcal{E}_{\text{kin},\a} &= \frac{1}{2}m_an \L(\mathbf{u}_E^2 + \mathbf{u}_{\a,\parallel}\R)
 \end{align*}
 %
-so that $A = \expt{A} + \wt{A}$.
-We get that
-%
-\begin{align*}
-     \mathcal{E}_{\text{kin},\a} =& \frac{1}{2}m_\a n\ve{u}_\a^2\\
-     %
-     =& \frac{1}{2}m_\a\L(\expt{n} + \wt{n}\R)
-            \L(\expt{\ve{u}}_\a + \wt{\ve{u}}_\a\R)^2\\
-     %
-     =& \frac{1}{2}m_\a\L(\expt{n} + \wt{n}\R)
-            \L(\expt{\ve{u}_\a}^2
-             + 2\wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-             + \wt{\ve{u}}_\a^2
-            \R)\\
-     %
-     =& \frac{1}{2}m_\a\L(\expt{n} \expt{\ve{u}_\a}^2
-             + 2 \expt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-             + \expt{n}\wt{\ve{u}}_\a^2
-             +
-             \wt{n} \expt{\ve{u}_\a}^2
-             + 2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-             + \wt{n}\wt{\ve{u}}_\a^2\R).
-        \numberthis
-        \label{eq:enDensExpanded}
-\end{align*}
-%
-We can now split this into an average and a fluctuation around the mean.
-We demand that this satisfies
-%
-\begin{align}
-    \mathcal{E}_{\text{kin},\a} &= \expt{\mathcal{E}_{\text{kin},\a}} + \wt{\mathcal{E}}_{\text{kin},\a}
-    \label{eq:eDensDefinition}
-    \\
-    \expt{\expt{\mathcal{E}_{\text{kin},\a}}} &= \expt{\mathcal{E}_{\text{kin},\a}}
-    \label{eq:avgOfAvg}
-    \\
-    \expt{\wt{\mathcal{E}}_{\text{kin},\a}} &= 0.
-    \label{eq:zeroFluct}
-\end{align}
-%
-By noting that $\expt{a}$ in general is a constant with respect to the integration limit, we have that
-%
-\begin{align*}
-    \expt{\expt{a}\wt{b}} = \expt{a}\expt{\wt{b}} = \expt{a}\cdot0 = 0.
-\end{align*}
-%
-This means that the terms in \cref{eq:enDensExpanded} with only one fluctuating factor belongs to $\wt{\mathcal{E}}_{\text{kin},\a}$ as it satisfies \cref{eq:zeroFluct}.
-However, we have that $\expt{\wt{a}\wt{b}}$ (the covariance of $a$ and $b$) in general is not equal to $0$.
-For example in the case where $a=b$, the product $\wt{a}\wt{a}$ can never be negative, so that $\expt{\wt{a}\wt{a}} = 0 \iff \wt{a}=0$.
-Hence, these terms contributes partly to the average and partly to the fluctuations.
-
-We can now write \cref{eq:enDensExpanded} as
-%
-\begin{align*}
-     \mathcal{E}_{\text{kin},\a} =
-        \frac{1}{2}m_\a\L(\R.&
-            \expt{n} \expt{\ve{u}_\a}^2
-             + 2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
-             + \wt{n} \expt{\ve{u}_\a}^2
-             \\
-             &
-             + \expt{n}\wt{\ve{u}}_\a^2
-             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             - \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             \\
-             &
-             + 2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             \\
-             &\L.
-             + \wt{n}\wt{\ve{u}}_\a^2
-             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
-             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
-             \R).
-\end{align*}
-%
-Rewriting yields
-%
-\begin{align*}
-     &\mathcal{E}_{\text{kin},\a} =
-     \\&
-        \frac{1}{2}m_\a\L(
-            \expt{n} \expt{\ve{u}_\a}^2
-             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
-        \R)
-             \\
-             &+
-        \frac{1}{2}m_\a\L(
-              2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
-             + \wt{n} \expt{\ve{u}_\a}^2
-             +
-             \L[\expt{n}\wt{\ve{u}}_\a^2
-                - \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             \R]
-             +
-             \L[2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-                - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             \R]
-             +
-             \L[
-               \wt{n}\wt{\ve{u}}_\a^2
-             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
-             \R]
-             \R).
-\end{align*}
-%
-We can now identify the first term as
-%
-\begin{align}
-     \expt{\mathcal{E}_{\text{kin},\a}} =
-        \frac{1}{2}m_\a\L(
-            \expt{n} \expt{\ve{u}_\a}^2
-             + \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             + \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             + \expt{\wt{n}\wt{\ve{u}}_\a^2}
-        \R)
-    \label{eq:enDensAvg}
-\end{align}
-%
-and the second term as
-%
-\begin{align*}
-    \wt{\mathcal{E}}_{\text{kin},\a} =
-    \frac{1}{2}m_\a\L( \R.  &
-              2 \wt{\ve{u}}_\a\cdot \expt{n} \expt{\ve{u}_\a}
-             + \wt{n} \expt{\ve{u}_\a}^2
-             +
-             \\
-             &
-             \L.
-             \L[\expt{n}\wt{\ve{u}}_\a^2
-                - \expt{\expt{n}\wt{\ve{u}}_\a^2}
-             \R]
-             +
-             \L[2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}
-                - \expt{2 \wt{n} \wt{\ve{u}}_\a\cdot\expt{\ve{u}_\a}}
-             \R]
-             +
-             \L[
-               \wt{n}\wt{\ve{u}}_\a^2
-             - \expt{\wt{n}\wt{\ve{u}}_\a^2}
-             \R]
-             \R).
-     \numberthis
-    \label{eq:enDensFluct}
-\end{align*}
-%
-We observe that \cref{eq:enDensAvg} and \cref{eq:enDensFluct} satisfies \cref{eq:zeroFluct,eq:avgOfAvg,eq:eDensDefinition}.
-
-Next, we have that the energy is given as the energy density integrated over the volume.
-Thus
-%
-\begin{align*}
-    E_{\text{kin},\a}
-    = \inde{\mathcal{E}_{\text{kin},\a}}{V}
-    = \inde{\expt{\mathcal{E}_{\text{kin},\a}}}{V} + \inde{\wt{\mathcal{E}}_{\text{kin},\a}}{V}
-    = \expt{E_{\text{kin},\a}} + \wt{E}_{\text{kin},\a},
-\end{align*}
-%
-where
-%
-\begin{align*}
-    \expt{E_{\text{kin},\a}} =& \inde{\expt{\mathcal{E}_{\text{kin},\a}}}{V}\\
-    \wt{E}_{\text{kin},\a} =& \inde{\wt{\mathcal{E}}_{\text{kin},\a}}{V}.
-\end{align*}
-%
-In cylindrical coordinates, we have that
-%
-\begin{align*}
-    \inde{f}{V} = \iiint f J \d\rho \d\theta \d z,
-\end{align*}
-%
-that
-%
-\begin{align*}
-    \inde{\expt{f}}{V}
-    =& \iiint \expt{f} J \d\rho \d\theta \d z\\
-    =& \iiint \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J \d\theta \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \int_0^{2\pi} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J \d\theta \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi} J\int_0^{2\pi}  \d\theta \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\defi{0}{2\pi}{f}{\theta}}{2\pi}2\pi J \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \defi{0}{2\pi}{f}{\theta} J \d\rho \d z\\
-    =& \inde{f}{V},
-    \numberthis
-    \label{eq:intExptF}
-\end{align*}
-%
-and that
-%
-\begin{align*}
-    \inde{\wt{f}}{V}
-    =& \iiint \wt{f} J \d\rho \d\theta \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \int_0^{2\pi}\wt{f} \d\theta J \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \frac{\int_0^{2\pi} \wt{f} \d\theta}{2\pi}2\pi J \d\rho \d z\\
-    =& \int_0^{L_z} \int_0^{L_\rho} \expt{\wt{f}} 2\pi  J \d\rho \d z\\
-    =& 0.
-    \numberthis
-    \label{eq:intAvgF}
-\end{align*}
-%
-In other words, we have that
-%
-\begin{align*}
-    \wt{E}_{\text{kin},\a} =& 0\\
-    \expt{E_{\text{kin},\a}} =& E_{\text{kin},\a}.
-\end{align*}
-
-\subsection{The global kinteic energy}
-%
-Due to gyroviscous cancellation, we have that, to first order, only the $E\times B$-drift carries particles.
-This gives
+Integrating this over the volume gives the global kinetic energy, which can be written
 %
 \begin{align*}
     E_{\text{kin},\a}
@@ -278,54 +55,18 @@ where we have used (V.4) in \cite{Dhaeseleer1991book}, $\a$ denotes the particle
 %
 \section{The potential energy}
 %
-The potential energy is given by the kinetic pressure $nT$
+The potential energy will here be given by the kinetic pressure $nT$
 %
 \footnote{In \cite{Wiesenberger2014} it is stated that the potential energy can be obtained from the Helmholtz free equation, and reads $E_{\text{pot}}=nT_e\log(n)$.
     However, this depends on the partition function used, and one can show that for a more "standard" partition function $E_{\text{pot}}=nT_e\log(n)$ as shown in \cite{Kittel1980book}.}%
 .
-As $T_i=0$, only the electrons will give rise to the potential energy.
-
-\subsection{The potential energy density}
-The potential energy density from the pressure is given by%
+As $T_i=0$, only the electrons will give rise to the potential energy, meaning that the energy density is
 %
 \begin{align*}
     \mathcal{E}_{\text{pot}} =& nT_e.
 \end{align*}
 %
-Since we use a constant $T_e$, we get that $T_e=\expt{T_e}$.
-Hence
-%
-\begin{align*}
-    &\wt{\mathcal{E}}_{\text{pot}} = \wt{n}T_e&
-    &\expt{\mathcal{E}_{\text{pot}}} = \expt{n}T_e&
-\end{align*}
-%
-and
-%
-\begin{align*}
-    E_{\text{pot}}
-    = \inde{\mathcal{E}_{\text{pot}}}{V}
-    = \inde{\expt{\mathcal{E}_{\text{pot}}}}{V} + \inde{\wt{\mathcal{E}}_{\text{pot}}}{V}
-    = \expt{E_{\text{pot}}} + \wt{E}_{\text{pot}},
-\end{align*}
-%
-where
-%
-\begin{align*}
-    \expt{E_{\text{pot}}} =& \inde{\expt{\mathcal{E}_{\text{pot}}}}{V}\\
-    \wt{E}_{\text{pot}} =& \inde{\wt{\mathcal{E}}_{\text{pot}}}{V}.
-\end{align*}
-%
-Due to \cref{eq:intExptF,eq:intAvgF}, we have that
-%
-\begin{align*}
-    \wt{E}_{\text{pot}} =& 0\\
-    \expt{E_{\text{pot}}} =& E_{\text{pot}}.
-\end{align*}
-
-\subsection{The global potential energy}
-%
-The global potential energy is therefore given by
+The global potential energy is therefore found by integraion over the volume, and yields
 %
 \begin{align*}
     E_{\text{pot}}
@@ -335,5 +76,7 @@ The global potential energy is therefore given by
     \\
     =& n_0T_{e,0}\rho_s^3\iiint \breve{n}\breve{T}_e \breve{J} \d\breve{\rho} \d\theta \d \breve{z}
     \\
-    =& n_0T_{e,0}\rho_s^3\breve{E}_{\text{pot}}.
+    =& n_0T_{e,0}\rho_s^3\breve{E}_{\text{pot}},
 \end{align*}
+%
+where $\breve{E}_{\text{pot}} = \iiint \breve{n}\breve{T}_e \breve{J} \d\breve{\rho} \d\theta \d \breve{z}$.

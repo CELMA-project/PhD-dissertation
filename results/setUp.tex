@@ -8,25 +8,10 @@ For the implementation parameters, see \cref{tb:artVisc,tb:timeSolve,tb:Naulin}.
 We will in this thesis use a physical domain size similar to the size of CSDX \cite{Tynan2004a}.
 That is, we will use a cylinder length of $L_z=2.8\m$ and a plasma radius of $L_\rho=8\cm$.
 Note that the plasma radius is much less than the radius of the cylinder chassis.
-
-These parameters can be tranlated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
-We will use $T_{e,0} = 2.5\eV$, the mass of singly ionized Argon as $m_i$, and let $B_0$ vary between $0.02$ and $0.1 \T$.
-This sets the ion sound speed to $c_s \approx 2.46\; \text{km s}^{-1}$.
-Fruther, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
-Consequently, as we print the output to the files after every $t\om_{ci}$ %
-\footnote{Note that the internal timestep from the adaptive time solver is usually much smaller.}%
 %
-, this gives an output every $1\s$ in physical units.
-The specified $c_s$ and $\om_{ci}$ gives a hybrid radius of $\rho_s \approx 1.02B^{-1}\cdot10^{-3}\m\T^{-1}$, which with the specified magnetic field strengths will be in the range $5.08\cm$ to $1.02\cm$.
-
-% FIXME: Is neutral in?
-We will use a normalized density $n_0 = 1\cdot 10^{19} \m^{-3}$, and let the neutral density $n_n=0$ unless else is specified.
-The numbers are summarized in \cref{tb:input,tb:inputVar}.
-%
-\begin{table}[!htb]
+\begin{table}[h!]
     \begin{minipage}{.45\linewidth}
       \centering
-        \caption{Fixed simulation parameters.}
             \colorme
             \begin{tabular}{c|ll}
             \hline\hline
@@ -37,17 +22,18 @@ The numbers are summarized in \cref{tb:input,tb:inputVar}.
             $L_\rho$  & $0.08$              & $\m$              \\
             $L_z$     & $2.80$              & $\m$              \\
             $n_0$     & $1\cdot 10^{19}$    & $\m^{-3}$         \\
+            $n_n$     & $0$                 & $\m^{-3}$         \\
             $T_{e,0}$ & $2.5$               & $\eV$             \\
             $m_i$     & $6.63\cdot10^{-26}$ & $\kg$             \\
             $c_s$     & $2.46$              & $\text{km s}^{-1}$\\
             \hline\hline
             \end{tabular}
+            \caption{Fixed simulation parameters.}
             \label{tb:input}
     \end{minipage}
     \hfill
     \begin{minipage}{.45\linewidth}
       \centering
-        \caption{Variable simulation parameters.}
             \colorme
             \begin{tabular}{c|ll}
             \hline\hline
@@ -62,9 +48,25 @@ The numbers are summarized in \cref{tb:input,tb:inputVar}.
             $L_z/\rho_s$    & $55.0 - 275$   &       \\
             \hline\hline
             \end{tabular}
+            \caption{Variable simulation parameters.}
             \label{tb:inputVar}
     \end{minipage}
 \end{table}
+%
+
+These parameters can be tranlated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
+We will use $T_{e,0} = 2.5\eV$, the mass of singly ionized Argon as $m_i$, and let $B_0$ vary between $0.02$ and $0.1 \T$.
+This sets the ion sound speed to $c_s \approx 2.46\; \text{km s}^{-1}$.
+Fruther, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
+Consequently, as we print the output to the files after every $t\om_{ci}$ %
+\footnote{Note that the internal timestep from the adaptive time solver is usually much smaller.}%
+%
+, this gives an output every $1\s$ in physical units.
+The specified $c_s$ and $\om_{ci}$ gives a hybrid radius of $\rho_s \approx 1.02B^{-1}\cdot10^{-3}\m\T^{-1}$, which with the specified magnetic field strengths will be in the range $5.08\cm$ to $1.02\cm$.
+
+We will use a normalized density $n_0 = 1\cdot 10^{19} \m^{-3}$, and let the neutral density $n_n=0$ unless else is specified.
+The numbers are summarized in \cref{tb:input,tb:inputVar}.
+
 
 \section{Initial conditions and source specification}
 \label{sec:initRun}
@@ -98,7 +100,6 @@ The arguments of $H$ are summarized in \cref{tb:source}, and $S$ is depicted in 
 %
 \begin{table}[!htb]
       \centering
-        \caption{Source parameters used in the simulations.}
             \colorme
             \begin{tabular}{c|ll}
             \hline\hline
@@ -111,6 +112,7 @@ The arguments of $H$ are summarized in \cref{tb:source}, and $S$ is depicted in 
             $w_{\text{profile}}$ & $L_\rho$  \\
             \hline\hline
             \end{tabular}
+            \caption{Source parameters used in the simulations.}
             \label{tb:source}
 \end{table}
 
@@ -219,7 +221,6 @@ The grid size used in this thesis is given in \cref{tb:grid}.
 %
 \begin{table}[!htb]
       \centering
-      \caption{Grid size used in the simulations.}
         \colorme
         \begin{tabular}{c|ll}
         \hline\hline
@@ -233,6 +234,7 @@ The grid size used in this thesis is given in \cref{tb:grid}.
         $n_\theta$ & $256$ \\
         \hline\hline
         \end{tabular}
+        \caption{Grid size used in the simulations.}
         \label{tb:grid}
 \end{table}
 
@@ -252,7 +254,7 @@ Secondly, the simulation is expanded to $n_\theta = 256$, and runned for additio
 
 Thirdly a white noise perturbation with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
 \footnote{Different approaches has been used for the perturbation.
-    It should be noted that some of these gives a different route to the turbulent state (i.e. some of the perturbations dies out, while others have some intermediate non-linear steps before the linear growth rates), but gives (with very little difference) the same growth rates and the same statistical behavior of the saturated turbulence as the perturbation method stated.}
+    Although the route to the linear state may vary, the same growth rates and turbulent behavior are found.}
 %
 as this term is driving the non-linear advections through $\phi$.
 
@@ -276,4 +278,4 @@ At the time of writing the cluster operated with the following specifications \c
 \end{enumerate}
 %
 In all the simulations, $2$ nodes has been allocated using $48$ cores.
-This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ration of simulation time to communication time per core.
+This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ratio of time spent on arithmetics comparedto communication (see \cref{chap:performance}).
