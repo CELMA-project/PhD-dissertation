@@ -1,16 +1,15 @@
 The non-linear, coupled set of equation (\ref{fluideq:cont}) and (\ref{fluideq:mom}) consists of one continuity equation per species and one momentum equation per direction per species.
-With one electron fluid and one ion fluid, that totals $8$ partial differential equations (PDEs) in a three-dimensional space.
+With one electron fluid and one ion fluid, this totals $8$ partial differential equations (PDEs) in a three-dimensional space.
 Resolving all the details in these equations is computationally heavy, and we will here seek ways of simplifying the equations to lessen the computational demand.
 
-The computational demand can be lessened by exploiting the difference in the parallel and the perpendicular dynamics.
+To do so we will exploit the difference in the parallel and the perpendicular dynamics.
 Due of the gyration of the particles, the dynamics parallel to the magnetic field are much faster than the dynamics perpendicular to the magnetic field.
 As a consequence, the gradients perpendicular to the magnetic field tend to be much larger than the gradients parallel to the magnetic field.
-We can exploit this by using a courser grid in the parallel direction as compared to the perpendicular direction.
+We can exploit this by using a coarser grid in the parallel direction as compared to the perpendicular direction.
 By these two arguments, we have a good motivation to split our equations into perpendicular and parallel parts.
 
-Another way to lessen the demand is through the so called drift ordering of the perpendicular velocities.
- This reduces the details we can get out of the set of equations, but has the advantage that the perpendicular velocities can be solved algebraically rather than by solving four PDEs (two for each species).
- To derive the equations with the drift order approximation, we start out by decomposing the equations in parallel and perpendicular parts.
+Next, the computational demand is further lessend through the so-called drift ordering of the perpendicular velocities.
+This reduces the details we can get out of the set of equations, but has the advantage that the perpendicular velocities can be solved algebraically.
 
 \section{Decomposition}
 We will here decompose equation (\ref{fluideq:mom}) into a part which is parallel to the magnetic field, and on which is perpendicular to the magnetic field.
@@ -97,7 +96,7 @@ By using \cref{eq:parMagField}, we can rearrange equation (\ref{fluideq:mom}) in
 %
 where $\om_{c\a} = \frac{q_{\a}B}{m_\a}$ is the cyclotron frequency for species
 $\a$.%
-\footnote{Note that the "frequency" can be negative because of the $q_{\a}$ using this definition.
+\footnote{Note that the "frequency" can be negative because of the sign of $q_{\a}$.
         However, this is just a "remnant" of the vector version of this quantity: The angular frequency $\ve{\om}_{c\a} = \frac{q_{\a}\ve{B}}{m_\a}$, where the $\pm$ sign from $q_{\a}$ tells us if a particle is rotating clockwise or counter-clockwise.}%
 %
 
@@ -141,7 +140,10 @@ We further observe that
     \cdot\ve{a}.
 \end{align*}
 %
-Generally we have
+By using the electrostatic approximation $\d_t \ve{B} \simeq 0$%
+\footnote{$\simeq$ will here be translated to "approximately equal to".}
+%
+(see \cref{app:elstat} for details), we get
 %
 \begin{align*}
  \L(\L[\d_{t,\a} \ve{a}\R]\cdot\ve{b}\R)\ve{b}
@@ -187,17 +189,7 @@ Generally we have
  =& \d_{t,\a} \ve{a}_\|,
 \end{align*}
 %
-where we have used the electrostatic approximation $\d_t \ve{B} \simeq 0$, where $\simeq$ means "approximately equal to" (see \cref{app:elstat} for details).
-
 Further we have that
-%
-\begin{align*}
- \L(\div\te{A}\R)_\|
- &\defined
- \L(\L[\div\te{A}\R]\cdot\ve{b}\R)\ve{b}
-\end{align*}
-%
-and that
 %
 \begin{align*}
  \L(\L[\grad\ve{a}\R]\cdot\ve{b}\R)\ve{b}
@@ -213,10 +205,18 @@ and that
  \note{$\nabla_\| \defined \ve{b}\ve{b}\cdot \nabla$}
  \\
  %
-  &= \grad_\|\ve{a}.
+ &= \grad_\|\ve{a},
 \end{align*}
 %
-For further references, we also define all the gradient operators in this thesis here:
+and for rank-2 tensors, we define
+%
+\begin{align*}
+ \L(\div\te{A}\R)_\|
+ &\defined
+ \L(\L[\div\te{A}\R]\cdot\ve{b}\R)\ve{b}.
+\end{align*}
+%
+For further references, we also define all the gradient operators for a field aligned coordinate system used in this thesis here:
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     &\partial_\| \defined \ve{b}\cdot \nabla&
@@ -288,7 +288,7 @@ This means that if we right dot \cref{eq:no_assumptions_momentum} with $\ve{b}\v
  }{n_\a q_\a B}
  +
  \frac{
-   \ve{R}_{n \to \a}
+     \ve{R}_{n \to \a,\|}
  }{n_\a q_\a B}
  -
  \frac{
@@ -339,7 +339,7 @@ The goal of the drift ordering is to split \cref{eq:perp_mom_start} in different
 From \cref{eq:DO} in \cref{app:DO}, we have that \cref{eq:perp_mom_start} can be written in orders of $\e$ as%
 %
 \footnote{
-Note that we write the viscosity part as order $\mathcal{O}(\e)$, as we for ions assume that $\mu\e^2$ cannot be larger than $\e$.
+    Note that we write the viscosity part as order $\mathcal{O}(\e)$, as we for ions assume that $\mu\e^2<\e$.
 }%
 %
 \begin{align*}
@@ -380,14 +380,14 @@ where
 %
 since $\e\ll1$.
 
-The basic idea is to split equation \cref{eq:uOrderStart} into one equation for each order (i.e. equation $n$ would only contain of $\mathcal{O}(\e^n)$ terms).
+The basic idea is to split equation \cref{eq:uOrderStart} into one equation for each order (i.e. equation $m$ would only contain $\mathcal{O}(\e^m)$ terms).
 In this way, the solution to the $\mathcal{O}(\e^0)$ equation will be an approximate solution to the system.
 The first order correction would be given by the solution of the $\mathcal{O}(\e^1)$ equation, which will depend on the $\mathcal{O}(\e^0)$ solution due to the non-linearities in $\ve{u}_{\a,\perp}$.
 The second order correction will be given by the solution of the $\mathcal{O}(\e^2)$ equation, which depends on the  $\mathcal{O}(\e^1)$ solution, and so on.
 We note that this is the same strategy as was used for system closure by Chapman, Enskog and Braginskii as stated in \cite{Brush1972book,Chapman1970book,Braginskii1965}.
 
-We will in this thesis only be interested in an accuracy in the order of $\mathcal{O}(\e^1)$.
-Therefore, we truncate \cref{eq:uOrderConcept} after the first order and get that
+In this thesis, we are only interested in an accuracy in the order of $\mathcal{O}(\e^1)$.
+Therefore, we truncate \cref{eq:uOrderConcept} after the first order and get
 %
 \begin{align}
     \ve{u}_{\a,\perp} \simeq \e^0\ve{u}_{\a,0,\perp} + \e^1\ve{u}_{\a,1,\perp}.
@@ -424,7 +424,7 @@ If we insert \cref{eq:uOrder} into \cref{eq:uOrderStart}, we get
 \end{align*}
 %
 As $\d_{t,\a}$ is a function of $\ve{u}_{\a,\perp}$, it should be accounted for in the ordering.
-If we introduce the notation $\d_{t,\a}^n$, where a subscript $^n$ denotes the order, we have that
+If we introduce the notation $\d_{t,\a}^m$, where a superscript $^m$ denotes the order, we have that
 %
 \begin{align*}
  \d_{t,\a}^0 \ve{u}_{\a,\perp} &= 0
@@ -484,9 +484,7 @@ This gives the following set of equations
 \section{Zeroth order perpendicular terms}
 %
 We will now solve \cref{eq:uZero} for $\ve{u}_{\a,0,\perp}$.
-In general, we have that $-\ve{b}\times\L(\ve{b}\times\ve{a}\R) = \ve{a} - \ve{a}_\|=\ve{a}_\perp$.
-Thus, in order to isolate $\ve{u}_{\a,0,\perp}$ from \cref{eq:uZero}, we can cross the equation with $\ve{b}$.
-This gives
+This can be done by cross multiply \cref{eq:uZero} with $\ve{b}$, which yields
 %
 \begin{align*}
  0 &=
@@ -515,10 +513,7 @@ This gives
  \label{eq:u_0_balance}
 \end{align*}
 %
-We will here simply assume that the electrostatic approach holds.
-\Cref{app:elstat} discusses briefly when this approach is justifiable.
-This means that $\ve{E} = -\grad\phi$, so $\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$.
-Thus can we rewrite \cref{eq:u_0_balance} as
+As we assume electrostatic conditions, we have that $\ve{E} = -\grad\phi$, so $\ve{E}_\perp = -\grad_\perp\phi$ and $\ve{E}_\| = -\grad_\|\phi$, and we can rewrite \cref{eq:u_0_balance} as
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
  \ve{u}_{\a,0,\perp} =&
@@ -543,18 +538,18 @@ Thus can we rewrite \cref{eq:u_0_balance} as
  \numberthis
 \end{empheq}
 %
-Normally, one call $u_{\a,d}$ for the diamagnetic drift.
-It is important to notice that this drift is opposite for electrons and ions, and will therefore cause a charge separation.
+$u_{\a,d}$ is called the diamagnetic drift.
+It is important to notice that this drift is opposite for electrons and ions.
 This is contrary to $\ve{u}_E$, called the $\ve{E}\times\ve{B}$-drift, which causes the same drift direction irrespective of charge.
 \section{First order perpendicular terms}
 %
 Once $\ve{u}_{\a,0,\perp}$ is known, the algebraic equation for $\ve{u}_{\a,1,\perp}$ can be found by crossing \cref{eq:uFirst} with $\ve{b}$.
-Generally we have
+Assuming electrostatic conditions, this yields
 %
 \begin{align*}
  \L(\d_{t,\a} \ve{a} \R)\times\ve{b}
  &= \L(\partial_t \ve{a} + \ve{u}_{\a}\cdot\nabla\ve{a} \R)\times\ve{b}
- \note{\hspace{-2.5cm}Assume electrostatic}
+ \note{\hspace{-2.5cm}Electrostatic condtions}
  \\
  %
  &= \partial_t \L(\ve{a}\times\ve{b}\R) +
@@ -567,7 +562,7 @@ Generally we have
  &= \partial_t \L(\ve{a}\times\ve{b}\R) +
  \ve{u}_{\a}\cdot\L(\nabla\L[\ve{a}\times\ve{b}\R] +
  \L[\nabla\ve{b}\R]\times\ve{a}\R)
- \note{\hspace{-2.5cm}Assume electrostatic}
+ \note{\hspace{-2.5cm}Electrostatic conditions}
  \\
  %
  &= \partial_t \L(\ve{a}\times\ve{b}\R) +
@@ -695,7 +690,7 @@ By substituting \cref{eq:u_0} in \cref{eq:u_1_u_0}, we obtain
   \R).
 \end{align*}
 %
-Hence
+Hence,
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
  \ve{u}_{\a,1,\perp} =&
@@ -736,4 +731,6 @@ Hence
 \end{empheq}
 %
 For further reference, we call $\ve{u}_{\a,p}$ the polarization drift, $\ve{u}_{\a,R}$ the resistive drift, $\ve{u}_{\a,\text{Ped}}$ the Pedersen drift, $\ve{u}_{\a,\nu}$ the viscous drift and $\ve{u}_{\a,S}$ the source drift.
-Finally, we note that all the first order drift causes charge separation, and that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.
+Finally, we note that ions and electrons are opposite for all first oder drifts.
+Also note that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.
+For a physical interpretation of the drifts, see \cite{Garcia2003}.
