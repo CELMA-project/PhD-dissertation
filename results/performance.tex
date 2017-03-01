@@ -15,7 +15,7 @@ The performance of the $B_0$-scan (without the use of the Boussinesq approximati
 \end{figure}
 %
 We observe that number of iterations are somewhat high if compared to other codes using the BOUT++ framework.
-This is of course dependent of the underlying physical model, which may be stiff under certain conditions \cref{Leveque2007book}.
+This is of course dependent of the underlying physical model, which may be stiff under certain conditions \cite{Leveque2007book}.
 The two phases responsible for obtaining the steady-state solution requires the most iteration per time step, dispite the fact that the fast dynamics is present only at the beginning of the initialization phase.
 Once the perturbation are added to the steady states, the iteration count drops in the linear phase, and drops even further in the turbulent phase.
 This is contrary to what is usually observed in turbulence simulations, where the simulation slows down at the onset of turbulence as the solve must resolve a larger specter of eigenmodes.
@@ -70,6 +70,14 @@ This is presented for the $B_0 = 0.06\T$ with $n_n=0$ in \cref{fig:BPct}, and fo
     \label{fig:neutPct}
 \end{figure}
 %
+%
+\begin{figure}[h!]
+    \centering
+    \includegraphics{fig/results/performance/PercentagesBousScanB00_08}
+    \caption{The time spent on of each computational task in per cent for $B_0=0.08\T$ using the Boussinesq approximation.}
+    \label{fig:BoussPct}
+\end{figure}
+%
 The figures are almost identical in terms of the computational work distribution for all phases.
 Although the added collisionality may reduce the iteration count, there is no obvious reason for why the computational work distribution should change.
 In the neutral simulations only the value of $\nu_{en}$ is changed.
@@ -81,14 +89,6 @@ The laplace inversions done with the iterative Naulin solver seems to be importa
 It is found that the solver usess between $3-10$ iteration per time step in this phase.
 
 We can compare this workload with the ones found for the Boussinesq approximation for $B_0=0.08\T$, shown in \cref{fig:BoussPct}.
-%
-\begin{figure}[htb]
-    \centering
-    \includegraphics{fig/results/performance/PercentagesBousScanB00_08}
-    \caption{The time spent on of each computational task in per cent for $B_0=0.08\T$ using the Boussinesq approximation.}
-    \label{fig:BoussPct}
-\end{figure}
-%
 The work load is still dominated by the aritmetics and communications.
 However, there is a decrease in time spent in the Laplace solver, which can be explained by the fact that only one inversion is needed per iteration.
 This may also contribute to the decrease of the iteration count presented above.
