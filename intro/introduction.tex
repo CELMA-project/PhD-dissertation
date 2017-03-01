@@ -1,14 +1,14 @@
 %
-We will start the introduction by giving a motivation to the work done in this thesis by putting the thesis in a larger context, and is meant for an audience with only basic knowledge of physics.
-At the end of the chapter, an outline of the structure of the thesis will be given.
+We will here motivate to the work done in this thesis by putting it in a larger context.
+The introduction is meant for a broad audience, and only a minimal knowledge of physics is required.
+At the end of this chapter, an outline of the structure of the thesis will be given.
 
 \section{Motivation}
 %
-The ultimate motivation of this thesis is set by providing clean energy%
-\footnote{Words like "energy consumption" will here be referring to conversion of energy in a low entropy state to the same amount of energy in a higher entropy state.}
-%
-to a growing population with an increasing standard of living.
-One projection of the increased energy demand is given in \cref{fig:energyDemand}.
+The ultimate motivation of this thesis is set by the goal of providing clean energy to a growing population with an increasing standard of living.
+One projection of the increased energy demand%
+\footnote{Words like "energy consumption" and "energy production" will here refer to conversions of the same amount of energy from between a low and high entropy state.}
+is given in \cref{fig:energyDemand}.
 %
 \begin{figure}[htb]
     \begin{center}
@@ -23,7 +23,7 @@ One projection of the increased energy demand is given in \cref{fig:energyDemand
 \noindent
 As the bulk-part of the current energy consumption is provided by limited energy sources, a more sustainable approach is needed.
 
-One candidate for a more sustainable energy production is through thermonuclear fusion.
+One candidate for a more sustainable energy production is energy production through thermonuclear fusion.
 We will here give a short summary of the process.
 For more introduction on the topic, see \cite{Freidberg2008book}.
 If two nuclei can overcome the electrostatic Coulomb-barrier (with the "help" of quantum tunneling), they can fuse into a heavier nucleus.
@@ -34,37 +34,45 @@ The main reaction sought is the $\text{D}-\text{T}$ reaction, which can be summa
     \text{D} + \text{T} \to \text{He}^4 + \text{n} + 17.6 \text{MeV},
 \end{align*}
 %
-where the deuterium $\text{D}$ can be distilled from sea water, whereas the tritium $\text{T}$ must be produce due to scarce availability and a short half-life of $12.3$ years.
-Probably the easiest way to obtain $\text{T}$ is by breeding it from lithium through the process
+where the deuterium $\text{D}$ can be distilled from sea water, whereas the tritium $\text{T}$ must be produced as it is only scarcly available with its short half-life of $12.3$ years.
+The easiest way to obtain $\text{T}$ with current day technologies is by breeding it from lithium through the process
 %
 \begin{align*}
     \text{Li}^6 + \text{n} &\to \text{T} + \text{He}^4 + 4.8 \text{MeV}\\
     \text{Li}^7 + \text{n} &\to \text{T} + \text{He}^4 + \text{n} - 2.5 \text{MeV}.
 \end{align*}
 %
-The need of $\text{Li}$ could theoretically be replaced by tritium breeding from the $\text{D}-\text{D}$ reaction
+The need of $\text{Li}$ could theoretically be replaced by tritium gained from the $\text{D}-\text{D}$ reaction
 %
 \begin{align*}
     \text{D} + \text{D} \to \text{T} + \text{p} + 4.03 \text{MeV}.
 \end{align*}
 %
+However, this reaction is a much harder to achieve as it requires substantially higher temperatures.
+The energy from the resulting ions in these reaction will help to keep the high temperatures needed for fusion to take place, where as the neutrons will heat water in a heat exchanger to boiling temperatures.
+The energy in the water will then be converted to electricity through a conventional turbine.
+In such respect the fusion reactor will be nothing but a high-tech water boiler.
 
-However, this is a much harder reaction to achieve, as it requires substantially higher temperatures.
-
-Man made thermonuclear fusion delivering energy on the grid has yet to be achieved.
-It is still unclear whether or not man-made thermonuclear fusion can be produced in technological and scientifically feasible way.
-The ITER \cite{ITERWeb} project, which has a first plasma operation currently planned in $2025$, is meant to give a better answer to this question by yielding a tenfold energy output compared to the energy input.
+Man-made thermonuclear fusion delivering energy on the grid has yet to be achieved.
+It is still unclear whether or not it can be produced in technological and economical feasible way.
+The ITER project \cite{ITERWeb}, with its first plasma operation planned in $2025$, is meant to give a better answer to this question by yielding a tenfold energy output of the energy input.
 The goal of ITER is not to supply the grid with energy.
 This is planned to be done by the prototype fusion reactor DEMO, which is still in the planning phase, and is meant to answer questions about economically viability.
-Scientific and economical feasibility aside, the potential benefits and sustainability of fusion energy is great.
+
+Scientific and economical feasibility aside, the reasearch of could be driven by the high energy yield alone.
 To illustrate this let's look at some very approximated numbers, only to get an idea of what ballpark we are in.
 We can assume that on average a UK citizen uses $195 \text{\;kWh}$ per day%
-\footnote{As a comparison to this, MacKay makes an optimistic estimate that UK could yield $180 \text{\;kWh}$ per person per day from current day technology renewables in \cite{Mackay2009book}}%
+\footnote{As a comparison to this, MacKay makes an optimistic estimate that UK could yield $180 \text{\;kWh}$ per person per day from renewable sources with current day technologies \cite{Mackay2009book}}%
 %
 \cite{Mackay2009book}.
 If we now assume a population $12$ billion people \cite{Melorose2015}, and that the average consumption per person is $195 \text{\;kWh}$ per day, we can make a crude estimate on how long the fusion resources will last.
-The estimate is show in \cref{fig:potFusion}.
+The estimate is show in \cref{fig:potFusion}%
 %
+\footnote{It should not be swept under the rug that the fusion process is creating harmful isotopes by activating the materials in the reactor itself.
+    However, the half-life of these isotopes are much lower than the isotopes from the nuclear waste of a conventional fission reactors.
+    The fusion material is considered to be safe approximately 100 years after operation \cite{Bloom1998}, wheres the nuclear waste from fission have half-lives of thousands to millions of years \cite{Kessler2012book}.
+It should also be noted that catastrophic events like meltdowns are physically not possible in a fusion reactor.}.
+
 \begin{figure}[htb]
     \begin{center}
         \includegraphics{fig/intro/fusionSustain}
@@ -74,8 +82,10 @@ The estimate is show in \cref{fig:potFusion}.
         With the approximated numbers obtained from \cite{Melorose2015,Mackay2009book,ongena2012,Eckhartt1995}.}
     \label{fig:potFusion}
 \end{figure}
+%
 
-Many of the challenges fusion is facing can be summarized with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
+The question is therefore: Why have not man-made fusion been made yet?
+In order to answer this, we can summerize the challenges with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
 %
 \begin{quote}
     Fusion is like trying to put the Sun in a box - but we don't know how to make the box.
@@ -90,6 +100,7 @@ Instead, as the plasma will be in an ionized state, the plasma can be kept in pl
 %
 and will therefore (at least to first order) move freely parallel to the magnetic field, but be locked to a magnetic field in the perpendicular direction.
 Thus, the "box" which until now has proven most successful%
+%
 \footnote{Alternative concepts such as the "stellarator" and the "spherical tokamak" are areas of active research, and could turn out to serve as better options for the "box" in the future.}
 %
 , and which ITER will be based on, is the tokamak, depicted in \cref{fig:tokamak}.
@@ -104,11 +115,12 @@ Thus, the "box" which until now has proven most successful%
 \end{figure}
 
 In the tokamak a twisted, closed magnetic field in a toroidal configuration is used to keep the plasma in place.
-Close to the toroidal axis the magnetic field closes itself
+Close to the toroidal axis the magnetic field closes itself%
 %
 \footnote{Possibly after an infinite number of toroidal revolutions.}
 %
-without intersecting with the materials of the tokamak, spanning a magnetic surface.
+without intersecting with the materials of the tokamak.
+Hence, the magnetic fields are creating nested magnetic surfaces.
 These field lines are referred to as "closed" field lines.
 Moving radially outwards from the toroidal axis the magnetic field is no longer closing only on itself, but rather through a material surface.
 These field lines are referred to as "open" field lines.
@@ -117,26 +129,26 @@ In order to remove impurity production and plasma recycling away from the main p
 \footnote{Diverting the plasma has a lot of other benefits as described in detail in \cite{Stangeby2000book,Stacey2012book}.}%
 %
 .
-Thus, when moving radially, the plasma is transitioning from the \emph{plasma edge}, through the position of the \emph{Last Closed Field Surface} LCFS to the region of open field lines called the \emph{Scrape-Off Layer} (SOL).
-Since the plasma particle motion is constrained in the radial direction through gyration, large pressure gradients develops around the LCFS.
+Thus, when moving radially, the plasma is transitioning from the \emph{plasma edge}, through the position of the \emph{Last Closed Field Surface} (LCFS) to the region of open field lines, called the \emph{Scrape-Off Layer} (SOL).
+Since the plasma particle motion is constrained in the radial direction becuse of the gyration, large pressure gradients develops around the LCFS.
 Instabilities in the edge region can develop from these gradients, both on the macroscopic (machine size) scale in form of ELMs \cite{Zohm1996}, but also on the microscopic scale (usually in the order of $\mm - \cm$) such as interchange instabilities \cite{Scott2005b} and drift-waves \cite{Tynan2009}.
-These microscopic instabilities develop into turbulence, and this turbulence is believed to be the cause of the increased transport levels%
+The microscopic instabilities develop into turbulence, and this turbulence is believed to be the cause of the increased transport levels%
 %
 \footnote{In the so called H-mode this turbulent transport can be suppressed down to the neoclassical levels by a strong shear flow \cite{Burrell1997}.} %
 %
 which exceeds those predicted by \emph{classical} transport from colliding particles, and those predicted by neoclassical theory (which includes transport effect arising from the magnetic field geometry) \cite{Wootton1990}.
 
-Although advances has been done in the last decades, the turbulent processes in the edge and SOL is still not fully understood.
+Although advances has been done in the last decades, the turbulent processeses in the edge and SOL are still not fully understood.
 There are for example a lot of open questions related to coherent structures called \emph{blobs} which emerges from the turbulence \cite{DIppolito2011}.
 In other words, the "box" is "leaking", and we would like a better understanding of how and why it is leaking.
 The success of ITER achieving a high energy gain would be bleak if it turns out that part of the divertor got melted due to unforeseen turbulent events.
 
-The turbulent processes in the edge and SOL of a tokamak is hard to analyze, as several physical processes can be active at once.
+The turbulent processeses in the edge and SOL of a tokamak are hard to analyze, as several physical processeses can be active at once.
 If one can get a good overview of the individual physical processes first, studying the full system will become easier.
-An additional challenge is to measure the processes around the LCFS in a tokamak due the high temperature and due to the difficulties to properly resolve the spatial and temporal scales with few measuring points.
-Both these obstacles can be reduced by analyzing processes similar to those found in around the LCFS in a linear machine.
-In such a machine, the interchange instability can be eliminated if the machine operates with a straight magnetic field.
-The temperatures are also lower in a linear machine, which makes plasma measurements easier.
+An additional challenge of understanding the processeses is that measurements around the LCFS is difficult in a tokamak due the high temperatures and due to the challenge of properly resolve the spatial and temporal scales with few measuring points.
+One can overcome these obstacles by analyzing processes similar to those found in around the LCFS in linear devices.
+In such a device, the interchange instability can be eliminated if the machine operates with a straight magnetic field.
+The temperatures are also lower in a linear device, which makes plasma measurements easier.
 Hence, they are beneficial for benchmarking numerical codes.
 Linear machines can usually be operated so that the plasma is freely streaming towards a material surface, which is similar to the situation found in the SOL where the plasma is diverted to the divertor plates with help of the magnetic fields.
 
@@ -146,15 +158,16 @@ Linear machines in themselves are interesting for fusion research and is besides
 We will however limit the scope of this thesis to include only turbulent processes in a straight magnetic field.
 
 Next, let us also state how accurate we would like to be when investigating the plasma.
-One could say that one want the investigation to be $100 \%$ accurate, and include all known physic in the investigation, following the quantum mechanical wave-function of each particle as a function of time.
-Although tempting, it is easy to show that such a task is not feasible with the current computer technologies.
+One could say that one want the investigation to be $100 \;\%$ accurate and include all known physic in the investigation, following the quantum mechanical wave-function of each particle as a function of time.
+Although tempting, it is easy to show that such a task is not feasible with the present day computer technologies.
 Imagine just to assign a number to each particle in a $1\m^3$ box with a particle density of $10^{18} \m^{-3}$ particles%
-\footnote{These are approximately the particle numbers we will work with in this thesis.}%
+%
+\footnote{These are approximately the particle numbers we will work with in this thesis.}
 %
 using $4$ bytes.
 This would require $4$ exabytes of storage.
 Therefore, we seek to simplify the system while still retaining the important details.
-The task is comparable to investigate the time it takes a white ball takes to fall.
+The task of simplifaction is comparable to investigation of the time it takes for a white ball takes to fall.
 Does it matter that the ball is white?
 One could imagine that there are some reflection properties of the white ball which alters the fall-time.
 However, such an effect would most likely be negligible.
@@ -178,14 +191,13 @@ More precisely, this thesis aims to answer the following questions:
     \item How is the plasma evolving in a linear machine?
     \item Are sheared poloidal flows, supressing the turbulence transport, found in our model?
     \item Can coherent structures as blobs and holes be found from our model?
-% FIXME: Check that this is fulfilled
     \item To what extent does the approximation know as the Boussinesq-approximation, which is often done, alter the solution?
     \item Does our model capture the features reported in the literature?
 \end{itemize}
 
 \section{Thesis structure}
 %
-The remainder of this thesis is structured into $6$ main-parts.
+The remainder of this thesis is structured into $5$ main-parts.
 
 As we would like to simulate a set of equation derived more or less from first principles, the \cref{part:CELMA} is dedicated to the derivation of the CELMA model.
 To enable full transparency of the derivation, most intermediate calculation step are also shown.
@@ -196,7 +208,7 @@ The first two fluid moments is taken, and the fluid closure is done by assuming 
 These equations are further refined using the drift-fluid approximation in \cref{chap:drift-order}, where also the fluid drifts are given.
 In \cref{chap:slowB} we restrict the system to only be valid for a slowly varying $B$-field, whereas in chapter \cref{chap:CELMA} a straigth magnetic field in a cylinder geometry is imposed.
 The boundary conditions of the model is also given in \cref{chap:CELMA}.
-The alternative model, which uses the Boussinesq approximation is given in chapter \cref{chap:boussinesq} before \cref{part:CELMA} is concluded by a summary.
+The alternative model, which uses the Boussinesq approximation is given in chapter \cref{chap:boussinesq} before \cref{part:CELMA} is concluded by a summary in \cref{chap:derivSummary}.
 
 In \cref{part:impl} all the details of the numerical implementation is given.
 \Cref{chap:implBOUT++} describes the built-in options from the BOUT++ framework which is used in this thesis, and is followed by implementations which are not included in the BOUT++ in \cref{chap:additionalImplementation}.
@@ -206,13 +218,10 @@ Finally, the results from the numerical simulations are given in \cref{part:resu
 The setup is briefly given in \cref{chap:setup}, followed by a description of the phases of the model in chronological order.
 \Cref{chap:ss} describes the steady state found from the simulations.
 The system is perturbed and the following linear state is described in \cref{chap:linear} together with simplified linear drift wave theory.
-The resulting turbulent state is presented in \cref{chap:satTurb}, and the characteristic of the fluctuation is given in \cref{chap:charTurb}.
-% FIXME
-FIXME \cref{chap:zonal} not given.
+The resulting turbulent state is presented in \cref{chap:satTurb}, the characteristic of the fluctuation is given in \cref{chap:charTurb}, and a discription of the sheared poloidal flows are found in \cref{chap:poloidal}.
 Investigation of how the system scales with varying $B$-field strength is given in \cref{chap:BFScan}, and the comparison with the model using Boussinesq approximation is given in \cref{chap:compBouss}.
-% FIXME
-FIXME \cref{chap:neutScan} not given.
+How the system scales with the ioniziation degree is given in \cref{chap:neutScan}, and an analysis of the performance of the code is give in \cref{chap:performance}.
 
 A summary of the conclusion and outlook of this thesis is given in \cref{part:concl}.
 
-To supplement, appendices are given in \cref{part:app}. These appendices are being referred to throughout the text with exception of \cref{app:shortcomings} which summarizes the shortcomings in this thesis.
+To supplement, appendices are given in \cref{part:app}, and are referred to throughout the text.
