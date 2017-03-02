@@ -1,17 +1,21 @@
-In the previous chapter, we derived the fluid drifts from the drift fluid approximation.
+In the previous chapter, we derived the fluid drifts from the drift-fluid approximation.
 We will now insert the fluid drifts into the continuity equations without making any assumption on the \emph{topology} of the $\ve{B}$ field.
-We will, however, assume that the $\ve{B}$-field varies slowly in space and  time, and that the plasma consists of only one type of atomic element.
+We will, however, assume that the $\ve{B}$-field varies slowly in space and  time%
+\footnote{Note that we already used this assumtion in \cref{eq:parMat}.}%
+%
+, and that the plasma consists of only one type of atomic element.
 
 By inserting the fluid drifts into the electron continuity equation, we will obtain an eqation for the temporal evolution of $n$.
-Then, we will sum the continuity equation of the ions and electrons together, which will yield an equation for the current balance.
+Then, we will sum the electron continuity equation with the ion continuity equation, which will yield an equation for the current balance.
 These equations will be general for any topology assuming a slowly varying $B$-field, electrostatic conditions and that the drift ordering holds.
 
 In \cref{chap:CELMA} we will constrain the system by specifying a straigth magnetic field, and from that assumption simplify the system further.
 The equation for temporal evolution of the modified vorticity can then be extracted from the current balance equation.
+Readers familiar with the with the topic can skip the derivation of the drift-continuity eqation, but should read \cref{sec:gyrovisc} and \cref{sec:curConserve} as this gives the startpoint of the derivation of the modified vorticity equation.
 %
 
 \section{The drift-continuity equation}
-From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-order}, we have that
+From \cref{fluideq:cont}, and the fluid drifts presented in \cref{chap:drift-order}, we have that
 %
 \begin{align*}
     \partial_t n_\a + \div (n_\a \ve{u}_\a) &= S_{n,\a}
@@ -27,11 +31,11 @@ From \cref{fluideq:cont}, and the drift ordering presented in \cref{chap:drift-o
  \label{eq:cont_eq}
 \end{align*}
 %
-We will now evaluate the divergence terms one by one after introducing the curvature operator and the collisional drifts.
+In order to simplify this equation we will first introduce the curvature operator and the collisional frequencies, before evaluating the divergence terms one by one.
 
 \subsection{The curvature operator}
 %
-To simplify the calculations, we will introduce the curvature operator.
+To easen the calculations, we will introduce the curvature operator.
 Assuming we are working in a field aligned Clebsch coordinate system (see \cref{app:coord}), where $\ve{b}$ is parallel to one of the basis vectors, we have that
 %
 \begin{align*}
@@ -124,7 +128,8 @@ and
     \frac{3}{2}\frac{n_e}{\om_e\tau_e}\ve{b}\times\grad T_e,
 \end{align*}
 %
-where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ (given analytically in \cref{sec:nue}) assuming constant $T_e$, we get that
+where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$ (given analytically in \cref{sec:nue}).
+Assuming constant $T_e$, we get that
 %
 \begin{align}
     \ve{R}_{i \to e}
@@ -134,7 +139,8 @@ where $\tau_e$ in the inverse of the electron-ion collision frequency $\nu_{ei}$
    \label{eq:res_term_full}
 \end{align}
 %
-As $\ve{u}_{\a,R}$ is already a first order drift, we substitute only the zeroth order drifts into the perpendicular velocities in \cref{eq:res_term_full}.
+Later, we will insert \cref{eq:res_term_full} into the resistive drift $\ve{u}_{\a,R}$.
+As $\ve{u}_{\a,R}$ is already a first order drift, and since we are already interested in an accuracy of only $\mathcal{O}(\e)$, we substitute only the zeroth order drifts into the perpendicular velocities in \cref{eq:res_term_full}.
 This yields
 %
 \begin{align*}
@@ -179,19 +185,42 @@ This yields
 %
    =&
    -m_en_e\nu_{ei}
-   \L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] +
-      \L[
-            -
-            \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB}
-      \R]
+   \L(0.51\L[\ve{u}_{e,\|}-\ve{u}_{i,\|}\R] + \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB}
   \R)
 \end{align*}
 %
-for the resistivity drift between electons and ions.
+for the resistive force density acting on the electrons by the ions.
+From momentum conservation we have that $\ve{R}_{i \to e}=-\ve{R}_{e \to i}$, which gives
+%
+\begin{align*}
+    \frac{\ve{R}_{\b \to \a}}{q_\a} = - \frac{\ve{R}_{i \to e}}{\L|\frac{q_\a}{e}\R|e}.
+\end{align*}
+%
+Inserting this into $\ve{u}_{\a,R}$ of \cref{eq:first_order} yields
+%
+\begin{align*}
+  \ve{u}_{\a,R} =& \frac{\ve{R}_{\b\to\a}\times\ve{b}}{n_\a q_\a B}\\
+  =& -\frac{\ve{R}_{i \to e,\perp}\times\ve{b}}{n_\a \L|\frac{q_\a}{e}\R|e B}\\
+  =& -\frac{1}{n_\a \L|\frac{q_\a}{e}\R|e B}
+  \L(-m_en_e\nu_{ei} \L[0.51\L(\ve{u}_{e,\|}-\ve{u}_{i,\|}\R) + \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB} \R] \times\ve{b}\R)
+  \note{$\ve{a}_\|\times\ve{b}=0$}
+  \\
+  =& \frac{m_en_e\nu_{ei} }{n_\a \L|\frac{q_\a}{e}\R|e B}
+  \L( \frac{\grad_\perp \L[p_e + p_i\R] \times \ve{b}}{enB} \R) \times\ve{b}
+  \note{Quasi-neutrality}
+  \\
+  =& \frac{m_e\nu_{ei} }{e B}
+   \ve{b}\times\L( \ve{b}\times\frac{\grad_\perp \L[p_e + p_i\R]  }{enB} \R)
+  \note{$-\ve{b}\times\ve{b}\times \ve{a}=\ve{a}_\perp$}
+  \\
+  =& - m_e\nu_{ei}  \frac{\grad_\perp \L(p_e + p_i\R)  }{n\L(eB\R)^2}
+  \numberthis
+  \label{eq:resDrift}
+\end{align*}
+%
 
-There will also be a drift associated with collisions between charged particles and neutrals.
-This drift is often referred to as the Pedersen drift, due to the related quantity Pedersen conductivity (see for example \cite{Baumjohann1997book}).
-To address the Pedersen drift, we start by assuming that
+There will also be a resistive force density on the electrons and ions from the collisions with neutrals.
+To address this force drift, we start by assuming that
 %
 \begin{align*}
     \ve{R}_{n\to\a} =
@@ -206,7 +235,7 @@ To address the Pedersen drift, we start by assuming that
 where $\nu_{\a n}$ is given analytically in \cref{sec:nue,sec:nui}.
 As we here want to model the neutrals as a static background, we get that
 %
-\begin{align*}
+\begin{align}
     \ve{R}_{n\to\a} =
     -
      m_\a n_\a \nu_{\a n}\L(
@@ -214,10 +243,12 @@ As we here want to model the neutrals as a static background, we get that
         +
         \ve{u}_{\a,\perp}
         \R).
-\end{align*}
+    \label{eq:neutRStat}
+\end{align}
 %
-Again, since $\ve{u}_{\a,R}$ is already a first order drift, we substitute only the zeroth order drifts into the perpendicular velocities.
-We get that
+\Cref{eq:neutRStat} will be substituted into the $\ve{u}_{\a,R}$ drift of \cref{eq:first_order}.
+As this is already a first order drift, we substitute only the zeroth order drifts into \cref{eq:neutRStat} the perpendicular velocities.
+This gives
 %
 \begin{align}
     \ve{R}_{n\to\a} =
@@ -242,9 +273,11 @@ Inserting \cref{eq:neut_res} into the Pedersen drift of \cref{eq:first_order} yi
     \L(\frac{\grad_\perp p_\a}{q_\a n_\a B}
     + \frac{\grad_\perp \phi}{B} \R).
 \end{align*}
+%
 
-
-\section{First order perpendicular terms}
+\section{Zeroth order perpendicular terms}
+%
+We will now evaluate the individual terms of \cref{eq:cont_eq}, starting with the zeroth order terms.
 By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}\times\ve{B}$ term gives
 %
 \begin{align*}
@@ -267,16 +300,16 @@ By using the curvature operator from \cref{eq:curv_op}, we find that the $\ve{E}
 and the diamagnetic term gives
 %
 \begin{align*}
-    \div\L( n_\a \ve{u}_{\a,d} \R) &=
+    \div\L( n_\a \ve{u}_{\a,d} \R) =
     -\div\L( n_\a
     \frac{\grad_\perp p_\a \times\ve{b}}{q_\a n_\a  B}
-    \R)\\
+    \R)
     %
-    &=
+    =
     -\div\L(
     \frac{\grad_\perp p_\a \times\ve{b}}{q_\a B}
-    \R)\\
-    &=
+    \R)
+    =
     \mathcal{C}\L(\frac{p_\a}{q_\a}\R).
     \numberthis
  \label{eq:div_n_ud}
@@ -285,67 +318,23 @@ and the diamagnetic term gives
 In other words, we find that $n \div \ve{u}_{\a,d}$ cancels $\ve{u}_{\a,d} \cdot \grad n$ in the absence of magnetic field inhomogeneities.
 This cancellation is referred to as \emph{diamagnetic cancellation} in the literature \cite{Garcia2005b}.
 
-\section{Second order perpendicular terms}
+\section{First order perpendicular terms}
 \label{sec:secondPerp}
 %
 We here discuss the resistivity terms and the source term of \cref{eq:cont_eq}.
 The discussion of the polarization and viscous term will be given in \cref{sec:gyrovisc}.
 
 %
-For the electron-ion resistivity term we have that
+From \cref{eq:resDrift} we get that
 %
 \begin{align}
- \div\L( n_\a \ve{u}_{e,R} \R) &=
- \div\L( n_\a \frac{\ve{R}_{\b \to \a,\perp}\times \ve{b}}{n_\a q_\a B} \R)
- = \div\L( \frac{\ve{R}_{\b \to \a,\perp}\times \ve{b}}{q_\a B} \R).
+ \div\L( n_\a \ve{u}_{e,R} \R)
+ =
+ - \div\L(\L|\frac{q_\a}{e}\R| m_e\nu_{ei}  \frac{\grad_\perp \L[p_e + p_i\R]  }{n\L[eB\R]^2}\R)
+ =
+ - \div\L(\L|\frac{q_\a}{e}\R|m_e\nu_{ei}  \frac{\grad_\perp \L[p_e + p_i\R]  }{\L[eB\R]^2}\R)
  \label{eq:div_nur}
-  %
 \end{align}
-%
-From momentum conservation we have that $\ve{R}_{i \to e,\perp}=-\ve{R}_{e \to i,\perp}$.
-This means that
-%
-\begin{align}
-    \frac{\ve{R}_{\b \to \a,\perp}}{q_\a} = - \frac{\ve{R}_{i \to e,\perp}}{\L|\frac{q_\a}{e}\R|e}.
-\end{align}
-%
-This means that \cref{eq:div_nur} can be written
-%
-\begin{align*}
-    \div(n_\a\ve{u}_{\a,R})
-  =&
-  -\frac{1}{\L|\frac{q_\a}{e}\R|e}
- \div\L(
- -\frac{m_en_e\nu_{ei}}{B}
-   \L[0.51\L(\ve{u}_{e,\|}-\ve{u}_{i,\|}\R) +
-   \L( - \frac{\grad_\perp \L(p_e + p_i\R) \times \ve{b}}{enB} \R)
-   \R]
-   \times\ve{b}
- \R)
- \note{$\ve{a}_{\|}\cdot\ve{b} = 0$}
- \\
- %
-  =&
-  -\frac{1}{\L|\frac{q_\a}{e}\R|e}
- \div\L(
- \frac{m_en_e\nu_{ei}}{B}
-   \ve{b}\times
- \L[- \frac{\grad_\perp \L(p_e + p_i\R) \times\ve{b} }{enB} \R]
- \R)
- \\
- %
-  =&
-  -\frac{1}{\L|\frac{q_\a}{e}\R|e}
- \div\L(
-   -\frac{m_en_e\nu_{ei}}{B}
-    \ve{b}\times
-   \L[ \ve{b} \times \frac{\grad_\perp \L(p_e + p_i\R)}{enB}
-   \R]
- \R)
- \note{$-\ve{b}\times\ve{b}\times\ve{a}=\ve{a}_\perp$}
- \numberthis
- \label{eq:collIntermediate}
-\end{align*}
 %
 We will from this point on assume that all collision frequencies are constant.
 As seen from \cref{app:collisions} when assuming quasi-neutrality:
@@ -366,28 +355,19 @@ as we assume constant electron temperature, we get
 \end{align*}
 %
 As the logarithm of $n$ is slowly varying for high $n$, we see that the approximation is good as long as the gradients in $n$ are small.
-Using this in \cref{eq:collIntermediate} gives
+Using this in \cref{eq:div_nur} gives
 %
 \begin{align*}
     \div(n_\a\ve{u}_{\a,R})
   =&
-  -\frac{m_e\nu_{ei}}{\L|\frac{q_\a}{e}\R|e^2}
- \div\L(
- \frac{n_e}{B}
- \frac{\grad_\perp \L[p_e + p_i\R]}{nB}
- \R)
- \note{Quasi-neutrality}
- \\
- %
-  =&
-  -\frac{m_e\nu_{ei}}{\L|\frac{q_\a}{e}\R|e^2}
- \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R).
+  - \L|\frac{q_\a}{e}\R| \frac{m_e\nu_{ei}}{e^2}
+ \div\L(  \frac{\grad_\perp \L[p_e + p_i\R]  }{B^2}\R).
  \numberthis
  \label{eq:divRes}
 \end{align*}
 %
-We see that this term contribute to perpendicular diffusion of $n$ through the divergence of the gradient of the pressures.
-This diffusion removes accumulation of scales which results from discretization of the grid as the term flattens the gradients.
+Note that although this term may be small as it is $\propto m_e$, we keep it as the term contributes to perpendicular diffusion of $n$ through the divergence of the pressure gradients.
+This diffusion removes smalles scales from the system as it flattens the gradients.
 
 Next, the Pedersen drift term yields
 %
@@ -408,7 +388,7 @@ Next, the Pedersen drift term yields
     ,
 \end{align*}
 %
-and for the source term we get
+and the source term yields
 %
 \begin{align*}
     \div\L(n_\a \ve{u}_{\a,S}\R)
@@ -434,15 +414,21 @@ and for the source term we get
 \subsection{Polarization and visocisty}
 \label{sec:gyrovisc}
 %
-For further reference, it suffice to observe that $\ve{u}_{e,p}\propto\frac{1}{\om_{ce}}$, and that electron viscosity is of order $\mathcal{O}(\e^2)$ \cref{eq:DO}.
+For further reference, it suffice to observe that $\ve{u}_{e,p}\propto\frac{1}{\om_{ce}}$, and that electron viscosity is of order $\mathcal{O}(\e^2)$ as seen from \cref{eq:DO}.
 
-% Consider: Explain the gyroviscous cancellation in parallel
 For the ions, we note that a material derivative appears in the polarization drift in \cref{eq:first_order}.
-This material derivative, and more general, the other material derivatives appearing in the equations must be treated with care.
-Although it appears that all the drifts can contribute to the advective part of the material derivative, it is only the parallel velocity and the $\ve{E}\times\ve{B}$-drift that can contribute to the advection.
-The reason for this is not so trivial in the drift-fluid picture, but comes as a consequence of what is being referred to as gyroviscous cancellation \cite{Chang1992,Smolyakov1998}.
-The cancellation comes as a consequence of the viscous part of the stress tensor cancels the drifts.
-Note that this also applies for the parallel momentum equation.
+The material derivative must be treated with care.
+Because of the advective term in the material derivative, we will for example have that
+%
+\begin{align*}
+    \div \d_t \ve{v} \neq  \d_t \L(\div \ve{v}\R).
+\end{align*}
+%
+
+One also have to take care about the advection term itself.
+It appears that all the drifts can contribute to the advective part of the material derivative, but only the parallel velocity and the $\ve{E}\times\ve{B}$-drift contributes to the advection.
+Although not trivial seen in the drift-fluid picture, it comes as a consequence of what is being referred to as \emph{gyroviscous cancellation} \cite{Chang1992,Smolyakov1998}.
+Briefly explained, the cancellation comes as a consequence of the viscous part of the stress tensor cancels the diamagnetic drift.
 This means that
 % Remember that the u_e looking part in the polarization is not really u_e, but
 % u_exb
@@ -495,9 +481,9 @@ This means that
 \label{eq:from_gyroviscous_n_not_subs}
 \end{align*}
 %
-We see that we can insert the ion continuity equation in the last term of \cref{eq:from_gyroviscous_n_not_subs}.
-We note that this term is of order $\e$, which means that when inserted the order $\e$ terms from the ion continuity equation (that is $\ve{u}_{i,p}$, $\ve{u}_{i,R}$, $\ve{u}_{i,\text{Ped}}$, $\ve{u}_{i,\nu}$, $\ve{u}_{i,S}$) will be of order $\e^2$, and will therefore be neglected.
-The ion continuity equation to order $\e^0$ reads
+We see that we can insert $Z$ times the ion continuity equation in the last term of \cref{eq:from_gyroviscous_n_not_subs}.
+Since \cref{eq:from_gyroviscous_n_not_subs} is of order $\e$, which means that when inserted the order $\e$ terms from $Z$ times the ion continuity equation (that is $\ve{u}_{i,p}$, $\ve{u}_{i,R}$, $\ve{u}_{i,\text{Ped}}$, $\ve{u}_{i,\nu}$, $\ve{u}_{i,S}$) will be of order $\e^2$, and will therefore be neglected.
+$Z$ times the ion continuity equation to order $\e^0$ reads
 %
 \begin{align*}
  \partial_t n + \div (n [ \ve{u}_{i,d} + \ve{u}_E + \ve{u}_{i,\|} ])
@@ -508,7 +494,7 @@ The ion continuity equation to order $\e^0$ reads
  \note{\cref{eq:div_ExB,eq:div_n_ud}}
  \\
  \partial_t n
- + \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
+ + \frac{1}{e}\mathcal{C}\L(p_i\R)
  + n \mathcal{C}(\phi)
  + \ve{u}_E \cdot \grad n
  + n \div \ve{u}_{i,\|}
@@ -520,19 +506,25 @@ The ion continuity equation to order $\e^0$ reads
  + \ve{u}_{i,\|} \cdot \grad n
  &=
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \\
  \L(\d_t^E + \ve{u}_{i,\|} \cdot \grad\R) n
  &=
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}.
  \numberthis
  \label{eq:i_cont}
 \end{align*}
+%
+where we have defined
+%
+\begin{empheq}[box=\tcbhighmath]{align*}
+    \d_t^E = \partial_t + \ve{u}_E\cdot\grad
+\end{empheq}
 %
 Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
 %
@@ -549,7 +541,7 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
  \frac{\grad_\perp \phi}{B}
  \L[
  S_{i, n}
- - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R)
+ - \frac{1}{e}\mathcal{C}\L(p_i\R)
  - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|}
  \R]
@@ -557,16 +549,12 @@ Inserting \cref{eq:i_cont} into \cref{eq:from_gyroviscous_n_not_subs} yields
 \numberthis
 \label{eq:from_gyroviscous}
 \end{align*}
-
-
-
-
-
-
+%
+This equation has a central part in the current balance equation, as it ultimately will be responsible for the time derivative of the modified vorticity in \cref{chap:CELMA}.
 
 \section{The electron density equation}
 %
-We can now use our results to derive a continuity equation for the electrons.
+We can now use our results to derive an equation for the time derivative of the electron density.
 Based on the quasi neutral assumption in \cref{sec:qn}, the evolution of the density can be described by both the electron continuity equation and the ionization number $Z$ times the ion continuity equation.
 The two should differ only slightly.
 We can therefore choose to use the electron continuity equation to calculate the evolution of the density.
@@ -596,12 +584,8 @@ Using that $n_e\simeq n$, we get that
     - \div\L(n \ve{u}_{e,D}\R)
     - \div\L(n \ve{u}_{e,R}\R)
     - \div\L(n \ve{u}_{e,\|}\R)
-    + S_{e,n}.
-\end{align*}
+    + S_{e,n}\\
 %
-If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, we find that
-%
-\begin{align}
     \d_t^E n
     &=
     - n\mathcal{C}(\phi)
@@ -610,13 +594,15 @@ If we now introduce the notation $\d_t^E = \partial_t + \ve{u}_E\cdot\nabla$, we
     \div\L( \frac{\grad_\perp \L[p_e + p_i\R]}{B^2} \R)
     - \div\L(n \ve{u}_{e,\|}\R)
     + S_{e,n}.
+    \numberthis
     \label{eq:dens_evol_gen}
-\end{align}
+\end{align*}
 
 \section{Current conservation equation}
+\label{sec:curConserve}
 %
 \Cref{eq:dens_evol_gen} gives the equation to solve the density in time.
-Similarly, we could make an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation for each perpendicular direction.
+Similarly, we could make an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation per sepcies for each perpendicular direction.
 However, as we will see later, all the information we need for evolving $\ve{u}_{\a,\perp}$ in time are contained in the parallel part of the vorticity equation ($(\curl \ve{v}_E)\cdot \ve{b}$).
 This equation can be derived from the current conservation, which we present in this section.
 If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, and add them, we get by applying quasi-neutrality that
@@ -664,10 +650,10 @@ This gives
 %
 \begin{align*}
     \div \L( n [\ve{u}_{i,\perp} - \ve{u}_{e,\perp}] \R) =&
-    -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R).
+    -\frac{1}{e}\div \ve{j_\|}.
 \end{align*}
 %
-Again, we can neglect the electron drifts proportional to the electron mass as these terms will be small.
+Once again, we can neglect the electron drifts proportional to the electron mass as these terms will be small.
 This gives
 %
 \begin{align}
@@ -680,12 +666,12 @@ This gives
   +\ve{u}_{i,\nu}
   +\ve{u}_{i,S}
   ] \R) =&
-  -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R).
+  -\frac{1}{e}\div \ve{j_\|}.
   \label{eq:current_drifts}
 \end{align}
 %
 The $\ve{E}\times\ve{B}$ drift in \cref{eq:current_drifts} cancels as the drift is equal for electrons and ions.
-The diamagnetic terms yields
+The diamagnetic terms yield
 %
 \begin{align*}
  \div\L( n\ve{u}_{e,d} \R) - \div\L( n \ve{u}_{i,d} \R)
@@ -748,7 +734,7 @@ Next, the electron Pedersen drift is negligible due to the electron mass, wherea
 By summing the different contributions, \cref{eq:current_drifts} can be now written as
 %
 \begin{align*}
-  -\div \L(n [\ve{u}_{i,\|} - \ve{u}_{e,\|}]\R)
+  -\frac{1}{e}\div \ve{j_\|}
   =&
     \div \L( n [
    \ve{u}_{i,d} - \ve{u}_{e,d}
@@ -761,7 +747,7 @@ By summing the different contributions, \cref{eq:current_drifts} can be now writ
 %
 %
 =&
--\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
+-\frac{1}{e}\L[\mathcal{C}\L(p_e+p_i\R)\R]
   \\
   &
   - n \div\L(\frac{\nu_{in}}{\om_{ci}}
@@ -779,7 +765,7 @@ By summing the different contributions, \cref{eq:current_drifts} can be now writ
  +
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(p_i\R) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
  \\
 %
@@ -792,7 +778,7 @@ By summing the different contributions, \cref{eq:current_drifts} can be now writ
 %
 \frac{1}{e}\div \ve{j}_\|
 =&
-\frac{1}{e}\L[\mathcal{C}\L(p_e+\frac{p_i}{Z}\R)\R]
+\frac{1}{e}\L[\mathcal{C}\L(p_e+p_i\R)\R]
   \\
   &
   +  n \div\L(\frac{\nu_{in}}{\om_{ci}}
@@ -810,7 +796,7 @@ By summing the different contributions, \cref{eq:current_drifts} can be now writ
  -
  \div\L( \frac{1}{\om_{ci}}
  \frac{\grad_\perp \phi}{B}
- \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(\frac{p_i}{Z}\R) - n \mathcal{C}(\phi)
+ \L[S_{i, n} - \frac{1}{e}\mathcal{C}\L(p_i\R) - n \mathcal{C}(\phi)
  - n \div \ve{u}_{i,\|} \R] \R)
   \\
 %

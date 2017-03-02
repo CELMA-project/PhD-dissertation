@@ -79,7 +79,7 @@ $\rho_s=\frac{c_s}{\om_{ci}}=\sqrt{\frac{T_e}{m_i}}\frac{m_i}{eB}
        =\sqrt{\frac{T_em_i}{e^2B^2}}$
 we find that
 %
-\begin{align}
+\begin{empheq}[box=\tcbhighmath]{align}
     \d_t^E n
     &=
   \frac{\rho_s^2\nu_{ei}}{\mu}
@@ -87,7 +87,7 @@ we find that
    - \partial_\|\L(n u_{e,\|} \R)
    + S_n.
     \label{eq:non_norm_dens}
-\end{align}
+\end{empheq}
 
 \section{The vorticity equation}
 %
@@ -96,9 +96,9 @@ Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve
 Thus, $\Om$ tells us something about the rotation of the fluid field.
 In this thesis, a slightly different definition will be used:
 %
-\begin{align*}
+\begin{empheq}[box=\tcbhighmath]{align*}
     \frac{\grad^2_\perp \phi}{B} \defined \Om.
-\end{align*}
+\end{empheq}
 %
 Note that this is only the parallel part of the rotation of the advective vorticity:
 %
@@ -162,13 +162,13 @@ $
 %
 Such a term would pop up (amongst other terms) if we took the divergence of the polarization drift defined in \cref{eq:first_order}.
 However, we will derive the voriticity equation from the conservation of charge (see \cref{eq:current_drifts}), where we already have a term on the form $\div(n\ve{u}_{i,p})$.
-As such, it makes sense to define the density modified voriticity $\Om^D$ (or simply just "the modified voriticity") as
+As such, it makes sense to define the \textbf{D}ensity modified voriticity $\Om^D$ (or simply just "the modified voriticity") as
 %
-\begin{align}
+\begin{empheq}[box=\tcbhighmath]{align}
     \Om^D \defined
     \div \L(n \frac{\grad_\perp \phi}{B} \R).
     \label{eq:omDDef}
-\end{align}
+\end{empheq}
 %
 In the end, we will evolve $\Om^D$ in time unless we use the Boussinesq approximation (see \cref{chap:boussinesq}).
 When the Boussinesq approximation is invoked, we will instead evolve $\Om$.
@@ -472,7 +472,7 @@ When this is not the case, terms arising from $\grad \frac{1}{B}$ are expected.
 %
 The evolution of the modified vorticity can now be written as
 %
-\begin{align*}
+\begin{empheq}[box=\tcbhighmath]{align*}
   %
   \frac{1}{\om_{ci}}
   \partial_t \Om^D
@@ -498,4 +498,4 @@ The evolution of the modified vorticity can now be written as
  \frac{1}{e} \partial_\| j_\|.
  \numberthis
  \label{eq:complVort}
-\end{align*}
+\end{empheq}

@@ -231,20 +231,20 @@ Inserting this into \cref{eq:momDensIntermediate} yields
     + m_\a u_{\a,\|}\frac{e}{|q_\a|} \frac{\rho_s^2\nu_{ei}}{\mu} \grad_\perp^2 n_e
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}
-    \\
-    %
-    %
+\end{align*}
+%
+\begin{empheq}[box=\tcbhighmath]{align*}
     m_\a \partial_t \L(n_\a u_{\a,\|} \R)
     =&
     - m_\a n_\a \ve{u}_E \cdot \nabla u_{\a,\|}
     - m_\a u_{\a,\|}\frac{e}{|q_\a|} \ve{u}_E\cdot \grad n_e
+    \\
+    &
     - m_\a u_{\a, \|}
     \L(
     n_\a \partial_\| u_{\a,\|}
     + \frac{e}{|q_\a|}\partial_\|\L[n_e u_{e,\|} \R]
     \R)
-    \\
-    &
     - \partial_\| p_\a
     + q_\a n_\a\ve{E}_\|
     \\
@@ -254,11 +254,13 @@ Inserting this into \cref{eq:momDensIntermediate} yields
     \mp 0.51m_e \frac{j_\|}{e}
     + m_\a u_{\a,\|} \frac{e}{|q_\a|}\frac{\rho_s^2}{\mu} \grad_\perp^2 n_e
     \R)
+    \\
+    &
     - m_\a n_\a \nu_{\a n}u_{\a,\|}
     + \frac{4\eta_{\a,0}}{3} \partial_z^2 u_{\a,\|}.
     \numberthis
     \label{eq:nonElstat}
-\end{align*}
+\end{empheq}
 %
 Notice that
 %
@@ -490,9 +492,9 @@ We obtain
     + \frac{Z4}{m_i3}
     \L(\eta_{i,0} \partial_z^2 u_{i,\|}
     + \eta_{e,0} \partial_z^2 u_{e,\|} \R)
-    \\
-    %
-    %
+\end{align*}
+%
+\begin{empheq}[box=\tcbhighmath]{align*}
     \partial_t \L(n u_{i,\|} \R)
     =&
     - \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
@@ -511,7 +513,7 @@ We obtain
     + \eta_{e,0} \partial_z^2 u_{e,\|} \R).
     \numberthis
     \label{eq:parMomDensNonNorm}
-\end{align*}
+\end{empheq}
 %
 
 \subsection{Parallel current equation}
@@ -783,9 +785,9 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
     \\ &
     + e n \L(\nu_{e n}u_{e,\|}-\nu_{i n}u_{i,\|} \R)
     - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
-    \\
-    %
-    %
+\end{align*}
+%
+\begin{empheq}[box=\tcbhighmath]{align*}
     \partial_t j_\|
     =&
     - \ve{u}_E \cdot \nabla j_\|
@@ -801,7 +803,7 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
     - \frac{e}{m_e} \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}.
     \numberthis
     \label{eq:parElNonNorm}
-\end{align*}
+\end{empheq}
 %
 We have now successfully derived all the equations we needed in order to evolve our system in time.
 We have used the continuity equation and the drifts in order to derive an equation evolving the electron density in time.

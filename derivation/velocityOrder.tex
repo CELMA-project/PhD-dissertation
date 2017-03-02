@@ -10,6 +10,7 @@ By these two arguments, we have a good motivation to split our equations into pe
 
 Next, the computational demand is further lessend through the so-called drift ordering of the perpendicular velocities.
 This reduces the details we can get out of the set of equations, but has the advantage that the perpendicular velocities can be solved algebraically.
+The drifts are summarized in \cref{eq:u_0,eq:first_order}.
 
 \section{Decomposition}
 We will here decompose equation (\ref{fluideq:mom}) into a part which is parallel to the magnetic field, and on which is perpendicular to the magnetic field.
@@ -140,10 +141,11 @@ We further observe that
     \cdot\ve{a}.
 \end{align*}
 %
-By using the electrostatic approximation $\d_t \ve{B} \simeq 0$%
+By using the electrostatic approximation $\partial_t \ve{B} \simeq 0$%
 \footnote{$\simeq$ will here be translated to "approximately equal to".}
 %
-(see \cref{app:elstat} for details), we get
+(see \cref{app:elstat} for details).
+At the same time we will assume $\grad \ve{b}\simeq0$, which gives
 %
 \begin{align*}
  \L(\L[\d_{t,\a} \ve{a}\R]\cdot\ve{b}\R)\ve{b}
@@ -180,13 +182,15 @@ By using the electrostatic approximation $\d_t \ve{B} \simeq 0$%
  %
  =& \parti{}{t}\ve{a}_\| +  \ve{u}_{\a} \cdot
  \L(\nabla \L[a_\|\ve{b}\R] - a_\|\nabla \L[\ve{b}\R]\R)
- \note{\hspace{-2cm}Assumed $\nabla \ve{b}$ is negligible}
+ \note{\hspace{-2cm}Assume $\nabla \ve{b}$ is negligible}
  \\
  %
  =& \parti{}{t}\ve{a}_\| +  \ve{u}_{\a} \cdot \nabla \ve{a}_\|
  \\
  %
  =& \d_{t,\a} \ve{a}_\|,
+ \numberthis
+ \label{eq:parMat}
 \end{align*}
 %
 Further we have that
@@ -216,7 +220,8 @@ and for rank-2 tensors, we define
  \L(\L[\div\te{A}\R]\cdot\ve{b}\R)\ve{b}.
 \end{align*}
 %
-For further references, we also define all the gradient operators for a field aligned coordinate system used in this thesis here:
+For further references, we also define all the gradient operators used in this thesis here.
+We will use a field aligned coordinate system (i.e. a system where $\ve{b}$ is parallel to one of the basis vectors), which gives
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     &\partial_\| \defined \ve{b}\cdot \nabla&
@@ -730,7 +735,7 @@ Hence,
   \numberthis
 \end{empheq}
 %
-For further reference, we call $\ve{u}_{\a,p}$ the polarization drift, $\ve{u}_{\a,R}$ the resistive drift, $\ve{u}_{\a,\text{Ped}}$ the Pedersen drift, $\ve{u}_{\a,\nu}$ the viscous drift and $\ve{u}_{\a,S}$ the source drift.
+For further reference, we call $\ve{u}_{\a,p}$ the polarization drift, $\ve{u}_{\a,R}$ the resistive drift, $\ve{u}_{\a,\text{Ped}}$ the Pedersen drift as it is related to the Pedersen conductivity given in for example \cite{Baumjohann1997book}, $\ve{u}_{\a,\nu}$ the viscous drift and $\ve{u}_{\a,S}$ the source drift.
 Finally, we note that ions and electrons are opposite for all first oder drifts.
 Also note that even though the material derivative contains parallel derivatives, the resulting vector is purely perpendicular.
 For a physical interpretation of the drifts, see \cite{Garcia2003}.
