@@ -1,5 +1,5 @@
 In order to find solutions which matches real life experiments (at least to a certain degree), we need to ensure that the assumptions in our models are sound.
-It is of equal importantce to check that the machinery handling the numerical calculation is correctly implemented.
+Of equal importance is it to check that the machinery handling the numerical calculation is correctly implemented.
 This can be done by code verification.
 
 Quoting \cite{Dudson2016}
@@ -24,7 +24,7 @@ After a quick introduction of the concept of truncation errors, the MMS process 
 
 \section{Numerical errors}
 %
-Our derivative operators are discretized in order for them to operate on a discretized grid.
+Our derivative operators are discretized in order to operate on a discretized grid.
 Doing so introduces an error, which depends on the order of approximation.
 To use a concrete example, let us consider the simplest differential equation
 %
@@ -57,7 +57,7 @@ Subtraction of $f(x_0)$ and division by $h$ now yields the following approximati
     + \mathcal{O}(h^2)
 \end{align*}
 %
-Hence, the local truncation error LTE we do in a single point by using this approximation is
+Hence, the local truncation error (LTE) we do in a single point by using this approximation is
 %
 \begin{align*}
     \|e_{\text{LTE}}\|
@@ -67,7 +67,7 @@ Hence, the local truncation error LTE we do in a single point by using this appr
     \L\| \L.\frac{h}{2}\deri{^2f(x)}{x^2}\R|_{x=x_0} + \mathcal{O}(h^2)\R\|
 \end{align*}
 %
-In other words it scales with the grid spacing $h$ to the first order.
+In other words, it scales with the grid spacing $h$ to the first order.
 The global error in some $L$-norm $n$ can be defined as
 %
 \begin{align*}
@@ -75,7 +75,7 @@ The global error in some $L$-norm $n$ can be defined as
     \L\|\ve{f}_{\text{true}} - \ve{f}_{\text{numeric}}\R\|_{L_n}
 \end{align*}
 %
-% FIXME: LTE and global error
+% Consider: Mention LTE and global error
 where $\ve{f}_{\text{true}}$ is an array of the analytic solution in each grid point, and $\ve{f}_{\text{numeric}}$ is an array of the solution obtained numerically.
 From linear PDE theory we have that the global error should converge to the LTE order if the scheme is consistent (the LTE $\to 0$ as $h\to 0$) and numerically stable%
 \footnote{Note that the definition of stability depends on the context, see \cite{Leveque2007book} for more details.}.
@@ -108,7 +108,7 @@ Therefore, we manufacture a set of functions $\ve{f}_M$ which does not satisfy \
 \end{align*}
 %
 Note that $\ve{f}_M$ is an exact analytical solution of $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$.
-We can therefore solve numerically $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$ for $\ve{f}$, and find the global error (for each variable $\ve{u}_e, \ve{u}_i, n, \Om^D, T_e, \ldots$ by
+We can therefore solve $\parti{\ve{f}}{t} = F(\ve{f}) + \ve{S}$  numerically for $\ve{f}$, and find the global error (for each variable $\ve{u}_e, \ve{u}_i, n, \Om^D, T_e, \ldots$ by
 %
 \begin{align*}
     \L\|\ve{e}\R\|_{L_n} =
@@ -133,9 +133,9 @@ If we are to take derivatives in the $\rho$ direction, we must take care that
 %
 \vspace{0.5cm}
 \begin{enumerate}[noitemsep,nolistsep]
-    \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$ along $\rho$, particularly at \item $f(\rho=0,\theta,z)$.%
+    \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$ along $\rho$, particularly at $f(\rho=0,\theta,z)$.%
     \begin{itemize}[noitemsep,nolistsep]
-            \item This implies that the function must also be single valued in $f(\rho=0,\theta,z)$.
+            \item This implies that the function must be single valued in $f(\rho=0,\theta,z)$.
             \item Even though the coordinate system have a singularity in $f(\rho=0,\theta,z)$, the function may be continuous in a different coordinate system.
     \end{itemize}
   \item Boundary conditions in $\rho$ must be satisfied.
@@ -148,7 +148,7 @@ If we are to take derivatives in the $\theta$ direction, we must take care that
 \begin{enumerate}[noitemsep,nolistsep]
     \item $f(\rho,\theta,z)$ must be of $\mathcal{C}^\infty$ along $\theta$, particularly at $f(\rho,\theta=0,z)$ and $f(\rho,\theta=2\pi,z)$%
     \begin{itemize}[noitemsep,nolistsep]
-            \item This implies that the function must also be periodic
+        \item This implies that the function must be periodic.
     \end{itemize}
 \end{enumerate}
 \vspace{0.5cm}
@@ -268,15 +268,16 @@ The behavior is depicted in \cref{fig:divDDZ}.
     \label{fig:divDDZ}
 \end{figure}
 %
-We therefore consider the schemes up until this point for convergent.
+We therefore conclude that the schemes up until this point for convergent.
 
 Finally, we will point out an important caveat.
-Several operators used in the CELMA code can be written as $\rho^{-n}\partial_\rho f$, and care must be taken as the division by $\rho$ can appear to break the convergence.
+Several operators used in the CELMA code can be written as $\rho^{-m}\partial_\rho f$, and care must be taken as the division by $\rho$ can appear to break the convergence.
 In the case of $\frac{\texttt{DDX}(f)}{\rho}$, the loss of expected convergence rate can be explained by looking at the finite difference stencil.
 We have that%
 %
 \footnote{
-Found by Taylor expanding $f$ around $x_0$, evaluating it in $x+\Delta$ and subtracting it from the function Taylor expanded around $x_0$ and evaluated in $x-\Delta$. The final result is then divided by $2\Delta$
+    Found by Taylor expanding $f$ around $x_0$, evaluating it in $x+\Delta$ and subtracting it from the function Taylor expanded around $x_0$ and evaluated in $x-\Delta$.
+    The final result is divided by $2\Delta$.
 }
 %
 \begin{align*}
@@ -284,7 +285,7 @@ Found by Taylor expanding $f$ around $x_0$, evaluating it in $x+\Delta$ and subt
     \frac{\Delta^2}{6}\deri{^2f}{x^2} + \mathcal{O}(\Delta^3),
 \end{align*}
 %
-where $\Delta$ denotes the grid spacing as shown in \cref{fig:flatBC}.
+where $\Delta$ denotes the grid spacing depicted in \cref{fig:flatBC}.
 As the boundaries lay half between the grid points, $\L.\rho\R|_{\text{Index}=1}=\frac{\Delta}{2}$.
 Thus, in this point, we have that
 %
@@ -294,8 +295,8 @@ Thus, in this point, we have that
     = \frac{\Delta}{3}\deri{^2f}{x^2} + \mathcal{O}(\Delta^2)
 \end{align*}
 %
-Thus for the first inner point, the scheme is only $1$st order convergent in $\Delta$.
-As a function like $\rho$ is known to machine precision, this does not imply that the operator is incorrectly implemented, only that verification of $\rho^{-n}\partial_\rho f$ thought MES is not suitable.
+Therefore, the scheme is only $1$st order convergent in $\Delta$.
+As a function like $\rho$ is known to machine precision, this does not imply that the operator is incorrectly implemented, only that verification of $\rho^{-m}\partial_\rho f$ thought MES is not suitable.
 
 \subsubsection{The Naulin Solver}
 %
@@ -334,10 +335,9 @@ We will now verify the implementation of the
     \L\{\L(\partial_{\rho} \phi\R)^2+ \frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2, n\R\}
     =
     \L\{\L(\partial_{\rho} \phi\R)^2,n\} + \{\frac{1}{\rho^2}\L(\partial_{\theta} \phi\R)^2, n\R\}
-    .
 \end{align*}
 %
-term, found in \cref{eq:ExBAdvImp}.
+term.
 As the Arakawa implementation of $\{\phi,\cdot\}$ was found convergent using MMS in \cite{Dudson2016}, and because the treatment of the singularity was found to be convergent in \cref{sec:singleOp}, we would here like to check that ghost-points are correctly calculated after doing the $\partial^2_\rho \phi$ operation.
 Hence, we seek to MES the term
 %
@@ -361,11 +361,11 @@ Instead, we will use the function
             \label{eq:arakawaUE}
 \end{align*}
 %
-Note that since the Arakawa implementation does use Fourier discretization, there is no problem that this function contains a sum of in $\theta$.
-Thus, we do not get the advantages of the spectral convergence rate.
+Note that since the Arakawa implementation does not use Fourier discretization, there is no problem that this function contains a sum of in $\theta$.
+This means that we do not get the advantages of the spectral convergence rate.
 However, the errors in the $\rho$ may dominate when successively making the grid spacing in $\theta$ smaller and vice versa.
 This is what happens when performing the MES test in the $\theta$ direction, as seen in \cref{tb:MESResults}.
-One could of course increase the resolution even more in $\rho$, but this would make the test significantly more computationally expensive.
+One could of course increase the resolution even more in $\rho$, but this would make the test computationally expensive.
 Inspection of the error plot shows that the error is not dominating in any particular point, and we can therefore conclude that the implementation is convergent.
 
 Finally, note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
@@ -397,13 +397,14 @@ The result of the MES is given in \cref{tb:MESResults}.
 %
 Finally the integration operators are verified.
 Note that we are not using these routines when solving the set of PDEs, but to calculate the total particle number, the kinetic energy etc.
-We now define the hat function $H$, with continuous variable $d$, steepness $s$, centering $c$ and width $w$ as input parameters as
+We now define the hat function $H$ as
 %
 \begin{align}
     H(d,s,c,w) = \frac{1}{2}\L(\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]-\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]\R)
     \label{eq:hat}
 \end{align}
 %
+The arguments of the function is the continuous variable $d$, steepness $s$, centering $c$ and width $w$ as input parameters
 And use the following equations in the verification process
 %
 \begin{align}
