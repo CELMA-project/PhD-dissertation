@@ -7,13 +7,13 @@ The resulting model will from here be referred to as the CELMA model, an abbrevi
 }%
 .
 
-We will end up with a coupled set of four PDEs, which solves the density, the sum of the parallel momentum densities, the current and the modified vorticity in time (plus a boundary equation which gives the potential at the given time step).
-In other words, we have managed to considerably reduce the original system consisting eight coupled PDEs.
+We will end up with a coupled set of four PDEs, which we can use to evolve the density, the sum of the parallel momentum densities, the current and the modified vorticity in time together with a boundary equation which gives the potential at the given time step.
+In other words, the final set equations is a considerable reductions of the original system consisting, which consisted of eight coupled PDEs.
 The final set of equations is found in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}.
 
 The aim is to model something similar to what is observed in linear plasma devices.
 Several types of linear machines exists, all with different purposes.
-For example has the Q-machines have been used for the study quiescent alkali plasmas \cite{Nielsen1996} and machines like Magnum-PSI \cite{Rapp2010} are mainly used for the study plasma-wall interactions.
+For example has the Q-machines have been used for the study quiescent alkali plasmas \cite{Nielsen1996} and machines like Magnum-PSI \cite{Rapp2010} have mainly been used for the study plasma-wall interactions.
 Here, we would restrict our attention to mainly helicon type plasmas, where a helicon wave are responsible for the plasma creation \cite{Boswell1984,Shamrai1996}.
 No momentum is added to the plasma in this creation process.
 The plasma creation process will in this thesis therefore just be approximated by the source variable $S_n$, which we keep constant in time.
@@ -30,11 +30,11 @@ Helicon devices operational during the writing of this thesis includes VINETA \c
     \label{fig:VINETA}
 \end{figure}
 %
-Although we restrict our scope to helicon devices, machines like the LAPD \cite{Gekelman1991,Gekelman2016} are also possible to model with CELMA by proper adjusting of $S_n$.
+Although we restrict our scope to helicon devices, it is also possible to model devices like the LAPD \cite{Gekelman1991,Gekelman2016} with CELMA by properly adjusting the sources.
 
 \section{The density equation}
 %
-We will now rewrite the electron density equation (\cref{eq:dens_evol_gen}) using that we are in a straight magnetic field (so that $B=\text{const}$ and $\mathcal{C}(f)=0$) using the assumptions that the electron temperature is constant and the ion temperature is negligible.
+We will now simplify the electron density equation (\cref{eq:dens_evol_gen}) using $B=\text{const}$ (so that $\mathcal{C}(f)=0$), $T_e=\text{const}$ and $T_i\simeq0$.
 This yields
 %
 \begin{align*}
@@ -91,7 +91,7 @@ we find that
 
 \section{The vorticity equation}
 %
-We will in the section derive an equation which can be used to find the evolution of the vorticity.
+After the derivations in \cref{chap:slowB}, we are in the poisition to find the vorticity with our current approximations.
 Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve{u}$ \cite{Kundu2010book}.
 Thus, $\Om$ tells us something about the rotation of the fluid field.
 In this thesis, a slightly different definition will be used:
@@ -160,8 +160,8 @@ $
                    \div \L[ \ve{b} \ve{b}\cdot\grad \R]
                    $.
 %
-Such a term would pop up (amongst other terms) if we took the divergence of the polarization drift defined in \cref{eq:first_order}.
-However, we will derive the voriticity equation from the conservation of charge (see \cref{eq:current_drifts}), where we already have a term on the form $\div(n\ve{u}_{i,p})$.
+This term will come from the polarization drift defined in \cref{eq:first_order}.
+However, as we are deriving the voriticity equation from the conservation of charge (see \cref{eq:current_drifts}), we already have a term on the form $\div(n\ve{u}_{i,p})$.
 As such, it makes sense to define the \textbf{D}ensity modified voriticity $\Om^D$ (or simply just "the modified voriticity") as
 %
 \begin{empheq}[box=\tcbhighmath]{align}
@@ -170,11 +170,10 @@ As such, it makes sense to define the \textbf{D}ensity modified voriticity $\Om^
     \label{eq:omDDef}
 \end{empheq}
 %
-In the end, we will evolve $\Om^D$ in time unless we use the Boussinesq approximation (see \cref{chap:boussinesq}).
-When the Boussinesq approximation is invoked, we will instead evolve $\Om$.
-In order to derive two equations, we will start by investigating the left hand side of \cref{eq:full_vort_eq} term by term.
+In the end, we will evolve $\Om^D$ in time unless we use the Boussinesq approximation (see \cref{chap:boussinesq}), where we instead will evolve $\Om$.
+We will start the derivation by investigating the left hand side of \cref{eq:full_vort_eq} term by term.
 
-\subsection{The diamagnetic contribution}
+The diamagnetic contribution
 %
 \begin{align*}
     \frac{1}{e}\L[\mathcal{C}(p_e+p_i)\R].
@@ -182,8 +181,6 @@ In order to derive two equations, we will start by investigating the left hand s
 %
 disappears as $\mathcal{C}(f)$ vanishes for a straight magnetic field.
 
-\subsection{The neutral contribution}
-%
 The next two terms, which originate from the Pedersen drift \cref{eq:div_ped}, can be rewritten using that we are dealing with cold ions.
 We get
 %
@@ -207,9 +204,7 @@ We get
 \end{align*}
 %
 
-\subsection{The polarization contribution}
-%
-Further on, we will investigate the terms arising from the sum of the divergence of the ion polarization drift and ion viscosity drift multiplied with the density.
+The next terms are arising from the sum of the divergence of the ion polarization drift and ion viscosity drift multiplied with the density (that is \cref{eq:from_gyroviscous}).
 The first term of \cref{eq:from_gyroviscous} yields
 %
 \begin{align*}
@@ -301,7 +296,6 @@ This means that the polarization contribution from \cref{eq:full_vort_eq} can be
  \div\L( \frac{\grad_\perp \phi}{B} n \partial_\| u_{i,\|} \R).
 \end{align*}
 
-\subsection{The source contribution}
 %
 Further on, the contribution from the source can be rewritten.
 Under the assumption of cold ions ($T_i = 0$), we can simplify the source term in \cref{eq:full_vort_eq} to
@@ -321,8 +315,6 @@ Under the assumption of cold ions ($T_i = 0$), we can simplify the source term i
 \end{align*}
 %
 
-\subsection{The parallel contribution}
-%
 Finally, the RHS of \cref{eq:full_vort_eq} reads
 %
 \begin{align*}
@@ -344,7 +336,7 @@ Finally, the RHS of \cref{eq:full_vort_eq} reads
 \subsection{Collecting terms}
 \label{sec:CELMACollect}
 %
-From the calculations above, \cref{eq:full_vort_eq} can be rewritten to
+From the derivations above, \cref{eq:full_vort_eq} can now be rewritten to
 %
 \begin{align*}
   %
@@ -398,11 +390,8 @@ Rearranging yields
  \label{eq:non_norm_vort_1}
 \end{align*}
 %
-We note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i,n} \R)$ arising from the time derivative of $n_i$ in the polarization term of the current conservation equation, cancels with the same term with opposite sign arising from the source term of the current conservation equation.
+Note that $\frac{1}{\om_{ci}} \div\L( \frac{\grad_\perp \phi}{B} S_{i,n} \R)$ arising from the time derivative of $n_i$ in the polarization term of the current conservation equation has cancelled with the same term with opposite sign arising from the source term of the current conservation equation.
 
-\subsection{Vector advective terms}
-\label{sec:vecAdvTerm}
-%
 We can simplify \cref{eq:non_norm_vort_1} even further by first observing that
 %
 \begin{align*}
@@ -465,11 +454,10 @@ Next, we see from \cref{app:vortDAdv} that
   \frac{1}{2\rho}\{\ve{u}_E^2, n\}.
 \end{align*}
 %
+Where the Poisson brackets described in \cref{app:poisson} has been used.
 A similar expression is expected to be found for other geometries as well, at least as long as the $B$ field is constant.
 When this is not the case, terms arising from $\grad \frac{1}{B}$ are expected.
 
-\subsection{The complete modified vorticity equation}
-%
 The evolution of the modified vorticity can now be written as
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
