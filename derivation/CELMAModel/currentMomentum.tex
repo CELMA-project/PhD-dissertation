@@ -1,7 +1,7 @@
 \section{Parallel current and momentum density}
 %
 In order to solve the system of equations, we need to determine $u_{\a,\|}$.
-This could be done by solving the ion momentum equation and the electron momentum equation in time.
+This could be done by evolving the ion momentum equation and the electron momentum equation in time.
 However, as we are calculating $\frac{1}{e}\partial_\|\L(ne\L[u_{i,\|} - u_{e,\|}\R]\R)$ in \cref{eq:complVort}, we require that this term is of high precision.
 This is because the vorticity is a first order term, and loss of numerical precision can be high when subtracting $u_{i,\|}$ and $u_{e,\|}$ if they are almost equal to each other.
 As a result, the numerical error may pollute the calculated order of the modified vorticity.
@@ -455,7 +455,7 @@ We obtain
     %
     %
     \frac{m_i}{Z} \partial_t \L(n u_{i,\|} \R)
-    =&
+    \simeq&
     - \frac{m_i}{Z} \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
     - m_i u_{i, \|}
     \frac{1}{Z}
@@ -471,7 +471,6 @@ We obtain
     \\&
     + \frac{4\eta_{i,0}}{3} \partial_z^2 u_{i,\|}
     + \frac{4\eta_{e,0}}{3} \partial_z^2 u_{e,\|}
-    \note{Constant $T_e$}
     \\
     %
     %
@@ -483,6 +482,7 @@ We obtain
     \frac{1}{Z}n \partial_\| u_{i,\|}
     + \partial_\|\L[n u_{e,\|} \R]
     \R)
+    \note{Constant $T_e$}
     \\&
     - \frac{Z}{m_i} T_e \partial_\| n
     + \frac{Z}{m_i} \nu_{ei} \frac{m_i}{Z} u_{i,\|} \frac{\rho_s^2}{\mu} \grad_\perp^2 n
@@ -496,7 +496,7 @@ We obtain
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     \partial_t \L(n u_{i,\|} \R)
-    =&
+    \simeq&
     - \ve{u}_E \cdot \nabla\L( u_{i,\|} n \R)
     -  u_{i, \|}
     \L(
@@ -693,7 +693,7 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
     \\
     %
     %
-    =&
+    \simeq&
     - \ve{u}_E \cdot \nabla j_\|
     \\&
     - e u_{i, \|}
@@ -789,7 +789,7 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     \partial_t j_\|
-    =&
+    \simeq&
     - \ve{u}_E \cdot \nabla j_\|
     \\&
     - en \L( u_{i, \|}  \partial_\| u_{i,\|} - u_{e, \|} \partial_\| u_{e,\|} \R)
@@ -808,5 +808,6 @@ Adding \cref{eq:qmMultI} with \cref{eq:qmMultE} yields
 We have now successfully derived all the equations we needed in order to evolve our system in time.
 We have used the continuity equation and the drifts in order to derive an equation evolving the electron density in time.
 Due to quasi-neutrality this also describes how the ion density evolves in time.
+We have used the conservation of charge to derive the modified vorticity equation.
 Both the parallel momentum density equation and the parallel current has been derived from the momentum density equation for electrons and ions.
 Before plugging these equations into a code which evolves them in time, we will normalize them.
