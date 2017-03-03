@@ -39,7 +39,7 @@ This relation is called the Boltzmann relation%
 and is expected because:
 %
 \begin{enumerate}[noitemsep]
-        \item The pressure is balancing the electric field to the first order, as seen in the ordering described in \ref{app:DO}.
+        \item The pressure is balancing the electric field to first order, as seen in the ordering described in \ref{app:DO}.
         \item We do not restrict the potential by any parallel boundary condition.
 \end{enumerate}
 %
@@ -53,7 +53,7 @@ If more electrons than ions were to escape, a potential difference would build u
 %
 Any difference in the parallel velocities would lead to parallel currents.
 
-The divergence of current must be constant as a consequence of charge conservation.
+The divergence of the current must be constant as a consequence of charge conservation.
 Any parallel derivatives in the parallel current not balancing the other terms in \cref{eq:celma_vortD_evolution} would lead to an acceleration of the plasma spinning.
 Therefore, the radial vorticity profile comes as a direct consequence of the parallel derivative of the current in that point.
 Due to this, one should take care that the see-sawing in the parallel current profile is kept to a minimum.
@@ -76,8 +76,9 @@ As for the parallel direction, the shape of the radial density profile is determ
 The radial extent of the source plays a larger role in determining the radial density profile as compared with the shape of the source.
 
 Despite having almost Boltzmann distributed electrons in the parallel direction at each radial point close to the axis, the Boltzmann relation does not apply in the radial direction.
-This is because the plasma is confined in the parallel direction by the strong magnetic field.
+This is because the plasma is confined in the perpendicular direction by the strong magnetic field.
 Close to $L_\rho$ the radial potential profile is affected more by the fixation potential to $0$ at $L_\rho$.
 Thus, the values here differs from the density profile because of the zero gradient enforcement on $n$ at $L_\rho$.
-As a result, $j_\|$ froms a boundary layer as $\mu n \partial_\|\L(T_e\ln[n]-\phi\R)$ diverges due to difference in boundary conditions between $\phi$ and $n$, which means that we get a sharp gradient in $\Om$ as the parallel gradient in $j_\|$ is adding to the positive acceleration of the vorticity.
+As a result, $j_\|$ froms a boundary layer as $\mu n \partial_\|\L(T_e\ln[n]-\phi\R)$ diverges due to difference in boundary conditions between $\phi$ and $n$.
+This means that we get a sharp gradient in $\Om$ as the parallel gradient in $j_\|$ is adding to the positive acceleration of the vorticity.
 The sharp gradient in $\Om$ means that we will have a strong velocity shear in the poloidal velocity, as described further in \cref{chap:poloidal}.

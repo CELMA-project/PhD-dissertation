@@ -7,16 +7,16 @@ After perturbing the system%
     This could in theory happen if the noise at machine level assembles in just the right way so that it forms an unstable mode.}
 %
 as described in \cref{sec:initRun}, the perturbation noise vanishes, and poloidal modes start to appear.
-The modes will either grow or be damped in the linear phase, depending on the simultion parameters.
+The modes will either grow or be damped in the linear phase, depending on the simulation parameters.
 As the perturbations are small, the dynamics in this linear phase comes purely from the linear part of the set of equations.
-In other words mode coupling between different modes are negligible.
+In other words mode-mode coupling between different modes are negligible.
 If the system was purely linear, the growth of the modes would continue forever.
-However, our system is not purely linear, mode coupling will start to become important once the perturbations have grown sufficiently big.
+However, our system is not purely linear, and mode coupling will start to become important once the perturbations have grown sufficiently big.
 The mix of linear and non-linear growth will eventually reach a saturated turbulence phase, which will be treated in \cref{chap:satTurb}.
 We will here define the linear state as:
 %
 \begin{enumerate}[noitemsep]
-    \item Starting once the initial perturbation has vanished and where the modes start to show a more or less exponential growth or decay.
+    \item Starting once the initial perturbation has vanished and where the modes start to show an exponential-like growth or decay.
     \item Ending at the time where any mode, which up to that point in time has been flat or damped, suddenly shows an exponential growth.
 \end{enumerate}
 %
@@ -28,8 +28,7 @@ This is indicated in \cref{fig:modeRotation}, where a clockwise rotation is obse
 For further reference, one should note that the black dashed circles on the perpendicular part of the plot indicates the position of the maximum gradient of the density in the steady state, which is also the fixed $\rho$ in the poloidal part of the plot.
 
 We will now compare the direction of rotation of the perturbations with direction of rotation of the zeroth order drifts.
-In \cref{fig:modeRotation} the magnetic field is pointing into the paper.
-Further, the gradient in both $\phi$ and $n$ is pointing towards the center (i.e. towards negative $\rho$).
+Further, the gradients in both $\phi$ and $n$ are pointing towards the center (i.e. towards negative $\rho$).
 From \cref{poi:cylExB} have that
 %
 \begin{align*}
@@ -59,7 +58,7 @@ so the $\ve{u}_E$-drift is moving in the counter-clockwise direction%
 \footnote{
 Note that the signs comes as a consequence of working in a left-handed system.
 This means that $\theta$ is increasing in the counter-clockwise direction.
-}
+}%
 %
 .
 Substituting $\grad\phi$ with $\frac{T_e\grad n}{q_en}$ in \cref{poi:cylExB} gives the electron diamagnetic drift.
@@ -78,7 +77,7 @@ To verify if the linear phase can be identified as drift waves, we will proceed 
 \section{Simplified linear drift wave theory}
 \label{sec:simpleLin}
 %
-Conceptually, a drift wave is a wave which travels in the electron diamagnetic direction, and arises due to the mass difference between electrons and ions.
+Conceptually, a drift wave is a wave which travels in the electron diamagnetic direction, and arises due to the mobility difference between electrons and ions.
 If one introduces a density (or pressure) perturbation in a homogeneous, magnetized plasma slab, the electrons will stream out of the perturbation along the magnetic field lines at a much faster rate than ions due to their higher mobility.
 This gives rise to a $\ve{E}$-field perturbation pointing in the direction of the electrons.
 The $\ve{E}$-field gives in turn rise to a $\ve{E}\times\ve{B}$-drift perpendicular to the magnetic field.
@@ -126,7 +125,8 @@ For a mathematical demonstration of this, see for example \cite{Garcia2001a}.
         \label{fig:rot3}
     \end{subfigure}
     \caption{Rotation of the modes.
-        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced for the opposite plot.
+        The arrow indicates the direction of movements, whilst the dashed lines indicates where the data is sliced in the opposite plot.
+        The $B$-field point into the paper.
     }
     \label{fig:modeRotation}
 \end{figure}
@@ -138,7 +138,7 @@ A phase shift arises if the parallel motion of electrons arising from pressure g
 Such a delay can have its origin in for example magnetic induction, Landau damping, or as in our case, due to resistivity.
 
 To obtain a simple analytic expression of the drift waves, we will recite the most important points given in the derivation in \cite{Pecseli2016book}.
-For a review of drift-waves, the reader is referred to \cite{Horton1999}
+For a review of drift-waves, the reader is referred to \cite{Horton1999}.
 We are here not concerned with neutral interaction.
 For an analytic expression where the neutral elastic collision dominates, see \cite{Ellis1980}.
 
@@ -188,7 +188,7 @@ These quantities are defined as
 %
 \Cref{eq:fullDisp} can be solved as a second order boundary value problem by properly defining the boundary conditions.
 However, an analytical solution is sought, so the approximation $\partial_x^2 \phi(x)\simeq\partial_x \phi(x)\simeq0$ is used.
-This is essentially is a statement that the perturbations are infinite long in the $x$-direction.
+This is essentially is a statement that the perturbations are infinitly long in the $x$-direction.
 The final analytic dispersion relation now reads
 %
 \begin{align}
@@ -203,7 +203,6 @@ The final analytic dispersion relation now reads
     \\&
     - \frac{\sqrt{\sigma}}{2}
     \L(16 [\om^{*}]^{2} + \sigma^{2} \L[b^{2} + 2 b + 1\R]^{2}\R)^{1/4}
-    \\&\quad
     \sin\L(\frac{1}{2} \operatorname{Arg}\L[- \sigma \L(b^{2} + 2 b + 1\R) + 4i \om^{*} \R] \R)
     \\&
     - \frac{\sigma}{2}
@@ -244,24 +243,24 @@ From this, we see that the slab approximation becomes better for higher mode num
 \section{Analytical growth rates and angular frequencies}
 \label{sec:analDisp}
 %
-A visualization of the growth rates and angular frequencies in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:grAnalytic}.
+A visualization of the growth rates and angular frequencies in slab geometry calculated from \cref{eq:analyticDisp} is given in \cref{fig:analGR}.
 %
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[h]{0.45\textwidth}
        \centering
        \includegraphics{fig/results/growthRates/growthRatesAnalyticB0ModeNr}
-       \caption{Analytic growth rates and angular frequencies as a function of $B_0$}
-       \label{fig:grAnalyticBModeNr}
+       \caption{Growth rates and angular frequencies obtained from \cref{eq:analyticDisp}.}
+       \label{fig:grAnalytic}
     \end{subfigure}
     \hfill
     \begin{subfigure}[h]{0.45\textwidth}
         \centering
         \includegraphics{fig/results/growthRates/growthRatesAnalyticB0}
         \caption{Analytic growth rates and angular frequencies as a function of mode numbers.}
-        \label{fig:grAnalytic}
+        \label{fig:grAnalyticBModeNr}
     \end{subfigure}%
-    \caption{Growth rates and angular frequencies as a function of obtained from \cref{eq:analyticDisp}.}
+    \caption{Analytic growth rates and angular frequencies as a function of $B_0$.}
     \label{fig:analGR}
 \end{figure}
 %
@@ -270,7 +269,7 @@ We have also corrected for the poloidal $\ve{E}\times\ve{B}$-drift by adding $\f
 \footnote{
     In the analytical derivation $\partial_\rho \phi$ is assumed to be $0$ in order to simplify the derivations.
     Thus, a correction is needed as this term is non-zero in the simulations.
-}
+}%
 %
 .
 
@@ -288,7 +287,7 @@ For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number 
 \clearpage
 \thispagestyle{empty}
 \begin{figure}[htbp]
-    \vspace*{-1cm}
+    \vspace*{-1.5cm}
     \centering
     \begin{subfigure}[h]{1.00\textwidth}
         \centering
@@ -310,7 +309,9 @@ For the angular frequency in \cref{fig:grAnalytic}, we see that the mode number 
         \caption{$B=0.06 \T$}
         \label{fig:B006}
     \end{subfigure}
-    \caption{Dominant mode depends on $B$}
+    \caption{The dominant mode depends on $B$.
+        The $B$-field points into the paper, and the black dashed lines indicate the slicing of the opposite plot.
+    }
     \label{fig:dominatingMode}
 \end{figure}
 \clearpage
@@ -359,7 +360,7 @@ Variable & Values in the range $B_0=0.1\to0.02\T$ \\
 %
 $\rho_{\text{ at }\max|\partial_\rho n/n|}$ & $\simeq 0.037\m$\\
 $\partial_\rho n/n$ & $-38 \to - 9\m^{-1}$\\
-$u_{E,\theta}$ & $50-125$\\
+$u_{E,\theta}$ & $50-125 \text{ ms}^{-1}$\\
 %
 \hline\hline
 \end{tabular}
@@ -411,12 +412,14 @@ The time trace of the $7$ first modes is depicted in \cref{fig:fourierUnstable}.
 %
 As the ordinate in \cref{fig:fourierUnstable} is logarithmic, exponential grow will appear as straight lines.
 One should note, that contrary to what was found in \cref{sec:analDisp}, $B=0.02\T$ shows a decaying behavior%
-\footnote{Altough the time trace of \cref{fig:fourierStable} shows a more complex behavior than just growing or just decayin, we conclude that the mode is stable against perturbations, as they remain small for all times, and that every "attempt" of growth is followed by a raprid decay.
-    The growth is obseved if the mode stops rotating, when it starts rotating again, a decay of the mode is observed.
+\footnote{Altough the time traces of \cref{fig:fourierStable} shows a more complex behavior than simly growing or simplify decaying, we conclude that the mode is stable against perturbations as they remain small for all times.
+    Every "attempt" of growth is followed by a raprid decay.
+    The growth is obseved if the mode stops rotating.
+    A decay of the mode is observed when it starts rotating again.
     When the growth of the system is "flat" in \cref{fig:fourierStable}, only noise is visible.
-}%
+}
 in \cref{fig:fourierStable}.
-This can be explained by the viscosities, which is present in our model, but not been accounted for in the derivation of the dispersion relation in \cref{sec:simpleLin}.
+This can be explained by the viscosities, present in our model, but neglected in the derivation of the dispersion relation in \cref{sec:simpleLin}.
 
 The growth rates and angular frequencies obtained from the simulations as a function of mode number is found in \cref{fig:grB}, where the error bars in the growth rates shows the spread in the linear fit, whereas the error bar in the angular frequency represents the standard-deviation.
 %
@@ -425,35 +428,37 @@ The growth rates and angular frequencies obtained from the simulations as a func
     \begin{subfigure}[h]{0.45\textwidth}
         \centering
         \includegraphics{fig/results/growthRates/growthRatesB0ModeNr}
-        \label{fig:grBModeNr}
-        \caption{$B$-dependency on the growth rates and angular frequencies.}
+        \caption{Mode number-dependency on the growth rates and angular frequencies.}
+        \label{fig:grB}
     \end{subfigure}
     \hfill
     \begin{subfigure}[h]{0.45\textwidth}
         \centering
         \includegraphics{fig/results/growthRates/growthRatesB0}
-        \caption{Mode number-dependency on the growth rates and angular frequencies.}
-        \label{fig:grB}
+        \caption{$B$-dependency on the growth rates and angular frequencies.}
+        \label{fig:grBModeNr}
     \end{subfigure}%
     \caption{Growth rates and angular frequencies obtained from the simulations.}
     \label{fig:obtainedGR}
 \end{figure}
 %
 Both the trend and the values in \cref{fig:grB} matches approximately what was found in \cref{fig:grAnalytic}.
-The maximum growth rate is shifted to one higher mode number for all $B$-field amplitudes in the growth rates found in the simulations.
-For lower values of $B_0$ the growth rates found in the simulation is less than what was found in the analytical expression, which means that the growth rates for all mode number is negative for $B_0=0.02\T$.
-Likewise, the angular frequency is shifted upwards for lower values of $B$.
+However, the maximum growth rate is shifted to one higher mode number for all $B$-fields in the simulations.
+For lower values of $B_0$ the growth rates found in the simulation are less than what was found in the analytical expression.
+As a consequence, the growth rates for all mode numbers are negative for $B_0=0.02\T$.
+Likewise, the angular frequency is shifted to more positive numbers for lower values of $B$.
 Again $B_0=0.02\T$ shows an extreme behavior as it is rotating in the ion diamagnetic direction, opposite to the rotation of all the other $B$-fields.
-The mode number with the maximum negative rotation stays the same in both the analytic case and the simulation case.
+The mode number with the maximum negative rotation stays the same in both the analytic case and in the simulation case.
 
 \Cref{fig:grB} can also be visualized in a different way.
 In \cref{fig:grBModeNr} the $B$-field value is on the abscissa instead of the mode number.
-One can from \cref{fig:grBModeNr,fig:grAnalyticBModeNr} observe that the agreement between growth rate found in the simulation and growth rate found from the analytical expression is better for higher values of $B_0$.
-It can also be observed that the angular frequency matches better for higher mode numbers, which is expected since the analytical expression was obtained from a slab geometry.
+One can from \cref{fig:grBModeNr,fig:grAnalyticBModeNr} observe that the agreement between the growth rates found in the simulation and growth rates found from the analytical expression are better for higher values of $B_0$.
+It can also be observed that the angular frequency matches better for higher mode numbers.
+This is expected since the analytical expression was obtained from a slab geometry.
 
 \section{Phase shift}
 %
-As explained in \ref{sec:simpleLin}, the instability requires a certain phase shift between $\phi$ and $n$ in order for the instability to occur.
+As explained in \ref{sec:simpleLin}, the instability requires a certain phase shift $\Psi$ between $\phi$ and $n$ in order for the instability to occur.
 Here, we will investigate how the phase shift varies with the $B$-field.
 
 As shown from the linear analysis in \cite{Pecseli2016book},
@@ -504,11 +509,11 @@ The dominating averaged phase shift will therefore be the $\Psi$ corresponding t
     \label{fig:phaseShift}
 \end{figure}
 %
-In this thesis we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
+Here, we will use the periodogram to estimate the cross spectral density from the discrete time series of $n$ and $\phi$.
 This corresponds to use a triangular window for the signals (see \cite{Miller2004book} for details).
-The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the phase shifts found in \cref{eq:analyticDisp}.
+The phase shifts from the simulations are shown in \cref{fig:phaseShift} together with the phase shifts found from \cref{eq:analyticDisp}.
 We note that a positive $\Psi$ is equivalent to a growth of the instability \cite{Garcia2001a}, and a negative $\Psi$ corresponds to a damping of the modes.
-Apart from $B=0.02\T$ which were damped for all modes in the simulations, but had a small growth in the analytic expression, there are qualitatively good match between the phase shifts in \cref{fig:phaseShift}.
+Apart from $B=0.02\T$ which were damped for all modes in the simulations, but had a small growth in the analytic expression, there is a qualitatively good match between the phase shifts in \cref{fig:phaseShift}.
 
 \section{Conclusion of the findings in the linear phase}
 %

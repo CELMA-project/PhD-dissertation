@@ -1,12 +1,12 @@
 In this chapter the simulation setup will be discussed.
 The domain size, the initial conditions and the source function will be defined, and the resolution will be given together with a discussion of the observed see-sawing pattern in $j_\|$.
-How the simulations are executed will be explained, before the hardware used for the simulations is specified.
+How the simulations are being executed will be explained, and we will finish the chapter by specifying the hardware.
 For the implementation parameters, see \cref{tb:artVisc,tb:timeSolve,tb:Naulin}.
 
 \section{Domain size and normalizations}
 %
 We will in this thesis use a physical domain size similar to the size of CSDX \cite{Tynan2004a}.
-That is, we will use a cylinder length of $L_z=2.8\m$ and a plasma radius of $L_\rho=8\cm$.
+That is, we will use a cylinder length $L_z=2.8\m$ and a plasma radius $L_\rho=8\cm$.
 Note that the plasma radius is much less than the radius of the cylinder chassis.
 %
 \begin{table}[h!]
@@ -54,14 +54,14 @@ Note that the plasma radius is much less than the radius of the cylinder chassis
 \end{table}
 %
 
-These parameters can be tranlated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
+These parameters can be translated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
 We will use $T_{e,0} = 2.5\eV$, the mass of singly ionized Argon as $m_i$, and let $B_0$ vary between $0.02$ and $0.1 \T$.
 This sets the ion sound speed to $c_s \approx 2.46\; \text{km s}^{-1}$.
 Fruther, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
-Consequently, as we print the output to the files after every $t\om_{ci}$ %
+Consequently, as we print the output to the files after every $t\om_{ci}$%
 \footnote{Note that the internal timestep from the adaptive time solver is usually much smaller.}%
 %
-, this gives an output every $1\s$ in physical units.
+, this gives an output every $4$-$20\;\mu\text{s}$ in physical units.
 The specified $c_s$ and $\om_{ci}$ gives a hybrid radius of $\rho_s \approx 1.02B^{-1}\cdot10^{-3}\m\T^{-1}$, which with the specified magnetic field strengths will be in the range $5.08\cm$ to $1.02\cm$.
 
 We will use a normalized density $n_0 = 1\cdot 10^{19} \m^{-3}$, and let the neutral density $n_n=0$ unless else is specified.
@@ -85,10 +85,10 @@ In the work presented here, we will use the following initial conditions of the 
     &\Om^D     = 0,&
 \end{align*}
 %
-which will be used to find the steady state numerically as explained in \cref{sec:execution}.
+as this is not a solution to the equations, the steady state will be found numerically as explained in \cref{sec:execution}.
 
 Furthermore, we need to specify the source.
-In this thesis, we have chosen the following shape of the source
+Here, we have chosen the following shape of the source
 %
 \begin{align*}
     S = AH(\rho,s_{\text{profile}},c_{\text{profile}},w_{\text{profile}}),
@@ -124,16 +124,16 @@ Therefore, a flat parallel profile chosen for simplicity.
 \label{sec:resolution}
 %
 In order to have a properly resolved grid, we need to properly resolve the gradient length scales.
-From the point of computational time, few grid points is preferable.
+From the computational-time point of view, few grid points is preferable.
 If we assume that the maximum gradient length scale from the model is around $\rho_s$, we should have $\frac{n_\rho}{L_\rho/\rho_s}>1$.
 However, we have in this work found that $\frac{n_\rho}{L_\rho/\rho_s}\approx1$ can give simulation crashes, so a radial resolution of $\frac{n_\rho}{L_\rho/\rho_s}\approx3$ is aimed.
 The same argument goes for the poloidal direction, where $L_\theta=2\pi L_\rho$.
 
-As mentioned in \cref{chap:drift-order} the resolution in the parallel direction can be less since longer gradient scale lengths are found in the parallel direction as a consequence of the separation of scales.
+As mentioned in \cref{chap:drift-order}, the resolution in the parallel direction can be less since longer gradient scale lengths are found in the parallel direction as a consequence of the separation of scales.
 The sheath sets the gradient scale length in the parallel direction, as will be explained in \cref{sec:parProf}.
-Despite that the gradient scale sets a lower constraint on $n_z$, a see-sawing pattern is observed in simulations with a flow towards an end-plate for low $n_z$.
+Despite that the gradient scale sets a lower constraint on $n_z$, a grid-sized see-sawing pattern is observed in simulations with a flow towards an end-plate for low $n_z$.
 This problem has been observed in other plasma fluid codes dealing with sheath boundaries, but has to this author's best knowledge not been published.
-For the work presented here, the problem is encountered for $j_\|$ as is illustrated in \cref{fig:see-saw}%
+For the work presented here, the problem is encountered in $j_\|$ as is illustrated in \cref{fig:see-saw}%
 \footnote{It should be noted that running the simulations with odd number of points show similar behavior to what is presented in \cref{fig:see-saw}.}%
 %
 .
@@ -149,13 +149,13 @@ For the work presented here, the problem is encountered for $j_\|$ as is illustr
 %
 
 \noindent
-To get a better understanding of this behavior, the different terms in \cref{eq:celma_j_par} in the steady-state has been plotted in \cref{fig:jParBalance}.
+To get a better understanding of this behavior, the different terms in \cref{eq:celma_j_par}  has been plotted in \cref{fig:jParBalance} in the steady-state.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/jParBalanceNy66}
     \caption{The different terms making up \cref{eq:celma_j_par} in the steady-state for $n_z=66$ for $B=0.06$.
-        The parallel derivative of $\phi$ balances the parallel derivative of $n$ almost exactly, and the difference is balanced by the resistivity.
+        The parallel derivative of $\phi$ balances the parallel derivative of $n$ almost exactly, and the difference is between these two is balanced by the resistivity.
     }
     \label{fig:jParBalance}
 \end{figure}
@@ -168,7 +168,7 @@ Thus, we can conclude that the see-sawing behavior comes from the difference bet
 One could imagine that the see-sawing came from catastrophic cancellation between $\ln(n)$ and $\phi$.
 If this was the case, the see-sawing would be even worse for an increased mass ratio $\mu$.
 In fact, the opposite behavior is observed.
-Running the simulations with $\text{H}$ gives more see-sawing than $\text{Ar}$.
+Running the simulations with $\text{H}$ gives more see-sawing than with $\text{Ar}$.
 The explanation can be found by looking at the fraction $f$ defined by
 %
 \begin{align}
@@ -185,11 +185,11 @@ We can now observe that
     = \frac{n_z\sqrt{T_em_i}}{L_z ZeB},
 \end{align*}
 %
-i.e. it is proportional with $m_i$.
-On this argument, running simulations with singly ionized $\text{Ar}$ gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ as compared with $\text{H}$.
+i.e. it is proportional to $\sqrt{m_i}$.
+On this argument, running simulations with singly ionized $\text{Ar}$ gives a better resolution of $\sqrt{m_{\text{Ar}}/m_H}\approx6.3$ compared to simulations with $\text{H}$.
 That increased oscillations has been observed with simulations done with increasing $B$ and $L_z$ strengthens the hypothesis as $f\propto 1/BL_z$.
 
-To keep the oscillations at a minimum, we require $f > 0.2$ in the simulations performed here, which sets a lower bound on $n_z$
+To keep the oscillations at a minimum, we require $f > 0.2$ in the simulations performed here, which sets a lower bound on $n_z$.
 Ideally, we would like to reduce the number of parallel points to speed up the simulations.
 Therefore, some alternative strategies to lower the grid-size oscillation is discussed in the following.
 
@@ -243,16 +243,17 @@ The grid size used in this thesis is given in \cref{tb:grid}.
 %
 The simulations are executed in four steps.
 
-First, The simulation is allowed to evolve freely to a steady-state condition using $n_\theta = 1$.
+First, the simulation is allowed to evolve freely to a steady-state condition using $n_\theta = 1$.
 This choice is justified by assuming axisymmetry in the steady state.
 A transient period with fast dynamics is observed before a slow settlement to the steady-state.
 The steady-state is found by visual inspection, and is defined to be the time when there is a minimal difference between two time steps.
 The steady-state is usually reached between $2000-3000t\om_{ci}$.
-In order to ensure that the system has reached a steady state, the simulations are therefore runned to $4000t\om_{ci}$ .
+In order to ensure that the system has reached a steady state, the simulations are therefore executed until $4000t\om_{ci}$ is reached.
 
-Secondly, the simulation is expanded to $n_\theta = 256$, and runned for additional $50t\om_{ci}$ in order to ensure that the system is still in an axisymmetric steady state.
+Secondly, the simulation is expanded to $n_\theta = 256$, and executed for additional $50t\om_{ci}$.
+This ensures that the system is still in an axisymmetric steady state.
 
-Thirdly a white noise perturbation with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
+Thirdly, white noise perturbation with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
 \footnote{Different approaches has been used for the perturbation.
     Although the route to the linear state may vary, the same growth rates and turbulent behavior are found.}
 %
@@ -262,7 +263,7 @@ If the system is unstable to small perturbations, and if there are no "crashes" 
 
 \section{Hardware}
 %
-All the simulations presented here are run on the \texttt{A1} (Broadwell) partition of the \texttt{Marconi} super cluster located at CINECA at Casalecchio di Reno (Bologna).
+All the simulations presented here are carried out on the \texttt{A1} (Broadwell) partition of the \texttt{Marconi} supercomputer located at CINECA at Casalecchio di Reno (Bologna).
 At the time of writing the cluster operated with the following specifications \cite{Marconi2016Web}
 %
 \begin{enumerate}[noitemsep]
