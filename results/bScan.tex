@@ -1,9 +1,10 @@
 %
 We will here investigate how our results scales with $B$.
-In \cref{chap:linear} we saw how the linear growth rates depends on $B$, and we would to further investigate the $B$-dependency of the system by comparing the profiles in the steady state for various $B$ and by comparing the results from the saturated turbulent phase.
+In \cref{chap:linear} we saw how the linear growth rates depends on $B$.
+We would to further like to investigate the $B$-dependency of the system by comparing the profiles in the steady state for various $B$ and by comparing the results from the saturated turbulent phase.
 
 This is motivated by the experimental findings in linear machines, where one has observed a gradual onset of the turbulence with more and more modes interacting with an increasing $B$-field \cite{Klinger1997,Klinger1997a,Burin2005}.
-The onset in form of singular modes has not been observed in the simulations.
+The saturation in form of singular modes has not been observed in the $B$-field scan.
 Instead, a threshold $B_0$ is found for the onset of turbulence (see \cref{fig:grB}).
 Therefore, only $B_0 = 0.06\T \to 0.1\T$ reaches the saturated turbulent state in the simulations.
 The simulations with $B_0 = 0.02\T$ is stable against the perturbation, and the simulations with $B_0 = 0.04\T$ has a very slow growth rate%
@@ -48,13 +49,13 @@ As indicated in the radial direction in \cref{fig:BScanRad}, $\phi$ is increasin
 Since the potential is fixed to $0$ at $\rho = L_\rho$, we must have that the gradients gets sharper for increasing $B$-fields.
 This has the consequence that the vorticity gets higher for increasing $B$.
 
-From this, we will give an explanation for the observed increase in $n$ for increasing $B$ here.
+From this, we will here give an explanation for the observed increase in $n$ for increasing $B$.
 As mentioned in \cref{sec:fluxes}, almost no plasma can leave the domain in the perpendicular direction due to the boundary condition $\L.\phi\R|_{L_\rho}=0$ and shallow parallel second derivatives.
-Hence, we must mechanisms in which the plasma can leave the domain in the parallel direction.
-We note that the in the parallel momentum equation, the right hand sides equals to first order $-T_i \grad_\| n + n_\a q_\a \grad_\| \phi$.
-As the parallel gradients increases for increasing $B$ field, the pressure cannot account for the increased parallel outflux.
+Hence, we must find  mechanisms in which the plasma can leave the domain in the parallel direction.
+We note that the in the parallel momentum equation, the right hand side to first order equals $-T_\a \grad_\| n + n_\a q_\a \grad_\| \phi$.
+As the parallel density gradients increases for increasing $B$ field, the pressure term cannot account for the increased parallel outflux.
 On the other hand, the potential term can account for at least part of the increased parallel outflux.
-As the sign of this term depends on the species types, there will be less difference in this term for lower values of $B$, and since the system seeks a steady state the ions will slow the electron flux less.
+As the sign of this term depends on the species types, there will be less difference in this term for lower values of $B$, and since the system seeks a steady state the ions will slow the electrons less.
 However, as the decrease in $\grad_\| \phi$ comes from the decrease in $n$ with decreasing $B$, it cannot account for the initial depletion of density for decreasing $B$.
 Is it possible that this initial depletion can come from the fact that the systems searches for balance between the parallel currents and $\Omega$ in order to reach the steady state, and that the higher radial boundary value at $\Omega$ must be balanced by higher parallel velocities.
 
@@ -105,7 +106,7 @@ The blob and hole count per time as a function of the magnetic field is given in
     \label{fig:BScanBlobCount}
 \end{figure}
 %
-One be careful to say anything conclusive about this as very few events was found, as shown in \cref{tb:blobAndHolesCount}, but the decrease of the blob and holes count could be account for by the strong poloidal shear seen from the vorticity in \cref{fig:BScanPar}.
+One must be careful to say anything conclusive about this as very few events was found, as shown in \cref{tb:blobAndHolesCount}, but the decrease of the blob and holes count could be account for by the strong poloidal shear seen from the vorticity in \cref{fig:BScanPar}.
 %
 \begin{center}
         \colorme
@@ -118,6 +119,7 @@ One be careful to say anything conclusive about this as very few events was foun
             $0.10$ & $ 2$ & $1$ \\
             \hline\hline
         \end{tabular}
+        \caption{The number of blobs and holes found from simulations with different field strengths.}
         \label{tb:blobAndHolesCount}
 \end{center}
 %
@@ -128,14 +130,14 @@ Finally, in this section, we will address how the flux is scaling with the magne
     \centering
     \includegraphics{fig/results/bScan/BScanTotalFlux}
     \caption{
-        The variation of the total flux as a function of $B_0$.
+        The total flux as a function of $B_0$.
         The point of measurement is the same as in \cref{fig:flux008}.
     }
     \label{fig:BScanTotalFlux}
 \end{figure}
 %
 \Cref{fig:BScanTotalFlux} shows the trend.
-As discussed above, the increased electron and ion velocities will give rise to a higher radial flux.
+As discussed above, the increased electron and ion velocities will give rise to a higher parallel flux.
 Hence, we observe a decrease in the parallel flux for higher $B$.
 The converse is true for the perpendicular flux.
-This is consistent with what was observed in \cref{fig:BScanPosOfFluct}, where we observed that the amplitude level increased with increasing $B$.
+This is consistent with what was observed in \cref{fig:BScanPosOfFluct}, where the amplitude level increased with increasing $B$.

@@ -15,7 +15,7 @@ $9.9\cdot10^{20}\m^{-3}$
 respectivly.
 In experiments, ionization degrees from $0.1\%$ up to $100\%$ has been observed \cite{Schroder2003Phd}.
 
-With our parameters, the neutral collsions ranges from $\nu_{en}=1.87\cdot10^{5}\s^{-1}$ at $d=80\%$, and scales linearly with $n_n$ up unitl $d=1\%$, where $\nu_{en}=7.38\cdot10^7\s^{-1}$.
+With our parameters, the neutral collsions ranges from $\nu_{en}=1.87\cdot10^{5}\s^{-1}$ at $d=80\%$, and scales linearly with $n_n$ up until $d=1\%$, where $\nu_{en}=7.38\cdot10^7\s^{-1}$.
 The electron-ion collision frequency is $\nu_{ei}=7.25\cdot10^7 \s^{-1}$ throughout the scan range, meaning that the neutral collisions will dominate firstly only at $d=1\%$.
 
 To keep the model consistent, $\nu_{in}$ will be kept to zero as $T_i=0$.
@@ -52,8 +52,8 @@ The radial profiles are shown in \cref{fig:nnScanRad}.
     \label{fig:nnScanRad}
 \end{figure}
 %
-In terms of the density, there is a minimal change in the profile as the ionization degree is changed.
-The potential, on the other hand, has flipped, and is negative for all the radii until the boundary condition, which is set at $0$.
+In terms of the density, there is a minimal change in the profile when the ionization degree is changed.
+The potential, on the other hand, has changed sign, and is negative for all the radii until the boundary condition, which is set at $0$.
 This can be explained from the $\Om$-profile which for $d=1\%$ takes higher values for increasing $\rho$, which is opposite of the other ionization degrees.
 To explain this behavior, we must look at the balancing terms of the modified vorticity, which is shown in \cref{fig:nnScanVortDRad}.
 %
@@ -69,7 +69,7 @@ To explain this behavior, we must look at the balancing terms of the modified vo
 In the fully ionized plasma the time change of the modified vorticity is kept to zero as the parallel derivate of the current is balancing the parallel derivative of the ion velocity multiplied modified vorticity.
 This same terms accounts for the balance in the $d=1\%$ case.
 However, in the $d=1\%$ case, the profiles crosses zero and behaves opposite for high $\rho$ than what is observed for the $d=100\%$ case.
-As $\Om^D$ does not contain any $\nu_{en}$ terms, we will explain this behavior by looking into the balancing terms for the parallel current, displayed in \cref{fig:nnScanJParRad}.
+As $\Om^D$ does not contain any $\nu_{en}$ terms, we will explain this behavior by looking into the balancing terms for the parallel current displayed in \cref{fig:nnScanJParRad}.
 %
 \begin{figure}[htb]
     \centering
@@ -79,7 +79,7 @@ As $\Om^D$ does not contain any $\nu_{en}$ terms, we will explain this behavior 
 \end{figure}
 %
 In the $d=100\%$ case the Boltzmann term is balanced by the electron-ion resisitivity.
-On the other hand, in the $d=1\%$ the electron-neutral term is dominating the electron-ion resisitivity term by one order magnitude.
+On the other hand, for $d=1\%$ the electron-neutral term is dominating the electron-ion resisitivity term by one order magnitude.
 As a consequence the resulting $j_\|$ profile must change.
 Since the $j_\|$ profile changes, the $\Om^D$ balance changes, and the $\phi$ profile changes.
 As $\phi$ changes, the Boltzmann term changes, which again changes the $j_\|$.
@@ -97,7 +97,7 @@ The radial modified vorticity profiles are shown in \cref{fig:nnScanVortDPar}.
 \end{figure}
 %
 We observe that although the profiles differs in value, the shapes of the balance remains the same.
-This explains why the shape of the vorticity profiles in \cref{fig:nnScanPar} remains the same, only with differing in values.
+This explains why the shape of the vorticity profiles in \cref{fig:nnScanPar} remains the same, only differing in values.
 The parallel change of the radial profiles is just modified by the parallel current profiles, which is shown in \cref{fig:nnScanJParPar}.
 %
 \begin{figure}[htb]
@@ -118,18 +118,18 @@ The result is presented in \cref{fig:grNnModeNr,fig:grNn}.
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[h]{0.45\textwidth}
-       \centering
-       \includegraphics{fig/results/neutral/growthRatesNnModes}
-       \caption{Growth rates and angular frequencies as a function of $d$}
-       \label{fig:grNnModeNr}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[h]{0.45\textwidth}
         \centering
         \includegraphics{fig/results/neutral/growthRatesNnScan}
         \caption{Growth rates and angular frequencies as a function of mode numbers.}
         \label{fig:grNn}
     \end{subfigure}%
+    \hfill
+    \begin{subfigure}[h]{0.45\textwidth}
+       \centering
+       \includegraphics{fig/results/neutral/growthRatesNnModes}
+       \caption{Growth rates and angular frequencies as a function of $d$}
+       \label{fig:grNnModeNr}
+    \end{subfigure}
 \end{figure}
 %
 We observe that the general trend is that the growth rate decreases for decreasing ionization degree.
@@ -137,10 +137,10 @@ For higher mode numbers the rotation increases with decreasing $d$, whereas the 
 
 The max growth rate is found around $m_\theta=2-3$.
 As in the case with a fully ionized plasma, the decaying modes are rotating in the ion diamagnetic direction.
-Of the growing modes, we can observe that there is less rotation for higher modes, with eexception of the first mode, which is unstable for all the ionization levels with exception of $d=80\%$.
+Of the growing modes, we can observe that there is less rotation for higher modes, with exception of the first mode, which is unstable for all the ionization levels with exception of $d=80\%$.
 Finally, we note that $d=1\%$ is only sligthly ustable.
 
-This low ionization level is also the only which does not reach a saturated steady state, but rather saturates in a situation where the modes are rotating whitout growing.
+This low ionization level is also the only one which does not reach a saturated steady state, but rather saturates in a situation where the modes are rotating whitout growing.
 This is depicted in \cref{fig:FFTnn1pct}.
 %
 \begin{figure}[htb]
@@ -194,6 +194,7 @@ For the perpendicular case, this means that the radial turbulent transport is in
 %
 
 Finally, the average blob count presented in \cref{fig:nnScanBlobCount} reveals that the number of coherent structures increases with decreasing ionization level until $d=20\%$, where the blob and hole count is decreasing.
+The decrease can be attributed to the overall decrease in growth in \cref{fig:grNn} together with more damping thorugh the increased neutral resistivity.
 %
 \begin{figure}[htb]
     \centering

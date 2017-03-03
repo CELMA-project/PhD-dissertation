@@ -14,11 +14,11 @@ We will see that the missing $n$ in the voriticity equation causes a difference 
     \label{fig:compareBoussProfRad}
 \end{figure}
 %
-If we start by comparing the steady state profiles, we can first note that any difference between the CF and the CB model, lays in the vorticity equation.
+If we start by comparing the steady state profiles, we can first note that any difference between the CF and the CB model lays in the vorticity equation.
 The biggest difference between \cref{eq:celma_vortD_evolution} and \cref{eq:celma_vort_boussinesq} is how the density factor in the compression of the density times the ion polarization term is treated.
 By using the Boussinesq approximation, we assumed that the mentioned $n$ was the same as a flat background $n_0$.
 This $n_0$ then got normalized out, meaning that the $n$-dependency in this term disappeared.
-As a result, we ended up with a source term in the CB model not present in the CF model, since this term got canceled with the source term from the density equation which we "smuggled" inside the $\d_t^E$ operator in the CF case.
+As a result, we ended up with a source term in the CB model not present in the CF model since this term got canceled with the source term from the density equation which we "smuggled" inside the $\d_t^E$ operator in the CF case.
 Finally, the $\ve{E}\times\ve{B}$ advection terms are different in the two cases.
 These differences affect both the background profiles and the fluctuations.
 
@@ -31,7 +31,7 @@ In that respect $\Om$ determines $\phi$.}%
 %
 .
 The radial density profile stays roughly the same for the CF and CB case, which will be discussed in further detail below.
-For the radial profile of the parallel currents we can observe that the CB case gives slower velocities for the CB case when $\rho \to L_\rho$
+For the radial profile of the parallel currents we can observe that the CB case gives slower velocities when $\rho \to L_\rho$
 This, in turn, makes small changes in the radial parallel current profile, but gives a more shallow approach as $\rho\to L_\rho$.
 %
 \begin{figure}[h]
@@ -121,7 +121,7 @@ The result is given in \cref{fig:GRBM,fig:GRBB}.
 \end{figure}
 %
 From \cref{fig:GRBM}, we can see that the growth rates of the modes are still increasing with increasing $B$-field.
-However, the maximum growth is observed in one mode number less than compared with the CF case.
+However, the maximum growth is observed in one mode-number less than compared with the CF case.
 There is also a steeper decrease in the growth rates for higher mode numbers in the CR case.
 We observe that the maximum growth rates for the individual $B$-fields is less than half of what it is in the CF case.
 One should also emphasize that in the CB case, only $B_0 \geq 0.08\T$ reaches the saturated%
@@ -132,9 +132,9 @@ One should also emphasize that in the CB case, only $B_0 \geq 0.08\T$ reaches th
 turbulent state, compared with $B_0 \geq 0.06\T$ in the CF case.
 
 The real part of the dispersion relation is also quite different from the CF case.
-As in the CF case, the decaying perturbations for $B_0 \geq 0.02\T$ in the CB case is rotating in the ion diamagnetic direction, but with a rate almost $10$ times higher than compared with the CF case.
+As in the CF case, the decaying modes is rotating in the ion diamagnetic direction, but with a rate almost $10$ times higher than compared with the CF case.
 This trend ceases for mode $6$ and $7$, where the CB modes suddenly rotates strongly in the electron diamagnetic direction.
-A bigger difference is it that in the CB case, also $B_0 = 0.04\T$ rotates in the ion diamagnetic direction, and also exceeds the rotation velocity of the $B_0 = 0.02\T$ case.
+A bigger difference is that in the CB case, also $B_0 = 0.04\T$ rotates in the ion diamagnetic direction, and also exceeds the rotation velocity of the $B_0 = 0.02\T$ case.
 Only $B_0 \geq 0.06\T$ shows rotation in the electron diamagnetic direction.
 For these magnetic field strengths the rotation increases with increasing magnetic field strength (with exception of the highest modes in $B_0 = 0.06\T$, which rotates in the ion diamagnetic direction).
 This is also what was found in the CF case.
@@ -163,11 +163,9 @@ This fact can also be seen by visual inspection the temporal evolution of the fi
 The dynamics does not appear to be much faster during the onset of the turbulence then during the turbulent state.
 
 Finally, the energy appears to be drifting to higher values with time.
-In absolute terms, the energy is also larger when using the Boussinesq approximation.
+The aboslute values of the energies are of approximately same order as for the CF case.
 
-This can also be seen if when investigating the temporal evolution of the fields.
-
-Visual inspection of the fields also shows that the eddies evolves slower in the turbulence phase as when compared to the non-Boussinesq case.
+Visual inspection of the fields shows that the eddies evolves slower in the turbulence phase as when compared to the non-Boussinesq case.
 Whereas the plasma in the CF develops filamentary structures, these structures are less pronounced in the CB case, and the plasma as a whole appear to be more coherent.
 The dynamics in the CB also develops at a slower pace, as can be seen by comparing \cref{fig:turbEv} with \cref{fig:turbBEv}.
 %
@@ -191,7 +189,9 @@ The dynamics in the CB also develops at a slower pace, as can be seen by compari
         \includegraphics{fig/results/compareBouss/evolution/n-perpPar-2D-2}
     \end{subfigure}
     \caption{Evolution of the plasma in the saturated turbulence phase when using the Boussinesq approximation.
-        Here shown for $B=0.1\T$}
+        Here shown for $B=0.1\T$.
+        The $B$-field points into the paper, and the black dashed lines indicates the slicing of the opposite plot.
+    }
     \label{fig:turbBEv}
 \end{figure}
 \clearpage
@@ -232,8 +232,8 @@ This is shown in \cref{fig:comb008B}.
     \label{fig:comb008B}
 \end{figure}
 %
-First, we can not that the position of the maximum gradient is shifted slightly outwards.
-Secondly, the time trace of the density fluctuation appears to be more ordered, in the sense that they appear more periodic than those observed in \cref{fig:combinedPlots008} for the CF case.
+First, we can note that the position of the maximum gradient is shifted slightly outwards.
+Secondly, the time trace of the density fluctuation appear more periodic than those observed in \cref{fig:combinedPlots008} for the CF case.
 In the CB case the maximum of the power density spectrum is shifted to a higher frequency by a factor of approximately $3$, and falls off at a slightly faster rate than for the CF case.
 Next, the PDFs are closer to Gaussian statistic as compared with the CF case.
 
@@ -247,7 +247,7 @@ This can also be seen from the skewness and excess kurtosis as a function of rad
 \end{figure}
 %
 We observe that the system is platikurtic for all radii, meaning that there are less extreme events as compared with the non-Boussinesq case.
-The skewness also less when using the Boussinesq approximation.
+The skewness is also less when using the Boussinesq approximation.
 Both these facts reflects that the plasma is rotating around the center of the cylinder with a coherent character.
 
 The lower fluctuation amplitude can also be seen in \cref{fig:fluctProfiles01B}, where one can observe that the profiles are less flattened than in the CF case.
