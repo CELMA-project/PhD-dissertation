@@ -156,28 +156,25 @@ This means that \cref{eq:start_of_boussinesq} with the Boussinesq approximation 
 %
 Let us now briefly comment on the approximations made
 %
+% Consider: More cites
 \begin{enumerate}[noitemsep]
-    \item $\overline{n} \gg \delta_n$ : This approximation can be broken as the perturbation amplitudes can be considerably large.
-        % FIXME: Citation needed
-    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as gradient scale length in the background density are long as compared to $\rho_s$.
+    \item $\overline{n} \gg \delta_n$ : This approximation can be broken as the perturbation amplitudes can be large as seen in \cref{chap:charTurb}.
+    \item $\frac{\rho_s}{L_n}\ll1$ : This approximation usually holds as the gradient scale length in the background density are long compared to $\rho_s$.
         However, they are not necessarily orders of magnitude larger.
-        % FIXME: Citation needed
-    \item $\overline{n} \simeq n_0$ : This assumption is maybe the hardest to fulfill, as the gradients usually are non-vanishing.
-        % FIXME: Citation needed
+    \item $\overline{n} \simeq n_0$ : This assumption is maybe the hardest to fulfill, as the gradients are usually non-vanishing.
 \end{enumerate}
 %
-We see that although the assumptions can be met, it is not necessarily true.
-As this approximation is done quite frequently in the literature,
-% FIXME: Citation needed
-it is of interest to compare results with and without this approximation.
+We see that although the assumptions can be met, they are not generally true.
+As this approximation is done quite frequently in the literature, it is of interest to compare results with and without this approximation.
+This will be presented in \cref{chap:compBouss}.
 
-In the scope of this thesis, we only do the approximation here and keep gradients of $n$ elsewhere.
-A more rigorous study could be to investigate the set of equations from an energy conservation point of view, and from that find out what $n$'s in the set of equations which should be transformed to $n_0$.
+In the scope of this thesis, we will only do the approximation in the polarization term of the vorticity equation, and keep gradients of $n$ elsewhere.
+A more rigorous study could be to investigate the set of equations from an energy conservation point of view, and from that find out which of the $n$'s in the set of equations that should be transformed to $n_0$.
 
 \section{The Boussinesq approximation in the CELMA model}
 %
 We will now see how the set of equations in the CELMA model is affected by the Boussinesq approximation.
-Continuing from \cref{eq:boussinesq_vort} (using the assumption that $\grad B = 0$) yields
+Continuing from \cref{eq:boussinesq_vort}, using that $\grad B = 0$, we get
 %
 \begin{align*}
     &- n_0 \div\L(
@@ -252,7 +249,7 @@ so that
   \R).
 \end{align*}
 %
-If we now collect the terms as we did in \cref{sec:CELMACollect}, we get
+If we now collect the terms as we did in \cref{eq:non_norm_vort_1}, we get
 %
 \begin{align*}
   %
@@ -305,7 +302,7 @@ which after rearranging yields
  + \partial_\| j_\|.
 \end{align*}
 %
-We note that as we have no time derivative of $n$, the term arising from the density source does not cancel as it did without this approximation.
+We note that as we have no time derivative of $n$, the source term does not cancel as it did without this approximation.
 %
 
 \section{Normalization}
@@ -391,9 +388,8 @@ Finally, normalization yields
 
 \section{The vorticity equation}
 %
-We now solve for the vorticity $\Om$ rather than the modified vorticity $\Om^D$, and get%
+By using the Boussinesq approximation, we will evolve the vorticity $\Om$ in time rather than the modified vorticity $\Om^D$, and get%
 \footnote{As in \cref{sec:SOE} the artificial viscosities are not shown here, but they are used in the simulations.}
-%
 %
 \begin{empheq}[box={\tcbhighmath}]{align*}
  \partial_t\Om
