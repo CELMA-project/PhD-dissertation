@@ -217,7 +217,7 @@ The function is depicted in \cref{fig:typicalMES}, and has the advantage that it
 However, it is not $\mathcal{C}^\infty$ in $\rho=0$, as the first derivative of the function (with respect to $\rho$) is multivalued there.
 As a consequence it is found that for example \texttt{DDX(DDX(f))} diverges rather than converges when applying MES to \cref{eq:MESf1}%
 %
-\footnote{The ghost points are re-calculated after using the first operation on $f$.}
+\footnote{The ghost-points are re-calculated after using the first operation on $f$.}
 \footnote{Note that convergence is found for \cref{eq:MESf1} when using \texttt{D2DX2(f)}, and that convergence for \texttt{DDX(DDX(f))} is found using functions which are of $\mathcal{C}^\infty$, but which are not symmetric.\label{foot:DDXDDX}}
 %
 \begin{figure}[t!]
@@ -250,7 +250,7 @@ As a consequence it is found that for example \texttt{DDX(DDX(f))} diverges rath
 In order to check that the singularity is correctly implemented, we can check that \texttt{DDX(f)} is giving the expected order of convergence on \cref{eq:MESf1} as this is not symmetric.
 The error of the operation for $2^{11}$ points is shown in \cref{fig:errorsMES}.
 It is important to notice that the error is not dominating at one particular point, but is spread out over domain.
-If the inner ghost point were incorrectly implemented, this would be detected by a localized high error around $\rho=0$, and it is expected that the correct order of convergence would not be found.
+If the inner ghost-point were incorrectly implemented, this would be detected by a localized high error around $\rho=0$, and it is expected that the correct order of convergence would not be found.
 In addition, we would like to check the convergence of \texttt{D2DX2}, \texttt{DDZ} and \texttt{D2DZ2} as these are used in the $\div\L(g[\grad f]\R)$ operator, and in the $\ve{u}_E^2$ advection of $n$.
 The results are given in \cref{tb:MESResults}.
 We note that the derivatives in the $\rho$ direction gives the expected second order convergence.
@@ -338,7 +338,7 @@ We will now verify the implementation of the
 \end{align*}
 %
 term, found in \cref{eq:ExBAdvImp}.
-As the Arakawa implementation of $\{\phi,\cdot\}$ was found convergent using MMS in \cite{Dudson2016}, and because the treatment of the singularity was found to be convergent in \cref{sec:singleOp}, we would here like to check that ghost points are correctly calculated after doing the $\partial^2_\rho \phi$ operation.
+As the Arakawa implementation of $\{\phi,\cdot\}$ was found convergent using MMS in \cite{Dudson2016}, and because the treatment of the singularity was found to be convergent in \cref{sec:singleOp}, we would here like to check that ghost-points are correctly calculated after doing the $\partial^2_\rho \phi$ operation.
 Hence, we seek to MES the term
 %
 \begin{align*}
@@ -370,12 +370,12 @@ Inspection of the error plot shows that the error is not dominating in any parti
 
 Finally, note that we are not applying the MES to $\frac{1}{2\rho}\L\{\L(\partial_{\rho} \phi\R)^2,n\R\}$, as the $\frac{1}{\rho}$ factor reduces the convergence rate as mentioned in \cref{sec:singleOp}.
 
-\subsection{Extrapolation to ghost points}
+\subsection{Extrapolation to ghost-points}
 %
-The verification of extrapolation to the outer ghost points in $\rho$ was verified in \cref{sec:derOp}.
-What remains is to verify the parallel extrapolation of the ghost points for $\phi$, and to verify the sheath boundary condition for $j_{\|}$.
+The verification of extrapolation to the outer ghost-points in $\rho$ was verified in \cref{sec:derOp}.
+What remains is to verify the parallel extrapolation of the ghost-points for $\phi$, and to verify the sheath boundary condition for $j_{\|}$.
 Notice that the polynomials in \cref{sec:extrapolGhost} are of fourth order.
-This is to avoid propagation of one point errors when the ghost point is re-inserted in the finite difference approximation (FDA).
+This is to avoid propagation of one point errors when the ghost-point is re-inserted in the finite difference approximation (FDA).
 For the sheath boundary condition, the following functions are used
 %
 \begin{align}

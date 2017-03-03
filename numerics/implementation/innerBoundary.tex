@@ -5,7 +5,7 @@ In other words, functions are not well-defined in this point, and hence it is a 
 One way to avoid this problem is to put the grid points close to, but not at the very axis.
 At the same time, as mentioned in \cref{sec:BCInnerRho}, there is a need of artificial boundary conditions as the domain covers $\rho \in \;]0, L_\rho[$.
 
-\subsection{Ghost point for the radial derivative}
+\subsection{Ghost-point for the radial derivative}
 \label{sec:ghostRhoDeriv}
 We immediately observe that having a boundary condition at the singularity is a bad idea due to the singularity.
 It is also a bad idea to use one sided FD schemes around this point, as this will prevent communication of information through the axis.
@@ -17,15 +17,15 @@ I.e. the innermost points are both located $\frac{\Delta \rho}{2}$ from the axis
     \centering
     \includegraphics[width=0.5\textwidth]{fig/innerGhost}
     \caption{\textit{
-The solid lines black lines represent the coordinate curves of a mesh with $4$ points in the $\rho$ direction (excluding the outermost ghost point depicted with a dashed black line), and $8$ points in the $\theta$-direction.
-The green solid circles represent the inner grid points at $\theta=\theta_i$, with the corresponding ghost points at $\theta=\theta_i + \pi$ depicted as green dashed circles.
+The solid lines black lines represent the coordinate curves of a mesh with $4$ points in the $\rho$ direction (excluding the outermost ghost-point depicted with a dashed black line), and $8$ points in the $\theta$-direction.
+The green solid circles represent the inner grid points at $\theta=\theta_i$, with the corresponding ghost-points at $\theta=\theta_i + \pi$ depicted as green dashed circles.
     }}
     \label{fig:innerRho}
 \end{figure}
 %
-In this solution, the ghost points for the innermost grid points in $\rho$ (those closest to the singularity) will be set to the value of the innermost grid point which lies $\theta + \pi$ away.
-The next ghost point will be set to the value of the second innermost internal point which lies $\theta + \pi$ away, and so on.
-In this thesis, only one ghost point is used.
+In this solution, the ghost-points for the innermost grid points in $\rho$ (those closest to the singularity) will be set to the value of the innermost grid point which lies $\theta + \pi$ away.
+The next ghost-point will be set to the value of the second innermost internal point which lies $\theta + \pi$ away, and so on.
+In this thesis, only one ghost-point is used.
 With this method the second order FD stencil for the radial derivative becomes
 %
 \begin{align*}
@@ -41,17 +41,17 @@ This method was used in \cite{Naulin2008}, and is second order convergent for a 
 \subsection{The inner boundary condition for \texorpdfstring{$\phi$}{the potential}}
 \label{sec:innerPhiBC}
 %
-We also need an artificial ghost point for the innermost point in $\rho$ for inversion method described in \cref{app:lapInv}.
+We also need an artificial ghost-point for the innermost point in $\rho$ for inversion method described in \cref{app:lapInv}.
 As the inversion in the $\rho$ direction will be done for each mode, the method described in \cref{sec:ghostRhoDeriv} is not directly applicable.
 
-A method to do this, is to set the inner ghost point depending on the evenness of the mode.
+A method to do this, is to set the inner ghost-point depending on the evenness of the mode.
 
 If the mode is even, the mode under consideration would have the same value diametrically opposite of the innermost point.
 Notice that this is true for every point sitting on the same radius.
-Hence, the ghost point for the inner $\rho$ value is set to the same as the value at the innermost $\rho$.
+Hence, the ghost-point for the inner $\rho$ value is set to the same as the value at the innermost $\rho$.
 
 If the mode is odd, the mode under consideration would have value of the point diametrically opposite of the innermost point, but with a changed sign.
-Thus, the ghost point for the inner $\rho$ value is set to the negative of the value at the innermost $\rho$.
+Thus, the ghost-point for the inner $\rho$ value is set to the negative of the value at the innermost $\rho$.
 This is depicted in \cref{fig:BCLaplace}, and was first used in \cite{Naulin2008}.
 %
 \begin{figure}[h!]

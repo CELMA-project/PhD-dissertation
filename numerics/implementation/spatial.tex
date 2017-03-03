@@ -59,14 +59,14 @@ The boundaries are positioned halfway between grid points, as depicted in \cref{
 
 \noindent
 The boundary conditions are specified at the position of the boundary (the dashed horizontal lines in \cref{fig:flatBC}).
-As there is no grid point at the boundary, the value is extrapolated to the ghost point which is placed a distance $\Delta/2$ away from the boundary.
+As there is no grid point at the boundary, the value is extrapolated to the ghost-point which is placed a distance $\Delta/2$ away from the boundary.
 We will here specify how these extrapolations are done within the BOUT++ framework.
 For implementation of artificial boundary conditions, see \cref{sec:extrapolGhost}.
 
 For the Dirichlet boundary condition, the following \nth{4} order extrapolation%
 %
 \footnote{
-    Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)), evaluated in the ghost point.
+    Derived using a Newton polynomial (using the four points around the edge of the domain of \cref{fig:flatBC} (including the ghost-point)), evaluated in the ghost-point.
 } %
 is used
 %
@@ -85,7 +85,7 @@ is used
 For the Neumann boundary condition, a \nth{4} order extrapolation%
 %
 \footnote{
-    Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost point)) of the first derivative evaluated at the boundary, solved for the ghost point.
+    Derived using a one sided stencil (using the five points around the edge of the domain of \cref{fig:flatBC} (including the ghost-point)) of the first derivative evaluated at the boundary, solved for the ghost-point.
 % See D4DX4/BW2ndOrderNeumann4thOrder
 } %
 %
@@ -111,7 +111,7 @@ is used, reading
                }{22}.
 \end{align*}
 %
-Finally, as the $\theta$ direction is periodical, the ghost points are simply
+Finally, as the $\theta$ direction is periodical, the ghost-points are simply
 %
 \begin{align*}
     f_{N+1} =& f_{1}

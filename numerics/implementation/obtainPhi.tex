@@ -25,10 +25,10 @@ In other words, the size of matrix $A$ would be $n_x \times n_y \times n_z$, and
 As noted in \cite{Wiesenberger2014Phd}, for the finite difference case (that is when $P=1$), the discretization of the elliptic equation $\div\L(n\frac{\grad_\perp\phi}{B}\R)=\Om^D$ can be formulated so that the resulting matrix is symmetric if special care is taken at the boundaries.
 
 Solving for the ghost-points, meaning that the ghost-points would be one of the unknown in $A\ve{x}=\ve{b}$, would break the symmetry.
-Instead, one must reformulate the boundary condition in a way such that it becomes an equation for the ghost point.
-The equation of the ghost point can then be substituted into the equations for the first/last inner point (the point just before the boundary) and thus effectively eliminating the ghost point from the set of equations.
+Instead, one must reformulate the boundary condition in a way such that it becomes an equation for the ghost-point.
+The equation of the ghost-point can then be substituted into the equations for the first/last inner point (the point just before the boundary) and thus effectively eliminating the ghost-point from the set of equations.
 
-To exemplify, consider a second order Dirichlet boundary condition with the boundary half between grid points for the equation $\partial_x^2 f = b$, where $f_{-1}$ denotes the value at the ghost point, $f_{\text{BC}}$ denotes the value at the boundary and $f_{1}$ denotes the value at the first inner ghost point.
+To exemplify, consider a second order Dirichlet boundary condition with the boundary half between grid points for the equation $\partial_x^2 f = b$, where $f_{-1}$ denotes the value at the ghost-point, $f_{\text{BC}}$ denotes the value at the boundary and $f_{1}$ denotes the value at the first inner ghost-point.
 The boundary condition can now be written $\frac{f_{-1}+f_{1}}{2}=f_{\text{BC}}$, and the equation for the first inner point could be written $\frac{f_{-1}+2f_1+f_{2}}{(\Delta x)^2}=b_1$.
 This would lead to the equation system
 %
@@ -62,7 +62,7 @@ This would lead to the equation system
 %
 which is clearly non-symmetric.
 
-The symmetric way to implement this would be to write $f_{-1}=2f_{\text{BC}}-f_{1}$ for the boundary condition, and substitute this into the 2nd order finite difference equation for the first inner ghost point.
+The symmetric way to implement this would be to write $f_{-1}=2f_{\text{BC}}-f_{1}$ for the boundary condition, and substitute this into the 2nd order finite difference equation for the first inner ghost-point.
 This gives
 %
 \begin{align*}

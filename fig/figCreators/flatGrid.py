@@ -100,7 +100,7 @@ def plotFlatGrid(showPlot  = False,\
 
     # Make the numbers (range excludes the last point)
     for i in range(numPoints-3):
-        text = "Inner point\nwith index\n{}".format(i) if i > 0 else "Ghost point\nwith index\n{}".format(i)
+        text = "Inner point\nwith index\n{}".format(i) if i > 0 else "Ghost-point\nwith index\n{}".format(i)
         ax.annotate(text,
                     xy=(pointLine[i], numberHeigth), xycoords='data',
                     xytext=(pointLine[i], numberHeigth), textcoords='data',
@@ -113,7 +113,7 @@ def plotFlatGrid(showPlot  = False,\
                 size=numberSize, va="center", ha="center",
                 )
 
-    ax.annotate("Ghost point\nwith index\nN+1",
+    ax.annotate("Ghost-point\nwith index\nN+1",
                 xy=(pointLine[-1], numberHeigth), xycoords='data',
                 xytext=(pointLine[-1], numberHeigth), textcoords='data',
                 size=numberSize, va="center", ha="center",

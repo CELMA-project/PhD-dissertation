@@ -14,13 +14,13 @@ These are
 %
 These can either be calculated by applying two (or more) different FD schemes consecutively to a field $f$, or by making a new FD stencil specifically for the operator under consideration.
 
-Special care must be taken at the ghost points if one chooses to apply two (or more) different FD schemes consecutively.
+Special care must be taken at the ghost-points if one chooses to apply two (or more) different FD schemes consecutively.
 To see this, we can call $g$ the result of calculating the FD of a field $f$.
-As we are using centered stencils (as described in \cref{sec:spat}), then the ghost points of $g$ is not calculated by the FD%
+As we are using centered stencils (as described in \cref{sec:spat}), then the ghost-points of $g$ is not calculated by the FD%
 %
 \footnote{There is by definition no way to apply a centered stencil to the last grid point.}%
 %
-\footnote{One could instead use a one-sided stencil on the ghost points $f$ when calculating the FD of $f$, so that the ghost point of $g$ would be known.
+\footnote{One could instead use a one-sided stencil on the ghost-points $f$ when calculating the FD of $f$, so that the ghost-point of $g$ would be known.
 This is however not done here.}
 %
 .
@@ -66,13 +66,13 @@ We observe that in cylindrical coordinates we have
         \label{eq:ExBAdvImp}
 \end{align*}
 %
-Here, care must be taken when treating the ghost points.
-No ghost points are needed in the $\theta$ direction, as this is periodic.
-Thus, for $\partial_{\theta} \phi$ we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
+Here, care must be taken when treating the ghost-points.
+No ghost-points are needed in the $\theta$ direction, as this is periodic.
+Thus, for $\partial_{\theta} \phi$ we only need to make sure that we take the $\theta$ derivatives at the ghost-points in $\rho$.
 
-For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
-For the inner ghost point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
-For the outer ghost point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost point.
+For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost-points as the derivative is not calculated there.
+For the inner ghost-point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
+For the outer ghost-point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost-point.
 
 This way of discretizing is second order accurate, as indicated in \cref{tb:MESResults}.
 
@@ -141,5 +141,5 @@ Calculation of \cref{eq:ownPerp} requires less arithmetic operations than \cref{
 
 \subsection{Parallel derivative of the divergence of the cross term}
 %
-As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivative.
-We can use \cref{eq:extraPolUp} for calculation of the upper ghost point, and \cref{eq:extraPolDown}  for calculation of the lower ghost point.
+As $\partial_\|\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ can be rewritten to $\partial_\|\div(g\grad_\perp f)$, we just have to take care of the parallel ghost-points of $\div \L( u_{i,\|}n \frac{\grad_\perp \phi}{B}\R)$ before taking the parallel derivative.
+We can use \cref{eq:extraPolUp} for calculation of the upper ghost-point, and \cref{eq:extraPolDown}  for calculation of the lower ghost-point.

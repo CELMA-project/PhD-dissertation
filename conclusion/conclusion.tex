@@ -11,7 +11,7 @@ From the derivations and assumptions, it is found that this model is suitable fo
 The approaches used for solving this model can be summarized as follows:
 The main implementation has been done using the BOUT++ framework.
 Additional implementation has been needed for treatment of the singularity, the Naulin Solver, the $\{\ve{u}_E^2,n\}$-advection and for the artificial boundary conditions.
-The singularity has been treated by using ghost points across the cylinder axis, and the potential is found from inversion using the Naulin Solver.
+The singularity has been treated by using ghost-points across the cylinder axis, and the potential is found from inversion using the Naulin Solver.
 In order to run without unphysical generation of energy and enstrophy, which eventually leads to a simulation crash, the $\{\ve{u}_E^2,n\}$-advection has been implemnted in an Arakawa-like manner.
 % FIXME: Consider to add more emphasis on this advection elsewhere as well.
 Finally, artificial boundary conditions in the parallel direction has been done using fourth order extrapolation schemes.

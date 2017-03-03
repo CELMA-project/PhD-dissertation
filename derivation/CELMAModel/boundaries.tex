@@ -166,9 +166,9 @@ Although it is important to be aware of, it is not believed to change the physic
 
 A third approach, which does not have the same problem, is to let the density be completely free at the sheath entrance and instead fix the value and the gradient at the stagnation point (where the velocities are $0$) using a Cauchy boundary condition (not to be confused with a Robin or "mixed" boundary condition).
 This kind of boundary condition specifies the parallel dynamics fully.
-The derivatives of $n$ at the last physical point before the SE can then be calculated numerically either by a one-sided stencil, or by extrapolating the solution to a ghost point,%
+The derivatives of $n$ at the last physical point before the SE can then be calculated numerically either by a one-sided stencil, or by extrapolating the solution to a ghost-point,%
 %
-\footnote{A ghost point is a point not belonging to the physical domain, but a helper point which makes it possible to use a centered scheme when evaluating a grid point closest to the physical boundary of the domain.}
+\footnote{A ghost-point is a point not belonging to the physical domain, but a helper point which makes it possible to use a centered scheme when evaluating a grid point closest to the physical boundary of the domain.}
 %
 and use this as an \emph{artificial boundary condition} \cite{Leveque2007book}.
 
@@ -188,7 +188,7 @@ We impose only that $\phi$ on the plate very close to the SE is set to an arbitr
 It is not clear how this is reflected at the SE in a non-steady state plasma.
 
 However, parallel derivatives of the potential is being taken in our set of equations.
-In order to calculate the parallel derivative of $\phi$ in the last point before the SE, we need either to make a one sided stencil for this very point (as the value of the boundary, and thereby the value of the ghost point is unknown), or we can extrapolate the value of $\phi$ to the ghost point (as we anyway assume that $\phi$ is a smooth function in order to discretize the differential operators working on $\phi$).
+In order to calculate the parallel derivative of $\phi$ in the last point before the SE, we need either to make a one sided stencil for this very point (as the value of the boundary, and thereby the value of the ghost-point is unknown), or we can extrapolate the value of $\phi$ to the ghost-point (as we anyway assume that $\phi$ is a smooth function in order to discretize the differential operators working on $\phi$).
 The latter has been chosen in the current implementation, with the polynomial given in \cref{sec:extrapolGhost}.
 
 Finally, it should be noted that although a fluid description cannot properly asset the conditions in the sheath, the sheath (especially the resistivity in the sheath) is important for the behavior of the plasma \cite{Oldenburger2012,Yamada2014}.

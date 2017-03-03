@@ -63,7 +63,7 @@ def plotInnerGhost(nx        =  4   ,\
 
     eps = 0.5*dx
     if outerBC:
-        # Ghost point is 0.5 away from last inner
+        # Ghost-point is 0.5 away from last inner
         xGhost = nx*dx
         rho = np.append(rho, xGhost)
         ghostCircle = plt.Circle((0, 0), xGhost, color="k", lw=lw, ls="--",\
@@ -113,7 +113,7 @@ def plotInnerGhost(nx        =  4   ,\
                                   zorder=zorder)
         ax.add_artist(markerCircle)
 
-    # Set ghost point markers
+    # Set ghost-point markers
     endTheta = theta[int(len(theta)/2)+thetaInd]
     nPoints    = 2
     for i in range(nPoints):
