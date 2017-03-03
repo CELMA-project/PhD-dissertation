@@ -27,18 +27,18 @@ This is however not done here.}
 
 \subsection{Arakawa's stencil}
 %
-As already noted in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$ terms) as Poisson brackets.
+As done in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$ terms) as Poisson brackets.
 The proof is found in \cref{app:poisson}.
-The benefits of writing terms on Poisson brackets are presented in Arakawa's paper from 1966 \cite{Arakwa1966}.
+The benefits of writing terms in Arakawa's form are presented in his paper from 1966 \cite{Arakwa1966}.
 In short, the paper shows that a na\"ive FD discretization of the Poisson bracket does not conserve energy and enstrophy.
 At the same time it gives an alternative way of discretize in orthogonal curvilinear coordinates in order to keep these quantities conserved.
-If the energy and enstrophy is not conserved, fake generation of these quantities occur, which eventually will lead to a blow up of the simulation (in a way described by Phillips in \cite{Phillips1959}).
+If the energy and enstrophy are not conserved, fake numerical generation of these quantities occur, which eventually will lead to a blow up of the simulation (in a way described by Phillips in \cite{Phillips1959}).
 
 \subsection{Advection by \texorpdfstring{$\ve{u}_E^2$}{the squared E cross B drift}}
 \label{sec:ExBadv}
 %
-It is also possible to discretize the term $\{\ve{u}_E^2, n\}$ using Arakawa's method.
-We observe that in cylindrical coordinates, we have
+It is also possible to discretize the $\{\ve{u}_E^2, n\}$-term by using Arakawa's method.
+We observe that in cylindrical coordinates we have
 %
 \begin{align*}
     \{\ve{u}_E^2, n\} &= \L\{\L(\frac{\grad_\perp \phi}{B}\R)^2, n\R\}
@@ -66,9 +66,9 @@ We observe that in cylindrical coordinates, we have
         \label{eq:ExBAdvImp}
 \end{align*}
 %
-Here, we must take care when we treat the ghost points.
-No ghost points are needed in the $\theta$ direction, as this direction is periodic.
-Thus, for $\partial_{\theta} \phi$, we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
+Here, care must be taken when treating the ghost points.
+No ghost points are needed in the $\theta$ direction, as this is periodic.
+Thus, for $\partial_{\theta} \phi$ we only need to make sure that we take the $\theta$ derivatives at the ghost points in $\rho$.
 
 For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost points as the derivative is not calculated there.
 For the inner ghost point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
@@ -120,7 +120,7 @@ However, from \cref{app:coord}, we get that
   g^{zz}\partial_z^2 - \frac{1}{J}\partial_z\left(\frac{J}{g^{zz}}\partial_z\right) =& 0,
 \end{align*}
 %
-in cylindrical coordinates.
+for cylindrical coordinates.
 Thus, \cref{eq:perpPerpDeriv} can be rewritten to
 %
 \begin{align*}
@@ -134,11 +134,10 @@ Thus, \cref{eq:perpPerpDeriv} can be rewritten to
     + f\frac{1}{\rho}\partial_\rho g
     +  \partial_\rho f \partial_\rho g
     +  \frac{1}{\rho^2} \partial_\theta f \partial_\theta g,
+    \numberhis{eq:ownPerp}
 \end{align*}
 %
-%FIXME: Has this been MESed?
-%
-which is what is implemented for this operator in the CELMA code.
+Calculation of \cref{eq:ownPerp} requires less arithmetic operations than \cref{eq:perpPerpDeriv}, and is therefore used in the CELMA code.
 
 \subsection{Parallel derivative of the divergence of the cross term}
 %

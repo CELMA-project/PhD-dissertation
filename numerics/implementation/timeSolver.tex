@@ -1,9 +1,9 @@
 \section{Time solver}
 This chapter will briefly discuss the time solver used in this thesis.
-At the time of writing the following time solvers are available in the BOUT++ framework
-% FIXME: Mention time solvers, and add references.
-
-The \texttt{cvode}\cite{Hindmarsh2012book} has been found to be a robust and fast time solver for solving \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} in time.
+BOUT++ provides a variety of time sovlers, but the \texttt{cvode}\cite{Hindmarsh2012book} has been found to be a robust and fast time solver for solving \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} in time%
+\footnote{Implicit-Explicit (IMEX) approaches has also been tried in this thesis, but they have been found to be slower or crashing}
+%
+.
 
 As \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} contains no mixed temporal and spatial derivatives in the equations, the PDEs can first be discretized in the spatial dimension while keeping the time derivatives continuous.
 The set of PDEs is thereby rewritten to a set of ODEs (one for each of the discretized point in space) which needs to be solved simultaneously.
@@ -24,13 +24,13 @@ for $\ve{f}$, where $F(\cdot)$ denotes the nonlinear operator which contains dis
 \Cref{eq:MOL} can be stepped forward in time by using an appropriate time solver, like Runge-Kutta or a Linear Multistep Method (LMM).
 Due to its good stability properties \cite{Leveque2007book} an implicit LMM has been chosen%
 \footnote{
-    Unless other is explicitly stated, \texttt{cvode}'s variable step size Backward Differentiation Formula (BDF) of variable order (1-5) has been chosen.
+    \texttt{cvode}'s variable step size Backward Differentiation Formula (BDF) of variable order (1-5) has been chosen.
     This includes the STAbility Limit Detection (STALD) algorithm, which detect linear stability regions, and chooses the step-size thereby.
 }
 %
 .
 
-By using a generic LMM to \cref{eq:MOL}, we get
+By a generic LMM, \cref{eq:MOL} can be written
 %
 \begin{align*}
     \sum_{j=0}^{r}\a_j\ve{f}(t_{n+j}) =& k\sum_{j=0}^{r}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
@@ -92,7 +92,7 @@ The solution $\ve{f}(t_{n+r})$ to this problem can then serve as the next iterat
     G(\ve{f}_{l}(t_{n+r})),
 \end{align*}
 %
-where $l$ denote the $l^{\text{th}}$ Newton iteration.
+where $l$ denotes the $l-\text{th}$ Newton iteration.
 The iterations can be rewritten to
 %
 \begin{align}

@@ -1,13 +1,13 @@
 \section{Obtaining \texorpdfstring{$\phi$}{the potential}}
 %
-We observe the dependency of $\phi$ in \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution}, but that $\phi$ is not described by an initial-boundary value problem equation.
-Instead, we must find alternative ways of extracting $\phi$.
+We observe that \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} depends on $\phi$, but that $\phi$ is not described by an initial-boundary value problem equation.
+Instead, $\phi$ must be found by inverting either \cref{eq:celma_vortD} for the full model, or \cref{eq:celma_vort} in for the Boussinesq model.
 We will in the following discuss two ways of doing so.
 
 \subsection{As a matrix inversion problem}
 %
 The problem of obtaining $\phi$ can be posed as a matrix problem $A\ve{x}=\ve{b}$, where $\ve{x}$ is an array of all the spatial values of $\phi$ ordered in some way, and $\ve{b}$ is an array of all the spatial values of $\Omega^D$ ordered in the same way.
-Since we are working in an orthogonal coordinate system, we have that $\Om^D = \div\L(n\frac{\grad_\perp\phi}{B}\R) = \grad_\perp\cdot\L(n\frac{\grad_\perp\phi}{B}\R)$, as no basis vector parallel to the magnetic field can be obtained from taking the derivative of the vector $n\frac{\grad_\perp\phi}{B}$, which has only perpendicular components.
+Since we are working in an orthogonal coordinate system, we have that $\Om^D = \div\L(n\frac{\grad_\perp\phi}{B}\R) = \grad_\perp\cdot\L(n\frac{\grad_\perp\phi}{B}\R)$, as no basis vector parallel to the magnetic field can be obtained from taking the derivative of the vector $n\frac{\grad_\perp\phi}{B}$.
 Thus, in our case, we can solve the $A\ve{x}=\ve{b}$ system for each plane perpendicular to the magnetic field.
 That is, our matrix $A$ would be a $n_x \times n_y$ matrix, where $n_x$ and $n_y$ is the number of points for the two perpendicular directions
 %
@@ -15,16 +15,16 @@ That is, our matrix $A$ would be a $n_x \times n_y$ matrix, where $n_x$ and $n_y
 Note that in the BOUT++ implementation, $y$ is chosen as the direction parallel to the magnetic field.
 This is due to historical reasons.
 $n_y$ would be named $n_z$ in BOUT++ convention.
-In order not to confuse readers unfamiliar with BOUT++, $z$ is chosen as the coordinate along the magnetic field unless other is specified.
+In order not to confuse readers unfamiliar with BOUT++, $z$ is chosen as the coordinate along the magnetic field unless else is specified.
 }%
 %
 .
 We note that if $\div\L(n\frac{\grad_\perp\phi}{B}\R)$ were not purely perpendicular, we would have to solve $A\ve{x}=\ve{b}$ for the whole domain.
 In other words, the size of matrix $A$ would be $n_x \times n_y \times n_z$, and would be considerably harder to solve numerically.
 
-As noted in \cite{Wiesenberger2014Phd} (in the case where $P=1$, that is, in the finite difference case), the discretization of the elliptic equation $\div\L(n\frac{\grad_\perp\phi}{B}\R)=\Om^D$ can be formulated so that the resulting matrix is symmetric if special care is taken at the boundary.
+As noted in \cite{Wiesenberger2014Phd}, for the finite difference case (that is when $P=1$), the discretization of the elliptic equation $\div\L(n\frac{\grad_\perp\phi}{B}\R)=\Om^D$ can be formulated so that the resulting matrix is symmetric if special care is taken at the boundaries.
 
-Solving for the ghost-point, meaning that the ghost-point would be one of the unknown in $A\ve{x}=\ve{b}$, would break the symmetry.
+Solving for the ghost-points, meaning that the ghost-points would be one of the unknown in $A\ve{x}=\ve{b}$, would break the symmetry.
 Instead, one must reformulate the boundary condition in a way such that it becomes an equation for the ghost point.
 The equation of the ghost point can then be substituted into the equations for the first/last inner point (the point just before the boundary) and thus effectively eliminating the ghost point from the set of equations.
 
@@ -71,7 +71,7 @@ This gives
     \frac{f_{1}+f_{2}}{(\Delta x)^2}&=b_1 - \frac{2f_{\text{BC}}}{(\Delta x)^2}.
 \end{align*}
 %
-This would give
+The resulting matrix equation would read
 %
 \begin{align*}
     A\cdot\ve{f}=&\ve{b}\\
@@ -106,7 +106,7 @@ Although difficult, one can show that the non-linear elliptic equation in its sy
 \label{sec:NaulinSolver}
 %
 The potential can also be found iteratively.
-The method first used by Naulin in \cite{Naulin2008} will be presented here, and will be referred to as the Naulin solver.
+The method first used by Naulin et. al. in \cite{Naulin2008} will be presented here, and will be referred to as the Naulin solver.
 
 The method can be used as long as
 %
