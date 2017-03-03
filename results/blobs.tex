@@ -14,8 +14,8 @@ In this definition, a blob is a structure which satisfies the following properti
     \end{enumerate}
 \end{quote}
 %
-Usually, the blobs observed in tokamaks are driven by magnetic field inhomogenities through the so-called grad-$B$ drift.
-This drift is causing a polarization, and the polarization are driving the blobs outwards through the $\ve{E}\times\ve{B}$ drift.
+Usually, the blobs observed in tokamaks are driven by magnetic field inhomogenities through the so-called $\grad B$ and curvature drifts.
+These drifts cause a charge separation, and the polarization is driving the blobs outwards through the $\ve{E}\times\ve{B}$ drift.
 The blobs in tokamaks are therefore self-propelled, and does not depend on local gradients of the plasma \cite{Krasheninnikov2008}.
 
 \subsection{The conditionally averaging technique}
@@ -37,7 +37,7 @@ It has it roots in fluid dynamics \cite{Kovasznay1970}, with the first applicati
 Here, we will set the threshold condition on the radial flux.
 Alternatively, we could have set a condition on the perturbation in $n$ itself.
 This would have the disadvantage of including samples of perturbation which arises from poloidal rotation of a slightly elongated plasma.
-In the end we are interested in structures which "has a dominant convective $\ve{E}\times\ve{B}$ velocity component" from point $3$ in the definition given in \cref{sec:blobsAndHoles}.
+In the end we are interested in structures which "has a dominant convective $\ve{E}\times\ve{B}$ velocity component" from point $3$ in the definition of \cref{sec:blobsAndHoles}.
 
 \subsection{The averaged structures}
 The time trace of the radial flux, together with three different conditions are shown in \cref{fig:blobFluxTT}.
@@ -48,12 +48,13 @@ The time trace of the radial flux, together with three different conditions are 
     \end{center}
     \caption{
         Time trace of the flux for $B=0.08\T$.
-        The trigger conditions for $2\sigma$, $3\sigma$ and $4\sigma$ is indicated on the figure, and the number of events found are indicated in the legend.
+        The trigger conditions for $2\sigma$, $3\sigma$ and $4\sigma$ is indicated on the figure.
+        The number of events found are indicated in the legend.
     }
     \label{fig:blobFluxTT}
 \end{figure}
 %
-Is apparent that the trigger signal is highly intermittent, as seen from the PDF in \cref{fig:blobFluxPDF}, which shows a skewness of approximately $3$, and an excess kurtosis of around $16.7$.
+It is apparent that the trigger signal is highly intermittent, as seen from the PDF in \cref{fig:blobFluxPDF}, which shows a skewness of approximately $3$, and an excess kurtosis of around $16.7$.
 %
 \begin{figure}[htbp]
     \centering
@@ -80,9 +81,9 @@ We now chose the time window parameter $\tau$ to be $4$ times the time of the ma
     However, as we would like to sample the densities given the trigger signal on the flux, we make the somewhat arbitrary choice of $\tau$.
 }%
 .
-From the flux signal we can now extract the times where the condition is met its corresponding time window.
+From the flux signal we can now extract the times where the condition is met and its corresponding time window.
 This can be used to sample any quantity in any spatial point.
-In other words, we can use these time to conditionally sample the density $n$ to search for blobs.
+In other words, we can use these time windows to conditionally sample the density $n$ to search for blobs.
 Before doing so, we note that we are dealing with two types of events, both giving a positive radial flux.
 The events can either be:
 %
@@ -132,7 +133,7 @@ The PDF of the density is shown in \cref{fig:blobDensPDF}.
 With its skewness around $1$ and an excess kurtosis of about $1.5$ is not as intermittent as the radial flux, nor is it a Gaussian random process.
 %
 
-Instead of sample the density at the same point as the condition is set, we can sample the whole perpendicular plane for the density fluctuations.
+Instead of sampling the density at the same point as the condition is set, we can sample the whole perpendicular plane for the density fluctuations.
 Such a sample can also be made in experiments (under the assumtions that the experiments are reproducible) by fixing one probe for the triggering signal, and sweep another probe through the perpendicular plane, as done in for example \cite{Nielsen1996}.
 The result is shown in \cref{fig:perpBlob008}.
 %
@@ -151,8 +152,8 @@ The result is shown in \cref{fig:perpBlob008}.
   \\
 \end{tabular}
 \caption{Perpendicular snapshot of a conditionally averaged blob at $z=0.7\m$ for $B=0.08\T$.
-    The colormap represents the density fluctuations,
-    the contour lines represents the potential, whilst the black dot denotes the position where the trigger signal for radial flux is set to $3\sigma$.
+    The colormap represents the density fluctuations, the contour lines the potential, whilst the black dot denotes the position where the trigger signal for radial flux is set to $3\sigma$.
+    The $B$-field points into the paper.
 }
 \label{fig:perpBlob008}
 \end{figure}
@@ -193,13 +194,13 @@ Although we have few events%
 \footnote{
     More events can be made by running the simulations for longer time.
     The only limit is relatively long simulation times together with large data files.
-}
+}%
 %
 , we would briefly indicate the trend of the waiting times and pulse width distribution.
 A similar exercise is done in for example \cite{Hornung2011}, where it is found that the average temporal width of the pulse is a fraction of the period of a characteristic drift-wave, the peak of the waiting time PDF occurs approximately around one drift-wave period and the waiting time is much longer than a drift-wave period.
 The waiting time and pulse widths in our case is shown in \cref{fig:tempStatBlob}.
-As expected, the waiting time goes down the value of the triggering signal as more events are included in the sampling, and because the events will appear broader.
-Because of this, also the pulse width goes up for decreasing value of the triggering signal.
+As expected, the time widths shift to longer pulse widths as the pulses are larger as the triggering condition decreases.
+For the waiting time, it is hard to say whether the distribution is changed due to lesser counts for lower triggering conditions.
 %
 \begin{figure}[h!]
     \begin{center}

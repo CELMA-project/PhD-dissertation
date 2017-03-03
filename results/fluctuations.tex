@@ -23,12 +23,12 @@ The flattening of the profiles is an important feature which need to be consider
 In models like Hasegawa-Wakatani \cite{Hasegawa1987,Holland2007}, the fluctuations are separated from the mean (a so-called Reynolds decomposition).
 The model only evolves the fluctuation in time, whilst keeping the mean fixed as a static background.
 In such models, the free energy in the background gradients are driving the fluctuations, and the feedback of the fluctuation on the background profiles are neglected.
-Such an approximation is good if the fluctuations are small.
+This approximation is good if the fluctuations are small.
 On the other hand, if the fluctuations are large as in \cref{fig:posOfFluct01}, the background gradients are altered, and thus the drive for the fluctuations.
 
 A global approach which doesn't uses the Reynolds decomposition is therefore needed.
-With such a global approach, the change in the driving force for the turbulence is accounted for, and it enables one to investigate the back-reaction to the background from the fluctuations.
-Models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA are using such a global approach.
+With the global approach, the change in the driving force for the turbulence is accounted for, and it enables one to investigate the back-reaction to the background from the fluctuations.
+Models like CYTO \cite{Naulin2008,Windisch2011a,Windisch2011b} and CELMA are using the global approach.
 
 Further investigation of the turbulence can be done by investigating the fluctuations at a fixed point.
 This is done in \cref{fig:combinedPlots008}, where the time trace, the probability density function (PDF) and power spectra density (PSD) is shown at $3$ different radial positions.
@@ -44,7 +44,7 @@ This is done in \cref{fig:combinedPlots008}, where the time trace, the probabili
     \label{fig:combinedPlots008}
 \end{figure}
 %
-Again, we can observe that the fluctuations are large in amplitude, and increasingly intermittent for higher radius.
+We can observe that the fluctuations are large in amplitude, and increasingly intermittent for higher radius.
 The power spectra density (PSD) shows that several frequencies are present simultaneously, and that the system is more turbulent at the edge (this is further emphasized in \cref{fig:skewKurt008}).
 This behavior is captured by the probability density functions (PDF), which measures the chance to encounter a value within an infinitesimal range, if a value at a random time is withdrawn from the time trace.
 If the fluctuations are normal distributed, the PDF will have a Gaussian distribution.
@@ -65,14 +65,15 @@ $S$ and kurtosis%
     If the kurtosis is greater than 3 (leptokurtic) there are more extreme outliners, and the tails approaches zero slower than a Gaussian distribution.
 }
 %
-$K$ defined as
+$K$, eventually the excess kurtosis $K_E$ defined as
 %
 \begin{align*}
     &S=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^3\R]&
-    &K=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^4\R],
+    &K=E\L[\L(\frac{X - \mu_X}{\sigma_X}\R)^4\R]&
+    &K_E=K-3,
 \end{align*}
 %
-where $E$ denotes the expectation value operator, $\mu_X$ the mean of $X$, and $\sigma_X$ the standard deviation%
+where $E$ denotes the expectation value operator, $\mu_X$ the mean of the data $X$, and $\sigma_X$ the standard deviation%
 \footnote{We are assuming that the tail of the distribution are approaching fast enough to $0$ in order for the moments to be defined.}%
 .
 \Cref{fig:skewKurt008} highlights how this varies with the radius.
@@ -80,7 +81,7 @@ where $E$ denotes the expectation value operator, $\mu_X$ the mean of $X$, and $
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/skewKurt/008T}
-    \caption{Radial variations of the skewness and excess kurtosis (the kurtosis $-3$) for $B_0 = 0.08\T$.}
+    \caption{Radial variations of the skewness and excess kurtosis for $B_0 = 0.08\T$.}
     \label{fig:skewKurt008}
 \end{figure}
 %
