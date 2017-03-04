@@ -27,7 +27,7 @@ This is however not done here.}
 
 \subsection{Arakawa's stencil}
 %
-As done in \cref{sec:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$ terms) as Poisson brackets.
+As done in \cref{eq:vecAdvTerm}, we can write $\ve{E}\times\ve{B}$-advective terms (that is the $\{\phi,\cdot\}$ terms) as Poisson brackets.
 The proof is found in \cref{app:poisson}.
 The benefits of writing terms in Arakawa's form are presented in his paper from 1966 \cite{Arakwa1966}.
 In short, the paper shows that a na\"ive FD discretization of the Poisson bracket does not conserve energy and enstrophy.
@@ -134,7 +134,8 @@ Thus, \cref{eq:perpPerpDeriv} can be rewritten to
     + f\frac{1}{\rho}\partial_\rho g
     +  \partial_\rho f \partial_\rho g
     +  \frac{1}{\rho^2} \partial_\theta f \partial_\theta g,
-    \numberhis{eq:ownPerp}
+    \numberthis
+    \label{eq:ownPerp}
 \end{align*}
 %
 Calculation of \cref{eq:ownPerp} requires less arithmetic operations than \cref{eq:perpPerpDeriv}, and is therefore used in the CELMA code.
