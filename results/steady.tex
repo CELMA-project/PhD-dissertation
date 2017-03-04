@@ -19,7 +19,7 @@ It is found that the shape of these profiles are mainly determined by the source
 If we change the source amplitude, the values of the profiles changes, but the shape remains relatively constant.
 There exists a threshold on the source amplitude for the filling of the plasma cylinder.
 For source amplitudes under this threshold the cylinder is "emptied" for plasma.
-That is: The density remains low for all time steps, and no density profile builds up.
+That is: The density remains low for all time-steps, and no density profile builds up.
 There also exists an upper limit on the source amplitude.
 Above this threshold, the radial density profiles are not developing, and the radial profiles remains flat.
 These thresholds are determined by the balance between number of particles created (the volume integrated source) and the particle outflow of the domain (the density flux integrated over the domain surface).
@@ -79,6 +79,6 @@ Despite having almost Boltzmann distributed electrons in the parallel direction 
 This is because the plasma is confined in the perpendicular direction by the strong magnetic field.
 Close to $L_\rho$ the radial potential profile is affected more by the fixation potential to $0$ at $L_\rho$.
 Thus, the values here differs from the density profile because of the zero gradient enforcement on $n$ at $L_\rho$.
-As a result, $j_\|$ forms a boundary layer as $\mu n \partial_\|\L(T_e\ln[n]-\phi\R)$ diverges due to difference in boundary conditions between $\phi$ and $n$.
+As a result, $j_\|$ forms a boundary layer since $\mu n \partial_\|\L(T_e\ln[n]-\phi\R)$ diverges due to difference in boundary conditions between $\phi$ and $n$.
 This means that we get a sharp gradient in $\Om$ as the parallel gradient in $j_\|$ is adding to the positive acceleration of the vorticity.
 The sharp gradient in $\Om$ means that we will have a strong velocity shear in the poloidal velocity, as described further in \cref{chap:poloidal}.

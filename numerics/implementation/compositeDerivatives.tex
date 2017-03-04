@@ -71,8 +71,7 @@ No ghost-points are needed in the $\theta$ direction, as this is periodic.
 Thus, for $\partial_{\theta} \phi$ we only need to make sure that we take the $\theta$ derivatives at the ghost-points in $\rho$.
 
 For $\partial_{\rho} \phi$, we must re-apply the values in the $\rho$ ghost-points as the derivative is not calculated there.
-For the inner ghost-point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used.
-For the outer ghost-point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost-point.
+For the inner ghost-point, the same procedure as used in \cref{sec:ghostRhoDeriv} can be used, whereas for the outer ghost-point, we can use \cref{eq:extraPolUp} for extrapolation to the ghost-point.
 
 This way of discretizing is second order accurate, as indicated in \cref{tb:MESResults}.
 
