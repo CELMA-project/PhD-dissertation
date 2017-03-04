@@ -14,7 +14,7 @@ That is, it tells us over how large distances there are sharp gradients for a bo
 For a field $f$, the gradient length scale $L_f$ is defined as%
 \footnote{
     Note that the inverse gradient length scale is often denoted $k$ in the literature.
-    This make sense plane wave perturbations, which happens to have $\frac{1}{L_f}=k$, where $k$ is the inverse wave number.
+    This make sense for plane wave perturbations, which happens to have $\frac{1}{L_f}=k$, where $k$ is the inverse wave number.
     However, in order to avoid ambiguity, we will in this thesis use $L_f$ for the gradient scale length.
 }%
 %
@@ -125,7 +125,8 @@ and the ion hybrid radius (the ion gyro radius at the electron temperature)
     \frac{\lambda_D^2}{\rho_s^2},
 \end{align*}
 %
-where $\lambda_D$ is the Debye length, which tells at what distance an isolated charge is effectively electrically shielded by surrounding charged particles.
+where $\lambda_D$ is the Debye length.
+The Debye length tells us at what distance an isolated charge is effectively electrically shielded by surrounding charged particles.
 
 In other words, the quasi-neutrality is just a statement of what scales we are looking at.
 Note that this does not imply that there cannot be large electrical field throughout the plasma, rather that the left hand side of
@@ -378,7 +379,7 @@ we find that
  \e.
 \end{align*}
 %
-This means that the left hand side of \cref{eq:perp_mom_start} can in an order of magnitude estimate be written as (assuming that $\om_{c\a}\sim\om^c_{c\a}$
+This means that the left hand side of \cref{eq:perp_mom_start} can in an order of magnitude estimate be written as (assuming that $\om_{c\a}\sim\om^c_{c\a}$)
 %
 \begin{align*}
  &
@@ -628,10 +629,7 @@ c^c_s
 %
 Next, we look at the collisionalities and sources of \cref{eq:perp_mom_start}.
 We would like these to be (at most) of the same order of magnitude as the inertia terms of \cref{sec:doInert}.
-Before we start, we will assume quasi-neutrality%
-\footnote{This is discussed further in \cref{sec:qn}}%
-%
-, i.e.
+We will assume quasi-neutrality (discussed in \cref{sec:qn}), i.e. that
 %
 \begin{align*}
     n\sim n_e \sim Zn_i.
@@ -1194,6 +1192,6 @@ The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
  \label{eq:DO}
 \end{align*}
 %
-Notice that the quantities in the breves are of order $\mathcal{O}(1)$, and so that the only large or small terms appear in front of the terms in breve.
+Notice that the quantities in the breves are of order $\mathcal{O}(1)$, so that the only large or small terms appear in front of the terms in breve.
 From this we can for example see that the electron inertia term is small compared to most other terms and can probably be neglected.
 We also note that although the ion viscosity is small, it is questionable if it should be neglected.

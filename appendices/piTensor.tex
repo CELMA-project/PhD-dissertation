@@ -351,7 +351,7 @@ By taking the divergence of this, we find that
 \end{align*}
 %
 Up until this point, we have not made any assumptions of the $\te{\pi}$ tensor, that has not already been made in \cite{Braginskii1965}.
-Here, however, we simplify the expression (on the cost of accuracy), and say that we assume that the viscosities are constants (note that we already did such an approximation when calculating the particle flux originating from the resistivity drift when we derived $\partial_t \ln(n)$).
+Here, however, we simplify the expression (on the cost of accuracy), and say that we assume that the viscosities are constants (note that we already did such an approximation when calculating the resistivity in \cref{sec:collDrift}).
 We then get
 %
 \begin{align*}
@@ -533,7 +533,7 @@ This would yield
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics{fig/etaENScan}
-        \caption{The normalized ion viscosities as a function of $n$}
+        \caption{The normalized electron viscosities as a function of $n$}
     \end{subfigure}
     \\
     \hfill
@@ -546,7 +546,7 @@ This would yield
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics{fig/etaETScan}
-        \caption{The normalized ion viscosities as a function of $T_e$}
+        \caption{The normalized electron viscosities as a function of $T_e$}
     \end{subfigure}
     \caption{$\eta$ scans. The solid lines are taken at $B=1\text{ T}$, the
         dashed at $B=0.1\text{ T}$, and the dotted at $B=0.01\text{ T}$}
@@ -587,7 +587,7 @@ This would yield
     \R).
 \end{align*}
 %
-Using that to first order, only the $\ve{E}\times\ve{B}$ drift advects particles perpendicularly.
+We will use that, to first order, only the $\ve{E}\times\ve{B}$ drift advects particles perpendicularly.
 In Clebsch coordinates, we have that $\ve{u}_{E}$ is given by \cref{poi:ExB}, which means that we get
 %
 \begin{align*}
@@ -613,7 +613,7 @@ In Clebsch coordinates, we have that $\ve{u}_{E}$ is given by \cref{poi:ExB}, wh
     u_{E}^{z} = 0.
 \end{align*}
 %
-We note that we are again operating with a left-handed coordinate system.
+We note that we are operating with a left-handed coordinate system.
 Using this, we find that
 %
 \begin{align*}
@@ -663,6 +663,6 @@ Using this, we find that
     \label{eq:piTensor}
 \end{align*}
 %
-Although we found in \cref{app:DO} that the viscosity played a minor role in the perpendicular velocities (assuming that $\mu \e^2$ is small in the ion equation).
+We found in \cref{app:DO} that the viscosity played a minor role in the perpendicular velocities (assuming that $\mu \e^2$ is small in the ion equation).
 We will, however, retain the parallel part of $\div\te{\pi}_\a$ (that is $\frac{4\eta_{\a,0}}{3} \partial_z^2 u^{z}_{\a}$) in the parallel momentum equations in the derivations to see how this term propagates through the set of equations.
 It the end we will drop the terms and use artificial viscosity instead.
