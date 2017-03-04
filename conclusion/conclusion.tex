@@ -6,13 +6,13 @@ In the end, an outlook for further work is given together with known shortcoming
 \addcontentsline{toc}{section}{Conclusion}
 %
 In this thesis, a drift-fluid model with a particle source has been derived from first principles without using the Boussinesq approximation.
-From the derivations and assumptions, it is found that this model is suitable for modelling the low frequency turbulence observed in a linear machine.
+From the derivations and assumptions, it is found that this model is suitable for modeling the low frequency turbulence observed in a linear machine.
 
 The approaches used for solving this model can be summarized as follows:
 The main implementation has been done using the BOUT++ framework.
 Additional implementation has been needed for treatment of the singularity, the Naulin Solver, the $\{\ve{u}_E^2,n\}$-advection and for the artificial boundary conditions.
 The singularity has been treated by using ghost-points across the cylinder axis, and the potential is found from inversion using the Naulin Solver.
-In order to run without unphysical generation of energy and enstrophy, which eventually leads to a simulation crash, the $\{\ve{u}_E^2,n\}$-advection has been implemnted in an Arakawa-like manner.
+In order to run without unphysical generation of energy and enstrophy, which eventually leads to a simulation crash, the $\{\ve{u}_E^2,n\}$-advection has been implemented in an Arakawa-like manner.
 % FIXME: Consider to add more emphasis on this advection elsewhere as well.
 Finally, artificial boundary conditions in the parallel direction has been done using fourth order extrapolation schemes.
 The BOUT++ implementations has been verified using the method of manufactured solution, whereas additional implementation has been verified through the method of exact solution.
@@ -22,21 +22,21 @@ In \cref{part:results} we discussed how the plasma evolves in the linear machine
 In the steady-state the evolution of the radial and parallel profiles has been emphasized.
 A Boltzmann like behavior was found in the parallel direction.
 It is also found that the source sets the radial density gradients, and that the vorticity profiles can be explained through the balance of parallel and perpendicular currents.
-The growth rates together with the angular frequency was found in from the simulations in the linear phase, and they were found to be in qualitatively agreement with what was found from an analyitc expression for drift-waves derived from a simplified slab geometry.
+The growth rates together with the angular frequency was found in from the simulations in the linear phase, and they were found to be in qualitatively agreement with what was found from an analytic expression for drift-waves derived from a simplified slab geometry.
 Both the growth rate and the angular frequency increases with $B$ in absolute numbers.
 These drift-waves are in the end evolving into turbulence.
 Increased intermittency is found at increased radii from the position of the maximum gradient in $n$.
 The perpendicular turbulent flux is causing a profile flattening, which increases with $B$.
 It is found that the parallel flux decreases with increasing magnetic field strength, whereas the perpendicular particle transport increases.
 
-A poolidal sheared flow was found as a consequence of the radial boundary conditions.
+A poloidal sheared flow was found as a consequence of the radial boundary conditions.
 This shear flow did not change much in the turbulent phase.
 
 % Consider: Did you check the neutral?
 A statistical picture of coherent structures has been found by using the conditional averaging technique, and these structures has been identified as blobs and holes.
 
-The Boussinesq-approximation is often made in the literature, and it has in this thesis been demostrated that this approximation can lead to different dynaimcs which again leading to different conclusions as compared with the full model.
-In the worst case scenario, simulations with the Boussinesq-approximation can break the quasi-neutral assumption of the model, rendering consequtive results doubtful.
+The Boussinesq-approximation is often made in the literature, and it has in this thesis been demonstrated that this approximation can lead to different dynamics which again leading to different conclusions as compared with the full model.
+In the worst case scenario, simulations with the Boussinesq-approximation can break the quasi-neutral assumption of the model, rendering consecutive results doubtful.
 
 % FIXME: What similarities? You could add link to at least Burins paper
 Despite the fact that CELMA is a crude model, we found similarities with what has been reported in the literature.
@@ -44,12 +44,12 @@ Despite the fact that CELMA is a crude model, we found similarities with what ha
 In this thesis drift-waves has been realized in its simplest three-dimensional form in a linear machine.
 To elevate the discussion, let us briefly indicate why the drift-waves and the other topics discussed in this thesis are important.
 A proper understanding of the drift-waves are important for the understanding of the turbulence found at the edge of fusion plasmas.
-The drift-waves are as such important in themselves, but it their understanding also sheds ligth on instabilites such as the ion temperature gradient which is closely related to the pure drift-wave, and which is partially responsible for the core turbulence in fusion plasmas.
+The drift-waves are as such important in themselves, but it their understanding also sheds light on instabilities such as the ion temperature gradient which is closely related to the pure drift-wave, and which is partially responsible for the core turbulence in fusion plasmas.
 A key point is that drift-wave like behavior is found whenever there is a difference in the parallel streaming of the electrons.
-Several mechanisms are responsible for a delay of the electron response to a pressure perturbations, and this inevetably leads to an unstable growth of the perturbation.
+Several mechanisms are responsible for a delay of the electron response to a pressure perturbations, and this inevitably leads to an unstable growth of the perturbation.
 This kind of instability is therefore quite universal in plasmas.
 
-As these instabilites are prevalent in the edge of the plasma, they contribute to setting the condition of the scrape-off layer.
+As these instabilities are prevalent in the edge of the plasma, they contribute to setting the condition of the scrape-off layer.
 Knowing the conditions of the scrape-off layer is of paramount importance.
 Firstly, it is important to know the power deposition to the divertor in order not to damage or melt any divertor tiles, and it is therefore important to know the relationship of parallel and radial fluxes.
 An understanding of self-propagating blobs is important to understand in order prevent damages to the first wall.
@@ -61,11 +61,11 @@ The conditions in the scrape-off layer sets the coupling between the plasma and 
 To extend the work done here, this section will suggest some interesting topics which can done with the model and the code.
 
 % FIXME: Add CELMA-project link
-The model and the code has been made transparent and readily available at \href{FIXME}{FIXME} for anyone who wishes to persue further work.
+The model and the code has been made transparent and readily available at \href{FIXME}{FIXME} for anyone who wishes to peruse further work.
 
 Firstly, the investigations done in this thesis can be extended by investigating how the results scales when the background plasma amplitude and source is changed, as these parameters effectively sets the gradient length scale which drives the instability.
 
-Changements to the physical domain size is also of interest.
+Changes to the physical domain size is also of interest.
 Of particular interest is varying the parallel direction as this affects the dispersion relation and the ratio of parallel to perpendicular outflux.
 The ratio of radial source extension to radial domain is also of interest in order to see how the perpendicular propagation of the coherent structures changes.
 It should be noted that extensions of the domain will come at a higher computational price if the resolution is kept constant.
@@ -76,7 +76,7 @@ The simulation can also be done using more fusion relevant gases such as $\text{
 This will reduce the difference in electron and ion mass, and therefore increase the ion mobility.
 As a consequence the drift-wave dynamics will change, which may have an effect on the coherent structures.
 Although reducing $\mu$, the resolution of the code needs to be increased in order to keep the same resolution as the normalized domain size increases for decreasing ion mass.
-If neutral interaction is to be included, the neutral collision terms shold be changed as elastic collision processes is not dominating over processes such as the charge exchange in these gases.
+If neutral interaction is to be included, the neutral collision terms should be changed as elastic collision processes is not dominating over processes such as the charge exchange in these gases.
 
 Further, the simplest form of the Boussinesq approximation has been used here, resulting in a drift of the energy.
 Several variants of the Boussinesq approximation exists, and it is possible to derive an energy conserving model using Boussinesq approximation by looking at energy transfer terms, and compare simulations of such a model with the results presented here.
@@ -92,7 +92,7 @@ Finally, more advanced studies can be made by relaxing the assumption of a strai
 As long as the metric is orthogonal, the Naulin Solver (modified with the $\grad B$-effects) can still be used to invert for the potential.
 The parallel sheath boundary condition would need to be changed if the magnetic field enters the sheath entrance with an angle.
 Effects of magnetic shear and curvature can be studied.
-For the BOUT++ operators, changement of the metric can easily be done by either changing the metric tensor, or by using the Flux Coordinate Indepentent scheme for the parallel direction.
+For the BOUT++ operators, changes of the metric can easily be done by either changing the metric tensor, or by using the Flux Coordinate Independent scheme for the parallel direction.
 
 From a numerical point of view, the code has a potential to be speed-up with means not investigated in the work done here.
 A different configuration of the adaptive step-size controller of the time solver may be speed up the simulations.

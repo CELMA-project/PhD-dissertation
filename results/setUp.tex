@@ -57,9 +57,9 @@ Note that the plasma radius is much less than the radius of the cylinder chassis
 These parameters can be translated to normalized units once we specify $T_{e,0}$, $m_i$ and $B_0$.
 We will use $T_{e,0} = 2.5\eV$, the mass of singly ionized Argon as $m_i$, and let $B_0$ vary between $0.02$ and $0.1 \T$.
 This sets the ion sound speed to $c_s \approx 2.46\; \text{km s}^{-1}$.
-Fruther, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
+Further, it sets the ion cyclotron frequency to $\om_{ci}\approx 2.42 B \cdot 10^6 \T\s^{-1}$, which means that $\om_{ci}$ is in the range of $48.4\kHz$ to $242\kHz$ for the specified magnetic field strengths.
 Consequently, as we print the output to the files after every $t\om_{ci}$%
-\footnote{Note that the internal timestep from the adaptive time solver is usually much smaller.}%
+\footnote{Note that the internal time-step from the adaptive time solver is usually much smaller.}%
 %
 , this gives an output every $4$-$20\;\mu\text{s}$ in physical units.
 The specified $c_s$ and $\om_{ci}$ gives a hybrid radius of $\rho_s \approx 1.02B^{-1}\cdot10^{-3}\m\T^{-1}$, which with the specified magnetic field strengths will be in the range $5.08\cm$ to $1.02\cm$.
@@ -71,7 +71,7 @@ The numbers are summarized in \cref{tb:input,tb:inputVar}.
 \section{Initial conditions and source specification}
 \label{sec:initRun}
 %
-The coupled set of PDE's in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} forms an initial-boundary value problem.
+The coupled set of PDEs in \cref{eq:celma_vortD,eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} forms an initial-boundary value problem.
 The boundary conditions of this problem was given in \cref{sec:BCs}, but we have yet to define the initial conditions.
 
 In the work presented here, we will use the following initial conditions of the normalized evolved quantities%
@@ -203,7 +203,7 @@ However, the same grid-size oscillation problem has been found in finite volume 
 Finally, a split-scheme could lessen the problem.
 Since the discretization of $n\mu\partial_z\L(\ln(n)-\phi\R)$ is done with a centered FD scheme, odd and even grid points will be decoupled.
 That is, $\partial_z\L(\ln(n)-\phi\R)$ for odd grid points will only depend on the even points and vice versa.
-For advective terms references \cite{Honein2004,Pirozzoli2011} suggest a skew-symmetric split in the form $\div\L(a\ve{u}\R) = \frac{1}{2}\L[\div\L(a\ve{u}\R) + a\div\ve{u} + \ve{u}\cdot\grad a\R]$ where all the right hand terms are discretized using centred difference schemes to get rid of the decoupling.
+For advective terms references \cite{Honein2004,Pirozzoli2011} suggest a skew-symmetric split in the form $\div\L(a\ve{u}\R) = \frac{1}{2}\L[\div\L(a\ve{u}\R) + a\div\ve{u} + \ve{u}\cdot\grad a\R]$ where all the right hand terms are discretized using centered difference schemes to get rid of the decoupling.
 Although arising from a divergence term, rewriting
 %
 \begin{align*}
@@ -247,10 +247,10 @@ First, the simulation is allowed to evolve freely to a steady-state condition us
 This choice is justified by assuming axisymmetry in the steady state.
 A transient period with fast dynamics is observed before a slow settlement to the steady-state.
 The steady-state is found by visual inspection, and is defined to be the time when there is a minimal difference between two time steps.
-The steady-state is usually reached between $2000-3000t\om_{ci}$.
-In order to ensure that the system has reached a steady state, the simulations are therefore executed until $4000t\om_{ci}$ is reached.
+The steady-state is usually reached between $2000-3000 t\om_{ci}$.
+In order to ensure that the system has reached a steady state, the simulations are therefore executed until $4000 t\om_{ci}$ is reached.
 
-Secondly, the simulation is expanded to $n_\theta = 256$, and executed for additional $50t\om_{ci}$.
+Secondly, the simulation is expanded to $n_\theta = 256$, and executed for additional $50 t\om_{ci}$.
 This ensures that the system is still in an axisymmetric steady state.
 
 Thirdly, white noise perturbation with an amplitude of $1\cdot10^{-6}$ is added to $\Om^D$%
@@ -279,4 +279,4 @@ At the time of writing the cluster operated with the following specifications \c
 \end{enumerate}
 %
 In all the simulations, $2$ nodes has been allocated using $48$ cores.
-This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ratio of time spent on arithmetics comparedto communication (see \cref{chap:performance}).
+This has been found to give a good speed-up (as compared to use one node) with a good trade off between the ratio of time spent on arithmetics compared to communication (see \cref{chap:performance}).

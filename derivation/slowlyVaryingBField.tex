@@ -1,18 +1,18 @@
 In the previous chapter, we derived the fluid drifts from the drift-fluid approximation.
 We will now insert the fluid drifts into the continuity equations without making any assumption on the \emph{topology} of the $\ve{B}$-field.
 We will, however, assume that the $\ve{B}$-field varies slowly in space and  time%
-\footnote{Note that we already used this assumtion in \cref{eq:parMat}.}%
+\footnote{Note that we already used this assumption in \cref{eq:parMat}.}%
 %
 , and that the plasma consists of only one type of atomic element.
 
-By inserting the fluid drifts into the electron continuity equation, we will obtain an eqation for the temporal evolution of $n$.
+By inserting the fluid drifts into the electron continuity equation, we will obtain an equation for the temporal evolution of $n$.
 Then, we will sum the electron continuity equation with the ion continuity equation, which will yield an equation for the current balance.
 These equations will be general for any topology assuming a slowly varying $\ve{B}$-field, electrostatic conditions and that the drift ordering holds.
 
-In \cref{chap:CELMA} we will constrain the system by specifying a straigth magnetic field and zero temperature.
+In \cref{chap:CELMA} we will constrain the system by specifying a straight magnetic field and zero temperature.
 From this, we will simplify the system further.
 The equation for the temporal evolution of the modified vorticity can then be extracted from the current balance equation.
-Readers familiar with the with the topic can skip the derivation of the drift-continuity eqation, but should read \cref{sec:gyrovisc} and \cref{sec:curConserve} as this gives the startpoint of the derivation of the modified vorticity equation.
+Readers familiar with the with the topic can skip the derivation of the drift-continuity equation, but should read \cref{sec:gyrovisc} and \cref{sec:curConserve} as this gives the start-point of the derivation of the modified vorticity equation.
 %
 
 \section{The drift-continuity equation}
@@ -37,7 +37,7 @@ Then we will evaluate the divergence terms one by one.
 
 \subsection{The curvature operator}
 %
-To easen the calculations, we will introduce the curvature operator.
+To ease the calculations, we will introduce the curvature operator.
 Assuming we are working in a field aligned Clebsch coordinate system (see \cref{app:coord}), where $\ve{b}$ is parallel to one of the basis vectors, we have that
 %
 \begin{align*}
@@ -373,7 +373,7 @@ Using this in \cref{eq:div_nur} gives
 \end{align*}
 %
 Note that although this term may be small as it is $\propto m_e$, we keep it as the term contributes to perpendicular diffusion of $n$ through the divergence of the pressure gradients.
-This diffusion removes smalles scales from the system as it flattens the gradients.
+This diffusion removes small scales from the system as it flattens the gradients.
 
 Next, the Pedersen drift term yields
 %
@@ -417,7 +417,7 @@ and the source term yields
 \end{align*}
 %
 
-\subsection{Polarization and visocisty}
+\subsection{Polarization and viscosity}
 \label{sec:gyrovisc}
 %
 For further reference, it suffice to observe that $\ve{u}_{e,p}\propto\frac{1}{\om_{ce}}$, and that electron viscosity is of order $\mathcal{O}(\e^2)$ as seen from \cref{eq:DO}.
@@ -433,7 +433,7 @@ Because of the advective term in the material derivative, we will have that
 
 One should also use the advection term carefully.
 It appears that all the drifts can contribute to the advective part of the material derivative, but only the parallel velocity and the $\ve{E}\times\ve{B}$-drift contributes to the advection.
-Although not trivial seen in the drift-fluid picture, it comes as a consequence of what is being referred to as \emph{gyroviscous cancellation} \cite{Chang1992,Smolyakov1998}.
+Although not trivial seen in the drift-fluid picture, it comes as a consequence of what is being referred to as \emph{gyro-viscous cancellation} \cite{Chang1992,Smolyakov1998}.
 Briefly explained, the cancellation comes as a consequence of the viscous part of the stress tensor cancels the diamagnetic drift.
 This means that
 % Remember that the u_e looking part in the polarization is not really u_e, but
@@ -578,7 +578,7 @@ This gives
 \end{align}
 %
 We neglect $\ve{u}_{e,\nu}$ as this drift is of $\mathcal{O}(\e^2)$.
-Next, we observe that $\ve{u}_{e,p}$, $\ve{u}_{e,\text{Ped}}$ and $\ve{u}_{e,S}$ are small compared to the rest of the terms as they are propotional the electron mass through the $\om_{ce}^{-1}$ factor.
+Next, we observe that $\ve{u}_{e,p}$, $\ve{u}_{e,\text{Ped}}$ and $\ve{u}_{e,S}$ are small compared to the rest of the terms as they are proportional the electron mass through the $\om_{ce}^{-1}$ factor.
 Using that $n_e\simeq n$, we get that
 %
 \begin{align*}
@@ -609,7 +609,7 @@ Using that $n_e\simeq n$, we get that
 \label{sec:curConserve}
 %
 \Cref{eq:dens_evol_gen} gives the equation to solve the density in time.
-Similarly, we could make an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation per sepcies for each perpendicular direction.
+Similarly, we could make an equation that evolves $\ve{u}_{\a,\perp}$ in time, which would require one equation per species for each perpendicular direction.
 However, as we will see later, all the information we need for evolving $\ve{u}_{\a,\perp}$ in time are contained in the parallel part of the vorticity equation ($(\curl \ve{v}_E)\cdot \ve{b}$).
 This equation can be derived from the current conservation, which we present in this section.
 If we multiply the two continuity equations of \cref{eq:cont_eq} with $q_\a$, and add them, we get by applying quasi-neutrality that

@@ -14,7 +14,7 @@ In this definition, a blob is a structure which satisfies the following properti
     \end{enumerate}
 \end{quote}
 %
-Usually, the blobs observed in tokamaks are driven by magnetic field inhomogenities through the so-called $\grad B$ and curvature drifts.
+Usually, the blobs observed in tokamaks are driven by magnetic field inhomogeneities through the so-called $\grad B$ and curvature drifts.
 These drifts cause a charge separation, and the polarization is driving the blobs outwards through the $\ve{E}\times\ve{B}$ drift.
 The blobs in tokamaks are therefore self-propelled, and does not depend on local gradients of the plasma \cite{Krasheninnikov2008}.
 
@@ -121,11 +121,11 @@ and where $R(\wt{a})$ denotes the normalized correlation function given by
     R(\wt{a}) = \frac{(\wt{a}\star\wt{a})}{\expt{\wt{a}^2}_t}.
 \end{align*}
 %
-However, it is unclear if the same holds when the CA is performed for $\innp{n}{\Gamma_*}$ as the term contains a tripple correlation%
+However, it is unclear if the same holds when the CA is performed for $\innp{n}{\Gamma_*}$ as the term contains a triple correlation%
 \footnote{One could find out if the relation holds by generating a random synthetic signal of pulses of $\wt{n}$ and $\wt{\ve{u}}_{E\times B, \rho}$ and pack the pulses close enough together in order to make the signal Gaussian \cite{Pecseli2017Private}}%
 .
 
-One could be tempted to state that since the flux signal in \cref{fig:blobFluxPDF} is not Gaussian, the denisty signal must also be non-Gaussian, so we can conclude that the density signal is a result of coherent structures in the plasma, rahter than an artifact of the conditional sampling technique.
+One could be tempted to state that since the flux signal in \cref{fig:blobFluxPDF} is not Gaussian, the density signal must also be non-Gaussian, so we can conclude that the density signal is a result of coherent structures in the plasma, rather than an artifact of the conditional sampling technique.
 However, even if the both the PDF of the density fluctuations and the PDF of the $\ve{u}_{E\times B,\rho}$ fluctuations were Gaussian the product would not be Gaussian as shown in \cite{Bergsaker2015}.
 
 In order to tell if our structures are a consequence of Gaussian random noise, we must therefore look at the PDF of the density signal.
@@ -134,7 +134,7 @@ With its skewness around $1$ and an excess kurtosis of about $1.5$ is not as int
 %
 
 Instead of sampling the density at the same point as the condition is set, we can sample the whole perpendicular plane for the density fluctuations.
-Such a sample can also be made in experiments (under the assumtions that the experiments are reproducible) by fixing one probe for the triggering signal, and sweep another probe through the perpendicular plane, as done in for example \cite{Nielsen1996}.
+Such a sample can also be made in experiments (under the assumptions that the experiments are reproducible) by fixing one probe for the triggering signal, and sweep another probe through the perpendicular plane, as done in for example \cite{Nielsen1996}.
 The result is shown in \cref{fig:perpBlob008}.
 %
 \begin{figure}[h!]
@@ -152,7 +152,7 @@ The result is shown in \cref{fig:perpBlob008}.
   \\
 \end{tabular}
 \caption{Perpendicular snapshot of a conditionally averaged blob at $z=0.7\m$ for $B=0.08\T$.
-    The colormap represents the density fluctuations, the contour lines the potential, whilst the black dot denotes the position where the trigger signal for radial flux is set to $3\sigma$.
+    The color-map represents the density fluctuations, the contour lines the potential, whilst the black dot denotes the position where the trigger signal for radial flux is set to $3\sigma$.
     The $B$-field points into the paper.
 }
 \label{fig:perpBlob008}
@@ -182,7 +182,7 @@ As the $B$ field is homogeneous in our case, the drifts in \cref{eq:chargeSep} c
 Another possible candidate for the charge separation is the neutral wind, which gives rise to a charge separation through a differences in the neutral temperatures \cite{Krasheninnikov2003}.
 However, as the plasma in the simulations presented in this chapter is fully ionized (i.e. no neutrals), we can rule out the neutral wind as a candidate for the charge separation.
 
-A possible candidate for the charge separation is the Kelvin-Helmoltz instability \cite{Horton1987,Pecseli2012book}.
+A possible candidate for the charge separation is the Kelvin-Helmholtz instability \cite{Horton1987,Pecseli2012book}.
 In a slab geometry, one can show that the linearized set of equations for this instability gives an eigenfunction for potential which consist of an alternating chain of positive and negative perturbations.
 This chain is slightly staggered in the radial direction, almost giving a dipole structure.
 It is therefore plausible that a positive and negative perturbation could approach each other by a turbulent perturbation, which would give rise to a potential dipole structure.

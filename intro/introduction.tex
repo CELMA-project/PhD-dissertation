@@ -34,7 +34,7 @@ The main reaction sought is the $\text{D}-\text{T}$ reaction, which can be summa
     \text{D} + \text{T} \to \text{He}^4 + \text{n} + 17.6 \text{MeV},
 \end{align*}
 %
-where the deuterium $\text{D}$ can be distilled from sea water, whereas the tritium $\text{T}$ must be produced as it is only scarcly available with its short half-life of $12.3$ years.
+where the deuterium $\text{D}$ can be distilled from sea water, whereas the tritium $\text{T}$ must be produced as it is only scarcely available with its short half-life of $12.3$ years.
 The easiest way to obtain $\text{T}$ with current day technologies is by breeding it from lithium through the process
 %
 \begin{align*}
@@ -59,7 +59,7 @@ The ITER project \cite{ITERWeb}, with its first plasma operation planned in $202
 The goal of ITER is not to supply the grid with energy.
 This is planned to be done by the prototype fusion reactor DEMO, which is still in the planning phase, and is meant to answer questions about economically viability.
 
-Scientific and economical feasibility aside, the reasearch of could be driven by the high energy yield alone.
+Scientific and economical feasibility aside, the research of could be driven by the high energy yield alone.
 To illustrate this let's look at some very approximated numbers, only to get an idea of what ballpark we are in.
 We can assume that on average a UK citizen uses $195 \text{\;kWh}$ per day%
 \footnote{As a comparison to this, MacKay makes an optimistic estimate that UK could yield $180 \text{\;kWh}$ per person per day from renewable sources with current day technologies \cite{Mackay2009book}}%
@@ -78,14 +78,14 @@ It should also be noted that catastrophic events like meltdowns are physically n
         \includegraphics{fig/intro/fusionSustain}
     \end{center}
     \caption{Estimated years one could power the world on fusion with a population of $12$ billion people using in average $195 \text{\;kWh}$ per day.
-        It is assumd that all available $\text{Li}$ is used for fusion based on the $\text{D}-\text{T}$ reaction, and that all available $\text{D}$ is used for the for fusion based on the $\text{D}-\text{D}$ reaction.
+        It is assumed that all available $\text{Li}$ is used for fusion based on the $\text{D}-\text{T}$ reaction, and that all available $\text{D}$ is used for the for fusion based on the $\text{D}-\text{D}$ reaction.
         With the approximated numbers obtained from \cite{Melorose2015,Mackay2009book,ongena2012,Eckhartt1995}.}
     \label{fig:potFusion}
 \end{figure}
 %
 
 The question is therefore: Why have not man-made fusion been made yet?
-In order to answer this, we can summerize the challenges with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
+In order to answer this, we can summarize the challenges with the following quote by Sebastien Balibar \cite{Balibar2009Web}:
 %
 \begin{quote}
     Fusion is like trying to put the Sun in a box - but we don't know how to make the box.
@@ -130,7 +130,7 @@ In order to remove impurity production and plasma recycling away from the main p
 %
 .
 Thus, when moving radially, the plasma is transitioning from the \emph{plasma edge}, through the position of the \emph{Last Closed Field Surface} (LCFS) to the region of open field lines, called the \emph{Scrape-Off Layer} (SOL).
-Since the plasma particle motion is constrained in the radial direction becuse of the gyration, large pressure gradients develops around the LCFS.
+Since the plasma particle motion is constrained in the radial direction because of the gyration, large pressure gradients develops around the LCFS.
 Instabilities in the edge region can develop from these gradients, both on the macroscopic (machine size) scale in form of ELMs \cite{Zohm1996}, but also on the microscopic scale (usually in the order of $\mm - \cm$) such as interchange instabilities \cite{Scott2005b} and drift-waves \cite{Tynan2009}.
 The microscopic instabilities develop into turbulence, and this turbulence is believed to be the cause of the increased transport levels%
 %
@@ -138,14 +138,14 @@ The microscopic instabilities develop into turbulence, and this turbulence is be
 %
 which exceeds those predicted by \emph{classical} transport from colliding particles, and those predicted by neoclassical theory (which includes transport effect arising from the magnetic field geometry) \cite{Wootton1990}.
 
-Although advances has been done in the last decades, the turbulent processeses in the edge and SOL are still not fully understood.
+Although advances has been done in the last decades, the turbulent processes in the edge and SOL are still not fully understood.
 There are for example a lot of open questions related to coherent structures called \emph{blobs} which emerges from the turbulence \cite{DIppolito2011}.
 In other words, the "box" is "leaking", and we would like a better understanding of how and why it is leaking.
 The success of ITER achieving a high energy gain would be bleak if it turns out that part of the divertor got melted due to unforeseen turbulent events.
 
-The turbulent processeses in the edge and SOL of a tokamak are hard to analyze, as several physical processeses can be active at once.
+The turbulent processes in the edge and SOL of a tokamak are hard to analyze, as several physical processes can be active at once.
 If one can get a good overview of the individual physical processes first, studying the full system will become easier.
-An additional challenge of understanding the processeses is that measurements around the LCFS is difficult in a tokamak due the high temperatures and due to the challenge of properly resolve the spatial and temporal scales with few measuring points.
+An additional challenge of understanding the processes is that measurements around the LCFS is difficult in a tokamak due the high temperatures and due to the challenge of properly resolve the spatial and temporal scales with few measuring points.
 One can overcome these obstacles by analyzing processes similar to those found in around the LCFS in linear devices.
 In such a device, the interchange instability can be eliminated if the machine operates with a straight magnetic field.
 The temperatures are also lower in a linear device, which makes plasma measurements easier.
@@ -189,7 +189,7 @@ More precisely, this thesis aims to answer the following questions:
     \item What model is suitable for modeling the low frequency turbulence observed in a linear machine?
     \item What numerical approaches can be used for solving our model?
     \item How is the plasma evolving in a linear machine?
-    \item Are sheared poloidal flows, supressing the turbulence transport, found in our model?
+    \item Are sheared poloidal flows, suppressing the turbulence transport, found in our model?
     \item Can coherent structures as blobs and holes be found from our model?
     \item To what extent does the approximation know as the Boussinesq-approximation, which is often done, alter the solution?
     \item Does our model capture the features reported in the literature?
@@ -206,7 +206,7 @@ Readers familiar with these derivations may readily skip these intermediate step
 In \cref{chap:kin} the derivation of the fluid equations is done by taking moments of the Fokker-Planck equation including a particle source.
 The first two fluid moments is taken, and the fluid closure is done by assuming a constant temperature.
 These equations are further refined using the drift-fluid approximation in \cref{chap:drift-order}, where also the fluid drifts are given.
-In \cref{chap:slowB} we restrict the system to only be valid for a slowly varying $B$-field, whereas in chapter \cref{chap:CELMA} a straigth magnetic field in a cylinder geometry is imposed.
+In \cref{chap:slowB} we restrict the system to only be valid for a slowly varying $B$-field, whereas in chapter \cref{chap:CELMA} a straight magnetic field in a cylinder geometry is imposed.
 The boundary conditions of the model is also given in \cref{chap:CELMA}.
 The alternative model, which uses the Boussinesq approximation is given in chapter \cref{chap:boussinesq} before \cref{part:CELMA} is concluded by a summary in \cref{chap:derivSummary}.
 
@@ -218,9 +218,9 @@ Finally, the results from the numerical simulations are given in \cref{part:resu
 The setup is briefly given in \cref{chap:setup}, followed by a description of the phases of the model in chronological order.
 \Cref{chap:ss} describes the steady state found from the simulations.
 The system is perturbed and the following linear state is described in \cref{chap:linear} together with simplified linear drift-wave theory.
-The resulting turbulent state is presented in \cref{chap:satTurb}, the characteristic of the fluctuation is given in \cref{chap:charTurb}, and a discription of the sheared poloidal flows are found in \cref{chap:poloidal}.
+The resulting turbulent state is presented in \cref{chap:satTurb}, the characteristic of the fluctuation is given in \cref{chap:charTurb}, and a description of the sheared poloidal flows are found in \cref{chap:poloidal}.
 Investigation of how the system scales with varying $B$-field strength is given in \cref{chap:BFScan}, and the comparison with the model using Boussinesq approximation is given in \cref{chap:compBouss}.
-How the system scales with the ioniziation degree is given in \cref{chap:neutScan}, and an analysis of the performance of the code is give in \cref{chap:performance}.
+How the system scales with the ionization degree is given in \cref{chap:neutScan}, and an analysis of the performance of the code is give in \cref{chap:performance}.
 
 A summary of the conclusion and outlook of this thesis is given in \cref{part:concl}.
 
