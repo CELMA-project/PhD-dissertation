@@ -3,22 +3,22 @@
     % Counter needs to be set within this environment
     \setcounter{page}{3}
     %
-    Understanding the turbulent transport in the edge of plasma in fusion devices is of uttermost importance in order to make precise prediction of future fusion devices.
-    Plasma turbulence observed in linear devices shares many important features with the turbulence observed in the edge of fusion devices, and are easier to diagnose due to lower temperatures and better access to the plasma.
-    In order to gain greater insight in this complex turbulent behavior, numerical simulations of plasma in a linear machine is done in this thesis.
+    Understanding the turbulent transport in the plasma-edge in fusion devices is of utmost importance in order to make precise predictions for future fusion devices.
+    The plasma turbulence observed in linear devices shares many important features with the turbulence observed in the edge of fusion devices, and are easier to diagnose due to lower temperatures and a better access to the plasma.
+    In order to gain greater insight into this complex turbulent behavior, numerical simulations of plasma in a linear device are performed in this thesis.
 
-    Here, a three-dimensional drift-fluid model is derived from first principles for a plasma in a linear device.
+    Here, a three-dimensional drift-fluid model is derived from first principles for a magnetized plasma in a linear device.
     To account for the fluctuations at the same level as the background plasma, the traditional split between background and fluctuations has not been made.
     The model is implemented using the BOUT++ framework and is solved numerically.
-    Special attention is given to the treatment the singularity at the cylinder axis, and at the inversion of the non-linear elliptic equation which is done to obtain the electrical potential.
-    The evolution of the plasma through the steady-state, linear phase and turbulent phase is investigated and compared between different $B$-field strengths.
-    It is found that the drift-waves are responsible for the onset of turbulence, and that the turbulent radial flux is causing a flattening of the density profiles.
+    Special attention is given to the treatment of the singularity at the cylinder axis, and at the inversion of the non-linear elliptic equation, which is done to obtain the electrical potential.
+    The evolution of the plasma through the steady-state, linear phase, and turbulent phase is investigated and compared for different $B$-field strengths.
+    It is found that drift-waves are responsible for the onset of turbulence, and that the turbulent radial flux is causing a flattening of the density profiles.
     Coherent structures from the intermittent radial flux in the turbulent state are investigated.
 
     Results of simulations using the Boussinesq approximation is compared to full simulations.
     It is found that the Boussinesq approximation leads to an unphysical increase of the electrical potential as ions and electrons are lost at a different rate.
 
-    Finally, the results from the full simulations are compared with simulations performed at different ionization levels, using a rudimental model for plasma interaction with neutrals.
+    Finally, the results from the full simulations are compared with simulations performed at different ionization levels, using a simple model for plasma interaction with neutrals.
     It is found that the steady state and the saturated state of the system bifurcates when the neutral interaction dominates the electron-ion collisions.
     \\
 
@@ -31,20 +31,20 @@
 \begin{abstract}
     For at kunne lave pr{\ae}cise forudsigelser om udviklingen af et plasma i fusionsmaskiner er forst{\aa}elsen af turbulent transport p{\aa} plasmaranden yderst vigtig.
     Den plasmaturbulens, der observeres i line{\ae}re maskiner har mange af de samme karakteristika som den i fusionsmaskiner, men den er nemmere at karakterisere, da temperaturene er lavere og plasmaet er lettere tilg{\ae}ngeligt.
-    I denne afhandling udf{\o}res numeriske simuleringer af et plasma i en line{\ae}r maskine for at f{\aa} bedre indsigt i den komplekse turbulente transport, der finder sted der.
+    I denne afhandling er numeriske simuleringer af et magnitseret plasma i en line{\ae}r maskine udf{\o}rt for at f{\aa} bedre indsigt i den komplekse turbulente transport, der finder sted der.
 
-    Der udledes en tredimensionel drift-fluid model fra f{\o}rste principper for et plasma i en line{\ae}r maskine.
-    For at tage h{\o}jde for fluktuationer i samme st{\o}rrelsesorden som baggrundsplasmaet, bliver der ikke lavet den traditionelle opdeling i baggrundsplasma og fluktuationer.
+    Der udledes en tredimensionel drift-fluid model fra f{\o}rste principper for et magnitseret plasma i en line{\ae}r maskine.
+    For at tage h{\o}jde for fluktuationer i samme st{\o}rrelsesorden som baggrundsplasmaet, er der ikke foretaget den traditionelle opdeling i baggrundsplasma og fluktuationer.
     Modellen er implementeret ved brug af BOUT++ frameworket og bliver l{\o}st numerisk.
-        Der bliver lagt s{\ae}rlig v{\ae}gt p{\aa} hvordan singulariteten p{\aa} cylinder aksen behandles og p{\aa} inversionen af den ikkeline{\ae}re elliptiske ligning, der benyttes til at finde det elektriske potentiale.
-    Udviklingen af plasmaet gennem ligev{\ae}gtstilstand, den line{\ae}re fase og den turbulente fase bliver unders{\o}gt og sammenlignet mellem forskellige $B$-felt styrker.
+    Der bliver lagt s{\ae}rlig v{\ae}gt p{\aa} hvordan singulariteten p{\aa} cylinder aksen behandles og p{\aa} inversionen af den ikke-line{\ae}re elliptiske ligning, der benyttes til at finde det elektriske potentiale.
+    Udviklingen af plasmaet gennem ligev{\ae}gtstilstand, den line{\ae}re fase og den turbulente fase bliver unders{\o}gt og sammenlignet for forskellige $B$-felt styrker.
     Det konstateres at driftb{\o}lger for{\aa}rsager turbulens og at den radielle flux af plasma leder til en udfladning af t{\ae}thedsprofilerne.
-    Ydermere unders{\o}ges koherente strukturer fra den periodiske radielle flux i den turbulente fase.
+    Ydermere unders{\o}ges koherente strukturer i den radielle flux i den turbulente fase.
 
     Resultaterne fra simuleringer hvor Boussinesq approksimationen bruges sammenlignes med simuleringer for det fulde system.
         Det ses at Boussinesq approksimationen f{\o}rer til en ufysisk {\o}gning af det elektriske potentiale, da elektroner og ioner forsvinder med forskellige rater.
-        Endeligt bliver resultaterne fra simuleringer af det fulde system sammelignet med simuleringer af forskellige ioniseringsniveauer ved at bruge en simpel model for plasma-neutral interaktioner.
-    Det konstateres at ligev{\ae}gtstilstanden og den turbulente tilstand bifurkerer n{\aa}r interaktionen med neutrale dominerer over elektron-ion kollisioner.
+        Endeligt bliver resultaterne fra simuleringer af det fulde system sammelignet med simuleringer af forskellige ioniseringsniveauer ved at bruge en simpel model for plasma-neutral vekselvirkninger.
+        Det konstateres at ligev{\ae}gtstilstanden og den turbulente tilstand bifurkerer n{\aa}r vekselvirkningen med neutrale dominerer over elektron-ion kollisioner.
 \end{abstract}
 
 \selectlanguage{english}
