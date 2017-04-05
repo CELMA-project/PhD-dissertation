@@ -12,7 +12,7 @@ As will be shown, this is to high accuracy the same as evolving density times th
 The variation of the $nu_{i,\|}$ field is smaller than the variation in the $u_{i,\|}$ as the sheath boundary condition (to be treated in \cref{sec:BCs}) will accelerate the ions to the ion acoustic speed, and thus create a lower density around the sheath as compared with the rest of the parallel domain.
 A smaller variation in the domain has the advantage that the difference in magnitude of the largest and smallest eigenvalues decreases, which is beneficial for the stiffness of the system \cite{Leveque2007book}.
 
-To derive the current equation and parallel density momentum equation, we will start from \cref{eq:mom_crude}.
+To derive the current equation and the parallel momentum density equation, we will start from \cref{eq:mom_crude}.
 We have that
 %
 \begin{align*}
@@ -74,7 +74,7 @@ We have that
 %
 We observe that $\div \L( n_\a \ve{u}_\a \R)$ is a part of the continuity equation, and we will exploit this.
 From quasi-neutrality, we have that $\partial_t Zn_i \simeq \partial_t n_e \simeq \partial_t n$.
-At the same time, since the created charge is zero, we that $ZS_{i,n} = S_{e,n} $.
+At the same time, since the created charge is zero, we have that $ZS_{i,n} = S_{e,n} $.
 This must mean that $Z\div(n_i \ve{u}_i) \simeq \div(n_e \ve{u}_e)$, which leads us to the conclusion that $\frac{|q_\a|}{e}\div(n_\a \ve{u}_\a) \simeq \div(n_e \ve{u}_e)$.
 Inserting this into \cref{eq:momDensIntermediate} yields
 %

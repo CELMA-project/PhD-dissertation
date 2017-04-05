@@ -93,14 +93,19 @@ we find that
 %
 After the derivations in \cref{chap:slowB}, we are in the position to find the vorticity with our current approximations.
 Strictly speaking, the vorticity $\Om$ of a fluid field is defined as $\curl \ve{u}$ \cite{Kundu2010book}.
-Thus, $\Om$ tells us something about the rotation of the fluid field.
+Thus, $\Om$ tells us something about the \emph{local} rotation%
+%
+\footnote{Note that a sheared laminar flow can cause a non-zero vorticity, and that irrational vortices exists.
+    An intutive way to check whether a flow has a non-zero vorticity, is to check if a infinitesimal imagined stamp will rotate if introduced in a point of the flow.}
+%
+of the velocity field.
 In this thesis, a slightly different definition will be used:
 %
 \begin{empheq}[box=\tcbhighmath]{align*}
     \frac{\grad^2_\perp \phi}{B} \defined \Om.
 \end{empheq}
 %
-Note that this is only the parallel part of the rotation of the advective vorticity:
+Note that this is only the parallel part of the local rotation of the advective vorticity:
 %
 \begin{align*}
     \L(\curl \ve{u}_E\R)\cdot\ve{b}
