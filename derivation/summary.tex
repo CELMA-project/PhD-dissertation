@@ -5,3 +5,48 @@ In principle, we are ready to put the model into a code which performs the calcu
 Before doing so, we need to address some caveats regarding the implementation.
 It is also important to verify that the machinery we use to solve the equations is actually working.
 We will do so in the next part, and we will in \cref{part:results} discuss the results of the simulations.
+
+At this point, it is appropriate to discuss how the CELMA model compares to some of the earlier works aiming to simulate linear devices with $3$-D fluid models.
+The comparison is not exhaustive, as it is not including all the work done in the field, but highlights relevant work with interesting features.
+
+One of the earlier works done by Schr{\"o}der and Naulin \cite{Schroder2003Phd} investigates how the statistical properties of their global model (CYTO) matches experiments in the VINETA machine.
+The model assumes a constant electron temperature, and cold ions, includes sheath boundary conditions, and is appearing in various forms throughout the literature.
+
+In \cite{Kasuya2006}, a numerical simulation of the Large Mirror Device is sought by using the Numerical Linear Device code.
+The model is spectrally decomposed in both the poloidal and parallel direction.
+The parallel ion velocity is neglected, and as the parallel direction does is periodic, it does not include any form of sheath BCs.
+Investigation of linear growth rates and non-linear turbulent saturation is performed with the model.
+Sasaki et al. uses a variation of this model to investigate zonal flows and streamers in \cite{Sasaki2014}.
+
+Also, gyrofluid models have been used in investigations of turbulence in $3$-D cylinder geometry.
+A modification of the GEM3 code is used for simulations the VINETA device (approximated as an annulus) in \cite{Kervalishvili2008}.
+The model makes a split of scales between background and fluctuations, and is therefore not global.
+Furthermore, it does not include a sheath boundary condition.
+The paper concludes that the neutral wind modification of the intermittency is negligible.
+
+Machines where a current runs through the system gives rise to Kelvin-Helmholtz instabilities.
+This is investigated using the BOUT code for simulation of LAPD as an annulus in \cite{Popovich2010a}.
+The model does not use the Boussinesq approximation, but neglects parallel advection of the evolved fields.
+No sheath BC is used in the model.
+The companying work investigates the non-linear behavior in \cite{Popovich2010}.
+Further investigations of the LAPD is done in a Cartesian domain by Rogers and Ricci in \cite{Rogers2010}.
+Here, both sheath BC and temperature dynamics are included.
+It is concluded that the Kelvin-Helmholtz instability dominates in the LAPD.
+Non-linear instability investigations of LAPD is done by using the BOUT++ framework by Friedman et al. in \cite{Friedman2012}.
+An annulus geometry is used, and a split between fluctuations and background is done to get an energy conserving model.
+The work concludes that non-linear instabilities may be more important than the linear ones, and that care should be taken when turbulence is being interpreted from the linear instabilities alone.
+No sheath is used in the work, which may alter the results.
+Finally Fisher et al.  builds on Roger's and Ricci's work of \cite{Rogers2010} in \cite{Fisher2015}.
+The Global Bragniskii Solver in a Cartesian domain is used to compare blob sizes from the simulations with those detected by a fast-camera. A good agreement is found.
+
+To conclude the model comparison, the models by Reiser will be discussed.
+In reference \cite{Reiser2012}, a model without the Boussinesq approximation is derived.
+Energy conservation is ensured when sources and sinks are not present, and model includes the sheath boundary condition.
+The model is used to investigate how the tungsten sputtered from a target are transported in the plasma.
+The work concludes that the Boussinesq approximation gives only a minor error in the energy compared to the full model for the parameters investigated.
+Finally, in \cite{Reiser2014}, Reiser et al. relaxes the Boussinesq to reduce computational cost, and investigate intermittent spiraling motion in NAGDIS-II.
+The observed predator-prey behavior from the simulations is compared with reduced models.
+
+As such, the consistency in CELMA, which includes sheath boundary conditions and which is properly treating the modified vorticity, the particle source and the parallel advections, is only matched by the model given in \cite{Reiser2012}.
+The two models differs in how the parallel dynamics is addressed, and how the modified vorticiy is evolved in time.
+Reference \cite{Reiser2012} does not mention how the singularity is dealt with, and the work presents a different numerical scheme than what is used in this work.
