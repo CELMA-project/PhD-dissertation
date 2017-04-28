@@ -14,7 +14,7 @@ Additional implementation has been needed for treatment of the singularity, the 
 The singularity has been treated by using ghost-points across the cylinder axis, and the potential is found from inversion using the Naulin Solver.
 In order to run without unphysical generation of energy and enstrophy, which eventually leads to a simulation crash, the $\{\ve{u}_E^2,n\}$-advection has been implemented in an Arakawa-like manner.
 % Consider: Consider adding more emphasis on this advection elsewhere as well.
-Finally, artificial boundary conditions in the parallel direction has been done using fourth order extrapolation schemes.
+Finally, artificial boundary conditions in the parallel direction has been implemented using fourth order extrapolation schemes.
 The BOUT++ implementations has been verified using the method of manufactured solution, whereas additional implementation has been verified through the method of exact solution.
 From numerical experiment, it is found that the grid size oscillation is reduced by increasing grid size in the parallel direction.
 
