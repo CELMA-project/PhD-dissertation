@@ -1,6 +1,7 @@
-# dissertation
+# Global numerical modeling of magnetized plasma in a linear device
 
-Contains the Ph.D. thesis: "Global numerical modeling of magnetized plasma in a linear device".
+Submitted to the Technical University of Denmark on March 6th 2017.
+To be defended in Lyngby on May 19th 2017.
 
 ## Abstract
 
