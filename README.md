@@ -29,4 +29,8 @@ It is found that the steady state and the saturated state of the system bifurcat
 Cylindrical plasma, Drift-fluid equations, Numerical modeling, Drift-waves, Plasma turbulence, Coherent structures, Sheath boundary condition
 
 ## Notes
+The `master` branch contains the latest corrections.
+
+The `pdf` file of the thesis can be built using `pdflatex` and `bibtex`. For already built `pdf`-files, see [releases](https://github.com/CELMA-project/dissertation/releases).
+
 Moved from https://svn.fysik.dtu.dk/mmag/LaTex/set_of_equations/ revision 121.
