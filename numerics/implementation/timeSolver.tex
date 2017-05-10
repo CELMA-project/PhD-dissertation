@@ -1,8 +1,7 @@
 \section{Time solver}
 This chapter will briefly discuss the time solver used in this thesis.
 BOUT++ provides a variety of time solvers, but the \texttt{cvode}\cite{Hindmarsh2012book} has been found to be a robust and fast time solver for solving \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} in time%
-\footnote{Implicit-Explicit (IMEX) approaches has also been tried in this thesis, but they have been found to be slower or crashing}
-%
+\footnote{Implicit-Explicit (IMEX) approaches has also been tried in this thesis, but they have been found to be slower or crashing}%
 .
 
 As \cref{eq:celma_dens,eq:celma_mom_dens,eq:celma_j_par,eq:celma_vortD_evolution} contains no mixed temporal and spatial derivatives in the equations, the PDEs can first be discretized in the spatial dimension while keeping the time derivatives continuous.
@@ -30,18 +29,25 @@ Due to its good stability properties \cite{Leveque2007book} an implicit LMM has 
 %
 .
 
-By a generic LMM, \cref{eq:MOL} can be written
+By using a generic LMM, \cref{eq:MOL} can be written
+%
+\begin{align}
+    \sum_{j=0}^{r}\a_j\ve{f}(t_{n+j}) =& k\sum_{j=0}^{r}\b_jF(\ve{f}(t_{n+j}), t_{n+j}),
+    \label{eq:LMM_first}
+\end{align}
+%
+where $n+r$ denotes the next time-index, $n+r-1$ the current time-index, and $n+j ;\ \forall \; j<r-1$ previous time-indices.
+Further, $k$ denotes the time-step, and $\a_j$ and $\b_j$ are weights.
+We will proceed by rewriting \cref{eq:LMM_first} to a more convenient form:
 %
 \begin{align*}
-    \sum_{j=0}^{r}\a_j\ve{f}(t_{n+j}) =& k\sum_{j=0}^{r}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
-    %
     \a_r\ve{f}(t_{n+r}) + \sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j}) =&
-    \b_rF(\ve{f}(t_{n+r}), t_{n+r}) +
+    k\b_rF(\ve{f}(t_{n+r}), t_{n+r}) +
     k\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})\\
     %
     \ve{f}(t_{n+r})
     -
-    \frac{\b_r}{\a_r}F(\ve{f}(t_{n+r}), t_{n+r})
+    \frac{k\b_r}{\a_r}F(\ve{f}(t_{n+r}), t_{n+r})
     =&
     \frac{k}{\a_r}\sum_{j=0}^{r-1}\b_jF(\ve{f}(t_{n+j}), t_{n+j})
     - \frac{1}{\a_r}\sum_{j=0}^{r-1}\a_j\ve{f}(t_{n+j}).
@@ -52,7 +58,7 @@ By a generic LMM, \cref{eq:MOL} can be written
 The method is implicit if $\b_r\neq0$.
 That is, the solution for the next time-step depends on the next time-step itself.
 In other words \cref{eq:LMM} can be stated as an optimization problem.
-By defining $\frac{\b_r}{\a_r}\defined\gamma$, we have
+By defining $\frac{k\b_r}{\a_r}\defined\gamma$, we have
 %
 \begin{align*}
     \ve{f}(t_{n+r})
