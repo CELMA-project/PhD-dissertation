@@ -399,7 +399,7 @@ Note that we are not using these routines when solving the set of PDEs, but to c
 We now define the hat function $H$ as
 %
 \begin{align}
-    H(d,s,c,w) = \frac{1}{2}\L(\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]-\tanh\L[s\L(d-\frac{c-w}{2}\R)\R]\R)
+    H(d,s,c,w) = \frac{1}{2}\L(\tanh\L[s \L(d-\L[c-\frac{w}{2}\R]\R)\R] - \tanh\L[s \L(d-\L[c+\frac{w}{2}\R]\R)\R] \R)
     \label{eq:hat}
 \end{align}
 %
