@@ -2,7 +2,7 @@
 
 Submitted to the Technical University of Denmark on March 6th 2017.
 
-To be defended in Lyngby on May 19th 2017.
+Defended in Kongens Lyngby on May 19th 2017.
 
 ## Abstract
 
