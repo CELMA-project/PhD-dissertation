@@ -1,23 +1,23 @@
 \section{Fluxes}
 \label{sec:fluxes}
 %
-The density flux (particles $\m^{-2}\s^{-1}$) in one point, such as the ones presented in \cref{fig:combinedPlots008}, tells us little about the total flux of particles out of the system.
-For example can a positive outflux in the point under consideration be outbalanced by a negative outflux in another point.
+We are here interested in quantifying the losses in the system due to the turbulent transport.
+This can be done by integrate the \emph{density flux} (obtained by multiplying the density fluctuations with the fluctuation in the $E\times B$-drift, and with the units "particles $\m^{-2}\s^{-1}$") over a surface $\mathcal{S}$.
 
-We will therefore integrate the density flux over a surface $\mathcal{S}$, which gives us the particle flux (particles per seconds).
+This gives us the \emph{particle flux} (alternatively the density flow), with the units "particles per seconds".
 Na{\"i}vely, one could think that using the simulation domain as $\mathcal{S}$ would make sense.
 However, as we have enforced $\phi=0$ at $\rho=L_\rho$, $u_{E,\rho}=0$ as $\partial_\theta \phi=0$ (see \cref{poi:cylExB}).
 As a side note, we note that very little plasma can escape the simulation domain radially as $\phi=0$ and because the Neumann condition on the density at the outer radius gives a diffusion of $\partial_\rho^2 n \simeq 0$.
 Hence, almost all the plasma escapes in the parallel direction.
 
-As we would like to investigate the radial turbulent particle flux, we therefore set the radius of $\mathcal{S}$ to be shorter than the radius where $\phi=0$ enforcement starts, but still outside the main part of the particle source.
-The result is shown in \cref{fig:flux008}, and gives a comparison to the parallel density flux out of the simulation domain.
+As we would like to investigate the radial turbulent particle flux, we therefore set the radius of $\mathcal{S}$ to be shorter than the radius where the $\phi=0$ enforcement starts (that is at the domain boundary), but still outside the main part of the particle source.
+The result is shown in \cref{fig:flux008}, and gives a comparison to the parallel particle flux out of the simulation domain.
 %
 \begin{figure}[htb]
     \centering
     \includegraphics{fig/results/totalFlux/flux008}
-    \caption{Integrated flux for $B=0.08\T$.
-        The "total" flux is the flux integrated over time.}
+    \caption{Particle flux for $B=0.08\T$.
+        The "total" flux is the particle flux integrated over time.}
     \label{fig:flux008}
 \end{figure}
 %
@@ -28,4 +28,4 @@ From that point in time the radial flux comes burst-wise throughout the simulati
 Although the particles are not escaping the domain in the perpendicular direction, the total perpendicular particle flux through $\mathcal{S}$
 is approximately $10\%$ of the parallel flux out of the domain.
 We can also observe that almost as many ions as electrons are lost in the parallel direction ($99\%$).
-Physically, this means that the plasma is charging up very little over time, and that the quasi-neutrality assumption is not broken.
+Physically, this means that the plasma is charging up very little over time, and would thus not break the assumption of quasi-neutrality.
