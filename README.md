@@ -32,5 +32,3 @@ Cylindrical plasma, Drift-fluid equations, Numerical modeling, Drift-waves, Plas
 The `master` branch contains the latest corrections.
 
 Run the `Makefile` to build the `pdf`, or see [releases](https://github.com/CELMA-project/dissertation/releases) for already built versions of the thesis.
-
-Moved from https://svn.fysik.dtu.dk/mmag/LaTex/set_of_equations/ revision 121.
