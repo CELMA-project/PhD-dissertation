@@ -220,7 +220,8 @@ If we now apply this on \cref{eq:do_inertia}, we get
 We now relate the velocities to $c_s$, so that
 %
 \begin{align*}
-    \lambda \defined \frac{u^c}{c^c_s}.
+    &\lambda_{u_{\a,\perp}} \defined \frac{u^c_{u_{\a,\perp}}}{c^c_s} &
+    &\lambda_{u_{\a,\|}}    \defined \frac{u^c_{u_{\a,\|}}}   {c^c_s}.&
 \end{align*}
 %
 Further, by using the ion hybrid radius, we get
@@ -1119,23 +1120,23 @@ Before we order the terms in \cref{eq:perp_mom_start}, let us briefly recapitula
     &\Theta  \defined \frac{\nu^c_{i n}}{\om^c_{ci}}                      \sim \e&
     &\sigma  \defined \frac{1}{\lambda}\frac{\nu^c_{S_{i,n}}}{\om^c_{ci}} \sim \e&
     \\
-    &\lambda \defined \frac{u^c}{c^c_s}             \sim \sqrt{\e}&
-    &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }} \sim \sqrt{\e}&
-    &\zeta   \defined \frac{L_{\perp}}{L_{\|}}      \sim \sqrt{\e}&
-    &\Xi     \defined \frac{E_\perp^c}{c^c_sB^c}    \sim \sqrt{\e},&
+    &\lambda \defined \frac{u^c_{\perp}}{c^c_s}\sim \sqrt{\e}&
+    &\gamma  \defined \frac{ \rho^c_s }{L_{\perp }}   \sim \sqrt{\e}&
+    &\zeta   \defined \frac{L_{\perp}}{L_{\|}}        \sim \sqrt{\e}&
+    &\Xi     \defined \frac{E_\perp^c}{c^c_sB^c}      \sim \sqrt{\e},&
 \end{empheq}
 %
 where we have assumed
 %
 \begin{empheq}[box={\tcbhighmath[colback=yellow!5!white]}]{align*}
     &T^c_e                 \sim T^c_i                 &
-    &\om^c_{u_{e,\perp}}   \sim \om^c_{u_{i,\perp}}   &
+    &\om^c                 \sim \om^c_{u_{e,\perp}}   \sim \om^c_{u_{i,\perp}}   &
     &n_e                   \sim Zn_i                  &
-    &u_{e,\perp}           \sim u_{i,\perp}           &
+    &u^c_{\perp}           \sim u_{e,\perp}           \sim u_{i,\perp}           &
     \\
     &L_{\perp,u_{e,\perp}} \sim L_{\perp,u_{i,\perp}} &
     &L_{\perp,p_\a}        \sim L_{\perp,u_{\a,\perp}}&
-    &u_{e,\|}              \sim u_{i,\|}              ,&
+    &u_{e,\|}              \sim u_{i,\|},&
 \end{empheq}
 %
 The order of magnitude estimate of \cref{eq:perp_mom_start} now yields
